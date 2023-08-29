@@ -13,3 +13,6 @@ MATHFILM08fullhd.mp4
 
 # ignore Skript Bildchen
 *.jpg
+
+# ignore local storehistory
+.DS_*
