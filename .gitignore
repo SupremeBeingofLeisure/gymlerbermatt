@@ -3,10 +3,8 @@
 
 # ignore meine Notizen
 "01 Vektoren GF gym3 Notes.pdf"
-"Vektoren Notizen zu den Uebungen Skript.pdf"
 
-# ignore movies
-MATHFILM08fullhd.mp4
+"Vektoren Notizen zu den Uebungen Skript.pdf"
 
 # ignore .sty files
 *.sty
@@ -14,5 +12,5 @@ MATHFILM08fullhd.mp4
 # ignore Skript Bildchen
 *.jpg
 
-# ignore local storehistory
+# ignore local store history
 .DS_*
