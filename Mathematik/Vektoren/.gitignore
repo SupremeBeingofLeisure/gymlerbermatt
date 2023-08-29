@@ -1,0 +1,15 @@
+# ignore all .txt files
+*.txt
+
+# ignore meine Notizen
+"01 Vektoren GF gym3 Notes.pdf"
+"Vektoren Notizen zu den Uebungen Skript.pdf"
+
+# ignore movies
+MATHFILM08fullhd.mp4
+
+# ignore .sty files
+*.sty
+
+# ignore Skript Bildchen
+*.jpg
