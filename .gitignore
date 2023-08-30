@@ -3,13 +3,9 @@
 
 # ignore meine Notizen
 lecture/
-script/
 
 # ignore .sty files
 *.sty
-
-# ignore Skript Bildchen
-*.jpg
 
 # ignore local store history
 *.DS_*
