@@ -2,9 +2,8 @@
 *.txt
 
 # ignore meine Notizen
-"01 Vektoren GF gym3 Notes.pdf"
-
-"Vektoren Notizen zu den Uebungen Skript.pdf"
+lecture/
+script/
 
 # ignore .sty files
 *.sty
@@ -13,4 +12,4 @@
 *.jpg
 
 # ignore local store history
-.DS_*
+*.DS_*
