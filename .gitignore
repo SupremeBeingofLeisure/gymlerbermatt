@@ -9,3 +9,13 @@ lecture/
 
 # ignore local store history
 *.DS_*
+
+# ignore TeX auxillaries
+*.aux
+*.fdb_latexmk
+*.fls
+*.lof
+*.log
+*.out
+*.gz
+*.toc
