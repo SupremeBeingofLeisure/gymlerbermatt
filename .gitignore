@@ -8,7 +8,7 @@ lecture/
 *.sty
 
 # ignore local store history
-*.DS_*
+.DS_Store
 
 # ignore TeX auxillaries
 *.aux
