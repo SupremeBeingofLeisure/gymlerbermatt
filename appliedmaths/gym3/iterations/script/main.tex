@@ -1,0 +1,1009 @@
+\documentclass[%
+11pt,%
+%oneside,%
+twoside,%
+%twocolumn,%
+titlepage,%
+%fleqn,%
+%a4page,%
+german,%ß
+headsepline%
+]{scrartcl}
+
+%\usepackage{fancyhdr}
+%\usepackage{scrpage}
+\usepackage{lastpage}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{lscape}
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage[most]{tcolorbox}
+\usepackage{mymath}
+\usepackage{units}
+\usepackage{nicefrac}
+\usepackage{pgf,tikz,pgfplots}
+\pgfplotsset{compat=1.14}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+\usepackage{colortbl}
+\usepackage{hhline}
+\usepackage{multirow}
+\usepackage[extendedchars]{grffile}
+\usepackage{caption}
+\usepackage{multicol,calc}
+\usepackage{blindtext}
+\usepackage{pdfpages}
+\usepackage{hyperref}
+\usepackage{tikz-er2}
+\usepackage{framed}
+\usetikzlibrary{arrows}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shadows}
+
+\usepackage{marginnote}
+\usepackage[]{qrcode}
+\qrset{height=9ex}
+
+%\usepackage{romannum}
+\usepackage{longtable}
+\usepackage{listings}
+\usepackage{wrapfig}
+
+
+% Command, um Tabellen-Spalten anzupassen
+\newcommand{\spaltenheight}{\rule{0mm}{3ex}}
+\newcommand{\spaltenwidth}{\rule{3cm}{0mm}}
+\newcommand{\spaltensep}{\\[1ex]}
+%\arrayrulecolor{darkgreen}
+\doublerulesepcolor{white}
+\definecolor{lightyellow}{rgb}{1,1,0.8}
+\definecolor{Gray}{gray}{0.9}
+
+
+% Pagestyle/Layout
+%\geometry{a4paper , tmargin =2.5cm,	bmargin=3cm, lmargin =2.5cm,	rmargin =2.5cm,	headheight=3em, headsep=1em, footskip=1cm}
+%\setlength{\parindent}{0pt} \setlength{\parskip}{1em}
+%für TwoSide
+%\lhead{\headmark\pagemark}
+%\cehead{}
+%\rehead{}
+%\lohead{}
+%\cohead{}
+%\rohead{\headmark}
+%für OneSide
+%\ihead{}
+%\chead{}
+%\ohead{}
+%\setheadsepline{0.5pt} % Linie zur Begrenzung
+%\setfootsepline{0.5pt} % Linie zur Begrenzung
+\pagestyle{headings} % gemachte Einstellungen anwenden
+
+% Farbig umrahmte Umgebung Satz
+ 
+ \definecolor{myblizzardblue}{HTML}{87CEEB}
+
+\newcounter{satzz}[section]\setcounter{satzz}{0}
+\renewcommand{\thesatz}{\arabic{section}.\arabic{satzz}}
+
+\newenvironment{csatz}[2][]{%
+    \refstepcounter{satzz}
+ 
+    \ifstrempty{#1}%
+    % if condition (without title)
+    {\mdfsetup{%
+        frametitle={%
+            \tikz[baseline=(current bounding box.east),outer sep=0pt]
+            \node[anchor=east,rectangle,fill=myblizzardblue]
+            {\strut Satz~\thesatz};}
+        }%
+    % else condition (with title)
+    }{\mdfsetup{%
+        frametitle={%
+            \tikz[baseline=(current bounding box.east),outer sep=0pt]
+            \node[anchor=east,rectangle,fill=myblizzardblue]
+            {\strut Satz~\thesatz:~#1};}%
+        }%
+    }%
+% for both conditions
+    \mdfsetup{%
+        innertopmargin=10pt,linecolor=myblizzardblue,%
+        backgroundcolor=whitesmoke,%
+        linewidth=2pt,topline=true,%
+        frametitleaboveskip=\dimexpr-\ht\strutbox\relax%
+    }
+ 
+\begin{mdframed}[]\relax}{%
+\end{mdframed}}
+
+% Farbig umrahmte Umgebung Theorem
+ 
+\definecolor{mygraphblue}{HTML}{84B7E1}
+\definecolor{whitesmoke}{HTML}{F5F5F5}
+
+\newcounter{theo}[section]\setcounter{theo}{0}
+\renewcommand{\thetheo}{\arabic{section}.\arabic{theo}}
+
+\newenvironment{ctheo}[2][]{%
+    \refstepcounter{theo}
+ 
+    \ifstrempty{#1}%
+    % if condition (without title)
+    {\mdfsetup{%
+        frametitle={%
+            \tikz[baseline=(current bounding box.east),outer sep=0pt]
+            \node[anchor=east,rectangle,fill=mygraphblue]
+            {\strut Theorem~\thetheo};}
+        }%
+    % else condition (with title)
+    }{\mdfsetup{%
+        frametitle={%
+            \tikz[baseline=(current bounding box.east),outer sep=0pt]
+            \node[anchor=east,rectangle,fill=mygraphblue]
+            {\strut Theorem~\thetheo:~#1};}%
+        }%
+    }%
+% for both conditions
+    \mdfsetup{%
+        innertopmargin=10pt,linecolor=mygraphblue,%
+        backgroundcolor=whitesmoke,%
+        linewidth=2pt,topline=true,%
+        frametitleaboveskip=\dimexpr-\ht\strutbox\relax%
+    }
+ 
+\begin{mdframed}[]\relax}{%
+\end{mdframed}}
+
+% Farbig umrahmte Umgebung Definition
+ 
+ \definecolor{emerald}{HTML}{50C878}
+
+\newcounter{deff}[section]\setcounter{deff}{0}
+\renewcommand{\thedeff}{\arabic{section}.\arabic{deff}}
+
+\newenvironment{cdef}[2][]{%
+    \refstepcounter{deff}
+ 
+    \ifstrempty{#1}%
+    % if condition (without title)
+    {\mdfsetup{%
+        frametitle={%
+            \tikz[baseline=(current bounding box.east),outer sep=0pt]
+            \node[anchor=east,rectangle,fill=emerald]
+            {\strut Definition~\thedeff};}
+        }%
+    % else condition (with title)
+    }{\mdfsetup{%
+        frametitle={%
+            \tikz[baseline=(current bounding box.east),outer sep=0pt]
+            \node[anchor=east,rectangle,fill=emerald]
+            {\strut Definition~\thedeff:~#1};}%
+        }%
+    }%
+% for both conditions
+    \mdfsetup{%
+        innertopmargin=10pt,linecolor=emerald,%
+        backgroundcolor=whitesmoke,%
+        linewidth=2pt,topline=true,%
+        frametitleaboveskip=\dimexpr-\ht\strutbox\relax%
+    }
+ 
+\begin{mdframed}[]\relax}{%
+\end{mdframed}}
+
+% Farbig umrahmte Umgebung Achtung
+ 
+ \definecolor{mygraphred}{HTML}{E26A6A}
+
+\newcounter{merkee}[section]\setcounter{merkee}{0}
+\renewcommand{\themerkee}{\arabic{section}.\arabic{merkee}}
+
+\newenvironment{cachtung}[2][]{%
+    \refstepcounter{merkee}
+ 
+    \ifstrempty{#1}%
+    % if condition (without title)
+    {\mdfsetup{%
+        frametitle={%
+            \tikz[baseline=(current bounding box.east),outer sep=0pt]
+            \node[anchor=east,rectangle,fill=mygraphred]
+            {\strut Achtung};}
+        }%
+    % else condition (with title)
+    }{\mdfsetup{%
+        frametitle={%
+            \tikz[baseline=(current bounding box.east),outer sep=0pt]
+            \node[anchor=east,rectangle,fill=mygraphred]
+            {\strut Achtung:~#1};}%
+        }%
+    }%
+% for both conditions
+    \mdfsetup{%
+        innertopmargin=10pt,linecolor=mygraphred,%
+        backgroundcolor=whitesmoke,%
+        linewidth=2pt,topline=true,%
+        frametitleaboveskip=\dimexpr-\ht\strutbox\relax%
+    }
+ 
+\begin{mdframed}[]\relax}{%
+\end{mdframed}}
+
+\subject{\includegraphics[width=0.618\textwidth]{pictures/apfelmaennchen.jpg}}
+\title{Iterationen}
+\subtitle{vom Repetitiven ins Chaos}
+\author{}
+\date{}
+\lowertitleback{
+\includegraphics[height=3ex]{pictures/gymfmslerbermattlogo.eps}%
+%\hfill\copyright Jorma Wassmer
+%1. Auflage, Februar 2011
+}
+
+
+\begin{document}
+\maketitle
+\tableofcontents
+%\thispagestyle{empty}
+\cleardoublepage
+%\setcounter{page}{1}
+
+\section{\glqq Zufallsbeispiele\grqq}
+
+\subsection{Sierpinski Dreieck}
+
+\begin{figure}
+  \centering
+
+    \includegraphics[width=0.618\textwidth]{pictures/sierpinski}
+\caption{Sierpinski Dreieck, Struktur im Zufall}
+\end{figure}
+
+Wir spielen folgendes Spiel:
+\begin{quote}
+Gegeben sei ein Dreieck mit den Eckpunkten $1,2,3$. Wählen Sie einen beliebigen Startpunkt $x_0$, sowie einen beliebigen Punkt $P$, und berechnen Sie mit der Vorschrift
+$$x_1=\frac{x_0+P}{2}$$
+den Punkt $x_1$. Fahren Sie nach diesem Schema fort, um weitere Punkte zu bestimmen.
+\end{quote}
+
+Am einfachsten geht's, wenn man sich rasch ein Programm schreibt, das obiges Verfahren ausführt.
+
+\includepdf[pages=1,scale=0.8,pagecommand={\thispagestyle{headings}}]{pictures/sierpinskiipnb.pdf}
+\includepdf[pages=2-3,scale=0.8,pagecommand={\thispagestyle{headings}}]{pictures/sierpinskiipnb.pdf}
+
+\subsection{Ein weiteres Beispiel}
+
+Wir kneten einen Blätterteig: Bei der Blätterteigherstellung wird folgendermassen vorgegangen: Ein Stück der Länge, sagen wir $1$, wird auf die doppelte Länge ausgewallt, $2$, dann zusammengefaltet auf die Länge $1$, dann wiederum auf die doppelte Länge $2$ ausgewallt, dann zusammengefaltet auf Länge $1$, dann auf die doppelte Länge \dots . Und so weiter \dots
+
+Fragen dazu:
+
+\begin{enumerate}[a)]
+    \item Gibt es Fixpunkte?
+    \item Was könnte mit Vorfixpunkte gemeint sein?
+    \item Gibt es Zyklen der Länge $2$?
+    \item Gibt es Zyklen beliebiger Länge?
+    \item Wie sieht der Orbit von $\frac{\sqrt{2}}{2}$ aus?
+\end{enumerate}
+
+\clearpage
+
+\section{Iteration reellwertiger Funktionen}
+
+\subsection{Grundbegriffe}
+
+Wir betrachten eine reellwertige Funktion
+$$f:\mR\longrightarrow\mR,$$
+beispielsweise eine Proportionalität
+$$f(x)=\lambda x,$$
+und wählen einen Startwert $x_0$. Nun erzeugen wir rekursiv eine Folge mit
+\begin{align*}
+f^1(x_0) &= f(x_0) &= x_1\\
+f^2(x_0) &= f(x_1) &= x_2\\
+f^3(x_0) &= f(x_2) &= x_3\\
+&\vdots &\vdots \phantom{x_k} \\
+f^k(x_0) &= f(x_{k-1}) &= x_k
+\end{align*}
+Diesen
+\marginnote{
+\qrcode{
+https://www.youtube.com/watch?v=tw6_eu___Sk}
+}
+Vorgang nennen wir \textbf{Iteration} von $f$ mit Startwert $x_0$. Iteration einer Funktion heisst also:
+\begin{enumerate}
+\item\label{enum:start} Zu einem gegebenen Startwert $x_0$ den Funktionswert $x_1=f(x_0)$ berechnen.
+\item den Wert $x_1$ als neuen Startwert nehmen und bei \ref{enum:start}. fortfahren.
+\end{enumerate}
+\begin{cdef}[Orbit]{}
+Die Menge
+$$\set{x_0,x_1,x_2,\dots}$$
+wird als \textbf{Orbit} oder Bahn von $x_0$ bezeichnet.
+\end{cdef}
+\begin{bsps}
+Wir betrachten einige Beispiele.
+\begin{itemize}
+\item $$f(x)=\frac{x}{2},\q x_0=3\dots$$ Die Folge ist konvergent gegen $0$.
+\item $$f(x)=3x,\q x_0=1\dots$$ Die Folge divergiert.
+\item $$f(x)=x,\q x_0\dots$$ Hier haben wir lauter Fixpunkte.
+\item $$f(x)=x+c,\q x_0\dots$$ Wir haben $f^n(x)=x_0+n\cdot c$, was im Allgemeinen divergiert.
+\item $$f(x)=x^2$$ Dieses Beispiel ist interessant, da das Verhalten wesentlich vom gewählten Startwert $x_0$ abhängt.
+\begin{itemize}
+\item Ist $-1<x_0<1$, dann erhalten wir bei Iteration eine monoton fallende Zahlenfolge mit
+$$\lim_{n\to\infty}x_n=0.$$ Ferner fällt auf, dass ein negativer Startwert nach der ersten Iteration \glqq ins Positive hüpft\grqq.
+\item Gilt $\abs{x_0}>1$, so divergiert die entsprechende Folge.
+\end{itemize}
+\end{itemize}
+\end{bsps}
+
+\begin{ueb}[Repeller und Attraktor]
+Betrachte für
+$$f(x)=x^2$$
+die beiden Fälle $x_0=0$ und $x_0=1$. In welchen Zusammenhang könnten die Begriffe \textbf{Repeller} und \textbf{Attraktor} hier gebracht werden?
+\end{ueb}
+
+\begin{ueb}[Fixpunkte]
+Finde Fixpunkte der Iteration
+$$f(x)=x^2-2$$
+und entscheide anschliessend, ob es sich um anziehende oder abstossende Fixpunkte handelt.
+\end{ueb}
+
+\begin{bsp}
+Möchte man die Fixpunkte der Iteration
+$$f(x)=x^2$$
+finden, so löst man einfach die entsprechende Bedingung nach $x$:
+$$f(x)=x$$
+ergibt hier also $x^2-x=0$, woraus unmittelbar die Lösungen $x_1=0$ und $x_2=1$ abgelesen werden können.
+\end{bsp}
+
+\begin{ueb}[Entscheidung ist schwierig]
+Wie könnte man nun entscheiden, ob ein Fixpunkt \emph{anziehend} oder \emph{abstossend} ist?
+\end{ueb}
+
+\subsection{Fixpunkte}
+\begin{figure}
+\centering
+    \includegraphics[width=0.618\textwidth]{pictures/apfelmaennchen}
+\caption{The Famous Mandelbrot Set}
+\end{figure}
+
+Evergreens bei der Analyse von Abbildungen sind die Suche nach Fixpunkten oder Fixgeraden.
+\begin{cdef}[Fixpunkt]{}
+Ein Punkt $x$ heisst \textbf{Fixpunkt} (der Periode $1$) von $f$, wenn $f(x)=x$ gilt.
+\end{cdef}
+\begin{bem}
+Ist $x$ ein Fixpunkt der Periode $1$ von $f$, dann gilt natürlich auch $f^n(x)=x$ für jedes $n\in\mN$.
+\end{bem}
+\begin{bsps}
+\begin{itemize}
+\item $f(x)=\sqrt{x}$ hat die Fixpunkte $0$ und $1$.
+\item $g(x)=2x+1$ hat den Fixpunkt $x=-1$.
+\item $h(x)=x-2$ hat keinen Fixpunkt.
+\end{itemize}
+\end{bsps}
+\begin{cdef}[Fixpunkt der Periode k]{}
+Ein Punkt $x$ heisst \textbf{Fixpunkt der Periode $k$} von $f$, wenn
+$$f^k(x)=x$$
+gilt.
+\end{cdef}
+\begin{bsp}
+Wir betrachten
+$$f(x)=-x+1.$$
+Dann können wir leicht nachrechnen, dass $x=0.25$ ein Fixpunkt der Periode $2$ von $f$ ist.
+\end{bsp}
+
+\begin{ueb}[Fixpunkte]
+Gibt es noch weitere Fixpunkte?
+\end{ueb}
+
+Bleibt noch die Frage, wie man Fixpunkte höherer Ordnung findet? Dazu illustrativ ein
+
+\begin{bsp}
+Wir betrachten
+$$f(x)=2x-1.$$
+Einen Fixpunkt der Periode $1$ finden wir rasch via die Bedingung $f(x)=x$, also
+$$2x-1=x$$
+was unmittelbar $x=1$ liefert.
+
+Um nun Fixpunkte der Periode $2$ zu finden berechnen wir
+$$f^2(x)=2(2x-1)-1=4x-3$$
+und erhalten
+$$4x-3=x.$$
+Wir sind enttäuscht, weil $x=1$ bereits wieder Lösung ist. Scheinbar gibt es hier keine reinen Fixpunkte der Periode $2$. \glqq Keine reinen\grqq\ deshalb, weil ja ein Fixpunkt erster Periode ebenfalls Fixpunkt $n$-ter Periode ist.
+\end{bsp}
+
+Wir vermuten anhand der obigen Rechnung, dass eine affine Funktion keine echten Fixpunkte höherer Periode hat.
+
+\begin{ueb}[höhere Fixpunkte]
+Beweise obige Vermutung.
+\end{ueb}
+
+Die Vermutung war also nicht ganz korrekt: Fixpunkte der Periode $2$ liegen auf den Senkrechten zur Winkelhalbierenden.
+
+\begin{cdef}[Attraktor]{}
+Ein Fixpunkt $x$ heisst \textbf{anziehend}, wenn für alle Punkte $\tilde{x}$ in einer Umgebung von $x$ gilt, dass
+$$\lim_{n\to\infty}f^n(y)=x.$$
+Man nennt $x$ auch etwa \textbf{Attraktor}.
+\end{cdef}
+
+\begin{bsp}
+Beispielsweise ist für
+$$f(x)=\sqrt{x}$$
+der Punkt $x=1$ ein Attraktor.
+\end{bsp}
+
+\definecolor{seagreen}{rgb}{0.18,0.545,0.341}
+
+\begin{ueb}[Iteration]
+Starte mit den Werten $3$ und $0.2$ und betrachte deren Verhalten unter
+$$\lim_{n\to\infty}\sqrt[n]{x}.$$
+\marginnote{
+\qrcode{
+https://youtu.be/4HHDZgmH0Kk}
+}
+Benutze dabei Abbildung \ref{graph:wurzel} auf Seite \pageref{graph:wurzel}.
+
+Wie könnte man allgemein zeigen, dass $1$ ein Attraktor für $\sqrt{x}$ ist?
+
+\begin{figure}
+\centering
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\begin{axis}[
+x=1.0cm,y=1.0cm,
+axis lines=middle,
+ymajorgrids=true,
+xmajorgrids=true,
+xmin=-0.2,
+xmax=9.5,
+ymin=-0.2,
+ymax=3.5,
+%xtick={-5,-4,...,5},
+ytick={-1,0,...,3},
+]
+\clip(-1,-1) rectangle (10,3.5);
+\addplot [mark=none, domain=0:9, seagreen, samples=600, style=very thick] {x^0.5};
+\end{axis}
+\end{tikzpicture}
+\caption{Graph der Wurzelfunktion}\label{graph:wurzel}
+\end{figure}
+\end{ueb}
+
+\begin{cdef}[Repeller]
+Ein Fixpunkt $x$ heisst \textbf{abstossend}, wenn für alle Punkte $\tilde{x}\neq x$ in einer Umgebung von $x$ gilt, dass
+$$\lim_{n\to\infty}f^n(y)\neq x.$$
+Man nennt $x$ auch \textbf{Repeller}.
+\end{cdef}
+
+\begin{bsp}
+Für
+$f(x)=x^2$ ist der Fixpunkt $x=1$ abstossend.
+\end{bsp}
+
+Für einige ausgewählte Übungen sind weiter unten ab Seite \pageref{graph:gerade} vorgezeichnete Graphen auf dem Silbertablett serviert.
+
+\begin{ueb}[Start and go]
+Betrachte die Startwerte $x=2$ bzw. $x=0.5$ und zeige allgemein, dass $1$ ein Repellor für $x^2$ ist.
+\end{ueb}
+
+\begin{csatz}[Attraktorbedingung]{}
+Gilt für einen Fixpunkt $x$, dass $\abs{f'(x)}>1$, dann ist $x$ ein Repellor. Ist $\abs{f'(x)}<1$, so handelt es sich um einen Attraktor.
+\end{csatz}
+
+\begin{proof}[Beweis]
+Übung, falls man zum Beispiel Lipschitz-Stetigkeit und den Mittelwertsatz googlen möchte.
+\end{proof}
+
+\begin{ueb}[Finde]
+Gib jeweils ein Beispiel einer Funktion mit
+\begin{enumeratea}
+\item einem Attraktor bei $x=3$.
+\item einem Repellor bei $x=-2$.
+\item zwei Fixpunkten, bei $x=1$ bzw. $x=4$.
+\item einem Fixpunkt der Periode $2$ in $x=7$, für den $f(7)=19$ ist.
+\end{enumeratea}
+\end{ueb}
+
+\begin{ueb}[Einzugsgebiet eines Attraktors]
+Welche Aussagen kannst du über die Fixpunkte folgender Funktionen machen? Bestimme gegebenenfalls das \glqq Einzugsgebiet\grqq, falls es sich um einen Attraktor handelt.
+\begin{enumeratea}
+\item $\cos(x)$
+\item $2\sin(x)$
+\item $0.5x^2+0.5$
+\end{enumeratea}
+\end{ueb}
+
+\begin{ueb}[$x$ quadrat]
+Untersuche die Funktion
+$$f(x)=-x^2+1$$
+auf Fixpunkte.
+\end{ueb}
+
+Analysieren wir Fixpunkte quadratischer Funktionen.
+
+\begin{ueb}[Parabel]
+Untersuche die Standardparabel
+$$f(x)=x^2$$
+auf Fixpunkte.
+\end{ueb}
+
+\begin{bsp}
+Wie
+\marginnote{
+\qrcode{
+https://www.youtube.com/watch?v=EXT2J6mB9oY}
+}
+sieht es nun f\"ur eine verschobene Parabel
+$$f(x)=x^2-2$$
+aus? Wir haben
+$$x^2-x-2=0$$
+mit den L\"osungen $x_1=-1$ und $x_2=2$.
+
+F\"ur Fixpunkte der Periode zwei muss
+$$x^4-4x^2-x+2=0$$
+gelten. Um nun die echten $2$-periodischen Fixpunkte zu erhalten, dividieren wir die Fixpunkte der Periode $1$ aus:
+$$(x^4-4x^2-x+2)\div(x^2-x-2)=x^2+x-1$$
+und setzen gleich $0$. Die L\"osung dieser sch\"onen Gleichung kennen wir. Die Fixpunkte $2$-ter Periode sind also
+$$x=\frac{-1\pm\sqrt{5}}{2}.$$
+\end{bsp}
+
+\begin{figure}
+\centering
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\begin{axis}[
+x=1.0cm,y=1.0cm,
+axis lines=middle,
+ymajorgrids=true,
+xmajorgrids=true,
+xmin=-5.62,
+xmax=5.74,
+ymin=-3.26,
+ymax=5.6,
+%xtick={-5,-4,...,5},
+%ytick={-3,-2,...,5},
+]
+\clip(-5.62,-3.26) rectangle (5.74,5.6);
+\addplot [mark=none,domain=-5:5, seagreen,
+style=very thick, samples=3] {2*x-1};
+\end{axis}
+\end{tikzpicture}
+\caption{Graph der Geraden $2x-1$}\label{graph:gerade}
+\end{figure}
+
+\begin{figure}
+\centering
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\begin{axis}[
+x=1.0cm,y=1.0cm,
+axis lines=middle,
+ymajorgrids=true,
+xmajorgrids=true,
+xmin=-5.62,
+xmax=5.74,
+ymin=-1.26,
+ymax=8.6,
+%xtick={-5,-4,...,5},
+%ytick={-3,-2,...,5},
+]
+\clip(-5.62,-1.26) rectangle (5.74,8.6);
+\addplot [mark=none,domain=-3:3, seagreen,
+style=very thick, samples=50] {x^2};
+\end{axis}
+\end{tikzpicture}
+\caption{Graph der Quadratfunktion}\label{graph:square}
+\end{figure}
+
+\begin{figure}
+\centering
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\begin{axis}[
+x=1.0cm,y=1.0cm,
+axis lines=middle,
+ymajorgrids=true,
+xmajorgrids=true,
+xmin=-5.62,
+xmax=5.74,
+ymin=-3.26,
+ymax=5.6,
+%xtick={-5,-4,...,5},
+%ytick={-3,-2,...,5},
+]
+\clip(-5.62,-3.26) rectangle (5.74,5.6);
+\addplot [mark=none,domain=-3:3, seagreen,
+style=very thick, samples=60] {x^2-2};
+\end{axis}
+\end{tikzpicture}
+\caption{Graph von $x^2-2$}\label{graph:parabelminus2}
+\end{figure}
+
+\begin{figure}
+\centering
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\begin{axis}[
+x=1.0cm,y=1.0cm,
+axis lines=middle,
+ymajorgrids=true,
+xmajorgrids=true,
+xlabel={$x$},
+  ylabel={$y$},
+  xlabel style={below right},
+  ylabel style={above left},
+xmin=-5.62,
+xmax=5.74,
+ymin=-5.26,
+ymax=3.6,
+%xtick={},
+%ytick={-3,-2,...,5},
+]
+\clip(-5.62,-5.26) rectangle (5.74,3.6);
+\addplot [mark=none,domain=-2.9:2.9, seagreen,
+style=very thick, samples=60] {-x^2+1};
+\end{axis}
+\end{tikzpicture}
+\caption{Graph von $-x^2+1$}\label{graph:parabelplus1}
+\end{figure}
+
+\clearpage
+
+\section{Ausblick}
+
+Nach
+\marginnote{
+\qrcode{
+https://www.youtube.com/watch?v=hqv4DQLzRqk}
+}
+diesem theoretischen Teil geht es nun an einige konkrete Beispiele. Zum Einstieg in die diskrete Modellierung eignet sich meines Erachtens das Walmodell aus Anhang \ref{anhang:wale}. Weiter folgen etwas detaillierte Modelle (wie das während der CoV19-Pandemie bekannt gewordenen SIR-Model, dass Sie bei mir unter Masern finden), wobei man immer den Merksatz von \textsc{George Box} im Hinterkopf haben sollte:
+
+\begin{quote}
+    All models are wrong, but some are usefull.
+\end{quote}
+
+Anschliessend
+\marginnote{\textcolor{blue}{
+\qrcode{
+https://www.youtube.com/watch?v=6xblB0aqKxU}
+}
+}
+an dieses Skript zeige ich mit Hilfe von Vereinfachungen ausgehend vom Walbeispiel über die logistische Funktion bis zur Mandelbrotmenge einen Zusammenhang von \emph{deterministischem Chaos}. Eine schöne Reise, die man sich nicht entgehen lassen sollte. Dazu existiert aber meinerseits noch keine Skriptvariante, jedoch habe ich mit interaktiven Jupyter Notebooks diese schönen Einsichten illustriert. Wenn man nicht bei mir das Schwerpunktfach PAM oder Ergänzungsfach AM besucht, trotzdem aber reingucken möchte, dann empfehle ich als Einstieg das Video aus dem QR-Code als Startpunkt. Ich versuche auch sukzessive Teile als Anhänge zu diesem Skript zu generieren. Der
+zweite, blaue QR-Code startet ein für fortgeschrittene AM-ler empfehlenswertes Repetitionsmodul --- das Burger-King-Problem --- mit vielen Recaps und Anwendungen des Stoffs.
+
+\clearpage
+
+\appendix
+
+\section{Rettet die Wale}\label{anhang:wale}
+\subsection{Situation}
+Eine
+\marginnote{
+\qrcode{
+https://www.youtube.com/watch?v=snCk1gWtwIE}
+}
+Population von ca. 1200 Grönlandwalen (bowhead whale, Balaena mysticetus) lebt in einem abgegrenzten Lebensraum des nördlichen Eismeeres (Nordpolarmeer). Da die Wale keine natürlichen Feinde haben und im bezeichneten Lebensraum ein reichhaltiges Nahrungsangebot vorfinden, werden sie sich zunächst exponentiell vermehren. Durch die Zunahme der Anzahl der Wale sinkt aber das Nahrungsangebot, da das als Nahrung dienende Plankton nicht in unbeschränktem Masse zur Verfügung steht. Die Wale können sich nicht mehr mit dem anfänglichen Zuwachsfaktor vermehren. Das Eismeer bietet nur eine begrenzte Zahl $G$ von Grönlandwalen Lebensraum. Diese Zahl liegt nach vorsichtigen Schätzungen bei 20000 Tieren.\\[2ex]
+
+\begin{center}
+\includegraphics[width=0.5\textwidth]{pictures/groenlandwale.jpeg}
+\includegraphics[width=0.4685\textwidth]{pictures/groenlandwalegebiet.jpg}
+\end{center}
+
+
+\subsection{Das Modell}
+Bei Annäherung an die Sättigungsgrenze $G$ wird der Zuwachs der Wale abnehmen. Das Wachstum der Grönlandwalpopulation kann demnach im Anfangszustand --- wenn der Bestand noch weit von der Sättigungsgrenze entfernt ist --- als exponentielles Wachstum und im fortgeschrittenen Stadium --- wenn sich der Bestand der Sättigungsgrenze nähert --- als begrenztes Wachstum beschrieben werden. Die Vermehrung kann somit --- unter den genannten Rahmenbedingungen --- als logistisches Wachstum modelliert werden
+$$W_{n+1}=W_n+r\cdot (G-W_n)\cdot W_n,$$
+wobei $W_n$ die Anzahl der Wale im Jahr $n$, $G=20000$ die Sättigungsgrenze und $W_0=1200$ die Anfangspopulation bezeichnet.
+
+\begin{ueb}[Wie setzt sich logistisches Wachstum zusammen?]
+Stelle exponentielles und beschränktes Wachstum als Folge/Iteration dar. Plausibilisiere anschliessend das logistische Wachstum als Kombination der beiden.
+\end{ueb}
+
+\subsection{Die Analyse}
+Naturschützer beobachten die Tiere und ermitteln, dass die Anzahl der Tiere im ersten Beobachtungsjahr um $p=8\%$ wächst.
+\begin{enumerate}
+\item Stelle auf der Grundlage des iterativen logistischen Wachstumsmodells die Entwicklung der Grönlandwalpopulation für einen Zeitraum von 100 Jahren dar. $r$ ist aus dem Wachstumsfaktor des ersten Beobachtungsjahres zu berechnen. Stelle den Populationsumfang in Abhängigkeit der Jahre graphisch dar. Setze Software ein.
+\item Welchen Einfluss haben der Anfangsbestand und der Wachstumsfaktor im ersten Beobachtungsjahr auf die Entwicklung der Walpopulation? Wann ist der Zuwachs am grössten?
+\item Das bisherige Modell berücksichtigt noch nicht den Walfang, der jedoch durch ein Walfangabkommen reglementiert werden soll.
+\begin{itemize}
+\item Vorschlag 1 für ein Walfangabkommen gestattet, einen festen Prozentsatz des gegenwärtigen Bestandes der Walpopulation pro Jahr abzufischen.
+\end{itemize}
+Erstelle ein iteratives Wachstumsmodell, das eine Abfangquote von $q=1\%$ einbezieht. Setze dieses Modell in Software um und erstelle eine Tabelle und einen Graphen für die Entwicklung der Walpopulation für 100 Jahre unter Einfluss der Abfangquote $q=1\%$.
+\item Experimentiere mit der Abfangquote $q$. Für welche Werte von $q$ wächst die Walpopulation weiterhin, bei welchem Wert bleibt sie konstant und wann nimmt die Walpopulation ab und stirbt allmählich aus? Ermittle rechnerisch den Grenzwert $L$ der Grönlandwalpopulation in Abhängigkeit von $q$ und $r$.
+\item 
+\begin{itemize}
+\item Ein alternativer Vorschlag sieht ein Walfangabkommen vor, dass pro Jahr eine feste (absolute) Fangzahl erlaubt.
+\end{itemize}
+Erstelle wiederum auf der Grundlage der Eingangsdaten ein iteratives Wachstumsmodell, das die konstante Fangzahl von $F=70$ einbezieht und setze dies ebenfalls in Tabelle und Graphik um.
+\item Experimentiere mit der Fangzahl $F$. Für welche Werte von $F$ wächst die Population weiterhin, wann bleibt die Population konstant und wann stirbt der Bestand aus? Ermittle rechnerisch den Grenzwert $L$ der Grönlandwalpopulation in Abhängigkeit von $F$ und $r$.
+\item Einerseits ist der Walfang wirtschaftliche Existenzgrundlage für viele der heute im Polarkreis wohnenden Menschen wie den Inuit, andererseits verbieten Über\-le\-gun\-gen der Nachhaltigkeit und der Ethik, das Überleben der Grönlandwale zu gefährden. Diskutiere die beiden Vorschläge des Walabkommens:
+\begin{quote}
+Prozentuale Quoten oder fest vereinbarte Fangzahlen.
+\end{quote}
+Welchen der beiden Vorschläge empfiehlst du?
+\end{enumerate}
+
+Andere und weitere Infos liefert zum Beispiel die Website \emph{International Whaling Commission}.
+
+\clearpage
+
+\includegraphics[width=0.93\textwidth,page=1,angle=-1.6]{pictures/starkeranstiegzeitung.pdf}
+
+\pagebreak
+
+\section{Starker Anstieg bei Masern}
+\subsection{Gekoppelte Populationen}
+In
+\marginnote{
+\qrcode{
+https://www.youtube.com/watch?v=0YyBSeZ8upM}
+}
+vielen interessanten Situationen wirken mehrere Populationen aufeinander ein. Die
+Entwicklung von zwei oder mehreren Populationen ist gekoppelt. In manchen Situationen werden durch biologische oder physikalische Prozesse aus den Angehörigen der einen Populationen Mitglieder einer anderen Population: Junge werden alt, Alte sterben; Gesunde werden krank, Kranke werden gesund; aus Schülern werden Studenten, aus Studenten Berufstätige, bevor aus diesen Rentner werden. In anderen Situationen, die wir betrachten werden, koexistieren mehrere Populationen und ihr Zusammenwirken kann beiden Populationen nützen, beiden schaden oder nur einer Population zum Nutzen sein.
+
+Wir modellieren ein Problem aus der Epidemiologie, bei dem aus Mitgliedern der Population der Gesunden in Folge Ansteckung Kranke werden, bevor diese wiederum gesunden und danach immun werden.
+
+\subsection{Masernepidemien}
+Die Krankheit Masern ist eine durch das Masernvirus hervorgerufene, hoch ansteckende Infektionskrankheit, die vor allem Kinder betrifft. Neben den typischen roten Hautflecken (Masern-Exanthem) ruft die Erkrankung Fieber und einen erheblich geschwächten Allgemeinzustand hervor.
+
+Es können ausserdem in manchen Fällen lebensbedrohliche Komplikationen wie Lun\-gen- und Hirnentzündungen auftreten. Man weiss aus Erfahrung, dass es etwa alle zwei Jahre zu regelrechten Masernepidemien kommt. Bemerkenswert an der Epidemie ist, dass in den Zeiten zwischen dem massiven Auftreten die Krankheit fast völlig zum Abklingen zu kommen scheint. Ähnliche Verläufe findet man auch in anderen Ländern, wobei Masernepidemien in Entwicklungsländern in höherer Frequenz und Intensität auftreten. Kann Mathematik helfen, die hier beobachteten Phänomene zu erklären?
+
+\subsection{Ein Modell}
+Betrachten wir ein einzelnes Kind, das noch nicht mit Masern infiziert ist. Solch ein Kind wollen wir \textbf{empfänglich} nennen. Sofort nach der Infektion gibt es eine latente Periode von einer Woche (die Inkubationszeit), in der das Kind keine anderen Kinder anstecken kann, und in dem es auch noch keine Krankheitsanzeichen hat. Das Virus hat sich noch nicht hinreichend vermehrt. Nach dieser Woche ist das Kind \textbf{infektiös} und kann andere Kinder anstecken. Diese Zeit dauert ebenfalls eine Woche. Nach dieser Zeit erscheinen die typischen roten Pusteln und das Kind erholt sich wieder. Dann kann dieses Kind nicht mehr angesteckt werden und ist immun gegen das Masernvirus. Wir haben somit die drei Populationen:\\
+
+\tikzstyle{every entity} = [top color=white, bottom color=blue!30, 
+                            draw=blue!50!black!100, drop shadow]
+%\tikzstyle{every weak entity} = [drop shadow={shadow xshift=.7ex, 
+%                                 shadow yshift=-.7ex}]
+%\tikzstyle{every attribute} = [top color=white, bottom color=yellow!20, 
+%                               draw=yellow, node distance=1cm, drop shadow]
+%\tikzstyle{every relationship} = [top color=white, bottom color=red!20, 
+%                                  draw=red!50!black!100, drop shadow]
+%\tikzstyle{every isa} = [top color=white, bottom color=green!20, 
+%                         draw=green!50!black!100, drop shadow]
+
+\begin{center}
+\scalebox{1}{
+{\begin{tikzpicture}[node distance=1.5cm, every edge/.style={link}]
+
+  \node[entity,top color=white, bottom color=green!30, 
+                            draw=green!50!black!100, drop shadow] (p) {Empfänglich};
+
+  \node[entity,top color=white, bottom color=red!30, 
+                            draw=red!50!black!100, drop shadow] (c) [right =of p] {Infektiös} edge [<-] (p);
+  
+  \node[entity] (m) [right =of c] {Immun} edge [<-] (c);
+
+ \end{tikzpicture}}
+}
+\end{center}
+
+Zur Modellierung des Krankheitsverlaufes in der Bevölkerung müssen einige zum Teil stark vereinfachende Annahmen getroffen werden.
+
+Wir gehen von einer Stadt aus, in der folgende Annahmen gelten:
+
+\begin{itemize}
+\item Sowohl die Inkubationszeit als auch die infektiöse Zeit dauert genau eine Woche.
+\item Ansteckung soll nur an Wochenenden stattfinden. Damit bleibt die Anzahl von empfänglichen und infektiösen Kindern die ganze Woche über konstant.
+\item In jeder Woche gibt es eine konstante Anzahl $B$ von Geburten. Wir betrachten eine Stadt mit wöchentlich $B=120$ Geburten.
+\item Jedes infektiöse Kind steckt einen festen Bruchteil aller empfänglichen Kinder an. Wir gehen davon aus, dass pro Woche ein infektiöses Kind ein weiteres Kind pro Woche ansteckt. Aus dem Zahlenmaterial konnte man daraus den Wert $f=0.3\cdot10^{-4}$ für den konstanten Bruchteil ermitteln.
+\item Zu Beginn gibt es $20$ infektiöse und $30\,000$ empfängliche Kinder in dieser
+Stadt.
+\end{itemize}
+
+Da es jeweils eine Woche dauert, bis ein Kind infektiös wird bzw. sich die Pusteln zeigen, liegt unserem zu erstellendem Modell eine Zeitskala mit Schritten von einer Länge von einer Woche zugrunde. Wir führen folgende Grössen ein
+
+\begin{align*}
+I_n &= \text{Anzahl der infektiösen Kinder in der $n$-ten Woche}\\
+E_n &= \text{Anzahl der empfänglichen Kinder in der $n$-ten Woche}\\
+M_n &= \text{Zahl der immunen Kinder in der $n$-ten Woche}\\
+\end{align*}
+
+\subsection*{Ein Zahlenbeispiel}
+
+Wir betrachten ein kleines Zahlenbeispiel, um ein \glqq Gespür\grqq\ für das Modell zu kriegen. Nehmen wir einmal an, es gäbe in der 3. Woche 50 infektiöse, 10 000 empfängliche und 30 immune Kinder. Wenn jedes infektiöse Kind genau drei Kinder ansteckt und pro Woche 200 Kinder geboren werden, so gibt es in der vierten Woche 150 infektiöse, 80 immune und $10\,050$ empfängliche Kinder.
+
+\subsection{Allgemeine Modellierung}
+
+Allgemein überlegen wir uns, wie viele empfängliche Kinder ein infektiöses Kind in der $(n+ 1)$-ten Woche ansteckt. Gemäss den oben formulierten Annahmen gibt es $E_n$ empfängliche Kinder. Daher lautet die Antwort für ein infektiöses Kind $f\cdot E_n$. Nun gibt es aber $I_n$ viele infektiöse Kinder. Diese zusammen stecken $f\cdot I_n\cdot E_n$ Kinder an.
+
+Wie viele Kinder sind in der $(n+1)$-ten Woche empfänglich? Nun, das sind gerade die Empfänglichen aus der Vorwoche vermindert um die Zahl derer, die sich infiziert haben. Hinzu kommen aber noch die Neugeborenen. Hingegen ergibt sich die Zahl der immunen Kinder der $(n+1)$-Woche, indem man zu den immunen Kindern der Vorwoche noch die infektiösen Kinder der Vorwoche hinzuzählt, da sie inzwischen gesundet sind. Zusammen ergibt sich somit
+
+\begin{align*}
+I_{n+1} &= f\cdot E_n\cdot I_n\\
+E_{n+1} &= E_n-f\cdot E_n\cdot I_n+B\\
+M_{n+1} &= M_n+I_n
+\end{align*}
+
+mit den Anfangsbedingungen $I_0=20$, $E_0=30000$, $M_0=0$. In unserem Fall ist das zu lösende System also
+
+\begin{align*}
+I_{n+1} &= 0.3\cdot10^{-4}\cdot E_n\cdot I_n\\
+E_{n+1} &= E_n-0.3\cdot10^{-4}\cdot E_n\cdot I_n+120
+\end{align*}
+
+Wir sind mit den Daten unserer Stadt gestartet, in der es pro Woche 120 Geburten gibt. Nun wollen wir den Einfluss der Geburtenrate studieren und legen dazu die Rate $B=360$ für eine vergleichbare Stadt in einem Entwicklungsland zugrunde, in dem die Geburtenrate weitaus höher ist. Wie ändert sich dadurch der Verlauf der Anzahl der infektiösen Kinder?
+
+\begin{ueb}[Variiere die Geburtenraten]
+Simuliere das obige Szenario mit beiden Geburtenraten für 1000 Zeitenheiten. Vergleiche die Graphiken einerseits mit dem Artikel am Anfang und kommentiere andererseits den Einfluss der Geburtenrate auf den zeitlichen Verlauf der Krankheit.
+\end{ueb}
+
+Wir erkennen in einer Simulation dieselbe Struktur, die sich auch schon in den realen Daten im Zeitungsartikel gezeigt haben. Auf Zeiten des fast völligen Verschwindens von Masern folgen in regelmässigen Abständen epidemieartige Ausbrüche der Krankheit. Man stellt ebenfalls fest, dass der zunächst harmlos erscheinende Parameter $B$ in der Simulation als sehr einflussreiche Grösse! Die Massernepidemien in der Vergleichsstadt aus dem Entwicklungsland sind unvergleichbar heftiger als in der Stadt, mit der wir unsere Überlegungen begonnen haben. Das gilt nicht --- wie eine stereotype Wahrnehmung von Entwicklungsländern vielleicht zunächst vermuten lässt --- aufgrund mangelnder Hygiene oder eines desolaten Gesundheitssystems, sondern lediglich aufgrund der höheren Geburtenrate!
+
+\clearpage
+
+\section{Populationen in Wechselwirkung}
+Wir
+\marginnote{
+\qrcode{
+https://www.youtube.com/watch?v=8H9n0ABMMpI}
+}
+untersuchen jetzt die Entwicklung zweier wechselwirkender Populationen $(x_n)$ und $(y_n)$. Dabei werden wir die folgenden drei Hauptfälle unterscheiden
+
+\begin{itemize}
+\item Symbiose (win-win)
+\item Räuber-Räuber (lose-lose)
+\item Räuber-Beute (win-lose)
+\end{itemize}
+
+Gekoppelte Populationen führen auf Systeme von Differenzengleichungen bzw. Differenzialgleichungen.
+
+\begin{center}
+\includegraphics[height=6cm]{pictures/luchs.jpg}
+\end{center}
+
+\subsection{Populationen in Symbiose}
+Das wechselseitig fördernde Zusammenleben zweier Populationen wird im einfachsten Fall durch ein Gleichungssystem der folgenden Form beschrieben:
+\begin{align*}
+x_{n+1} &= x_n+a\cdot y_n\\
+y_{n+1} &= y_n+b\cdot x_n
+\end{align*}
+
+Hierin sind $a$ und $b$ positive Konstanten, die die gegenseitige Beeinflussung beschreiben. Durch Elimination von $(y_n)$ kann man aus dem System eine einzelne Differenzengleichung 2. Ordnung für die Folge der $(x_n)$ gewinnen. Man erhält
+\begin{align*}
+x_{n+1} &= 2x_n+(ab-1)x_{n-1}\\
+y_{n+1} &= 2y_n+(ab-1)y_{n-1}
+\end{align*}
+
+Dies aber sind zwei Lucas-Gleichungen, die von $x_n = q^n$ mit $q_{1,2} = 1\pm\sqrt{ab}$ gelöst werden. Mittels $x_n=rq_1^n+sq_2^n$ werden dann $r,s\in\mR$ bestimmt, so dass vorgegebene Anfangsbedingungen erfüllt sind.
+
+\begin{ueb}
+Erstelle eine Tabelle für $x_0=80$, $y_0=100$, $a=0.0625$ und $b=0.04$ für $n=10$ Zeiteinheiten. Plotte die beiden Populationen in ein Koordinatensystem für die ersten 40 Zeiteinheiten.
+\end{ueb}
+
+\subsection{Das Schlachtenproblem}
+Das Schlachtenproblem beschreibt in sehr vereinfachter Form die Schlachtverluste zweier widerstreitender Armeen. Die diskrete Version dieses Modells wurde von dem britischen Quäker und Pazifisten \textsc{Lewis F. Richardson} (1881- 1953) entwickelt. Es seien $x_n$ bzw. $y_n$ die Anzahl der Soldaten in jeder Armee zum Zeitpunkt $n$. Bezeichnen $a$ und $b$ die Verlustraten (in dem Sinne, dass jeder Soldat aus der $x$-Armee in der Lage ist, $a$ Soldaten aus der $y$-Armee pro Zeiteinheit zu vernichten, und entsprechend jeder Soldat der $y$-Armee $b$ Soldaten der $x$-Armee tötet), so bekommt man das folgende lineare System:
+\begin{align*}
+x_{n+1} &= x_n-a\cdot y_n\\
+y_{n+1} &= y_n-b\cdot x_n
+\end{align*}
+
+Ein Vergleich mit dem symbiotischen Modell zeigt, dass der Unterschied nur in den Vorzeichen der Koeffizienten $a,b$ besteht. Das System ist daher genauso zu behandeln wie im symboitischen Fall.
+
+\begin{ueb}[Kriegsverlauf]
+Untersuche den Kriegsverlauf für die Werte $x_0=200$, $y_0=150$ und $a=b=0.1$
+\end{ueb}
+
+\subsection{Räuber-Beute-Modelle}
+
+Die meisten Organismen müssen ihre Nährstoffe von anderen Organismen erhalten. Das Populationswachstum erfolgt daher zwangsläufig auf Kosten und meist zum Nachteil anderer Populationen. Diese Beziehung zwischen Schädigern und Geschädigten wird als \textbf{Räuber-Beute-Systeme} bezeichnet. Historisch sind solche Systeme unabhängig voneinander von dem österreichisch-amerikanischen Mathematiker \textsc{Alfred James Lotka} 1925 und dem italienischen
+Mathematiker und Physiker \textsc{Vito Volterra} 1926 untersucht worden, und zwar anhand der Populationen von Schneeschuhhasen und Luchsen in Kanada bzw. Haien und Speisefischen in der italienischen Adria.
+
+Wir betrachten den zeitlichen Verlauf der Populationen von Luchsen
+und Hasen, gemessen an den Fangaufzeichnungen der Hudson Bay Company,
+die über 90 Jahre lang geführt wurden.
+
+\begin{center}
+\includegraphics[height=6cm]{pictures/haseluchs.jpg}
+\end{center}
+
+Danach schwankten der Eingang von Fellen von Luchsen (Räuber) und Schneeschuhhasen (Beute) mit einer Periode von 9.6 Jahren. Wir beobachten das zyklische Ansteigen und Fallen der
+jeweiligen Populationen, wobei auf eine hohe Zahl Hasen stets eine wachsende Zahl von Luchsen folgt, woraus in der Folgezeit die Zahl der Hasen drastisch fällt, gefolgt von sinkenden Zahlen von Luchsen, bevor beide Populationen wiederum aufs Neue ansteigen. Die Mathematik kann durch geeignete Modellierung ein erhellendes Licht auf die beobachteten Phänomene werfen?
+
+Wir modellieren ein sehr vereinfachtes Ökosystem, in dem nur Schneeschuhhasen und Luchse leben. Wir vereinfachen weiterhin und nehmen an, dass die Hasen unbeschränkte Wiesen und Wälder zur Verfügung haben, in denen sie genügend Nahrung finden, egal wie viele Hasen es gibt. Dann ist das Wachstum der Hasen exponentiell und lässt sich durch die folgende Differenzengleichung beschreiben:
+$$x_{n+1}=x_n+a\cdot x_n$$
+für ein $a>0$.
+
+Nun leben in unserem Ökosystem aber auch Luchse, die sich von Hasen ernähren. Gäbe es keine Hasen, dann verhungerten die Luchse und stürben mehr und mehr aus, d.h.
+$$y_{n+1}=y_n-c\cdot y_n$$
+mit $c>0$.
+
+Zum Glück der Luchse sind sie aber nicht vom Aussterben bedroht, solange es Hasen gibt, die sie fressen können. Wie viele Hasen frisst ein einzelner Luchs in einer Zeiteinheit? Nun, in einer ersten Näherung ist es plausibel anzunehmen, dass dies proportional zur Anzahl der Hasen ist, d.h. $bx_n$. Jetzt gibt es aber nicht nur einen Luchs, sondern die Population zum Zeitpunkt $n$ besteht aus $y_n$ Luchsen. Diese fressen dann zusammen $b\cdot x_n\cdot y_n$ Hasen. Ebenso ist der Zuwachs der Luchse proportional zur Anzahl der Begegnungen zwischen den $y_n$ Luchsen und den $x_n$ Hasen. Daher verbessern wir unser Modell zu
+\begin{align*}
+x_{n+1}&=x_n(1+a)-b\cdot x_n\cdot y_n\\
+y_{n+1}&=y_n(1-c)+d\cdot x_n\cdot y_n
+\end{align*}
+
+\begin{ueb}[Räuber Beute Modell]
+Erstelle eine Tabelle für den Verlauf der beiden Populationen, basierend auf der Parameterwahl $x_0=150$, $y_0=50$, $a=0.0832$, $b=0.00207$, $c=0.06$ und $d=0.00049$ für $600$ Zeiteinheiten.
+\end{ueb}
+
+Die periodische Struktur wie auch die Phasenverschiebung, die ja die Populationsentwicklung der wirklichen Hasen und Luchse charakterisierten, finden wir auch in diesem Modell wieder. Des Weiteren ist bemerkenswert, dass sich die Schwingungen nicht exakt wiederholen, sondern sich gegenseitig aufzuschaukeln scheinen. Dies wird insbesondere in einem Phasendiagramm deutlich. Charakteristisch ist das expandierende Verhalten: Die Populationen scheinen sich spiralförmig immer weiter aufzuschaukeln. Dieses Verhalten hängt mit den hier speziell gewählten Parametern $a$, $b$, $c$ und $d$ zusammen. Bei anderer Wahl der Parameter kann sich die Spirale im Phasendiagramm auch nach innen zusammenziehen. In diesem Fall spricht man von einem Attraktor, der einem stabilen Gleichgewicht entspricht.
+
+\begin{ueb}[Gleichgewicht finden]
+Wie lässt sich ein Gleichgewichtszustand in einem Räuber-Beute-Modell ermitteln? Bestätige den Gleichgewichtszustand $\point{122}{40}$ für die Parameter aus obiger Übung.
+\end{ueb}
+
+\clearpage
+
+\includepdf[pages=1,pagecommand=\section{SIR-Modell}]{pictures/gfsirmodell.pdf}
+\includepdf[pages=2-24]{pictures/gfsirmodell.pdf}
+
+\clearpage
+
+\section{Integrierter Pflanzenschutz am Weihnachtsbaum}
+\subsection{Die Situation}
+Ein Weihnachtsmann stellt zu seinem Entsetzen fest, dass alle Nordmanntannen seiner Weihnachtsbaumkolonie von Sitkaläusen befallen sind. Soll er nun zu Pestiziden greifen oder den lieben Marienkäferchen, den natürlichen Feinden der Sitkaläuse, die Arbeit überlassen?
+\\[2ex]
+
+\begin{center}
+\includegraphics[height=3.8cm]{pictures/sitkalauseier.jpg}
+\includegraphics[height=3.8cm]{pictures/tannenbaum.jpg}
+\includegraphics[height=3.8cm]{pictures/marienkaefer.jpg}
+\end{center}
+
+Diese Frage lässt sich an Hand eines Räuber-Beute-Modells beantworten, im vorliegenden Fall angewandt auf das Beutetier Sitkalaus und auf ihren natürlichen Feind, den Marienkäfer.
+
+Gäbe es für die Sitkaläuse keine natürlichen Feinde, so würden sie sich --- stark vereinfacht --- exponentiell vermehren. Gäbe es für die Marienkäfer keine Beutetiere, so würden sie mangels Futter zugrunde gehen. Treffen nun Sitkaläuse und Marienkäfer aufeinander, geschieht --- wer hätte es gedacht? --- Folgendes: Die Zahl der Sitkaläuse verringert sich und die Marienkäfer bleiben wohlgenährt am Leben.
+
+\subsection{Das Modell}
+Wir bezeichnen mit $x_n$ die Anzahl der Sitkaläuse und mit $y_n$ die Anzahl der Marienkäfer zur Zeit $n$.
+Wenn es für die Sitkaläuse keine natürlichen Feinde gäbe, so würde sich ihre Populationsentwicklung mit der Gleichung
+$$x_{n+1}=x_n+\ga x_n$$
+mit einem Parameter $\ga > 0$ berechnen lassen.
+
+Das Zusammentreffen der Sitkaläuse mit den Marienkäfer, das sich als Produkt von $x_n$ und $y_n$ darstellt, lässt die Sitkalauspopulation weiter schrumpfen, also
+$$x_{n+1}=x_n+\ga\cdot x_n-\gb\cdot x_n\cdot y_n$$
+mit einem Parameter $\gb > 0$.
+
+Betrachtet man die Marienkäfer isoliert, so kann man feststellen, dass sie mangels Futter nach demselben Gesetz sterben, wie die Sitkaläuse sich vermehren. In einer Formel ausgedrückt sieht das so aus:
+$$y_{n+1}=y_n-\gg y_n$$
+mit einem Parameter $\gg > 0$.
+
+Anders ist es, wenn sie auf die Sitkaläuse treffen und somit Nahrung haben:
+$$y_{n+1}=y_n-\gg\cdot y_n+\gd\cdot x_n\cdot y_n$$
+mit einem Parameter $\gd> 0$.
+
+Beim Einsatz von Pestiziden verringert sich sowohl das Wachstum der Läuse als auch das Wachstum der Marienkäfer. Bei beiden Differenzengleichungen kommt daher der Giftterm $-\ge x_n$ bei den Läusen und $-\ge y_n$ bei den Marienkäfern hinzu mit dem selben Giftfaktor $\ge > 0$. Wir nehmen also an, dass die Marienkäfer in der gleichen Weise unter dem Pestizid leiden wie die Sitkaläuse.
+
+\subsection{Die Analyse}
+\begin{enumerate}
+\item Stelle zum Text ein passendes Differenzengleichungsmodell für das Räuber-Beute Modell (hier Sitkaläuse versus Marienkäfer) mit und ohne Pestizideinsatz auf. Wähle als Parameter
+
+\begin{center}
+\begin{tabular}{ll}
+\spaltenheight Anfangswert Läuse & $x_0=500$\spaltensep
+\spaltenheight Anfangswert Marienkäfer\hspace*{3ex} & $y_0=100$\spaltensep
+\spaltenheight Vermehrung Läuse & $\ga=0.04$\spaltensep
+\spaltenheight Verminderung Läuse & $\gb=0.0002$\spaltensep
+\spaltenheight Schrumpfen Marienkäfer & $\gg=0.0035$\spaltensep
+\spaltenheight Vermehrung Marienkäfer & $\gd=0.0001$\spaltensep
+\spaltenheight Pestizid-Wirkung & $\ge=0.025$
+\end{tabular}
+\end{center}
+
+\item Erstelle mithilfe einer Tabellenkalkulation eine Tabelle und einen Graph für die Entwicklung der Zahl der Käfer ohne Pestizide, Läuse ohne Pestizide sowie der Käfer und Läuse mit Pestizideinsatz über 200 Zeiteinheiten. Berechne die durchschnittliche Grösse der vier Populationen. Experimentiere und variiere den Parameter $\ge$.
+
+\item Empfiehlst du den Einsatz von Pestiziden oder sprechen deine Modellierungen für den integrierten Pflanzenschutz, d.h., die Käfer halten die Plage durch die Läuse in Schach? Für welchen Bereich von $\ge$ haben deine Aussagen Geltung?
+\end{enumerate}
+
+\clearpage
+
+%\section{Von den Walen zur logistischen Gleichung}
+
+\includepdf[pages=1,pagecommand=\section{Von den Walen zur logistischen Gleichung}]{pictures/WalezuLogistik.pdf}
+\includepdf[pages=2-17]{pictures/WalezuLogistik.pdf}
+
+\clearpage
+
+\includepdf[pages=1,pagecommand=\section{Von der logistischen Gleichung zur Mandelbrotmenge}]{pictures/FP2zuMandelbrot.pdf}
+\includepdf[pages=2-20]{pictures/FP2zuMandelbrot.pdf}
+
+\clearpage
+
+\includepdf[pages=1,pagecommand=\section{Der Kreis schliesst sich}]{pictures/MandelbrotzuWale.pdf}
+\includepdf[pages=2-16]{pictures/MandelbrotzuWale.pdf}
+
+
+
+\cleardoublepage
+\listoffigures
+%\listoftables
+%\newpage
+%\nocite{*}
+%\bibliographystyle{plain}
+%\bibliography{preamble/literaturgoogle}
+\end{document}
