@@ -1,0 +1,198 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[german]{babel}
+%\usepackage{lmodern}
+\usepackage{amsmath, amsthm,amsfonts,amssymb, mathtools}
+
+
+\usepackage{enumerate, enumitem}
+\usepackage{graphicx}
+\usepackage{tikz, tkz-base,tkz-euclide}
+
+
+\usepackage{venndiagram}
+\usepackage{multicol}
+
+
+\usepackage{fancyhdr}
+\usepackage{fancybox}
+\setlength\parindent{0pt}
+
+\usepackage[most]{tcolorbox} %for answerbox
+
+
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\B}{\mathbb{B}}
+\newcommand{\G}{\mathbb{G}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\K}{\mathbb{K}}
+
+
+\theoremstyle{definition}
+\newtheorem{aufg}{Aufgabe}
+\newtheorem{aufg*}[aufg]{\hspace*{-0.40cm}* Aufgabe}
+\newtheorem{aufgE}[aufg]{\hspace*{-0.65cm}\Ovalbox{E} Aufgabe}
+
+
+
+\usepackage{hyperref}
+
+\newcommand{\assignmentTitle}{Megenoperationen}
+\newcommand{\assignmentQuestionName}{Aufgabe} % The word to be used as a prefix to question numbers; example alternatives: Problem, Exercise
+
+
+\title{}
+\date{\today}
+\author{Tina Furer}
+
+
+\hoffset=-0.5in
+\voffset=-1in
+
+\textwidth=16cm
+\topmargin=1.5cm
+\headheight=1cm \headsep=1cm \textheight=24cm
+
+\pagestyle{fancy}
+\markright{\textbf{\huge\assignmentTitle}  \hfill 05.09.2023  } %\\ \vspace{10pt} Tina Furer
+\fancyfoot{} 
+
+
+
+\newcommand{\answerbox}[1]{
+	\begin{tcolorbox}[colback=white, breakable, enhanced]
+		\vphantom{L}\vspace{\numexpr #1-1\relax\baselineskip} % \vphantom{L} to provide a typesetting strut with a height for the line, \numexpr to subtract user input by 1 to make it 0-based as this command is
+	\end{tcolorbox}
+}
+
+
+
+\begin{document}
+\begin{aufg}
+	Seien $\A=\{1,4,6,2\}, \B=\{1,3,5\}$ und $\C=\{4,5,6,7,8\}$. Gib die folgenden Mengen an:
+	\begin{enumerate}[label=(\alph*)]
+		\begin{multicols}{4}
+			\item $\A\cup\B$
+			\item $(\A\cup\B)\cap\C$
+			\item $(\C\setminus\A)\cup\B$
+			\item $\C\setminus(\B\cap\A)$
+		\end{multicols}
+	\end{enumerate}
+\end{aufg}
+\begin{aufg}
+	Sei $\G=\N$ die Grundmenge und 
+	\begin{align*}
+		\A &= \{x\in\G\mid x \text{ ist gerade}\}\\
+		\B &= \{x\in\G\mid x \text{ ist kleiner als } 50\}\\
+		\C &= \{1,3,5,7,9\}
+	\end{align*}
+	Teilmengen von $\G$. Ermittle
+	\begin{enumerate}[label=(\alph*)]
+		\begin{multicols}{4}
+			\item $\A\cup\B$
+			\item $\overline{\A}$
+			\item $\overline{\C}\setminus\A$
+			\item $\overline{\B}\cap\A$
+		\end{multicols}
+	\end{enumerate}
+	
+\end{aufg}
+
+	
+\begin{aufg} Welche Mengen sind in den folgenden Venn Diagrammen schattiert?
+	\begin{enumerate}[label=(\alph*)]
+		\begin{multicols}{2}
+		\item 
+		\begin{venndiagram2sets}[tikzoptions={scale=0.75,thick}, labelA=$\mathbb{A}$,labelB=$\mathbb{B}$]\fillANotB\fillBNotA \end{venndiagram2sets}
+		\item 
+		\begin{venndiagram3sets}[tikzoptions={scale=0.75,thick}, labelA=$\mathbb{A}$,labelB=$\mathbb{B}$,labelC=$\mathbb{C}$]\fillACapB\fillACapC\fillBCapC\end{venndiagram3sets}
+		\end{multicols}
+		\begin{multicols}{2}
+		\item 
+		\begin{venndiagram3sets}[tikzoptions={scale=0.75,thick}, labelA=$\mathbb{A}$,labelB=$\mathbb{B}$,labelC=$\mathbb{C}$]\fillACapBNotC\end{venndiagram3sets}
+		\item 
+		\begin{venndiagram3sets}[tikzoptions={scale=0.75,thick}, labelA=$\mathbb{A}$,labelB=$\mathbb{B}$,labelC=$\mathbb{C}$]\fillACapBNotC\fillC\end{venndiagram3sets}
+	\end{multicols}
+	\end{enumerate}
+
+\end{aufg}
+
+	
+\begin{aufg}
+	Welche der folgenden Aussagen sind richtig?
+	\begin{enumerate}[label=(\alph*)]
+	\begin{multicols}{2}
+		\item $\emptyset\subset\mathcal{P}(\emptyset)$
+		\item $\emptyset\in\mathcal{P}(\emptyset)$
+		\item $\N\cap\Q=\N_0$
+		\item $(\Q\setminus\N_0)\cup\Z = \Z$
+		\item $\N_0\setminus\N=\{0\}$
+		\item $\mathcal{P}(\{1,2\})=\{\{1\},\{2\},\{1,2\}\}$
+		\item $\mathcal{P}(\{1,2\})\cap\N=\emptyset$
+		\item $\mathcal{P}(\mathcal{P}(\emptyset))=\{\emptyset,\{\emptyset\}\}$
+	\end{multicols}
+	\end{enumerate}
+\end{aufg}
+
+
+\begin{aufg}
+	Von den Schüler*innen einer Klasse spielen 6 kein Instrument. 10 Schüler*innen spielen Violine und 7 spielen Klavier. Ferner gibt es 12 Flötenspieler*innen in der Klasse, von denen alle mit Ausnahme von dreien noch mindestens ein weiteres Instrument spielen, nämlich 6 Violine und 5 Klavier. Von den Violinist*innen spielen 3 kein weiteres Instrument.\\
+	Wie viele Schüler*innen...
+	\begin{enumerate}[label=(\alph*)]
+		\item zählt die Klasse?
+		\item spielen nur Klavier?
+		\item spielen alle drei Instrumente?
+		\item spielen Violine und Klavier?
+	\end{enumerate}
+\end{aufg}
+
+\begin{aufg}
+	Sei $\A$ eine Menge mit $n$ Elementen. Wie viele Elemente hat die Potenzmenge $\mathcal{P}(\A)$?
+\end{aufg}
+
+
+
+\begin{aufg}
+	Gelten die folgenden Gleichungen?
+	\begin{enumerate}[label=(\alph*)]
+		\item $(\A\cup\B)\cup\C=\A\cup(\B\cup\C)$
+		\item $(\A\cap\B)\cup\C=\A\cap(\B\cup\C)$
+		\item $\G\setminus(\A\cup\B)=(\G\setminus\A)\cup(\G\setminus\B)$
+			\item $\G\setminus(\A\cup\B)=(\G\setminus\A)\cap(\G\setminus\B)$
+	\end{enumerate}
+\end{aufg}
+	
+
+\begin{aufg}
+	Was ist die Produktmenge folgender Mengen
+	\begin{enumerate}[label=(\alph*)]
+		\item $\A=\{0,1\}$ und $\B=\{6,7\}$
+		\item $\A=\{blau, rot, gelb\}$ und $\B=\{Haus, Boot\}$.
+		\item $\emptyset$ und $\A=\{1,2\}$
+		\item $\Z$ und $\N$
+	\end{enumerate}
+\end{aufg}
+
+\begin{aufg}
+		Sei $\A$ eine Menge mit $n$ Elementen und $\B$ eine Menge mit $m$ Elementen. Wie viele Elemente hat $\A\times\B$?
+\end{aufg}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+\end{document}
