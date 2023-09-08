@@ -1,0 +1,305 @@
+\documentclass[final,%hyperref={pdfpagelabels=false}
+]
+{beamer}
+\usepackage{grffile}
+\mode<presentation>{\usetheme{gymkl}}
+\usepackage[german]{babel}
+\usepackage[applemac]{inputenc}
+\usepackage[OT1]{fontenc}
+\usepackage{amsmath,amsthm, amssymb, latexsym}
+\usepackage{listings}
+%\usepackage{times}\usefonttheme{professionalfonts}  % obsolete
+\usefonttheme[onlymath]{serif}
+\boldmath
+\usepackage[orientation=portrait,size=a3,scale=1.4,debug]{beamerposter}
+
+\usepackage{tikz-er2}
+\usepackage{framed}
+\usetikzlibrary{arrows}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shadows}
+% change list indention level
+% \setdefaultleftmargin{3em}{}{}{}{}{}
+
+
+%\usepackage{snapshot} % will write a .dep file with all dependencies, allows for easy bundling
+
+\usepackage{array,booktabs,tabularx}
+\newcolumntype{Z}{>{\centering\arraybackslash}X} % centered tabularx columns
+\newcommand{\pphantom}{\textcolor{ta3aluminium}} % phantom introduces a vertical space in p formatted table columns??!!
+
+% Command, um Tabellen-Spalten anzupassen
+\newcommand{\spaltenheight}{\rule{0mm}{2.5ex}}
+\newcommand{\spaltenwidth}{\rule{3cm}{0mm}}
+\newcommand{\spaltensep}{\\[1ex]}
+
+\listfiles
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\graphicspath{{../pictures/}}
+ 
+\title{{\LARGE Der milliardenschwere Eigenvektor}\\
+{\Large Lineare Algebra bei Google}}
+\author{Jorma Wassmer}
+\institute[AM]{Schwerpunktfach Angewandte Mathematik}
+\date[20.09.13]{20. September 2013}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newlength{\columnheight}
+\setlength{\columnheight}{105cm}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\lstset{language=Mathematica}
+\begin{frame}
+  \begin{columns}
+    % ---------------------------------------------------------%
+    % Set up a column 
+    \begin{column}{.49\textwidth}
+      \begin{beamercolorbox}[center,wd=\textwidth]{postercolumn}
+        \begin{minipage}[T]{.95\textwidth}  % tweaks the width, makes a new \textwidth
+          \parbox[t][\columnheight]{\textwidth}{ % must be some better way to set the the height, width and textwidth simultaneously
+            % Since all columns are the same length, it is all nice and tidy.  You have to get the height empirically
+            % ---------------------------------------------------------%
+            % fill each column with content 
+\vskip1.5ex
+            \begin{block}{Man googelt}
+                        \begin{columns}
+            \begin{column}{0.5\textwidth}
+		Ein Teil des Erfolgs von Google ist ihr \emph{PageRank-Algorithmus}, der die Relevanz jeder Webseite quantifiziert und daher die \glqq guten\grqq\ Links zuerst anzeigt.
+			  \end{column}
+	  \begin{column}{0.3\textwidth}     
+	\begin{center}
+	  \includegraphics[width=1\textwidth]{google}
+	\end{center}
+		  \end{column}
+	  \end{columns}
+            \end{block}
+\vskip1.5ex
+            \begin{block}{Auftraggeber}
+		Jeder Webpage-Designer ist interessiert, wie PageRank die Relevanz berechnet. Dadurch kann er die Chance beeinflussen, dass seine Seite in Google möglichst weit vorne aufgelistet und damit von vielen Leuten besucht wird.
+            \end{block}
+            
+\vskip1.5ex
+            \begin{block}{Ranking System entwickeln}
+		 Das Ziel ist, eine der Grundideen des Webpage-Ranking von Google kennenzulernen. Vorerst stellen wir uns selbst allgemein die Frage:
+		
+		\begin{quote}
+			Wie definiert man in einem Web eine sinnvolle Quantifizierung der Relevanz von Webpages?
+		\end{quote}		
+            \end{block}
+\vskip1.5ex
+            \begin{block}{Ansätze}
+            Unsere Ansätze sind teilweise vergleichbar mit einem demokratischen System: Webpages \glqq voten\grqq\ mit Links andere Webpages.
+%            \begin{columns}
+%            \begin{column}{0.5\textwidth}
+\begin{description}              
+            \item[Anzahl Backlinks:] Ein Link bedeutet ein Votum für eine Webpage. Sei $x_k$ gleich der Anzahl Backlinks auf Page $k$. In der Abbildung ist $x_1=2$, $x_2=1$, $x_3=3$ und $x_4=2$. Dieser simple Ansatz ignoriert, dass ein Link zu einer Page von einer relevanten Page mehr zählt, als von einer weniger relevanten.
+            
+            \item[Gewichtete Backlinks:] Wir beheben obiges Manko, indem wir jeder Page nur eine Gesamtstimme zugestehen. Daher erhöhen wir für eine Page $j$ den Stimmenanteil für eine andere Page um das Verhältnis $\frac{x_j}{n_j}$. Sei $L_k$ die Menge aller Backlinks von Page $k$:
+
+\begin{equation*}\label{score}
+x_k=\sum_{j\in L_k}\frac{x_j}{n_j}
+\end{equation*}
+Wir zählen Links auf sich selbst nicht; man kann sich also nicht selbst wählen.
+\end{description}
+%	  \end{column}
+%	  \begin{column}{0.3\textwidth}            
+		\tikzstyle{every entity} = [top color=white, bottom color=green!30, 
+                            draw=green!50!black!100, minimum height={2.12cm}, minimum width={1.5cm} ,drop shadow]
+                            
+\tikzset{
+>=triangle 45,
+rot/.style={draw=black,thick
+}
+}
+\tikzstyle{output3} = [coordinate] 
+\tikzstyle{output4} = [coordinate] 
+\tikzstyle{output1} = [coordinate]                            
+
+\begin{figure}
+\begin{center}
+\scalebox{0.8}{
+{\begin{tikzpicture}[node distance=1.5cm, every edge/.style={link}]
+
+  \node[entity] (p1) {$P_1$};
+
+  \node[entity] (p3) [right =of p1] {$P_3$} edge [<-] (p1);
+  
+  \node[entity] (p4) [below =of p3] {$P_4$} edge [->] (p3);
+  
+  \node[entity] (p2) [left =of p4] {$P_2$} edge [->] (p4);
+                            
+  \node [output3, left =0cm of p3.160] (output3) {};
+  \draw[rot][<-] (p1.20) -- (output3);
+  
+  \node [output4, left =0cm of p4.115] (output4) {};
+  \draw[rot][<-] (p1.320) -- (output4);
+  
+  \node [output1, left =0cm of p1.295] (output1) {};
+  \draw[rot][<-] (p4.140) -- (output1);
+  
+   \draw[rot][->] (p1) -- (p2); 
+   \draw[rot][->] (p2.55) -- (p3.235);                         
+
+ \end{tikzpicture}}
+}
+\end{center}
+\caption{Beispiel eines Webs mit 4 Pages. Die Pfeile stellen Links dar.}\label{kleinesbsp}
+\end{figure}
+
+Wir gehen dem zweiten Ansatz, mit einer kleinen Modifikation, nach.
+
+%	  \end{column}
+%	  \end{columns}
+            \end{block}
+\vskip1.5ex           
+                        \begin{block}{Model \glqq gewichtete Backlinks\grqq}
+Für unser Beispielweb haben wir also die Scores
+$x_1 = \frac{x_3}{1}+\frac{x_4}{2}$, $x_2 = \frac{x_3}{3}$, $x_3 = \frac{x_1}{3}+\frac{x_2}{2}+\frac{x_4}{2}$ und $x_4 = \frac{x_1}{3}+\frac{x_2}{2}$,
+oder in Matrixform $\B{Ax}=\B{x}$ mit $\B{x}=[x_1\;x_2\;x_3\;x_4]^{T}$ und
+$$\B{A}=\begin{pmatrix}
+0 & 0 & 1& \frac{1}{2}\\[0.5ex]
+\frac{1}{3} & 0 & 0 & 0\\[0.5ex]
+\frac{1}{3} & \frac{1}{2} & 0 & \frac{1}{2}\\[0.5ex]
+\frac{1}{3} & \frac{1}{2} & 0 & 0
+\end{pmatrix}.$$
+
+Das PageRanking-Problem ist also im Grunde nichts anderes als das Finden eines Eigenvektors für eine quadratische Matrix; und zwar einen mit Eigenwert $1$.
+
+            \end{block}  
+            
+\vskip1.5ex            
+	}
+        \end{minipage}
+      \end{beamercolorbox}
+    \end{column}
+    % ---------------------------------------------------------%
+    % end the column
+
+    % ---------------------------------------------------------%
+    % Set up a column 
+    \begin{column}{.49\textwidth}
+      \begin{beamercolorbox}[center,wd=\textwidth]{postercolumn}
+        \begin{minipage}[T]{.95\textwidth} % tweaks the width, makes a new \textwidth
+          \parbox[t][\columnheight]{\textwidth}{ % must be some better way to set the the height, width and textwidth simultaneously
+            % Since all columns are the same length, it is all nice and tidy.  You have to get the height empirically
+            % ---------------------------------------------------------%
+            % fill each column with content
+\vskip1.5ex                        
+      
+            \begin{block}{Plausibilität des gewählten Models}
+Unsere Beispielmatrix $\B{A}$ hat einen Eigenwert $1$ mit Eigenvektor $[12\;4\;9\;6]^{T}$. Wir interpretieren die Scores als Wahrscheinlichkeiten, dass ein Surfer eine Page besucht. Gerundet haben wir
+$$\B{x}\approx[0.39\;0.13\;0.29\;0.19]^{T}.$$
+
+Alles schön und gut; aber hat den für ein beliebiges Web die zugehörige Link-Matrix einen Eigenwert $1$?            \end{block}
+\vskip2.5ex           
+	\begin{block}{Probleme}
+	\begin{itemize}
+	\item Nicht-vernetzte Seiten (lassen wir ausser acht)
+	\item Vergleichbarkeit von in sich geschlossenen \glqq Subwebs\grqq
+	\end{itemize}
+\tikzstyle{every entity} = [top color=white, bottom color=green!30, 
+                            draw=green!50!black!100, minimum height={2.12cm}, minimum width={1.5cm} ,drop shadow]
+                            
+\tikzset{
+>=triangle 45,
+rot/.style={draw=black,thick
+}
+}
+\tikzstyle{helpnode} = [coordinate] 
+\tikzstyle{output4} = [coordinate] 
+\tikzstyle{output1} = [coordinate]                            
+
+\begin{figure}
+\begin{center}
+\scalebox{0.8}{
+{\begin{tikzpicture}[node distance=1.5cm, every edge/.style={link}]
+
+  \node[entity] (p1) {$P_1$};
+
+  \node[entity] (p2) [below =of p1] {$P_2$} edge [->] (p1);
+  
+  \node[entity] (p3) [right = 1.3cm of p1] {$P_3$};
+  
+  \node[entity] (p4) [below =of p3] {$P_4$} edge [->] (p3);
+                            
+  \node [helpnode, right =1.8cm of p3] (helpnode) {};
+ 
+  \node[entity] (p5) [below =0.8cm of helpnode] {$P_5$} edge [->] (p3.0);
+  
+  \draw[rot][->] (p5.225) -- (p4.0); 
+  \draw[rot][->] (p1.250) -- (p2.110);
+  \draw[rot][->] (p3.250) -- (p4.110);                         
+
+ \end{tikzpicture}}
+}
+\end{center}
+\caption{Ein Web mit 5 Pages, bestehend aus 2 Subwebs.}\label{bspnonunique}
+\end{figure}
+
+Hier haben wir die Link-Matrix
+$$\B{A}=
+\begin{pmatrix}
+0 & 1 & 0 & 0 & 0\\
+1 & 0 & 0 & 0 & 0\\
+0 & 0 & 0 & 1 & \frac{1}{2}\\
+0 & 0 & 1 & 0 & \frac{1}{2}\\
+0 & 0 & 0 & 0 & 0
+\end{pmatrix}$$
+wobei der Eigenraum $V_1(\B{A})$ die Dimension $2$ hat; übel! Die Frage, welchen dieser Eigenvektoren --- oder Linearkombination --- wir für das Ranking wählen, bleibt offen.
+            \end{block}
+\vskip2.5ex             
+            \begin{block}{Eindeutiges Ranking und Vergleich von Subwebs}
+Für ein $n$-seitiges Web ohne lose Pages können wir ein eindeutiges Ranking schaffen. Sei $\B{S}$ eine $n\times n$ Matrix voller Komponenten $\frac{1}{n}$. Für $m\in(0,1]$ ersetzen wir $\B{A}$ durch die gewichtete Matrix
+\begin{equation*}\label{equM}
+\B{M}=(1-m)\B{A}+m\B{S}.
+\end{equation*}
+Nun ist $V_1(\B{M})$ immer eindimensional und liefert folglich eindeutige Rankings. Google verwendet $m=0.15$.
+
+Für das 5-Web erhalten wir $\B{x}=[0.2\;0.2\;0.285\;0.285\;0.03]^{T}.$
+
+Aktuell besteht das WWW aus mindestens 8 Milliarden Pages. Wie berechnen wir in vernünftiger Zeit ein Ranking?  Natürlich iterativ.
+            \end{block}
+\vskip2.5ex             
+            \begin{block}{Power Method}
+Wir können beweisen, dass die Matrix $\B{M}$ für ein Web ohne lose Pages hat einen eindeutig bestimmten Ranking-Vektor. Dieser kann als Grenzwert der Iteration $\B{x}_k=(1-m)\B{Ax}_{k-1}+m\B{s}$ mit Initialvektor $\B{x}_0$ berechnet werden.
+
+Am Beispiel von oben für $k$ Iterationen mit Initialvektor $\B{x}_0=[0.24\;0.31\;0.08\;0.18\;0.19]^{T}$ tabelliert Mathematica:
+
+\begin{center}
+\scalebox{0.8}{
+\begin{tabular}{c|c|c|c}
+$k$	&	$x_k$	&	$\|\B{M}^k\B{x}_0-\B{q}\|_1$	&	$\frac{\|\B{M}^k\B{x}_0-\B{q}\|_1}{\|\B{M}^{k-1}\B{x}_0-\B{q}\|_1}$	\\ \hline
+\spaltenheight$0$	&	$\{0.240,0.310,0.080,0.180,0.190\}	&	$0.62$	&		\\
+$1$	&	$\{0.294,0.234,0.264,0.179,0.030\}	&	$0.255$	&	$0.411$	\\
+$5$	&	$\{0.249,0.218,0.274,0.230,0.030\}	&	$0.133$	&	$0.85$	\\
+$10$	&	$\{0.208,0.222,0.260,0.280,0.030\}	&	$0.0591$	&	$0.85$\\
+$50$	&	$\{0.200,0.200,0.285,0.285,0.030\}	&	$8.87\cdot10^{-5}$	&	$0.85$
+\end{tabular}
+}
+\end{center}
+Imba! Mathematics makes the Web go 'round!
+            \end{block}
+\vskip1.5ex
+          }
+          % ---------------------------------------------------------%
+          % end the column
+        \end{minipage}
+      \end{beamercolorbox}
+    \end{column}
+    % ---------------------------------------------------------%
+    % end the column
+  \end{columns}
+  %\tiny\hfill\textcolor{ta2gray}{Created with \LaTeX \texttt{beamerposter}  \url{http://www-i6.informatik.rwth-aachen.de/~dreuw/latexbeamerposter.php}}
+  \tiny\hfill{Created with \LaTeX \texttt{beamerposter}  \url{www.koeniz-lerbermatt.ch} \hskip1em}
+\end{frame}
+\end{document}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-PDF-mode: t
+%%% End:

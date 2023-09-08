@@ -1,0 +1,20 @@
+\section{Einführung}
+
+Als Google in den späten 90-er Jahren on\-line ging war es unter anderem folgende Tatsache, die das Unternehmen von anderen Suchmaschinen-Anbietern unterschied: Die Resultate auf Suchanfragen schienen immer die relevantesten Treffer als erste aufzulisten. Bei andern Suchmaschinen musste man sich oft Seite um Seite durch belanglose Treffer kämpfen, bis ein akzeptabler gefunden war, der dem Suchtext entsprach. Ein Teil der Magie hinter Google ist ihr \emph{PageRank-Algorithmus}, der die Relevanz jeder Webseite quantifiziert und daher die \glqq guten\grqq\ Links zuerst anzeigt.
+
+Jeder Webpage-Designer ist interessiert, wie PageRank die Relevanz berechnet. Dadurch kann er die Chance beeinflussen, dass seine Seite in Google möglichst weit vorne aufgelistet und damit von vielen Leuten besucht wird. Das Ziel dieses Exkurses ist, eine der Grundideen des Webpage Ranking von Google kennenzulernen. Wie sich zeigen wird, handelt es sich dabei um eine schöne Anwendung linearer Algebra.
+
+Suchmaschinen wie Google haben grund\-sätz\-lich drei Aufgaben:
+\begin{itemize}
+\item Web durchsuchen und alle öffentlichen Seiten lokalisieren.
+\item Indexieren der gefundenen Seiten mit keywords, so dass sie effizient gesucht werden können.
+\item Die Relevanz jeder Seite so festlegen, dass die \glqq guten\grqq\ Seiten auf eine Anfrage zuerst aufgelistet werden.
+\end{itemize}
+
+Wir betrachten hier in diesem Paper den letzten Punkt:
+
+\begin{quote}
+Wie definiert man in einem Web eine sinnvolle Quantifizierung der Relevanz von Webpages?
+\end{quote}
+
+Diese Quantifizierung der Relevanz von Webpages ist nicht das einzige Kriterium für die Reihenfolge der Auflistung, aber ein sehr wichtiges. Ebenfalls ist \emph{PageRank} nicht der einzige erfolgreiche Ranking-Algorithmus.

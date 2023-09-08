@@ -1,0 +1,150 @@
+\section{Eine Lösung für Eigenräume grösser 1}
+
+Will man den Eigenvektor der Link-Matrix des World Wide Web bestimmen, so braucht man dazu viel Rechenpower. Deshalb ist es wichtig, dass unser Algorithmus eine eindeutig bestimmte Lösung des Rankings liefert. Obige Analyse hat gezeigt, dass unser Versuch Schwierigkeiten mit sich bringt, wenn das Web nicht zusammenhängend ist; und das World Wide Web ist in hohem Masse unzusammenhängend.
+
+Wir betrachten im Folgenden eine Methode, die diesen Misstand behebt.
+
+\subsection{Modifikation der Link-Matrix}
+
+Für ein $n$-seitiges Web ohne lose Pages können wir ein eindeutiges Ranking schaffen. Sei dazu $\B{S}$ eine $n\times n$ Matrix voller Komponenten $\frac{1}{n}$. Die Matrix $\B{S}$ ist also spalten-stochastisch und $V_1(\B{S})$ ist eindimensional, wie sich leicht verifizieren lässt. Wir ersetzen nun die Link-Matrix $\B{A}$ durch die Matrix
+\begin{equation}\label{equM}
+\B{M}=(1-m)\B{A}+m\B{S},
+\end{equation}
+wobei $0\leq m\leq1$. $\B{M}$ ist offensichtlich ein gewichtetes Mittel von $\B{A}$ und $\B{S}$. Für alle $m\in[0,1]$ ist $\B{M}$ spalten-stochastisch und wir zeigen gleich, dass $V_1(\B{M})$ für $m\in(0,1]$ immer eindimensional ist. Folglich liefert $\B{M}$ eindeutige Rankings.
+
+\begin{ueb}
+Notiere rasch die Fälle $m=0$ bzw. $m=1$ und kommentiere.
+\end{ueb}
+
+\begin{bem}
+Für $m$ setzte Google den Wert $0.15$ ein.
+\end{bem}
+
+Mit diesem Kniff, der Verwendung von $\B{M}$ anstelle von $\B{A}$, haben wir nun keine losen Pages, denn diese erhalten nun den Score $\frac{m}{n}$. Ferner ist $\B{M}$ substochastisch für alle $m<1$. Damit haben also in unserem Model auch lose Pages ein Score. Jedoch bleiben es lose Pages im Web. Wir beschränken uns der Einfachheit halber für den Rest auf Webs ohne lose Pages.
+
+Die Bedingung $\B{x}=\B{Mx}$ lässt sich in der Form
+\begin{equation}\label{equs}
+\B{x}=(1-m)\B{Ax}+m\B{s}
+\end{equation}
+schreiben, wobei $\B{s}$ ein Spaltenvektor mit lauter Komponenten $\frac{1}{n}$ ist. Offensichtlich ist $\B{Sx}=\B{s}$, falls $\sum_ix_i=1$.
+
+Den Beweis für die Eindimensionalität des Eigenraums $V_1(\B{M})$ liefern wir nach einigen Beispielen.
+
+\begin{bsp}
+Für das Web aus Abbildung \ref{kleinesbsp} auf Seite \pageref{kleinesbsp} liefert unser neuer Ansatz (wir nehmen wie Google $m=0.15$)
+$$\B{M}=\begin{pmatrix}
+0.0375			&0.0375	&0.8875	&0.4625	\\
+0.3208\overline{3}	&0.0375	&0.0375	&0.0375	\\
+0.3208\overline{3}	&0.4625	&0.0375	&0.4625	\\
+0.3208\overline{3}	&	0.4625	&	0.0375	&	0.0375
+\end{pmatrix}$$
+mit den Scores $x_1\approx0.368$, $x_2\approx0.142$, $x_3\approx0.288$ und $x_4\approx0.202$. Das ergibt zwar dasselbe Ranking wie mit dem ersten Ansatz, aber die Scores haben andere Werte. Dieses Resultat ist mässig aufregend.
+\end{bsp}
+
+\begin{ueb}
+Rechne obiges Beispiel nach.
+\end{ueb}
+
+Spannender ist nun der Test unseres neuen Ansatzes auf ein Web mit Subwebs. Betrachten wir
+
+\begin{bsp}
+Nehmen wir das zweite Web aus Abbildung \ref{bspnonunique} und rechnen wiederum mit $m=0.15$. Dann erhalten wir
+$$\B{M}=
+\begin{pmatrix}
+0.03	&	0.88	&	0.03	&	0.03	&	0.03		\\
+0.88	&	0.03	&	0.03	&	0.03	&	0.03		\\
+0.03	&	0.03	&	0.03	&	0.88	&	0.455	\\
+0.03	&	0.03	&	0.88	&	0.03	&	0.455	\\
+0.03	&	0.03	&	0.03	&	0.03	&	0.03
+\end{pmatrix}.
+$$
+Der Eigenraum $V_1(\B{M})$ ist tatsächlich eindimensional mit normiertem Eigenvektor
+$$\B{x}=[0.2\;0.2\;0.285\;0.285\;0.03].$$
+Die Verwendung von $\B{M}$ anstelle von $\B{A}$ erlaubt uns also verschiedene Subwebs zu vergleichen.
+\end{bsp}
+
+Auffällig ist, dass jeder Eintrag $M_{ij}$ von $\B{M}$ positiv ist. Naheliegend ist daher
+\begin{defn}
+Eine Matrix $\B{M}$ heisst {\bf positiv}, falls $M_{ij}>0$ für alle  $i,j$.
+\end{defn}
+
+Dies wird sich als Schlüsseleigenschaft für die Eindimensionalität von $V_1(\B{M})$ entpuppen.
+
+\subsection{Die Matrix $\B{M}$ unter der Lupe}
+
+Wir halten fest, dass nach Proposition \ref{satzspaltenstochastischev1} der Eigenraum $V_1(\B{M})$ nicht leer ist, da ja $\B{M}$ stochastisch ist. Das Ziel des Abschnitts ist zu zeigen, dass $V_1(\B{M})$ tatsächlich eindimensional ist. Dazu gehen wir schrittweise --- das heisst Proposition für Proposition --- vor.
+
+\begin{prop}\label{keinemixedvorzeichen}
+Ist $\B{M}$ positiv und spalten-stochastisch, dann hat jeder Eigenvektor in $V_1(\B{M})$ entweder lauter positive oder lauter negative Komponenten.
+\end{prop}
+
+\begin{proof}
+Via Gegenannahme. Wir rufen in Erinnerung, dass in der Dreiecksungleichung
+$$\abs{\sum_iy_i}\leq\sum_i\abs{y_i}$$
+die Ungleichung strikt ist, wenn es unter den $y_i$ verschiedene Vorzeichen gibt. Sei $\B{x}\in V_1(\B{M})$ mit unterschiedlichen Vorzeichen in den Komponenten. Die Eigenvektorbedingung $\B{x}=\B{Mx}$ liefert $x_i=\sum_{j=1}^nM_{ij}x_j$ mit Summanden $M_{ij}x_j$ mit unterschiedlichen Vorzeichen, da ja $\B{M}$ positiv ist. Es folgt
+$$\abs{x_i}=\abs{\sum_{j=1}^nM_{ij}x_j}<\sum_{j=1}^nM_{ij}\abs{x_j}.$$
+Summiere beide Seiten von $i=1$ bis $i=n$ auf und verwende Assoziativität. Also
+$$
+\sum_{i=1}^n\abs{x_i}<\sum_{i=1}^n\sum_{j=1}^nM_{ij}\abs{x_j}
+=\sum_{j=1}^n\sum_{i=1}^nM_{ij}\abs{x_j}=\sum_{j=1}^n\abs{x_j},
+$$
+was ein Widerspruch ist. Daher kann $\B{x}$ nicht Komponenten mit verschiedenen Vorzeichen enthalten. Und weil $\B{M}$ positiv ist, haben alle Komponenten von $\B{x}$ entweder positive oder negative Vorzeichen, da ja die Gleichung $x_i=\sum_{j=1}^nM_{ij}x_j$ erfüllt sein muss.
+\end{proof}
+
+\begin{prop}\label{satzmixedvorzeichen}
+Seien $\B{v}$ und $\B{w}$, beide in $\mR^m$, linear unabhängig. Dann gibt es $s$ und $t$ in $\mR$, nicht beide $0$, so dass der Vektor $\B{x}=s\B{v}+t\B{w}$ Komponenten mit verschiedenen Vorzeichen hat.
+\end{prop}
+
+\begin{proof}
+Weil $\B{v}$ und $\B{w}$ linear unabhängig sind, sind beide nicht Nullvektoren. Setze $d=\sum_iv_i$. Ist $d=0$ dann muss $\B{v}$ Komponenten mit verschiedenen Vorzeichen enthalten und $s=1$, $t=0$ erledigt den Job. Falls $d\neq0$, dann wähle $t=1$ und $s=-\frac{\sum_iw_i}{d}$. Wegen der linearen Unabhängigkeit von $\B{v}$ und $\B{w}$ ist $\B{x}\neq\B{0}$, aber $\sum_ix_i=0$. Also hat $\B{x}$ Komponenten mit verschiedenen Vorzeichen.
+\end{proof}
+
+Endlich können wir einsehen, dass unter der Verwendung von $\B{M}$ anstelle von $\B{A}$ ein eindeutiges Ranking für ein Web ohne lose Pages resultiert.
+
+\begin{prop}\label{thmM}
+Ist $\B{M}$ positiv und spalten-stochastisch, dann hat $V_1(\B{M})$ Dimension $1$.
+\end{prop}
+
+\begin{proof}
+Via Gegenbeweis. Seien $\B{v}$ und $\B{w}$  zwei linear unabhängige Eigenvektoren in $V_1(\B{M})$. Für jede Wahl $s,t\in\mR$, nicht beide gleich $0$, ist der nichttriviale Vektor $\B{x}=s\B{v}+t\B{w}$ in $V_1(\B{M})$, hat also rein positive oder rein negative Komponenten. Nach Proposition \ref{satzmixedvorzeichen} hat aber $\B{x}$ für jegliche Wahl von $s$ und $t$ verschiedene Vorzeichen. Ein Widerspruch, weshalb $V_1(\B{M})$ nicht zwei linear unabhängig Vektoren enthalten kann; $V_1(\B{M})$ ist also eindimensional.
+\end{proof}
+
+Proposition \ref{thmM} zeigt die Stärken von $\B{M}$, bzw. dass $\B{M}$ für ein Ranking geeignet ist. Wir haben nämlich gesichert, dass die Dimension von $V_1(\B{M})$ gleich $1$ ist. Und, die relevanten Eigenvektoren haben je alle positive oder alle negative Komponenten. Beides zusammen garantiert uns die Existenz eines eindeutig bestimmten Eigenvektors $\B{x}$ mit positiven Komponenten, so dass $\sum_ix_i=1$; also ein eindeutiges Ranking.
+
+\begin{ueb}
+Zeige, dass für eine spalten-stochastische $n\times n$ Matrix $\B{A}$ und $m\in[0,1]$ auch $\B{M}=(1-m)\B{A}+m\B{S}$ spalten-stochastisch ist.
+\end{ueb}
+
+\begin{ueb}\label{uebprodukt}
+Zeige, dass das Produkt zweier spalten-stochastischer Matrizen ebenfalls spalten-stochastisch ist.
+\end{ueb}
+
+\begin{ueb}
+Überzeuge dich davon, dass eine Page ohne Backlinks den Score $\frac{m}{n}$ erhält.
+\end{ueb}
+
+\begin{ueb}
+Eine Möglichkeit, um die Eindimensionalität von $V_1(\B{A})$ für ein zusammenhängendes Web --- jede Page kann einer endlichen Anzahl Links folgend erreicht werden --- zu zeigen, könnte folgendermassen gehen:
+\begin{enumerate}
+\item Es ist $A_{ij}>0$ dann und nur dann, wenn ein Link von Page $j$ nach Page $i$ zeigt. Zeige, dass dann $(\B{A}^2)_{ij}>0$ genau dann gilt, wenn $i$ von $j$ aus in genau zwei Schritten erreicht werden kann.
+\item Schliesse aus obigem Schritt, dass $(\B{A}^p)_{ij}>0$ genau dann, wenn $i$ von $j$ aus in genau $p$ Schritten erreicht werden kann.
+\item Begründe, dass $(\B{E}+\B{A}+\B{A}^2+\dots+\B{A}^p)_{ij}>0$ genau dann, wenn $i$ von $j$ aus in $p$ oder weniger Schritten erreicht werden kann.
+\item Erkläre, wieso für ein zusammenhängendes Web $\B{E}+\B{A}+\B{A}^2+\dots+\B{A}^{n-1}$ positiv ist.
+\item Zeige mit obiger Erkenntnis und Übung \ref{uebprodukt}, dass $\B{B}=\frac{1}{n}(\B{E}+\B{A}+\B{A}^2+\dots+\B{A}^{n-1})$ positiv und spalten-stochastisch ist; und somit mit Proposition \ref{thmM} folgt, dass die Dimension von $V_1(\B{B})$ gleich $1$ ist.
+\item Schliesslich überprüfe man noch, dass aus $\B{x}\in V_1(\B{A})$ tatsächlich $\B{x}\in V_1(\B{B})$ folgt, was $V_1(\B{B})$ ist eindimensional bedeutet.
+\end{enumerate}
+\end{ueb}
+
+\begin{ueb}\label{uebnewrank}
+Wir greifen erneut das Web aus Abbildung \ref{kleinesbsp} auf und fügen eine Page 5 hinzu, die gegenseitig mit Page 3 verlinkt wird. Berechne jetzt für $m=0.15$ das Ranking mit $\B{M}$ über den normierten Eigenvektor zum Eigenwert $1$.
+\end{ueb}
+
+\begin{ueb}
+Füge eine Page 6 zum Web aus Übung \ref{uebnewrank} hinzu, wobei 6 auf jede andere Page linkt, selbst aber keine Backlinks hat. Erstelle ein Ranking mit $\B{A}$ und mit $\B{M}$, wobei $m=0.15$. Vergleiche die Resultate.
+\end{ueb}
+
+\begin{ueb}
+Konstruiere selber ein Web mit zwei oder mehr Subwebs und bestimme das Ranking mit der neusten Methode.
+\end{ueb}
+
+Aktuell besteht das World Wide Web aus mindestens 8 Milliarden Webpages. Wie zum Kuckuck berechnen wir in vernünftiger Zeit einen Eigenvektor zu einer 8 Milliarden-dimensionalen quadratischen Matrix? Ein vielversprechender Ansatz ist iterativ mit der sogenannten {\bf power method} vorzugehen, die wir jetzt für unseren Spezialfall analysieren. Ich möchte an dieser Stelle jedoch festhalten, dass in einer professionellen Umgebung für die Berechnung des PageRank weitere Analysen und verbesserte Methoden hergeleitet und bewiesen würden.

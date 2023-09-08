@@ -1,0 +1,780 @@
+%% AMS-LaTeX Created by Wolfram Mathematica 7.0 : www.wolfram.com
+
+\documentclass{article}
+\usepackage{amsmath, amssymb, graphics}
+
+\newcommand{\mathsym}[1]{{}}
+\newcommand{\unicode}{{}}
+
+\begin{document}
+
+\noindent\(\pmb{\text{Clear}[A,B,F,\text{ev2},\text{ev3},\text{ev1},\text{ev},M,q];}\)
+
+\noindent\(\pmb{A=\left\{\left\{0,0,1,\frac{1}{2}\right\},\left\{\frac{1}{3},0,0,0\right\},\left\{\frac{1}{3},\frac{1}{2},0,\frac{1}{2}\right\},\left\{\frac{1}{3},\frac{1}{2},0,0\right\}\right\}}\)
+
+\noindent\(\left\{\left\{0,0,1,\frac{1}{2}\right\},\left\{\frac{1}{3},0,0,0\right\},\left\{\frac{1}{3},\frac{1}{2},0,\frac{1}{2}\right\},\left\{\frac{1}{3},\frac{1}{2},0,0\right\}\right\}\)
+
+\noindent\(\pmb{A\text{//}\text{MatrixForm}}\)
+
+\noindent\(\left(
+\begin{array}{cccc}
+ 0 & 0 & 1 & \frac{1}{2} \\
+ \frac{1}{3} & 0 & 0 & 0 \\
+ \frac{1}{3} & \frac{1}{2} & 0 & \frac{1}{2} \\
+ \frac{1}{3} & \frac{1}{2} & 0 & 0
+\end{array}
+\right)\)
+
+\noindent\(\pmb{\text{Eigenvalues}[A]}\)
+
+\noindent\(\left\{1,\text{Root}\left[1+6 \text{$\#$1}+12 \text{$\#$1}^2+12 \text{$\#$1}^3\&,3\right],\text{Root}\left[1+6 \text{$\#$1}+12 \text{$\#$1}^2+12
+\text{$\#$1}^3\&,2\right],\text{Root}\left[1+6 \text{$\#$1}+12 \text{$\#$1}^2+12 \text{$\#$1}^3\&,1\right]\right\}\)
+
+\noindent\(\pmb{\text{Eigenvectors}[A]}\)
+
+\noindent\(\left\{\left\{2,\frac{2}{3},\frac{3}{2},1\right\},\left\{3+2 \text{Root}\left[18+18 \text{$\#$1}+6 \text{$\#$1}^2+\text{$\#$1}^3\&,3\right]+\frac{1}{2}
+\text{Root}\left[18+18 \text{$\#$1}+6 \text{$\#$1}^2+\text{$\#$1}^3\&,3\right]^2,-2-\text{Root}\left[18+18 \text{$\#$1}+6 \text{$\#$1}^2+\text{$\#$1}^3\&,3\right]-\frac{1}{3}
+\text{Root}\left[18+18 \text{$\#$1}+6 \text{$\#$1}^2+\text{$\#$1}^3\&,3\right]^2,-2-\text{Root}\left[18+18 \text{$\#$1}+6 \text{$\#$1}^2+\text{$\#$1}^3\&,3\right]-\frac{1}{6}
+\text{Root}\left[18+18 \text{$\#$1}+6 \text{$\#$1}^2+\text{$\#$1}^3\&,3\right]^2,1\right\},\left\{3+2 \text{Root}\left[18+18 \text{$\#$1}+6 \text{$\#$1}^2+\text{$\#$1}^3\&,2\right]+\frac{1}{2}
+\text{Root}\left[18+18 \text{$\#$1}+6 \text{$\#$1}^2+\text{$\#$1}^3\&,2\right]^2,-2-\text{Root}\left[18+18 \text{$\#$1}+6 \text{$\#$1}^2+\text{$\#$1}^3\&,2\right]-\frac{1}{3}
+\text{Root}\left[18+18 \text{$\#$1}+6 \text{$\#$1}^2+\text{$\#$1}^3\&,2\right]^2,-2-\text{Root}\left[18+18 \text{$\#$1}+6 \text{$\#$1}^2+\text{$\#$1}^3\&,2\right]-\frac{1}{6}
+\text{Root}\left[18+18 \text{$\#$1}+6 \text{$\#$1}^2+\text{$\#$1}^3\&,2\right]^2,1\right\},\left\{3+2 \text{Root}\left[18+18 \text{$\#$1}+6 \text{$\#$1}^2+\text{$\#$1}^3\&,1\right]+\frac{1}{2}
+\text{Root}\left[18+18 \text{$\#$1}+6 \text{$\#$1}^2+\text{$\#$1}^3\&,1\right]^2,-2-\text{Root}\left[18+18 \text{$\#$1}+6 \text{$\#$1}^2+\text{$\#$1}^3\&,1\right]-\frac{1}{3}
+\text{Root}\left[18+18 \text{$\#$1}+6 \text{$\#$1}^2+\text{$\#$1}^3\&,1\right]^2,-2-\text{Root}\left[18+18 \text{$\#$1}+6 \text{$\#$1}^2+\text{$\#$1}^3\&,1\right]-\frac{1}{6}
+\text{Root}\left[18+18 \text{$\#$1}+6 \text{$\#$1}^2+\text{$\#$1}^3\&,1\right]^2,1\right\}\right\}\)
+
+\noindent\(\pmb{\text{ev1}=\%[[1]]}\)
+
+\noindent\(\left\{2,\frac{2}{3},\frac{3}{2},1\right\}\)
+
+\noindent\(\pmb{\text{ev}=6\text{ev1}}\)
+
+\noindent\(\{12,4,9,6\}\)
+
+\noindent\(\pmb{12+4+9+6}\)
+
+\noindent\(31\)
+
+\noindent\(\pmb{\text{ev}/31}\)
+
+\noindent\(\left\{\frac{12}{31},\frac{4}{31},\frac{9}{31},\frac{6}{31}\right\}\)
+
+\noindent\(\pmb{N[\text{ev}/31]}\)
+
+\noindent\(\{0.387097,0.129032,0.290323,0.193548\}\)
+
+\noindent\(\pmb{B=\left\{\{0,1,0,0,0\},\{1,0,0,0,0\},\left\{0,0,0,1,\frac{1}{2}\right\},\right.}\\
+\pmb{\left.\left\{0,0,1,0,\frac{1}{2}\right\},\{0,0,0,0,0\}\right\}}\)
+
+\noindent\(\left\{\{0,1,0,0,0\},\{1,0,0,0,0\},\left\{0,0,0,1,\frac{1}{2}\right\},\left\{0,0,1,0,\frac{1}{2}\right\},\{0,0,0,0,0\}\right\}\)
+
+\noindent\(\pmb{\%\text{//}\text{MatrixForm}}\)
+
+\noindent\(\left(
+\begin{array}{ccccc}
+ 0 & 1 & 0 & 0 & 0 \\
+ 1 & 0 & 0 & 0 & 0 \\
+ 0 & 0 & 0 & 1 & \frac{1}{2} \\
+ 0 & 0 & 1 & 0 & \frac{1}{2} \\
+ 0 & 0 & 0 & 0 & 0
+\end{array}
+\right)\)
+
+\noindent\(\pmb{\text{Eigenvalues}[B]}\)
+
+\noindent\(\{-1,-1,1,1,0\}\)
+
+\noindent\(\pmb{\text{Eigenvectors}[B]}\)
+
+\noindent\(\left\{\{0,0,-1,1,0\},\{-1,1,0,0,0\},\{0,0,1,1,0\},\{1,1,0,0,0\},\left\{0,0,-\frac{1}{2},-\frac{1}{2},1\right\}\right\}\)
+
+\noindent\(\pmb{\text{Exercise1}}\)
+
+\noindent\(\text{Exercise1}\)
+
+\noindent\(\pmb{F=\left\{\left\{0,0,1,\frac{1}{2},0\right\},\left\{\frac{1}{3},0,0,0,0\right\},\left\{\frac{1}{3},\frac{1}{2},0,\frac{1}{2},1\right\},\right.}\\
+\pmb{\left.\left\{\frac{1}{3},\frac{1}{2},0,0,0\right\},\{0,0,0,0,1\}\right\}}\)
+
+\noindent\(\left\{\left\{0,0,1,\frac{1}{2},0\right\},\left\{\frac{1}{3},0,0,0,0\right\},\left\{\frac{1}{3},\frac{1}{2},0,\frac{1}{2},1\right\},\left\{\frac{1}{3},\frac{1}{2},0,0,0\right\},\{0,0,0,0,1\}\right\}\)
+
+\noindent\(\pmb{\%\text{//}\text{MatrixForm}}\)
+
+\noindent\(\left(
+\begin{array}{ccccc}
+ 0 & 0 & 1 & \frac{1}{2} & 0 \\
+ \frac{1}{3} & 0 & 0 & 0 & 0 \\
+ \frac{1}{3} & \frac{1}{2} & 0 & \frac{1}{2} & 1 \\
+ \frac{1}{3} & \frac{1}{2} & 0 & 0 & 0 \\
+ 0 & 0 & 0 & 0 & 1
+\end{array}
+\right)\)
+
+\noindent\(\pmb{\text{Eigenvalues}[F]}\)
+
+\noindent\(\left\{1,1,\text{Root}\left[1+6 \text{$\#$1}+12 \text{$\#$1}^2+12 \text{$\#$1}^3\&,3\right],\text{Root}\left[1+6 \text{$\#$1}+12 \text{$\#$1}^2+12
+\text{$\#$1}^3\&,2\right],\text{Root}\left[1+6 \text{$\#$1}+12 \text{$\#$1}^2+12 \text{$\#$1}^3\&,1\right]\right\}\)
+
+\noindent\(\pmb{\text{Eigenvectors}[F]}\)
+
+\noindent\(\left\{\left\{2,\frac{2}{3},\frac{3}{2},1,0\right\},\{0,0,0,0,0\},\left\{3+2 \text{Root}\left[18+18 \text{$\#$1}+6 \text{$\#$1}^2+\text{$\#$1}^3\&,3\right]+\frac{1}{2}
+\text{Root}\left[18+18 \text{$\#$1}+6 \text{$\#$1}^2+\text{$\#$1}^3\&,3\right]^2,-2-\text{Root}\left[18+18 \text{$\#$1}+6 \text{$\#$1}^2+\text{$\#$1}^3\&,3\right]-\frac{1}{3}
+\text{Root}\left[18+18 \text{$\#$1}+6 \text{$\#$1}^2+\text{$\#$1}^3\&,3\right]^2,-2-\text{Root}\left[18+18 \text{$\#$1}+6 \text{$\#$1}^2+\text{$\#$1}^3\&,3\right]-\frac{1}{6}
+\text{Root}\left[18+18 \text{$\#$1}+6 \text{$\#$1}^2+\text{$\#$1}^3\&,3\right]^2,1,0\right\},\left\{3+2 \text{Root}\left[18+18 \text{$\#$1}+6 \text{$\#$1}^2+\text{$\#$1}^3\&,2\right]+\frac{1}{2}
+\text{Root}\left[18+18 \text{$\#$1}+6 \text{$\#$1}^2+\text{$\#$1}^3\&,2\right]^2,-2-\text{Root}\left[18+18 \text{$\#$1}+6 \text{$\#$1}^2+\text{$\#$1}^3\&,2\right]-\frac{1}{3}
+\text{Root}\left[18+18 \text{$\#$1}+6 \text{$\#$1}^2+\text{$\#$1}^3\&,2\right]^2,-2-\text{Root}\left[18+18 \text{$\#$1}+6 \text{$\#$1}^2+\text{$\#$1}^3\&,2\right]-\frac{1}{6}
+\text{Root}\left[18+18 \text{$\#$1}+6 \text{$\#$1}^2+\text{$\#$1}^3\&,2\right]^2,1,0\right\},\left\{3+2 \text{Root}\left[18+18 \text{$\#$1}+6 \text{$\#$1}^2+\text{$\#$1}^3\&,1\right]+\frac{1}{2}
+\text{Root}\left[18+18 \text{$\#$1}+6 \text{$\#$1}^2+\text{$\#$1}^3\&,1\right]^2,-2-\text{Root}\left[18+18 \text{$\#$1}+6 \text{$\#$1}^2+\text{$\#$1}^3\&,1\right]-\frac{1}{3}
+\text{Root}\left[18+18 \text{$\#$1}+6 \text{$\#$1}^2+\text{$\#$1}^3\&,1\right]^2,-2-\text{Root}\left[18+18 \text{$\#$1}+6 \text{$\#$1}^2+\text{$\#$1}^3\&,1\right]-\frac{1}{6}
+\text{Root}\left[18+18 \text{$\#$1}+6 \text{$\#$1}^2+\text{$\#$1}^3\&,1\right]^2,1,0\right\}\right\}\)
+
+\noindent\(\pmb{\text{ev2}=\%[[1]]}\)
+
+\noindent\(\left\{2,\frac{2}{3},\frac{3}{2},1,0\right\}\)
+
+\noindent\(\pmb{\text{ev3}=6\text{ev2}}\)
+
+\noindent\(\{12,4,9,6,0\}\)
+
+\noindent\(\pmb{\%/31}\)
+
+\noindent\(\left\{\frac{12}{31},\frac{4}{31},\frac{9}{31},\frac{6}{31},0\right\}\)
+
+\noindent\(\pmb{N[\%]}\)
+
+\noindent\(\{0.387097,0.129032,0.290323,0.193548,0.\}\)
+
+\noindent\(\pmb{\text{Exercise} 2}\)
+
+\noindent\(2 \text{Exercise}\)
+
+\noindent\(\pmb{A=\{\{0,1,0,0,0,0\},\{1,0,0,0,0,0\},\{0,0,0,1,0,0\},}\\
+\pmb{\{0,0,1,0,0,0\},\{0,0,0,0,0,1\},\{0,0,0,0,0,0\}\}}\)
+
+\noindent\(\{\{0,1,0,0,0,0\},\{1,0,0,0,0,0\},\{0,0,0,1,0,0\},\{0,0,1,0,0,0\},\{0,0,0,0,0,1\},\{0,0,0,0,0,0\}\}\)
+
+\noindent\(\pmb{\text{Eigenvalues}[A]}\)
+
+\noindent\(\{-1,-1,1,1,0,0\}\)
+
+\noindent\(\pmb{\text{Eigenvectors}[A]}\)
+
+\noindent\(\{\{0,0,-1,1,0,0\},\{-1,1,0,0,0,0\},\{0,0,1,1,0,0\},\{1,1,0,0,0,0\},\{0,0,0,0,1,0\},\{0,0,0,0,0,0\}\}\)
+
+\noindent\(\pmb{\text{MatrixRank}[A]}\)
+
+\noindent\(5\)
+
+\noindent\(\pmb{\text{Exercise} 3}\)
+
+\noindent\(3 \text{Exercise}\)
+
+\noindent\(\pmb{A=\left\{\left\{0,1,0,0,\frac{1}{3}\right\},\{1,0,0,0,0\},\left\{0,0,0,1,\frac{1}{3}\right\},\right.}\\
+\pmb{\left.\left\{0,0,1,0,\frac{1}{3}\right\},\{0,0,0,0,0\}\right\}}\)
+
+\noindent\(\left\{\left\{0,1,0,0,\frac{1}{3}\right\},\{1,0,0,0,0\},\left\{0,0,0,1,\frac{1}{3}\right\},\left\{0,0,1,0,\frac{1}{3}\right\},\{0,0,0,0,0\}\right\}\)
+
+\noindent\(\pmb{\%\text{//}\text{MatrixForm}}\)
+
+\noindent\(\left(
+\begin{array}{ccccc}
+ 0 & 1 & 0 & 0 & \frac{1}{3} \\
+ 1 & 0 & 0 & 0 & 0 \\
+ 0 & 0 & 0 & 1 & \frac{1}{3} \\
+ 0 & 0 & 1 & 0 & \frac{1}{3} \\
+ 0 & 0 & 0 & 0 & 0
+\end{array}
+\right)\)
+
+\noindent\(\pmb{\text{Eigenvectors}[A]}\)
+
+\noindent\(\left\{\{0,0,-1,1,0\},\{-1,1,0,0,0\},\{0,0,1,1,0\},\{1,1,0,0,0\},\left\{0,-\frac{1}{3},-\frac{1}{3},-\frac{1}{3},1\right\}\right\}\)
+
+\noindent\(\pmb{\text{MatrixRank}[A]}\)
+
+\noindent\(4\)
+
+\noindent\(\pmb{\text{Exercise} 4}\)
+
+\noindent\(4 \text{Exercise}\)
+
+\noindent\(\pmb{A=\left\{\left\{0,0,0,\frac{1}{2}\right\},\left\{\frac{1}{3},0,0,0\right\},\left\{\frac{1}{3},\frac{1}{2},0,\frac{1}{2}\right\},\left\{\frac{1}{3},\frac{1}{2},0,0\right\}\right\}}\)
+
+\noindent\(\left\{\left\{0,0,0,\frac{1}{2}\right\},\left\{\frac{1}{3},0,0,0\right\},\left\{\frac{1}{3},\frac{1}{2},0,\frac{1}{2}\right\},\left\{\frac{1}{3},\frac{1}{2},0,0\right\}\right\}\)
+
+\noindent\(\pmb{\%\text{//}\text{MatrixForm}}\)
+
+\noindent\(\left(
+\begin{array}{cccc}
+ 0 & 0 & 0 & \frac{1}{2} \\
+ \frac{1}{3} & 0 & 0 & 0 \\
+ \frac{1}{3} & \frac{1}{2} & 0 & \frac{1}{2} \\
+ \frac{1}{3} & \frac{1}{2} & 0 & 0
+\end{array}
+\right)\)
+
+\noindent\(\pmb{\text{Eigenvalues}[A]}\)
+
+\noindent\(\left\{\text{Root}\left[-1-2 \text{$\#$1}+12 \text{$\#$1}^3\&,1\right],\text{Root}\left[-1-2 \text{$\#$1}+12 \text{$\#$1}^3\&,3\right],\text{Root}\left[-1-2
+\text{$\#$1}+12 \text{$\#$1}^3\&,2\right],0\right\}\)
+
+\noindent\(\pmb{N[\%]}\)
+
+\noindent\(\{0.561353,-0.280677+0.263953 i,-0.280677-0.263953 i,0.\}\)
+
+\noindent\(\pmb{\text{perron}=\%[[1]]}\)
+
+\noindent\(0.561353\)
+
+\noindent\(\pmb{\text{Eigenvectors}[A]}\)
+
+\noindent\(\left\{\left\{-1+\frac{1}{6} \text{Root}\left[-18-6 \text{$\#$1}+\text{$\#$1}^3\&,1\right]^2,\frac{2}{3}+\frac{1}{3} \text{Root}\left[-18-6
+\text{$\#$1}+\text{$\#$1}^3\&,1\right]-\frac{1}{9} \text{Root}\left[-18-6 \text{$\#$1}+\text{$\#$1}^3\&,1\right]^2,\frac{1}{6} \text{Root}\left[-18-6
+\text{$\#$1}+\text{$\#$1}^3\&,1\right]^2,1\right\},\left\{-1+\frac{1}{6} \text{Root}\left[-18-6 \text{$\#$1}+\text{$\#$1}^3\&,3\right]^2,\frac{2}{3}+\frac{1}{3}
+\text{Root}\left[-18-6 \text{$\#$1}+\text{$\#$1}^3\&,3\right]-\frac{1}{9} \text{Root}\left[-18-6 \text{$\#$1}+\text{$\#$1}^3\&,3\right]^2,\frac{1}{6}
+\text{Root}\left[-18-6 \text{$\#$1}+\text{$\#$1}^3\&,3\right]^2,1\right\},\left\{-1+\frac{1}{6} \text{Root}\left[-18-6 \text{$\#$1}+\text{$\#$1}^3\&,2\right]^2,\frac{2}{3}+\frac{1}{3}
+\text{Root}\left[-18-6 \text{$\#$1}+\text{$\#$1}^3\&,2\right]-\frac{1}{9} \text{Root}\left[-18-6 \text{$\#$1}+\text{$\#$1}^3\&,2\right]^2,\frac{1}{6}
+\text{Root}\left[-18-6 \text{$\#$1}+\text{$\#$1}^3\&,2\right]^2,1\right\},\{0,0,1,0\}\right\}\)
+
+\noindent\(\pmb{N[\%]}\)
+
+\noindent\(\{\{0.890705,0.528903,1.8907,1.\},\{-0.945352-0.889027 i,0.0688817+1.12059 i,0.0546476-0.889027 i,1.\},\{-0.945352+0.889027 i,0.0688817-1.12059
+i,0.0546476+0.889027 i,1.\},\{0.,0.,1.,0.\}\}\)
+
+\noindent\(\pmb{\text{perronv}=\%[[1]]}\)
+
+\noindent\(\{0.890705,0.528903,1.8907,1.\}\)
+
+\noindent\(\pmb{\text{perronsum}=\text{perronv}[[1]]+\text{perronv}[[2]]+\text{perronv}[[3]]+}\\
+\pmb{\text{perronv}[[4]]}\)
+
+\noindent\(4.31031\)
+
+\noindent\(\pmb{\text{perronv}/\%}\)
+
+\noindent\(\{0.206645,0.122706,0.438647,0.232002\}\)
+
+\noindent\(\pmb{\text{Exercise} 11}\)
+
+\noindent\(11 \text{Exercise}\)
+
+\noindent\(\pmb{A=\left\{\left\{0,0,\frac{1}{2},\frac{1}{2},0\right\},\left\{\frac{1}{3},0,0,0,0\right\},\left\{\frac{1}{3},\frac{1}{2},0,\frac{1}{2},1\right\},\right.}\\
+\pmb{\left.\left\{\frac{1}{3},\frac{1}{2},0,0,0\right\},\left\{0,0,\frac{1}{2},0,0\right\}\right\}}\)
+
+\noindent\(\left\{\left\{0,0,\frac{1}{2},\frac{1}{2},0\right\},\left\{\frac{1}{3},0,0,0,0\right\},\left\{\frac{1}{3},\frac{1}{2},0,\frac{1}{2},1\right\},\left\{\frac{1}{3},\frac{1}{2},0,0,0\right\},\left\{0,0,\frac{1}{2},0,0\right\}\right\}\)
+
+\noindent\(\pmb{\%\text{//}\text{MatrixForm}}\)
+
+\noindent\(\left(
+\begin{array}{ccccc}
+ 0 & 0 & \frac{1}{2} & \frac{1}{2} & 0 \\
+ \frac{1}{3} & 0 & 0 & 0 & 0 \\
+ \frac{1}{3} & \frac{1}{2} & 0 & \frac{1}{2} & 1 \\
+ \frac{1}{3} & \frac{1}{2} & 0 & 0 & 0 \\
+ 0 & 0 & \frac{1}{2} & 0 & 0
+\end{array}
+\right)\)
+
+\noindent\(\pmb{S=\text{ConstantArray}\left[\frac{1}{5},\{5,5\}\right]}\)
+
+\noindent\(\left\{\left\{\frac{1}{5},\frac{1}{5},\frac{1}{5},\frac{1}{5},\frac{1}{5}\right\},\left\{\frac{1}{5},\frac{1}{5},\frac{1}{5},\frac{1}{5},\frac{1}{5}\right\},\left\{\frac{1}{5},\frac{1}{5},\frac{1}{5},\frac{1}{5},\frac{1}{5}\right\},\left\{\frac{1}{5},\frac{1}{5},\frac{1}{5},\frac{1}{5},\frac{1}{5}\right\},\left\{\frac{1}{5},\frac{1}{5},\frac{1}{5},\frac{1}{5},\frac{1}{5}\right\}\right\}\)
+
+\noindent\(\pmb{\%\text{//}\text{MatrixForm}}\)
+
+\noindent\(\left(
+\begin{array}{ccccc}
+ \frac{1}{5} & \frac{1}{5} & \frac{1}{5} & \frac{1}{5} & \frac{1}{5} \\
+ \frac{1}{5} & \frac{1}{5} & \frac{1}{5} & \frac{1}{5} & \frac{1}{5} \\
+ \frac{1}{5} & \frac{1}{5} & \frac{1}{5} & \frac{1}{5} & \frac{1}{5} \\
+ \frac{1}{5} & \frac{1}{5} & \frac{1}{5} & \frac{1}{5} & \frac{1}{5} \\
+ \frac{1}{5} & \frac{1}{5} & \frac{1}{5} & \frac{1}{5} & \frac{1}{5}
+\end{array}
+\right)\)
+
+\noindent\(\pmb{M=(1-0.15)A+0.15S}\)
+
+\noindent\(\{\{0.03,0.03,0.455,0.455,0.03\},\{0.313333,0.03,0.03,0.03,0.03\},\{0.313333,0.455,0.03,0.455,0.88\},\{0.313333,0.455,0.03,0.03,0.03\},\{0.03,0.03,0.455,0.03,0.03\}\}\)
+
+\noindent\(\pmb{\%\text{//}\text{MatrixForm}}\)
+
+\noindent\(\left(
+\begin{array}{ccccc}
+ 0.03 & 0.03 & 0.455 & 0.455 & 0.03 \\
+ 0.313333 & 0.03 & 0.03 & 0.03 & 0.03 \\
+ 0.313333 & 0.455 & 0.03 & 0.455 & 0.88 \\
+ 0.313333 & 0.455 & 0.03 & 0.03 & 0.03 \\
+ 0.03 & 0.03 & 0.455 & 0.03 & 0.03
+\end{array}
+\right)\)
+
+\noindent\(\pmb{\text{Eigenvalues}[M]}\)
+
+\noindent\(\{1.,-0.611269,-0.262306+0.235924 i,-0.262306-0.235924 i,0.285881\}\)
+
+\noindent\(\pmb{\text{Eigenvectors}[M]}\)
+
+\noindent\(\{\{0.48571,0.199064,0.714603,0.283666,0.365152\},\{0.517757,-0.239989,-0.671549,-0.0731306,0.466911\},\{-0.682199+0. i,0.407353+0.366382
+i,0.0833974-0.0887608 i,0.33765-0.289938 i,-0.146202+0.0123168 i\},\{-0.682199+0. i,0.407353-0.366382 i,0.0833974+0.0887608 i,0.33765+0.289938 i,-0.146202-0.0123168
+i\},\{-0.233368,-0.231287,0.418149,-0.575126,0.621633\}\}\)
+
+\noindent\(\pmb{\text{evm}=\%[[1]]}\)
+
+\noindent\(\{0.48571,0.199064,0.714603,0.283666,0.365152\}\)
+
+\noindent\(\pmb{\%[[1]]+\%[[2]]+\%[[3]]+\%[[4]]+\%[[5]]}\)
+
+\noindent\(2.04819\)
+
+\noindent\(\pmb{\text{evm}/\%}\)
+
+\noindent\(\{0.237141,0.0971898,0.348894,0.138496,0.17828\}\)
+
+\noindent\(\pmb{\text{Exercise} 12}\)
+
+\noindent\(12 \text{Exercise}\)
+
+\noindent\(\pmb{A=\left\{\left\{0,0,\frac{1}{2},\frac{1}{2},0,\frac{1}{5}\right\},\left\{\frac{1}{3},0,0,0,0,\frac{1}{5}\right\},\left\{\frac{1}{3},\frac{1}{2},0,\frac{1}{2},1,\frac{1}{5}\right\},\right.}\\
+\pmb{\left.\left\{\frac{1}{3},\frac{1}{2},0,0,0,\frac{1}{5}\right\},\left\{0,0,\frac{1}{2},0,0,\frac{1}{5}\right\},\{0,0,0,0,0,0\}\right\}}\)
+
+\noindent\(\left\{\left\{0,0,\frac{1}{2},\frac{1}{2},0,\frac{1}{5}\right\},\left\{\frac{1}{3},0,0,0,0,\frac{1}{5}\right\},\left\{\frac{1}{3},\frac{1}{2},0,\frac{1}{2},1,\frac{1}{5}\right\},\left\{\frac{1}{3},\frac{1}{2},0,0,0,\frac{1}{5}\right\},\left\{0,0,\frac{1}{2},0,0,\frac{1}{5}\right\},\{0,0,0,0,0,0\}\right\}\)
+
+\noindent\(\pmb{\%\text{//}\text{MatrixForm}}\)
+
+\noindent\(\left(
+\begin{array}{cccccc}
+ 0 & 0 & \frac{1}{2} & \frac{1}{2} & 0 & \frac{1}{5} \\
+ \frac{1}{3} & 0 & 0 & 0 & 0 & \frac{1}{5} \\
+ \frac{1}{3} & \frac{1}{2} & 0 & \frac{1}{2} & 1 & \frac{1}{5} \\
+ \frac{1}{3} & \frac{1}{2} & 0 & 0 & 0 & \frac{1}{5} \\
+ 0 & 0 & \frac{1}{2} & 0 & 0 & \frac{1}{5} \\
+ 0 & 0 & 0 & 0 & 0 & 0
+\end{array}
+\right)\)
+
+\noindent\(\pmb{\text{Eigenvalues}[A]}\)
+
+\noindent\(\left\{1,\text{Root}\left[-1-2 \text{$\#$1}+4 \text{$\#$1}^2+24 \text{$\#$1}^3+24 \text{$\#$1}^4\&,1\right],\text{Root}\left[-1-2 \text{$\#$1}+4
+\text{$\#$1}^2+24 \text{$\#$1}^3+24 \text{$\#$1}^4\&,4\right],\text{Root}\left[-1-2 \text{$\#$1}+4 \text{$\#$1}^2+24 \text{$\#$1}^3+24 \text{$\#$1}^4\&,3\right],\text{Root}\left[-1-2
+\text{$\#$1}+4 \text{$\#$1}^2+24 \text{$\#$1}^3+24 \text{$\#$1}^4\&,2\right],0\right\}\)
+
+\noindent\(\pmb{\text{Eigenvectors}[A]}\)
+
+\noindent\(\left\{\left\{\frac{4}{3},\frac{4}{9},2,\frac{2}{3},1,0\right\},\left\{3-\text{Root}\left[-54-18 \text{$\#$1}+6 \text{$\#$1}^2+6 \text{$\#$1}^3+\text{$\#$1}^4\&,1\right]-\frac{1}{3}
+\text{Root}\left[-54-18 \text{$\#$1}+6 \text{$\#$1}^2+6 \text{$\#$1}^3+\text{$\#$1}^4\&,1\right]^2,-4+\frac{2}{3} \text{Root}\left[-54-18 \text{$\#$1}+6
+\text{$\#$1}^2+6 \text{$\#$1}^3+\text{$\#$1}^4\&,1\right]^2+\frac{1}{9} \text{Root}\left[-54-18 \text{$\#$1}+6 \text{$\#$1}^2+6 \text{$\#$1}^3+\text{$\#$1}^4\&,1\right]^3,\frac{1}{3}
+\text{Root}\left[-54-18 \text{$\#$1}+6 \text{$\#$1}^2+6 \text{$\#$1}^3+\text{$\#$1}^4\&,1\right],\frac{2}{3} \text{Root}\left[-54-18 \text{$\#$1}+6
+\text{$\#$1}^2+6 \text{$\#$1}^3+\text{$\#$1}^4\&,1\right]-\frac{1}{3} \text{Root}\left[-54-18 \text{$\#$1}+6 \text{$\#$1}^2+6 \text{$\#$1}^3+\text{$\#$1}^4\&,1\right]^2-\frac{1}{9}
+\text{Root}\left[-54-18 \text{$\#$1}+6 \text{$\#$1}^2+6 \text{$\#$1}^3+\text{$\#$1}^4\&,1\right]^3,1,0\right\},\left\{3-\text{Root}\left[-54-18 \text{$\#$1}+6
+\text{$\#$1}^2+6 \text{$\#$1}^3+\text{$\#$1}^4\&,4\right]-\frac{1}{3} \text{Root}\left[-54-18 \text{$\#$1}+6 \text{$\#$1}^2+6 \text{$\#$1}^3+\text{$\#$1}^4\&,4\right]^2,-4+\frac{2}{3}
+\text{Root}\left[-54-18 \text{$\#$1}+6 \text{$\#$1}^2+6 \text{$\#$1}^3+\text{$\#$1}^4\&,4\right]^2+\frac{1}{9} \text{Root}\left[-54-18 \text{$\#$1}+6
+\text{$\#$1}^2+6 \text{$\#$1}^3+\text{$\#$1}^4\&,4\right]^3,\frac{1}{3} \text{Root}\left[-54-18 \text{$\#$1}+6 \text{$\#$1}^2+6 \text{$\#$1}^3+\text{$\#$1}^4\&,4\right],\frac{2}{3}
+\text{Root}\left[-54-18 \text{$\#$1}+6 \text{$\#$1}^2+6 \text{$\#$1}^3+\text{$\#$1}^4\&,4\right]-\frac{1}{3} \text{Root}\left[-54-18 \text{$\#$1}+6
+\text{$\#$1}^2+6 \text{$\#$1}^3+\text{$\#$1}^4\&,4\right]^2-\frac{1}{9} \text{Root}\left[-54-18 \text{$\#$1}+6 \text{$\#$1}^2+6 \text{$\#$1}^3+\text{$\#$1}^4\&,4\right]^3,1,0\right\},\left\{3-\text{Root}\left[-54-18
+\text{$\#$1}+6 \text{$\#$1}^2+6 \text{$\#$1}^3+\text{$\#$1}^4\&,3\right]-\frac{1}{3} \text{Root}\left[-54-18 \text{$\#$1}+6 \text{$\#$1}^2+6 \text{$\#$1}^3+\text{$\#$1}^4\&,3\right]^2,-4+\frac{2}{3}
+\text{Root}\left[-54-18 \text{$\#$1}+6 \text{$\#$1}^2+6 \text{$\#$1}^3+\text{$\#$1}^4\&,3\right]^2+\frac{1}{9} \text{Root}\left[-54-18 \text{$\#$1}+6
+\text{$\#$1}^2+6 \text{$\#$1}^3+\text{$\#$1}^4\&,3\right]^3,\frac{1}{3} \text{Root}\left[-54-18 \text{$\#$1}+6 \text{$\#$1}^2+6 \text{$\#$1}^3+\text{$\#$1}^4\&,3\right],\frac{2}{3}
+\text{Root}\left[-54-18 \text{$\#$1}+6 \text{$\#$1}^2+6 \text{$\#$1}^3+\text{$\#$1}^4\&,3\right]-\frac{1}{3} \text{Root}\left[-54-18 \text{$\#$1}+6
+\text{$\#$1}^2+6 \text{$\#$1}^3+\text{$\#$1}^4\&,3\right]^2-\frac{1}{9} \text{Root}\left[-54-18 \text{$\#$1}+6 \text{$\#$1}^2+6 \text{$\#$1}^3+\text{$\#$1}^4\&,3\right]^3,1,0\right\},\left\{3-\text{Root}\left[-54-18
+\text{$\#$1}+6 \text{$\#$1}^2+6 \text{$\#$1}^3+\text{$\#$1}^4\&,2\right]-\frac{1}{3} \text{Root}\left[-54-18 \text{$\#$1}+6 \text{$\#$1}^2+6 \text{$\#$1}^3+\text{$\#$1}^4\&,2\right]^2,-4+\frac{2}{3}
+\text{Root}\left[-54-18 \text{$\#$1}+6 \text{$\#$1}^2+6 \text{$\#$1}^3+\text{$\#$1}^4\&,2\right]^2+\frac{1}{9} \text{Root}\left[-54-18 \text{$\#$1}+6
+\text{$\#$1}^2+6 \text{$\#$1}^3+\text{$\#$1}^4\&,2\right]^3,\frac{1}{3} \text{Root}\left[-54-18 \text{$\#$1}+6 \text{$\#$1}^2+6 \text{$\#$1}^3+\text{$\#$1}^4\&,2\right],\frac{2}{3}
+\text{Root}\left[-54-18 \text{$\#$1}+6 \text{$\#$1}^2+6 \text{$\#$1}^3+\text{$\#$1}^4\&,2\right]-\frac{1}{3} \text{Root}\left[-54-18 \text{$\#$1}+6
+\text{$\#$1}^2+6 \text{$\#$1}^3+\text{$\#$1}^4\&,2\right]^2-\frac{1}{9} \text{Root}\left[-54-18 \text{$\#$1}+6 \text{$\#$1}^2+6 \text{$\#$1}^3+\text{$\#$1}^4\&,2\right]^3,1,0\right\},\left\{-\frac{3}{5},0,-\frac{2}{5},0,0,1\right\}\right\}\)
+
+\noindent\(\pmb{\text{eva}=\%[[1]]}\)
+
+\noindent\(\left\{\frac{4}{3},\frac{4}{9},2,\frac{2}{3},1,0\right\}\)
+
+\noindent\(\pmb{\%.\{1,1,1,1,1,1\}}\)
+
+\noindent\(\frac{49}{9}\)
+
+\noindent\(\pmb{\text{eva}/\%}\)
+
+\noindent\(\left\{\frac{12}{49},\frac{4}{49},\frac{18}{49},\frac{6}{49},\frac{9}{49},0\right\}\)
+
+\noindent\(\pmb{N[\%]}\)
+
+\noindent\(\{0.244898,0.0816327,0.367347,0.122449,0.183673,0.\}\)
+
+\noindent\(\pmb{S=\text{ConstantArray}\left[\frac{1}{6},\{6,6\}\right]}\)
+
+\noindent\(\left\{\left\{\frac{1}{6},\frac{1}{6},\frac{1}{6},\frac{1}{6},\frac{1}{6},\frac{1}{6}\right\},\left\{\frac{1}{6},\frac{1}{6},\frac{1}{6},\frac{1}{6},\frac{1}{6},\frac{1}{6}\right\},\left\{\frac{1}{6},\frac{1}{6},\frac{1}{6},\frac{1}{6},\frac{1}{6},\frac{1}{6}\right\},\left\{\frac{1}{6},\frac{1}{6},\frac{1}{6},\frac{1}{6},\frac{1}{6},\frac{1}{6}\right\},\left\{\frac{1}{6},\frac{1}{6},\frac{1}{6},\frac{1}{6},\frac{1}{6},\frac{1}{6}\right\},\left\{\frac{1}{6},\frac{1}{6},\frac{1}{6},\frac{1}{6},\frac{1}{6},\frac{1}{6}\right\}\right\}\)
+
+\noindent\(\pmb{\%\text{//}\text{MatrixForm}}\)
+
+\noindent\(\left(
+\begin{array}{cccccc}
+ \frac{1}{6} & \frac{1}{6} & \frac{1}{6} & \frac{1}{6} & \frac{1}{6} & \frac{1}{6} \\
+ \frac{1}{6} & \frac{1}{6} & \frac{1}{6} & \frac{1}{6} & \frac{1}{6} & \frac{1}{6} \\
+ \frac{1}{6} & \frac{1}{6} & \frac{1}{6} & \frac{1}{6} & \frac{1}{6} & \frac{1}{6} \\
+ \frac{1}{6} & \frac{1}{6} & \frac{1}{6} & \frac{1}{6} & \frac{1}{6} & \frac{1}{6} \\
+ \frac{1}{6} & \frac{1}{6} & \frac{1}{6} & \frac{1}{6} & \frac{1}{6} & \frac{1}{6} \\
+ \frac{1}{6} & \frac{1}{6} & \frac{1}{6} & \frac{1}{6} & \frac{1}{6} & \frac{1}{6}
+\end{array}
+\right)\)
+
+\noindent\(\pmb{M=(1-0.15)A+0.15S}\)
+
+\noindent\(\{\{0.025,0.025,0.45,0.45,0.025,0.195\},\{0.308333,0.025,0.025,0.025,0.025,0.195\},\{0.308333,0.45,0.025,0.45,0.875,0.195\},\{0.308333,0.45,0.025,0.025,0.025,0.195\},\{0.025,0.025,0.45,0.025,0.025,0.195\},\{0.025,0.025,0.025,0.025,0.025,0.025\}\}\)
+
+\noindent\(\pmb{\%\text{//}\text{MatrixForm}}\)
+
+\noindent\(\left(
+\begin{array}{cccccc}
+ 0.025 & 0.025 & 0.45 & 0.45 & 0.025 & 0.195 \\
+ 0.308333 & 0.025 & 0.025 & 0.025 & 0.025 & 0.195 \\
+ 0.308333 & 0.45 & 0.025 & 0.45 & 0.875 & 0.195 \\
+ 0.308333 & 0.45 & 0.025 & 0.025 & 0.025 & 0.195 \\
+ 0.025 & 0.025 & 0.45 & 0.025 & 0.025 & 0.195 \\
+ 0.025 & 0.025 & 0.025 & 0.025 & 0.025 & 0.025
+\end{array}
+\right)\)
+
+\noindent\(\pmb{\text{Eigenvalues}[M]}\)
+
+\noindent\(\{1.,-0.611269,-0.262306+0.235924 i,-0.262306-0.235924 i,0.285881,\text{1.0199208247615725$\grave{ }$*${}^{\wedge}$-17}\}\)
+
+\noindent\(\pmb{\text{Eigenvectors}[M]}\)
+
+\noindent\(\{\{0.485042,0.19879,0.713619,0.283275,0.36465,0.0524455\},\{0.517757,-0.239989,-0.671549,-0.0731306,0.466911,\text{3.6830639204873993$\grave{
+}$*${}^{\wedge}$-17}\},\{0.682199+0. i,-0.407353-0.366382 i,-0.0833974+0.0887608 i,-0.33765+0.289938 i,0.146202-0.0123168 i,\text{1.956227283832031$\grave{
+}$*${}^{\wedge}$-17}+\text{1.3156850108107444$\grave{ }$*${}^{\wedge}$-17} i\},\{0.682199+0. i,-0.407353+0.366382 i,-0.0833974-0.0887608 i,-0.33765-0.289938
+i,0.146202+0.0123168 i,\text{1.956227283832031$\grave{ }$*${}^{\wedge}$-17}-\text{1.3156850108107444$\grave{ }$*${}^{\wedge}$-17} i\},\{-0.233368,-0.231287,0.418149,-0.575126,0.621633,\text{1.588683736476077$\grave{
+}$*${}^{\wedge}$-17}\},\{-0.486664,-\text{7.426532209294064$\grave{ }$*${}^{\wedge}$-17},-0.324443,-\text{7.997803917701299$\grave{ }$*${}^{\wedge}$-17},\text{3.656138933806308$\grave{
+}$*${}^{\wedge}$-16},0.811107\}\}\)
+
+\noindent\(\pmb{\text{evm}=\%[[1]]}\)
+
+\noindent\(\{0.485042,0.19879,0.713619,0.283275,0.36465,0.0524455\}\)
+
+\noindent\(\pmb{\text{evm}.\{1,1,1,1,1,1\}}\)
+
+\noindent\(2.09782\)
+
+\noindent\(\pmb{\text{evm}/\%}\)
+
+\noindent\(\{0.231212,0.0947601,0.340172,0.135033,0.173823,0.025\}\)
+
+\noindent\(\pmb{\text{Exercise} 14}\)
+
+\noindent\(14 \text{Exercise}\)
+
+\noindent\(\pmb{A=\left\{\left\{0,0,\frac{1}{2},\frac{1}{2},0\right\},\left\{\frac{1}{3},0,0,0,0\right\},\left\{\frac{1}{3},\frac{1}{2},0,\frac{1}{2},1\right\},\right.}\\
+\pmb{\left.\left\{\frac{1}{3},\frac{1}{2},0,0,0\right\},\left\{0,0,\frac{1}{2},0,0\right\}\right\}}\)
+
+\noindent\(\left\{\left\{0,0,\frac{1}{2},\frac{1}{2},0\right\},\left\{\frac{1}{3},0,0,0,0\right\},\left\{\frac{1}{3},\frac{1}{2},0,\frac{1}{2},1\right\},\left\{\frac{1}{3},\frac{1}{2},0,0,0\right\},\left\{0,0,\frac{1}{2},0,0\right\}\right\}\)
+
+\noindent\(\pmb{\%\text{//}\text{MatrixForm}}\)
+
+\noindent\(\left(
+\begin{array}{ccccc}
+ 0 & 0 & \frac{1}{2} & \frac{1}{2} & 0 \\
+ \frac{1}{3} & 0 & 0 & 0 & 0 \\
+ \frac{1}{3} & \frac{1}{2} & 0 & \frac{1}{2} & 1 \\
+ \frac{1}{3} & \frac{1}{2} & 0 & 0 & 0 \\
+ 0 & 0 & \frac{1}{2} & 0 & 0
+\end{array}
+\right)\)
+
+\noindent\(\pmb{S=\text{ConstantArray}\left[\frac{1}{5},\{5,5\}\right]}\)
+
+\noindent\(\left\{\left\{\frac{1}{5},\frac{1}{5},\frac{1}{5},\frac{1}{5},\frac{1}{5}\right\},\left\{\frac{1}{5},\frac{1}{5},\frac{1}{5},\frac{1}{5},\frac{1}{5}\right\},\left\{\frac{1}{5},\frac{1}{5},\frac{1}{5},\frac{1}{5},\frac{1}{5}\right\},\left\{\frac{1}{5},\frac{1}{5},\frac{1}{5},\frac{1}{5},\frac{1}{5}\right\},\left\{\frac{1}{5},\frac{1}{5},\frac{1}{5},\frac{1}{5},\frac{1}{5}\right\}\right\}\)
+
+\noindent\(\pmb{\%\text{//}\text{MatrixForm}}\)
+
+\noindent\(\left(
+\begin{array}{ccccc}
+ \frac{1}{5} & \frac{1}{5} & \frac{1}{5} & \frac{1}{5} & \frac{1}{5} \\
+ \frac{1}{5} & \frac{1}{5} & \frac{1}{5} & \frac{1}{5} & \frac{1}{5} \\
+ \frac{1}{5} & \frac{1}{5} & \frac{1}{5} & \frac{1}{5} & \frac{1}{5} \\
+ \frac{1}{5} & \frac{1}{5} & \frac{1}{5} & \frac{1}{5} & \frac{1}{5} \\
+ \frac{1}{5} & \frac{1}{5} & \frac{1}{5} & \frac{1}{5} & \frac{1}{5}
+\end{array}
+\right)\)
+
+\noindent\(\pmb{M=(1-0.15)A+0.15S}\)
+
+\noindent\(\{\{0.03,0.03,0.455,0.455,0.03\},\{0.313333,0.03,0.03,0.03,0.03\},\{0.313333,0.455,0.03,0.455,0.88\},\{0.313333,0.455,0.03,0.03,0.03\},\{0.03,0.03,0.455,0.03,0.03\}\}\)
+
+\noindent\(\pmb{\%\text{//}\text{MatrixForm}}\)
+
+\noindent\(\left(
+\begin{array}{ccccc}
+ 0.03 & 0.03 & 0.455 & 0.455 & 0.03 \\
+ 0.313333 & 0.03 & 0.03 & 0.03 & 0.03 \\
+ 0.313333 & 0.455 & 0.03 & 0.455 & 0.88 \\
+ 0.313333 & 0.455 & 0.03 & 0.03 & 0.03 \\
+ 0.03 & 0.03 & 0.455 & 0.03 & 0.03
+\end{array}
+\right)\)
+
+\noindent\(\pmb{\text{Eigenvectors}[M]}\)
+
+\noindent\(\{\{0.48571,0.199064,0.714603,0.283666,0.365152\},\{0.517757,-0.239989,-0.671549,-0.0731306,0.466911\},\{-0.682199+0. i,0.407353+0.366382
+i,0.0833974-0.0887608 i,0.33765-0.289938 i,-0.146202+0.0123168 i\},\{-0.682199+0. i,0.407353-0.366382 i,0.0833974+0.0887608 i,0.33765+0.289938 i,-0.146202-0.0123168
+i\},\{-0.233368,-0.231287,0.418149,-0.575126,0.621633\}\}\)
+
+\noindent\(\pmb{\text{evm}=\%[[1]]}\)
+
+\noindent\(\{0.48571,0.199064,0.714603,0.283666,0.365152\}\)
+
+\noindent\(\pmb{\%[[1]]+\%[[2]]+\%[[3]]+\%[[4]]+\%[[5]]}\)
+
+\noindent\(2.04819\)
+
+\noindent\(\pmb{q=\{\text{evm}/\%\}}\)
+
+\noindent\(\{\{0.237141,0.0971898,0.348894,0.138496,0.17828\}\}\)
+
+\noindent\(\pmb{\text{myIteration}[\text{k$\_$},\text{M$\_$},\text{q$\_$},\text{guess$\_$}]\text{:=}\text{Module}[\{\text{tguess},\text{tq},\text{mit}\},}\\
+\pmb{\text{tq}=\text{Transpose}[q];}\\
+\pmb{\text{tguess}=\text{Transpose}[\text{guess}];}\\
+\pmb{\text{pretemp}=0.5;}\\
+\pmb{\text{For}[i=1,i<k+1,i=i+1,}\\
+\pmb{\text{mit}=\text{MatrixPower}[M,i].\text{tguess};}\\
+\pmb{\text{tmp}=\text{Abs}[\text{MatrixPower}[M,i].\text{tguess}-\text{tq}];}\\
+\pmb{\text{temp}=\text{Abs}[\text{tmp}[[1,1]]]+\text{Abs}[\text{tmp}[[2,1]]]+}\\
+\pmb{\text{Abs}[\text{tmp}[[3,1]]]+\text{Abs}[\text{tmp}[[4,1]]]+\text{Abs}[\text{tmp}[[5,1]]];}\\
+\pmb{\text{Print}\left[\text{Grid}\left[\left\{\left\{i,\text{mit},\text{temp},\frac{\text{temp}}{\text{pretemp}}\right\}\right\},\text{Frame}\to
+\text{All}\right]\right];}\\
+\pmb{\text{pretemp}=\text{temp};}\\
+\pmb{]}\\
+\pmb{\text{Print}[q];}\\
+\pmb{];}\)
+
+\noindent\(\pmb{\text{myIteration}[30,M,q,\{\{0.2,0.2,0.2,0.2,0.2\}\}]}\)
+
+\noindent\(
+\begin{array}{cccc}
+ 1 & \{\{0.2\},\{0.0866667\},\{0.426667\},\{0.171667\},\{0.115\}\} & 0.221887 & 0.443775
+\end{array}
+\)
+
+\noindent\(
+\begin{array}{cccc}
+ 2 & \{\{0.284292\},\{0.0866667\},\{0.294208\},\{0.1235\},\{0.211333\}\} & 0.160409 & 0.722929
+\end{array}
+\)
+
+\noindent\(
+\begin{array}{cccc}
+ 3 & \{\{0.207526\},\{0.110549\},\{0.379503\},\{0.147383\},\{0.155039\}\} & 0.105712 & 0.659016
+\end{array}
+\)
+
+\noindent\(
+\begin{array}{cccc}
+ 4 & \{\{0.253927\},\{0.088799\},\{0.330203\},\{0.135783\},\{0.191289\}\} & 0.05959 & 0.563702
+\end{array}
+\)
+
+\noindent\(
+\begin{array}{cccc}
+ 5 & \{\{0.228044\},\{0.101946\},\{0.359989\},\{0.139685\},\{0.170336\}\} & 0.0340811 & 0.571927
+\end{array}
+\)
+
+\noindent\(
+\begin{array}{cccc}
+ 6 & \{\{0.242362\},\{0.0946124\},\{0.342092\},\{0.137939\},\{0.182995\}\} & 0.0198722 & 0.583086
+\end{array}
+\)
+
+\noindent\(
+\begin{array}{cccc}
+ 7 & \{\{0.234013\},\{0.0986691\},\{0.35305\},\{0.138879\},\{0.175389\}\} & 0.0120371 & 0.605724
+\end{array}
+\)
+
+\noindent\(
+\begin{array}{cccc}
+ 8 & \{\{0.23907\},\{0.0963037\},\{0.346342\},\{0.138238\},\{0.180046\}\} & 0.00739049 & 0.613977
+\end{array}
+\)
+
+\noindent\(
+\begin{array}{cccc}
+ 9 & \{\{0.235947\},\{0.0977364\},\{0.350456\},\{0.138666\},\{0.177196\}\} & 0.00455672 & 0.616566
+\end{array}
+\)
+
+\noindent\(
+\begin{array}{cccc}
+ 10 & \{\{0.237877\},\{0.0968516\},\{0.347939\},\{0.13839\},\{0.178944\}\} & 0.00279948 & 0.614363
+\end{array}
+\)
+
+\noindent\(
+\begin{array}{cccc}
+ 11 & \{\{0.236689\},\{0.0973984\},\{0.349478\},\{0.13856\},\{0.177874\}\} & 0.00171444 & 0.612413
+\end{array}
+\)
+
+\noindent\(
+\begin{array}{cccc}
+ 12 & \{\{0.237416\},\{0.097062\},\{0.348537\},\{0.138456\},\{0.178528\}\} & 0.00104771 & 0.611112
+\end{array}
+\)
+
+\noindent\(
+\begin{array}{cccc}
+ 13 & \{\{0.236972\},\{0.0972679\},\{0.349112\},\{0.138519\},\{0.178128\}\} & 0.000639951 & 0.610807
+\end{array}
+\)
+
+\noindent\(
+\begin{array}{cccc}
+ 14 & \{\{0.237243\},\{0.0971421\},\{0.348761\},\{0.138481\},\{0.178373\}\} & 0.000390945 & 0.610899
+\end{array}
+\)
+
+\noindent\(
+\begin{array}{cccc}
+ 15 & \{\{0.237078\},\{0.097219\},\{0.348976\},\{0.138504\},\{0.178223\}\} & 0.000238913 & 0.611117
+\end{array}
+\)
+
+\noindent\(
+\begin{array}{cccc}
+ 16 & \{\{0.237179\},\{0.097172\},\{0.348844\},\{0.13849\},\{0.178315\}\} & 0.000146037 & 0.611256
+\end{array}
+\)
+
+\noindent\(
+\begin{array}{cccc}
+ 17 & \{\{0.237117\},\{0.0972007\},\{0.348925\},\{0.138499\},\{0.178259\}\} & 0.0000892742 & 0.611311
+\end{array}
+\)
+
+\noindent\(
+\begin{array}{cccc}
+ 18 & \{\{0.237155\},\{0.0971832\},\{0.348875\},\{0.138493\},\{0.178293\}\} & 0.000054574 & 0.611308
+\end{array}
+\)
+
+\noindent\(
+\begin{array}{cccc}
+ 19 & \{\{0.237132\},\{0.0971939\},\{0.348905\},\{0.138497\},\{0.178272\}\} & 0.0000333605 & 0.611289
+\end{array}
+\)
+
+\noindent\(
+\begin{array}{cccc}
+ 20 & \{\{0.237146\},\{0.0971873\},\{0.348887\},\{0.138495\},\{0.178285\}\} & 0.0000203923 & 0.611272
+\end{array}
+\)
+
+\noindent\(
+\begin{array}{cccc}
+ 21 & \{\{0.237137\},\{0.0971914\},\{0.348898\},\{0.138496\},\{0.178277\}\} & 0.0000124651 & 0.611265
+\end{array}
+\)
+
+\noindent\(
+\begin{array}{cccc}
+ 22 & \{\{0.237143\},\{0.0971889\},\{0.348891\},\{0.138495\},\{0.178282\}\} & \text{7.619488307339384$\grave{ }$*${}^{\wedge}$-6} & 0.611264
+\end{array}
+\)
+
+\noindent\(
+\begin{array}{cccc}
+ 23 & \{\{0.237139\},\{0.0971904\},\{0.348896\},\{0.138496\},\{0.178279\}\} & \text{4.657534596025359$\grave{ }$*${}^{\wedge}$-6} & 0.611266
+\end{array}
+\)
+
+\noindent\(
+\begin{array}{cccc}
+ 24 & \{\{0.237141\},\{0.0971895\},\{0.348893\},\{0.138495\},\{0.178281\}\} & \text{2.8470007784470175$\grave{ }$*${}^{\wedge}$-6} & 0.611268
+\end{array}
+\)
+
+\noindent\(
+\begin{array}{cccc}
+ 25 & \{\{0.23714\},\{0.09719\},\{0.348895\},\{0.138496\},\{0.17828\}\} & \text{1.7402824465523326$\grave{ }$*${}^{\wedge}$-6} & 0.611269
+\end{array}
+\)
+
+\noindent\(
+\begin{array}{cccc}
+ 26 & \{\{0.237141\},\{0.0971897\},\{0.348894\},\{0.138495\},\{0.17828\}\} & \text{1.0637805547691892$\grave{ }$*${}^{\wedge}$-6} & 0.611269
+\end{array}
+\)
+
+\noindent\(
+\begin{array}{cccc}
+ 27 & \{\{0.23714\},\{0.0971899\},\{0.348894\},\{0.138496\},\{0.17828\}\} & \text{6.502558543425296$\grave{ }$*${}^{\wedge}$-7} & 0.611269
+\end{array}
+\)
+
+\noindent\(
+\begin{array}{cccc}
+ 28 & \{\{0.237141\},\{0.0971898\},\{0.348894\},\{0.138495\},\{0.17828\}\} & \text{3.974809964918391$\grave{ }$*${}^{\wedge}$-7} & 0.611269
+\end{array}
+\)
+
+\noindent\(
+\begin{array}{cccc}
+ 29 & \{\{0.237141\},\{0.0971899\},\{0.348894\},\{0.138496\},\{0.17828\}\} & \text{2.42967614680345$\grave{ }$*${}^{\wedge}$-7} & 0.611269
+\end{array}
+\)
+
+\noindent\(
+\begin{array}{cccc}
+ 30 & \{\{0.237141\},\{0.0971898\},\{0.348894\},\{0.138496\},\{0.17828\}\} & \text{1.4851844204466502$\grave{ }$*${}^{\wedge}$-7} & 0.611268
+\end{array}
+\)
+
+\noindent\(\{\{0.237141,0.0971898,0.348894,0.138496,0.17828\}\}\)
+
+\noindent\(\pmb{\text{Exercise} 16}\)
+
+\noindent\(16 \text{Exercise}\)
+
+\noindent\(\pmb{A=\{\{0,0.5,0.5\},\{0,0,0.5\},\{1.,0.5,0\}\}}\)
+
+\noindent\(\{\{0,0.5 ,0.5 \},\{0,0,0.5 \},\{1. ,0.5 ,0\}\}\)
+
+\noindent\(\pmb{\%\text{//}\text{MatrixForm}}\)
+
+\noindent\(\left(
+\begin{array}{ccc}
+ 0 & 0.5  & 0.5  \\
+ 0 & 0 & 0.5  \\
+ 1.  & 0.5  & 0
+\end{array}
+\right)\)
+
+\noindent\(\pmb{S=\text{ConstantArray}\left[\frac{1}{3},\{3,3\}\right]}\)
+
+\noindent\(\left\{\left\{\frac{1}{3},\frac{1}{3},\frac{1}{3}\right\},\left\{\frac{1}{3},\frac{1}{3},\frac{1}{3}\right\},\left\{\frac{1}{3},\frac{1}{3},\frac{1}{3}\right\}\right\}\)
+
+\noindent\(\pmb{M=(1-m)A+m S}\)
+
+\noindent\(\left\{\left\{\frac{m}{3},\frac{m}{3}+0.5 (1-m) ,\frac{m}{3}+0.5 (1-m) \right\},\left\{\frac{m}{3},\frac{m}{3},\frac{m}{3}+0.5 (1-m) \right\},\left\{\frac{m}{3}+1.
+(1-m) ,\frac{m}{3}+0.5 (1-m) ,\frac{m}{3}\right\}\right\}\)
+
+\noindent\(\pmb{\%\text{//}\text{MatrixForm}}\)
+
+\noindent\(\left(
+\begin{array}{ccc}
+ \frac{m}{3} & \frac{m}{3}+0.5 (1-m)  & \frac{m}{3}+0.5 (1-m)  \\
+ \frac{m}{3} & \frac{m}{3} & \frac{m}{3}+0.5 (1-m)  \\
+ \frac{m}{3}+1. (1-m)  & \frac{m}{3}+0.5 (1-m)  & \frac{m}{3}
+\end{array}
+\right)\)
+
+\noindent\(\pmb{\text{Eigenvalues}[M]}\)
+
+\noindent\(\left\{\text{Root}\left[-m \text{$\#$1}^2+\text{$\#$1}^3-0.25 m ^2+0.5 m^2 ^2-0.25 m^3 ^2-0.25 ^3+0.75 m ^3-0.75 m^2 ^3+0.25 m^3 ^3+\text{$\#$1}
+\left(-1. m +1. m^2 -0.75 ^2+1.5 m ^2-0.75 m^2 ^2\right)\&,1\right],\text{Root}\left[-m \text{$\#$1}^2+\text{$\#$1}^3-0.25 m ^2+0.5 m^2 ^2-0.25 m^3
+^2-0.25 ^3+0.75 m ^3-0.75 m^2 ^3+0.25 m^3 ^3+\text{$\#$1} \left(-1. m +1. m^2 -0.75 ^2+1.5 m ^2-0.75 m^2 ^2\right)\&,2\right],\text{Root}\left[-m
+\text{$\#$1}^2+\text{$\#$1}^3-0.25 m ^2+0.5 m^2 ^2-0.25 m^3 ^2-0.25 ^3+0.75 m ^3-0.75 m^2 ^3+0.25 m^3 ^3+\text{$\#$1} \left(-1. m +1. m^2 -0.75 ^2+1.5
+m ^2-0.75 m^2 ^2\right)\&,3\right]\right\}\)
+
+\noindent\(\pmb{\text{Eigenvectors}[M]}\)
+
+\noindent\(\text{Eigenvectors}\text{::}\text{eivec0}: \text{Unable to find all eigenvectors.} \rangle\rangle \)
+
+\noindent\(\{\{0,0,0\},\{0,0,0\},\{0,0,0\}\}\)
+
+\end{document}

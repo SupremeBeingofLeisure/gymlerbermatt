@@ -1,0 +1,223 @@
+\section{Ein Ranking-System entwickeln}
+
+\subsection{Die Idee}
+Im Folgenden werden wir den Wert der Relevanz einer Webpage als importance score oder kurz {\bf Score} bezeichnen. Natürlich soll der Score eine positive reelle Zahl sein.
+
+Wir versuchen den simplen Ansatz, dass der Score einer Webpage gleich der Anzahl Links von andern Pages auf erstere ist. Wir nennen diese einkommenden Links {\bf Backlinks}. Das Web wird dadurch ein demokratisches System, in dem Seiten für die Relevanz anderer Seiten ihre Stimme geben können.
+
+Unser Web habe $n$ Seiten, wobei jede Seite mit einer Nummer $k$ indiziert sei, $1\leq k\leq n$. Ein kleines Beispiel ist in Abbildung \ref{kleinesbsp} auf Seite \pageref{kleinesbsp} illustriert. Ein Pfeil von Page A nach Page B bedeutet, dass in A ein Link zu B führt.
+
+\tikzstyle{every entity} = [top color=white, bottom color=green!30, 
+                            draw=green!50!black!100, minimum height={2.12cm}, minimum width={1.5cm} ,drop shadow]
+                            
+\tikzset{
+>=triangle 45,
+rot/.style={draw=black,thick
+}
+}
+\tikzstyle{output3} = [coordinate] 
+\tikzstyle{output4} = [coordinate] 
+\tikzstyle{output1} = [coordinate]                            
+
+\begin{figure}
+\begin{center}
+\scalebox{0.8}{
+{\begin{tikzpicture}[node distance=1.5cm, every edge/.style={link}]
+
+  \node[entity] (p1) {$P_1$};
+
+  \node[entity] (p3) [right =of p1] {$P_3$} edge [<-] (p1);
+  
+  \node[entity] (p4) [below =of p3] {$P_4$} edge [->] (p3);
+  
+  \node[entity] (p2) [left =of p4] {$P_2$} edge [->] (p4);
+                            
+  \node [output3, left =0cm of p3.160] (output3) {};
+  \draw[rot][<-] (p1.20) -- (output3);
+  
+  \node [output4, left =0cm of p4.115] (output4) {};
+  \draw[rot][<-] (p1.320) -- (output4);
+  
+  \node [output1, left =0cm of p1.295] (output1) {};
+  \draw[rot][<-] (p4.140) -- (output1);
+  
+   \draw[rot][->] (p1) -- (p2); 
+   \draw[rot][->] (p2.55) -- (p3.235);                         
+
+ \end{tikzpicture}}
+}
+\end{center}
+\caption{Ein kleines Beispiel eines Webs mit $4$ Pages. Die Pfeile stellen Links dar.}\label{kleinesbsp}
+\end{figure}
+
+Wir notieren mit $x_k$ den Score von Page $k$ im Web. Die $x_k$ sind also positiv und $x_j>x_k$ heisst, dass Page $j$ relevanter ist als Page $k$.
+
+Wir deklarieren unseren ersten Ansatz mit $x_k$ gleich der Anzahl Backlinks auf Page $k$. In Abbildung \ref{kleinesbsp} ist $x_1=2$, $x_2=1$, $x_3=3$ und $x_4=2$, was bedeutet, dass Page 3 am relevantesten ist. Ein Link zu Page $k$ entspricht ja einem Votum für die Relevanz von Page $k$.
+
+Der obige, simple Ansatz ignoriert ein wichtiges Feature eines Ranking-Algorithmus, nämlich dass ein Link zu Page $k$ von einer relevanten Page mehr zählt als von einer weniger relevanten. Beispielsweise sollte ein direkter Link von \texttt{Yahoo} zu deiner Website den Score weit mehr erhöhen als ein Backlink von \texttt{www.jormawassmer.ch} (Übereinstimmung mit bekannten Namen sind rein zufällig). Im Beispielweb in Abbildung \ref{kleinesbsp} haben die Pages 1 und 4 je zwei Backlinks: beide linken zueinander. Jedoch ist der zweite Backlink von Page 1 derjenige von der scheinbar relevanten Page 3, während der zweite Backlink von Page 4 von der relativ irrelevanten Page 2 stammt.
+
+Ein erster Versuch, obiges Manko zu beheben, könnte darin bestehen, das Score einer Page als Summe aller Scores der Backlinks zu definieren. Zum Beispiel ist in Abbildung \ref{kleinesbsp} das Score von Page 1 gegeben durch $x_1=x_3+x_4$. Da $x_3$ und $x_4$ auch von $x_1$ abhängen, scheint dieser Ansatz nicht ohne Selbstbezug auszukommen. Wir gehen jedoch diesem Ansatz, mit einer Modifikation, nach. Wie bei einer Wahl auch, wollen wir nicht zulassen, dass ein Wähler rein durch viele Stimmvergaben selber an Einfluss gewinnt. Daher erhöhen wir für eine Page $j$ mit $n_j$ Links, wovon einer auf Page $k$ linke, den Score von $k$ um das Verhältnis $\frac{x_j}{n_j}$. Mit diesem Ranking kriegt jede Page ein Gesamtscore von $1$. Formuliert für ein Web aus $n$ Pages, schreiben wir für die Menge aller Pages mit einem Link zu Page $k$, $L_k\subset\set{1,2,\dots,n}$. In andern Worten ist $L_k$ die Menge aller Backlinks von Page $k$. Für jedes $k$ wollen wir das Score
+
+\begin{equation}\label{score}
+x_k=\sum_{j\in L_k}\frac{x_j}{n_j}
+\end{equation}
+berechnen, wobei $n_j$ die Anzahl aller Links auf Page $j$ ist. Wir zählen natürlich Links auf sich selbst nicht; man kann sich also nicht selbst wählen.
+
+\begin{ueb}
+Überlege kurz, dass dieser Score wohldefiniert und positiv ist.
+\end{ueb}
+
+Für das Beispielweb in Abbildung \ref{kleinesbsp} auf Seite \pageref{kleinesbsp} haben wir also die Scores
+
+\begin{align*}
+x_1 &= \frac{x_3}{1}+\frac{x_4}{2}\\
+x_2 &= \frac{x_3}{3}\\
+x_3 &= \frac{x_1}{3}+\frac{x_2}{2}+\frac{x_4}{2}\\
+x_4 &= \frac{x_1}{3}+\frac{x_2}{2}
+\end{align*}
+
+Wir können dieses lineare Gleichungssystem in Matrixform $\B{Ax}=\B{x}$ mit $\B{x}=[x_1\;x_2\;x_3\;x_4]^{T}$ und
+$$\B{A}=\begin{pmatrix}
+0 & 0 & 1& \frac{1}{2}\\[0.5ex]
+\frac{1}{3} & 0 & 0 & 0\\[0.5ex]
+\frac{1}{3} & \frac{1}{2} & 0 & \frac{1}{2}\\[0.5ex]
+\frac{1}{3} & \frac{1}{2} & 0 & 0
+\end{pmatrix}$$
+schreiben. Das PageRanking-Problem ist also im Grunde nichts anderes als das Finden eines Eigenvektors für eine quadratische Matrix; und zwar einen mit Eigenwert $1$. Wir nennen gelegentlich eine Matrix zu einem gegebenen Web eine {\bf Link-Matrix}.
+
+\begin{ueb}
+Falls dus nicht mehr weisst, schlage kurz nach, was Eigenwerte und Eigenvektoren einer Matrix sind und wie man sie berechnet.
+\end{ueb}
+
+Nachdem wir nun ein einfaches und plausibles Ranking haben, schauen wir, ob sich dieses weiterentwickeln lässt.
+
+Beginnen wir numerisch mit unserer Beispielmatrix $\B{A}$ von oben. Sie hat tatsächlich einen Eigenwert $1$ und wir finden $[12\;4\;9\;6]^{T}$ als einen zugehörigen Eigenvektor.
+
+\begin{ueb}
+Rechne nach; zum Beispiel mit \texttt{Mathematica}.
+\end{ueb}
+
+Wir könnten vielleicht die Scores als Wahrscheinlichkeiten interpretieren, dass ein Surfer eine entsprechende Page besucht. Daher skalieren wir unseren Eigenvektor so, dass die Summe aller Komponenten $1$ ergibt: 
+$$\left[\frac{12}{31}\;\frac{4}{31}\;\frac{9}{31}\;\frac{6}{31}\right]^{T}\approx[0.39\;0.13\;0.29\;0.19]^{T}.$$
+
+\begin{bem}
+Dieses Ranking unterscheidet sich vom ersten einfachen Model, das bloss Backlinks zählte.
+\end{bem}
+
+Auf den ersten Blick scheint es erstaunlich, dass Page 3, die von allen andern gelinkt wird, nicht das höchste Score hat. Besser schneidet Page 1 ab, wie sich folgendermassen plausibilisieren lässt. Page 3 linkt nur zu Page 1, gibt also Page 1 seine volle Stimme. Zusammen mit der Wahl von Page 4 für Page 1 erhält letztere den höchsten Score.
+
+Alles schön und gut; aber hat den für ein beliebiges Web die zugehörige Link-Matrix einen Eigenwert $1$? Wenn nicht, können wir die vorangegangenen Überlegungen in den Müll werfen. Wir lassen nun Webs mit losen Pages --- Pages ohne Links --- weg, dann hat tatsächlich jede Link-Matrix $1$ als Eigenwert. Wir sind unserem Arbeitgeber Google einen Beweis schuldig; behaupten kann jeder, wir wollen beweisen.
+
+Ein beliebiges Web ohne lose Pages liefert mit dem in \eqref{score} definierten Score auf Seite \pageref{score} eine Matrix $\B{A}$ mit $A_{ij}=\frac{1}{n_j}$, falls Page $j$ auf Page $i$ linked, und $0$ sonst. Die $j$-te Spalte enthält also $n_j$ nicht-triviale Einträge mit Wert $\frac{1}{n_j}$, womit jede Spalte also Summe $1$ hat. Dies motiviert folgende
+
+\begin{defn}
+Eine quadratische Matrix heisst {\bf spalten-stochastisch}, wenn alle Einträge grösser oder gleich $0$ sind und jede Spaltensumme gleich $1$ ist.
+\end{defn}
+
+Jede Link-Matrix für ein Web ohne lose Pages ist also spalten-stochastisch. Endlich beweisen wir
+
+\begin{prop}\label{satzspaltenstochastischev1}
+Jede spalten-stochastische Matrix hat sicher einen Eigenwert $1$.
+\end{prop}
+
+\begin{proof}
+Sei $\B{A}$ eine $n\times n$ spalten-stochastische Matrix und $\B{e}$ ein $n$-dimensionaler $\B{1}$-Vektor. Wir verwenden die Tatsache, dass $\B{A}$ und $\B{A}^{T}$ dieselben Eigenwerte haben und offensichtlich  $\B{A}^{T}\B{e}=\B{e}$ gilt. Also ist $1$ ein Eigenwert von $\B{A}^{T}$ und damit von $\B{A}$.
+\end{proof}
+
+Für das weitere Vorgehen notieren wir den {\bf Eigenraum} einer spalten-stochastischen Matrix mit Eigenwert $1$ kurz mit $V_1(\B{A})$.
+
+\subsection{Probleme des gewählten Rankings}
+
+Bei der Verwendung des Scores \eqref{score} gibt es einige Schwierigkeiten. Wir greifen zwei davon auf:
+\begin{itemize}
+\item Webs mit nicht eindeutigen Rankings
+\item Webs mit losen Pages
+\end{itemize}
+
+\subsubsection{Nicht eindeutige Rankings}
+
+Wünschenswert wäre, dass die Dimension von $V_1(\B{A})$ gleich $1$ ist, womit wir einen eindeutigen Eigenvektor mit $\sum_ix_i=1$ hätten, den wir für den Score verwenden könnten. Im Beispielweb \ref{kleinesbsp} ist dieser Wunsch erfüllt; allgemeiner haben wir immer Dimension $1$, wenn das Web stark zusammenhängend ist --- d.h. man kann in endlich vielen Schritten von jeder Seite zu einer anderen Seite gelangen ---. Leider gibt es Webs, die keine eindeutigen Scores liefern. Betrachte dazu das Web in Abbildung \ref{bspnonunique} auf Seite \pageref{bspnonunique}.
+
+\tikzstyle{every entity} = [top color=white, bottom color=green!30, 
+                            draw=green!50!black!100, minimum height={2.12cm}, minimum width={1.5cm} ,drop shadow]
+                            
+\tikzset{
+>=triangle 45,
+rot/.style={draw=black,thick
+}
+}
+\tikzstyle{helpnode} = [coordinate] 
+\tikzstyle{output4} = [coordinate] 
+\tikzstyle{output1} = [coordinate]                            
+
+\begin{figure}
+\begin{center}
+\scalebox{0.8}{
+{\begin{tikzpicture}[node distance=1.5cm, every edge/.style={link}]
+
+  \node[entity] (p1) {$P_1$};
+
+  \node[entity] (p2) [below =of p1] {$P_2$} edge [->] (p1);
+  
+  \node[entity] (p3) [right = 1.3cm of p1] {$P_3$};
+  
+  \node[entity] (p4) [below =of p3] {$P_4$} edge [->] (p3);
+                            
+  \node [helpnode, right =1.8cm of p3] (helpnode) {};
+ 
+  \node[entity] (p5) [below =0.8cm of helpnode] {$P_5$} edge [->] (p3.0);
+  
+  \draw[rot][->] (p5.225) -- (p4.0); 
+  \draw[rot][->] (p1.250) -- (p2.110);
+  \draw[rot][->] (p3.250) -- (p4.110);                         
+
+ \end{tikzpicture}}
+}
+\end{center}
+\caption{Ein Web mit 5 Pages, bestehend aus 2 Subwebs.}\label{bspnonunique}
+\end{figure}
+
+Hier haben wir die Link-Matrix
+$$\B{A}=
+\begin{pmatrix}
+0 & 1 & 0 & 0 & 0\\
+1 & 0 & 0 & 0 & 0\\
+0 & 0 & 0 & 1 & \frac{1}{2}\\
+0 & 0 & 1 & 0 & \frac{1}{2}\\
+0 & 0 & 0 & 0 & 0
+\end{pmatrix}$$
+wobei der Eigenraum $V_1(\B{A})$ die Dimension $2$ hat; übel! Die auf Summe $1$ normierten Eigenvektoren sind $\B{x}=[0.5\;0.5\;0\;0\;0]$ und 
+$\B{y}=[0\;0\;0.5\;0.5\;0]$, deren Linearkombination $\frac{3}{4}\B{x}+\frac{1}{4}\B{y}=[0.375\;0.375\;0.125\;0.125\;0]$ liefert. Aber die Frage, welchen dieser Eigenvektoren wir für das Ranking bräuchten, bleibt offen.
+
+Der Befund für das zweigeteilte Subweb war nicht zufällig. Wenn ein Web aus, sagen wir $r$, Subwebs zusammengesetzt ist, dann ist $\dim{(V_1(\B{A}))}\geq r$. Somit wird es für diesen Fall keinen eindeutig bestimmten Eigenvektor mit Summe $1$ geben. In der Tat: Sei $W$ ein Web mit $n$ Seiten und $r$ Subwebs, $W_1,\dots, W_r$, mit je $n_i$ Seiten. Indizieren wir die Seiten in $W_1$ von $1$ bis $n_1$, die Seiten in $W_2$ von $n_1+1$ bis $n_1+n_2$ etc. und setzen $N_i=\sum_{j=1}^i n_j$ für $i\geq1$, $N_0=0$, dann enthält $W_i$ die Seiten $N_{i-1}+1$ bis $N_i$. Sodann können wir eine Link-Matrix für jedes Subweb generieren. In andern Worten, wir betrachten die Subwebs separat. Die \glqq Unter-Eigenvektoren\grqq\ zum Eigenwert $1$ sind klar linear unabhängig in Bezug auf $\B{A}$. Also hat $V_1(\B{A})$ mindestens Dimension $r$.
+
+\subsubsection{Lose Seiten}
+
+Ein Web mit mindestens einer losen Page führt zu einer Link-Matrix mit mindestens einer Spalte lauter Nullen. In diesem Fall nennen wir $\B{A}$ {\bf spalten-substochastisch}. Solch eine Matrix hat Eigenwerte gleich oder kleiner als $1$; jedoch muss $1$ nicht unbedingt ein Eigenwert sein. Trotzdem können die Pages in einem Web mit losen Pages ein Ranking erhalten. Die korrespondierende substochastische Matrix hat einen Eigenwert $\gl\leq 1$ und einen zugehörigen Eigenvektor $\B{x}$ mit nichtnegativen Komponenten --- ein sogenannter {\bf {\sc Perron} Eigenvektor} --- um Rankings zu generieren. Dies führt zu Fragen, denen wir hier nicht weiter nachgehen wollen.
+
+Untersuchen wir an dieser Stelle mit einigen Rechnungen, was wir haben.
+
+\begin{ueb}
+Die Webdesigner von Page 3 im Web von Abbildung \ref{kleinesbsp} sind verärgert, weil ihre Website mit dem Ranking nach \eqref{score} schlechter als Page 1 gewertet wird. Sie basteln eine Page 5, die mit Page 3 gegenseitig verlinkt wird. Wird durch diese Bastelei das Score von Page 3 grösser als das von Page 1?
+\end{ueb}
+
+\begin{ueb}
+Konstruiere ein Web aus drei oder mehr Subwebs und verifiziere, dass $\dim{V_1(\B{A})}$ gleich oder grösser der Anzahl Subwebs ist.
+\end{ueb}
+
+\begin{ueb}
+Im Web von Abbildung \ref{bspnonunique} auf Seite \pageref{bspnonunique} werde ein Link von Page 5 zu Page 1 hinzugefügt. Dieses Web ist nun vernetzt. Welche Dimension hat $V_1(\B{A})$?
+\end{ueb}
+
+\begin{ueb}
+Im Web von Abbildung \ref{kleinesbsp} auf Seite \pageref{kleinesbsp} entferne man den Link von Page 3 zu Page 1. Page 3 ist jetzt eine lose Seite. Finde die korrespondierende substochastische Matrix und den grössten positiven Eigenwert ({\sc Perron} Eigenwert). Berechne anschliessend zu diesem Eigenwert einen nicht negativen {\sc Perron}-Eigenvektor mit Summe aller Komponenten gleich $1$. Ist das berechnete Ranking vernünftig?
+\end{ueb}
+
+\begin{ueb}
+Bisher haben wir stillschweigend angenommen, dass der Score unabhängig von der Indizierung ist. Zeige dies wie folgt: Sei $W$ ein Web mit $n$ durchnummerierten Pages und $\B{A}$ die zugehörige Link-Matrix. Jetzt vertauschen wir die Indices der Pages $i$ und $j$ und nennen die neue Link-Matrix $\B{\tilde{A}}$.
+\begin{enumerate}
+\item Begründe, dass $\B{\tilde{A}}=\B{PAP}$, wobei $\B{P}$ die Elementarmatrix entstanden durch Vertauschung der Zeilen $i$ und $j$ der $n\times n$ Einheitsmatrix ist. Was macht $\B{PA}$, was $\B{AP}$? Wie viel gibt $\B{P}^2$?
+\item Sei $\B{x}$ ein Eigenvektor von $\B{A}$ zum Eigenwert $\gl$. Zeige, dass $\B{y}=\B{Px}$ ein Eigenvektor zum Eigenwert $\gl$ der Link-Matrix $\B{\tilde{A}}$ ist.
+\item Begründe schliesslich, dass obige Punkte erklären, dass eine Vertauschung der Indices den Score unverändert lässt und argumentiere, dass also jede Permutation der Indices den Score erhält.
+\end{enumerate}
+\end{ueb}

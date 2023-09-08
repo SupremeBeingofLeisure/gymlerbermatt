@@ -1,0 +1,631 @@
+\documentclass[%
+11pt,%
+%oneside,%
+twoside,%
+%twocolumn,%
+titlepage,%
+%fleqn,%
+a4page,%
+german,%
+headsepline%
+]{scrartcl}
+
+%\usepackage{fancyhdr}
+\usepackage{scrpage2}
+\usepackage{lastpage}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage[applemac]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{lscape}
+\usepackage{../../../../Documents/mymath}
+\usepackage{units}
+\usepackage{nicefrac}
+\usepackage{pgf,tikz}
+\usetikzlibrary{arrows}
+\usepackage{colortbl}
+\usepackage{hhline}
+\usepackage{multirow}
+\usepackage[extendedchars]{grffile}
+\usepackage{caption}
+\usepackage{multicol,calc}
+\usepackage{blindtext}
+\usepackage{pdfpages}
+\usepackage{hyperref}
+\usepackage{tikz-er2}
+\usepackage{framed}
+\usetikzlibrary{arrows}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shadows}
+
+\usepackage{romannum}
+\usepackage{longtable}
+\usepackage{listings}
+\usepackage{wrapfig}
+
+
+% Command, um Tabellen-Spalten anzupassen
+\newcommand{\spaltenheight}{\rule{0mm}{3ex}}
+\newcommand{\spaltenwidth}{\rule{3cm}{0mm}}
+\newcommand{\spaltensep}{\\[1ex]}
+%\arrayrulecolor{darkgreen}
+\doublerulesepcolor{white}
+\definecolor{lightyellow}{rgb}{1,1,0.8}
+\definecolor{Gray}{gray}{0.9}
+
+
+% Pagestyle/Layout
+%\geometry{a4paper , tmargin =2.5cm,	bmargin=3cm, lmargin =2.5cm,	rmargin =2.5cm,	headheight=3em, headsep=1em, footskip=1cm}
+\setlength{\parindent}{0pt} \setlength{\parskip}{1em}
+%für TwoSide
+\lehead{\headmark\pagemark}
+%\cehead{}
+%\rehead{}
+%\lohead{}
+%\cohead{}
+%\rohead{\headmark}
+%für OneSide
+%\ihead{}
+%\chead{}
+%\ohead{}
+\setheadsepline{0.5pt} % Linie zur Begrenzung
+\setfootsepline{0.5pt} % Linie zur Begrenzung
+\pagestyle{headings} % gemachte Einstellungen anwenden
+
+\subject{\includegraphics[width=0.618\textwidth]{pictures/google}}
+\title{Der milliardenschwere Eigenvektor}
+\subtitle{Lineare Algebra bei Google}
+\author{}
+\date{}
+%\lowertitleback{
+%\includegraphics[height=1.1cm]{/Users/jormawassmer/Pictures/logokoeniz.jpg}%
+%\copyright Jorma Wassmer
+%1. Auflage, Februar 2011
+%}
+
+
+\begin{document}
+\maketitle
+
+\newpage\thispagestyle{empty}~
+\newpage
+
+\tableofcontents
+%\thispagestyle{empty}
+\cleardoublepage
+%\setcounter{page}{1}
+
+
+\begin{wrapfigure}{r}{0.382\textwidth}
+\vspace{-22pt}
+  \begin{center}
+    \includegraphics[width=0.382\textwidth]{pictures/googlemaps}
+  \end{center}
+%\caption{You Know my Name}
+\vspace{-21pt}
+\end{wrapfigure}
+
+\pagenumbering{arabic}
+%\setcounter{page}{1}
+
+\section{Einführung}
+
+Als Google in den späten 90-er Jahren on\-line ging war es unter anderem folgende Tatsache, die das Unternehmen von anderen Suchmaschinen-Anbietern unterschied: Die Resultate auf Suchanfragen schienen immer die relevantesten Treffer als erste aufzulisten. Bei andern Suchmaschinen musste man sich oft Seite um Seite durch belanglose Treffer kämpfen, bis ein akzeptabler gefunden war, der dem Suchtext entsprach. Ein Teil der Magie hinter Google ist ihr \emph{PageRank-Algorithmus}, der die Relevanz jeder Webseite quantifiziert und daher die \glqq guten\grqq\ Links zuerst anzeigt.
+
+Jeder Webpage-Designer ist interessiert, wie PageRank die Relevanz berechnet. Dadurch kann er die Chance beeinflussen, dass seine Seite in Google möglichst weit vorne aufgelistet und damit von vielen Leuten besucht wird. Das Ziel dieses Exkurses ist, eine der Grundideen des Webpage Ranking von Google kennenzulernen. Wie sich zeigen wird, handelt es sich dabei um eine schöne Anwendung linearer Algebra.
+
+Suchmaschinen wie Google haben grund\-sätz\-lich drei Aufgaben:
+\begin{itemize}
+\item Web durchsuchen und alle öffentlichen Seiten lokalisieren.
+\item Indexieren der gefundenen Seiten mit keywords, so dass sie effizient gesucht werden können.
+\item Die Relevanz jeder Seite so festlegen, dass die \glqq guten\grqq\ Seiten auf eine Anfrage zuerst aufgelistet werden.
+\end{itemize}
+
+Wir betrachten hier in diesem Paper den letzten Punkt:
+
+\begin{quote}
+Wie definiert man in einem Web eine sinnvolle Quantifizierung der Relevanz von Webpages?
+\end{quote}
+
+Diese Quantifizierung der Relevanz von Webpages ist nicht das einzige Kriterium für die Reihenfolge der Auflistung, aber ein sehr wichtiges. Ebenfalls ist \emph{PageRank} nicht der einzige erfolgreiche Ranking-Algorithmus.
+
+\section{Ein Ranking-System entwickeln}
+
+\subsection{Die Idee}
+Im Folgenden werden wir den Wert der Relevanz einer Webpage als importance score oder kurz {\bf Score} bezeichnen. Natürlich soll der Score eine positive reelle Zahl sein.
+
+Wir versuchen den simplen Ansatz, dass der Score einer Webpage gleich der Anzahl Links von andern Pages auf erstere ist. Wir nennen diese einkommenden Links {\bf Backlinks}. Das Web wird dadurch ein demokratisches System, in dem Seiten für die Relevanz anderer Seiten ihre Stimme geben können.
+
+Unser Web habe $n$ Seiten, wobei jede Seite mit einer Nummer $k$ indiziert sei, $1\leq k\leq n$. Ein kleines Beispiel ist in Abbildung \ref{kleinesbsp} auf Seite \pageref{kleinesbsp} illustriert. Ein Pfeil von Page A nach Page B bedeutet, dass in A ein Link zu B führt.
+
+\tikzstyle{every entity} = [top color=white, bottom color=green!30, 
+                            draw=green!50!black!100, minimum height={2.12cm}, minimum width={1.5cm} ,drop shadow]
+                            
+\tikzset{
+>=triangle 45,
+rot/.style={draw=black,thick
+}
+}
+\tikzstyle{output3} = [coordinate] 
+\tikzstyle{output4} = [coordinate] 
+\tikzstyle{output1} = [coordinate]                            
+
+\begin{figure}
+\begin{center}
+\scalebox{0.8}{
+{\begin{tikzpicture}[node distance=1.5cm, every edge/.style={link}]
+
+  \node[entity] (p1) {$P_1$};
+
+  \node[entity] (p3) [right =of p1] {$P_3$} edge [<-] (p1);
+  
+  \node[entity] (p4) [below =of p3] {$P_4$} edge [->] (p3);
+  
+  \node[entity] (p2) [left =of p4] {$P_2$} edge [->] (p4);
+                            
+  \node [output3, left =0cm of p3.160] (output3) {};
+  \draw[rot][<-] (p1.20) -- (output3);
+  
+  \node [output4, left =0cm of p4.115] (output4) {};
+  \draw[rot][<-] (p1.320) -- (output4);
+  
+  \node [output1, left =0cm of p1.295] (output1) {};
+  \draw[rot][<-] (p4.140) -- (output1);
+  
+   \draw[rot][->] (p1) -- (p2); 
+   \draw[rot][->] (p2.55) -- (p3.235);                         
+
+ \end{tikzpicture}}
+}
+\end{center}
+\caption{Ein kleines Beispiel eines Webs mit $4$ Pages. Die Pfeile stellen Links dar.}\label{kleinesbsp}
+\end{figure}
+
+Wir notieren mit $x_k$ den Score von Page $k$ im Web. Die $x_k$ sind also positiv und $x_j>x_k$ heisst, dass Page $j$ relevanter ist als Page $k$.
+
+Wir deklarieren unseren ersten Ansatz mit $x_k$ gleich der Anzahl Backlinks auf Page $k$. In Abbildung \ref{kleinesbsp} ist $x_1=2$, $x_2=1$, $x_3=3$ und $x_4=2$, was bedeutet, dass Page 3 am relevantesten ist. Ein Link zu Page $k$ entspricht ja einem Votum für die Relevanz von Page $k$.
+
+Der obige, simple Ansatz ignoriert ein wichtiges Feature eines Ranking-Algorithmus, nämlich dass ein Link zu Page $k$ von einer relevanten Page mehr zählt als von einer weniger relevanten. Beispielsweise sollte ein direkter Link von \texttt{Yahoo} zu deiner Website den Score weit mehr erhöhen als ein Backlink von \texttt{www.jormawassmer.ch} (Übereinstimmung mit bekannten Namen sind rein zufällig). Im Beispielweb in Abbildung \ref{kleinesbsp} haben die Pages 1 und 4 je zwei Backlinks: beide linken zueinander. Jedoch ist der zweite Backlink von Page 1 derjenige von der scheinbar relevanten Page 3, während der zweite Backlink von Page 4 von der relativ irrelevanten Page 2 stammt.
+
+Ein erster Versuch, obiges Manko zu beheben, könnte darin bestehen, das Score einer Page als Summe aller Scores der Backlinks zu definieren. Zum Beispiel ist in Abbildung \ref{kleinesbsp} das Score von Page 1 gegeben durch $x_1=x_3+x_4$. Da $x_3$ und $x_4$ auch von $x_1$ abhängen, scheint dieser Ansatz nicht ohne Selbstbezug auszukommen. Wir gehen jedoch diesem Ansatz, mit einer Modifikation, nach. Wie bei einer Wahl auch, wollen wir nicht zulassen, dass ein Wähler rein durch viele Stimmvergaben selber an Einfluss gewinnt. Daher erhöhen wir für eine Page $j$ mit $n_j$ Links, wovon einer auf Page $k$ linke, den Score von $k$ um das Verhältnis $\frac{x_j}{n_j}$. Mit diesem Ranking kriegt jede Page ein Gesamtscore von $1$. Formuliert für ein Web aus $n$ Pages, schreiben wir für die Menge aller Pages mit einem Link zu Page $k$, $L_k\subset\set{1,2,\dots,n}$. In andern Worten ist $L_k$ die Menge aller Backlinks von Page $k$. Für jedes $k$ wollen wir das Score
+
+\begin{equation}\label{score}
+x_k=\sum_{j\in L_k}\frac{x_j}{n_j}
+\end{equation}
+berechnen, wobei $n_j$ die Anzahl aller Links auf Page $j$ ist. Wir zählen natürlich Links auf sich selbst nicht; man kann sich also nicht selbst wählen.
+
+\begin{ueb}
+Überlege kurz, dass dieser Score wohldefiniert und positiv ist.
+\end{ueb}
+
+Für das Beispielweb in Abbildung \ref{kleinesbsp} auf Seite \pageref{kleinesbsp} haben wir also die Scores
+
+\begin{align*}
+x_1 &= \frac{x_3}{1}+\frac{x_4}{2}\\
+x_2 &= \frac{x_1}{3}\\
+x_3 &= \frac{x_1}{3}+\frac{x_2}{2}+\frac{x_4}{2}\\
+x_4 &= \frac{x_1}{3}+\frac{x_2}{2}
+\end{align*}
+
+Wir können dieses lineare Gleichungssystem in Matrixform $\B{Ax}=\B{x}$ mit $\B{x}=[x_1\;x_2\;x_3\;x_4]^{T}$ und
+$$\B{A}=\begin{pmatrix}
+0 & 0 & 1& \frac{1}{2}\\[0.5ex]
+\frac{1}{3} & 0 & 0 & 0\\[0.5ex]
+\frac{1}{3} & \frac{1}{2} & 0 & \frac{1}{2}\\[0.5ex]
+\frac{1}{3} & \frac{1}{2} & 0 & 0
+\end{pmatrix}$$
+schreiben. Das PageRanking-Problem ist also im Grunde nichts anderes als das Finden eines Eigenvektors für eine quadratische Matrix; und zwar einen mit Eigenwert $1$. Wir nennen gelegentlich eine Matrix zu einem gegebenen Web eine {\bf Link-Matrix}.
+
+\begin{ueb}
+Falls dus nicht mehr weisst, schlage kurz nach, was Eigenwerte und Eigenvektoren einer Matrix sind und wie man sie berechnet.
+\end{ueb}
+
+Nachdem wir nun ein einfaches und plausibles Ranking haben, schauen wir, ob sich dieses weiterentwickeln lässt.
+
+Beginnen wir numerisch mit unserer Beispielmatrix $\B{A}$ von oben. Sie hat tatsächlich einen Eigenwert $1$ und wir finden $[12\;4\;9\;6]^{T}$ als einen zugehörigen Eigenvektor.
+
+\begin{ueb}
+Rechne nach; zum Beispiel mit \texttt{Mathematica}.
+\end{ueb}
+
+Wir könnten vielleicht die Scores als Wahrscheinlichkeiten interpretieren, dass ein Surfer eine entsprechende Page besucht. Daher skalieren wir unseren Eigenvektor so, dass die Summe aller Komponenten $1$ ergibt: 
+$$\left[\frac{12}{31}\;\frac{4}{31}\;\frac{9}{31}\;\frac{6}{31}\right]^{T}\approx[0.39\;0.13\;0.29\;0.19]^{T}.$$
+
+\begin{bem}
+Dieses Ranking unterscheidet sich vom ersten einfachen Model, das bloss Backlinks zählte.
+\end{bem}
+
+Auf den ersten Blick scheint es erstaunlich, dass Page 3, die von allen andern gelinkt wird, nicht das höchste Score hat. Besser schneidet Page 1 ab, wie sich folgendermassen plausibilisieren lässt. Page 3 linkt nur zu Page 1, gibt also Page 1 seine volle Stimme. Zusammen mit der Wahl von Page 4 für Page 1 erhält letztere den höchsten Score.
+
+Alles schön und gut; aber hat den für ein beliebiges Web die zugehörige Link-Matrix einen Eigenwert $1$? Wenn nicht, können wir die vorangegangenen Überlegungen in den Müll werfen. Wir lassen nun Webs mit losen Pages --- Pages ohne Links --- weg, dann hat tatsächlich jede Link-Matrix $1$ als Eigenwert. Wir sind unserem Arbeitgeber Google einen Beweis schuldig; behaupten kann jeder, wir wollen beweisen.
+
+Ein beliebiges Web ohne lose Pages liefert mit dem in \eqref{score} definierten Score auf Seite \pageref{score} eine Matrix $\B{A}$ mit $A_{ij}=\frac{1}{n_j}$, falls Page $j$ auf Page $i$ linked, und $0$ sonst. Die $j$-te Spalte enthält also $n_j$ nicht-triviale Einträge mit Wert $\frac{1}{n_j}$, womit jede Spalte also Summe $1$ hat. Dies motiviert folgende
+
+\begin{defn}
+Eine quadratische Matrix heisst {\bf spalten-stochastisch}, wenn alle Einträge grösser oder gleich $0$ sind und jede Spaltensumme gleich $1$ ist.
+\end{defn}
+
+Jede Link-Matrix für ein Web ohne lose Pages ist also spalten-stochastisch. Endlich beweisen wir
+
+\begin{prop}\label{satzspaltenstochastischev1}
+Jede spalten-stochastische Matrix hat sicher einen Eigenwert $1$.
+\end{prop}
+
+\begin{proof}
+Sei $\B{A}$ eine $n\times n$ spalten-stochastische Matrix und $\B{e}$ ein $n$-dimensionaler $\B{1}$-Vektor. Wir verwenden die Tatsache, dass $\B{A}$ und $\B{A}^{T}$ dieselben Eigenwerte haben und offensichtlich  $\B{A}^{T}\B{e}=\B{e}$ gilt. Also ist $1$ ein Eigenwert von $\B{A}^{T}$ und damit von $\B{A}$.
+\end{proof}
+
+Für das weitere Vorgehen notieren wir den {\bf Eigenraum} einer spalten-stochastischen Matrix mit Eigenwert $1$ kurz mit $V_1(\B{A})$.
+
+\subsection{Probleme des gewählten Rankings}
+
+Bei der Verwendung des Scores \eqref{score} gibt es einige Schwierigkeiten. Wir greifen zwei davon auf:
+\begin{itemize}
+\item Webs mit nicht eindeutigen Rankings
+\item Webs mit losen Pages
+\end{itemize}
+
+\subsubsection{Nicht eindeutige Rankings}
+
+Wünschenswert wäre, dass die Dimension von $V_1(\B{A})$ gleich $1$ ist, womit wir einen eindeutigen Eigenvektor mit $\sum_ix_i=1$ hätten, den wir für den Score verwenden könnten. Im Beispielweb \ref{kleinesbsp} ist dieser Wunsch erfüllt; allgemeiner haben wir immer Dimension $1$, wenn das Web stark zusammenhängend ist --- d.h. man kann in endlich vielen Schritten von jeder Seite zu einer anderen Seite gelangen ---. Leider gibt es Webs, die keine eindeutigen Scores liefern. Betrachte dazu das Web in Abbildung \ref{bspnonunique} auf Seite \pageref{bspnonunique}.
+
+\tikzstyle{every entity} = [top color=white, bottom color=green!30, 
+                            draw=green!50!black!100, minimum height={2.12cm}, minimum width={1.5cm} ,drop shadow]
+                            
+\tikzset{
+>=triangle 45,
+rot/.style={draw=black,thick
+}
+}
+\tikzstyle{helpnode} = [coordinate] 
+\tikzstyle{output4} = [coordinate] 
+\tikzstyle{output1} = [coordinate]                            
+
+\begin{figure}
+\begin{center}
+\scalebox{0.8}{
+{\begin{tikzpicture}[node distance=1.5cm, every edge/.style={link}]
+
+  \node[entity] (p1) {$P_1$};
+
+  \node[entity] (p2) [below =of p1] {$P_2$} edge [->] (p1);
+  
+  \node[entity] (p3) [right = 1.3cm of p1] {$P_3$};
+  
+  \node[entity] (p4) [below =of p3] {$P_4$} edge [->] (p3);
+                            
+  \node [helpnode, right =1.8cm of p3] (helpnode) {};
+ 
+  \node[entity] (p5) [below =0.8cm of helpnode] {$P_5$} edge [->] (p3.0);
+  
+  \draw[rot][->] (p5.225) -- (p4.0); 
+  \draw[rot][->] (p1.250) -- (p2.110);
+  \draw[rot][->] (p3.250) -- (p4.110);                         
+
+ \end{tikzpicture}}
+}
+\end{center}
+\caption{Ein Web mit 5 Pages, bestehend aus 2 Subwebs.}\label{bspnonunique}
+\end{figure}
+
+Hier haben wir die Link-Matrix
+$$\B{A}=
+\begin{pmatrix}
+0 & 1 & 0 & 0 & 0\\
+1 & 0 & 0 & 0 & 0\\
+0 & 0 & 0 & 1 & \frac{1}{2}\\
+0 & 0 & 1 & 0 & \frac{1}{2}\\
+0 & 0 & 0 & 0 & 0
+\end{pmatrix}$$
+wobei der Eigenraum $V_1(\B{A})$ die Dimension $2$ hat; übel! Die auf Summe $1$ normierten Eigenvektoren sind $\B{x}=[0.5\;0.5\;0\;0\;0]$ und 
+$\B{y}=[0\;0\;0.5\;0.5\;0]$, deren Linearkombination $\frac{3}{4}\B{x}+\frac{1}{4}\B{y}=[0.375\;0.375\;0.125\;0.125\;0]$ liefert. Aber die Frage, welchen dieser Eigenvektoren wir für das Ranking bräuchten, bleibt offen.
+
+Der Befund für das zweigeteilte Subweb war nicht zufällig. Wenn ein Web aus, sagen wir $r$, Subwebs zusammengesetzt ist, dann ist $\dim{(V_1(\B{A}))}\geq r$. Somit wird es für diesen Fall keinen eindeutig bestimmten Eigenvektor mit Summe $1$ geben. In der Tat: Sei $W$ ein Web mit $n$ Seiten und $r$ Subwebs, $W_1,\dots, W_r$, mit je $n_i$ Seiten. Indizieren wir die Seiten in $W_1$ von $1$ bis $n_1$, die Seiten in $W_2$ von $n_1+1$ bis $n_1+n_2$ etc. und setzen $N_i=\sum_{j=1}^i n_j$ für $i\geq1$, $N_0=0$, dann enthält $W_i$ die Seiten $N_{i-1}+1$ bis $N_i$. Sodann können wir eine Link-Matrix für jedes Subweb generieren. In andern Worten, wir betrachten die Subwebs separat. Die \glqq Unter-Eigenvektoren\grqq\ zum Eigenwert $1$ sind klar linear unabhängig in Bezug auf $\B{A}$. Also hat $V_1(\B{A})$ mindestens Dimension $r$.
+
+\subsubsection{Lose Seiten}
+
+Ein Web mit mindestens einer losen Page führt zu einer Link-Matrix mit mindestens einer Spalte lauter Nullen. In diesem Fall nennen wir $\B{A}$ {\bf spalten-substochastisch}. Solch eine Matrix hat Eigenwerte gleich oder kleiner als $1$; jedoch muss $1$ nicht unbedingt ein Eigenwert sein. Trotzdem können die Pages in einem Web mit losen Pages ein Ranking erhalten. Die korrespondierende substochastische Matrix hat einen Eigenwert $\gl\leq 1$ und einen zugehörigen Eigenvektor $\B{x}$ mit nichtnegativen Komponenten --- ein sogenannter {\bf {\sc Perron} Eigenvektor} --- um Rankings zu generieren. Dies führt zu Fragen, denen wir hier nicht weiter nachgehen wollen.
+
+Untersuchen wir an dieser Stelle mit einigen Rechnungen, was wir haben.
+
+\begin{ueb}
+Die Webdesigner von Page 3 im Web von Abbildung \ref{kleinesbsp} sind verärgert, weil ihre Website mit dem Ranking nach \eqref{score} schlechter als Page 1 gewertet wird. Sie basteln eine Page 5, die mit Page 3 gegenseitig verlinkt wird. Wird durch diese Bastelei das Score von Page 3 grösser als das von Page 1?
+\end{ueb}
+
+\begin{ueb}
+Konstruiere ein Web aus drei oder mehr Subwebs und verifiziere, dass $\dim{V_1(\B{A})}$ gleich oder grösser der Anzahl Subwebs ist.
+\end{ueb}
+
+\begin{ueb}
+Im Web von Abbildung \ref{bspnonunique} auf Seite \pageref{bspnonunique} werde ein Link von Page 5 zu Page 1 hinzugefügt. Dieses Web ist nun vernetzt. Welche Dimension hat $V_1(\B{A})$?
+\end{ueb}
+
+\begin{ueb}
+Im Web von Abbildung \ref{kleinesbsp} auf Seite \pageref{kleinesbsp} entferne man den Link von Page 3 zu Page 1. Page 3 ist jetzt eine lose Seite. Finde die korrespondierende substochastische Matrix und den grössten positiven Eigenwert ({\sc Perron} Eigenwert). Berechne anschliessend zu diesem Eigenwert einen nicht negativen {\sc Perron}-Eigenvektor mit Summe aller Komponenten gleich $1$. Ist das berechnete Ranking vernünftig?
+\end{ueb}
+
+\begin{ueb}
+Bisher haben wir stillschweigend angenommen, dass der Score unabhängig von der Indizierung ist. Zeige dies wie folgt: Sei $W$ ein Web mit $n$ durchnummerierten Pages und $\B{A}$ die zugehörige Link-Matrix. Jetzt vertauschen wir die Indices der Pages $i$ und $j$ und nennen die neue Link-Matrix $\B{\tilde{A}}$.
+\begin{enumerate}
+\item Begründe, dass $\B{\tilde{A}}=\B{PAP}$, wobei $\B{P}$ die Elementarmatrix entstanden durch Vertauschung der Zeilen $i$ und $j$ der $n\times n$ Einheitsmatrix ist. Was macht $\B{PA}$, was $\B{AP}$? Wie viel gibt $\B{P}^2$?
+\item Sei $\B{x}$ ein Eigenvektor von $\B{A}$ zum Eigenwert $\gl$. Zeige, dass $\B{y}=\B{Px}$ ein Eigenvektor zum Eigenwert $\gl$ der Link-Matrix $\B{\tilde{A}}$ ist.
+\item Begründe schliesslich, dass obige Punkte erklären, dass eine Vertauschung der Indices den Score unverändert lässt und argumentiere, dass also jede Permutation der Indices den Score erhält.
+\end{enumerate}
+\end{ueb}
+
+\section{Eine Lösung für Eigenräume grösser 1}
+
+Will man den Eigenvektor der Link-Matrix des World Wide Web bestimmen, so braucht man dazu viel Rechenpower. Deshalb ist es wichtig, dass unser Algorithmus eine eindeutig bestimmte Lösung des Rankings liefert. Obige Analyse hat gezeigt, dass unser Versuch Schwierigkeiten mit sich bringt, wenn das Web nicht zusammenhängend ist; und das World Wide Web ist in hohem Masse unzusammenhängend.
+
+Wir betrachten im Folgenden eine Methode, die diesen Misstand behebt.
+
+\subsection{Modifikation der Link-Matrix}
+
+Für ein $n$-seitiges Web ohne lose Pages können wir ein eindeutiges Ranking schaffen. Sei dazu $\B{S}$ eine $n\times n$ Matrix voller Komponenten $\frac{1}{n}$. Die Matrix $\B{S}$ ist also spalten-stochastisch und $V_1(\B{S})$ ist eindimensional, wie sich leicht verifizieren lässt. Wir ersetzen nun die Link-Matrix $\B{A}$ durch die Matrix
+\begin{equation}\label{equM}
+\B{M}=(1-m)\B{A}+m\B{S},
+\end{equation}
+wobei $0\leq m\leq1$. $\B{M}$ ist offensichtlich ein gewichtetes Mittel von $\B{A}$ und $\B{S}$. Für alle $m\in[0,1]$ ist $\B{M}$ spalten-stochastisch und wir zeigen gleich, dass $V_1(\B{M})$ für $m\in(0,1]$ immer eindimensional ist. Folglich liefert $\B{M}$ eindeutige Rankings.
+
+\begin{ueb}
+Notiere rasch die Fälle $m=0$ bzw. $m=1$ und kommentiere.
+\end{ueb}
+
+\begin{bem}
+Für $m$ setzte Google den Wert $0.15$ ein.
+\end{bem}
+
+Mit diesem Kniff, der Verwendung von $\B{M}$ anstelle von $\B{A}$, haben wir nun keine losen Pages, denn diese erhalten nun den Score $\frac{m}{n}$. Ferner ist $\B{M}$ substochastisch für alle $m<1$. Damit haben also in unserem Model auch lose Pages ein Score. Jedoch bleiben es lose Pages im Web. Wir beschränken uns der Einfachheit halber für den Rest auf Webs ohne lose Pages.
+
+Die Bedingung $\B{x}=\B{Mx}$ lässt sich in der Form
+\begin{equation}\label{equs}
+\B{x}=(1-m)\B{Ax}+m\B{s}
+\end{equation}
+schreiben, wobei $\B{s}$ ein Spaltenvektor mit lauter Komponenten $\frac{1}{n}$ ist. Offensichtlich ist $\B{Sx}=\B{s}$, falls $\sum_ix_i=1$.
+
+Den Beweis für die Eindimensionalität des Eigenraums $V_1(\B{M})$ liefern wir nach einigen Beispielen.
+
+\begin{bsp}
+Für das Web aus Abbildung \ref{kleinesbsp} auf Seite \pageref{kleinesbsp} liefert unser neuer Ansatz (wir nehmen wie Google $m=0.15$)
+$$\B{M}=\begin{pmatrix}
+0.0375			&0.0375	&0.8875	&0.4625	\\
+0.3208\overline{3}	&0.0375	&0.0375	&0.0375	\\
+0.3208\overline{3}	&0.4625	&0.0375	&0.4625	\\
+0.3208\overline{3}	&	0.4625	&	0.0375	&	0.0375
+\end{pmatrix}$$
+mit den Scores $x_1\approx0.368$, $x_2\approx0.142$, $x_3\approx0.288$ und $x_4\approx0.202$. Das ergibt zwar dasselbe Ranking wie mit dem ersten Ansatz, aber die Scores haben andere Werte. Dieses Resultat ist mässig aufregend.
+\end{bsp}
+
+\begin{ueb}
+Rechne obiges Beispiel nach.
+\end{ueb}
+
+Spannender ist nun der Test unseres neuen Ansatzes auf ein Web mit Subwebs. Betrachten wir
+
+\begin{bsp}
+Nehmen wir das zweite Web aus Abbildung \ref{bspnonunique} und rechnen wiederum mit $m=0.15$. Dann erhalten wir
+$$\B{M}=
+\begin{pmatrix}
+0.03	&	0.88	&	0.03	&	0.03	&	0.03		\\
+0.88	&	0.03	&	0.03	&	0.03	&	0.03		\\
+0.03	&	0.03	&	0.03	&	0.88	&	0.455	\\
+0.03	&	0.03	&	0.88	&	0.03	&	0.455	\\
+0.03	&	0.03	&	0.03	&	0.03	&	0.03
+\end{pmatrix}.
+$$
+Der Eigenraum $V_1(\B{M})$ ist tatsächlich eindimensional mit normiertem Eigenvektor
+$$\B{x}=[0.2\;0.2\;0.285\;0.285\;0.03].$$
+Die Verwendung von $\B{M}$ anstelle von $\B{A}$ erlaubt uns also verschiedene Subwebs zu vergleichen.
+\end{bsp}
+
+Auffällig ist, dass jeder Eintrag $M_{ij}$ von $\B{M}$ positiv ist. Naheliegend ist daher
+\begin{defn}
+Eine Matrix $\B{M}$ heisst {\bf positiv}, falls $M_{ij}>0$ für alle  $i,j$.
+\end{defn}
+
+Dies wird sich als Schlüsseleigenschaft für die Eindimensionalität von $V_1(\B{M})$ entpuppen.
+
+\subsection{Die Matrix $\B{M}$ unter der Lupe}
+
+Wir halten fest, dass nach Proposition \ref{satzspaltenstochastischev1} der Eigenraum $V_1(\B{M})$ nicht leer ist, da ja $\B{M}$ stochastisch ist. Das Ziel des Abschnitts ist zu zeigen, dass $V_1(\B{M})$ tatsächlich eindimensional ist. Dazu gehen wir schrittweise --- das heisst Proposition für Proposition --- vor.
+
+\begin{prop}\label{keinemixedvorzeichen}
+Ist $\B{M}$ positiv und spalten-stochastisch, dann hat jeder Eigenvektor in $V_1(\B{M})$ entweder lauter positive oder lauter negative Komponenten.
+\end{prop}
+
+\begin{proof}
+Via Gegenannahme. Wir rufen in Erinnerung, dass in der Dreiecksungleichung
+$$\abs{\sum_iy_i}\leq\sum_i\abs{y_i}$$
+die Ungleichung strikt ist, wenn es unter den $y_i$ verschiedene Vorzeichen gibt. Sei $\B{x}\in V_1(\B{M})$ mit unterschiedlichen Vorzeichen in den Komponenten. Die Eigenvektorbedingung $\B{x}=\B{Mx}$ liefert $x_i=\sum_{j=1}^nM_{ij}x_j$ mit Summanden $M_{ij}x_j$ mit unterschiedlichen Vorzeichen, da ja $\B{M}$ positiv ist. Es folgt
+$$\abs{x_i}=\abs{\sum_{j=1}^nM_{ij}x_j}<\sum_{j=1}^nM_{ij}\abs{x_j}.$$
+Summiere beide Seiten von $i=1$ bis $i=n$ auf und verwende Assoziativität. Also
+$$
+\sum_{i=1}^n\abs{x_i}<\sum_{i=1}^n\sum_{j=1}^nM_{ij}\abs{x_j}
+=\sum_{j=1}^n\sum_{i=1}^nM_{ij}\abs{x_j}=\sum_{j=1}^n\abs{x_j},
+$$
+was ein Widerspruch ist. Daher kann $\B{x}$ nicht Komponenten mit verschiedenen Vorzeichen enthalten. Und weil $\B{M}$ positiv ist, haben alle Komponenten von $\B{x}$ entweder positive oder negative Vorzeichen, da ja die Gleichung $x_i=\sum_{j=1}^nM_{ij}x_j$ erfüllt sein muss.
+\end{proof}
+
+\begin{prop}\label{satzmixedvorzeichen}
+Seien $\B{v}$ und $\B{w}$, beide in $\mR^m$, linear unabhängig. Dann gibt es $s$ und $t$ in $\mR$, nicht beide $0$, so dass der Vektor $\B{x}=s\B{v}+t\B{w}$ Komponenten mit verschiedenen Vorzeichen hat.
+\end{prop}
+
+\begin{proof}
+Weil $\B{v}$ und $\B{w}$ linear unabhängig sind, sind beide nicht Nullvektoren. Setze $d=\sum_iv_i$. Ist $d=0$ dann muss $\B{v}$ Komponenten mit verschiedenen Vorzeichen enthalten und $s=1$, $t=0$ erledigt den Job. Falls $d\neq0$, dann wähle $t=1$ und $s=-\frac{\sum_iw_i}{d}$. Wegen der linearen Unabhängigkeit von $\B{v}$ und $\B{w}$ ist $\B{x}\neq\B{0}$, aber $\sum_ix_i=0$. Also hat $\B{x}$ Komponenten mit verschiedenen Vorzeichen.
+\end{proof}
+
+Endlich können wir einsehen, dass unter der Verwendung von $\B{M}$ anstelle von $\B{A}$ ein eindeutiges Ranking für ein Web ohne lose Pages resultiert.
+
+\begin{prop}\label{thmM}
+Ist $\B{M}$ positiv und spalten-stochastisch, dann hat $V_1(\B{M})$ Dimension $1$.
+\end{prop}
+
+\begin{proof}
+Via Gegenbeweis. Seien $\B{v}$ und $\B{w}$  zwei linear unabhängige Eigenvektoren in $V_1(\B{M})$. Für jede Wahl $s,t\in\mR$, nicht beide gleich $0$, ist der nichttriviale Vektor $\B{x}=s\B{v}+t\B{w}$ in $V_1(\B{M})$, hat also rein positive oder rein negative Komponenten. Nach Proposition \ref{satzmixedvorzeichen} hat aber $\B{x}$ für jegliche Wahl von $s$ und $t$ verschiedene Vorzeichen. Ein Widerspruch, weshalb $V_1(\B{M})$ nicht zwei linear unabhängig Vektoren enthalten kann; $V_1(\B{M})$ ist also eindimensional.
+\end{proof}
+
+Proposition \ref{thmM} zeigt die Stärken von $\B{M}$, bzw. dass $\B{M}$ für ein Ranking geeignet ist. Wir haben nämlich gesichert, dass die Dimension von $V_1(\B{M})$ gleich $1$ ist. Und, die relevanten Eigenvektoren haben je alle positive oder alle negative Komponenten. Beides zusammen garantiert uns die Existenz eines eindeutig bestimmten Eigenvektors $\B{x}$ mit positiven Komponenten, so dass $\sum_ix_i=1$; also ein eindeutiges Ranking.
+
+\begin{ueb}
+Zeige, dass für eine spalten-stochastische $n\times n$ Matrix $\B{A}$ und $m\in[0,1]$ auch $\B{M}=(1-m)\B{A}+m\B{S}$ spalten-stochastisch ist.
+\end{ueb}
+
+\begin{ueb}\label{uebprodukt}
+Zeige, dass das Produkt zweier spalten-stochastischer Matrizen ebenfalls spalten-stochastisch ist.
+\end{ueb}
+
+\begin{ueb}
+Überzeuge dich davon, dass eine Page ohne Backlinks den Score $\frac{m}{n}$ erhält.
+\end{ueb}
+
+\begin{ueb}
+Eine Möglichkeit, um die Eindimensionalität von $V_1(\B{A})$ für ein zusammenhängendes Web --- jede Page kann einer endlichen Anzahl Links folgend erreicht werden --- zu zeigen, könnte folgendermassen gehen:
+\begin{enumerate}
+\item Es ist $A_{ij}>0$ dann und nur dann, wenn ein Link von Page $j$ nach Page $i$ zeigt. Zeige, dass dann $(\B{A}^2)_{ij}>0$ genau dann gilt, wenn $i$ von $j$ aus in genau zwei Schritten erreicht werden kann.
+\item Schliesse aus obigem Schritt, dass $(\B{A}^p)_{ij}>0$ genau dann, wenn $i$ von $j$ aus in genau $p$ Schritten erreicht werden kann.
+\item Begründe, dass $(\B{E}+\B{A}+\B{A}^2+\dots+\B{A}^p)_{ij}>0$ genau dann, wenn $i$ von $j$ aus in $p$ oder weniger Schritten erreicht werden kann.
+\item Erkläre, wieso für ein zusammenhängendes Web $\B{E}+\B{A}+\B{A}^2+\dots+\B{A}^{n-1}$ positiv ist.
+\item Zeige mit obiger Erkenntnis und Übung \ref{uebprodukt}, dass $\B{B}=\frac{1}{n}(\B{E}+\B{A}+\B{A}^2+\dots+\B{A}^{n-1})$ positiv und spalten-stochastisch ist; und somit mit Proposition \ref{thmM} folgt, dass die Dimension von $V_1(\B{B})$ gleich $1$ ist.
+\item Schliesslich überprüfe man noch, dass aus $\B{x}\in V_1(\B{A})$ tatsächlich $\B{x}\in V_1(\B{B})$ folgt, was $V_1(\B{B})$ ist eindimensional bedeutet.
+\end{enumerate}
+\end{ueb}
+
+\begin{ueb}\label{uebnewrank}
+Wir greifen erneut das Web aus Abbildung \ref{kleinesbsp} auf und fügen eine Page 5 hinzu, die gegenseitig mit Page 3 verlinkt wird. Berechne jetzt für $m=0.15$ das Ranking mit $\B{M}$ über den normierten Eigenvektor zum Eigenwert $1$.
+\end{ueb}
+
+\begin{ueb}
+Füge eine Page 6 zum Web aus Übung \ref{uebnewrank} hinzu, wobei 6 auf jede andere Page linkt, selbst aber keine Backlinks hat. Erstelle ein Ranking mit $\B{A}$ und mit $\B{M}$, wobei $m=0.15$. Vergleiche die Resultate.
+\end{ueb}
+
+\begin{ueb}
+Konstruiere selber ein Web mit zwei oder mehr Subwebs und bestimme das Ranking mit der neusten Methode.
+\end{ueb}
+
+Aktuell besteht das World Wide Web aus mindestens 8 Milliarden Webpages. Wie zum Kuckuck berechnen wir in vernünftiger Zeit einen Eigenvektor zu einer 8 Milliarden-dimensionalen quadratischen Matrix? Ein vielversprechender Ansatz ist iterativ mit der sogenannten {\bf power method} vorzugehen, die wir jetzt für unseren Spezialfall analysieren. Ich möchte an dieser Stelle jedoch festhalten, dass in einer professionellen Umgebung für die Berechnung des PageRank weitere Analysen und verbesserte Methoden hergeleitet und bewiesen würden.
+
+\section{Berechnung des Ranking Eigenvektors}
+
+Wir skizzieren grob die Idee der power method zur Berechnung eines Eigenvektors einer Matrix $\B{M}$: Man startet mit einem \glqq Guess\grqq\ für ein Ranking, $\B{x}_0$. Sodann generiert man die Folge
+$$\B{x}_k=\B{Mx}_{k-1}$$
+was $\B{x}_k=\B{M}^k\B{x}_0$ entspricht --- daher der Name power method --- und lässt $k$ gegen Unendlich gehen. Der Vektor $\B{x}_k$ ist eine gute Approximation eines Eigenvektors zum dominanten Eigenwert von $\B{M}$.
+
+Leider kann es vorkommen, dass die Folge nicht \glqq schön\grqq\ konvergiert, beispielsweise unbegrenzt wächst oder in $\B{0}$ zusammenfällt. Abhilfe kann dann in wohlwollenden Fällen eine Reskalierung mit einer Norm schaffen. Zum Beispiel indem man nach jedem Schritt mit etwa
+$$\B{x}_k=\frac{\B{M}\B{x}_{k-1}}{\norm{\B{M}\B{x}_{k-1}}}$$
+neu skaliert.
+Diese Methode setzt üblicherweise voraus, dass der korrespondierende Eigenraum die Dimension $1$ hat, was durch die Matrix $\B{M}$ erfüllt ist.
+
+Um die power method auf Matrizen $\B{M}$ unseres Ranking-Problems anzuwenden, wäre es bequem, wenn alle andern Eigenwerte von $\B{M}$ die Bedingung $\abs{\gl}<1$ erfüllten. Unter dieser Bedingung konvergiert nämlich die Methode gegen den gewünschten Eigenvektor, wie wir unten zeigen. Dazu brauchen wir
+
+\begin{defn}
+Unter der 1-Norm eines Vektors $\B{v}$ verstehen wir $\norm{\B{v}}_1=\sum_i\abs{v_i}$.
+\end{defn}
+
+\begin{prop}\label{satzbound}
+Sei $\B{M}$ eine positive spalten-stochastische $n\times n$ Matrix und $V$ der Unterraum von $\mR^n$ bestehend aus den Vektoren $\B{v}$ mit $\sum_jv_j=0$. Dann ist $\B{Mv}\in V$ für alle $\B{v}\in V$ und
+$$\norm{\B{Mv}}_1\leq c\norm{\B{v}}_1$$
+für alle $\B{v}\in V$. Überdies haben wir die Ab\-schätzung
+$$c=\max_{1\leq j\leq n}|1-2\min_{1\leq j\leq n}M_{ij}|<1.$$
+\end{prop}
+
+\begin{proof}
+Wir zeigen zuerst, dass $\B{Mv}\in V$ ist. Sei $\B{w}=\B{Mv}$, also $w_i=\sum_{j=1}^nM_{ij}v_j$ und ausgeschrieben
+$$
+\sum_{i=1}^nw_i=\sum_{i=1}^n\sum_{j=1}^nM_{ij}v_j
+=\sum_{j=1}^nv_j\left(\sum_{i=1}^nM_{ij}\right)=\sum_{j=1}^nv_j=0.
+$$
+Das heisst $\B{w}=\B{Mv}\in V$.
+
+Um die obere Schranke zu zeigen, halten wir fest, dass
+$$\norm{\B{w}}_1=\sum_{i=1}^ne_iw_i=\sum_{i=1}^ne_i\left(\sum_{j=1}^nM_{ij}v_j\right),$$
+wobei $e_i=\text{sgn}(w_i)$. Ferner ist
+$$\norm{\B{w}}_1=\sum_{j=1}^nv_j\left(\sum_{i=1}^ne_iM_{ij}\right)=\sum_{j=1}^na_jv_j,$$
+mit $a_j=\sum_{i=1}^ne_iM_{ij}$. 
+Die $e_i$ haben nicht alle das gleiche Vorzeichen, da ja $\sum_iw_i=0$ ist (für $\B{w}=\B{0}$ ist der Fall eh klar). Wegen $\sum_iM_{ij}=1$ mit $0<M_{ij}<1$ folgt
+$$
+-1<-1+2\min_{1\leq i\leq n}M_{ij}\leq a_j
+\leq1-2\min_{1\leq i\leq n}M_{ij}<1
+$$
+und daher
+$$\abs{a_j}\leq |1-2\min_{1\leq i\leq n}M_{ij}|<1.$$
+Setze $c=\max_{1\leq j\leq n}\abs{1-2\min_{1\leq j\leq n}M_{ij}}$. Es ist $c<1$ und $\abs{a_j}\leq c$ für alle $j$, was schliesslich
+$$
+\norm{\B{w}}_1=\sum_{j=1}^na_jv_j=\abs{\sum_{j=1}^na_jv_j}\leq\\
+\leq\sum_{j=1}^n\abs{a_j}\abs{v_j}\leq c\sum_{j=1}^n\abs{v_j}=c\norm{\B{v}}_1
+$$
+liefert.
+\end{proof}
+
+Proposition \ref{satzbound} leitet über zu
+
+\begin{satz}
+Zu jeder positiven spalten-stochastischen Matrix $\B{M}$ gibt es einen eindeutig bestimmten Vektor $\B{q}$ mit lauter positiven Komponenten, so dass $\B{Mq}=\B{q}$ und $\norm{\B{q}}_1=1$. Und, $\B{q}$ ist der Grenzwert $\lim_{k\to\infty}\B{M}^k\B{x}_0$ für einen beliebigen Initalvektor $\B{x}_0$ mit lauter positiven Komponenten und $\norm{\B{x}_0}_1=1$.
+\end{satz}
+
+Ein Highlight, dessen Beweis wir kaum erwarten können.
+
+\begin{proof}
+Nach Proposition \ref{satzspaltenstochastischev1} hat $\B{M}$ einen Eigenwert $1$ und nach Proposition \ref{thmM} ist $V_1(\B{M})$ eindimensional. Ferner haben alle nichttrivialen Vektoren in $V_1(\B{M})$ entweder lauter positive oder lauter negative Komponenten. Also existiert ein eindeutig bestimmter Vektor $\B{q}\in V_1(\B{M})$ mit lauter positiven Komponenten und $\norm{\B{q}}_1=1$. Sei $\B{x}_0\in\mR^n$ mit positiven Komponenten und $\norm{\B{x}_0}_1=1$ beliebig. Wir notieren $\B{x}_0=\B{q}+\B{v}$ mit $\B{v}\in V$ wie in Satz \ref{satzbound}. Weiter ist $\B{M}^k\B{x}_0=\B{M}^k\B{q}+\B{M}^k\B{v}=\B{q}+\B{M}^k\B{v}$. Daraus folgt
+$$\B{M}^k\B{x}_0-\B{q}=\B{M}^k\B{v}.$$
+Eine vollständige Induktion und Proposition \ref{thmM} liefern $\norm{\B{M}^k\B{v}}_1\leq c^k\norm{\B{v}}_1$ für $0\leq c<1$ und damit $\lim_{k\to\infty}\norm{\B{M}^k\B{v}}_1=0.$ Mit obiger Gleichung haben wir $\lim_{k\to\infty}\B{M}^k\B{x}_0=\B{q}$.
+\end{proof}
+
+\begin{bsp}
+Sei $\B{M}$ die erweiterte Link-Matrix zum Web in Abbildung \ref{bspnonunique}. Wir wählen $\B{x}_0=[0.24\;0.31\;0.08\;0.18\;0.19]^{T}$ als Initialvektor; wir hatten $\B{q}=[0.2\;0.2\;0.285\;0.285\;0.03]^{T}$. In der Tabelle \ref{tabkonvergenz} finden Sie die Werte von $\norm{\B{M}^k\B{x}_0-\B{q}}_1$ und $\frac{\norm{\B{M}^k\B{x}_0-\B{q}}_1}{\norm{\B{M}^{k-1}\B{x}_0-\B{q}}_1}$. Vergleichen Sie diese Werte mit der Schranke $c$ aus Proposition \ref{satzbound}, welche in diesem Fall $0.94$ ist.
+
+\begin{table}
+\begin{center}
+\begin{tabular}{c|c|c}
+$k$	&	$\norm{\B{M}^k\B{x}_0-\B{q}}_1$	&	$\frac{\norm{\B{M}^k\B{x}_0-\B{q}}_1}{\norm{\B{M}^{k-1}\B{x}_0-\B{q}}_1}$	\\	\hline
+$0$	&	$0.62$	&		\\
+$1$	&	$0.255$	&	$0.411$	\\
+$5$	&	$0.133$	&	$0.85$	\\
+$10$	&	$0.0591$	&	$0.85$\\
+$50$	&	$8.87\cdot10^{-5}$	&	$0.85$
+\end{tabular}
+\caption{Betrachtung der Konvergenz}\label{tabkonvergenz}
+\end{center}
+\end{table}
+\end{bsp}
+
+Die Schranke $\norm{\B{M}^k\B{x}_0-\B{q}}_1\leq c^k\norm{\B{x}_0-\B{q}}_1$ ist vorsichtig gewählt ($0.85$ ist der Wert von $1-m$ und $0.85$ stellt sich als zweitgrösster Eigenwert von $\B{M}$ heraus). Man kann zeigen, dass im Allgemeinen die power method asymptotisch mit $\norm{\B{Mx}_k-\B{q}}_1\approx\abs{\gl_2}\norm{\B{x}-\B{q}}_1$ wobei $\gl_2$ der zweitgrösste Eigenwert von $\B{M}$ ist, konvergiert. Überdies kann man für ein $\B{M}$ der Form $\B{M}=(1-m)\B{A}+m\B{S}$ mit $\B{A}$ spalten-stochastisch und $S_{ij}=\frac{1}{n}$ für alle $i,j$ zeigen, dass $\abs{\gl_2}\leq1-m$ ist. Das heisst die power method wird schneller konvergieren als $c^k\norm{\B{x}_0-\B{q}}_1$ suggeriert. Trotzdem liefert das $c$ eine einfache Schranke für unsere Zwecke. Weil jeder Eintrag in $\B{M}$ mindestens den Wert $\frac{m}{n}$ hat ist klar $c\leq1-2\frac{m}{n}$.
+
+In der Praxis wird die positive Matrix $\B{M}$ keine trivialen Komponenten enthalten, weshalb eine Multiplikation $\B{M}\B{v}$ mit $\B{v}\in\mR^n$ typischerweise $O(n^2)$ Multiplikationen und Additionen erfordert; im Falle von $n=8\cdot10^9$ ein beträchtlicher Aufwand. Umgehen kann man dies mit Gleichung \eqref{equs}, wenn man einen positiven Vektor $\B{x}$ mit $\norm{\B{x}}_1=1$ wählt, da dann $\B{Mx}$ äquivalent zu $(1-m)\B{Ax}+m\B{s}$ ist. Diese Rechnung ist weitaus effizienter, weil in $\B{A}$ die meisten Komponenten gleich $0$ sein werden; die meisten Websites linken ja zu bloss einigen wenigen Pages.
+
+Wir haben nun unser Ziel bewiesen:
+
+\begin{thm}
+Die Matrix $\B{M}$ definiert wie in \eqref{equM} für ein Web ohne lose Pages ist eine positive spalten-stochastische Matrix und hat daher einen eindeutig bestimmten Ranking-Vektor $\B{q}$ mit $\sum_iq_i=1$, so dass $\B{Mq}=\B{q}$ gilt. Dieser Ranking-Vektor $\B{q}$ kann als Grenzwert der Iteration $\B{x}_k=(1-m)\B{Ax}_{k-1}+m\B{s}$ berechnet werden, wobei $\B{x}_0$ ein Initialvektor mit positiven Komponenten und $\norm{\B{x}_0}_1=1$ ist.
+\end{thm}
+
+Der Vektor $\B{x}$ definiert wie in \eqref{equs} kann auch stochastisch interpretiert werden. Ein Web-Surfer auf einem Web mit $n$ Pages, ohne lose Pages, befinde sich auf einer dieser Pages, und er bewege sich zufällig in diesem Netz nach folgendem Muster: Befindet sich der Surfer auf einer Page mit $r$ Links, wählt er zufällig einen dieser $r$ Links mit Wahrscheinlichkeit $\frac{1-m}{r}$, oder aber er wechselt zu einer zufälligen Page im Web, wobei jede Gewichtung $\frac{m}{n}$ hat. Wegen $r\cdot\frac{1-m}{r}+n\cdot\frac{m}{n}=1=100\%$ hat er in unserem Model nur diese Möglichkeiten. Dieses Muster wiederhole sich nun beliebig oft. Somit entsprechen die Komponenten $x_j$ im normierten Vektor $\B{x}$ aus \eqref{equs} entspricht langfristig dem mittleren Zeitanteil, der der Surfer auf Page $j$ verbringt. Relevantere Pages werden meistens öfter verlinkt als weniger relevante, weshalb der Surfer die relevanteren häufiger besucht.
+
+\begin{ueb}
+Berechne für das Web aus Übung \ref{uebnewrank} für $k=1,5,10,50$ die Werte $\norm{\B{M}^k\B{x}_0-\B{q}}_1$ und $\frac{\norm{\B{M}^k\B{x}_0-\B{q}}_1}{\norm{\B{M}^{k-1}\B{x}_0-\B{q}}_1}$. Wähle einen Initialvektor, der nicht zu nahe am Eigenvektor ist, damit du die Konvergenz verfolgen kannst. Bestimme $c$ und den Absolutwert des zweitgrössten Eigenwerts von $\B{M}$.
+\end{ueb}
+
+\begin{ueb}
+Betrachte die Link-Matrix
+$$\B{A}=
+\begin{pmatrix}
+0	&	\frac{1}{2}	&	\frac{1}{2}	\\[0.5ex]
+0	&	0		&	\frac{1}{2}	\\[0.5ex]
+1	&	\frac{1}{2}	&	0
+\end{pmatrix}
+.$$
+Zeige, dass $\B{M}=(1-m)\B{A}+m\B{S}$ ($S_{ij}=\frac{1}{3}$) für $0\leq m<1$ nicht diagonalisierbar ist.
+\end{ueb}
+
+\begin{ueb}
+Wie sollte $m$ gewählt werden? Welchen Einfluss hat $m$ auf das Ranking bzw. die Berechnungszeit?
+\end{ueb}
+
+
+\clearpage
+\listoffigures
+\listoftables
+%\newpage
+\nocite{*}
+\bibliographystyle{plain}
+\bibliography{preamble/literaturgoogle}
+\end{document}
