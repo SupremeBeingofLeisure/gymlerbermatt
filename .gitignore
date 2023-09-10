@@ -19,3 +19,6 @@ lecture/
 *.out
 *.gz
 *.toc
+
+# ignore Zusatzmaterial
+specials/
