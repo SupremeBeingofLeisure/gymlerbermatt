@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1693427072 "/Users/jormawassmer/Google Drive/git/gymlerbermatt/maths/sets_and_numbers/script/main.tex" "main.pdf" "main" 1693427076 0
-  "/Users/jormawassmer/Google Drive/git/gymlerbermatt/maths/sets_and_numbers/script/main.tex" 1693427063 59586 9bd2b106f0e36d61b3c0dff8c6954feb ""
+["pdflatex"] 1694439000 "/Users/jormawassmer/Google Drive/git/gymlerbermatt/maths/gym1/sets_and_numbers/script/main.tex" "main.pdf" "main" 1694439005 0
+  "/Users/jormawassmer/Google Drive/git/gymlerbermatt/maths/gym1/sets_and_numbers/script/main.tex" 1694439000 59586 9bd2b106f0e36d61b3c0dff8c6954feb ""
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/jknappen/ec/tcrm1095.tfm" 1136768653 1536 02c06700a42be0f5a28664c7273f82e7 ""
@@ -270,11 +270,11 @@
   "/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1693371010 4623355 b8cad38412faebe1ce5b780a45db67bd ""
   "/usr/local/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1693370976 7883451 40cbff7caf8c0506c996c1950b73e560 ""
   "/usr/local/texlive/2023/texmf.cnf" 1678822455 577 1b2b1af17af2508fb20dd85783af4050 ""
-  "main.aux" 1693427076 27790 ac5d9b861125027e2cb5568b6e775987 "pdflatex"
-  "main.lof" 1693427076 1448 5626c4d376210c312a8b59e15c1d97f6 "pdflatex"
-  "main.out" 1693427074 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "main.tex" 1693427063 59586 9bd2b106f0e36d61b3c0dff8c6954feb ""
-  "main.toc" 1693427076 3307 090f5f6a6a89c66bb717ef0cb7922083 "pdflatex"
+  "main.aux" 1694439004 27790 ac5d9b861125027e2cb5568b6e775987 "pdflatex"
+  "main.lof" 1694439004 1448 5626c4d376210c312a8b59e15c1d97f6 "pdflatex"
+  "main.out" 1694439002 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "main.tex" 1694439000 59586 9bd2b106f0e36d61b3c0dff8c6954feb ""
+  "main.toc" 1694439004 3307 090f5f6a6a89c66bb717ef0cb7922083 "pdflatex"
   "mymath.sty" 1693419580 8445 fd1e3275058db67ade9c449b7991435a ""
   "pictures/Algebra 1 Kapitel 2 Polynome Aufgaben.pdf" 1693419580 2562467 6ad76aeea22d9015eff1291995252c77 ""
   "pictures/Algebra 1 Kapitel 5 Bruchterme Aufgaben.pdf" 1693419580 2112600 9a491dc55e12d38166eb430260279058 ""

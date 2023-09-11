@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1693425882 "/Users/jormawassmer/Google Drive/git/gymlerbermatt/maths/vectors/script/main.tex" "main.pdf" "main" 1693425888 0
-  "/Users/jormawassmer/Google Drive/git/gymlerbermatt/maths/vectors/script/main.tex" 1693425882 79947 d9eed65ee8a491b5c9f72b25b87133e0 ""
+["pdflatex"] 1694439224 "/Users/jormawassmer/Google Drive/git/gymlerbermatt/maths/gym3/vectors/script/main.tex" "main.pdf" "main" 1694439230 0
+  "/Users/jormawassmer/Google Drive/git/gymlerbermatt/maths/gym3/vectors/script/main.tex" 1694439230 79947 d9eed65ee8a491b5c9f72b25b87133e0 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/jknappen/ec/tcrm1095.tfm" 1136768653 1536 02c06700a42be0f5a28664c7273f82e7 ""
@@ -330,11 +330,11 @@
   "/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1693371010 4623355 b8cad38412faebe1ce5b780a45db67bd ""
   "/usr/local/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1693370976 7883451 40cbff7caf8c0506c996c1950b73e560 ""
   "/usr/local/texlive/2023/texmf.cnf" 1678822455 577 1b2b1af17af2508fb20dd85783af4050 ""
-  "main.aux" 1693425887 42370 57f83793529e9a408d9c660c4f69181c "pdflatex"
-  "main.lof" 1693425887 2352 fdb193a2363c600339cc168612b3922b "pdflatex"
-  "main.out" 1693425883 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "main.tex" 1693425882 79947 d9eed65ee8a491b5c9f72b25b87133e0 ""
-  "main.toc" 1693425887 2357 b33a455e4e840ff10dc68016718e44b7 "pdflatex"
+  "main.aux" 1694439230 42370 57f83793529e9a408d9c660c4f69181c "pdflatex"
+  "main.lof" 1694439230 2352 fdb193a2363c600339cc168612b3922b "pdflatex"
+  "main.out" 1694439226 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "main.tex" 1694439230 79947 d9eed65ee8a491b5c9f72b25b87133e0 ""
+  "main.toc" 1694439230 2357 b33a455e4e840ff10dc68016718e44b7 "pdflatex"
   "mymath.sty" 1692157978 8616 51a4a14929de250c3d7e0434b3d50022 ""
   "pictures/200er.jpg" 1693258228 763337 fbdfefbc14dbfe88125b33ef4d6b1d65 ""
   "pictures/arbeit.jpg" 1693258228 53489 c6996f5249f5ed279b92938d5e5b1b4e ""

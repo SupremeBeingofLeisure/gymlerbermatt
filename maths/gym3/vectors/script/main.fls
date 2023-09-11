@@ -1,8 +1,8 @@
-PWD /Users/jormawassmer/Google Drive/git/gymlerbermatt/maths/vectors/script
+PWD /Users/jormawassmer/Google Drive/git/gymlerbermatt/maths/gym3/vectors/script
 INPUT /usr/local/texlive/2023/texmf.cnf
 INPUT /usr/local/texlive/2023/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT /Users/jormawassmer/Google Drive/git/gymlerbermatt/maths/vectors/script/main.tex
+INPUT /Users/jormawassmer/Google Drive/git/gymlerbermatt/maths/gym3/vectors/script/main.tex
 OUTPUT main.log
 INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/koma-script/scrartcl.cls
 INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/koma-script/scrartcl.cls
