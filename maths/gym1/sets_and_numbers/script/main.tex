@@ -790,33 +790,14 @@ Von den 26 Sch\"ulerinnen einer Klasse spielen 17 Fussball, 12 Schach und 9 Tenn
 
 \subsection{Grundlagen}
 
-Los geht's!
-\begin{itemize}
-\item Algebra 1, Deller/Gebauer/Zinn, p.33--55
-\item Algebra 1, Deller/Gebauer/Zinn, p.95--108
-\item Theorie und Arbeitsblätter
-\end{itemize}
-Polynome und Bruchterme bilden die Bausteine vieler Berechnungen und mathematischer Theorien.
+Polynome und Bruchterme bilden die Bausteine vieler Berechnungen und mathematischer Theorien. Deshalb gehört die Fähigkeit, mit Polynomen sicher umgehen zu können, zu den grundlegendsten Voraussetzungen um Technik und Anwendungen der Neuzeit verstehen zu können; und nicht zuletzt um eine erfolgreiche gymnasiale Laufbahn einzuschlagen. Ein gutes Verständnis von Polynomen ist auch für den Umgang mit Bruchtermen wesentlich.
+
 \begin{wrapfigure}{r}{0.4\textwidth}
   \begin{center}
     \includegraphics[width=0.22\textwidth]{pictures/rokwidboard}
   \end{center}
 %\caption{A gull}
 \end{wrapfigure}
-Deshalb gehört die Fähigkeit, mit Polynomen sicher umgehen zu können, zu den grundlegendsten Voraussetzungen um Technik und Anwendungen der Neuzeit verstehen zu können; und nicht zuletzt um eine erfolgreiche gymnasiale Laufbahn einzuschlagen. Ein gutes Verständnis von Polynomen ist auch für den Umgang mit Bruchtermen wesentlich.
-
-\subsection{Polynome}
-Ihr solltet nach diesem Auftrag
-
-\begin{itemize}
-\item wissen, was Polynome und insbesondere Monome und Binome sind.
-\item die binomischen Formeln beherrschen.
-\item Polynome in ihrer Normalform darstellen können.
-\item das Pascal'sche Dreieck zur Berechnung von Binomen nutzen.
-\item Polynome faktorisieren können.
-\item verstehen, was der Fundamentalsatz der Algebra aussagt.
-\item den Divisionsalgorithmus auch auf Polynome anwenden können.
-\end{itemize}
 
 \subsection{Bruchterme und Polynome}
 Es wird vorausgesetzt, dass ihr mit Zahlen und einzelnen Variablen Bruchrechnen könnt. Nun kommt neu dazu:
@@ -828,12 +809,126 @@ Es wird vorausgesetzt, dass ihr mit Zahlen und einzelnen Variablen Bruchrechnen 
 \item \"Aquivalenzumformungen bei Bruchtermen zu erkennen.
 \end{itemize}
 
-Es sollten die unten aufgef\"uhrten Aufgaben erledigt werden. Daf\"ur stehen dir ca.~20 Lektionen mit allf\"alliger Hausarbeit zur Verf\"ugung. Zusatzaufgaben sind mit einem $^\star$ gekennzeichnet.
-\subsubsection{Auftrag Polynome (p. 32--54)}
-3, 7, 11, 29, 37(Addition \&\ Subtraktion); 45, 59, 81, 91 (Multiplikation); 115, 125, 127 (einfache Division); 139, 141 , 145 ,149, 153 (Binomische Formeln); 167, 193 (Pascal'sches Dreieck); 195, 197, 199, 205, 209 (Ausklammern); 239,241, 245, 247, 253, 259, 267 (Faktorzerlegung); 285, 287 (Polynomdivision).
+\subsection{Das Pascal'sche Dreieck}
 
-\subsubsection{Auftrag Bruchterme (p. 94--108)}
-13, 15, 19, 21, 23, 33, 35, 43, 49, 51 (K\"urzen und Erweitern); 57, 59, 61, 67, 73, 79 (Addition und Subtraktion); 91, 93, 95, 101, 107, 110, 121, 129, 135 (Multiplikation und Division); 143, 145, 149, 151 (Doppelbr\"uche);
+\begin{ueb}[Binompotenzen]
+Multipliziere aus.
+  \\[2.5ex]\hspace*{2.7ex}
+  \begin{minipage}{0.4\textwidth}
+    \begin{enumeratea}
+      \item $(a+b)^1$
+      \item $(a+b)^2$\\[1ex]
+    \end{enumeratea}
+  \end{minipage}
+  \begin{minipage}{0.23\textwidth}
+    \begin{enumeratea}\addtocounter{enumi}{2}
+      \item $(a+b)^3$
+      \item $(a+b)^7$\\[1ex]
+    \end{enumeratea}
+  \end{minipage}
+  \end{ueb}
+  
+Die Übungen (a) und (b) gehen leicht von der Hand. Teil\"ubung (c) bedarf schon etwas mehr Aufwand und (d) scheint unmenschlich. Aber, beim Ausmultiplizieren von potenzierten Summen, insbesondere von \emph{\"ublen} Summen wie $(a+b)^6$, kann das Pascal'sche Dreieck n\"utzlich sein; dazu sp\"ater. Im Folgenden sollen nun das Pascal-Dreieck und einige seiner Eigenschaften pr\"asentiert werden.
+
+Das Pascal'sche Dreieck sieht wie folgt aus; es kann theoretisch unendlich \glqq hoch\grqq\ werden.
+
+  \begin{center}
+    \ \\[2pt]
+    $1$\\[6pt]
+    $1\qq1$\\[6pt]
+    $1\qq2\qq1$\\[6pt]
+    $1\qq3\qq3\qq1$\\[6pt]
+    $1\qq4\qq6\qq4\qq1$\\[6pt]
+    $1\qq5\qq10\qq10\qq5\qq1$\\[6pt]
+    $1\qq6\qq15\qq20\qq15\qq6\qq1$\\[6pt]
+    $1\qq7\qq21\qq35\qq35\qq21\qq7\qq1$\\[6pt]
+    $\dots$
+  \end{center}
+
+\begin{frage}
+Beschreibe Regeln f\"ur die Konstruktion des Pascal-Dreiecks?
+\end{frage}
+Offensichtlich besteht das Dreieck aus lauter $1$-en am Rand. In jeder folgenden Zeile nimmt die Anzahl der Zahlen um Eins zu. Die Zahl in der unteren Zeile ist gleich der Summe der dar\"uber liegenden Zahlen. Theoretisch kann man die $k$-te Zahl in der $n$-ten Zeile auch direkt berechnen  --- dabei beginnt man die Zeilen mit $0$ durchzunummerieren. Die Zugrunde liegende Formel ist allerdings nicht leicht zu finden.
+
+\begin{frage}
+Welche Eigenschaften erkennt man?
+\end{frage}
+
+Das Pascal-Dreieck besitzt unter anderem folgende Eigenschaften
+\begin{itemize}
+\item In der Diagonalen $1,3,6,10,15,\dots$ liest man die Dreieckszahlen ab.
+\item Die Summe der $n$-ten Zeile entspricht der Zweierpotenz $2^{n}$.
+\item Das Verh\"altnis zweier benachbarter Zahlen einer Zeile entspricht dem Verh\"altnis der Anzahl Zahlen, die links und rechts davon stehen inklusive.
+\end{itemize}
+
+\noindent Pascal formulierte die letzte Eigenschaft wie folgt:
+\begin{quote}
+  \glqq En tout triangle arithmétique, deux cellules contigués étant dans
+  une même base, la supérieure est à l'inférieure comme la multitude
+  des cellules depuis la supérieure jusqu'au haut de la base à la
+  multitude de cellules depuis l'inférieure jusqu'en bas
+  inclusivement.\grqq
+\end{quote}
+
+Die f\"ur unser Anfangsproblem wichtigste Eigenschaft ist
+
+\begin{itemize}
+\item Die Zahlen in der $n$-ten Zeile sind die Koeffizienten der Summanden des ausmultiplizierten Terms $(a+b)^n$.
+\end{itemize}
+
+  \begin{align}
+    (a+b)^0 &= 1\notag\\
+    (a+b)^1 &= a+b\notag\\
+    (a+b)^2 &= a^2+2ab+b^2\notag\\
+    (a+b)^3 &= a^3+3a^2b+3ab^2+b^3\notag\\
+    (a+b)^4 &= a^4+4a^3b+6a^2b^2+4ab^3+b^4\notag\\
+    \dots &\dots\notag
+  \end{align}
+
+  \begin{center}
+    \ \\[2pt]
+    $1$\\[6pt]
+    $1\qq1$\\[6pt]
+    $1\qq2\qq1$\\[6pt]
+    $1\qq3\qq3\qq1$\\[6pt]
+    $1\qq4\qq6\qq4\qq1$\\[6pt]
+    $\dots$
+  \end{center}
+
+Diese Eigenschaft erlaubt uns also, Terme der Form $(a+b)^n$ ohne grossen Rechenaufwand ausmultiplizieren zu k\"onnen.
+\begin{bem}
+Das Pascal-Dreieck liefert uns die Koeffizienten des ausmultiplizierten Terms. Weiter gilt f\"ur die beteiligten Summanden $a$ und $b$, dass die Exponenten von $a$ mit dem gr\"ossten Wert des Exponenten starten und bei jedem weiteren Summanden um $1$ abnehmen; f\"ur den Summanden $b$ ist das Gegenteil der Fall: er taucht beim ersten Summanden nicht auf, dann als $b=b^1$, danach als $b^2$, etc.
+\end{bem}
+\begin{bsp}
+$$(a+b)^3=a^3+3a^2b+3ab^2+b^3$$
+\end{bsp}
+Wendet man nun diese Strategie auf \"ahnliche Terme an, so sind $a$ und $b$ bloss durch die entsprechenden Summanden zu ersetzen.
+\begin{bsp}
+F\"ur $(z^2-2b)^3$ ist $a=z^2$ und $b=-2b$. Also
+\begin{align*}
+(z^2-2b)^3&=(z^2)^3+3\cdot(z^2)^2\cdot(-2b)+\\
+&\phantom{=\;}+3\cdot(z^2)\cdot(-2b)^2+(-2b)^3\\
+&=z^6-6z^4b+12z^2b^2-8b^3
+\end{align*}
+\end{bsp}
+
+\begin{ueb}[direkt Pascal]
+Berechne mit Hilfe des Pascal'schen Dreieck
+
+\begin{minipage}{0.23\textwidth}
+\begin{enumeratea}
+\item $(x-1)^5$
+\item $(-3+2c)^3$
+\end{enumeratea}
+\end{minipage}
+\begin{minipage}{0.23\textwidth}
+\begin{enumeratea}
+\addtocounter{enumi}{2}
+\item $(y^3-2)^3$
+\item $(-x-z)^4$
+\end{enumeratea}
+\end{minipage}
+\end{ueb}
 
 \clearpage
 
@@ -1095,127 +1190,6 @@ Folgend je ein Anwendungsbeispiel zu jedem Gesetz:
 \item $25^3\div5^3=(25\div5)^3=5^3=125$
 \end{itemize}
 \end{bsps}
-
-\subsection{Das Pascal'sche Dreieck}
-
-\begin{ueb}[Binompotenzen]
-Multipliziere aus.
-  \\[2.5ex]\hspace*{2.7ex}
-  \begin{minipage}{0.4\textwidth}
-    \begin{enumeratea}
-      \item $(a+b)^1$
-      \item $(a+b)^2$\\[1ex]
-    \end{enumeratea}
-  \end{minipage}
-  \begin{minipage}{0.23\textwidth}
-    \begin{enumeratea}\addtocounter{enumi}{2}
-      \item $(a+b)^3$
-      \item $(a+b)^7$\\[1ex]
-    \end{enumeratea}
-  \end{minipage}
-  \end{ueb}
-  
-Die Übungen (a) und (b) gehen leicht von der Hand. Teil\"ubung (c) bedarf schon etwas mehr Aufwand und (d) scheint unmenschlich. Aber, beim Ausmultiplizieren von potenzierten Summen, insbesondere von \emph{\"ublen} Summen wie $(a+b)^6$, kann das Pascal'sche Dreieck n\"utzlich sein; dazu sp\"ater. Im Folgenden sollen nun das Pascal-Dreieck und einige seiner Eigenschaften pr\"asentiert werden.
-
-Das Pascal'sche Dreieck sieht wie folgt aus; es kann theoretisch unendlich \glqq hoch\grqq\ werden.
-
-  \begin{center}
-    \ \\[2pt]
-    $1$\\[6pt]
-    $1\qq1$\\[6pt]
-    $1\qq2\qq1$\\[6pt]
-    $1\qq3\qq3\qq1$\\[6pt]
-    $1\qq4\qq6\qq4\qq1$\\[6pt]
-    $1\qq5\qq10\qq10\qq5\qq1$\\[6pt]
-    $1\qq6\qq15\qq20\qq15\qq6\qq1$\\[6pt]
-    $1\qq7\qq21\qq35\qq35\qq21\qq7\qq1$\\[6pt]
-    $\dots$
-  \end{center}
-
-\begin{frage}
-Beschreibe Regeln f\"ur die Konstruktion des Pascal-Dreiecks?
-\end{frage}
-Offensichtlich besteht das Dreieck aus lauter $1$-en am Rand. In jeder folgenden Zeile nimmt die Anzahl der Zahlen um Eins zu. Die Zahl in der unteren Zeile ist gleich der Summe der dar\"uber liegenden Zahlen. Theoretisch kann man die $k$-te Zahl in der $n$-ten Zeile auch direkt berechnen  --- dabei beginnt man die Zeilen mit $0$ durchzunummerieren. Die Zugrunde liegende Formel ist allerdings nicht leicht zu finden.
-
-\begin{frage}
-Welche Eigenschaften erkennt man?
-\end{frage}
-
-Das Pascal-Dreieck besitzt unter anderem folgende Eigenschaften
-\begin{itemize}
-\item In der Diagonalen $1,3,6,10,15,\dots$ liest man die Dreieckszahlen ab.
-\item Die Summe der $n$-ten Zeile entspricht der Zweierpotenz $2^{n}$.
-\item Das Verh\"altnis zweier benachbarter Zahlen einer Zeile entspricht dem Verh\"altnis der Anzahl Zahlen, die links und rechts davon stehen inklusive.
-\end{itemize}
-
-\noindent Pascal formulierte die letzte Eigenschaft wie folgt:
-\begin{quote}
-  \glqq En tout triangle arithmétique, deux cellules contigués étant dans
-  une même base, la supérieure est à l'inférieure comme la multitude
-  des cellules depuis la supérieure jusqu'au haut de la base à la
-  multitude de cellules depuis l'inférieure jusqu'en bas
-  inclusivement.\grqq
-\end{quote}
-
-Die f\"ur unser Anfangsproblem wichtigste Eigenschaft ist
-
-\begin{itemize}
-\item Die Zahlen in der $n$-ten Zeile sind die Koeffizienten der Summanden des ausmultiplizierten Terms $(a+b)^n$.
-\end{itemize}
-
-  \begin{align}
-    (a+b)^0 &= 1\notag\\
-    (a+b)^1 &= a+b\notag\\
-    (a+b)^2 &= a^2+2ab+b^2\notag\\
-    (a+b)^3 &= a^3+3a^2b+3ab^2+b^3\notag\\
-    (a+b)^4 &= a^4+4a^3b+6a^2b^2+4ab^3+b^4\notag\\
-    \dots &\dots\notag
-  \end{align}
-
-  \begin{center}
-    \ \\[2pt]
-    $1$\\[6pt]
-    $1\qq1$\\[6pt]
-    $1\qq2\qq1$\\[6pt]
-    $1\qq3\qq3\qq1$\\[6pt]
-    $1\qq4\qq6\qq4\qq1$\\[6pt]
-    $\dots$
-  \end{center}
-
-Diese Eigenschaft erlaubt uns also, Terme der Form $(a+b)^n$ ohne grossen Rechenaufwand ausmultiplizieren zu k\"onnen.
-\begin{bem}
-Das Pascal-Dreieck liefert uns die Koeffizienten des ausmultiplizierten Terms. Weiter gilt f\"ur die beteiligten Summanden $a$ und $b$, dass die Exponenten von $a$ mit dem gr\"ossten Wert des Exponenten starten und bei jedem weiteren Summanden um $1$ abnehmen; f\"ur den Summanden $b$ ist das Gegenteil der Fall: er taucht beim ersten Summanden nicht auf, dann als $b=b^1$, danach als $b^2$, etc.
-\end{bem}
-\begin{bsp}
-$$(a+b)^3=a^3+3a^2b+3ab^2+b^3$$
-\end{bsp}
-Wendet man nun diese Strategie auf \"ahnliche Terme an, so sind $a$ und $b$ bloss durch die entsprechenden Summanden zu ersetzen.
-\begin{bsp}
-F\"ur $(z^2-2b)^3$ ist $a=z^2$ und $b=-2b$. Also
-\begin{align*}
-(z^2-2b)^3&=(z^2)^3+3\cdot(z^2)^2\cdot(-2b)+\\
-&\phantom{=\;}+3\cdot(z^2)\cdot(-2b)^2+(-2b)^3\\
-&=z^6-6z^4b+12z^2b^2-8b^3
-\end{align*}
-\end{bsp}
-
-\begin{ueb}[direkt Pascal]
-Berechne mit Hilfe des Pascal'schen Dreieck
-
-\begin{minipage}{0.23\textwidth}
-\begin{enumeratea}
-\item $(x-1)^5$
-\item $(-3+2c)^3$
-\end{enumeratea}
-\end{minipage}
-\begin{minipage}{0.23\textwidth}
-\begin{enumeratea}
-\addtocounter{enumi}{2}
-\item $(y^3-2)^3$
-\item $(-x-z)^4$
-\end{enumeratea}
-\end{minipage}
-\end{ueb}
 
 \cleardoublepage
 
