@@ -261,10 +261,10 @@ Personen oder auch Dinge stehen oft in Beziehung. Es gibt verwandtschaftliche od
 Manche Beziehungen lassen sich graphisch darstellen und mathematisch beschreiben. Im Folgenden werden Menge und Beziehungen zwischen ihren Elementen betrachtet.
 
 \begin{bsp}
-Es gibt eine Beziehung, in der Mathematik sagt man Relation, zwischen den Mitgliedern dieser Klasse und den möglichen Freifächern, welche Angeboten werden.
+Es gibt eine Beziehung, in der Mathematik sagt man Relation, zwischen den Mitgliedern dieser Klasse und den mäglichen Freifächern, welche Angeboten werden.
 \end{bsp}
 
-\begin{cdef}
+\begin{cdef}{}{}
 Unter einer \textbf{Relation} $R$ zwischen den Elementen der Mengen $\mA$ und $\mB$ versteht man eine beliebige Beziehung (Zuordnung), wodurch jedem Element $x\in\mA$ kein, genau ein oder mehr als ein Element $y\in\mB$ zugeordnet wird. Man schreibt
 $$R:\mA\longrightarrow\mB$$
 \end{cdef}
@@ -278,7 +278,7 @@ Offensichtlich kann jede Relation als Menge von geordneten Paaren $\point{x}{y}$
 \end{bem}
 
 \subsection{Produktmenge}
-\begin{cdef}
+\begin{cdef}{}
 Die \textbf{Produktmenge} zweier Mengen $\mA$ und $\mB$ besteht aus sämtlichen geordneten Paaren $\point{x}{y}$ mit $x\in\mA$ und $y\in\mB$. Man schreibt
 $$\mA\times\mB=\setm{\point{x}{y}}{x\in\mA\text{ und }y\in\mB}$$
 (lies \glqq A kreuz B\grqq)
@@ -296,19 +296,19 @@ $$\D{A}\times\D{B}=\set{(3,1),(3,2),(6,1),(6,2),(9,1),(9,2)}$$
 
 \subsection{Relation}
 
-\begin{cdef}
+\begin{cdef}{}{}
 Eine \textbf{Relation} $R$ zwischen den Elementen der Mengen $\mA$ und $\mB$ ist eine Teilmenge der Produktmenge $\mA\times\mB$.
 \end{cdef}
 
 \begin{bem}
-Falls die Mengen $\mA$ und $\mB$ Zahlenmengen sind, können die Paare $\point{x}{y}$ als Punkte in einem rechtwinkligen Koordinatensystem veranschaulicht werden.
+Falls die Mengen $\mA$ und $\mB$ Zahlenmengen sind, kännen die Paare $\point{x}{y}$ als Punkte in einem rechtwinkligen Koordinatensystem veranschaulicht werden.
 
 Die Darstellung der Relationen in einem rechtwinkligen Koordinatensystem nennt man das \textbf{Bild} der Relation.
 \end{bem}
 
 \subsection{Abbildung}
 
-\begin{cdef}
+\begin{cdef}{}
 Unter einer \textbf{Abbildung} $\ga$ einer Menge $\mA$ in eine Menge $\mB$ wird eine Zuordnung verstanden, die jedem Element $x\in\mA$ genau ein Element $x'\in\mB$ zuordnet
 \footnote{
 In der Analysis heissen Abbildungen meist Funktionen, nämlich dann, wenn die Wertemenge eine Zahlenmenge ist. Sie werden üblicherweise mit lateinischen Kleinbuchstaben wie $f, g$ etc. bezeichnet. Das einem $x$ zugeordnete Element wird dann als $y$ oder, wenn die Zuordnung $f$ heisst, als $f(x)$ geschrieben. In der Geometrie hingegen ist es üblich, eine Abbildung mit einem griechischen Kleinbuchstaben zu bezeichnen (z.B. $\ga$).
@@ -319,12 +319,12 @@ $\ga(x)=x'$ heisst dann das \textbf{Bild} von $x$ und $x$ ist ein \textbf{Urbild
 Ein Element aus $\mB$ kann kein Urbild, ein Urbild oder mehrere Urbilder haben; in diesem Zusammenhang werden drei spezielle Eigenschaften von Abbildungen unterschieden:
 
 \begin{itemize}
-\item Eine Abbildung heisst \textbf{injektiv}, wenn verschiedene Elemente aus $\mA$ verschiedene Bilder haben, mit anderen Worten: Wenn jedes Element in $\mB$ \emph{höchstens} ein Urbild hat.
+\item Eine Abbildung heisst \textbf{injektiv}, wenn verschiedene Elemente aus $\mA$ verschiedene Bilder haben, mit anderen Worten: Wenn jedes Element in $\mB$ \emph{hächstens} ein Urbild hat.
 \item Hat jedes Element aus $\mB$ \emph{mindestens} ein Urbild, so spricht man von einer \textbf{surjektiven} Abbildung.
 \item Hat jedes Element aus $\mB$ \emph{genau ein} Urbild, so handelt es sich um eine eineindeutige Abbildung von $\mA$ auf $\mB$. Eine solche Abbildung heisst auch \textbf{bijektiv}.
 \end{itemize}
 
-\begin{csatz}
+\begin{csatz}{}
 Eine Abbildung ist genau dann bijektiv, wenn sie surjektiv und injektiv ist.
 \end{csatz}
 
@@ -334,7 +334,7 @@ trivial
 
 \begin{bsp}
 Betrachte die Abbildung $f(x) = x^2$. Je nach Einschränkung des Definitions-
-und/oder des Bildbereiches können verschiedene Situationen kreiert werden.
+und/oder des Bildbereiches kännen verschiedene Situationen kreiert werden.
 
 \begin{itemize}
 \item $f_1:\mR\longrightarrow\mR$
@@ -355,13 +355,13 @@ Eine spezielle Abbildung einer Menge $\mA$ in sich ist die so genannte \textbf{I
 
 \subsection{Verknüpfung und Inverse}
 
-\begin{cdef}
+\begin{cdef}{}
 Werden zwei Abbildungen $\ga:\mA\longrightarrow\mB$ und $\gb:\mB\longrightarrow\mC$ hintereinander ausgeführt, so spricht man von einer \textbf{Verknüpfung} zweier Abbildungen. Es resultiert eine neue Abbildung $\gg:\mA\longrightarrow\mC$. Geschrieben:
 $$\gg=\gb\circ\ga$$
 (Beachte die Reihenfolge!).
 \end{cdef}
 
-Ist $\ga$ eine bijektive Abbildung von $\mA$ nach $\mB$, so hat gemäss Definition jedes Element aus $\mB$ genau ein Urbild. Es muss damit auch möglich sein, eine neue, \glqq umgekehrte\grqq\ Abbildung von $\mB$ nach $\mA$ zu definieren, die jedem Bild der Abbildung $\ga$ sein Urbild zuordnet. Eine solche Abbildung heisst \textbf{inverse} Abbildung oder Umkehrabbildung von $\ga$ und wird mit $\ga^{-1}$ oder $\bar{\ga}$ bezeichnet.
+Ist $\ga$ eine bijektive Abbildung von $\mA$ nach $\mB$, so hat gemäss Definition jedes Element aus $\mB$ genau ein Urbild. Es muss damit auch mäglich sein, eine neue, \glqq umgekehrte\grqq\ Abbildung von $\mB$ nach $\mA$ zu definieren, die jedem Bild der Abbildung $\ga$ sein Urbild zuordnet. Eine solche Abbildung heisst \textbf{inverse} Abbildung oder Umkehrabbildung von $\ga$ und wird mit $\ga^{-1}$ oder $\bar{\ga}$ bezeichnet.
 
 \begin{satz}
 Ist $\ga$ eine bijektive Abbildung so gilt:
@@ -383,8 +383,24 @@ Bestätige rechnerisch Beispiel \ref{bsp:inverse}.
 \end{ueb}
 
 \begin{ueb}
-Die Funktion $f(x) = \frac{1}{2}x^2-4x+3$ soll auf einem möglichst grossen Bereich umgekehrt werden.
+Die Abbildung $\ga$ bezeichne eine Drehung der Ebene um $30^\circ$ um einen Punkt $Z$. Auch diese Abbildung ist bijektiv. Die Umkehrabbildung $\ga^{-1}$ ist dann\dots
 \end{ueb}
+
+\begin{ueb}
+Die Funktion $f(x) = \frac{1}{2}x^2-4x+3$ soll auf einem mäglichst grossen Bereich umgekehrt werden.
+\end{ueb}
+
+\begin{ueb}\label{uebinjsurbij}
+\ \\[-4ex]
+\begin{enumeratea}
+\item Es sei $\mA$ und $\mB$ die Menge der ganzen Zahlen. Die Abbildung $f$ führe jede Zahl in ihr Doppeltes über. Die Abbildung $f$\dots
+\item Es sei $\mA$ und $\mB$ die selbe Ebene. Die Abbildung $\ga$ bezeichne die Verknüpfung einer zentrische Streckung mit dem Faktor $2$ von einen Punkt $Z$ aus und einer Verschiebung (Translation) um den Vektor $\vc$. Die Abbildung $\ga$\dots
+
+(i) ist injektiv,$\q$(ii) surjektiv,$\q$(iii) bijektiv,$\q$(iv) besitzt eine inverse Abbildung?
+\end{enumeratea}
+\end{ueb}
+
+\pagebreak
 
 \begin{ueb}
 Wie Übung \ref{uebinjsurbij}:
@@ -431,7 +447,7 @@ Kann bei den oben beschriebenen Aufgaben der Definitions- oder der Bildbereich s
 \caption{Abbildung einer Ebene in sich}
 \end{wrapfigure}
 Im Folgenden werden ausschliesslich Abbildungen einer Ebene $E$ in sich betrachtet. Vorausgesetzt sei zudem, dass in $E$ ein (kartesisches) Koordinatensystem definiert ist.
-\begin{cdef}
+\begin{cdef}{}
 Unter
 \marginnote{
 \qrcode{
@@ -439,7 +455,7 @@ https://www.youtube.com/watch?v=zuHJopS96eo}
 }
 einer \textbf{Abbildung einer Ebene $E$ in sich} versteht man eine Zuordnung, die jedem Punkt $P\in E$ einen weiteren Punkt $P'\in E$ (das Bild von P) zuordnet. Sind $x$ und $y$ die Koordinaten eines Punktes $P$, so werden diejenigen seines Bildes $P'$ mit $x'$ und $y'$ bezeichnet.
 \end{cdef}
-An ein paar Beispielen soll jetzt erst mal gezeigt werden, wie Abbildungen von $E$ in sich mit rechnerischen Mitteln erfasst werden können.
+An ein paar Beispielen soll jetzt erst mal gezeigt werden, wie Abbildungen von $E$ in sich mit rechnerischen Mitteln erfasst werden kännen.
 
 \subsection{Zentrische Streckung vom Ursprung aus}
 Die
@@ -635,7 +651,7 @@ indem du die Urbilder und Bilder von verschiedenen Punkten ins Koordinatenystem 
 \caption{Bilder und Urbilder von $\gg$}\label{bilderundurbilder}
 \end{figure}
 
-\begin{cdef}
+\begin{cdef}{}
 Eine \textbf{Scherung} an der $x$-Achse kann durch einen so genannten Scherungswinkel $\varphi$ festgelegt werden. Er misst den Winkel zwischen einem abzubildenden Punkt $P$, seiner Projektion auf der $x$-Achse und dem Bildpunkt $P'$, und zwar im Uhrzeigersinn.
 \end{cdef}
 
@@ -810,14 +826,14 @@ https://www.youtube.com/watch?v=RcQY8_7eHuI}
 }
 Abbildungen von Mengen in sich kann es vorkommen, dass Punkte oder gewisse Teilmengen auf sich selber abgebildet werden. Diese Punktmengen sind von einiger Bedeutung.
 
-\begin{cdef}
+\begin{cdef}{}
 Ein Punkt $P$, der bei einer Abbildung $\ga$ auf sich selber abgebildet wird, heisst \textbf{Fixpunkt} von $\ga$.
 \end{cdef}
 
 Es muss also gelten:
 $$\ga(P)=P.$$
 
-\begin{cdef}
+\begin{cdef}{}
 Eine Gerade, die aus Fixpunkten einer Abbildung besteht, nennt man \textbf{Fixpunktgerade}. Eine Gerade $g : y = mx + b$ , die unter einer Abbildung $\ga$ auf sich selber --- nicht zwingend Punktweise --- abgebildet wird, wird als \textbf{Fixgerade} bezeichnet.
 \end{cdef}
 
@@ -939,7 +955,7 @@ $$k : x^2 + (y-0.5)^2 = 0.5^2$$
 \item Welche Abbildung bildet das Dreieck $A'B'C'$ auf das Dreieck $ABC$ ab?
 \item Bestimme das Bild der Geraden $g_{AB}$.
 \item Auf welchen Punkt wird der Mittelpunkt der Strecke $\overline{AB}$ abgebildet?
-\item können sich die Bilder zweier zueinander paralleler Geraden schneiden?
+\item Kännen sich die Bilder zweier zueinander paralleler Geraden schneiden?
 \end{enumeratea}
 \end{ueb}
 
@@ -961,7 +977,7 @@ Aus der Umkehrbarkeit einer geradentreuen Abbildung folgt ihre Parallelentreue. 
 Aufgrund der Parallelentreue bildet jede geradentreue, umkehrbare Abbildung Parallelogramme auf Parallelogramme ab. Damit wird der Mittelpunkt einer Strecke $\overline{AB}$ auf den Mittelpunkt der Bildstrecke $\overline{A'B'}$ abgebildet. Mit Hilfe einer Intervallschachtelung kann jetzt gefolgert werden, dass eine geradentreue, umkehrbare Abbildungen auch teilverhältnistreu sein muss.
 \end{proof}
 
-\begin{cdef}
+\begin{cdef}{}
 Eine geradentreue und umkehrbare (und damit auch parallelen- und verhältnistreue) geometrische Abbildung der Ebene auf sich nennt man eine \textbf{affine Abbildung} oder Affinität
 \footnote{
 \emph{Affinität} bedeutet so viel wie Nähe, Verwandtschaft: Das Bild eines Parallelogramms ist wiederum ein Parallelogramm. Kongruenzabbildungen und \"Ahnlichkeitsabbildungen sind Beispiele für affine Abbildungen.
@@ -1221,7 +1237,7 @@ sich bei der Abbildung $\ga$ nicht mehr um eine affine Abbildung. Warum?
 \end{ueb}
 
 \section{Ursprungsaffinität}
-\begin{cdef}
+\begin{cdef}{}
 Wird
 \marginnote{
 \qrcode{
@@ -1326,7 +1342,7 @@ a_2 & b_2
 $$
 Ein solches Schema wird als Matrix bezeichnet; genauer als $2\times2$-Matrix, weil im Schema $2$ \textbf{Zeilen} und $2$ \textbf{Spalten} auftreten.
 
-\begin{cdef}
+\begin{cdef}{}
 Ein rechteckiges Schema mit $m$ Zeilen und $n$ Spalten wird $m\times n$-Matrix genannt.
 \end{cdef}
 
@@ -1462,7 +1478,7 @@ Nehmen wir an, eine Abbildung $\ga$, repräsentiert durch die Matrix $A$, sei ni
 (Tipp: Vereinfache das entstehende Gleichungssystem $A\cdot(\vu-\vv)=0$).
 \end{ueb}
 
-\begin{cdef}
+\begin{cdef}{}
 Die \textbf{Determinante} einer $2\times2$-Matrix $A$ ist definiert durch
 $$\det(A)=\abs{A}=a_{11}a_{22}-a_{12}a_{21}$$
 \end{cdef}
@@ -1472,7 +1488,7 @@ Berechne die Determinanten der folgenden Matrizen. Was stellst du fest?
 $$A=\mat{1}{0}{1}{1}\q B=\mat{-2}{1}{3}{2}\q C=\mat{2}{-4}{-3}{6}$$
 \end{ueb}
 
-\begin{cdef}
+\begin{cdef}{}
 Eine Matrix $A$ heisst \textbf{regulär}, falls ihre Determinante $\det(A)\neq0$; sonst wird sie \textbf{singulär} genannt.
 \end{cdef}
 
@@ -1537,7 +1553,7 @@ $$\det(A^{-1})=\frac{1}{\det(A)}$$
 \subsubsection{Fläche und Orientierung}
 Nicht nur der Betrag der Determinante einer Matrix $A$ hat eine geometrische Bedeutung (Flächeninhalt des durch die Affinität $\ga$ erzeugten Bildes des durch die Basisvektoren $\V{e_1}$ und $\V{e_2}$ aufgespannten Einheitsquadrates), sondern auch ihr Vorzeichen. Um das zu verstehen, machen wir einen kleinen Ausflug ins Dreidimensionale und die Vektorgeometrie.
 
-\begin{cdef}
+\begin{cdef}{}
 Das \textbf{Vektorprodukt} zweier Vektoren
 $$\va=\pV{a_x}{a_y}{a_z} \text{ und } \vb=\pV{b_x}{b_y}{b_z}$$
 ergibt einen Vektor $\vv$ definiert durch
@@ -1633,7 +1649,7 @@ https://www.youtube.com/watch?v=23uk6N0ZNmY}
 }
 wissen bereits: Ein Punkt heisst \textbf{Fixpunkt} einer Abbildung $\ga$, wenn er mit seinem Bild zusammenfällt ($P' = P$ oder $\ga(P) = P$ oder $A\V{r_P} =\V{r_P}$). Weiter gilt:
 
-\begin{cdef}
+\begin{cdef}{}
 Eine Gerade $g$ heisst \textbf{Fixgerade} einer Abbildung $\ga$, wenn ihr Bild $g'$ mit $g$ zusammenfällt: $g=g'$.
 \end{cdef}
 
@@ -1641,7 +1657,7 @@ Eine Gerade $g$ heisst \textbf{Fixgerade} einer Abbildung $\ga$, wenn ihr Bild $
 Beachte, dass eine Fixgerade nicht aus lauter Fixpunkten bestehen muss.
 \end{bem}
 
-\begin{cdef}
+\begin{cdef}{}
 Eine Gerade, die aus lauter Fixpunkten besteht, heisst \textbf{Fixpunktgerade}.
 \end{cdef}
 
@@ -1707,7 +1723,7 @@ Ein Spezialfall liegt dann vor, wenn das homogene Gleichungssystem lauter Nullen
 Von besonderem Interesse scheint der Fall zu sein, wenn eine Affinität genau
 eine Fixpunktgerade besitzt. Man definiert
 
-\begin{cdef}
+\begin{cdef}{}
 Eine Affinität $\ga$, die genau eine Fixpunktgerade $g$ besitzt, wird \textbf{axiale} oder \textbf{perspektive Affinität} genannt. Ihre Fixpunktgerade $g$ heisst \textbf{Affinitätsachse}.
 \end{cdef}
 
@@ -1767,7 +1783,7 @@ Umgeformt wie im vorhergehenden Kapitel ergibt sich
 a_{21}x+(a_{22}-\gl)y &= 0
 \end{align*}
 
-\begin{cdef}
+\begin{cdef}{}
 Existiert ein Vektor
 $$\vr=\pv{x}{y}\neq\V{0},$$
 der obiges Gleichungssystem erfüllt, so heisst er \textbf{Eigenvektor} der Matrix $A$. Das zugehärige $\gl$ heisst \textbf{Eigenwert}.
@@ -1848,7 +1864,7 @@ Drehung um $O$ um den Winkel $\varphi\neq k\cdot180\circ$ mit $k\in\mZ$.
 \end{bsp}
 \item[genau ein Eigenwert] Wir haben gesehen, dass es zu einem Eigenwert durchaus auch mehrere Fixgeraden geben kann; genauer, unendlich viele. Dieser Fall kann aber nur dann eintreten, wenn die Matrix
 $$\mat{a_{11}-\gl}{a_{12}}{a_{21}}{a_{22}-\gl}$$
-die Nullmatrix ist (nur dann können $x$ und $y$ frei gewählt werden). Das bedeutet aber, dass in der Hauptdiagonalen überall $\gl$ stehen muss ($a_{11}=a_{22}=\gl$) und in der Nebendiagonalen lauter Nullen ($a_{12}=a_{21}=0$). Bei dieser Abbildung muss es sich also gerade um eine Streckung handeln.
+die Nullmatrix ist (nur dann kännen $x$ und $y$ frei gewählt werden). Das bedeutet aber, dass in der Hauptdiagonalen überall $\gl$ stehen muss ($a_{11}=a_{22}=\gl$) und in der Nebendiagonalen lauter Nullen ($a_{12}=a_{21}=0$). Bei dieser Abbildung muss es sich also gerade um eine Streckung handeln.
 In allen anderen Fällen (mit genau einem Eigenwert), hat man es mit einer Fixgeraden durch den Ursprung zu tun.
 \begin{bsp}
 Besitzt die Scherung
@@ -1936,7 +1952,7 @@ Wie sehen die entsprechenden Fixgeraden aus?
 
 \subsection{Diagonalisieren}
 
-\begin{cdef}
+\begin{cdef}{}
 Eine
 \marginnote{
 \qrcode{
@@ -1984,7 +2000,7 @@ Verkehrsplaner interessieren sich dabei für die Prognosen des Individual- und �
 $$
 \pv{a_{10}}{o_{10}}=\mat{0.6}{0.2}{0.4}{0.8}\cdot\pv{a_9}{o_9}=\mat{0.6}{0.2}{0.4}{0.8}^2\cdot\pv{a_8}{o_8}=\dots=\mat{0.6}{0.2}{0.4}{0.8}^{10}\cdot\pv{a_0}{o_0}
 $$
-Es stellt sich also die Frage, wie Matrizen effizient potenziert werden können. Des weiteren interessiert vielleicht auch die Frage, ob es einen stationären Zustand gibt, also einen Zustand, bei dem sich über ein Jahr (und damit immer) keine zahlenmässigen Verschiebungen mehr ergeben. Das würde dem Fixpunkt der Abbildung entsprechen.
+Es stellt sich also die Frage, wie Matrizen effizient potenziert werden kännen. Des weiteren interessiert vielleicht auch die Frage, ob es einen stationären Zustand gibt, also einen Zustand, bei dem sich über ein Jahr (und damit immer) keine zahlenmässigen Verschiebungen mehr ergeben. Das würde dem Fixpunkt der Abbildung entsprechen.
 \end{bsp}
 
 \subsubsection{Fibonacci-Zahlen und goldener Schnitt}
@@ -1993,7 +2009,7 @@ Es stellt sich also die Frage, wie Matrizen effizient potenziert werden können.
 Fibonacci-Zahlen sind bekanntlich durch die Rekursion
 $$a_k=a_{k-1}+a_{k-2}$$
 mit $a_1=a_2=1$ definiert.
-Es stellt sich die Frage, wie das explizite Bildungsgesetz aussehen könnte.
+Es stellt sich die Frage, wie das explizite Bildungsgesetz aussehen kännte.
 
 Das rekursive Bildungsgesetz der Fibonacci-Folge kann auch mit Hilfe einer Matrix (etwas umständlich) angegeben werden:
 $$\pv{a_k}{a_{k-1}}=\mat{1}{1}{1}{0}\cdot\pv{a_{k-1}}{a_{k-2}}.$$
@@ -2026,7 +2042,7 @@ Es seien $A,B\in\text{Mat}(2\times2)$ invertierbar.
 \end{enumeratea}
 \end{ueb}
 
-\begin{cdef}
+\begin{cdef}{}
 Eine Matrix $A$ heisst \textbf{symmetrisch}, wenn $a_{12}=a_{21}.$
 \end{cdef}
 
@@ -2057,13 +2073,13 @@ mit den Startwerten $a_1 =0$ und $a_2 =1$ bzw. $a_1 =-1$ und $a_2 =1$.
 \end{ueb}
 
 \begin{ueb}
-Versuche --- falls möglich --- eine allgemeine, explizite Formel für die rekursiv definierten Folgen der Art $$a_k = p \cdot a_{k-1} + q \cdot a_{k-2}$$
+Versuche --- falls mäglich --- eine allgemeine, explizite Formel für die rekursiv definierten Folgen der Art $$a_k = p \cdot a_{k-1} + q \cdot a_{k-2}$$
 herzuleiten.
 \end{ueb}
 
 \subsection{Diagonalisieren von \glqq nicht-diagonalisierbaren\grqq\ Matrizen}
 
-\begin{cdef}
+\begin{cdef}{}
 Eine \textbf{obere} bzw. \textbf{untere Dreiecksmatrix} ist eine Matrix, deren Hauptdiagonalenelemente alle verschieden von Null sind ($a_{ii}\neq0$) und alle oberen Elemente $a_{ij} = 0$ für $i < j$ oder alle unteren Elemente $a_{ij} = 0$ für $i > j$.
 \end{cdef}
 
@@ -2099,7 +2115,7 @@ Das charakteristische Polynom einer $2 \times 2$-Matrix besitze eine (doppelte) 
 \begin{ueb}
 Diagonalisiere die Matrix
 $$A=\mat{1}{-1}{1}{3}$$
-so weit als möglich, d.h. bringe sie in Dreiecksgestalt.
+so weit als mäglich, d.h. bringe sie in Dreiecksgestalt.
 \end{ueb}
 
 \begin{ueb}
@@ -2142,11 +2158,11 @@ und besitzt folgende Eigenschaften:
 \end{itemize}
 
 \begin{bem}
-Der Eigenraum zu einem Eigenwert im $\mR^2$ war eindimensional (ausser bei einer Streckung). Im $\mR^3$ ist das ganze etwas vielfältiger. Existieren drei verschiedenen Eigenwerte, dann besitzen die Eigenräume zu den entsprechenden Eigenwerten jeweils die Dimension $1$. Existieren hingegen nur zwei verschiedene Eigenwerte (einer mit der Vielfachheit 1 und der andere mit der Vielfachheit 2), so kann derjenige mit der Vielfachheit 2 einen Eigenraum besitzen, der die Dimension 2 oder 1 hat. Der andere Eigenwert mit der Vielfachheit 1 besitzt hingegen zwangsläufig einen Eigenraum der Dimension 1. In diesem Zusammenhang wird von der möglichen Diskrepanz von \textbf{algebraischer} versus \textbf{geometrischer Vielfachheit} gesprochen.
+Der Eigenraum zu einem Eigenwert im $\mR^2$ war eindimensional (ausser bei einer Streckung). Im $\mR^3$ ist das ganze etwas vielfältiger. Existieren drei verschiedenen Eigenwerte, dann besitzen die Eigenräume zu den entsprechenden Eigenwerten jeweils die Dimension $1$. Existieren hingegen nur zwei verschiedene Eigenwerte (einer mit der Vielfachheit 1 und der andere mit der Vielfachheit 2), so kann derjenige mit der Vielfachheit 2 einen Eigenraum besitzen, der die Dimension 2 oder 1 hat. Der andere Eigenwert mit der Vielfachheit 1 besitzt hingegen zwangsläufig einen Eigenraum der Dimension 1. In diesem Zusammenhang wird von der mäglichen Diskrepanz von \textbf{algebraischer} versus \textbf{geometrischer Vielfachheit} gesprochen.
 \end{bem}
 
 \begin{ueb}
-Diagonalisiere, wenn möglich, die Matrizen
+Diagonalisiere, wenn mäglich, die Matrizen
 $$A=
 \begin{pmatrix}
 0&0&-2\\
