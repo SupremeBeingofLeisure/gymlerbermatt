@@ -357,51 +357,6 @@ wobei $\rho_w$ die Dichte von Wasser und $g$ den Ortsfaktor bezeichnet. $P(h)$ i
 Wenn f\"ur die Argumentation bloss wichtig ist, dass es sich um eine Proportionalit\"at handelt und der Wert der Konstanten keine Rolle spielt, schreibt man kurz \glqq$\sim$\grqq. Im obigen Beispiel w\"urde man kurz schreiben
 $$P\sim h$$
 \end{bem}
-\section{Antiproportionalit\"at}
-\begin{cdef}[Umgekehrte Proportionalität]{}
-Eine Funktion der Form
-$$f(x)=\frac{c}{x}\qq c\in\D{R}$$
-heisst \emph{Antiproportionalit\"at} oder umgekehrte Proportionalit\"at.
-\end{cdef}
-\begin{bsp}
-Teilt man einen Kuchen unter $x$ Personen auf, so ist die St\"uckgr\"osse $y$ in Abh\"angigkeit der Personen eine Antiproportionalit\"at.
-\end{bsp}
-\begin{csatz}[Charakteristik der umgekehrten Proportionalität]{}
-Die zu einer umgekehrten Proportionalit\"at geh\"orenden Zahlenpaare sind Produktgleich.
-\end{csatz}
-\begin{proof}[Beweis]
-Ist $f(x)=\frac{c}{x}$ eine Antiproportionalit\"at, so gilt f\"ur ein Zahlenpaar $\point{x}{y}$
-$$x\cdot y=x\cdot\frac{c}{x}=c$$
-\end{proof}
-\begin{csatz}[Hyperbel]{}
-Der Graph einer Antiproportionalit\"at ist eine Hyperbel oder eine Teilmenge davon.
-\end{csatz}
-\begin{bsp}
-Um ein Passwort zu knacken wird $1$ Computer eingesetzt. Er braucht daf\"ur ungef\"ahr $\unit[8]{Tage}$. Wenn $2$ Computer parallel rechnen, brauchen sie daf\"ur $\unit[4]{Tage}$. Setzt man $x$ Computer ein, dann brauchen sie daf\"ur
-$$y=\frac{8}{x}$$
-Tage.
-
-\begin{figure}
-\centering
-\scalebox{1.3}{
-\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.55cm,y=0.55cm]
-\draw[->,color=black] (-1.48,0) -- (9.12,0);
-\foreach \x in {-1,1,2,3,4,5,6,7,8}
-\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize $\x$};
-\draw[color=black] (8.78,0.08) node [anchor=south west] {$x$};
-\draw[->,color=black] (0,-1.44) -- (0,6.86);
-\foreach \y in {-1,1,2,3,4,5,6}
-\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize $\y$};
-\draw[color=black] (0.1,6.46) node [anchor=west] {$y$};
-\draw[color=black] (0pt,-10pt) node[right] {\footnotesize $0$};
-\clip(-1.48,-1.44) rectangle (9.12,6.86);
-\draw[smooth,samples=100,domain=0.5:9.12] plot(\x,{8/\x});
-\draw[color=black] (2.7,6) node {$y=\frac{8}{x}$};
-\end{tikzpicture}
-}
-\caption{Antiproportionalit\"at}
-\end{figure}
-\end{bsp}
 
 \section{Lineare Funktionen}
 In diesem Abschnitt werden wir die Menge der Proportionalit\"aten erweitern. Wir erinnern uns daran, dass Proportionalit\"aten die Form $f(x)=mx$ haben und ihre Graphen Geraden --- oder Teilmengen davon --- sind, die durch den Ursprung gehen.
@@ -1010,6 +965,53 @@ Manchmal ist, wie oben schon erwähnt, die Linearität der Gleichung versteckt, 
                                 Es braucht also $0.48$ Stunden, oder $28.8$ Minuten. 
                 \end{enumerate}
 }
+
+\section{Antiproportionalit\"at}
+\begin{cdef}[Umgekehrte Proportionalität]{}
+Eine Funktion der Form
+$$f(x)=\frac{c}{x}\qq c\in\D{R}$$
+heisst \emph{Antiproportionalit\"at} oder umgekehrte Proportionalit\"at.
+\end{cdef}
+\begin{bsp}
+Teilt man einen Kuchen unter $x$ Personen auf, so ist die St\"uckgr\"osse $y$ in Abh\"angigkeit der Personen eine Antiproportionalit\"at.
+\end{bsp}
+\begin{csatz}[Charakteristik der umgekehrten Proportionalität]{}
+Die zu einer umgekehrten Proportionalit\"at geh\"orenden Zahlenpaare sind Produktgleich.
+\end{csatz}
+\begin{proof}[Beweis]
+Ist $f(x)=\frac{c}{x}$ eine Antiproportionalit\"at, so gilt f\"ur ein Zahlenpaar $\point{x}{y}$
+$$x\cdot y=x\cdot\frac{c}{x}=c$$
+\end{proof}
+\begin{csatz}[Hyperbel]{}
+Der Graph einer Antiproportionalit\"at ist eine Hyperbel oder eine Teilmenge davon.
+\end{csatz}
+\begin{bsp}
+Um ein Passwort zu knacken wird $1$ Computer eingesetzt. Er braucht daf\"ur ungef\"ahr $\unit[8]{Tage}$. Wenn $2$ Computer parallel rechnen, brauchen sie daf\"ur $\unit[4]{Tage}$. Setzt man $x$ Computer ein, dann brauchen sie daf\"ur
+$$y=\frac{8}{x}$$
+Tage.
+
+\begin{figure}
+\centering
+\scalebox{1.3}{
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.55cm,y=0.55cm]
+\draw[->,color=black] (-1.48,0) -- (9.12,0);
+\foreach \x in {-1,1,2,3,4,5,6,7,8}
+\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize $\x$};
+\draw[color=black] (8.78,0.08) node [anchor=south west] {$x$};
+\draw[->,color=black] (0,-1.44) -- (0,6.86);
+\foreach \y in {-1,1,2,3,4,5,6}
+\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize $\y$};
+\draw[color=black] (0.1,6.46) node [anchor=west] {$y$};
+\draw[color=black] (0pt,-10pt) node[right] {\footnotesize $0$};
+\clip(-1.48,-1.44) rectangle (9.12,6.86);
+\draw[smooth,samples=100,domain=0.5:9.12] plot(\x,{8/\x});
+\draw[color=black] (2.7,6) node {$y=\frac{8}{x}$};
+\end{tikzpicture}
+}
+\caption{Antiproportionalit\"at}
+\end{figure}
+\end{bsp}
+
 
 \section{Lineare Optimierung}
 \subsection{Planungspolygone}
