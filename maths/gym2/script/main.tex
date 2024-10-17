@@ -43,7 +43,7 @@ headsepline%
 
 \usepackage{marginnote}
 \usepackage
-[draft]%
+%[draft]%
 {qrcode}
 \qrset{height=9ex}
 
@@ -251,7 +251,7 @@ headsepline%
 
 \section{Einleitung}
 
-Die QR-Codes am Computer können so benutzt werden, dass das Code-Quadrat mit gehaltener linker Maustaste in einen Browser gezogen wird.
+Die QR-Codes am Computer können unter anderem so benutzt werden, dass das Code-Quadrat mit gehaltener linker Maustaste in einen Browser gezogen wird.
 
 \section{Der Funktionsbegriff}
 
@@ -286,11 +286,11 @@ $$f(x)=x^2.$$
 Es ist dann beispielsweise $f(2)=2^2=4, f(0)=0^2=0, f(-3)=(-3)^2=9,\dots$. Praktisch ist h\"aufig die Illustration einer Funktion in einem Koordinatensystem. Man zeichnet also die Zahlenpaare $\point{2}{4}, \point{0}{0}, \point{-3}{9},\dots$.
 \end{bsp}
 \begin{bem}
-In $y=f(x)$ heisst $x$ \emph{Argument von $f$} und $y$ bzw. $f(x)$ \emph{Wert von $f$}.
+In $y=f(x)$ heisst $x$ \emph{Argument von $f$} und $y$ bzw. $f(x)$ \emph{Funktionswert/Bild von $x$}.
 \end{bem}
-\begin{ueb}[Funktionen]
-Nenne Beispiele aus dem Alltag, denen Funktionen zugrunde liegen.
-\end{ueb}
+%\begin{ueb}[Funktionen]
+%Nenne Beispiele aus dem Alltag, denen Funktionen zugrunde liegen.
+%\end{ueb}
 \begin{ueb}[Schreibweise]
 Gegeben sei die Funktion
 $$g(x)=x^2-2x+3$$
@@ -332,12 +332,12 @@ Ermittle die maximale Definitionsmenge $\mD$, die minimale Wertemenge $\mW$ und 
 (a) $2x-6\q$ (b) $3x+1\q$ (c) $x^2\q$ (d) $\sqrt{x}\q$ (e) $x^3\q$ (f) $\frac{1}{x}\q$ (g) $x^2+1\q$ (h) $\sqrt{x-5}$
 \end{ueb}
 
-\begin{ueb}[Nullstellen 2]
-Ermittle die Definitionsmenge $\mD$ und die Nullstellen der Funktion $f:x\mapsto$
-  \\
+%\begin{ueb}[Nullstellen 2]
+%Ermittle die Definitionsmenge $\mD$ und die Nullstellen der Funktion $f:x\mapsto$
+%  \\
   
-  (a) $(x-2)(x+3)\q$ (b) $\frac{1}{x-4}\q$ (c) $x^2-7x+12\q$ (d) $(x+100)(x^2-49)\q$ (e) $\sqrt{x+6}$
-\end{ueb}
+%  (a) $(x-2)(x+3)\q$ (b) $\frac{1}{x-4}\q$ (c) $x^2-7x+12\q$ (d) $(x+100)(x^2-49)\q$ (e) $\sqrt{x+6}$
+%\end{ueb}
 
 \begin{ueb}[Schreibweise 5]
 Dr\"ucke die folgenden Aussagen kurz und pr\"agnant in mathematischer Schreibweise aus:
@@ -405,25 +405,25 @@ $$x_1\neq x_2\implies f(x_1)\neq f(x_2)$$
 dann heisst $f^{-1}$ mit $f^{-1}(f(x))=x$ die \emph{Inversfunktion} von $f$
 .
 \end{cdef}
-\begin{bem}
-Die Voraussetzung, dass $f$ \emph{injektiv} ist, ist wesentlich.
-\end{bem}
-\begin{cdef}[Injektivität]{}
-Eine
-\marginnote{
-\qrcode{
-https://www.youtube.com/watch?v=1vkU9R7XBho}
-}
-Funktion heisst \emph{injektiv}
-, wenn es zu jedem $y\in\mW$ \emph{h\"ochstens ein} $x\in\mD$ gibt.
-\end{cdef}
-\begin{ueb}[Injektivit\"at]
-\"Uberzeuge dich davon, dass f\"ur eine Funktion
-$$f:\mD\longrightarrow\mW$$
-mit $x_1,x_2\in\mD$ die Definition von \glqq injektiv\grqq\ \"aquivalent zur Aussage
-$$x_1\neq x_2\implies f(x_1)\neq f(x_2)$$
-ist.
-\end{ueb}
+%\begin{bem}
+%Die Voraussetzung, dass $f$ \emph{injektiv} ist, ist wesentlich.
+%\end{bem}
+%\begin{cdef}[Injektivität]{}
+%Eine
+%\marginnote{
+%\qrcode{
+%https://www.youtube.com/watch?v=1vkU9R7XBho}
+%}
+%Funktion heisst \emph{injektiv}
+%, wenn es zu jedem $y\in\mW$ \emph{h\"ochstens ein} $x\in\mD$ gibt.
+%\end{cdef}
+%\begin{ueb}[Injektivit\"at]
+%\"Uberzeuge dich davon, dass f\"ur eine Funktion
+%$$f:\mD\longrightarrow\mW$$
+%mit $x_1,x_2\in\mD$ die Definition von \glqq injektiv\grqq\ \"aquivalent zur Aussage
+%$$x_1\neq x_2\implies f(x_1)\neq f(x_2)$$
+%ist.
+%\end{ueb}
 \begin{ueb}[Injektivit\"at 2]
 Kann man, ausgehend von der Funktion
 $$f(x)=x^2,\qq\mD=\mR,$$
@@ -520,6 +520,8 @@ gibt die durchschnittliche \"Anderung der Funktion im Intervall $[x_1,x_2]$ an. 
 \caption{Durchschnittliche \"Anderungsrate}
 \end{figure}
 
+\clearpage
+
 \begin{cdef}[Intervall]{}
 Die Menge
 $$\setm{x\in\mR}{x_1\leq x \leq x_2}$$
@@ -562,13 +564,13 @@ Die Tabelle zeigt die Tarif- und Lebenskostenindizes (Index $1977\sim100$) f\"ur
 \end{enumeratea}
 \end{ueb}
 
-\begin{cdef}[Monotonie]{}
-Eine Funktion $f$ heisst \emph{monoton wachsend} im Intervall $I$, wenn die durchschnittliche \"Anderung f\"ur jedes Teilintervall von $I$ positiv oder Null ist. Entsprechend nennt man $f$ \emph{monoton fallend}, wenn f\"ur jedes Teilintervall von $I$ die durchschnittliche \"Anderung negativ oder Null ist.
-\end{cdef}
+%\begin{cdef}[Monotonie]{}
+%Eine Funktion $f$ heisst \emph{monoton wachsend} im Intervall $I$, wenn die durchschnittliche \"Anderung f\"ur jedes Teilintervall von $I$ positiv oder Null ist. Entsprechend nennt man $f$ \emph{monoton fallend}, wenn f\"ur jedes Teilintervall von $I$ die durchschnittliche \"Anderung negativ oder Null ist.
+%\end{cdef}
 
-\begin{ueb}
-In welchen Intervallen sind die Funktionen aus \"Ubung \ref{aenderung} monoton wachsend, monoton fallend?
-\end{ueb}
+%\begin{ueb}
+%In welchen Intervallen sind die Funktionen aus \"Ubung \ref{aenderung} monoton wachsend, monoton fallend?
+%\end{ueb}
 
 \cleardoublepage
 
@@ -952,8 +954,6 @@ Begr\"undung: Der Term $(x - u)^2$ ist nicht negativ; f\"ur $a <0$ wird $f(x)\le
 Ermittle das Maximum bzw. das Minimum der folgenden Terme f\"ur $x\in\mR$.
 $$x^2 -8x + 25, 3 - 2x - x^2, x^2 + x -18, - x^2 + 6x + 2.$$
 \end{ueb}
-
-\pagebreak
 
 \begin{ueb}[Maximize]
 Welches Rechteck vom Umfang $\unit[160]{cm}$ hat den gr\"ossten Inhalt?

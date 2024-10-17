@@ -310,15 +310,15 @@ Die Menge aller möglichen Versuchsausgänge $\go_1, \go_2, \dots, \go_n$ eines 
 \end{description}
 \end{bsps}
 
-\begin{ueb}[Stichprobenraum notieren]
-Bestimme einen geeigneten Stichprobenraum für den Versuch
-\begin{enumeratea}
-\item Mit der Spitze eines Bleistifts wird blindlings auf
-eine Textseite eines Buches getippt; der getroffene Buchstabe wird notiert.
-\item Bei Familien mit drei Kindern wird festgestellt, ob
-die Kinder Jungen oder Mädchen sind.
-\end{enumeratea}
-\end{ueb}
+%\begin{ueb}[Stichprobenraum notieren]
+%Bestimme einen geeigneten Stichprobenraum für den Versuch
+%\begin{enumeratea}
+%\item Mit der Spitze eines Bleistifts wird blindlings auf
+%eine Textseite eines Buches getippt; der getroffene Buchstabe wird notiert.
+%\item Bei Familien mit drei Kindern wird festgestellt, ob
+%die Kinder Jungen oder Mädchen sind.
+%\end{enumeratea}
+%\end{ueb}
 
 \subsubsection{Ereignisse}
 Wenn man beim Roulette auf \glqq impair\grqq\ setzt, ist man nicht so sehr daran interessiert, in welches Zahlenfach die Kugel fällt. Wichtig ist nur, ob das zufällige Ereignis eintritt, dass die ausgeloste Zahl ungerade ist, also die Kugel in eines der Fächer $1,3,5, \dots, 33, 35$ fällt. Diese gewinnbringenden Ausfälle bilden eine Teilmenge $\mA$ des Stichprobenraumes $\gO=\set{0,1,2,3,\dots,35,36}$.
@@ -326,7 +326,7 @@ Wenn man beim Roulette auf \glqq impair\grqq\ setzt, ist man nicht so sehr daran
 Mengen eignen sich hervorragend zur Beschreibung von Zufallsversuchen. Die Ausdrücke der Mengensprechweise werden lediglich in entsprechende Ausdrücke übertragen.
 
 \begin{cdef}[Ereignis]{}
-Jede Teilmenge $\mA\subset\gO$ ist ein \emph{Ereignis}.
+Jede Teilmenge $\mA\subset\gO$ heisst ein \emph{Ereignis}.
 \end{cdef}
 
 Endet eine Durchführung des Zufallversuchs mit dem Ausgang $\go\in\mA$, so sagt man: Das Ereignis $\mA$ ist eingetreten.	 Ist $\go\not\in\mA$, so sagt man: Das Ereignis $\mA$ ist nicht eingetreten oder das \emph{Gegenereignis} $\overline{\mA} = \gO\setminus\mA$ ist eingetreten.
@@ -339,14 +339,14 @@ Sind $\mA$ und $\mB$ zwei Ereignisse desselben Zufallsversuchs und endet die Dur
 \end{itemize}
 Zwei Ereignisse $\mA$ und $\mB$ heissen \emph{unvereinbar} genau dann, wenn sie nicht zugleich eintreten können, wenn also gilt $\mA\cap\mB=\emptyset$. Gegenereignisse $\mA$ und $\overline{\mA}$ sind stets unvereinbar.
 
-\begin{ueb}[Ereignisse beschreiben]
-Es sei $\go$ die gewürfelte Augenzahl. Stelle das Ereignis
-\begin{enumeratea}
-\item $\go$ ist ungerade,
-\item $\go$ ist Primzahl
-\end{enumeratea}
-als Teilmenge des Stichprobenraumes $\gO$ dar.
-\end{ueb}
+%\begin{ueb}[Ereignisse beschreiben]
+%Es sei $\go$ die gewürfelte Augenzahl. Stelle das Ereignis
+%\begin{enumeratea}
+%\item $\go$ ist ungerade,
+%\item $\go$ ist Primzahl
+%\end{enumeratea}
+%als Teilmenge des Stichprobenraumes $\gO$ dar.
+%\end{ueb}
 
 \begin{ueb}[Qualitätskontrolle]
 Bei einer Qualitätskontrolle werden drei produzierte Stücke der Reihe nach darauf untersucht, ob sie brauchbar (b) oder unbrauchbar (u) sind. Ermittle das folgende Ereignis:
@@ -382,7 +382,9 @@ Sein Ergebnisprotokoll siehst du in Tabelle \ref{tab:arrest} auf Seite \pageref{
 \caption{Anzahl Einsen zu Anzahl Würfen beim Reisnagel-Werfen}\label{tab:arrest}
 \end{table}
 
-Stellen Sie diese Daten graphisch in Abbildung \ref{graph} auf Seite \pageref{graph} dar.
+\begin{ueb}
+Stelle diese Daten graphisch in Abbildung \ref{graph} auf Seite \pageref{graph} dar.
+\end{ueb}
 
 \begin{figure}
 \centering
@@ -466,8 +468,6 @@ Ausgehend von der Erfahrungstatsache, dass die relativen Häufigkeiten eines Ere
 
 In dem weiteren Aufbau der Wahrscheinlichkeitstheorie erwies sich diese Definition als ungeeignet, da unüberwindliche Schwierigkeiten auftraten. Der Limesbegriff im Sinne der Analysis lässt sich nämlich nicht auf eine vom Zufall beherrschte Folge anwenden, wo immer wieder \emph{Ausreisser} möglich sind. Eine logisch befriedigende Fassung des Wahrscheinlichkeitsbegriffs wurde erst durch den Verzicht auf eine direkte Definition möglich. \textsc{Kolmogorow} forderte lediglich gewisse Eigenschaften für Wahrscheinlichkeiten und zeigte 1933, dass sich bereits aus wenigen Axiomen eine Wahrscheinlichkeitstheorie entwickeln lässt. Demnach kann man in vereinfachter Form sagen:
 
-\pagebreak
-
 \begin{cdef}[Wahrscheinlichkeit nach Kolmogorov]{}
 Ist
 \marginnote{
@@ -477,7 +477,7 @@ https://www.youtube.com/watch?v=LGmmqxRnRCg}
 $P$ eine Funktion, die jedem Ereignis $\mA$ eines Stichprobenraumes $\gO$ genau eine reelle Zahl $P(\mA)$ zuordnet, so heisst $P$ eine \emph{Wahrscheinlichkeitsfunktion} und jeder Funktionswert $P(\mA)$ die \emph{Wahrscheinlichkeit} von $\mA$, genau dann, wenn folgende (Kolmogorow-)Axiome erfüllt sind:
 \begin{itemize}
 \item $P(\mA)\geq0, \forall\mA\subset\gO$ \hfill(Positivität)
-\item $P(\gO):=1$ \hfill(Normierung)
+\item $P(\gO)=1$ \hfill(Normierung)
 \item $\forall\mA,\mB\subset\gO$ mit $\mA\cap\mB=\emptyset\implies P(\mA\cup\mB)=P(\mA)+P(\mB)$ \hfill(Additivität)
 \end{itemize}
 \end{cdef}
@@ -527,7 +527,7 @@ $$P(\mA)=\frac{1}{n}+\frac{1}{n}+\dots+\frac{1}{n}=\frac{\card(\mA)}{\card(\gO)}
 Brauche Kol\-mo\-go\-rof-Ad\-di\-ti\-vi\-tät.
 \end{proof}
 
-\begin{cdef}[Klassische Wahrscheinlichkeit nach Laplace]
+\begin{cdef}[Klassische Wahrscheinlichkeit nach Laplace]{}
 In obigem Fall gilt also für die Wahrscheinlichkeit eines Ereignisses $\mA$: Anzahl der günstigen Fälle für $\mA$ geteilt durch Anzahl der möglichen Fälle $\gO$, oder kurz
 $$P(\mathbb{A}):=\frac{|\mathbb{A}|}{|\Omega|}=\frac{g}{m}.$$
 \end{cdef}
@@ -547,32 +547,32 @@ In einer Stadt werden von allen Gebäuden 15\% elektrisch, 35\% mit Öl, 25\% mi
 \end{enumeratea}
 \end{ueb}
 
-\begin{ueb}[blind oder taub?]
-Die Wahrscheinlichkeit, dass jemand blind bzw. taub ist, beträgt $0.0085$ bzw. $0.005$. Beide Gebrechen kombiniert kommen mit der Wahrscheinlichkeit $0.0006$ vor. Wie gross ist die Wahrscheinlichkeit, dass man blind oder taub ist?
-\end{ueb}
+%\begin{ueb}[blind oder taub?]
+%Die Wahrscheinlichkeit, dass jemand blind bzw. taub ist, beträgt $0.0085$ bzw. $0.005$. Beide Gebrechen kombiniert kommen mit der Wahrscheinlichkeit %%$0.0006$ vor. Wie gross ist die Wahrscheinlichkeit, dass man blind oder taub ist?
+%\end{ueb}
 
-\begin{ueb}[Todesursachen]
-Vergleicht man einmal, woran die Menschen in den westlichen Industrieländern 1905 und 1985 gestorben sind, so ergibt sich die Tabelle \ref{tab:tod} auf Seite \pageref{tab:tod}.
+%\begin{ueb}[Todesursachen]
+%Vergleicht man einmal, woran die Menschen in den westlichen Industrieländern 1905 und 1985 gestorben sind, so ergibt sich die Tabelle \ref{tab:tod} auf Seite %\pageref{tab:tod}.
 
-\begin{table}[]
-\centering
-\begin{tabular}{|l|c|c|c|}
-\hline
-\rowcolor{Gray}\spaltenheight Todesursache & 1905 & 1985 & Ereignis\spaltensep \hhline{|====|}
-\rowcolor{lightyellow}\spaltenheight Krebs & 3.7\% & 21.5\% & A\spaltensep \hline
-\rowcolor{Gray}\spaltenheight Herz-, Kreislauf & 10.4\% & 50.7\% & B\spaltensep \hline
-\rowcolor{lightyellow}\spaltenheight Tbc & 10.3\% & 0.2\% & C\spaltensep \hline
-\rowcolor{Gray}\spaltenheight Altersschwäche & 9.7\% & 1.0\% & D\spaltensep \hline
-\rowcolor{lightyellow}\spaltenheight Unfälle, Selbstmord & 3.0\% & 5.2\% & E\spaltensep \hline
-\rowcolor{Gray}\spaltenheight Sonstige Ursachen & 62.9\% & 21.4\% & F\spaltensep\hline
-\end{tabular}
-\normalsize
-\caption{Todesursachen in westlichen In\-du\-strie\-län\-dern anfangs und gegen Ende des 20.~Jhdts}\label{tab:tod}
-\end{table}
+%\begin{table}[]
+%\centering
+%\begin{tabular}{|l|c|c|c|}
+%\hline
+%\rowcolor{Gray}\spaltenheight Todesursache & 1905 & 1985 & Ereignis\spaltensep \hhline{|====|}
+%\rowcolor{lightyellow}\spaltenheight Krebs & 3.7\% & 21.5\% & A\spaltensep \hline
+%%\rowcolor{Gray}\spaltenheight Herz-, Kreislauf & 10.4\% & 50.7\% & B\spaltensep \hline
+%\rowcolor{lightyellow}\spaltenheight Tbc & 10.3\% & 0.2\% & C\spaltensep \hline
+%\rowcolor{Gray}\spaltenheight Altersschwäche & 9.7\% & 1.0\% & D\spaltensep \hline
+%\rowcolor{lightyellow}\spaltenheight Unfälle, Selbstmord & 3.0\% & 5.2\% & E\spaltensep \hline
+%\rowcolor{Gray}\spaltenheight Sonstige Ursachen & 62.9\% & 21.4\% & F\spaltensep\hline
+%\end{tabular}
+%\normalsize
+%\caption{Todesursachen in westlichen In\-du\-strie\-län\-dern anfangs und gegen Ende des 20.~Jhdts}\label{tab:tod}
+%\end{table}
 
-Betrachte diese relativen Häufigkeiten als konstant in einem kleinen Zeitraum um 1905 bzw. um 1985, also als Schätzwerte der Wahrscheinlichkeiten $P_1(A), \dots , P_1(F)$ für das Jahr 1905 bzw.
-$P_2(A), \dots ,P_2(F)$ für das Jahr 1985. Berechne $P_1(A\cup B)$, $P_2(A \cup C \cup F)$, $P_1(\overline{D})$ und $P_2(\overline{E})$.
-\end{ueb}
+%Betrachte diese relativen Häufigkeiten als konstant in einem kleinen Zeitraum um 1905 bzw. um 1985, also als Schätzwerte der Wahrscheinlichkeiten $P_1(A), \dots , P_1(F)$ für das Jahr 1905 bzw.
+%$P_2(A), \dots ,P_2(F)$ für das Jahr 1985. Berechne $P_1(A\cup B)$, $P_2(A \cup C \cup F)$, $P_1(\overline{D})$ und $P_2(\overline{E})$.
+%\end{ueb}
 
 \begin{ueb}[Urne mit 100 Kugeln]
 Eine Urne enthält 100 Kugeln mit den Nummern $00,01,02, \dots ,98,99$. Eine Kugel wird zufällig gezogen. Es sei X die erste und Y die zweite Ziffer ihrer Nummer. Berechne die Wahrscheinlichkeiten $P(X = 3)$, $P(Y\neq 4)$, $P(X \neq Y)$, $P(X < 4\text{ und } Y < 3)$ und $P(X\cdot Y > 49)$.
@@ -612,10 +612,12 @@ Durchmesser von $\unit[10]{m}$ gräbt?
 Hinweis: Hier handelt es sich um eine geometrische Wahrscheinlichkeit, definiert durch das Verhältnis des Inhalts der günstigen Fläche zum Inhalt der möglichen Fläche. Auch diese Zuordnung erfüllt die drei Axiome von Kolmogorow!
 \end{ueb}
 
-\begin{ueb}[Tankstelle Warteschlange]
-An einer Tankstelle kommen innerhalb von zehn Minuten zwei Autos zufällig an. Wie gross ist die Wahrscheinlichkeit, dass eines der Autos an der Tanksäule warten muss, wenn die Bedienungszeiten für das eine Auto zwei und für das andere Auto drei Minuten betragen?\\
-Hinweis: Die Autos mögen zu den Zeitpunkten $x$ und $y$ kommen. Der Punkt $\point{x}{y}$ ist in einem Quadrat gleichverteilt.
-\end{ueb}
+%\begin{ueb}[Tankstelle Warteschlange]
+%An einer Tankstelle kommen innerhalb von zehn Minuten zwei Autos zufällig an. Wie gross ist die Wahrscheinlichkeit, dass eines der Autos an der Tanksäule warten muss, wenn die Bedienungszeiten für das eine Auto zwei und für das andere Auto drei Minuten betragen?\\
+%Hinweis: Die Autos mögen zu den Zeitpunkten $x$ und $y$ kommen. Der Punkt $\point{x}{y}$ ist in einem Quadrat gleichverteilt.
+%\end{ueb}
+
+\clearpage
 
 \section{Stochastische Prozesse}
 
@@ -732,28 +734,24 @@ Zeichne ein Baumdiagramm.
 \item Abel und Kain haben je zwei Kugeln. Sie schiessen abwechselnd auf eine Glasflasche. Abel beginnt. Ihre Trefferwahrscheinlichkeiten sind $\nicefrac{1}{3}$ bzw. $\nicefrac{1}{4}$. Wie gross ist die Wahrscheinlichkeit, dass Abel die Flasche zerstört?
 \item wie (b), jedoch haben Abel und Kain beliebig viele Kugeln zur Verfügung.
 \end{enumeratea}
-
-Zeichne gegebenenfalls Baumdiagramme.
 \end{ueb}
 
-\begin{ueb}[Letzte Chance in Zelophanien]
-Wer in Zelophanien zum Tode verurteilt wird, erhält eine letzte Chance. Mit verbundenen Augen darf er eine von drei Urnen wählen und aus der gewählten Urne eine Kugel ziehen.
-\begin{description}
-\item[Urne I:] 5 weisse, 1 schwarze
-\item[Urne II:] 4 weisse, 2 schwarze
-\item[Urne III:] 3 weisse, 3 schwarze
-\end{description}
-\begin{enumeratea}
-\item Eine weisse Kugel rettet sein Leben. Wie gross ist
-seine Überlebenschance?
-\item Der Verurteilte erhält die Erlaubnis, vorher mit
-offenen Augen die Kugeln zwischen den Urnen anders zu verteilen. Ermittle die Überlebenschancen bei optimaler Verteilung. Wie sieht diese optimale Verteilung aus?
-\end{enumeratea}
-\end{ueb}
+%\begin{ueb}[Letzte Chance in Zelophanien]
+%Wer in Zelophanien zum Tode verurteilt wird, erhält eine letzte Chance. Mit verbundenen Augen darf er eine von drei Urnen wählen und aus der gewählten Urne eine Kugel ziehen.
+%\begin{description}
+%\item[Urne I:] 5 weisse, 1 schwarze
+%\item[Urne II:] 4 weisse, 2 schwarze
+%\item[Urne III:] 3 weisse, 3 schwarze
+%\end{description}
+%\begin{enumeratea}
+%\item Eine weisse Kugel rettet sein Leben. Wie gross ist
+%seine Überlebenschance?
+%\item Der Verurteilte erhält die Erlaubnis, vorher mit
+%offenen Augen die Kugeln zwischen den Urnen anders zu verteilen. Ermittle die Überlebenschancen bei optimaler Verteilung. Wie sieht diese optimale Verteilung aus?
+%\end{enumeratea}
+%\end{ueb}
 
-\begin{ueb}[Von Neumann Trick für gefälscht Münze]
 Wenn zwei Leute gegensätzlicher Meinung sind, wird oft eine Münze geworfen, um eine Entscheidung herbeizuführen. Gelegentlich mag es vorkommen, dass der eine oder auch beide den Argwohn hegen, die Münze sei präpariert. Der Mathematiker \textsc{John Von Neumann} hat einen schlauen kleinen Trick entwickelt, der es den Kontrahenten erlaubt, eine präparierte Münze zu verwenden und trotzdem ein faires Ergebnis zu erhalten. Die Münze wird zweimal geworfen. Wenn zweimal Kopf oder zweimal Zahl erscheint, wird die Münze wiederum zweimal geworfen. Wenn zuerst Kopf und dann Zahl erscheint, hat der eine der beiden Kontrahenten gewonnen, und wenn zuerst Zahl und dann Kopf erscheint, hat der andere gewonnen. Begründe, dass die Wahrscheinlichkeiten für diese beiden Ereignisse gleich hoch sind, auch wenn die Münze präpariert ist.
-\end{ueb}
 
 \begin{ueb}[Astragale werfen]
  In der Antike dienten Lammknochen, sogenannte Astragale, als Würfel. Astragale können mit vier Seiten nach oben fallen. Durch Versuche in Museen kennt man die Wahrscheinlichkeiten dieser vier Seiten: $p_1\approx0.1, p_2\approx0.1, p_3\approx0.4, p_4\approx0.4$. Bei einem Spiel haben die Griechen und Römer vier Astragale auf einmal geworfen. Besonders begehrt war ein Wurf, bei dem alle vier verschiedenen Seiten oben liegen, ein \emph{Venuswurf}. Berechne die Wahrscheinlichkeit für einen Venuswurf.
@@ -764,15 +762,15 @@ Als Geburtsstunde der Wahrscheinlichkeitsrechnung gilt das Jahr 1654, als der \t
 \begin{enumeratea}
 \item Was ist wahrscheinlicher: bei vier Würfen mit einem Würfel mindestens eine 6 zu werfen, oder bei 24 Würfen mit zwei Würfeln mindestens eine Doppelsechs zu werfen?\\
 De Mère glaubte, dass die Wahrscheinlichkeiten gleich sein müssten, da $4\div6 = 24\div36$ ist.
-\item Eine Münze wird wiederholt geworfen. Für Kopf erhält Spieler A einen Punkt, für Zahl erhält Spieler B einen Punkt. Wer zuerst fünf Punkte erzielt, gewinnt den ganzen Einsatz. Nach sieben Würfen hat A 4 Punkte, B 3 Punkte erzielt. Das Spiel muss wegen eines unvorhergesehenen Ereignisses abgebrochen werden. Wie ist der Einsatz gerecht zu verteilen: nach den erreichten Punkten, also wie $4\div3$, oder nach den zum Sieg noch fehlenden Punkten, also wie $2\div1$ (A fehlt noch ein Punkt, B fehlen noch zwei Punkte; also muss A doppelt so viel erhalten wie B.)? Oder hast du einen anderen Vorschlag?
+\item Eine Münze wird wiederholt geworfen. Für Kopf erhält Spieler A einen Punkt, für Zahl erhält Spieler B einen Punkt. Wer zuerst fünf Punkte erzielt, gewinnt den ganzen Einsatz. Nach sieben Würfen hat A 4 Punkte, B 3 Punkte erzielt. Das Spiel muss wegen eines unvorhergesehenen Ereignisses abgebrochen werden. Wie ist der Einsatz gerecht zu verteilen: nach den erreichten Punkten, also wie $4\div3$, oder nach den zum Sieg noch fehlenden Punkten, also wie $2\div1$ (A fehlt noch ein Punkt, B fehlen noch zwei Punkte; also muss A doppelt so viel erhalten wie B.)?
 \end{enumeratea}
 \end{ueb}
 
-Viele Lösungsversuche scheiterten nicht zuletzt an der unzweckmässigen Verwendung des Proportionaldenkens. Die exakte Lösung --- auf verschiedenen Wegen --- blieb \textsc{Pascal} und \textsc{Fermat} vorbehalten. Wie lauten deine Lösungsvorschläge?
+Viele Lösungsversuche scheiterten nicht zuletzt an der unzweckmässigen Verwendung des Proportionaldenkens. Die exakte Lösung --- auf verschiedenen Wegen --- blieb \textsc{Pascal} und \textsc{Fermat} vorbehalten.
 
 \textsc{Pascal} hat sich übrigens in einem Brief über \textsc{de Mère} so geäussert:
 \begin{quote}
-\dots denn er hat wohl Geist, aber er ist nicht Mathematiker, und das ist, wie Sie wissen, ein grosser Mangel! \dots
+\dots denn er hat wohl Geist, aber er ist nicht Mathematiker, und das ist, wie Sie wissen, ein grosser Mangel!
 \end{quote}
 
 \begin{ueb}[Geburtstagsparadoxon]
@@ -783,7 +781,7 @@ https://youtu.be/lc-7Am3al0U}
 }
 kann spannend sein, bei den einzelnen Teilaufgaben das Ergebnis jeweils zuerst zu raten.
 \begin{enumeratea}
-\item Wie gross ist die Wahrscheinlichkeit, dass von sieben Personen mindestens zwei am gleichen Wochentag Geburtstag haben
+%\item Wie gross ist die Wahrscheinlichkeit, dass von sieben Personen mindestens zwei am gleichen Wochentag Geburtstag haben
 \item Wie gross ist die Wahrscheinlichkeit, dass in deiner Klasse mindestens $2$ Personen am gleichen Jahrestag Geburtstag haben?
 \item Bei einer Party sind $k$ Gäste. Wie gross ist die Wahrscheinlichkeit, dass mindestens zwei Gäste am gleichen Jahrestag Geburtstag haben? Schätze, wie viele Gäste anwesend sein müssten, damit diese Wahrscheinlichkeit grösser als 50\% ist.
 \end{enumeratea}
@@ -823,7 +821,7 @@ die Wahrscheinlichkeit, bei einer Lottoziehung
 \end{enumeratea}
 \end{minipage}
 
-zu tippen. Was fällt auf?!
+zu tippen.
 \end{ueb}
 
 \begin{ueb}[Lotto Nachbarn]
@@ -859,7 +857,7 @@ Berechne die entsprechenden Wahrscheinlichkeiten.
 
 \begin{figure}
 \centering
-\includegraphics[width=0.682\textwidth]{pictures/PokerHandRankings.png}
+\includegraphics[width=0.35\textwidth]{pictures/PokerHandRankings.png}
 \caption{Poker Hand Rankings}
 \end{figure}
 
@@ -923,9 +921,9 @@ A und B seien die Ereignisse aus dem Einführungsbeispiel.
 \begin{enumeratea}
 \item Zeige: $P(A)=P(A\cap B) +P(A\cap\overline{B})$.
 \item Berechne $P(B|A)$. (Man sieht eine herrliche Tulpe. Gesucht ist die Wahrscheinlichkeit, dass die zugehörige Zwiebel in Holland gekauft wurde.)
-\item Interpretiere und berechne $P(\overline{A}|B)$, $P(A|\overline{B})$, $P(\overline{A}|\overline{B})$, $P(B|A)$, $P(B|\overline{A})$ und $P(\overline{B}|\overline{A})$.
-\item Bestätige $P(A)\cdot P(B|A) = P(B)\cdot P(A|B)$.
-\item Ist die Aussage $P(A|B) = 1 - P(\overline{A}|B)$ richtig?
+%\item Interpretiere und berechne $P(\overline{A}|B)$, $P(A|\overline{B})$, $P(\overline{A}|\overline{B})$, $P(B|A)$, $P(B|\overline{A})$ und $P(\overline{B}|\overline{A})$.
+%\item Bestätige $P(A)\cdot P(B|A) = P(B)\cdot P(A|B)$.
+%\item Ist die Aussage $P(A|B) = 1 - P(\overline{A}|B)$ richtig?
 \end{enumeratea}
 \end{ueb}
 
@@ -937,21 +935,21 @@ Ein Lügendetektor-Test entscheide in 90\% aller Fälle richtig, sowohl bei Schu
 \end{enumeratea}
 \end{ueb}
 
-\begin{ueb}[Kaffeetrinker im Orchester]
-In einem Orchester spielen 40 Personen. Drei Fünftel aller Personen trinken gerne Kaffee, darunter 15 der 25 männlichen Orchestermitglieder.
-\begin{enumeratea}
-\item Bestimme die Wahrscheinlichkeit dafür, dass ein zufällig ausgewähltes Orchestermitglied,
-\begin{enumeratei}
-\item weiblich ist.
-\item weiblich ist oder nicht gerne Kaffee trinkt.
-\end{enumeratei}
-\item Bestimme die Wahrscheinlichkeit dafür, dass ein zufällig ausgewähltes Orchestermitglied männlich ist,
-wenn bekannt ist, dass er nicht gerne Kaffee trinkt.
-\end{enumeratea}
-\end{ueb}
+%\begin{ueb}[Kaffeetrinker im Orchester]
+%In einem Orchester spielen 40 Personen. Drei Fünftel aller Personen trinken gerne Kaffee, darunter 15 der 25 männlichen Orchestermitglieder.
+%\begin{enumeratea}
+%\item Bestimme die Wahrscheinlichkeit dafür, dass ein zufällig ausgewähltes Orchestermitglied,
+%\begin{enumeratei}
+%\item weiblich ist.
+%\item weiblich ist oder nicht gerne Kaffee trinkt.
+%\end{enumeratei}
+%\item Bestimme die Wahrscheinlichkeit dafür, dass ein zufällig ausgewähltes Orchestermitglied männlich ist,
+%wenn bekannt ist, dass er nicht gerne Kaffee trinkt.
+%\end{enumeratea}
+%\end{ueb}
 
 \begin{ueb}[Sensitivität und Spezifität]
-Schreibe auf, was die Begriffe \emph{Sensitivität} und \emph{Spezifität} bedeuten. Kontrolliere deine Aussagen mithilfe der Angaben aus dem Skript auf Seite \pageref{ueb:hiv} (\"Ubung HIV) Test)
+Schreibe auf, was die Begriffe \emph{Sensitivität} und \emph{Spezifität} bedeuten. Kontrolliere deine Aussagen mithilfe der Angaben aus dem Skript auf Seite \pageref{ueb:hiv} (\"Ubung HIV Test).
 \end{ueb}
 
 \begin{ueb}[Covid-19 Selbsttest]
@@ -973,28 +971,20 @@ Nimm an, dass aktuell $5\%$ der Bevölkerung an Covid-19 erkrankt ist.
     \item Berechne die Wahrscheinlichkeit, dass eine zufällig  ausgewählte Person  tatsächlich krank ist, wenn der Test positiv anzeigt (\emph{positiv prädiktiver Wert}).
     \item Berechne die Wahrscheinlichkeit, dass eine zufällig ausgewählte Person tatsächlich gesund ist, wenn der Test negativ anzeigt (\emph{negativ prädiktiver Wert}).
 \end{enumerate}
-Nun seien statt $5\% 
-$ der Bevölkerung ganze $20\%$ der Bevölkerung an Covid-19 erkrankt. Wir möchten alle 20 Personen in diesem Klassenzimmer mit diesem Selbsttest testen.
-
+Seien wir jetzt in einer Pandemie und gesch\"atzte $20\%$ der Bev\"olkerung sei an Covid-19 erkrankt. Wir testen eine ganze Schule (ca. 1000 Personen).
 \begin{enumerate}[a)]
 \setcounter{enumi}{3}
-    \item Wie viele Personen haben Covid-19? Wie viele positive und negative Tests gibt es? Erstelle eine geeignete Tabelle.
-\end{enumerate}
-Nun nehmen wir an, dass nicht nur unsere Klasse getestet wird, sondern die ganze Schule (ca. 1500 Personen).
-
-\begin{enumerate}[a)]
-\setcounter{enumi}{4}
     \item Erstelle dazu ebenfalls eine geeignete Tabelle mit den Werten für die richtig positiven, die falsch positiven, die richtig negativen und die falsch negativen Tests.
 Wie viele kranke Personen werden nicht erkannt?
 \end{enumerate}
 \end{ueb}
 
 \begin{ueb}[geringe Spezifität]
-Die Corona Selbsttests haben eine sehr hohe Spezifität und eine hohe Sensitivität. Was bedeutet es für Patienten, wenn ein medizinischer Test (HIV, Krebs etc.) eine hohe Sensitivität, aber eine geringe Spezifität hat?
+Die Corona Selbsttests haben eine sehr hohe Spezifität und eine hohe Sensitivität. Was bedeutet es für Patienten, wenn ein medizinischer Test eine hohe Sensitivität, aber eine nicht so hohe Spezifität hat?
 \end{ueb}
 
 \begin{ueb}[Selbsttest 2020]
-Im Anhang C im Skript findest du Angaben zu zwei Verschiedenen Covid-19 Selbsttests aus dem Jahr 2020.
+Im Anhang C im Skript findest du Angaben zu zwei verschiedenen Covid-19 Selbsttests aus dem Jahr 2020.
 \begin{enumerate}[a)]
     \item Rechne die Werte für die positive und negative Prädikation nach.
 \end{enumerate}
@@ -1028,21 +1018,21 @@ $$P(\bar{p}|\bar{H})=99.7\%.$$
 
 \end{ueb}
 
-\begin{ueb}[Alleskönner, Besserwisser, Chancenlos]
-Eine Firma beschäftigt drei Mitarbeiter, die telefonische Anfragen von Kunden beantworten sollen. Herr Alleskönner kann 90\% aller Frage zur Zufriedenheit der Kunden beantworten, Frau Besserwisser 80\% und Herr Chancenlos noch gerade 70\%. Berechnen Sie unter der Annahme, dass alle drei Mitarbeiter gleich viele Telefonate beantworten, die Wahrscheinlichkeiten, dass
+%\begin{ueb}[Alleskönner, Besserwisser, Chancenlos]
+%Eine Firma beschäftigt drei Mitarbeiter, die telefonische Anfragen von Kunden beantworten sollen. Herr Alleskönner kann 90\% aller Frage zur Zufriedenheit der Kunden beantworten, Frau Besserwisser 80\% und Herr Chancenlos noch gerade 70\%. Berechnen Sie unter der Annahme, dass alle drei Mitarbeiter gleich viele Telefonate beantworten, die Wahrscheinlichkeiten, dass
 
-\begin{enumeratea}
-\item ein Kunde an Herrn Alleskönner gerät und eine zufrieden stellende Antwort bekommt.
-\item ein Kunde an Herrn Chancenlos gerät und eine nicht zufrieden stellende Antwort
-bekommt.
-\item ein Kunde mit der Antwort, die er erhält, nicht zufrieden ist.
-\item ein unzufriedener Kunde an Frau Besserwisser geraten ist.
-\item eine Antwort, die zur Zufriedenheit des Kunden ausfiel, von Herrn Chancenlos
-gegeben wurde.
-\item eine Antwort, die den Kunden nicht zufrieden stellt, von Herrn Alleskönner gegeben
-wurde.
-\end{enumeratea}
-\end{ueb}
+%\begin{enumeratea}
+%\item ein Kunde an Herrn Alleskönner gerät und eine zufrieden stellende Antwort bekommt.
+%\item ein Kunde an Herrn Chancenlos gerät und eine nicht zufrieden stellende Antwort
+%bekommt.
+%\item ein Kunde mit der Antwort, die er erhält, nicht zufrieden ist.
+%\item ein unzufriedener Kunde an Frau Besserwisser geraten ist.
+%\item eine Antwort, die zur Zufriedenheit des Kunden ausfiel, von Herrn Chancenlos
+%gegeben wurde.
+%\item eine Antwort, die den Kunden nicht zufrieden stellt, von Herrn Alleskönner gegeben
+%wurde.
+%\end{enumeratea}
+%\end{ueb}
 
 \begin{ueb}[Wer steckt unter dem Tirolerhut]
 In einem bayrischen Touristenort sind zur Hochsaison drei Mal so viele Touristen wie Einheimische. Touristen tragen zu 70\% einen Tirolerhut, Einheimische nur zu 25\%.
@@ -1055,22 +1045,22 @@ der Mensch ein Einheimischer ist?
 Was ist also günstiger, wenn du möglichst schnell eine verlässliche Wegauskunft haben möchtest?
 \end{ueb}
 
-\begin{ueb}
-Eine Krankheit kommt in der Bevölkerung mit einer Wahrscheinlichkeit von $2\%$ vor. Der Test für die Krankheit ist zurzeit noch sehr unsicher, er zeigt nämlich sowohl für die Kranken wie auch die Gesunden ihren Zustand mit einer Sicherheit von 75\% an.
+%\begin{ueb}
+%Eine Krankheit kommt in der Bevölkerung mit einer Wahrscheinlichkeit von $2\%$ vor. Der Test für die Krankheit ist zurzeit noch sehr unsicher, er zeigt nämlich sowohl für die Kranken wie auch die Gesunden ihren Zustand mit einer Sicherheit von 75\% an.
 
-\begin{enumeratea}
-\item Der Test zeigt für eine Person das Vorhandensein der Krankheit an. Wie gross ist die
-Wahrscheinlichkeit, tatsächlich krank zu sein?
-\item Die Firma möchte nun durch weitere Investitionen den Test genauer machen. Du
-sollst entscheiden, ob die Investitionen eher in die genauere Indikation bei den
-Kranken oder bei den Gesunden fliessen soll. Rechne dazu die Situation unter (a) durch, wenn die Genauigkeit
-\begin{enumeratei}
-\item für die Kranken (die Sensitivität) von 75\% auf 90\% gesteigert wurde.
-\item für die Gesunden (die Spezifität) von 75\% auf 90\% gesteigert wurde.
-\end{enumeratei}
-Wohin sollte also die Investition fliessen?
-\end{enumeratea}
-\end{ueb}
+%\begin{enumeratea}
+%%\item Der Test zeigt für eine Person das Vorhandensein der Krankheit an. Wie gross ist die
+%Wahrscheinlichkeit, tatsächlich krank zu sein?
+%\item Die Firma möchte nun durch weitere Investitionen den Test genauer machen. Du
+%sollst entscheiden, ob die Investitionen eher in die genauere Indikation bei den
+%Kranken oder bei den Gesunden fliessen soll. Rechne dazu die Situation unter (a) durch, wenn die Genauigkeit
+%\begin{enumeratei}
+%\item für die Kranken (die Sensitivität) von 75\% auf 90\% gesteigert wurde.
+%\item für die Gesunden (die Spezifität) von 75\% auf 90\% gesteigert wurde.
+%\end{enumeratei}
+%Wohin sollte also die Investition fliessen?
+%\end{enumeratea}
+%\end{ueb}
 
 Im Anhang \ref{appendix:aerztecovid} gegen Ende des Skripts (Seite \pageref{appendix:aerztecovid}) kann man Zahlen aus einem Ärzte-Communiqué zu einem neuen Covid19 Schnelltest, der damals im Nov 2020 eingeführt wurde, nachrechnen.
 
@@ -1090,14 +1080,14 @@ $$P(A\cap B) = P(A)\cdot P(B),$$
 andernfalls heissen sie \emph{abhängig}.
 \end{cdef}
 
-\begin{ueb}[Chemie und Physik]
-Bei der ersten Vorprüfung der Mediziner sind $25\%$ der Kandidaten in Physik, $15\%$ in Chemie und $10\%$ in Physik und Chemie durchgefallen. Wie gross ist die Wahrscheinlichkeit, dass ein zufällig ausgewählter Kandidat
-\begin{enumeratea}
-\item in Physik durchfiel, wenn man weiss, dass er in Chemie nicht bestanden hat?
-\item in Chemie durchfiel, wenn man weiss, dass er in Physik nicht bestanden hat?
-\item in Physik oder Chemie durchfiel?
-\end{enumeratea}
-\end{ueb}
+%\begin{ueb}[Chemie und Physik]
+%Bei der ersten Vorprüfung der Mediziner sind $25\%$ der Kandidaten in Physik, $15\%$ in Chemie und $10\%$ in Physik und Chemie durchgefallen. Wie gross ist die Wahrscheinlichkeit, dass ein zufällig ausgewählter Kandidat
+%\begin{enumeratea}
+%\item in Physik durchfiel, wenn man weiss, dass er in Chemie nicht bestanden hat?
+%\item in Chemie durchfiel, wenn man weiss, dass er in Physik nicht bestanden hat?
+%\item in Physik oder Chemie durchfiel?
+%\end{enumeratea}
+%\end{ueb}
 
 \begin{ueb}[Blutgruppen und Geschlecht]
 Zur Untersuchung, ob die vier Hauptblutgruppen 0, A, B, AB vom Geschlecht abhängen, wurden die für Mitteleuropa gültigen Daten in der Tabelle \ref{blutgrp} auf Seite \pageref{blutgrp} erhoben. Kann man daraus schliessen, dass die Verteilung der Blutgruppen vom Geschlecht unabhängig ist?
@@ -1376,7 +1366,7 @@ Berechne für beide Maschinen aus dem obigen Beispiel die Standardabweichung der
 Der Blutdruck in der Oberarmschlagader eines gesunden Menschen beträgt etwa $\unit[120]{mm}$ Quecksilbersäule. Eine Arzneimittelfirma lässt zwei Medikamente A und B zur Regulierung des Blutdrucks klinisch testen. Die Ergebnisse sind in der Tabelle festgehalten:
 \begin{table}[h]
 \centering
-\scalebox{0.55}{
+\scalebox{1}{
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
 \hline
 \rowcolor{Gray}\spaltenheight & $x_i,y_i$ & 105 & 110 & 115 & 120 & 125 & 130 & 135 \spaltensep \hline
@@ -1389,12 +1379,7 @@ Der Blutdruck in der Oberarmschlagader eines gesunden Menschen beträgt etwa $\u
 Berechne für jedes Medikament den Erwartungswert und die Standardabweichung. Welches Medikament ist demnach vorteilhafter?
 \end{ueb}
 
-\begin{figure}
-  \begin{center}
-    \includegraphics[width=0.618\textwidth]{pictures/gauss}
-  \end{center}
-\caption{Zoom in die alte 10\,DM Note mit Carl Friedrich Gauss}
-\end{figure}
+\clearpage
 
 \section{Binomialverteilung}
 
@@ -1444,7 +1429,7 @@ Die Wahrscheinlichkeit für $k$ Erfolge mit Einzel-Wahrscheinlichkeit $p$ ist $p
 \end{proof}
 
 \begin{ueb}[Summe ist 100\%]
-Formuliere zuerst in Worten unten stehende Gleichung, und zeige anschliessend, dass tatsächlich
+Formuliere zuerst in Worten unten stehende Gleichung, und begr\"unde anschliessend, dass tatsächlich
 $$\sum_{k=0}^n\binom{n}{k}p^kq^{n-k}=1.$$
 \end{ueb}
 
@@ -1570,23 +1555,23 @@ Nun, wie könnte man eine solche Folge testen? Am einfachsten beginnt man mit de
 
 \subsection{Binomialtest}\label{subsec:bspfreiw}
 
-\begin{wrapfigure}{r}{0.382\textwidth}
+\begin{wrapfigure}{r}{0.16\textwidth}
   \begin{center}
-    \includegraphics[width=0.33\textwidth]{pictures/bcfemina}
+    \includegraphics[width=0.2\textwidth]{pictures/bcfemina}
   \end{center}
 %\caption{You Know my Name}
 \end{wrapfigure}
-\textsc{Nicole H} aus K spielt in ihrer Freizeit leidenschaftlich gerne Basketball. Sie besucht regelmässig das Training des \textsc{BC Femina Bern}.
+%\textsc{Nicole H} aus K spielt in ihrer Freizeit leidenschaftlich gerne Basketball. Sie besucht regelmässig das Training des \textsc{BC Femina Bern}.
 
 Beim Freiwurf handelt es sich um eine immer wiederkehrende Spielsituation. Aus diesem Grund kommt dem Freiwurftraining eine besondere Bedeutung zu. Aus Erfahrung weiss Nicole, dass sie im Training eine Freiwurftrefferquote von genau $40\%$ hat. Daraus leiten wir eine Trefferwahrscheinlichkeit von
 $$p_0=0.4$$
 für Trainingsfreiwürfe ab.
 
-Nicole liebt Herausforderungen und geht deshalb davon aus, dass sie unter Druck --- zum Beispiel in einer Wettkampfsituation --- eine höhere Trefferquote bei Freiwürfen hinkriegt als im Training. Ist dem wirklich so? Wie lässt sich diese Vermutung belegen?
+Eine ausgew\"ahlte Spielerin geht davon aus, dass sie unter Druck --- zum Beispiel in einer Wettkampfsituation --- eine höhere Trefferquote bei Freiwürfen hinkriegt als im Training. Ist dem wirklich so? Wie lässt sich diese Vermutung belegen?
 
 \subsubsection{Nullhypothese}
 
-Wir formulieren die beiden konkurrierenden Hypothesen zu Nicoles Treffsicherheit:
+Wir formulieren die beiden konkurrierenden Hypothesen zu ihrerTreffsicherheit:
 
 \begin{itemize}
 \item Nullhypothese $H_0$: $p=0.4$ (gleichbleibende Trefferwahrscheinlichkeit)
@@ -1621,7 +1606,7 @@ Illustriere alle Wahrscheinlichkeiten $k=0,\dots,5$ für $n=5$ und $p=0.4$ in un
 \end{center}
 
 \begin{ueb}[Wahrscheinlichkeit im kritischen Bereich zu landen]
-Berechne nun die Wahrscheinlichkeit $\ga_p$ dafür, dass wir bei $n$ Versuchen ein Ereignis aus dem kritischen Bereich $K$ erhalten, falls $H_0$ wahr ist. Im Falle von Nicole haben wir also $n=5$, $K=\set{3,4,5}$ und $p=0.4$.
+Berechne nun die Wahrscheinlichkeit $\ga_p$ dafür, dass wir bei $n$ Versuchen ein Ereignis aus dem kritischen Bereich $K$ erhalten, falls $H_0$ wahr ist. Im Falle unserer Spielerin haben wir also $n=5$, $K=\set{3,4,5}$ und $p=0.4$.
 \end{ueb}
 
 \subsubsection{Signifikanz}
@@ -1649,10 +1634,10 @@ Im
 \qrcode{
 https://youtu.be/9rI5q0tS910}
 }
-Beispiel von Nicole hatten wir einen $p$-Wert von $\ga_p=0.317$. Dieser reicht also bei Weitem nicht aus, um $H_0$ zu verwerfen und Nicole eine höhere Trefferquote in Wettkampfsituationen zu attestieren. Denn auch bei einer gleichbleibenden Trefferquote von $p_0=0.4$ würde Nicole in fast jedem dritten Spiel drei oder mehr von fünf Freiwürfen verwerten.
+Beispiel unserer Spielerin hatten wir einen $p$-Wert von $\ga_p=0.317$. Dieser reicht also bei Weitem nicht aus, um $H_0$ zu verwerfen und sie eine höhere Trefferquote in Wettkampfsituationen zu attestieren. Denn auch bei einer gleichbleibenden Trefferquote von $p_0=0.4$ würde Nicole in fast jedem dritten Spiel drei oder mehr von fünf Freiwürfen verwerten.
 
 \begin{ueb}[Signifikanzwerte berechnen]
-Nicole verwertet
+Sie verwertet
 \begin{enumeratea}
 \item $4$ oder $5$ von $5$ Freiwürfen,
 \item $5$ von $5$ Freiwürfen.
@@ -1660,7 +1645,7 @@ Nicole verwertet
 Berechne die beiden Signifikanzwerte. 
 \end{ueb}
 
-Einzig für den letzten Fall ist $\ga_p\leq0.05$. Dieses Ereignis ist also statistisch signifikant und wir müssten die Nullhypothese $H_0$ zugunsten der Alternative $H_A$ verwerfen. Das heisst, wir könnten bei fünf Treffern davon ausgehen, dass Nicole in Wettkampfsituationen tatsächlich besser trifft als im Training.
+Einzig für den letzten Fall ist $\ga_p\leq0.05$. Dieses Ereignis ist also statistisch signifikant und wir müssten die Nullhypothese $H_0$ zugunsten der Alternative $H_A$ verwerfen. Das heisst, wir könnten bei fünf Treffern davon ausgehen, dass unsere Spielerin in Wettkampfsituationen tatsächlich besser trifft als im Training.
 
 \subsubsection{Fehler}
 
@@ -1676,7 +1661,7 @@ https://youtu.be/-gNSbK25Spc}
 Die Nullhypothese $H_0$ ist falsch, wird aber trotzdem beibehalten. Diesen Fehler bezeichnet man manchmal auch mit $\beta$. Die Fehlerwahrscheinlichkeit zweiter Art hängt von der Wahl des Parameters $p$ ab. Das wollen wir uns an unserem Trefferquotenbeispiel veranschaulichen.
 \end{itemize}
 
-Angenommen, Nicole verwertet in einer Wettkampfsituation tatsächlich alle $5$ Freiwürfe. Die Gefahr, dass wir die Nullhypothese $H_0$ fälschlicherweise verwerfen (Fehler erster Art) ist mit $\ga_p=0.010$ so klein, dass wir sie in Kauf nehmen. Bei mindestens $4$ Treffern hingegen ist die Wahrscheinlichkeit für einen Fehler der ersten Art mit $\ga_p=0.087$ zu gross, und wir bleiben bei der Nullhypothese $H_0$. Damit kann uns aber ein Fehler zweiter Art unterlaufen, den wir uns genauer anschauen wollen. Gehen wir also davon aus, dass Nicole tatsächlich ein Wettkampftyp ist und in Wettkampfsituationen eine Trefferquote von $p=0.6$ hat.
+Angenommen, die Spielerin verwertet in einer Wettkampfsituation tatsächlich alle $5$ Freiwürfe. Die Gefahr, dass wir die Nullhypothese $H_0$ fälschlicherweise verwerfen (Fehler erster Art) ist mit $\ga_p=0.010$ so klein, dass wir sie in Kauf nehmen. Bei mindestens $4$ Treffern hingegen ist die Wahrscheinlichkeit für einen Fehler der ersten Art mit $\ga_p=0.087$ zu gross, und wir bleiben bei der Nullhypothese $H_0$. Damit kann uns aber ein Fehler zweiter Art unterlaufen, den wir uns genauer anschauen wollen. Gehen wir also davon aus, dass die Spielerin tatsächlich ein Wettkampftyp ist und in Wettkampfsituationen eine Trefferquote von $p=0.6$ hat.
 
 \begin{ueb}
 Illustriere alle Wahrscheinlichkeiten $k=0,\dots,5$ für $p=0.6$ in unten stehendem Diagramm.
@@ -1699,10 +1684,10 @@ Illustriere alle Wahrscheinlichkeiten $k=0,\dots,5$ für $p=0.6$ in unten stehen
 }
 \end{center}
 
-Die Alternativhypothese $H_A$ wäre somit wahr. Nicole würde dann im Wettkampf mit der folgenden Wahrscheinlichkeit höchstens $4$ von $5$ Freiwürfen verwerten, was jedoch die Beibehaltung der Nullhypothese $H_0$ bedeutet:
+Die Alternativhypothese $H_A$ wäre somit wahr. Unsere Spielerin würde dann im Wettkampf mit der folgenden Wahrscheinlichkeit höchstens $4$ von $5$ Freiwürfen verwerten, was jedoch die Beibehaltung der Nullhypothese $H_0$ bedeutet:
 $$\sum_{k=0}^4P(5,0.6,k)=\text{binomcdf}(5,0.6,4)\approx0.922.$$
 
-Die Wahrscheinlichkeit eines Fehlers zweiter Art ist also immens gross. Selbst wenn Nicole in Wettkampfsituationen eine Trefferquote von $p=0.8$ hätte, würde die wahre Alternativhypothese $H_A$ mit einer Wahrscheinlichkeit von über 67\% abgelehnt werden, wie aus Abbildung \ref{fig08} auf Seite \pageref{fig08} hervorgeht.
+Die Wahrscheinlichkeit eines Fehlers zweiter Art ist also immens gross. Selbst wenn sie in Wettkampfsituationen eine Trefferquote von $p=0.8$ hätte, würde die wahre Alternativhypothese $H_A$ mit einer Wahrscheinlichkeit von über 67\% abgelehnt werden, wie aus Abbildung \ref{fig08} auf Seite \pageref{fig08} hervorgeht.
 
 \begin{ueb}[Fehler zweiter Art]
 Rechne den Fehler zweiter Art für $p=0.8$ nach.
@@ -1738,7 +1723,7 @@ Rechne den Fehler zweiter Art für $p=0.8$ nach.
 
 \subsubsection{Fazit}
 
-Will Nicole mit der Versuchsanordnung von 5 Freiwürfen im Wettkampf zeigen, dass sie ein Wettkampftyp ist, dann entsteht das folgende Problem. Um die Wahrscheinlichkeit eines Fehlers erster Art unter 5\% zu bringen (Signifikanzniveau), muss Nicole wirklich gut treffen, damit wir die Nullhypothese $H_0$ ablehnen. Sie muss so gut treffen, dass die Wahrscheinlichkeit eines Fehlers zweiter Art sehr gross wird. Somit hat es eine wahre Alternativhypothese sehr, sehr schwer\dots
+Will die Spielerin mit der Versuchsanordnung von 5 Freiwürfen im Wettkampf zeigen, dass sie ein Wettkampftyp ist, dann entsteht das folgende Problem. Um die Wahrscheinlichkeit eines Fehlers erster Art unter 5\% zu bringen (Signifikanzniveau), muss Nicole wirklich gut treffen, damit wir die Nullhypothese $H_0$ ablehnen. Sie muss so gut treffen, dass die Wahrscheinlichkeit eines Fehlers zweiter Art sehr gross wird. Somit hat es eine wahre Alternativhypothese sehr, sehr schwer\dots
 \marginnote{
 \qrcode{
 https://youtu.be/HlX0ePDTATA}
@@ -1753,7 +1738,7 @@ Für eine weitere Analyse ist nun folgende Tatsache wichtig. Es bezeichnen $\gm$
 \end{bem}
 
 \begin{ueb}[Nicole wirft 100 mal]
-Rechne das vorgestellte Beispiel für $100$ zugesprochene Freiwürfe (siehe Abbildung \ref{fig100} auf Seite \pageref{fig100}). Wie viele Treffer muss Nicole mindestens erzielen, damit der $p$-Wert unter 5\% fällt und wir die Nullhypothese $H_0$ verwerfen?
+Rechne das vorgestellte Beispiel für $100$ zugesprochene Freiwürfe (siehe Abbildung \ref{fig100} auf Seite \pageref{fig100}). Wie viele Treffer muss die Spielerin mindestens erzielen, damit der $p$-Wert unter 5\% fällt und wir die Nullhypothese $H_0$ verwerfen?
 \end{ueb}
 
 \begin{figure}
@@ -1946,7 +1931,7 @@ Angenommen, die Alternativhypothese $H_A$ ist wahr und Nicole trifft in Wettkamp
 \caption{Illustration des Fehlers zweiter Art}
 \end{figure}
 
-\begin{ueb}[Nicole wirft 25 mal]\label{ueb25}
+\begin{ueb}[25 W\"urfe]\label{ueb25}
 In der Wettkampfsituation können bloss 25 Freiwürfe beobachtet werden. Ab wie vielen Treffern lehnst du die Nullhypothese bei einen Signifikanzniveau von $\ga_p = 0.05$ ab? Ab welcher Trefferzahl lehnst du $H_0$ bei $\ga_p = 0.01$ ab?
 \end{ueb}
 
@@ -1955,7 +1940,7 @@ Wie gross wird bei Übung \ref{ueb25} jeweils die Wahrscheinlichkeit für einen 
 \end{ueb}
 
 \begin{ueb}[Fehler erster und zweiter Art unter 5\% drücken]
-Nicoles tatsächliche Wettkampftrefferwahrscheinlichkeit liege bei $p=0.5$. Wie viele Wettkampffreiwürfe musst du beobachten, damit die Wahrscheinlichkeit für einen Fehler der ersten und der zweiten Art jeweils höchstens 5\% betragen?
+Der Spielerin tatsächliche Wettkampftrefferwahrscheinlichkeit liege bei $p=0.5$. Wie viele Wettkampffreiwürfe musst du beobachten, damit die Wahrscheinlichkeit für einen Fehler der ersten und der zweiten Art jeweils höchstens 5\% betragen?
 \end{ueb}
 
 \subsubsection{Zweiseitige Tests}
@@ -2183,37 +2168,29 @@ Wie viele Prognosen können für die beiden ersten Fussballspiele eines Totozett
 %\end{figure}
 \end{ueb}
 
-\begin{ueb}[Tafeldienst]\label{tafeldienst}
-Anita, Bruno, Clemens und Doris haben sich beim Tafeldienst besonders hervorgetan. Wie viele Mäglichkeiten gibt es, aus diesen vier Fleissigen zwei auszuwählen: Einen für den 1. Preis (ein neuer Schwamm), einen für den 2. Preis (ein neuer Lappen)?
-\end{ueb}
-
-\begin{ueb}[Chroniken]
-Gleiche Situation wie in Aufgabe \ref{tafeldienst}, jedoch sollen diesmal zwei Basler Stadtbücher vom gleichen Jahrgang verteilt werden.
-\end{ueb}
-
 \begin{ueb}[Öpfuchueche]\label{aepfel}
  Für eine kleine Apfelwähe lässt sich Frau Gschwind von ihrem Kaufmann, der die Sorten \emph{Gravensteiner} und \emph{Delicious} --- gemischt in einer grossen Kiste --- verkauft, vier beliebige Äpfel geben. Wie viele verschiedene Apfelwähen könnten so entstehen?
  \end{ueb}
  
- Die folgenden Aufgaben sind ganz anderer Art und erfordern deswegen andere Lö\-sungs\-me\-tho\-den.
+% Die folgenden Aufgaben sind ganz anderer Art und erfordern deswegen andere Lö\-sungs\-me\-tho\-den.
  
- \begin{ueb}[Fährmannproblem]
-  Ein Wolf (W), eine Ziege (Z) und ein Kohlkopf (K) sind von einem Fährmann (F) mit einem Boot über einen Fluss zu setzen. W möchte Z, Z möchte K fressen. Deshalb dürfen W und Z einerseits und Z und K andererseits von F nicht unbeaufsichtigt gelassen werden. Das Boot trägt ausser F nur entweder W oder Z oder K. Wie muss F vorgehen?
-  \end{ueb}
+% \begin{ueb}[Fährmannproblem]
+%  Ein Wolf (W), eine Ziege (Z) und ein Kohlkopf (K) sind von einem Fährmann (F) mit einem Boot über einen Fluss zu setzen. W möchte Z, Z möchte K fressen. Deshalb dürfen W und Z einerseits und Z und K andererseits von F nicht unbeaufsichtigt gelassen werden. Das Boot trägt ausser F nur entweder W oder Z oder K. Wie muss F vorgehen?
+%  \end{ueb}
   
-  \begin{ueb}[Domino übers Schachbrett]
-Die 64 Felder eines Schachbrettes können mit 32 geeigneten Dominosteinen genau abgedeckt werden. Es werden nun diagonal gegenüberliegende Eckfelder vom Schachbrett abgetrennt. Ist es möglich, mit nunmehr 31 nötigen Dominosteinen die restlichen 62 Felder genau abzudecken? Wenn ja, wie? Wenn nein, wieso nicht?
-  \end{ueb}
+%  \begin{ueb}[Domino übers Schachbrett]
+%Die 64 Felder eines Schachbrettes können mit 32 geeigneten Dominosteinen genau abgedeckt werden. Es werden nun diagonal gegenüberliegende Eckfelder vom Schachbrett abgetrennt. Ist es möglich, mit nunmehr 31 nötigen Dominosteinen die restlichen 62 Felder genau abzudecken? Wenn ja, wie? Wenn nein, wieso nicht?
+%  \end{ueb}
   
-  \begin{ueb}[Das Regiment-Problem]
-  \ \\[-4ex]
-  \begin{enumeratea}
-  \item Die je vier Buben, Damen, Könige und Asse eines Kartenspiels sollen so in einem $4\times4$ Quadrat angeordnet werden, dass in jeder Zeile und jeder Spalte jeder Wert und jede Farbe genau einmal vorkommen.
-\item Die angegebene Bedingung soll zusätzlich auch bei den Diagonalen gelten.
-  \end{enumeratea}
-  \end{ueb}
+%  \begin{ueb}[Das Regiment-Problem]
+%  \ \\[-4ex]
+%  \begin{enumeratea}
+%  \item Die je vier Buben, Damen, Könige und Asse eines Kartenspiels sollen so in einem $4\times4$ Quadrat angeordnet werden, dass in jeder Zeile und jeder Spalte jeder Wert und jede Farbe genau einmal vorkommen.
+%\item Die angegebene Bedingung soll zusätzlich auch bei den Diagonalen gelten.
+%  \end{enumeratea}
+%  \end{ueb}
   
-  Die ursprüngliche Version der vorherigen Aufgabe wurde dem in Riehen geborenen Mathematiker \textsc{Leonhard Euler} am Hofe Katharinas der Grossen vorgelegt. Die Zarin wünschte, dass sich 36 OffIziere aus 6 verschiedenen Regimentern und mit 6 verschiedenen Dienstgraden, davon je 6 aus einem Regiment mit 6 verschiedenen Graden, so im Quadrat aufstellen sollten, dass in keiner Reihe und in keiner Kolonne zwei Offiziere mit demselben Dienstgrad oder aus demselben Regiment stünden. Besonders interessant ist, dass diese Aufgabe ausgerechnet in ihrer ursprünglichen Form (n=6) nicht lösbar ist. Für alle anderen $n\leq3$ gibt es Lösungen, die gerade für die angewandte Mathematik sehr wichtig sein können. Will man beispielsweise die Wirkung eines Arzneimittels in Abhängigkeit von vier Faktoren, die vier verschiedene Werte annehmen können, untersuchen, so stellt man die Testreihen wie bei der Lösung der obigen Aufgabe zusammen.
+%  Die ursprüngliche Version der vorherigen Aufgabe wurde dem in Riehen geborenen Mathematiker \textsc{Leonhard Euler} am Hofe Katharinas der Grossen vorgelegt. Die Zarin wünschte, dass sich 36 OffIziere aus 6 verschiedenen Regimentern und mit 6 verschiedenen Dienstgraden, davon je 6 aus einem Regiment mit 6 verschiedenen Graden, so im Quadrat aufstellen sollten, dass in keiner Reihe und in keiner Kolonne zwei Offiziere mit demselben Dienstgrad oder aus demselben Regiment stünden. Besonders interessant ist, dass diese Aufgabe ausgerechnet in ihrer ursprünglichen Form (n=6) nicht lösbar ist. Für alle anderen $n\leq3$ gibt es Lösungen, die gerade für die angewandte Mathematik sehr wichtig sein können. Will man beispielsweise die Wirkung eines Arzneimittels in Abhängigkeit von vier Faktoren, die vier verschiedene Werte annehmen können, untersuchen, so stellt man die Testreihen wie bei der Lösung der obigen Aufgabe zusammen.
   
  Aus der Mannigfaltigkeit der kombinatorischen Aufgaben seien hier noch erwähnt:
  \begin{itemize}
@@ -2294,28 +2271,12 @@ Wie viele \glqq Wörter\grqq\ der Form \texttt{KVKVK} (\texttt{K}: Konsonant, \t
 In der Schweiz enthalten die Nummernschilder der Autos in der Regel zwei Buchstaben (Kantonszeichen), denen sechs Ziffern folgen, wobei die erste nicht Null ist. Wie viele Schilder gibt es?
 \end{ueb}
 
-\begin{ueb}[Dreisteller mit 6 Ziffern]
-\ \\[-4ex]
-\begin{enumeratea}
-\item Wie viele dreistellige Zahlen kann man mit den sechs Ziffern $2$, $3$, $5$, $6$, $7$ und $9$ bilden, wenn keine Ziffer mehrmals vorkommen darf?
-\item Wie viele davon sind kleiner als 400?
-\item Wie viele sind gerade?
-\item Wie viele sind ungerade?
-\item Wie viele sind durch fünf teilbar?
-\item Löse (a) bis (e) ohne die Einschränkung, dass keine Ziffer mehrmals vorkommen darf.
-\end{enumeratea}
-\end{ueb}
-
-\begin{ueb}[In vino veritas]
-Herr Süffig hat acht Sorten Wein im Keller. Die Kellerbeleuchtung ist leider defekt. Wie viele Flaschen mindestens muss ihm seine Frau aus dem dunklen Keller holen, damit er garantiert vier Flaschen von irgendeiner, aber derselben Sorte für seine Gäste hat?
-\end{ueb}
-
 \subsection{Permutationen}
 In einer obigen Aufgabe hat man gesehen, dass die Buchstaben \texttt{T, O} und \texttt{R} auf sechs verschiedene Arten (\texttt{TOR, TRO, ORT, OTR, RTO, ROT}) angeordnet (permutiert) werden können. Auf die Anzahl 6 schliesst man mit der Produktregel: Für den ersten Buchstaben stehen drei Möglichkeiten (\texttt{T,O} oder \texttt{R}) zur Verfügung, für den zweiten bleiben noch zwei Möglichkeiten, für den dritten bleibt nur noch eine Möglichkeit. Insgesamt gibt es also $3\cdot2\cdot1=6$ verschiedene Möglichkeiten der Anordnung.
 Allgemein gilt:
 \begin{csatz}[Permutation]{}
 Die Anzahl aller Permutationen von $n$ verschiedenen Elementen ist
-$$P_n=n\cdot(n-1)\cdot(n-2)\cdot\dots\cdot3\cdot2\cdot1\stackrel{\text{Def.}}{=}n!$$
+$$P_n=n\cdot(n-1)\cdot(n-2)\cdot\dots\cdot3\cdot2\cdot1\stackrel{\text{Def.}}{=:}n!$$
 \end{csatz}
 
 \begin{bem}
@@ -2359,8 +2320,6 @@ Drei Physikbücher, vier Informatikbücher und fünf Mathematikbücher sollen au
 \item Löse (a) und (b) für die Sitzordnungen an einem runden Tisch.
 \end{enumeratea}
 \end{ueb}
-
-Bei der Aufgabe, die Buchstaben des Wortes \texttt{SISSI} auf verschiedene Arten anzuordnen, handelt es sich um eine Permutation von fünf Elementen, die aber nicht alle verschieden sind. In diesem Fall gibt es natürlich nicht $5!$ Permutationen.
 
 Gegeben seien $n$ Elemente, von denen genau $k$ untereinander gleich sind. Diese $k$ gleichen Elemente werden für einen Moment mit Indizes versehen, so dass man sie voneinander unterscheiden kann. Die Anzahl aller Permutationen ist dann $n!$, wobei aber jeweils $k!$ Permutationen sich nur in den Stellungen der extra verschieden bezeichneten Elemente unterscheiden. Macht man die Indizierung rückgängig, so sind jeweils $k!$ Permutationen nicht mehr voneinander verschieden. Also ist in diesem Fall die Anzahl der Permutationen $\frac{n!}{k!}$.
 Allgemein gilt:
@@ -2442,12 +2401,12 @@ Für die Anzahl der ungeordneten Stichproben ohne Zurücklegen betrachte man noc
 
 Allgemein gilt: Jede der Stichproben vom Umfang $k$, die man mit einem Griff zieht, kann man auf $k!$ Arten ordnen. Nach dieser aufoktroyierten Ordnung hat man gerade den Fall der geordneten Stichproben ohne Zurücklegen. Deshalb gibt es $k!$ mal mehr geordnete als ungeordnete Stichproben.
 Die Anzahl der ungeordneten Stichproben ohne Zurücklegen beträgt demnach:
-$$A_{n,k}=\frac{n!}{(n-k)!}\div k!=\frac{n!}{k!(n-k)!}\stackrel{\text{Def.}}{=}\binom{n}{k}$$
+$$A_{n,k}=\frac{n!}{(n-k)!}\div k!=\frac{n!}{k!(n-k)!}\stackrel{\text{Def.}}{=:}\binom{n}{k}$$
 wobei $k\leq n$.
 
 \begin{ueb}[Binomialkoeffizienten]
 
-Zeige durch Rechnung und Interpretation
+Zeige durch Rechnung
 \begin{enumeratea}
 \item $\binom{n}{0}=\binom{n}{n}=1$
 \item $\binom{n}{k}=\binom{n}{n-k}$
@@ -2462,11 +2421,6 @@ Aus zehn Schülern soll eine Delegation von vier Mitgliedern und innerhalb der D
 \begin{ueb}[bye bye]
 Wie viele Händedrücke gibt es, wenn sich $n$ Personen begrüssen und jeder jedem nur einmal die Hand gibt?
 \end{ueb}
-
-Bei der dualen Version werden von $n$ Dingen $k$ Dinge auf eine Urne 1 und die restlichen $(n-k)$ Dinge auf eine Urne 2 verteilt. Für die Urne 1 muss man $k$ Dinge aus $n$
-Dingen auswählen, also gibt es dazu
-$$\binom{n}{k}=\binom{n}{n-k}$$
-Möglichkeiten.
 
 \begin{ueb}[Jass]
 Auf wie viele Arten kann man die 36 Jasskarten an
@@ -2493,7 +2447,7 @@ Spieler verteilen?
 \end{ueb}
 
 \subsubsection{Ungeordnete Stichprobe mit Zurücklegen}
-Für den schwierigsten Fall der ungeordneten Stichproben mit Zurücklegen formulieren wir die Aufgabe 5 aus dem Einführungskapitel ein wenig um: Auf wie viele Arten kann man aus der Menge $\set{\text{Delicious, Gravensteiner}}$ eine ungeordnete Stichprobe vom Umfang vier entnehmen?
+Für den schwierigsten Fall der ungeordneten Stichproben mit Zurücklegen formulieren wir die Anzahl-Apfelkuchen-Aufgabe ein wenig um: Auf wie viele Arten kann man \"Apfel aus der Menge $\set{\text{Delicious, Gravensteiner}}$ eine ungeordnete Stichprobe vom Umfang vier entnehmen?
 
 Bezeichnet man mit $x_1\in\mN_0$ die Anzahl $D$ und mit $x_2\in\mN_0$ die Anzahl $G$, so muss die Anzahl der Lösungen der Gleichung $$x_1+x_2=4$$ ermittelt werden. Jede Lösung erhält man, wenn man in der Figur 1111 an geeigneter Stelle einen Trennstrich einsetzt. Zum Beispiel entspricht der Figur $$111|1$$ die Lösung drei Delicious und ein Gravensteiner. Für die Setzung des Trennstriches gibt es fünf Möglichkeiten, da der Trennstrich sowohl am Anfang als auch am Ende der Figur gesetzt werden kann. Es gibt demnach $\binom{5}{1}=5$ Stichproben.
 
@@ -2533,7 +2487,7 @@ Zehn ununterscheidbare Kaninchen sollen auf drei Käfige verteilt werden. Auf wi
 \definecolor{lightyellow}{rgb}{1,1,0.8}
 \definecolor{Gray}{gray}{0.9}
 \begin{table}[h]
-\scriptsize
+\large
 \centering
 \begin{tabular}{|c|c|c|} \hline
 \rowcolor{Gray}\spaltenheight \emph{Stichproben} & mit Zurücklegen & ohne Zurücklegen\spaltensep\hline
@@ -2543,18 +2497,18 @@ Zehn ununterscheidbare Kaninchen sollen auf drei Käfige verteilt werden. Auf wi
 \caption{Überblick der vier Fälle beim Ziehen}
 \end{table}
 
-\subsection{Vermischte Aufgaben}
-
 \begin{figure}
 \begin{center}
-\includegraphics[width=0.75\textwidth]{pictures/pillowtalk}
+\includegraphics[width=0.8\textwidth]{pictures/pillowtalk}
 \caption{Combinatorial Pillow-Talk}
 \end{center}
 \end{figure}
 
-\begin{ueb}[Urgrosselter]
- Wie viele Ururgrosseltern haben Deine Ururgrosseltern?
- \end{ueb}
+\subsection{Vermischte Aufgaben}
+
+%\begin{ueb}[Urgrosselter]
+% Wie viele Ururgrosseltern haben Deine Ururgrosseltern?
+ %\end{ueb}
  
  \begin{ueb}[Dreisteller]
  Gegeben sind die Ziffern 1,2,3,4,5,6 und 7.
@@ -2665,7 +2619,7 @@ Die aus der Kombinatorik bekannten Zahlen $\binom{n}{k}$ nennt man deshalb auch 
 \ \\[-4ex]
 \begin{enumeratea}
 \item Welche Eigenschaft der Binomialkoeffizienten ergibt sich aus der Tatsache, dass jede Zeile im Pascal'schen Dreieck symmetrisch ist?
-\item Zeige $$\binom{n}{k}+\binom{n}{k+1}=\binom{n+1}{k+1}$$ für $0\leq k\leq n-1$.. Interpretiere diese Beziehung im Pascal'schen Dreieck.
+\item Zeige $$\binom{n}{k}+\binom{n}{k+1}=\binom{n+1}{k+1}$$ für $0\leq k\leq n-1$. Interpretiere diese Beziehung im Pascal'schen Dreieck.
 \end{enumeratea}
 \end{ueb}
 
@@ -2704,7 +2658,7 @@ $$P(\abs{X-\mu}< k)\geq 1-\frac{\sigma^2}{k^2}.$$
 \end{csatz}
 
 \begin{proof}
-Als kleine Begründung (handwaving) betrachten wir für den diskreten Fall Instanzierungen $x_i, i\in I$ mit Wahrscheinlichkeit $p_i$. Was bedeutet für eine beliebige Zahl $k$ die Aussage $P(\abs{X-\mu}\geq k)$? Wir interessieren uns also für die Wahrscheinlichkeit der Abweichung der Zufallsvariablen $X$ vom Erwartungswert $\mu$ grösser als $k$ ist. Nennen wir die Menge aller $i\in I$, so dass die Instanzierung der Zufallsvariablen grösser als $k$ ist
+Als kleine Begründung (handwaving) betrachten wir für den diskreten Fall Instanzierungen $x_i, i\in I$ mit Wahrscheinlichkeit $p_i$. Was bedeutet für eine beliebige Zahl $k$ die Aussage $P(\abs{X-\mu}\geq k)$? Wir interessieren uns also für die Wahrscheinlichkeit, dass die Abweichung der Zufallsvariablen $X$ vom Erwartungswert $\mu$ grösser als $k$ ist. Nennen wir die Menge aller $i\in I$, so dass die Instanzierung der Zufallsvariablen grösser als $k$ ist
 $$K:=\set{i\in I\,|\,\abs{x_i-\mu}\geq k}.$$
 Wir lösen uns vom Betrag durch $(x_i-\mu)^2\geq k^2$ was äquivalent zu
 $$\frac{(x_i-\mu)^2}{k^2}\geq 1.$$
@@ -2785,7 +2739,7 @@ selbst auch wieder eine Zufallsvariable mit einer gewissen Verteilung.
 Für die folgende, theoretische Überlegung nehmen wir an, wir wüssten den Erwartungswert $\mu$. In der Praxis ist dies meist nicht der Fall und man versucht dieses $\mu$ so gut wie möglich zu schätzen. Wir setzen
 $$Y_i:=X_i-\mu.$$
 $Y_i$ ist also die Abweichung der Messung $X_i$ vom Erwartungswert. Man kann dies beispielsweise als Messungenauigkeit oder Rauschen interpretieren. Für den Erwartungswert von $Y_i$ folgt nun:
-$$\mathrm{E}(Y_i)=\mathrm{E}(X_i-\mu)=\mathrm{E}(X_i)-\mathrm{E}(\mu)=\mathrm{E}(X_I)-\mu.$$
+$$\mathrm{E}(Y_i)=\mathrm{E}(X_i-\mu)=\mathrm{E}(X_i)-\mathrm{E}(\mu)=\mathrm{E}(X_i)-\mu=0.$$
 Die Varianz ändert sich natürlich bei der Verschiebung um $\mu$ nicht:
 $$\mathrm{Var}(Y_i)=\mathrm{Var}(X_i)=\sigma^2.$$
 Es folgt wegen der Unabhängigkeit der $Y_i$
