@@ -1,0 +1,4150 @@
+\documentclass[%
+%draft,%
+11pt,%
+%oneside,%
+twoside,%‡
+%twocolumn,%
+titlepage,%
+%fleqn,%
+%a4page,%
+german,%
+headsepline%
+]{scrartcl}
+
+\usepackage{lastpage}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{lscape}
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage[most]{tcolorbox}
+\usepackage{mymath}
+\usepackage{units}
+\usepackage{nicefrac}
+\usepackage{pgf,tikz}
+\usetikzlibrary{arrows}
+\usepackage{colortbl}
+\usepackage{hhline}
+\usepackage{multirow}
+\usepackage[extendedchars]{grffile}
+\usepackage{caption}
+\usepackage{multicol,calc}
+\usepackage{blindtext}
+\usepackage{pdfpages}
+\usepackage{hyperref}
+\usepackage{framed}
+\usetikzlibrary{arrows}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shadows}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+
+\usepackage{ocg}
+\usepackage{fontawesome}
+\usepackage{xcolor}
+
+\usepackage{marginnote}
+\usepackage
+%[draft]%
+{qrcode}
+\qrset{height=9ex}
+
+\usepackage{longtable}
+\usepackage{listings}
+\usepackage{wrapfig}
+
+\usepackage{fontawesome} % Oder FontAwesome, falls du ein Augensymbol aus einer
+\definecolor{lightgray}{rgb}{0.7, 0.7, 0.7}
+\newcommand{\faEyeLightGray}{\textcolor{lightgray}{\faEye}} % Custom command for the gray eye icon
+
+\newcommand{\geogebralink}{\href{https://www.geogebra.org/calculator}{\texttt{geogebra.org}}}
+
+% Command, um Tabellen-Spalten anzupassen
+\newcommand{\spaltenheight}{\rule{0mm}{3ex}}
+\newcommand{\spaltenwidth}{\rule{3cm}{0mm}}
+\newcommand{\spaltensep}{\\[1ex]}
+\doublerulesepcolor{white}
+\definecolor{lightyellow}{rgb}{1,1,0.8}
+\definecolor{Gray}{gray}{0.9}
+
+\pagestyle{headings} % gemachte Einstellungen anwenden
+
+% Farbig umrahmte Umgebung Satz
+\definecolor{myblizzardblue}{HTML}{87CEEB}
+
+\newcounter{satzz}[section]\setcounter{satzz}{0}
+\renewcommand{\thesatz}{\arabic{section}.\arabic{satzz}}
+
+\newenvironment{csatz}[1][]{%
+    \refstepcounter{satzz}
+ 
+    \ifstrempty{#1}%
+    % if condition (without title)
+    {\mdfsetup{%
+        frametitle={%
+            \tikz[baseline=(current bounding box.east),outer sep=0pt]
+            \node[anchor=east,rectangle,fill=myblizzardblue]
+            {\strut Satz~\thesatz};}
+        }%
+    % else condition (with title)
+    }{\mdfsetup{%
+        frametitle={%
+            \tikz[baseline=(current bounding box.east),outer sep=0pt]
+            \node[anchor=east,rectangle,fill=myblizzardblue]
+            {\strut Satz~\thesatz:~#1};}%
+        }%
+    }%
+% for both conditions
+    \mdfsetup{%
+        innertopmargin=10pt,linecolor=myblizzardblue,%
+        backgroundcolor=whitesmoke,%
+        linewidth=2pt,topline=true,%
+        frametitleaboveskip=\dimexpr-\ht\strutbox\relax%
+    }
+ 
+\begin{mdframed}[]\relax}{%
+\end{mdframed}}
+
+% Farbig umrahmte Umgebung Theorem
+ 
+\definecolor{mygraphblue}{HTML}{84B7E1}
+\definecolor{whitesmoke}{HTML}{F5F5F5}
+
+\newcounter{theo}[section]\setcounter{theo}{0}
+\renewcommand{\thetheo}{\arabic{section}.\arabic{theo}}
+
+\newenvironment{ctheo}[2][]{%
+    \refstepcounter{theo}
+ 
+    \ifstrempty{#1}%
+    % if condition (without title)
+    {\mdfsetup{%
+        frametitle={%
+            \tikz[baseline=(current bounding box.east),outer sep=0pt]
+            \node[anchor=east,rectangle,fill=mygraphblue]
+            {\strut Theorem~\thetheo};}
+        }%
+    % else condition (with title)
+    }{\mdfsetup{%
+        frametitle={%
+            \tikz[baseline=(current bounding box.east),outer sep=0pt]
+            \node[anchor=east,rectangle,fill=mygraphblue]
+            {\strut Theorem~\thetheo:~#1};}%
+        }%
+    }%
+% for both conditions
+    \mdfsetup{%
+        innertopmargin=10pt,linecolor=mygraphblue,%
+        backgroundcolor=whitesmoke,%
+        linewidth=2pt,topline=true,%
+        frametitleaboveskip=\dimexpr-\ht\strutbox\relax%
+    }
+ 
+\begin{mdframed}[]\relax}{%
+\end{mdframed}}
+
+% Farbig umrahmte Umgebung Definition
+ 
+ \definecolor{emerald}{HTML}{50C878}
+
+\newcounter{deff}[section]\setcounter{deff}{0}
+\renewcommand{\thedeff}{\arabic{section}.\arabic{deff}}
+
+\newenvironment{cdef}[1][]{%
+    \refstepcounter{deff}
+ 
+    \ifstrempty{#1}%
+    % if condition (without title)
+    {\mdfsetup{%
+        frametitle={%
+            \tikz[baseline=(current bounding box.east),outer sep=0pt]
+            \node[anchor=east,rectangle,fill=emerald]
+            {\strut Definition~\thedeff};}
+        }%
+    % else condition (with title)
+    }{\mdfsetup{%
+        frametitle={%
+            \tikz[baseline=(current bounding box.east),outer sep=0pt]
+            \node[anchor=east,rectangle,fill=emerald]
+            {\strut Definition~\thedeff:~#1};}%
+        }%
+    }%
+% for both conditions
+    \mdfsetup{%
+        innertopmargin=10pt,linecolor=emerald,%
+        backgroundcolor=whitesmoke,%
+        linewidth=2pt,topline=true,%
+        frametitleaboveskip=\dimexpr-\ht\strutbox\relax%
+    }
+ 
+\begin{mdframed}[]\relax}{%
+\end{mdframed}}
+
+% Farbig umrahmte Umgebung Achtung
+ 
+ \definecolor{mygraphred}{HTML}{E26A6A}
+
+\newcounter{merkee}[section]\setcounter{merkee}{0}
+\renewcommand{\themerkee}{\arabic{section}.\arabic{merkee}}
+
+\newenvironment{cachtung}[2][]{%
+    \refstepcounter{merkee}
+ 
+    \ifstrempty{#1}%
+    % if condition (without title)
+    {\mdfsetup{%
+        frametitle={%
+            \tikz[baseline=(current bounding box.east),outer sep=0pt]
+            \node[anchor=east,rectangle,fill=mygraphred]
+            {\strut Achtung};}
+        }%
+    % else condition (with title)
+    }{\mdfsetup{%
+        frametitle={%
+            \tikz[baseline=(current bounding box.east),outer sep=0pt]
+            \node[anchor=east,rectangle,fill=mygraphred]
+            {\strut Achtung:~#1};}%
+        }%
+    }%
+% for both conditions
+    \mdfsetup{%
+        innertopmargin=10pt,linecolor=mygraphred,%
+        backgroundcolor=whitesmoke,%
+        linewidth=2pt,topline=true,%
+        frametitleaboveskip=\dimexpr-\ht\strutbox\relax%
+    }
+\begin{mdframed}[]\relax}{%
+\end{mdframed}}
+
+%\newtheorem{uebthm}{Übung}[section]
+% Umgebung lsg mit dynamischer Referenzierung und Label
+\newcommand{\concatueb}[1]{ueb:#1}% Definition für concatueb
+\newcommand{\concatlsg}[1]{lsg:#1}% Definition für concatlsg
+
+\newcounter{uebcounter}[section]
+\renewcommand{\theuebcounter}{\thesection.\arabic{uebcounter}}  % Zählerformat: Abschnitt.Übung
+
+% Definition einer Übungsumgebung mit dynamischen Labels
+\newcommand{\uebh}[2]{%
+ \refstepcounter{uebcounter} % Zählt den Übungscounter hoch
+ \par\noindent\textbf{Übung \theuebcounter:}\label{\concatueb{#1}} % Label im Format "ueb:1"
+    #2
+    \hfill\hyperref[\concatlsg{#1}]{\faEyeLightGray}
+    \vspace{\parskip}
+}
+
+\newenvironment{lsg}[1]{%
+    \par\noindent\textbf{Notizen zu Übung \ref{\concatueb{#1}}.}%
+    \label{\concatlsg{#1}}
+}{%
+    \par%
+}
+
+\newenvironment{uebenv}[1]{%
+    \refstepcounter{uebcounter}
+    \par\noindent\textbf{Übung \theuebcounter.}%
+    \label{\concatueb{#1}}\hfill\hyperref[\concatlsg{#1}]{\faEyeLightGray}\par
+}{%
+    \par
+}
+
+\newcommand{\definition}[1]{\colorbox{emerald}{#1}}
+
+\setlength{\parindent}{0pt}
+
+\subject{\includegraphics[width=0.618\textwidth]{pictures/springbrunnen.jpg}}
+\title{Funktionentypen}
+\subtitle{beyond linear}
+\author{}
+\date{}
+\lowertitleback{
+\includegraphics[height=1cm]{pictures/gymfmslerbermattlogo.eps}
+\hfill%\copyright%
+{\begin{tikzpicture}
+  % Draw the rounded rectangle and clip the image to it
+  \clip [rounded corners=5mm] (0,0) rectangle (1,1); % Adjust dimensions as needed
+  \node at (0.5,0.5) {\includegraphics[width=1cm]{pictures/teacher_me_caricatur.png}}; % Adjust width and center image
+\end{tikzpicture}}
+}
+
+
+\begin{document}
+\maketitle
+\tableofcontents
+\cleardoublepage
+
+\section{Einleitung}
+
+\begin{uebenv}{example}
+Test
+\end{uebenv}
+
+\begin{ueb}
+Normale Übung
+\end{ueb}
+
+Vorab knappe Informationen zum vorliegenden Skript: Grunds\"atzlich gilt, dass fast alle \"Ubungen selber verifiziert oder korrigiert werden k\"onnen. Zu ausgew\"ahlten \"Ubungen hat es Notizen, welche mit einem grauen Augensymbol gekennzeichnet sind. Diese Hyperlinks bringen Sie zu den Notizen und von dort kommen Sie meistens auch per Klick wieder zu den \"Ubungen zur\"uck. Die randnotierten QR-Codes, die Sie zu Video-Kommentaren des anliegenden Abschnitts f\"uhren,  k\"onnen am Computer unter anderem so benutzt werden, dass Sie das Code-Quadrat mit gehaltener linker Maustaste in einen Browser Ihrer Wahl ziehen. Nat\"urlich k\"onnen Sie wie \"ublich per Smartphone scannen. Alle meine Kommentare finden Sie auch via Besuch von \texttt{YouTube.com}. Wenn Sie \emph{Jorma Wassmer} zusammen mit dem gew\"unschten, \emph{mathematischen Stichwort} suchen, treffen Sie oft ins Schwarze. Jetzt aber los\dots\\
+
+\begin{figure}[htbp]
+\begin{center}
+	\includegraphics[width=0.618\textwidth]{pictures/teacher_me.jpg}
+\caption{Math Teacher}
+\label{default}
+\end{center}
+\end{figure}
+
+
+\clearpage
+
+\section{Der Funktionsbegriff}
+
+\subsection{Funktionen}
+In der Mathematik betrachtet man oft Abbildungen, bei denen die Zielmenge eine Zahlenmenge ist. Solche Abbildungen werden Funktionen genannt. Bei Funktionen ist es \"ublich, die Urbilder als Argumente, die Bilder als Funktionswerte, die Ausgangsmenge als Definitionsmenge und die Bildmenge als Wertemenge zu bezeichnen.
+\begin{cdef}[Funktion]
+Eine \textbf{Funktion} $f$
+\marginnote{
+\qrcode{
+https://www.youtube.com/watch?v=JMlfCH56rBk}
+}
+ist eine Abbildung, die jedem Element der \textbf{Definitionsmenge} \emph{genau ein} Element aus einer \textbf{Zahlenmenge} zuordnet.
+\end{cdef}
+\begin{bem}
+Falls nicht erw\"ahnt oder anderweitig festgelegt, so sind Definitions- und Wertemenge gleich $\mathbb{R}$.
+\end{bem}
+Der Funktionsbegriff ist f\"ur die Mathematik zentral, da er in den Naturwissenschaften, in der Technik, in den Wirtschaftswissenschaften und auch in vielen andern Wissensgebieten eine grosse Rolle spielt. Denn Funktionen bieten die M\"oglichkeit, Abh\"angigkeiten zwischen verschiedenen Gr\"ossen unmissverst\"andlich und \"ubersichtlich zu beschreiben.
+
+\begin{bsp}
+L\"asst man einen Stein vom Dach des schiefen Turms von Pisa fallen, so wird durch
+$$h(t)=56-4.9t^2$$
+die H\"ohe $h$ des Steins, in Metern \"uber dem Erdboden, $t$ Sekunden nach dem Fallenlassen beschrieben.
+\end{bsp}
+
+\uebh{turmvonpisa}{
+Ausgehend von obiger Funktion $h$: Wie viele Meter \"uber dem Boden ist der Stein nach $2$ Sekunden Flugzeit? Wann trifft der Stein auf den Boden auf? Wie hoch ist der schiefe Turm von Pisa?
+}
+
+\begin{lsg}{turmvonpisa}
+	Nach zwei Sekunden ist der Stein auf einer H\"ohe von $h(2)=56-4.9\cdot2^{2}=\unit[36.4]{m}$. Der Stein trifft auf dem Boden auf, wenn $h(t)\stackrel{!}{=}0$. Es folgt
+	\begin{align*}
+		56&=4.9\cdot t^{2}\tag{$\div4.9$}\\
+		\frac{56}{4.9} &= t^{2}\tag{$(\phantom{x})^{2}$}\\
+		t &\approx \pm3.38
+	\end{align*}
+	wobei nur die positive L\"osung sinnvoll ist; also betr\"agt die Fallzeit $t\approx\unit[3.4]{s}$. Schliesslich ist der schiefe Turm von Pisa nach Funktion $h(0)=\unit[56]{m}$ hoch.
+\end{lsg}
+
+\begin{bsp}
+Die Funktion, welche vorschreibt, eine Zahl zu quadrieren notiert man kurz mit
+$$f(x)=x^2.$$
+Es ist dann beispielsweise $f(2)=2^2=4$, $f(0)=0^2=0$, $f(-3)=(-3)^2=9$,\dots. Praktisch ist h\"aufig die Illustration einer Funktion in einem Koordinatensystem. Man tr\"agt ausgew\"ahlte Zahlenpaare $\point{2}{4}$, $\point{0}{0}$, $\point{-3}{9}$,\dots ein.
+\end{bsp}
+\begin{bem}
+In $y=f(x)$ heisst $x$ \textbf{Argument von $f$} und $y$ bzw. $f(x)$ \textbf{Funktionswert/Bild von $x$}.
+\end{bem}
+
+\uebh{funktionenschreibweise}{
+Gegeben sei die Funktion
+$$g(x)=x^2-2x+3.$$
+\begin{enumerate}[a)]
+	\item Berechne $g(2)$, $g(3)$, $g(4)-g(-4)$ und $g(a^2)$.
+	\item F\"ur welchen Wert $x$ ist $g(x)=2$, $3$ bzw. $x^{2}$?
+\end{enumerate}
+}
+
+\begin{lsg}{funktionenschreibweise}
+	\begin{enumerate}[a)]
+		\item $g(2)=2^{2}-2\cdot2+3=1$, $g(3)=3^{2}-2\cdot3+3=6$, $g(4)=11$ und $g(-4)=27$ impliziert $g(4)-g(-4)=-16$, $g(a^{2})=a^{2}-2a+3$
+		\item $g(x)=2$ heisst
+		\begin{align*}
+			2 &= x^{2}-2x+3\tag{$-2$}\\
+			0 &= x^{2}-2x+1\\
+			0 &= (x-1)^{2}\\
+			x &= 1
+		\end{align*}
+		$g(x)=3$ ist \"aquivalent zu $0=x^{2}-2x=x(x-2)$ und damit $x_1=0$ und $x_{2}=2$. Aus  $g(x)=x^{2}$ hat man sofort $2x=3$, also $x=\frac{3}{2}$.
+	\end{enumerate}
+\end{lsg}
+
+\uebh{hvonz}{
+Es sei
+$$h(z)=z^3-z+2.$$
+Berechne $h(3)$, $h(-1)$ und $h(0)$.
+}
+
+\begin{lsg}{hvonz}
+	$h(3)=3^{3}-3+2=26$, $h(-1)=(-1)^{3}-(-1)+2=2$ und $h(0)=2$.
+\end{lsg}
+
+\uebh{svont}{
+Betrachte
+$$s(t)=\frac{t+2}{t-1}$$
+Berechne $s(0)$, $s(-2)$, $s(1)$ und $s(10)$. F\"ur welche Argumente $t$ ist der Funktionswert $s(t)=1$, $2$, $-5$ bzw. $0$?
+}
+
+\begin{lsg}{svont}
+	$s(0)=-2$, $s(-2)=0$, $s(1)$ ist nicht definiert und $s(10)=\frac{12}{-9}=-\frac{4}{3}$. Ferner rechnen wir
+	\begin{align*}
+		1 &= \frac{t+2}{t-1}\tag{$\cdot(t-1)$}\\
+		t-1 &= t+2\tag{$-t$}\\
+		-1 &= 2
+	\end{align*}
+	Also ist $s(t)=1$ nicht erf\"ullbar. Wie sieht's mit $2$ aus:
+	\begin{align*}
+		2 &= \frac{t+2}{t-1}\tag{$\cdot(t-1)$}\\
+		2t-2 &= t+2\tag{$-t+2$}\\
+		t &= 4
+	\end{align*}
+	$s(t)=-5:$
+	\begin{align*}
+		-5 &= \frac{t+2}{t-1}\tag{$\cdot(t-1)$}\\
+		-5t+5 &= t+2\tag{$+5t-2$}\\
+		6t &= 3\tag{$\div6$}\\
+		t &= \frac{1}{2}
+	\end{align*}
+	Schliesslich:
+	\begin{align*}
+		0 &= \frac{t+2}{t-1}\tag{$\cdot(t-1)$}\\
+		0 &= t+2\tag{$-2$}\\
+		t &= -2
+	\end{align*}
+\end{lsg}
+
+\uebh{zweihoch}{
+Berechne f\"ur
+$$f(x)=2^x-1$$
+$f(1)$ , $f(3)$ und $f(10)$.
+}
+
+\begin{lsg}{zweihoch}
+	$f(1)=2^{1}-1=1$, $f(3)=2^{3}-1=7$ und $f(10)=1023$.
+\end{lsg}
+
+\begin{cdef}[Nullstelle]
+Gilt
+\marginnote{
+\qrcode{
+https://www.youtube.com/watch?v=-Ufvs3QlBXs}
+}
+f\"ur einen Wert $x$ der Definitionsmenge $f(x)=0$, so heisst $x$ \textbf{Nullstelle} der Funktion $f$.
+\end{cdef}
+
+Nullstellen sind also --- wie der Name sagt --- diejenigen Stellen, an denen der Funktionswert gerade $0$ ist.
+
+\uebh{nullstellen}{
+Ermittle die maximale Definitionsmenge $\mD$, die minimale Wertemenge $\mW$ und die Nullstellen der Funktionen
+
+\begin{enumerate}[a)]
+	\item $f(x)=2x-6$
+	\item $g(x)=3x+1$
+	\item $h(x)=x^2$
+	\item $k(x)=\sqrt{x}$
+	\item $m(x)=\frac{1}{x}$
+	\item $n(x)=\sqrt{x-5}$
+\end{enumerate}
+}
+
+\begin{lsg}{nullstellen}
+	\begin{enumerate}[a)]
+		\item Die Nullstelle liegt bei $x=3$, da dies nach kurzer Rechnung aus $0\stackrel{!}{=}2x-6$ folgt. Offensichtlich ist $\mathbb{D}=\mathbb{W}=\mathbb{R}$.
+		\item $\mathbb{D}=\mathbb{W}=\mathbb{R}$ und $x=-\frac{1}{3}$.
+		\item $\mathbb{D}=\mathbb{R}$ und $\mathbb{W}=\mathbb{R}^{+}_{0}$. Wegen $0^{2}=0$ ist $x=0$ Nullstelle.
+		\item $\mathbb{D}=\mathbb{R}^{+}_{0}=\mathbb{W}$. Die Nullstelle ist $x=0$.
+		\item $\mathbb{D}=\mathbb{R}\setminus\{0\}$. $m$ hat wegen $0\stackrel{!}{=}\frac{1}{x}\implies0=1$ keine Nullstellen.
+		\item $\mathbb{D}=[0,\infty)$ und $\mathbb{W}=\mathbb{R}^{+}_{0}$. Nullstelle ist $x=5$.
+	\end{enumerate}
+\end{lsg}
+
+\uebh{finworten}{
+Dr\"ucke die folgenden Aussagen kurz und pr\"agnant in mathematischer Schreibweise aus:
+\begin{enumerate}[a)]
+\item Durch die Funktion $f$ wird der Zahl $5$ die Zahl $132$ zugeordnet.
+\item Die Funktion $h$ nimmt f\"ur $x=-2$ den Funktionswert $18$ an.
+\item Die Funktion $f$ ordnet der Zahl $3$ einen gr\"osseren Wert zu als der Zahl $8$.
+\item Alle Funktionswerte der Funktion $f$ sind positiv.
+\item Die Funktion $f$ ordnet jeder reellen Zahl das um $7$ vermehrte Quadrat dieser Zahl zu.
+\item Die Funktion $g$ ordnet jeder reellen Zahl das Quadrat der um $3$ vergr\"osserten Zahl zu.
+\item Die Funktion $h$ ordnet jeder reellen Zahl den um $13$ vergr\"osserten Kehrwert dieser Zahl zu.
+\item Die Funktion $f$ ordnet jeder reellen Zahl den Kehrwert der um $4$ verminderten Zahl zu.
+\end{enumerate}
+}
+
+\begin{lsg}{finworten}
+	\begin{enumerate}[a)]
+		\item $f(5)=132$
+		\item $h(-2)=18$
+		\item $f(3)>f(8)$
+		\item $f\in\mathbb{R}^{+}$
+		\item $f(x)=x^{2}+7$
+		\item $g(x)=(x+3)^{2}$
+		\item $h(x)=\frac{1}{x}+13$
+		\item $f(x)=\frac{1}{x-4}$
+	\end{enumerate}
+\end{lsg}
+
+\begin{cdef}[Graph]
+Sei
+\marginnote{
+\qrcode{
+https://www.youtube.com/watch?v=gvtV3bGVE2U}
+}
+$f:\mD\longrightarrow\mW$ eine Funktion. Die Menge aller Punkte
+$$\setm{\point{x}{y}}{y=f(x),x\in\mD}$$
+heisst \textbf{Graph} der Funktion $f$.
+\end{cdef}
+
+\uebh{graphx3}{
+Zeichne den Graphen der Funk\-tion $f(x)=x^3$.
+}
+
+\begin{lsg}{graphx3}
+	Verwende \geogebralink\   und vergleiche mit deinem Plot.
+\end{lsg}
+
+\uebh{isfunctionornot}{
+K\"onnen die folgenden Darstellungen Graphen von Funktionen sein? Woran erkennt man, ob eine Funktion dargestellt wird oder nicht?
+\begin{center}
+\includegraphics[width=0.618\textwidth]{pictures/graphen}
+\end{center}
+}
+
+\begin{lsg}{isfunctionornot}
+  \begin{enumerate}[a)]
+    \item \checkmark
+    \item keine Funktion: zu gewissen $x$-Werten gibt es mehr als einen $y$-Wert.
+    \item keine Funktion
+    \item \checkmark
+    \item \checkmark
+    \item \checkmark
+    \item \checkmark
+    \item keine Funktion: zu $x$-Werten gibt es unendlich viele $y$-Werte.
+  \end{enumerate}
+\end{lsg}
+
+\subsection{Inversfunktionen}
+\begin{wrapfigure}{r}{0.4\textwidth}
+  \begin{center}
+    \includegraphics[width=0.15\textwidth]{pictures/maschine}
+  \end{center}
+%\caption{You Know my Name}
+\end{wrapfigure}
+Durch die Funktionsvorschrift
+$$f(x)=2x-3$$
+ist jedem $x$ genau ein $y$-Wert zugeordnet.
+
+\uebh{}{
+Wie sieht der Graph von $f$ aus?
+}
+Umgekehrt ist in diesem Fall durch $f$ eine Funktion $f^{-1}$ definiert, die jedem Funktionswert $y$ genau einen $x$-Wert zuordnet.
+\uebh{}{
+Wie sieht diese Inversfunktion $f^{-1}$ aus?
+}
+\begin{cdef}[Inversfunktion]{}
+Gilt
+\marginnote{
+\qrcode{
+https://www.youtube.com/watch?v=0ob7n10ZCC0}
+}
+f\"ur eine Funktion $f$
+$$x_1\neq x_2\implies f(x_1)\neq f(x_2)$$
+dann heisst $f^{-1}$ mit $f^{-1}(f(x))=x$ die \emph{Inversfunktion} von $f$
+.
+\end{cdef}
+%\begin{bem}
+%Die Voraussetzung, dass $f$ \emph{injektiv} ist, ist wesentlich.
+%\end{bem}
+%\begin{cdef}[Injektivität]{}
+%Eine
+%\marginnote{
+%\qrcode{
+%https://www.youtube.com/watch?v=1vkU9R7XBho}
+%}
+%Funktion heisst \emph{injektiv}
+%, wenn es zu jedem $y\in\mW$ \emph{h\"ochstens ein} $x\in\mD$ gibt.
+%\end{cdef}
+%Injektivit\"at]
+%\"Uberzeuge dich davon, dass f\"ur eine Funktion
+%$$f:\mD\longrightarrow\mW$$
+%mit $x_1,x_2\in\mD$ die Definition von \glqq injektiv\grqq\ \"aquivalent zur Aussage
+%$$x_1\neq x_2\implies f(x_1)\neq f(x_2)$$
+%ist.
+%}
+\uebh{}{
+Kann man, ausgehend von der Funktion
+$$f(x)=x^2,\qq\mD=\mR,$$
+eine Inversfunktion angeben?
+}
+\begin{bem}
+Man findet den Funktionsterm von $f^{-1}$ in dem man die Gleichung
+$$f(x)=y$$
+nach $x$ aufl\"ost. Anschliessend vertauscht man noch die Bezeichnung $y$ mit $x$, weil \"ubli\-cher\-wei\-se $x$ die freie Variable darstellt und man daf\"ur die horizontale Achse verwenden will.
+\end{bem}
+\begin{bsp}
+Die
+\marginnote{
+\qrcode{
+https://www.youtube.com/watch?v=LvMvYokuueY}
+}
+Inversfunktion zu
+$$f(x)=3x-2$$ ist demnach
+\begin{align}
+y&=3x-2\tag{$+2$}\\
+y+2&=3x\tag{$\div3$}\\
+\frac{y+2}{3}&=x\notag\\
+f^{-1}(x)&=\frac{x+2}{3}=\frac{1}{3}x+\frac{2}{3}\notag\end{align}
+\end{bsp}
+\uebh{}{
+Zeichne die Graphen von $f$ und $f^{-1}$ aus dem Ein\-f\"uh\-rungs\-bei\-spiel in dasselbe Koordinatensystem, nachdem du den Funktionsterm von $f^{-1}$ gefunden hast.
+}
+%\uebh{}{
+%Zeige, dass der Graph von $f^{-1}$ Spiegelbild des Graphen von $f$ an der Winkelhalbierenden $y=x$ durch den ersten und dritten Quadranten ist.
+
+%Hint: Betrachte einen beliebigen Punkt auf dem Graphen von $f$ und sein Pendant auf dem Graphen von $f^{-1}$. Skizziere diese Situation und argumentiere geometrisch.
+%\label{invsym}
+%}
+\begin{csatz}[Achsensymmetrie der Inversfunktion]{}
+Die Graphen von $f$ und $f^{-1}$ sind achsialsymmetrisch bez\"uglich der Winkelhalbierenden durch den ersten und dritten Quadranten.
+\end{csatz}
+\begin{proof}[Beweis]
+Siehe \"Ubung \ref{invsym}
+\end{proof}
+
+\subsection{Der Differenzenquotient}
+Manchmal ist man an der \"Anderung einer Funktion interessiert. Beispielsweise ist die Schwankung des SMI \"uber einen Tag oder sogar nur \"uber einen Monat relevant. Wie die Schwankungen tags\"uber verliefen, ist f\"ur den Aktienanleger unbedeutend. Also betrachtet man die \"Anderung einer Gr\"osse \"uber einem bestimmten Zeitabschnitt. Dabei vergleicht man Anfangs- und Endwert bez\"uglich der Dauer der Beobachtung.
+\begin{cdef}[Differenzenquotient]
+Der
+\marginnote{
+\qrcode{
+https://www.youtube.com/watch?v=J0FCAuTM9pA}
+}
+Quotient
+$$\frac{\Delta f(x)}{\Delta x}=\frac{f(x_2)-f(x_1)}{x_2-x_1}$$
+gibt die durchschnittliche \"Anderung der Funktion im Intervall $[x_1,x_2]$ an. Diesen Quotienten nennt man \emph{Differenzenquotienten}
+.
+\end{cdef}
+
+\begin{figure}
+\definecolor{qqwuqq}{rgb}{0,0.39,0}
+\definecolor{zzqqqq}{rgb}{0.6,0,0}
+\definecolor{qqqqzz}{rgb}{0,0,0.6}
+\definecolor{xdxdff}{rgb}{0.49,0.49,1}
+\begin{center}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.6cm,y=0.4cm]
+\draw[->,color=black] (-2.14,0) -- (12.34,0);
+\foreach \x in {-2,-1,1,2,3,4,5,6,7,8,9,10,11}
+\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt);
+\draw[->,color=black] (0,-1.96) -- (0,12);
+\foreach \y in {-1,1,2,3,4,5,6,7,8,9,10,11}
+\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt);
+\clip(-2.5,-1.96) rectangle (14.34,12);
+\draw [shift={(8.5,4)},color=qqwuqq,fill=qqwuqq,fill opacity=0.1] (0,0) -- (90:0.6) arc (90:180:0.6) -- cycle;
+\draw[line width=1.2pt, smooth,samples=100,domain=-2.1399999999999997:14.339999999999998] plot(\x,{0.5*(\x-5)^2+2});
+\draw (3,4)-- (8.5,8.13);
+\draw [line width=1.2pt,dotted,color=qqqqzz] (8.5,8.13)-- (8.5,0);
+\draw [line width=1.2pt,dotted,color=qqqqzz] (3,0)-- (3,4);
+\draw [line width=1.2pt,dotted,color=qqqqzz] (0,4)-- (3,4);
+\draw [line width=1.2pt,dotted,color=qqqqzz] (0,8.13)-- (8.5,8.13);
+\draw [line width=1.2pt,dash pattern=on 5pt off 5pt,color=zzqqqq] (3,4)-- (8.5,4);
+\draw [line width=1.2pt,dash pattern=on 5pt off 5pt,color=zzqqqq] (8.5,4)-- (8.5,8.13);
+\fill[color=qqwuqq,fill=qqwuqq,fill opacity=0.1] (8.25,4.25) circle (0.02);
+\draw (2.5,-0.06) node[anchor=north west] {$x_1$};
+\draw (8,-0.04) node[anchor=north west] {$x_2$};
+\draw (-2.5,5) node[anchor=north west] {$f(x_1)$};
+\draw (-2.5,8.8) node[anchor=north west] {$f(x_2)$};
+\draw (8.5,6.4) node[anchor=north west] {$\Delta f$};
+\draw (4.5,3.9) node[anchor=north west] {$\Delta x$};
+\draw[color=black] (1.16,10.96) node {$f$};
+\draw (11.5,1.2) node[anchor=north west] {$x$};
+\draw (-1,12) node[anchor=north west] {$y$};
+\fill [color=xdxdff] (3,4) circle (1.5pt);
+%\draw[color=xdxdff] (2.1,3.5) node {$A$};
+\fill [color=xdxdff] (8.6,8.13) circle (1.5pt);
+%\draw[color=xdxdff] (9,8.2) node {$B$};
+\end{tikzpicture}
+\end{center}
+\caption{Durchschnittliche \"Anderungsrate}
+\end{figure}
+
+\clearpage
+
+\begin{cdef}[Intervall]{}
+Die Menge
+$$\setm{x\in\mR}{x_1\leq x \leq x_2}$$
+wird \emph{Intervall} genannt und mit $[x_1,x_2]$ bezeichnet. Selbstverst\"andlich muss der Funktionswert an jeder Stelle des Intervalls definiert sein, d.h. das Intervall ist eine Teilmenge der De\-fi\-ni\-tions\-menge von $f$.
+\end{cdef}
+
+\uebh{}{
+Berechne die durchschnittliche \"Anderung der Funktion $f$ über den gegebenen Intervallen.
+\begin{enumerate}[a)]
+\item $x^2$ \"uber $[0,1],[2,3],[0,3],[-2,-1],[x_1,x_2]$
+\item $\frac{1}{x}$ \"uber $[0.5,2],[-7,-2],[-1,1],[x_1,x_2]$
+\item $x^2-2x+1$ \"uber $[-3,4],[0,6],[-2,2]$
+\end{enumerate}
+\label{aenderung}
+}
+
+\uebh{}{
+Die Tabelle zeigt die Tarif- und Lebenskostenindizes (Index $1977\sim100$) f\"ur die Schweiz.
+\begin{center}
+\large
+\begin{tabular}{|c|c|c|c|}
+\hline
+ & Fahrpreis Bahn & Gesamtlohnindex & Konsumentenpreise\\ \hline
+1977 & 100 & 100 & 100\\ \hline
+1979 & 101.5 & 106.6 & 104.4\\ \hline
+1980 & 102.6 & 112.3 & 108.6\\ \hline
+1981 & 107.9 & 119.3 & 115.7\\ \hline
+1982 & 115.4 & 127.7 & 122.2\\ \hline
+1983 & 125.1 & 132.5 & 125.8\\ \hline
+1984 & 128.8 & 136.2 & 129.5\\ \hline
+1985 & 131.1 & 140.4 & 133.9\\ \hline
+1986 & 133.3 & 145.4 & 135.0\\ \hline
+1987 & 130.3 & 148.9 & 137.0\\ \hline
+1988 & 130.2 & 154.1 & 139.5\\ \hline
+\end{tabular}
+\end{center}
+\begin{enumerate}[a)]
+\item Zeichne farbig in dasselbe Koordinatensystem die Graphen der Funktionen, die durch diese Tabelle dargestellt werden.
+\item Berechne die durchschnittliche \"Anderung der drei Funktionen in den Intervallen $[1977,1988]$ und $[1986,1988]$.
+\end{enumerate}
+}
+
+\begin{cdef}[Monotonie]{}
+Eine Funktion $f$ heisst \emph{monoton wachsend} im Intervall $I$, wenn die durchschnittliche \"Anderung f\"ur jedes Teilintervall von $I$ positiv oder Null ist. Entsprechend nennt man $f$ \emph{monoton fallend}, wenn f\"ur jedes Teilintervall von $I$ die durchschnittliche \"Anderung negativ oder Null ist.
+\end{cdef}
+
+%\uebh{}{
+%In welchen Intervallen sind die Funktionen aus \"Ubung \ref{aenderung} monoton wachsend, monoton fallend?
+%}
+
+\clearpage
+
+\section{Quadratische Funktionen}
+
+\subsection{Erste Beobachtungen}
+
+\begin{wrapfigure}{r}{0.382\textwidth}
+  \begin{center}
+    \includegraphics[width=0.382\textwidth]{pictures/parabol}
+  \end{center}
+\end{wrapfigure}
+Quadratische Funktionen, beziehungsweise die Graphen davon, haben bemerkenswerte Eigenschaften. Im Folgenden wollen wir zuerst ein Beispiel anschauen, das die Grundlage vieler Anwendungen im Alltag illustriert. Anschliessend wird auf die Mathematik von quadratischen Funktionen und ihren Graphen eingegangen.
+\begin{bsp}
+Stellen Sie sich den unten abgebildeten Graphen der Funktion
+$$f(x) = \frac{1}{4}x^2$$
+als Spiegel vor. Zeichnen Sie vier parallel zur y-Achse einfallende Lichtstrahlen und konstruieren Sie ihre Reflexion. Beachten Sie dabei, dass die Tangente an den Graphen von $f$ an der Stelle $x$ die Steigung $\frac{1}{2}x$ hat.
+\begin{figure}
+\begin{center}
+\definecolor{cqcqcq}{rgb}{0.75,0.75,0.75}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.75cm,y=0.75cm]
+\draw [color=cqcqcq,dash pattern=on 2pt off 2pt, xstep=0.5cm,ystep=0.5cm] (-5.96,-2.6) grid (6.82,7.9);
+\draw[->,color=black] (-5.96,0) -- (6.82,0);
+\foreach \x in {-5,-4,-3,-2,-1,1,2,3,4,5,6}
+\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize $\x$};
+\draw[color=black] (6.48,0.08) node [anchor=south west] {$x$};
+\draw[->,color=black] (0,-2.6) -- (0,8.02);
+\foreach \y in {-2,-1,1,2,3,4,5,6,7}
+\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize $\y$};
+\draw[color=black] (0.1,7.62) node [anchor=west] {$y$};
+\clip(-5.96,-2.6) rectangle (6.82,8.02);
+\draw[line width=2pt, smooth,samples=100,domain=-5.96:6.82] plot(\x,{0.25*\x*\x});
+\draw (0.6,6.5) node[anchor=north west] {$f(x)=\frac{1}{4}x^2$};
+\end{tikzpicture}
+\end{center}
+\end{figure}
+\end{bsp}
+Beispiel 1 zeigt die wichtigste Eigenschaft der Graphen von quadratischen Funktionen. Alle parallel zur $y$-Achse einfallenden Strahlen werden in ein und denselben Punkt reflektiert. Dieser ausgezeichnete Punkt hat nat"urlich einen eigenen Namen verdient: man nennt ihn
+\marginnote{
+\qrcode{
+https://www.youtube.com/watch?v=qcC-Bsrui1Y}
+}
+\emph{Brennpunkt}. Wir werden dies in K\"urze noch genauer untersuchen.
+Tats\"achlich kann es dort sehr sehr heiss werden! Abbildung \ref{odiello} zeigt den gr\"ossten Parabolspiegel der Welt, welcher zu Forschungszwecken dient und das Sonnenlicht \glqq b"undelt\grqq. Damit werden im H\"auschen, das im Brennpunkt steht, Temperaturen bis zu $\unit[4000]{ ^\circ C}$ erreicht.
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.618\textwidth]{pictures/odeillo}
+\end{center}
+\caption{Parabolspiegel in Odeillo}\label{odiello} 
+\end{figure}
+
+\subsection{Begriffe und Mathematik}
+\begin{cdef}[Quadratische Funktion]{}
+Eine
+\marginnote{
+\qrcode{
+https://www.youtube.com/watch?v=FviMrIW3_0Q}
+}
+Funktion heisst \emph{quadratisch}, wenn sie sich mit einer Funktionsgleichung der Form
+$$f(x) = ax^2+bx+c\q(a\neq0)$$
+darstellen l\"asst.
+\end{cdef}
+
+\begin{bem}
+Spezialfall: Funktionen der Form
+$$f(x) = ax^2$$
+haben die bequeme Eigenschaft, dass ihr Graph durch den Ursprung geht und dort, je nachdem ob $a>0$ oder $a<0$ ist, ihren Tief- bzw. Hochpunkt haben.
+\end{bem}
+
+\uebh{}{
+Zeichne in dasselbe Koordinatensystem die Graphen der Funktionen
+\begin{enumerate}[a)]
+\item $x^2, \frac{1}{2}x^2, 2x^2, -\frac{1}{4}x^2$
+\item $x^2+1, -x^2+1, \frac{1}{2}x^2-2, -2x^2+3, \frac{1}{5}x^2-1$
+\end{enumerate}
+}
+
+\begin{cdef}[Parabel und Scheitelpunkt]{}
+Der
+Graph einer quadratischen Funktionen nennt man \emph{Parabel}. Der Tief- bzw. Hochpunkt heisst \emph{Scheitel}.
+\end{cdef}
+
+\begin{csatz}[Brennpunkteigenschaft]{}
+Die Parabel der Funktion
+$$f(x)=ax^2$$
+ist achsialsymmetrisch zur $y$-Achse. Die $x$-Achse ist Tangente im Scheitel. Jeder parallel zur $y$-Achse einfallende Lichtstrahl wird an der Parabel so gespiegelt, dass er durch den Brennpunkt geht.
+\end{csatz}
+
+\begin{proof}[Beweis]
+Sp\"ater.
+\end{proof}
+
+\begin{csatz}[Symmetrie]{}
+Der Scheitel halbiert das vom Brennpunkt auf die Leitlinie gef\"allte Lot. Dieses liegt auf der Symmetrieachse der Parabel.
+\end{csatz}
+
+\begin{proof}[Beweis]
+Siehe \"Ubung \ref{abstandbl}.
+\end{proof}
+
+Man kann zeigen, dass jede Parabel der Funktion $f(x)=ax^2$ sich in der Form
+$$f(x) = \frac{1}{4p}x^2$$
+schreiben l\"asst, wobei $p$ just die H\"alfte des Abstandes des Lots Brennpunkt-Leitlinie ist.
+
+\uebh{}{
+Berechne den Brennpunkt und die Funktionsgleichung der Leitlinie der Parabel aus dem Ein\-f\"uh\-rungs\-bei\-spiel.
+}
+
+\begin{bem}
+Dem
+aufmerksamen Leser wird nicht entgangen sein, dass man die M\"og\-lich\-keit hat, die Parabel sowohl auf geometrische als auch auf algebraische Weise zu definieren. N\"amlich
+\begin{description}
+\item geometrisch: Jede Kurve mit der Eigenschaft, dass alle ihre Punkte von einem bestimmten Punkt (Brennpunkt) und einer bestimmten Geraden (Leitlinie) den gleichen Abstand haben, heisst Parabel.
+\item algebraisch: Eine Parabel ist der Graph einer Funktion der Form $f(x)=\frac{1}{4p}x^2$.
+\end{description}
+Die M\"oglichkeit verschiedener Interpretationen gilt nicht nur f"ur Parabeln, sondern auch f"ur viele andere Kurven.
+\end{bem}
+
+\uebh{}{
+Zeichne einen Punkt $B$ und eine Gerade $l$, die nicht durch diesen Punkt l\"auft. Konstruiere anschliessend die Menge aller Punkte, welche von $B$ und $l$ denselben Abstand haben.
+}
+
+\uebh{}{
+ \label{abstandbl}
+Zeige,
+\marginnote{
+\qrcode{
+https://www.youtube.com/watch?v=nKFtpmfmdsc}
+}
+dass f\"ur eine quadratische Funktionen der Form
+$$f(x)=ax^2$$
+ein beliebiger Punkt $Q$ auf der Parabel von $f$ vom Brennpunkt $\point{0}{\frac{1}{4a}}$ und von der Leitgeraden $l(x)=-\frac{1}{4a}$ den gleichen Abstand hat.
+Wieso reicht es, dies nur f\"ur die Normalparabel zu zeigen?
+}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.382\textwidth]{pictures/herd}
+\caption{Kochen}
+\end{figure}
+
+\subsection{Mehr Anwendungen}
+
+Wieso werden alle zur Symmetrieachse der Parabel parallel einfallenden Lichtstrahlen so reflektiert, dass sie durch den Brennpunkt laufen? Betrachte zur Begr\"undung folgende Bilder.
+
+\begin{figure}
+\centering
+\scalebox{0.618}{
+\definecolor{ffxfqq}{rgb}{1,0.5,0}
+\definecolor{rvwvcq}{rgb}{0.1,0.4,0.75}
+\definecolor{sexdts}{rgb}{0.18,0.49,0.19}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm]
+\begin{axis}[
+x=1cm,y=1cm,
+axis lines=middle,
+ymajorgrids=true,
+xmajorgrids=true,
+xmin=-7.7222553627945185,
+xmax=9.675288849834498,
+ymin=-3.727605108165396,
+ymax=9.44757439626263,
+xtick={-7,-6,...,9},
+ytick={-3,-2,...,9},]
+\clip(-7.7222553627945185,-3.727605108165396) rectangle (9.675288849834498,9.44757439626263);
+\draw [shift={(3.0093403435866994,2.2640323258846284)},line width=2pt,fill=black,fill opacity=0.10000000149011612] (0,0) -- (56.39208799076179:1.0512111306724479) arc (56.39208799076179:90.08280314230822:1.0512111306724479) -- cycle;
+\draw [shift={(3.0093403435866994,2.2640323258846284)},line width=2pt,fill=black,fill opacity=0.10000000149011612] (0,0) -- (-157.21582401847644:1.1388120582284853) arc (-157.21582401847644:-123.60791200923822:1.1388120582284853) -- cycle;
+\draw[line width=2pt,color=sexdts,smooth,samples=100,domain=-7.7222553627945185:9.675288849834498] plot(\x,{1/4*(\x)^(2)});
+\draw [line width=2pt,domain=-7.7222553627945185:9.675288849834498] plot(\x,{(-2.2640323258846284--1.5046701717933497*\x)/1});
+\draw [line width=2pt,domain=-7.7222553627945185:9.675288849834498] plot(\x,{(-6.41596225232122--1*\x)/-1.5046701717933497});
+\draw [line width=2pt,color=ffxfqq] (3.000098170064456,8.659166048258289)-- (3.0093403435866994,2.2640323258846284);
+\draw [line width=2pt] (5.405717519535571,5.86978958290128)-- (3.0093403435866994,2.2640323258846284);
+\draw [line width=2pt,color=ffxfqq] (0,1)-- (3.0093403435866994,2.2640323258846284);
+\begin{scriptsize}
+\draw[color=sexdts] (-6.162958852297053,8.650405955502688) node {$f$};
+\draw [fill=rvwvcq] (3.0093403435866994,2.2640323258846284) circle (2.5pt);
+\draw[color=rvwvcq] (3.5081835498894676,2.4132199135128256) node {$A$};
+\draw[color=black] (-1.0821050540468884,-3.3859614906968503) node {$t$};
+\draw[color=black] (3.5432239209118825,3.07898696293871) node {$\alpha$};
+\draw [fill=rvwvcq] (0,1) circle (2.5pt);
+\draw[color=rvwvcq] (-0.3812976335985898,1.5372106379524517) node {$B$};
+\draw[color=black] (2.7898559439299615,1.9576950902214312) node {$\beta$};
+\end{scriptsize}
+\end{axis}
+\end{tikzpicture}
+}
+\caption{einfallender Lichtstrahl und Reflexion an Parabel}
+\label{fig:lichtstrahl}
+\end{figure}
+
+Beachte hierbei in Abbildung \ref{fig:lichtstrahl} auf Seite \pageref{fig:lichtstrahl}, dass bei der Reflexion Enfallswinkel gleich Ausfallswinkel gilt. Begr\"unde anschliessend, dass die Abst\"ande $A$ zu $B$ und $B$ zu den beiden Schnittpunkten Tangente mit $y$-Achse bzw. Senkrechte auf die Tangente mit $y$-Achse gleich gross sind.
+
+\begin{figure}
+\centering
+\scalebox{0.75}{
+\definecolor{yqqqyq}{rgb}{0.5,0,0.5}
+\definecolor{ffxfqq}{rgb}{1,0.49,0}
+\definecolor{rvwvcq}{rgb}{0.082,0.39,0.752}
+\definecolor{sexdts}{rgb}{0.181,0.49,0.19}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm]
+\begin{axis}[
+x=1cm,y=1cm,
+axis lines=middle,
+ymajorgrids=true,
+xmajorgrids=true,
+xmin=-6.1268629237825545,
+xmax=7.1242282328050655,
+ymin=-3.8840097812872076,
+ymax=6.304968285945833,
+xtick={-6,-5,...,7},
+ytick={-3,-2,...,6},]
+\clip(-6.1268629237825545,-3.8840097812872076) rectangle (7.1242282328050655,6.304968285945833);
+\draw [shift={(3.0341531561698734,2.301521343773901)},line width=2pt,fill=black,fill opacity=0.10000000149011612] (0,0) -- (56.608626621183355:0.812950377704762) arc (56.608626621183355:90.30690427108505:0.812950377704762) -- cycle;
+\draw [shift={(3.0341531561698734,2.301521343773901)},line width=2pt,fill=black,fill opacity=0.10000000149011612] (0,0) -- (-156.78274675763328:0.8806962425134921) arc (-156.78274675763328:-123.39137337881665:0.8806962425134921) -- cycle;
+\draw[line width=2pt,color=sexdts,smooth,samples=100,domain=-6.1268629237825545:7.1242282328050655] plot(\x,{1/4*(\x)^(2)});
+\draw [line width=2pt,domain=-6.1268629237825545:7.1242282328050655] plot(\x,{(-2.301521343773901--1.5170765780849367*\x)/1});
+\draw [line width=2pt,domain=-6.1268629237825545:7.1242282328050655] plot(\x,{(-6.525737280771828--1*\x)/-1.5170765780849367});
+\draw [line width=2pt,color=ffxfqq] (3.000098170064456,8.659166048258289)-- (3.0341531561698734,2.301521343773901);
+\draw [line width=2pt] (5.430530332118746,5.93700902966326)-- (3.0341531561698734,2.301521343773901);
+\draw [line width=2pt,color=ffxfqq] (0,1)-- (3.0341531561698734,2.301521343773901);
+\draw [line width=1.2pt,color=yqqqyq] (0,1) circle (3.3015213437739006cm);
+\begin{scriptsize}
+\draw[color=sexdts] (-5.0429290868428716,5.729128435071626) node {$f$};
+\draw [fill=rvwvcq] (3.0341531561698734,2.301521343773901) circle (2.5pt);
+\draw[color=rvwvcq] (3.4117548412866534,2.4231302324055854) node {$A$};
+\draw[color=black] (-1.1272181008982682,-3.6198009085331595) node {$t$};
+\draw[color=black] (3.452402360171891,2.937998804951936) node {$\alpha$};
+\draw [fill=rvwvcq] (0,1) circle (2.5pt);
+\draw[color=rvwvcq] (-0.30071855023176003,1.4069422602746309) node {$B$};
+\draw[color=black] (2.8562387498550654,2.057302562438442) node {$\beta$};
+\end{scriptsize}
+\end{axis}
+\end{tikzpicture}
+}
+\caption{Thaleskreis mit Mittelpunkt $B$}
+\label{fig:thaleskreis}
+\end{figure}
+
+Daraus folgt dann, dass $B$ Mittelpunkt des Thaleskreises durch $A$ ist und damit jeder parallel zur Symmetrieachse der Parabel einfallende Lichtstrahl nach der Reflexion durch den Punkt $B$, den Brennpunkt, geht. Dies ist in Abbildung \ref{fig:thaleskreis} auf Seite \pageref{fig:thaleskreis} illustriert.
+
+Folgende Bilder zu Anwendungen von quadratischen Funktionen unter Ausn\"utzung der Parabeleigenschaften.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.382\textwidth]{pictures/radar}
+\caption{Signalverst\"arkung}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.618\textwidth]{pictures/scheinwerfer}
+\caption{Scheinwerfer}
+\end{figure}
+
+\pagebreak
+
+\subsection{Scheitelform}
+\begin{wrapfigure}{r}{0.382\textwidth}
+  \begin{center}
+    \includegraphics[width=0.382\textwidth]{pictures/springbrunnen}
+  \end{center}
+%\caption{You Know my Name}
+\end{wrapfigure}
+Wir haben gesehen, dass der Graph von
+$$f(x)=ax^2$$
+eine Parabel ist. Die Parabel ist f\"ur $a>0$ nach oben, f\"ur $a<0$ nach unten ge\"offnet. F\"ur $\abs{a}<1$ ist sie weiter, f\"ur $\abs{a}>1$ enger als die Normalparabel. lhr Scheitel ist $S\point{0}{0}$.
+
+Der
+\marginnote{
+\qrcode{
+https://www.youtube.com/watch?v=SD8hHTx36zc}
+}
+Graph von
+$$f(x)=ax^2+v\q(a,v\in\mR)$$
+entsteht durch Verschiebung einer Parabel in y-Richtung um $\abs{v}$ Einheiten. F\"ur $v>0$ ist die Parabel nach oben, f\"ur $v<0$ nach unten verschoben. Ihr Scheitel ist $S\point{0}{v}$.
+
+\uebh{}{
+Zeichne in ein und dasselbe Koordinatensystem die Graphen
+der folgenden Funktionen
+\begin{enumerate}[a)]
+\item $(x-2)^2, (x+2)^2, \frac{1}{2}(x-1)^2, -2(x+2)^2$, $x^2+6x+9$
+\item $(x-1)^2+1, \frac{1}{2}(x+2)^2-3, -2(x+3)^2+44$, $x^2-3x-2.$
+\end{enumerate}
+}
+
+Der Graph von
+$$f(x)=a(x-u)^2\q(a,u,\in\mR)$$
+entsteht durch Verschiebung einer Parabel in $x$-Richtung um $\abs{u}$ Einheiten. Die Parabel ist f\"ur $u>0$ nach rechts, f\"ur $u<0$ nach links verschoben. Ihr Scheitel ist $S\point{u}{0}$.
+
+Der
+\marginnote{
+\qrcode{
+https://www.youtube.com/watch?v=XcB4ISS-Oso}
+}
+Graph von
+$$f(x)=a(x-u)^2+v\q(a,u,v\in\mR)$$
+ist die in x-Richtung um $\abs{u}$ Einheiten und in $y$-Richtung um $\abs{v}$ Einheiten verschobene Parabel mit der Gleichung $y=ax^2$.
+
+\begin{cdef}[Scheitelform]{}
+  Da man in dieser Darstellung aus dem Funktionsterm direkt den Scheitel $S\point{u}{v}$ ablesen kann, nennt man
+  $$f(x) = a(x - u)^2 + v$$
+  Scheitelgleichung oder \emph{Scheitelform} der Parabel.
+\end{cdef}
+
+Durch Umformen der Scheitelgleichung erh\"alt man die Normalform $f(x)=ax^2+bx+c$. Umgekehrt kann man $f(x)=ax^2+bx+c$ durch quadratische Erg\"anzung immer in die Scheitelgleichung \"uberf\"uhren.
+
+\begin{bem}\label{parametera}
+Beachten Sie, dass der Parameter $a$ bei beiden Formen denselben Wert hat.
+\end{bem}
+
+\uebh{}{
+Zeige die Aussage aus obiger Bemerkung.
+}
+
+\begin{bsp}
+Es ist klar, dass man durch Ausmultiplizieren und Zusammenfassen aus der Scheitelform die Form $ax^2+bx+c$ erh\"alt. Wie erh\"alt man umgekehrt die Scheitelform? Sei
+$$f(x)=3x^2-30x+37.$$
+
+Wir
+\marginnote{
+\qrcode{
+https://www.youtube.com/watch?v=uZIc9wXmO3c}
+}
+generieren nun eine Form $(x-u)^2$ und passen $v$ \glqq k\"unstlich\grqq\ an. Man nennt das folgende Vorgehen \emph{quadratische Erg\"anzung:}
+\begin{align*}
+f(x)&=3x^2-30x+37\\
+&=3[(x-5)^2-25]+37\\
+&=3(x-5)^2-38
+\end{align*}
+Der Scheitel ist somit $S\point{5}{-38}$ und der Graph l\"asst sich sofort skizzieren.
+\end{bsp}
+
+\begin{cdef}[Polynom 2. Grades]{}
+Die Funktion
+$$f(x)=ax^2+bx+c \q(a,b,c\in\mR)$$
+mit $a\neq0$ heisst \emph{quadratische Funktion}; oder ganzrationales Polynom 2. Grades, falls $a,b,c\in\mQ$.
+\end{cdef}
+
+\begin{bem}
+Ihr Graph ist eine Parabel; ihre Symmetrieachse ist die Parallele zur $y$-Achse durch den Scheitel $S$. Die Parabel ist f\"ur $a>0$ nach oben, f\"ur $a<0$ nach unten ge\"offnet.
+\end{bem}
+
+\uebh{}{
+Zeichne
+\marginnote{
+\qrcode{
+https://www.youtube.com/watch?v=1dmXQwTQDT4}
+}
+in dasselbe Koordinatensystem die Graphen der quadratischen Funktionen $x\mapsto$
+\begin{enumerate}[a)]
+\item $x^2-6x+11, 2x^2-3x, -x^2+6x-7,$
+\item $0.5x^2-4x+7, 0.25x^2-2x+1, -0.1x^2-x-1.$
+\end{enumerate}
+Hint: Ermittle gegebenenfalls die Scheitelgleichung und damit die Koordinaten des Scheitelpunkts.
+}
+
+\pagebreak
+
+\uebh{}{
+Wie lautet die Fuktionsgleichung der gegebenen Parabeln?
+\begin{center}
+\definecolor{cqcqcq}{rgb}{0.75,0.75,0.75}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.75cm,y=0.75cm]
+\draw [color=cqcqcq,dash pattern=on 2pt off 2pt, xstep=0.55cm,ystep=0.55cm] (-4.3,-4.16) grid (7.6,6.3);
+\draw[->,color=black] (-4.3,0) -- (8.14,0);
+\foreach \x in {-4,-3,-2,-1,1,2,3,4,5,6,7}
+\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize $\x$};
+\draw[->,color=black] (0,-4.16) -- (0,6.3);
+\foreach \y in {-4,-3,-2,-1,1,2,3,4,5,6}
+\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize $\y$};
+\draw[color=black] (0pt,-10pt) node[right] {\footnotesize $0$};
+\clip(-4.3,-4.16) rectangle (8.14,6.3);
+\draw[smooth,samples=100,domain=-4.3:8.14] plot(\x,{2*(\x+2)^2-3});
+\draw[smooth,samples=100,domain=-4.3:8.14] plot(\x,{0.5*(\x-4)^2+1});
+\draw[smooth,samples=100,domain=-4.3:8.14] plot(\x,{0-(\x-3)^2-1});
+\draw[color=black] (-3.8,6) node {$f$};
+\draw[color=black] (1.2,6) node {$g$};
+\draw[color=black] (1.6,-3.8) node {$h$};
+\end{tikzpicture}
+\end{center}
+}
+
+\uebh{}{
+Schraffiere in einem Koordinatensystem die Punktmenge
+\begin{enumerate}[a)]
+\item $\mM=\setm{(x|y)}{y<2-x^2\text{ und }y>2x-x^2}$
+\item $\mM=\setm{(x|y)}{y<1-x^2\text{ und }y\geq x-1}$
+%\item $\mM=\setm{(x|y)}{y\leq2-0.5x^2\text{ und }y>x-2}$
+\end{enumerate}
+}
+
+\uebh{}{
+Ermittle die Scheitelgleichung der Parabel mit dem Scheitel $S$ so, dass sie durch den Punkt $P$ geht.
+\begin{enumerate}[a)]
+\item $S\point{2}{4}$, $P\point{3}{3}$
+\item $S\point{2}{4}$, $P\point{-1}{7}$
+\item $S\point{-2}{-3}$, $P\point{0}{0}$
+\end{enumerate}
+}
+
+\uebh{}{
+Ermittle die Gleichung $y=x^2+bx+c$ einer Parabel so, dass sie durch die Punkte $A\point{2}{-7}$ und $B\point{-3}{8}$ geht.
+}
+
+\uebh{}{
+Ermittle
+\marginnote{
+\qrcode{
+https://www.youtube.com/watch?v=v_QwU5hnazM}
+}
+die Gleichung $y=ax^2+bx+c$ einer Parabel so, dass sie durch die Punkte $A$, $B$ und $C$ geht.
+\begin{enumerate}[a)]
+\item $A\point{1}{0}, B\point{-1}{1}$ und $C\point{2}{1}$
+\item $A\point{1}{2}$, $B\point{3}{4}$ und $C\point{5}{1}$
+\end{enumerate}
+}
+
+\uebh{}{
+Ein
+\marginnote{
+\qrcode{
+https://www.youtube.com/watch?v=FfNwbXLpFwk}
+}
+Br\"uckenbogen hat die Form einer Parabel. Die Scheitelh\"ohe betr\"agt $\unit[4]{m}$, die Spannweite $\unit[8]{m}$.
+\begin{enumerate}[a)]
+\item Kann ein Lastwagen mit einer H\"ohe von $\unit[3.5]{m}$ und
+einer Breite von $\unit[2.1]{m}$ passieren?
+\item Wie breit darf der Lastwagen h\"ochstens sein?
+\item Kann der Lastwagen aus (a) zugleich mit einem
+Pkw der H\"ohe $\unit[1.6]{m}$ und der Breite $\unit[1.8]{m}$ passieren, wenn zwischen ihnen ein Abstand von $\unit[0.3]{m}$ bleiben soll?
+\end{enumerate}
+}
+
+\uebh{}{
+Die Abbildung \ref{abb:dieselmotor} auf Seite \pageref{abb:dieselmotor} zeigt die Kennlinien eines Dieselmotors. Drehmoment, Leistung und Kraftstoffverbrauch (in g Kraftstoff pro kWh) sind als Funktionen der Drehzahl aufgetragen.
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.5\textwidth,angle=-0.2]{pictures/motor}
+\end{center}
+\caption{Kennlinien eines Dieselmotors}\label{abb:dieselmotor}
+\end{figure}
+Welche der drei Kurven kann man durch Parabeln n\"ahern? Stelle die Gleichungen auf und pr\"ufe die G\"ute der N\"aherung durch Berechnung einiger Zwischenwerte.
+Hint: W\"ahle bei der Leistung $\point{1000}{70}$ als Ursprung und gib die Koordinaten als Gittereinheiten an. Man erh\"alt die Punkte $\point{0}{2.5}$, $\point{4}{11.2}$, $\point{8}{13.6}$. Beim Kraftstoffverbrauch erh\"alt man mit dem Punkt $\point{1000}{180}$ als Ursprung in Gittereinheiten die Punkte $\point{0}{1.8}$, $\point{4}{1.2}$, $\point{8}{1.7}$.
+}
+
+\subsection{Maxima \&\ Minima}
+Der gr\"osste bzw. kleinste Wert, falls er existiert, einer Wertemenge heisst \emph{Maximum} bzw. \emph{Minimum}. Die quadratische Funktion
+$$f(x)=ax^2+bx+c=a(x-u)^2+v$$
+hat f\"ur
+$$x =u=-\frac{b}{2a}$$
+ein Maximum, falls $a<0$, bzw. ein Minimum, falls $a>0$. Das Maximum bzw. Minimum ist $v =f(u)$.
+
+Begr\"undung: Der Term $(x - u)^2$ ist nicht negativ; f\"ur $a <0$ wird $f(x)\leq v$ und f\"ur $a > 0$ wird $f(x) \geq v$. Das Gleichheitszeichen gilt aber nur f\"ur $x =u$.
+
+\uebh{}{
+Ermittle das Maximum bzw. das Minimum der folgenden Terme f\"ur $x\in\mR$.
+$$x^2 -8x + 25, 3 - 2x - x^2, x^2 + x -18, - x^2 + 6x + 2.$$
+}
+
+\uebh{}{
+Welches Rechteck vom Umfang $\unit[160]{cm}$ hat den gr\"ossten Inhalt?
+}
+
+\uebh{}{
+Mit $\unit[120]{m}$ Zaun soll ein m\"oglichst grosses rechteckiges Feld abgegrenzt werden,
+\begin{enumerate}[a)]
+\item auf offenem Gel\"ande,
+\item wenn an einer Seite ein Fluss die Grenze bildet.
+\end{enumerate}
+Wie gross wird jeweils das Feld?
+}
+
+\uebh{}{
+Ein Jazzlokal hat bei einem Eintritt von $\unit[8]{Fr.}$ durchschnittlich 240 Besucher. W\"urde man den Eintrittspreis um $\unit[0.5]{Fr.}$, $\unit[1]{Fr.}$ usw. erh\"ohen, so ginge die Besucherzahl um 10, 20 usw. zur\"uck. Bei welchem Eintrittspreis sind die Einnahmen am gr\"ossten?
+}
+
+%\uebh{}{
+%Die Leistung einer Turbine h\"angt von der Drehzahl $n$ ab. Die Gleichung
+%$$L = 300n - 0.8n^2$$
+%gibt die Leistung einer Turbine in Watt an. Bei welcher Drehzahl hat diese Turbine die gr\"osste Leistung? Wie hoch ist diese?
+%}
+
+\uebh{}{
+Der Schirm einer Stehlampe soll die Form einer quadratischen S\"aule haben. F\"ur das Gestell stehen $\unit[440]{cm}$ Draht zur Verf\"ugung.
+\begin{enumerate}[a)]
+\item Welche Ausmasse hat der Lampenschirm, wenn
+der Mantel zur dekorativen Gestaltung m\"oglichst
+gross sein soll? Wie gross ist diese Mantelfl\"ache?
+\item Wie sind die Ergebnisse, wenn f\"ur eine entsprechende H\"angelampe die Oberfl\"ache maximal sein
+soll?
+\end{enumerate}
+}
+
+\clearpage
+ 
+\section{Potenzfunktionen}
+  
+\subsection{Potenzen mit rationalen Exponenten}
+\subsubsection{Rückblick}
+  \begin{wrapfigure}{r}{0.382\textwidth}
+  \begin{center}
+    \includegraphics[width=0.382\textwidth]{pictures/title}
+  \end{center}
+\end{wrapfigure}
+Wir wollen unsere Rechenregeln für Potenzen erweitern, um Potenzgesetze
+für reelle Zahlen vollumfänglich verstehen und interpretieren zu können.
+Wir brauchen dazu folgende, bereits bekannte, Regeln und Begriffe.
+\begin{erin}
+  Sie
+\marginnote{
+\qrcode{
+https://www.youtube.com/watch?v=du2h6QDXNoo}
+}
+  kennen die Potenzgesetze. In Kurzform lauten sie:
+\begin{align}
+  a^n\cdot a^m&=a^{n+m}\\
+  a^n\cdot b^n&=(ab)^n\\
+  \left(a^n\right)^m&=a^{n\cdot m}\\
+  a^{-n}&=\frac{1}{a^n}\\
+  a^0&=1
+\end{align}
+
+Bisher waren die Exponenten $m$ und $n$ jeweils natürliche Zahlen (oder ausnahmsweise ganze Zahlen). Im
+nächsten Abschnitt werden Sie sehen, dass auch rationale Zahlen im Exponenten sinnvoll sind.
+
+Weiter ruft man sich die Definition der $n$-ten Wurzel einer Zahl
+in Erinnerung: Die \emph{$n$-te Wurzel} aus einer positiven Zahl
+$a$, ist diejenige positive Zahl $b$, deren $n$-te Potenz $a$ beträgt.
+Man schreibt dafür $b=:\sqrt[n]{a}$.
+\end{erin}
+
+Die Potenzgesetze funktionieren bis anhin tadellos, wenn $m$ und
+$n$ ganze Zahlen sind. Was ist, wenn man nun im Exponenten rationale
+Zahlen zulässt? Ist $3^{\frac{1}{2}}$ eine Zahl? Un wenn ja, welche?
+
+Betrachte $3^{\frac{1}{2}}\cdot3^{\frac{1}{2}}$.
+Sollen die Potenzgesetze weiterhin gelten, dann ist also $3^{\frac{1}{2}}\cdot3^{\frac{1}{2}}=3$. Wir wissen, dass
+$\sqrt{3}\cdot\sqrt{3}=3$ und legen deshalb fest:
+$$3^{\frac{1}{2}}=\sqrt{3}.$$
+
+\uebh{sqrt3}{
+  Bestimme nach obigem Muster die Wurzeldarstellung von
+  $8^{\frac{1}{3}}$. Betrachte dazu $8^{\frac{1}{3}}$ dreimal
+  mit sich selbst multipliziert.
+  }
+
+\subsubsection{Erweiterung der Potenzgesetze}
+Offensichtlich kann jede Wurzelart als Potenz mit rationalem Exponenten
+dargestellt werden kann. Man erweitert die Potenzgesetze deshalb
+intuitiv, regelerhaltend auf rationale Exponenten und definiert:
+
+\begin{cdef}[Wurzeln als Potenz]
+  $$\boxed{\rule[-3mm]{0mm}{25pt}\quad a^{\frac{1}{n}}=\sqrt[n]{a}\quad}$$
+\end{cdef}
+Man kann also jede Wurzel in eine Potenz verwandeln und dann mit den
+bekannten Potenzgesetzen weiterrechnen. Dies ist beim Umformen und
+Vereinfachen von Wurzeln enorm hilfreich.
+Weil wir mit rationalen Exponenten sinnvoll rechnen können gilt allgemein
+\begin{csatz}[Potenzgesetz {\uppercase\expandafter{\romannumeral5}}]
+  $$a^{\frac{n}{m}}=\sqrt[m]{a^n}$$
+\end{csatz}
+
+\begin{proof}[Beweis]
+Schreibübung.
+\end{proof}
+
+\uebh{potenzgesetze}{
+  Schreibe mit einer einzigen Wurzel.
+  
+  \begin{enumerate}[a)]
+  	\item $\sqrt[3]{a\sqrt{a}}$
+	\item $\sqrt[4]{a\sqrt[3]{a\sqrt{a}}}$
+  	\item $\sqrt[n]{\sqrt[m]{a}}$
+	\item $\sqrt[n]{a}\cdot\sqrt[m]{a}$
+  \end{enumerate}
+}
+
+\uebh{TR}{
+Bestimme mit dem Taschenrechner folgende Werte
+
+  \begin{enumerate}[a)]
+  	\item $\sqrt[3]{10}$
+	\item $\sqrt[6]{100}$
+  	\item $\sqrt[1000]{3}$
+	\item $\sqrt[10^6]{3}$
+  \end{enumerate}
+}
+
+\uebh{invkehrwert}{%
+Berechne die Inversfunktion von $f(x)=\frac{1}{x}$.
+}
+
+\uebh{sqrtofsqrt}{
+Führe mit dem TR für eine beliebige, positive Zahl folgendes Verfahren mehrmals durch:
+\begin{enumerate}
+\item $x$ eintippen
+\item $\sqrt{x}$ berechnen
+\item das Resultat als neues $x$ nehmen
+\end{enumerate}
+Gegen welchen Wert strebt $x$, wenn man diese Schleife oft ausführt?
+}
+
+\subsubsection{Potenzen mit irrationalen Exponenten}
+Es ist möglich, Potenzen mit irrationalen Exponenten zu definieren.
+Man tut dies mit einer Streckenschachtelung im Exponenten. Ohne
+Beweis akzeptieren wir folgenden
+\begin{csatz}[Irrationale Exponenten]{}
+  Alle Potenzgesetze gelten auch für Potenzen mit irrationalen
+  Exponenten.
+\end{csatz}
+
+Damit ist das Kapitel Potenzgesetze abgeschlossen; für das gymnasiale Momentum.
+
+\uebh{withoutTR}{
+Bestimme ohne TR --- wenn möglich exakt, allenfalls näherungsweise --- folgende Werte.
+
+\begin{enumerate}[a)]
+	\item $\sqrt{10^6}$
+	\item $\sqrt[\pi]{10^6}$
+	\item $3^{\frac{\pi}{6.28}}$
+	\item $64^{\frac{1}{\pi}}$
+	\item $\pi^\pi$
+	\item $\pi^{0.5}$
+\end{enumerate}
+}
+
+\subsection{Potenzfunktionen}
+\begin{cdef}[Potenzfunktion]{}
+Funktionen der Form
+$$f(x)=x^n\q(n\in\mZ)$$
+heissen \textbf{Potenzfunktionen} vom Grad $n$.
+\end{cdef}
+
+\uebh{graphstothepower}{
+Zeichne in dasselbe Koordinatensystem die Graphen der Funktionen
+
+\begin{enumerate}[a)]
+	\item $x^2, x^4, x^{-2}, x^{-4}$
+	\item $x^3, x^5, x^{-1}, x^{-3}.$
+\end{enumerate}
+}
+
+\begin{bem}
+Die Graphen der Funktionen $f(x)=x^n$, für $n$ gerade, sind achsensymmetrisch zur $y$-Achse, da für gerade Exponenten $(-x)^n=x^n$. Für $n$ ungerade, sind die Graphen punktsymmetrisch zum Ursprung des Koordinatensystems, da $(-x)^n=-x^n$.
+\end{bem}
+
+\begin{bem}
+Klar ist, dass Potenzfunktionen mit negativen Exponenten $n$ für $x=0$ nicht definiert sind. Ihre Graphen bestehen aus zwei \glqq Ästen\grqq, die für gerade Exponenten symmetrisch zur $y$-Achse, für ungerade Exponenten symmetrisch zum Ursprung liegen. Für $x$-Werte von hinreichend grossem Betrag werden die Funktionswerte dem Betrage nach beliebig klein, d.h. der Graph kommt für solche $x$-Werte der $x$-Achse beliebig nahe. Man sagt: Die $x$-Achse ist \textbf{Asymptote} des Graphen. Für hinreichend nahe bei $0$
+gelegene $x$-Werte werden die Funktionswerte dem Betrage nach beliebig gross, d.h. der Graph kommt für solche $x$-Werte der $y$-Achse beliebig nahe. Die $y$-Achse ist ebenfalls eine Asymptote des Graphen. Die undefinierte Stelle $x=0$ nennt man \textbf{Polstelle}.
+\end{bem}
+
+\subsection{Wurzelfunktionen}
+\uebh{graphsofsqrts}{
+Zeichne für $x\in\mR^+$ in dasselbe Koordinatensystem die Graphen der Funktionen
+
+\begin{enumerate}[a)]
+	\item $f(x)=x^2$ und $g(x)=x^\frac{1}{2}=\sqrt{x}$
+	\item $f(x)=x^3$ und $g(x)=x^\frac{1}{3}=\sqrt[3]{x}$
+\end{enumerate}
+}
+
+\begin{cdef}[Wurzelfunktion]{}
+Funktionen der Form
+$$f(x)=x^\frac{1}{n}=\sqrt[n]{x}\q(n\in\mZ\setminus\set{0})$$
+heissen \textbf{Wurzelfunktionen}.
+\end{cdef}
+Die Definitionsmenge der Wurzelfunktionen ist $\mR^+_0$. Sie sind für $\mR_0^+$ die Umkehrfunktionen von $f(x)=x^n$. Ihre Graphen entstehen deswegen aus den Graphen von $f$ durch Spiegelung an der 1. Winkelhalbierenden.
+
+\uebh{sqrtgraph}{
+Zeichne den Graphen der Quadratwurzelfunktion
+$$f(x)=\sqrt{x}$$
+für $0<x<10$ und die Parallele zur x-Achse durch den Punkt $P\point{0}{8}$. Schneidet die Kurve die Parallele, wenn man sie nach rechts fortgesetzt denkt? Falls ja, wo?
+}
+
+\uebh{wind}{
+Mit zunehmender Höhe nimmt die Windgeschwindigkeit zu. Für windschwache Gebiete kann man die gegenseitige Abhängigkeit durch die Funktion
+$$f(x)=0.2\sqrt{x}+1$$
+beschreiben. Dabei ist $x$ die Masszahl der in Meter gemessenen Höhe. Der Funktionsterm gibt die in $\nicefrac{m}{s}$ gemessene Windgeschwindigkeit an. Zeichne den Graphen der Funktion für $0<x<600$. In welcher Höhe erreicht die Windgeschwindigkeit $\unitfrac[7]{m}{s}$?
+}
+
+\uebh{movex3}{
+Zeichne den Graphen der Funktion
+$$f(x)=\frac{1}{8}x^3.$$
+Verschiebe den Graphen
+\begin{enumerate}[a)]
+\item um 3 Einheiten nach oben,
+\item um 2 Einheiten nach rechts,
+\item um 2 Einheiten nach links und anschliessend um
+1 Einheit nach unten.
+\end{enumerate}
+Gib jeweils die Gleichung der neuen Kurve an.
+}
+
+\uebh{1overx}{
+Zeichne die Graphen der Funktionen
+$$f(x)=x^{-1}-2\q\text{und}\q g(x)=4-x^{-1}$$
+in ein Koordinatensystem.
+\begin{enumerate}[a)]
+\item Wo schneiden die Graphen die $x$-Achse?
+\item Wo schneiden sich die beiden Graphen?
+\end{enumerate}
+}
+
+\uebh{offeranddemand}{
+Die Angebots- und Nachfragefunktion für ein wirtschaftliches Gut seien gegeben durch
+$$p_A(x)=2x^\frac{1}{2},\q p_N(x)=4+\frac{2}{x},$$
+$\unit[0]{ME}<\unit[x]{ME}<\unit[8]{ME}$, wobei die Preise in $\nicefrac{GE}{ME}$ angegeben sind. Stelle die Situation graphisch dar und berechne die Gleichgewichtsmenge, den Marktpreis und den Gesamterlös ab.
+}
+
+\clearpage
+
+\subsection{Notizen zu den \"Ubungen}
+
+\begin{lsg}{sqrt3}
+	\hypertarget{lsg:sqrt3}{Wegen $8^{\frac{1}{3}}\cdot8^{\frac{1}{3}}\cdot8^{\frac{1}{3}}=8^{\frac{1}{3}+\frac{1}{3}+\frac{1}{3}}=8^{1}=8$ muss $8^\frac{1}{3}=2=\sqrt[3]{8}$ sein.}
+\end{lsg}
+
+\begin{lsg}{potenzgesetze}
+    % Hier steht der Inhalt der Lösung oder Erklärung
+    \begin{enumerate}[a)]
+      \item $(a\cdot a^\frac{1}{2})^\frac{1}{3}=(a^\frac{3}{2})^\frac{1}{3}=a^\frac{1}{2}=\sqrt{a}$
+      \item $(a(a\cdot a^\frac{1}{2})^\frac{1}{3})^\frac{1}{4}=%
+      (a\cdot a^\frac{1}{2})^\frac{1}{4}=(a^\frac{3}{2})^\frac{1}{4}=a^\frac{3}{8}=\sqrt[8]{a^3}$
+      \item $(a^\frac{1}{m})^\frac{1}{n}=a^\frac{1}{nm}=\sqrt[mn]{a}$
+      \item $a^\frac{1}{n}\cdot a^\frac{1}{m}=a^{\frac{1}{n}+\frac{1}{m}}=a^\frac{m+n}{nm}%
+      =\sqrt[nm]{a^{m+n}}$
+    \end{enumerate}
+\end{lsg}
+
+\begin{lsg}{TR}
+  % Hier steht der Inhalt der Lösung oder Erklärung
+  \hypertarget{lsg:TR}{}
+  \begin{enumerate}[a)]
+    \item $\approx2.15$
+    \item $=\sqrt[3]{10}$
+    \item $\approx1.001$
+    \item $\approx1.000001$
+  \end{enumerate}
+\end{lsg}
+
+\begin{lsg}{invkehrwert}
+  % Hier steht der Inhalt der Lösung oder Erklärung
+  Setze $y=\frac{1}{x}$.
+  \begin{align*}
+    y &= \frac{1}{x}\tag{$\cdot x$, $\div y$}\\
+    x &= \frac{1}{y}
+  \end{align*}
+    $\implies f^{-1}(x)=\frac{1}{x}=f(x)$
+\end{lsg}
+
+%\begin{lsg}{\ref{ueb:sqrtofsqrt}}\label{lsg:sqrtofsqrt}
+  % Hier steht der Inhalt der Lösung oder Erklärung
+%  Die Folge strebt gegen $1$.
+%\end{lsg}
+
+\begin{lsg}{sqrtofsqrt}
+  % Hier steht der Inhalt der Lösung oder Erklärung
+  Die Folge strebt gegen $1$.
+\end{lsg}
+
+\begin{lsg}{withoutTR}
+  % Hier steht der Inhalt der Lösung oder Erklärung
+  \begin{enumerate}[a)]
+    \item $=10^3$
+    \item $\approx10^\frac{6}{3}=10^2$
+    \item $\approx3^\frac{1}{2}=\sqrt{3}$
+    \item $\approx64^\frac{1}{3}=4$
+    \item $\approx3^3=27$
+    \item $\approx\sqrt{3}\approx1.73$
+  \end{enumerate}
+\end{lsg}
+
+\begin{lsg}{graphstothepower}
+  % Hier steht der Inhalt der Lösung oder Erklärung
+  Verwende \geogebralink\   und vergleiche mit deinen Plots.
+\end{lsg}
+
+\begin{lsg}{graphsofsqrts}
+  % Hier steht der Inhalt der Lösung oder Erklärung
+  Verwende \geogebralink\   und vergleiche mit deinen Plots.
+\end{lsg}
+
+\begin{lsg}{sqrtgraph}
+  % Hier steht der Inhalt der Lösung oder Erklärung
+  Für die Plots vergleiche man mit \geogebralink . Um den Schnittpunkt zu berechnen setzen wir
+  \begin{align*}
+    f(x) &\stackrel{!}{=} 8\\
+    \sqrt{x} &= 8\tag{$(\phantom{x})^2$}\\
+    x &= 64
+  \end{align*}
+  Also liegt der Schnittpunkt bei $S(64|8)$.
+\end{lsg}
+
+\begin{lsg}{wind}
+  % Hier steht der Inhalt der Lösung oder Erklärung
+  \begin{align*}
+    0.2\sqrt{x}+1 &\stackrel{!}{=} 7\tag{$-1$}\\
+    0.2\sqrt{x} &= 6\tag{$\cdot5$}\\
+    \sqrt{x} &= 30\tag{$(\phantom{x})^2$}\\
+    x &= 900
+  \end{align*}
+  Also in einer Höhe von $\unit[900]{m}$.
+\end{lsg}
+
+\begin{lsg}{movex3}
+  % Hier steht der Inhalt der Lösung oder Erklärung
+  \begin{enumerate}[a)]
+    \item $f(x)=\frac{1}{8}x^3+3$
+    \item $f(x)=\frac{1}{8}(x-2)^3$
+    \item $f(x)=\frac{1}{8}(x+2)^3-1$
+  \end{enumerate}
+\end{lsg}
+
+\begin{lsg}{1overx}
+  % Hier steht der Inhalt der Lösung oder Erklärung
+  \begin{enumerate}[a)]
+    \item Aus $f(x)\stackrel{!}{=}0$ folgt unmittelbar $x=\frac{1}{2}$. Für $g$ ergibt sich analog $x=\frac{1}{4}$.
+    \item Gleichsetzen:
+    \begin{align*}
+      f(x)&\stackrel{!}{=} g(x)\\
+      \frac{1}{x}-2 &= 4-\frac{1}{x}\tag{$+2,+\frac{1}{x}$}\\
+      \frac{2}{x} &= 6\tag{$\cdot\frac{x}{6}$}\\
+      x &= \frac{1}{3}\\
+      &\implies y=1
+    \end{align*}
+    Also schneiden sich $f$ und $g$ in $S(\frac{1}{3}|1)$.
+  \end{enumerate}
+\end{lsg}
+
+\begin{lsg}{offeranddemand}
+  % Hier steht der Inhalt der Lösung oder Erklärung
+  Die Gleichgewichtsmenge findet man via $p_A(x)\stackrel{!}{=} p_N(x)$.
+    \begin{align*}
+      2x^\frac{1}{2} &= 4+\frac{2}{x}\tag{$\cdot x$}\\
+      2\sqrt{x^3} &= 4x + 2\tag{$(\phantom{x})^2$}\\
+      4x^3 &= 16x^2 +16x + 4
+    \end{align*}
+  Dies ist eine Gleichung dritten Grades, die wir mit unserem Wissen nicht lösen können. Man kann sie aber mit Hilfe der Lösungsformel für kubische Gleichungen von Cardano lösen.
+\end{lsg}
+
+\clearpage
+
+\section{Trigonometrische Funktionen}
+
+\subsection{Die Sinusfunktion}
+
+Wir wissen, dass in rechtwinkliges Dreieck durch zwei Seiten oder eine Seite und einen spitzen Winkel bestimmt ist. Gleichschenklige Dreiecke und Rechtecke lassen sich auf rechtwinklige Dreiecke zurückführen.
+
+\begin{uebenv}{verhaeltnismessen}
+  Zeichne zwei rechtwinklige Dreiecke, bei denen ein spitzer
+  Winkel $35^\circ$ beträgt. Bestimme bei beiden Dreiecken das
+  Verhältnis
+  $$\frac{\text{Gegenkathete des $35^\circ$
+  Winkels}}{\text{Hypotenuse}} = \frac{g}{h}$$
+  Als \definition{Gegenkathete} bezeichnet man diejenige Kathete, welche dem gegebenen Winkel gegenüber liegt.
+\end{uebenv}
+
+Weil die beiden Dreiecke ähnlich sind, sind die berechneten
+Verhältnisse theoretisch gleich gross; und zwar für sämtliche rechtwinkligen
+Dreiecke mit dem Winkel $35^\circ$. Deshalb hat man festgelegt:
+\begin{cdef}[Sinus]
+  In
+  \marginnote{
+\qrcode{
+https://www.youtube.com/watch?v=SuihLS5YEOI}
+}
+  einem rechtwinkligen Dreieck heisst das Verhältnis von
+  Gegenkathete zu Hypotenuse \definition{Sinus} des der Kathete
+  gegenüberligenden Winkels, und man schreibt
+  $$\sin(\alpha) = \frac{\text{Gegenkathete}}{\text{Hypotenuse}} =
+  \frac{g}{h}$$
+\end{cdef}
+
+\begin{figure}
+\begin{center}
+\definecolor{qqttzz}{rgb}{0,0.2,0.6}
+\definecolor{qqwuqq}{rgb}{0,0.39,0}
+\definecolor{qqqqff}{rgb}{0,0,1}
+\scalebox{1}{
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.6cm,y=0.6cm]
+\clip(0.2,-2.56) rectangle (11.16,3.84);
+\draw [shift={(7.06,2.64)},color=qqwuqq] (0,0) -- (-146.01:0.6) arc (-146.01:-56.01:0.6) -- cycle;
+\draw [shift={(0.98,-1.46)},line width=1.2pt,color=qqwuqq,fill=qqwuqq,fill opacity=0.1] (0,0) -- (-1.05:1.6) arc (-1.05:33.99:1.6) -- cycle;
+\fill[color=qqwuqq] (6.99,2.29) circle (0.02);
+\draw [line width=1.6pt] (0.98,-1.46)-- (7.06,2.64);
+\draw [line width=1.6pt] (0.98,-1.46)-- (9.93,-1.62);
+\draw [line width=1.6pt] (9.93,-1.62)-- (7.06,2.64);
+\draw (5.3,-1.6) node[anchor=north west] {$h$};
+\draw (3.84,1.4) node[anchor=north west] {$a$};
+\draw (8.7,1.2) node[anchor=north west] {$g$};
+\draw (1.7,-0.8) node[anchor=north west] {$\alpha$};
+\fill [color=qqqqff] (0.98,-1.46) circle (1.5pt);
+\draw[color=qqqqff] (0.4,-1.4) node {$A$};
+\fill [color=qqqqff] (7.06,2.64) circle (1.5pt);
+\draw[color=qqqqff] (7.2,3.2) node {$B$};
+\fill [color=qqttzz] (9.93,-1.62) circle (1.5pt);
+\draw[color=qqttzz] (10.5,-1.5) node {$C$};
+\end{tikzpicture}
+}
+\end{center}
+\caption{Definition der Winkelfunktionen}
+\end{figure}
+
+Für die Bezeichnungen im rechtwinkligen Dreieck wählt man \"ublicherweise $h$ für die Hypotenuse, $a$ für die Ankathete und $g$ für die Gegenkathete.
+
+\begin{uebenv}{eintippen}
+  Berechne mit dem TR $\sin(30^\circ)$ und $\sin(35^\circ)$.
+\end{uebenv}
+
+\begin{uebenv}{singraph}
+  Zeichne
+\marginnote{
+\qrcode{
+https://www.youtube.com/watch?v=wYFdYuesvp4}
+}
+  den Graphen der Sinusfunktion $f(x)=\sin(x)$ im Intervall $[0^\circ,90^\circ]$. Berechne dazu mit dem Taschenrechner die entsprechenden Funktionswerte. (Wähle Winkel, deren Sinus du exakt bestimmen kannst; also $0,30,45,60,90$ Grad)
+\end{uebenv}
+
+\begin{uebenv}{hypundarg}
+  In einem rechtwinkligen Dreieck beträgt die Hypotenuse
+  $\unit[12]{cm}$ und ein spitzer Winkel $25^\circ$. Wie lang sind die
+  Katheten?
+\end{uebenv}
+
+\begin{uebenv}{sonnenkollektor}
+  Ein rechteckiger Sonnenkollektor der Länge $\unit[2]{m}$ soll
+  mit einem Neigungswinkel von $75^\circ$ gegenüber der Horizontalen so
+  an eine Hauswand gestellt werden, dass die eine Breite die Wand
+  und die andere den Boden berührt. In welcher Höhe über dem Boden
+  berührt die eine Breite die Hauswand?
+\end{uebenv}
+
+\begin{uebenv}{wetterballon}
+  Ein kugelförmiger Wetterballon mit Durchmesser $d = \unit[16]{m}$ wird unter einem Sehwinkel $\alpha= 22'$ beobachtet. Wie weit ist der Ballon vom Beobachter entfernt?
+\end{uebenv}
+
+\subsection{Die Cosinusfunktion}
+\begin{cdef}[Cosinus]{}
+  In allen rechtwinkligen Dreiecken mit einem spitzen Winkel
+  $\alpha$ ist das Verhältnis von Ankathete von $\alpha$ zu
+  Hypotenuse aus Gründen der Ähnlichkeit gleich gross. Man nennt es
+  \emph{Cosinus} des der Kathete anliegenden Winkels.
+  $$\cos(\alpha) = \frac{\text{Ankathete}}{\text{Hypotenuse}} =
+  \frac{a}{h}$$
+\end{cdef}
+
+\begin{uebenv}{defcos}
+  Zeichne ein Bild zur Cosinus-Definition.
+\end{uebenv}
+
+\begin{uebenv}{cosgraph}
+  Zeichne den Graphen der Funktion
+  $$f(x)=\cos(x)$$
+  auf dem Intervall $[0^\circ,90^\circ]$.
+\end{uebenv}
+
+\begin{uebenv}{leiter}
+  Eine Leiter mit der Länge $l = \unit[6.4]{m}$ lehnt an einer Wand.
+  Ihr Fuss ist $a = \unit[2.8]{m}$ von der Wand entfernt. Wie gross
+  ist ihr Neigungswinkel?
+\end{uebenv}
+
+\begin{bem}
+  Den Winkel in obiger Aufgabe bestimmt man mit der Inversfunktion
+  des Cosinus, $\cos^{-1}$ oder auch arccos (sprich \glqq Arcus-Cosinus\grqq) genannt, indem man sie auf beide Seiten der
+  Gleichung anwendet:
+  \begin{align}
+    \cos(\alpha) &= \frac{2.8}{6.4} \tag{$\cos^{-1}$}\\
+    \cos^{-1}(\cos(\alpha)) &=
+    \cos^{-1}\left(\frac{2.8}{6.4}\right) \notag\\
+    \alpha &= \cos^{-1}\left(\frac{2.8}{6.4}\right) \approx 64.1^\circ\notag
+  \end{align}
+\end{bem}
+
+\begin{bem}
+Wie üblich bei Funktionen steht das \glqq$^{-1}$\grqq\ nicht für den Kehrwert, sondern für die Inversfunktion von $f$.
+\end{bem}
+
+\begin{uebenv}{bahnstrecke}
+  Eine Bahnstrecke hat auf der Karte $1\div25\,000$ eine
+  Länge von $s = \unit[18]{mm}$ und fällt unter $\alpha = 8^\circ$. Wie
+  lang ist sie?
+\end{uebenv}
+
+\begin{uebenv}{erdrotation}
+  Mit
+\marginnote{
+\qrcode{
+https://youtu.be/sBMuUgbNDXM}
+}
+  welcher Geschwindigkeit bewegen wir uns aufgrund der
+  Erdrotation? Überlege dir zuerst anhand einer Skizze, welche Daten du zur Beantwortung der Frage benötigst, und beschaffe diese, um die Geschwindigkeit konkret zu berechnen.
+\end{uebenv}
+
+\subsection{Die Tangensfunktion}
+\begin{cdef}[Tangens]
+  Im rechtwinkligen Dreieck bezeichnet man das Verhältnis der
+  Gegenkathete eines spitzen Winkels $\alpha$ zur Ankathete als den
+  \emph{Tangens} des Winkels $\alpha$.
+  $$\tan\alpha = \frac{\text{Gegenkathete}}{\text{Ankathete}}=\frac{g}{a}$$
+\end{cdef}
+
+\begin{uebenv}{deftan}
+  Zeichne ein Bild zur Tangens-Definition.
+\end{uebenv}
+
+\begin{uebenv}{graphtangens}
+  Zeichne den Graphen der Tangensfunktion
+  $$f(x)=\tan(x)$$
+  über dem Intervall $[0^\circ,90^\circ]$.
+\end{uebenv}
+
+\begin{uebenv}{tanne}
+  Wie hoch ist eine Tanne, wenn ihr Schatten $s = \unit[27.5]{m}$
+  lang ist und die Sonnenstrahlen unter dem Winkel $\alpha = 38^\circ50'$
+  einfallen?
+\end{uebenv}
+
+\begin{uebenv}{bernermuenster}
+  Unter welchem Erhebungswinkel erscheint die Spitze des Berner
+  Münsters ($h = \unit[161]{m}$) von einer Stelle aus, die in
+  waagrechter Richtung $e = \unit[150]{m}$ vom Fuss des Turmes
+  entfernt ist? (Augenhöhe $a = \unit[1.5]{m}$)
+\end{uebenv}
+
+\begin{bem}
+Um sich die Definitionen der drei Winkelfunktionen $\sin$, $\cos$ und $\tan$ zu verinnerlichen, gibt es zahlreiche Eselsbrücken; lerne eine!
+\end{bem}
+
+\subsection{Das Bogenmass}
+Um die Graphen der Sinus- und Cosinus-Funktion zu zeichnen verwendet
+man üb\-li\-cher\-wei\-se das sogenannte Bogenmass.
+\begin{cdef}[Bogenmass]{}
+  Unter
+    \marginnote{
+\qrcode{
+https://www.youtube.com/watch?v=JPsDuUSnjq4}
+}
+  dem \emph{Bogenmass} $\arc
+  \alpha$ des Winkels $\alpha$
+  versteht man den Quotienten
+  $$\arc\alpha = \frac{b}{r}.$$
+  Die \glqq Einheit\grqq\ des Bogenmasses heisst Radian, $\unit{rad}$.
+
+\end{cdef}
+
+\begin{bem}
+  Aus Ähnlichkeitsgründen ist das Bogenmass unabhängig von der Wahl
+  des Kreisradius.
+\end{bem}
+Das Bogenmass gibt uns also die Möglichkeit, Winkel als
+dimensionslose Zahlenwerte darzustellen. Da das Bogenmass unabhängig
+von der Wahl des Kreisradius ist, denke ich mir jeweils einfach für
+einen gegebenen Winkel das Bogenmass als Länge des entsprechenden
+Kreisbogens im Einheitskreis. Weil dort $r = 1$ ist, vereinfacht
+sich das Bogenmass nämlich zu
+$$\arc\alpha =\frac{b}{1}=b.$$
+Für das Bogenmass in
+einem beliebigen Kreis gilt
+\begin{csatz}[Bogenlänge]{}
+  $$b = r\cdot\arc\alpha$$
+\end{csatz}
+\begin{proof}[Beweis]
+  Folgt direkt aus der Definition.
+\end{proof}
+
+\begin{uebenv}{radtabelle}
+  Erstelle eine Tabelle für das Bogenmass zu den folgenden
+  Winkel im Gradmass: $360^\circ$, $180^\circ$, $90^\circ$, $45^\circ$, $1^\circ$, $\alpha$.
+\end{uebenv}
+
+Der folgende Satz gibt das Rezept an, wie man zu einem Winkel
+$\alpha$ im Gradmass das zugehörige Bogenmass $\arc\alpha$ bestimmt.
+
+\pagebreak
+
+\begin{csatz}[Grad in Radian]{}
+  $$\arc\alpha = \frac{\pi}{180^\circ}\cdot\alpha$$
+\end{csatz}
+
+\begin{proof}[Beweis]
+  Es gilt $$\arc\alpha = \frac{b}{r}$$ wobei die Länge des Bogens
+  $b$ abhängig vom Winkel $\alpha$ ist und den Bruchteil $\frac{\alpha}{360^\circ}$
+  des ganzen Kreisumfangs $2\pi r$ ausmacht. Also
+  $$\arc\alpha = \frac{2\pi r\cdot\frac{\alpha}{360^\circ}}{r} =
+  \frac{2\pi\cdot\alpha}{360^\circ}= \frac{\pi\cdot\alpha}{180^\circ}$$
+\end{proof}
+
+\begin{bem}
+  Der Taschenrechner kann Winkel unter anderem im Bogen- oder
+  Gradmass darstellen. Setzt man im \fbox{Mode} die Variable Angle auf \glqq Rad\grqq, so
+  interpretiert er Winkel im Bogenmass (Radian), wählt man \glqq Deg\grqq, so
+  erwartet er Winkel im Gradmass (Degree).
+\end{bem}
+
+\begin{bem}
+Das Bogenmass ist ein Verh\"altnis zweier Strecken und daher einheitenlos. Als Bogenl\"ange im Einheitskreis aufgefasst h\"atte es die Einheit einer L\"ange.
+\end{bem}
+
+\begin{uebenv}{sincostan}
+  Zeichne die Graphen der Sinus- und Cosinus-Funktion über dem Intervall $[-3\pi,3\pi]$. Wähle auf der $x$-Achse die Winkel im Bogenmass.
+\end{uebenv}
+
+Aus der vorigen Aufgabe lässt sich folgender Satz ablesen:
+\begin{csatz}[Sinus-Cosinus-Beziehung]{}
+  Die Graphen der Sinus- und Cosinus-Funktion sind zueinander
+  achsialsymmetrisch bezüglich der Parallelen zur $y$-Achse durch den
+  Punkt $\point{\frac{\pi}{4}}{0}$.
+\end{csatz}
+Es gibt offenbar zu jedem Sinus-Wert einen gleich grossen
+Cosinus-Wert und umgekehrt. Diese Tatsache lässt sich durch folgende
+Formel ausdrücken:
+  \begin{align}
+    \sin(\alpha) &= \cos(90^\circ - \alpha) \notag\\
+    \cos(\alpha) &= \sin(90^\circ + \alpha) \notag
+  \end{align}
+  
+\begin{proof}[Beweis der beiden vorherigen Sätze]
+  Nach Definition sieht man diese Beziehungen.
+\end{proof}
+
+Wir wollen die beiden eben kennengelernten Winkelfunktionen betrachten und stellen sie als Funktion in Abhängigkeit des Winkels dar. Dabei kann man in natürlicher Weise die Funktionen für beliebige Winkel definieren. Die
+    \marginnote{
+\qrcode{
+https://www.youtube.com/watch?v=EbaADp9boU0}
+}
+Graphen von 
+$$f(\alpha)=\sin(\alpha)$$
+und 
+$$g(\alpha)=\cos(\alpha)$$
+sehen wie folgt aus:
+
+\begin{figure}
+\centering
+\definecolor{cqcqcq}{rgb}{0.75,0.75,0.75}
+\scalebox{1}{
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.5cm,y=1.25cm]
+\draw [color=cqcqcq,dash pattern=on 2pt off 2pt, xstep=0.785cm,ystep=0.625cm] (-7.5,-2) grid (7.5,2);
+\draw[->,color=black] (-7.5,0) -- (7.5,0);
+\foreach \x in {-2,-1.5,-1,-0.5,0.5,1,1.5,2}
+\draw[shift={(3.14*\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize $\x\pi$};
+\draw[color=black] (7.16,0.03) node [anchor=south west] { x};
+\draw[->,color=black] (0,-2) -- (0,2);
+\foreach \y in {-2,-1.5,-1,-0.5,0.5,1,1.5}
+\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize $\y$};
+\draw[color=black] (0.1,1.85) node [anchor=west] { y};
+\draw[color=black] (0pt,-10pt) node[right] {\footnotesize $0$};
+\clip(-7.5,-2) rectangle (7.5,2);
+\draw[line width=1.0pt, smooth,samples=100,domain=-7.5:7.5] plot(\x,{sin(180/3.14*\x)});
+\end{tikzpicture}
+}
+\caption{Graph von $\sin(x)$}
+  \end{figure}
+\begin{figure}
+\centering
+\definecolor{cqcqcq}{rgb}{0.75,0.75,0.75}
+\scalebox{1}{
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.5cm,y=1.25cm]
+\draw [color=cqcqcq,dash pattern=on 2pt off 2pt, xstep=0.785cm,ystep=0.625cm] (-7.5,-2) grid (7.5,2);
+\draw[->,color=black] (-7.5,0) -- (7.5,0);
+\foreach \x in {-2,-1.5,-1,-0.5,0.5,1,1.5,2}
+\draw[shift={(3.14*\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize $\x\pi$};
+\draw[color=black] (7.16,0.03) node [anchor=south west] { x};
+\draw[->,color=black] (0,-2) -- (0,2);
+\foreach \y in {-2,-1.5,-1,-0.5,0.5,1,1.5}
+\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize $\y$};
+\draw[color=black] (0.1,1.85) node [anchor=west] { y};
+\draw[color=black] (0pt,-10pt) node[right] {\footnotesize $0$};
+\clip(-7.5,-2) rectangle (7.5,2);
+\draw[line width=1.0pt, smooth,samples=100,domain=-7.5:7.5] plot(\x,{cos(180/3.14*\x)});
+\end{tikzpicture}
+}
+  \caption{Graph von $\cos(x)$}
+  \end{figure}
+  
+\definecolor{ttwwqq}{HTML}{84B7E1}
+\definecolor{ccqqtt}{HTML}{57C286}
+\definecolor{cqcqcq}{HTML}{E26A6A}
+
+\begin{figure}
+\centering
+
+\scalebox{0.618}{
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.8cm,y=1.8cm]
+
+\draw [color=lightgray,dash pattern=on 2pt off 2pt, xstep=2.826cm,ystep=1.8cm] (-6.5,-3) grid (6.5,3);
+\draw[->,color=black] (-6.5,0) -- (6.5,0);
+\foreach \x in {-2,-1.5,-1,-0.5,0.5,1,1.5,2}
+\draw[shift={(3.14*\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize $\x\pi$};
+\draw[color=black] (6.5,0.05) node [anchor=south west] {$x$};
+\draw[->,color=black] (0,-3) -- (0,3);
+\foreach \y in {-3,-2,-1,1,2}
+\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize $\y$};
+\draw[color=black] (0.07,2.76) node [anchor=west] {$y$};
+\draw[color=black] (0pt,-10pt) node[right] {\footnotesize $0$};
+\clip(-6.5,-3) rectangle (6.5,3);
+\draw[line width=2pt, smooth,samples=100,domain=-6.5:6.5, color=cqcqcq] plot(\x,{sin(180/3.14*\x)});
+\draw[line width=2pt,color=ccqqtt, smooth,samples=100,domain=-6.5:6.5] plot(\x,{cos(180/3.14*\x)});
+\draw[line width=1.5pt,color=ttwwqq, smooth,samples=100,domain=-1.5:1.5]  plot(\x,{sin(180/3.14*\x)/cos(180/3.14*\x)});
+\draw[line width=1.5pt,color=ttwwqq, smooth,samples=100,domain=1.6:4.5]  plot(\x,{sin(180/3.14*\x)/cos(180/3.14*\x)});
+\draw[line width=1.5pt,color=ttwwqq, smooth,samples=100,domain=4.9:6.3]  plot(\x,{sin(180/3.14*\x)/cos(180/3.14*\x)});
+\draw[line width=1.5pt,color=ttwwqq, smooth,samples=100,domain=-4.5:-1.6]  plot(\x,{sin(180/3.14*\x)/cos(180/3.14*\x)});
+\draw[line width=1.5pt,color=ttwwqq, smooth,samples=100,domain=-6.3:-4.9]  plot(\x,{sin(180/3.14*\x)/cos(180/3.14*\x)});
+\draw[color=cqcqcq] (-5.8,2.7) node {$\sin(x)$};
+\draw[color=ccqqtt] (-5.8,2.2) node {$\cos(x)$};
+\draw[color=ttwwqq] (-5.8,1.7) node {$\tan(x)$};
+\end{tikzpicture}
+}
+\caption{Graphen der Winkelfunktionen}
+\end{figure}
+
+\subsection{Zusammenhänge zwischen Sinus, Cosinus und Tangens}
+
+Wir betrachten ein rechtwinkliges Dreieck mit Hypotenuse $h$.
+\begin{figure}[h!]
+\begin{center}
+\scalebox{1}{
+\definecolor{qqttzz}{rgb}{0,0.2,0.6}
+\definecolor{qqwuqq}{rgb}{0,0.39,0}
+\definecolor{qqqqff}{rgb}{0,0,1}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.7cm,y=0.7cm]
+\clip(0.2,-2.56) rectangle (12.16,3.84);
+\draw [shift={(7.06,2.64)},color=qqwuqq] (0,0) -- (-146.01:0.6) arc (-146.01:-56.01:0.6) -- cycle;
+\draw [shift={(0.98,-1.46)},line width=1.2pt,color=qqwuqq,fill=qqwuqq,fill opacity=0.1] (0,0) -- (-1.05:1.6) arc (-1.05:33.99:1.6) -- cycle;
+\fill[color=qqwuqq] (6.99,2.29) circle (0.02);
+\draw [line width=1.6pt] (0.98,-1.46)-- (7.06,2.64);
+\draw [line width=1.6pt] (0.98,-1.46)-- (9.93,-1.62);
+\draw [line width=1.6pt] (9.93,-1.62)-- (7.06,2.64);
+\draw (5.3,-1.6) node[anchor=north west] {$h$};
+\draw (0.5,1.4) node[anchor=north west] {$h\cdot\cos(\alpha)=a$};
+\draw (8.2,1.8) node[anchor=north west] {$g=h\cdot\sin(\alpha)$};
+\draw (1.8,-0.9) node[anchor=north west] {$\alpha$};
+\fill [color=qqqqff] (0.98,-1.46) circle (1.5pt);
+\draw[color=qqqqff] (0.6,-1.4) node {$A$};
+\fill [color=qqqqff] (7.06,2.64) circle (1.5pt);
+\draw[color=qqqqff] (7.2,3) node {$B$};
+\fill [color=qqqqff] (9.93,-1.62) circle (1.5pt);
+\draw[color=qqqqff] (10.3,-1.6) node {$C$};
+\end{tikzpicture}
+}
+\end{center}
+\end{figure}
+Aus der Figur erkennt man:
+\pagebreak
+\begin{csatz}[Beziehungen zwischen den Winkelfunktionen]
+  \begin{align}
+    &\sin^2(\alpha) + \cos^2(\alpha) = 1 \label{eq:sincos}\\[1ex]
+    &\tan(\alpha) = \frac{\sin(\alpha)}{\cos(\alpha)}
+  \end{align}
+\end{csatz}
+
+\begin{proof}[Beweis]
+\begin{uebenv}{sincostanbeziehungen}
+\end{uebenv}
+\end{proof}
+
+\begin{bem}
+  Anstelle von $(\sin(\alpha))^2$ schreibt man kürzer $\sin^2(\alpha)$ (sprich:\glqq
+  Sinusquadrat alpha\grqq); dito für die anderen Winkelfunktionen.
+\end{bem}
+\begin{bem}
+Hat man die Sinus-Werte beliebiger Winkel, so lassen sich daraus
+auch die Cosinus- und Tangens-Werte berechnen. Man benutzt dazu den
+obigen Satz.
+\end{bem}
+
+\begin{uebenv}{costanohnetr}
+  Es sei $\sin(\alpha) = 0.6$. Berechne mit Hilfe der Formeln aus Satz \ref{satz:sincos} $\cos(\alpha)$ und $\tan(\alpha)$. (ohne TR)
+\end{uebenv}
+
+\begin{uebenv}{exaktewerte}
+  Berechne die Werte der trigonometrischen Funktionen für die
+  Winkel $30^\circ$, $45^\circ$ und $60^\circ$ mit Hilfe der Definitionen. Gib die Werte als Brüche an. (ohne TR)
+\end{uebenv}
+
+\begin{bem}
+Auf diese Weise lassen sich die trigonometrischen Funktionswerte nur
+für spe\-ziel\-le Winkel berechnen. Zur Berechnung der Sinus-Werte
+beliebiger Winkel, kann man folgende Formel verwenden, die wir
+später herleiten werden (im SF oder EF AM):
+$$\sin(x) = x-\frac{x^3}{3!}+\frac{x^5}{5!}-\frac{x^7}{7!}+\dots$$
+\end{bem}
+
+\begin{bem}
+\
+  \begin{itemize}
+    \item $n!$ bedeutet $1\cdot2\cdot3\cdot\dots\cdot n$, sprich
+    \glqq $n$ Fakultät\grqq.
+    \item Die Formel gilt nur, wenn $x$ im Bogenmass angegeben wird.
+  \end{itemize}
+\end{bem}
+
+\begin{uebenv}{sintaylor}
+  Berechne mit der oben angegebenen Formel $\sin(45^\circ)$
+  nä\-he\-rungs\-wei\-se mit den ersten vier Summanden, und vergleiche
+  das Resultat mit dem Wert aus Übung \ref{ueb:exaktewerte}.
+\end{uebenv}
+
+\begin{uebenv}{tanalscos}
+  Schreibe $1+\tan^2(\alpha)$ als Term mit Cosinus-Werten.
+\end{uebenv}
+
+\begin{uebenv}{trigoumformungen}
+  Vereinfache so, dass nur eine Winkelfunktion im Term steht.
+  \begin{enumerate}[a)]
+    \item $\tan(\alpha)\cdot\cos(\alpha)$
+    \item $\sin^3(\alpha)+\sin(\alpha)\cdot\cos^2(\alpha)$
+    \item $\dfrac{\sin(\alpha)}{\tan(\alpha)}$
+    \item $\sqrt{1+\cos(\alpha)}\cdot\sqrt{1-\cos(\alpha)}$
+    \item $\sin^4(\alpha)-\cos^4(\alpha)$
+    \item $\dfrac{1}{\cos^2(\alpha)}-1$
+  \end{enumerate}
+\end{uebenv}
+
+\subsection{Überblick über die Berechnung des rechtwinkligen
+Dreiecks}
+\begin{uebenv}{zahnradbahn}
+  Eine Zahnradbahn steigt auf einer Strecke $s=\unit[1350]{m}$ mit
+  $\unit[13.5]{\%}$. Wie gross ist der Neigungswinkel und der
+  Höhenunterschied?
+\end{uebenv}
+
+\begin{uebenv}{flussbreite}
+  Um die Breite eines Flusses zu bestimmen, hat man am Ufer die
+  Standlinie $\overline{AB}=\unit[85]{m}$ abgesteckt. Der A
+  gegenüberliegende Punkt C des anderen Ufers wird in B unter einem
+  Winkel von $\alpha = 53^\circ16'$ gepeilt.
+\end{uebenv}
+
+\begin{uebenv}{stdtrigo}
+  In einem gleichschenkligen Dreieck ist $a=\unit[65.4]{m}$ und
+  $c=\unit[54.7]{m}$. Berechne die fehlenden Winkel
+  sowie den Flächeninhalt.
+\end{uebenv}
+
+\begin{uebenv}{immermehreck}
+  Berechne den Umfang eines regelmässigen $n$-Ecks, dessen
+  Umkreisradius $r=0.5$ beträgt für
+  
+  \begin{enumerate}[a)]
+    \item ein $4$-Eck
+    \item ein $10$-Eck
+    \item ein $100$-Eck
+    \item ein $1000$-Eck
+    \end{enumerate}
+    
+Welcher Zahl nähert sich der Umfang für ein \glqq sehr sehr viel-Eck\grqq.
+\end{uebenv}
+
+\subsection{Der Sinussatz}
+
+\begin{csatz}[Sinussatz]{}
+In
+\marginnote{
+\qrcode{
+https://www.youtube.com/watch?v=-ohxilGK4xM}
+}
+einem beliebigen Dreieck gilt
+$$\frac{a}{\sin\alpha}=\frac{b}{\sin\beta}=\frac{c}{\sin\alpha}$$
+In Worten: Im Dreieck ist das Verhältnis jeder Seite zum Sinus des gegen\-über\-liegen\-den Winkels eine Konstante.
+\end{csatz}
+Man erhält diese schöne Beziehung, wenn man den Flächeninhalt eines Dreiecks bestimmen will, ohne dabei die Höhe in der Flächenformel auftauchen zu lassen.
+\begin{proof}
+Für ein beliebiges Dreieck gilt:
+$$F=\frac{1}{2}c\cdot h_c$$
+
+\begin{figure}
+\centering
+\definecolor{qqwuqq}{rgb}{0,0.39,0}
+\definecolor{zzttqq}{rgb}{0.6,0.2,0}
+\definecolor{qqqqff}{rgb}{0,0,1}
+\definecolor{cqcqcq}{rgb}{0.75,0.75,0.75}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.6cm,y=0.6cm]
+\clip(-1.92,-3.16) rectangle (10.3,3.82);
+\fill[color=zzttqq,fill=zzttqq,fill opacity=0.1] (2,-2) -- (9,-2) -- (-1,3) -- cycle;
+\draw [shift={(2,-2)},color=qqwuqq,fill=qqwuqq,fill opacity=0.1] (0,0) -- (0:0.9) arc (0:120.96:0.9) -- cycle;
+\draw [shift={(-1,-2)},color=qqwuqq,fill=qqwuqq,fill opacity=0.1] (0,0) -- (0:0.6) arc (0:90:0.6) -- cycle;
+\draw [color=zzttqq] (2,-2)-- (9,-2);
+\draw [color=zzttqq] (9,-2)-- (-1,3);
+\draw [color=zzttqq] (-1,3)-- (2,-2);
+\draw (-1,3)-- (-1,-2);
+\draw [dash pattern=on 5pt off 5pt] (-1,-2)-- (2,-2);
+\fill[color=qqwuqq,fill=qqwuqq,fill opacity=0.1] (-0.75,-1.75) circle (0.02);
+\fill [color=qqqqff] (2,-2) circle (1.5pt);
+\draw[color=qqqqff] (1.8,-2.5) node {$A$};
+\fill [color=qqqqff] (9,-2) circle (1.5pt);
+\draw[color=qqqqff] (9.36,-2.04) node {$B$};
+\fill [color=qqqqff] (-1,3) circle (1.5pt);
+\draw[color=qqqqff] (-1.22,3.36) node {$C$};
+\fill [color=qqwuqq] (-0.75,-1.8) circle (1pt);
+\draw[color=zzttqq] (5.56,-2.3) node {$c$};
+\draw[color=zzttqq] (4.2,0.94) node {$a$};
+\draw[color=zzttqq] (0.28,0.2) node {$b$};
+\draw[color=qqwuqq] (2.3,-1.6) node {$\alpha$};
+\draw[color=black] (-1.4,0.46) node {$h_c$};
+\end{tikzpicture}
+\caption{Illustration zum Sinussatz}
+\end{figure}
+
+Nun wollen wir $h_c$ eliminieren. Wir finden
+$$\sin(180^\circ-\alpha)=\frac{h_c}{b}$$
+also $h_c=b\cdot\sin(180^\circ-\alpha)$ oder $h_c=b\cdot\sin(\alpha)$. Letzteres ist klar, wenn man sich den Graphen des Sinus vor Augen führt. Wir können also nun
+$$F=\frac{1}{2}c\cdot h_c=\frac{1}{2}c\cdot b\sin(\alpha)=\frac{1}{2}bc\sin(\alpha)$$
+schreiben. Durch zyklische Vertauschung erhält man
+\begin{align}
+F&=\frac{1}{2}bc\sin(\alpha)\label{ersteF}\\
+F&=\frac{1}{2}ab\sin(\gg)\label{zweiteF}\\
+F&=\frac{1}{2}ac\sin(\beta)\label{dritteF}
+\end{align}
+Setzt man nun z.B. (\ref{ersteF})=(\ref{zweiteF}), hat man
+$$c\sin(\alpha)=a\sin(\gg),$$
+woraus unmittelbar
+$$\frac{a}{\sin(\alpha)}=\frac{c}{\sin(\gg)}$$
+folgt. Durch Kombination von (\ref{ersteF})=(\ref{dritteF}) und (\ref{zweiteF})=(\ref{dritteF}) erhält man durch Gleichsetzen die Behauptung.
+\end{proof}
+
+Man gilt folgender
+\pagebreak
+\begin{csatz}[]
+Diese Konstante ist gleich dem Umkreisdurchmesser des Dreiecks
+$$\frac{a}{\sin\alpha}=2r$$
+\end{csatz}
+\begin{proof}
+\begin{uebenv}{sinsatzgleichumkreisdurchmesser}
+\end{uebenv}
+\end{proof}
+
+\subsection{Der Cosinussatz}
+\begin{csatz}[Cosinussatz]{}
+In
+\marginnote{
+\qrcode{
+https://www.youtube.com/watch?v=YcjnDb-c_W8}
+}
+einem beliebigen Dreieck gilt
+$$a^2=b^2+c^2-2bc\cos\alpha$$
+\end{csatz}
+\begin{proof}
+Aus einem beliebigen Dreieck
+
+\begin{figure}
+\centering
+\definecolor{qqwuqq}{rgb}{0,0.39,0}
+\definecolor{zzttqq}{rgb}{0.6,0.2,0}
+\definecolor{qqqqff}{rgb}{0,0,1}
+\definecolor{cqcqcq}{rgb}{0.75,0.75,0.75}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.44cm,y=0.44cm]
+\clip(-4.3,-3.84) rectangle (9.04,6.3);
+\fill[color=zzttqq,fill=zzttqq,fill opacity=0.1] (-3,-3) -- (8,-3) -- (1,5) -- cycle;
+\draw [shift={(1,-3)},color=qqwuqq,fill=qqwuqq,fill opacity=0.1] (0,0) -- (0:0.6) arc (0:90:0.6) -- cycle;
+\draw [shift={(-3,-3)},color=qqwuqq,fill=qqwuqq,fill opacity=0.1] (0,0) -- (0:1.4) arc (0:63.43:1.4) -- cycle;
+\draw [color=zzttqq] (-3,-3)-- (8,-3);
+\draw [color=zzttqq] (8,-3)-- (1,5);
+\draw [color=zzttqq] (1,5)-- (-3,-3);
+\draw (1,5)-- (1,-3);
+\fill[color=qqwuqq,fill=qqwuqq,fill opacity=0.1] (1.25,-2.75) circle (0.02);
+\fill [color=qqqqff] (-3,-3) circle (1.5pt);
+\draw[color=qqqqff] (-3.5,-3.1) node {$A$};
+\fill [color=qqqqff] (8,-3) circle (1.5pt);
+\draw[color=qqqqff] (8.5,-2.96) node {$B$};
+\fill [color=qqqqff] (1,5) circle (1.5pt);
+\draw[color=qqqqff] (1.16,5.6) node {$C$};
+\draw[color=zzttqq] (2.44,-3.6) node {$c$};
+\draw[color=zzttqq] (-1,-3.4) node {$q$};
+\draw[color=zzttqq] (4.8,1.36) node {$a$};
+\draw[color=zzttqq] (-1.4,1.3) node {$b$};
+\draw[color=black] (0.4,1.14) node {$h_c$};
+\draw[color=qqwuqq] (-2.2,-2.5) node {$\alpha$};
+\fill [color=qqwuqq] (1.2,-2.8) circle (1pt);
+\end{tikzpicture}
+\caption{Veranschaulichung zum Beweis des Cosinussatz}
+\end{figure}
+
+zieht man die Beziehungen
+
+\begin{align}
+\cos(\alpha)&=\frac{q}{b}\label{eq:cos}\\
+b^2&=q^2+h_c^2\label{eq:b2}\\
+a^2&=h_c^2+(c-q)^2\label{eq:a2},
+\end{align}
+
+löst (\ref{eq:b2}) und (\ref{eq:a2}) nach $h_c^2$ auf und setzt gleich:
+$$b^2-q^2=a^2-c^2+2cq-q^2,$$
+also
+$$b^2=a^2-c^2+2cq.$$
+Aus (\ref{eq:cos}) folgt $q=b\cos(\alpha)$ und oben eingesetzt
+$$b^2=a^2-c^2+2cb\cos(\alpha).$$
+Daraus folgt die Behauptung.
+\end{proof}
+
+\begin{uebenv}{zyklischevertauschung}
+Welche Beziehungen entstehen durch zyklische Vertauschung beim Cosinussatz? Warum kann man den Cosinussatz als \glqq Verallgemeinerter Pythagoreischer Lehrsatz\grqq\ bezeichnen?
+\end{uebenv}
+
+\begin{uebenv}{sinsatzverhaeltnis}
+In einem Dreieck gilt
+$$\sin(\alpha)\div\sin(\beta)\div\sin(\gamma)=\sqrt{3}\div\sqrt{4}\div\sqrt{5}$$
+Wie gross sind die Winkel?
+\end{uebenv}
+
+\begin{uebenv}{bergwerkstollen}
+Zwei waagrechte Bergwerkstollen gehen von einem Punkt A aus unter dem Winkel $75^\circ$. Sie haben die Länge $AB=\unit[325]{m}$ bzw. $AC=\unit[275]{m}$. Wie lang wird ein Verbindungsstollen von B nach C? Unter welchem Winkel gegen BA muss man ihn von B aus vorantreiben?
+\end{uebenv}
+
+\begin{uebenv}{funkpeilstationen}
+Zwei Funkpeilstationen der Swisscom liegen $\unit[12.8]{km}$ voneinander entfernt, wobei $F_1$ sich genau nördlich von $F_2$ befindet. Ein Piratensender wird von $F_1$ aus unter $313.2^\circ$ und von $F_2$ aus unter $284.4^\circ$ angepeilt. Die Winkel werden von Osten aus im positiven Sinn gemessen. In welcher Entfernung von $F_1$ und $F_2$ liegt der Sender?
+\end{uebenv}
+
+\subsection{Anwendungen}
+Bei
+\marginnote{
+\qrcode{
+https://www.youtube.com/watch?v=Sne7V2DayOI}
+}
+vielen Anwendungen kommen sich wiederholende Erscheinungen vor; für ihre mathematische Beschreibung sind die trigonometrischen Funktionen zuständig. Figur \ref{ekg} auf Seite \pageref{ekg} zeigt ein typisches EKG, das elektrische Impulse des Herzens anzeigt.
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.75\textwidth]{pictures/ekg}
+\end{center}
+\caption{Graph eines EKG}\label{ekg}
+\end{figure}
+
+Wir haben bereits die elementaren Funktionen $\sin, \cos$ bzw. $\tan$ kennengelernt. Sie sind periodisch mit der Periode $2\pi$ bzw. $\pi$.
+\pagebreak
+\begin{uebenv}{shifttrigofunctions}
+Zeichne in dasselbe Koordinatensystem die Graphen der Funktionen
+\begin{enumerate}[a)]
+\item $\sin(2x), \sin(\frac{x}{2})$,
+\item $2\cos x, 0.5\cos x$,
+\item $\sin(x + \frac{\pi}{2}), \sin(x - \frac{\pi}{4})$,
+\item $2\cos(x + \frac{\pi}{3}), 3\cos(x - \frac{\pi}{2})$.
+\end{enumerate}
+\end{uebenv}
+
+\begin{uebenv}{sincostaninvers}
+Die Sinusfunktion ist im Intervall $[-\frac{\pi}{2},\frac{\pi}{2}]$ monoton wachsend; sie hat also für dieses Intervall eine Umkehrfunktion. Ihr Name ist Arcus-Sinus und wird mit arcsin oder $\sin^{-1}$ bezeichnet.
+$$f^{-1}(x)=\arcsin(x)$$
+Überlege dir, welchen Wertebereich die Funktion hat und zeichne den Graphen von $\arcsin$ durch Spiegelung des Graphen von $\sin$ an der 1. Winkelhalbierenden.
+
+\noindent Verfahre ebenso für $\cos$ und $\tan$.
+\end{uebenv}
+
+\begin{bem}
+$\arctan$ induziert in nat\"urlicher Weise eine Bijektion von $\mathbb{R}=(-\infty,\infty)$ auf $[0,1]$.
+\end{bem}
+
+\begin{uebenv}{bijektionRtozeroone}
+Zeige obige Aussage: $\arctan$ induziert in nat\"urlicher Weise eine Bijektion von $\mathbb{R}=(-\infty,\infty)$ auf $[0,1]$.
+\end{uebenv}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.382\textwidth]{pictures/telemetrie}
+\end{center}
+\caption{Duplo Telemetrie}
+\end{figure}
+
+\clearpage
+
+\subsection{Notizen zu den \"Ubungen}
+
+\begin{lsg}{verhaeltnismessen}
+Das Resultat h\"angt nat\"urlich der Messgenauigkeit ab. Man kriegt etwa $0.57$.
+\end{lsg}
+
+\begin{lsg}{eintippen}
+Es ist $\sin(30^\circ)=0.5$ und $\sin(35^{\circ}\approx0.57$.
+\end{lsg}
+
+\begin{lsg}{singraph}
+Verwende $\sin(0^{\circ})=0$, $\sin(30^{\circ})=0.5$, $\sin(45^{\circ})=\frac{\sqrt{2}}{2}$,  $\sin(60^{\circ})=\frac{\sqrt{3}}{2}$ und  $\sin(90^{\circ})=1$ sowie \geogebralink .
+\end{lsg}
+
+\begin{lsg}{hypundarg}
+F\"ur die Ankathete $a$ des Winkels ist $\cos(25^\circ)=\frac{a}{12}$, also $a=12\cdot\cos(25^\circ)\approx\unit[10.9]{cm}$. Die andere Kathete $g$ berechnet man mit Pythagoras oder rascher via $\sin(25^\circ)=\frac{g}{12}$, also $g=12\cdot\sin(25^\circ)\approx\unit[5.1]{cm}$.
+\end{lsg}
+
+\begin{lsg}{sonnenkollektor}
+Der Sonnenkollektor ist die Hypotenuse und die gesuchte H\"ohe $g$ die Gegenkathete zum Neigungswinkel: $\sin(75^{\circ})=\frac{g}{2}$. Die H\"ohe ist $g=2\cdot\sin(75^{\circ})\approx\unit[1.93]{m}$.
+\end{lsg}
+
+\begin{lsg}{wetterballon}
+Wir beachten erst mal, dass der Winkel sehr klein ist: $22'=\frac{22}{60}^{\circ}$. Nun, falls die Vorstellungskraft nicht reicht, m\"ussen wir skizzieren. Unser punktf\"ormiges Auge sieht den kugelf\"ormigen Wetterballon unter dem Winkel gebildet durch die zwei Tangenten dies- und jenseits. Unser Auge, eine Tangente zusammen mit dem Radius, der Tangentenber\"uhrpunkt mit dem Mittelpunkt verbindet, und die Strecke Mittelpunkt zu unserem Auge bilden ein rechtwinkliges Dreieck. Sind wir pingelig, so muss man von der gesuchten Entfernung $D$ noch den Ballonradius abziehen. Wir haben die Hypotenuse $D+r$ und die Gegenkathete $r=\unit[8]{m}$ zum Winkel $\frac{11}{60}^{\circ}$:
+\begin{align*}
+\sin(\frac{11}{60}^{\circ}) &= \frac{r}{D+r}\tag{$\cdot(D+r), \div\sin(\frac{11}{60}^{\circ})$}\\
+D+r &= \frac{r}{\sin(\frac{11}{60}^{\circ})}\tag{$-r$}\\
+D &= \frac{r}{\sin(\frac{11}{60}^{\circ}})-r
+\end{align*}
+Das tippen wir ein und sehen $D\approx\unit[2492]{m}$, also knapp $\unit[2.5]{km}$.
+\end{lsg}
+
+\begin{lsg}{defcos}
+Zeichne ein rechtwinkliges Dreieck und w\"ahle einen spitzen Winkel, den du mit $\alpha$ bezeichnest. Die restlichen Bezeichnungen ergeben sich nun und du kannst $\cos(\alpha)=\frac{a}{h}$ notieren.
+\end{lsg}
+
+\begin{lsg}{cosgraph}
+Wie bei der entsprechenden Aufgabe beim Sinus berechnet man ein paar ausgew\"ahlte Werte und skizziert dann den Verlauf des Graphen. $\cos(0^{\circ})=1$, $\cos(30^{\circ})=\frac{\sqrt{3}}{2}$, $\cos(45^{\circ})=\frac{\sqrt{2}}{2}$, $\cos(60^{\circ})=\frac{1}{2}$ und $\cos(90^{\circ})=0$ sollten reichen. Den Graphen vergleicht man mit dem Plot von \geogebralink .
+\end{lsg}
+
+\begin{lsg}{leiter}
+Die Entfernung von der Wand ist die Ankathete des gesuchten Winkels. Die Leiter ist Hypotenuse, also
+\begin{align*}
+\cos(\alpha) &= \frac{2.8}{6.4}\tag{$\cos^{-1}(\phantom{x})$}\\
+\alpha &= \cos^{-1}(\frac{2.8}{6.4})
+\end{align*}
+Und wir erhalten f\"ur den Winkel ca. $64^{\circ}$.
+\end{lsg}
+
+\begin{lsg}{bahnstrecke}
+Den Massstab wenden wir am Schluss an. Auf der Karte sehen wir die Projektion auf die Ebene, aber bei der wahren Streckenl\"ange handelt es sich um die Hypotenuse. Wir haben also $\cos(8^{\circ})=\frac{18}{h}$, woraus $h=\frac{18}{\cos(8^{\circ})}\approx18.2$ folgt. Also ist die Strecke in Realit\"at $\unit[454]{m}$.
+\end{lsg}
+
+\begin{lsg}{erdrotation}
+Ich bin f\"ur das Kugelmodel der Erde und wohne in Thun, $46^{\circ}45'32''$N; f\"ur die Geschwindigkeit ist der L\"angengrad irrelevant. Die Geschwindigkeit berechnet sich zu $v=\frac{s}{t}$. Ich kenne $t\approx\unit[24]{h}$ und muss $s$ berechnen. Daf\"ur berechnen wir den Radius $r'$ zur Rotationsachse f\"ur den Breitengrad von Thun. Es ist $\cos(46^{\circ}45'32'')=\frac{r'}{r_{E}}$. Daraus folgt f\"ur den Weg $s=2\pi\cdot r_{E}\cos(46^{\circ}45'32'')$. Ich nehme f\"ur den mittleren Erdradius $r_{E}=\unit[6370]{m}$ und erhalte f\"ur die Geschwindigkeit $v\approx\frac{27419.2}{24}\approx\unitfrac[1146]{km}{h}$.
+\end{lsg}
+
+\begin{lsg}{deftan}
+Wie in den vorhergehenden F\"allen zeichnet man ein rechtwinkliges Dreieck mit einem spitzen Winkel $\alpha$ und benennt An-und Gegenkathete. Die Definition ist $\tan(\alpha)=\frac{g}{a}$.
+\end{lsg}
+
+\begin{lsg}{graphtangens}
+Konsultiere \geogebralink . Verwende einfache Werte: $\tan(0^{\circ})$, $\tan(45^{\circ})=1$ oder $\tan(60^{\circ})$.
+\end{lsg}
+
+\begin{lsg}{tanne}
+F\"ur die H\"ohe der Tanne $H$ ist $\tan( (38+\frac{5}{6})^\circ)=\frac{H}{27.5}$ und damit $H=27.5\cdot \tan( (38\frac{5}{6})^\circ)\approx\unit[22.1]{m}$.
+\end{lsg}
+
+\begin{lsg}{bernermuenster}
+Es folgt unmittelbar $\tan(\alpha)=\frac{159.5}{150}$. Somit $\alpha=\arctan(\frac{159.5}{150})\approx47^{\circ}$.
+\end{lsg}
+
+\begin{lsg}{radtabelle}
+\begin{center}
+\small
+\begin{tabular}{|c|c|}
+\hline
+\rowcolor{Gray}\spaltenheight \textbf{Gradmass} & \textbf{Bogenmass}\spaltensep\hline
+\rowcolor{lightyellow}\spaltenheight $360$ & $2\pi$\spaltensep\hline
+\rowcolor{Gray}\spaltenheight $180$ & $\pi$\spaltensep\hline
+\rowcolor{lightyellow}\spaltenheight $90$ & $\frac{\pi}{2}$\spaltensep\hline
+\rowcolor{Gray}\spaltenheight $45$ & $\frac{\pi}{4}$\spaltensep\hline
+\rowcolor{lightyellow}\spaltenheight $1$ & $\frac{\pi}{180}$\spaltensep\hline
+\rowcolor{Gray}\spaltenheight $\alpha$ & $\frac{\pi}{180}\cdot\alpha$\spaltensep\hline
+\end{tabular}
+\end{center}
+\end{lsg}
+\begin{lsg}{sincostan}
+\geogebralink\ \ hilft bei der Kontrolle.
+\end{lsg}
+\begin{lsg}{sincostanbeziehungen}
+Zu \eqref{eq:sincos}: $\sin^{2}(\alpha)+\cos^{2}(\alpha)=\left(\frac{g}{h}\right)^{2}+\left(\frac{g}{h}\right)^{2}=\frac{g^{2}}{h^{2}}+\frac{a^{2}}{h^{2}}=\frac{g^{2}+a^{2}}{h^{2}}=\frac{h^{2}}{h^{2}}=1$.
+\end{lsg}
+\begin{lsg}{costanohnetr}
+Es ist $\cos(\alpha)=\sqrt{1-\sin^{2}(\alpha)}=\sqrt{1-0.6^{2}}=0.8$. Ferner $\tan(\alpha)=\frac{0.6}{0.8}=\frac{3}{4}$.
+\end{lsg}
+\begin{lsg}{exaktewerte}
+Im gleichseitigen Dreieck mit Seitenl\"ange $s$ findet man: $\sin(30^{\circ})=\frac{1}{2}$. Nun kann man die andern Winkelfunktionswerte analog wie oben bestimmen oder direkt \"uber das gleichseitige Dreieck. $\cos(60^{\circ})=\frac{1}{2}$ kriegt man auch fast gratis. F\"ur die $45^{\circ}$ Winkel schaut man sich die H\"alfte eines Quadrats an und findet $\tan(45^{\circ})=1$. Damit kann man auch die restlichen Werte berechnen: $\sin(45^{\circ})=\frac{\sqrt{2}}{2}=\cos(45^{\circ})$. $\sin(60^{\circ})=\frac{\sqrt{3}}{2}=\cos(30^{\circ})$ und $\tan(30^{\circ})=\frac{\sqrt{3}}{3}$ sowie $\tan(60^{\circ})=\sqrt{3}$.
+\end{lsg}
+\begin{lsg}{sintaylor}
+$45^{\circ}=\frac{\pi}{4}$, also $\sin(\frac{\pi}{4})=\frac{\pi}{4}-\frac{(\frac{\pi}{4})^{3}}{3!}+\frac{(\frac{\pi}{4})^{5}}{5!}-\frac{(\frac{\pi}{4})^{7}}{7!}\approx0.70710647$
+\end{lsg}
+\begin{lsg}{tanalscos}
+$1+\tan^{2}(\alpha)=1+\frac{\sin^{2}(\alpha)}{\cos^{2}(\alpha)}=1+\frac{1-\cos^{2}(\alpha)}{\cos^{2}(\alpha)}=\frac{1}{\cos^{2}(\alpha)}$
+\end{lsg}
+\begin{lsg}{trigoumformungen}
+\begin{enumerate}[a)]
+\item $\tan(\alpha)\cdot\cos(\alpha)=\frac{\sin(\alpha)}{\cos(\alpha)}\cdot\cos(\alpha)=\sin(\alpha)$
+\item $\sin^3(\alpha)+\sin(\alpha)\cdot\cos^2(\alpha)=\sin(\alpha)\cdot(\sin^{2}(\alpha)+\cos^{2}(\alpha))=\sin(\alpha)$
+\item $\frac{\sin(\alpha)}{\tan(\alpha)}=\frac{\sin(\alpha)}{\frac{\sin(\alpha)}{\cos(\alpha)}}=\cos(\alpha)$
+\item $\sqrt{1+\cos(\alpha)}\cdot\sqrt{1-\cos(\alpha)}=\sqrt{1-\cos^{2}(\alpha)}=\sin(\alpha)$
+\item $\sin^4(\alpha)-\cos^4(\alpha)=(\sin^2(\alpha)-\cos^2(\alpha))(\sin^2(\alpha)+\cos^2(\alpha))=\sin^2(\alpha)-\cos^2(\alpha)=(\sin^2(\alpha)-(1-\sin^2(\alpha))=2\sin^2(\alpha)-1$
+\item $\frac{1}{\cos^2(\alpha)}-1=1+\tan^{2}(\alpha)-1=\tan^{2}(\alpha)$
+\end{enumerate}
+
+\end{lsg}
+\begin{lsg}{zahnradbahn}
+$s$ ist die Hypotenuse und $0.135$ als Steigung das Verhältnis von Gegenkathete zu Ankathete. Also beträgt der Steigungswinkel $\alpha=\arctan(0.135)\approx7.7^\circ$. Der Höhenunterschied ist die Gegenkathete zu diesem Winkel: $g=s\cdot\sin(7.7^\circ)\approx\unit[181]{m}$.
+\end{lsg}
+\begin{lsg}{flussbreite}
+Wir wollen die Gegenkathete zum Winkel $\alpha = 53^\circ16'$ mit Ankathete $\overline{AB}=\unit[85]{m}$ bestimmen: $\tan(53^\circ16')=\frac{g}{85}$, also $g=85\tan(53^\circ16')\approx\unit[114]{m}$
+\end{lsg}
+\begin{lsg}{stdtrigo}
+Die H\"ohe auf die Basis $c$ liefert zwei rechtwinklige, zueinander kongruente Dreiecke. Der Basiswinkel ist $\alpha=\arccos(\frac{27.35}{65.4})\approx65^{\circ}$ und damit $\alpha=50^{\circ}$. Um den Fl\"acheninhalt zu bestimmen brauchen wir die H\"ohe $h_{c}=\sqrt{65.4^{2}-27.35^{2}}\approx59.4$. Es folgt $F=\frac{59.4\cdot54.7}{2}\approx\unit[1625]{m^{2}}$.
+\end{lsg}
+\begin{lsg}{immermehreck}
+\begin{enumerate}[a)]
+\item In einem Quadrat mit Diagonale $1$ sind die Seiten $\frac{\sqrt{2}}{2}$. Der Umfang ist also $U_{4}=4\cdot\frac{\sqrt{2}}{2}=2\sqrt{2}\approx2.83$.
+\item In einem $10$-Eck zieht man alle Diagonalen und halbiert dann die entstandenen Dreiecke, um die Seitenl\"ange bestimmen zu k\"onnen. Ein solcher Teildreiecks-Innenwinkel ist $\alpha=\frac{360^{\circ}}{10\cdot2}$. Die L\"ange der Teildreiecksseite $g=0.5\cdot\sin(\alpha)$ und damit die Seitenl\"ange $s=\sin(\alpha)$. Also haben wir f\"ur den Umfang $U_{10}=10\cdot\sin(\frac{360^{\circ}}{20})\approx3.09$
+\end{enumerate}
+F\"ur ein $n$-Eck erkennen wir $U_{n}=n\cdot\sin(\frac{180^{\circ}}{n})$ und erwarten $n\to\infty\implies U_{n}=\pi$.
+\end{lsg}
+\begin{lsg}{sinsatzgleichumkreisdurchmesser}
+Sei $r$ der Umkreisradius. Betrachten wir oEdA die Seite $a$ mit gegen\"uberliegendem Winkel $\alpha$. F\"ur die Seite $a$ ist der Umkreis Peripheriewinkelkreis. Verschieben wir nun die Ecke $A$ so lange auf dem Kreisrand Richtung $B$, bis die Seite $b$ durch den Umkreismittelpunkt verl\"auft. Der Winkel in $A$ ist immer noch $\alpha$, die Seite $b$ ist als Hypotenuse $2r$ lang und wir haben in $B$ einen rechten Winkel (Thaleskreis). Daher gilt nun $\sin(\alpha)=\frac{a}{2r}$ woraus unmittelbar der Satz folgt.
+\begin{center}
+\scalebox{0.618}{
+\begin{tikzpicture}[line cap=round,line join=round,x=1cm,y=1cm]
+\definecolor{zzttqq}{rgb}{0.6,0.2,0}
+\definecolor{xdxdff}{rgb}{0.49019607843137253,0.49019607843137253,1}
+\definecolor{ududff}{rgb}{0.30196078431372547,0.30196078431372547,1}
+\definecolor{uuuuuu}{rgb}{0.26666666666666666,0.26666666666666666,0.26666666666666666}
+\definecolor{cqcqcq}{rgb}{0.7529411764705882,0.7529411764705882,0.7529411764705882}
+\draw [color=cqcqcq,, xstep=1cm,ystep=1cm] (-5.89,-6.6) grid (6.93,6.08);
+\clip(-5.89,-6.6) rectangle (6.93,6.08);
+\fill[line width=2pt,color=zzttqq,fill=zzttqq,fill opacity=0.10000000149011612] (4.84,1.2) -- (-4.981513229753423,0.22388823504509778) -- (2.4438224530324244,-4.346646042416449) -- cycle;
+\draw [line width=2pt] (0,0) circle (4.986541887921929cm);
+\draw [line width=2pt,color=zzttqq] (4.84,1.2)-- (-4.981513229753423,0.22388823504509778);
+\draw [line width=2pt,color=zzttqq] (-4.981513229753423,0.22388823504509778)-- (2.4438224530324244,-4.346646042416449);
+\draw [line width=2pt,color=zzttqq] (2.4438224530324244,-4.346646042416449)-- (4.84,1.2);
+\draw [fill=uuuuuu] (0,0) circle (2pt);
+\draw[color=uuuuuu] (0.15,-0.4) node {$M$};
+\draw [fill=ududff] (4.84,1.2) circle (2.5pt);
+\draw[color=ududff] (5.11,1.5) node {$C$};
+\draw [fill=xdxdff] (-4.981513229753423,0.22388823504509778) circle (2.5pt);
+\draw[color=xdxdff] (-5.5,0.25) node {$A$};
+\draw [fill=xdxdff] (2.4438224530324244,-4.346646042416449) circle (2.5pt);
+\draw[color=xdxdff] (2.51,-4.73) node {$B$};
+\draw[color=zzttqq] (-0.63,1.11) node {$b$};
+\draw[color=zzttqq] (-1.6,-2.3) node {$c$};
+\draw[color=zzttqq] (4.03,-1.65) node {$a$};
+\end{tikzpicture}
+}
+\end{center}
+\end{lsg}
+\begin{lsg}{zyklischevertauschung}
+$a^2=b^2+c^2-2bc\cos(\alpha)$, $b^2=a^2+c^2-2bc\cos(\beta)$, $c^2=a^2+b^2-2bc\cos(\gamma)$. Im rechtwinkligen Dreieck, $\gamma=90^{\circ}$, ist $c^2=a^2+b^2-2bc\cos(90^{\circ})=a^2+b^2-2bc\cdot0=a^2+b^2$.
+\end{lsg}
+\begin{lsg}{sinsatzverhaeltnis}
+Aufgrund der Verh\"altnisgleichung $\frac{a}{b}=\frac{\sin(\alpha)}{\sin(\beta)}$ setzen wir $a=\sqrt{3}$, $b=2$, und $c=\sqrt{5}$ und berechnen die Winkel mit dem Cosinussatz. Wir haben
+
+\begin{align*}
+a^2 &= b^2+c^2-2bc\cos(\alpha)\tag{$-b^2-c^2$}\\
+a^2 - b^2 - c^2 &= -2bc\cos(\alpha)\tag{$\cdot(-1)$}\\
+b^2 + c^2 - a^{2} &= 2bc\cos(\alpha)\tag{$\div2bc$}\\
+\cos(\alpha) &= \frac{b^2 + c^2 - a^{2}}{2bc}\tag{$\arccos(\phantom{x})$}\\
+\alpha &= \arccos\left(\frac{b^2 + c^2 - a^{2}}{2bc}\right)
+\end{align*}
+Also $\alpha\approx48^{\circ}$, $\beta\approx59^{\circ}$ und $\gamma\approx73^{\circ}$.
+\end{lsg}
+\begin{lsg}{bergwerkstollen}
+Die L\"ange ist $\overline{BC}=\sqrt{325^{2}+275^{2}-2\cdot325\cdot275\cdot\cos(75^\circ)}\approx\unit[367]{m}$. Der Winkel ist $\beta\approx\arcsin(\frac{275}{367}\cdot\sin(75^{\circ}))\approx46^{\circ}$.
+\end{lsg}
+\begin{lsg}{funkpeilstationen}
+Vom Funkpeildreieck liest man alle Innenwinkel ab: $46.8^{\circ}$, $28.8^{\circ}$ und $104.4^{\circ}$. Die Entfernung von $F_{1}$ ist dann $12.8\cdot\frac{\sin(104.4^{\circ})}{\sin(28.8^{\circ})}\approx\unit[25.7]{km}$ und $F_{2}=12.8\cdot\frac{\sin(46.8^{\circ})}{\sin(28.8^{\circ})}\approx\unit[19.4]{km}$.
+\end{lsg}
+\begin{lsg}{shifttrigofunctions}
+Konsultiere wie \"ublich \geogebralink.
+\end{lsg}
+\begin{lsg}{sincostaninvers}
+$\arcsin$ hat die Definitiosnmenge $[-1,1]$ und beispielsweise die Wertemenge $[-\frac{\pi}{2},\frac{\pi}{2}]$. Ich m\"ochte ja auf einem m\"oglichst grossen Intervall invertieren. Bei $\arccos$ n\"ahme ich auch $[-1,1]$ und kriege dann als Wertemenge $[0,\pi]$. $\arctan$ ist interessant: Ich nehme $(-\infty.\infty)$ woraus $\mathbb{W}=(-\frac{\pi}{2},\frac{\pi}{2})$ folgt. Plotte in \geogebralink.
+\end{lsg}
+\begin{lsg}{bijektionRtozeroone}
+Wir verschieben $f^{-1}(x)=\arctan(x)$ um eine halbe Einheit nach oben und stauchen die Amplitude so, dass sie zwischen $0$ und $1$ zu liegen kommt: $\frac{1}{\pi}\arctan(x)+\frac{1}{2}$ ist eine Bijektion von $\mathbb{R}$ auf $(0,1)$.
+
+\begin{center}
+\includegraphics[width=0.618\textwidth]{pictures/arctan.png}
+\end{center}
+\end{lsg}
+
+\clearpage
+
+\section{Exponentialfunktionen}
+
+\subsection{Einleitung}
+\begin{wrapfigure}{r}{0.3\textwidth}
+  \begin{center}
+    \includegraphics[width=0.2\textwidth]{pictures/dagobert}
+  \end{center}
+\end{wrapfigure}
+Seit der Pandemie von SARS2 CoV19 im Jahr 2020 ist der Begriff des \emph{exponentiellen Wachstums} in aller Munde. Ein Beispiel aus einer Tageszeitung --- dem Tagesspiegel Ausgabe vom 12.3.21 --- fand ich hier:
+    \href{https://www.tagesspiegel.de/wirtschaft/wie-exponentielles-wachstum-unser-leben-beeinflusst-4236517.html}{Wie exponentielles Wachstum unser Leben beeinflusst}
+Dieser wichtige Typ Funktion soll nun in diesem Kapitel ergründet werden.
+
+\begin{bsp}
+Ein Schüler verbreitet zu Beginn der grossen Pause im Gymnasium Lerbermatt ein Gerücht. Alle Minuten erzählt ein Wissender einem Nicht-Eingeweihten das Gerücht. Wie lange dauert es, bis alle Schüler des Gymnasiums über das Gerücht in Kenntnis gesetzt worden sind?
+\end{bsp}
+
+Bei den Potenzfunktionen sind die Exponenten immer Konstanten, bei den Exponentialfunktionen ist die Basis konstant und der Exponent variabel.
+\begin{cdef}[Exponentialfunktion]{}
+Eine Funktion der Form
+$$f(x)=b^x$$
+mit $b\in\mR^+$ heisst \emph{Exponentialfunktion} zur Basis $b$.
+\end{cdef}
+
+\begin{bsp}
+Anwendungen, die durch Exponentialfunktionen beschrieben werden sind:
+\begin{itemize}
+\item Ausbreitung von Krankheiten/Epidemien
+\item Radioaktiver Zerfall
+\item Zellvermehrung
+\end{itemize}
+\end{bsp}
+
+\subsection{Graphen}
+\uebh{}{
+\label{uebgraphen}
+Zeichne in dasselbe Koordinatensystem die Graphen
+der Funktionen\\
+
+(a) $2^x$, $3^x$, $2.7^x$ (b) $4^x$, $\left(\frac{1}{4}\right)^x$, $10^x$
+}
+
+\uebh{}{
+Vergleiche das Verhalten (insbesondere das Wachstum) der beiden Funktionen
+$$p(x)=x^2\q\text{und}\q e(x)=2^x$$
+}
+
+\begin{bem}
+Der Graph der Exponentialfunktionen
+$$f(x)=b^x$$
+liegt oberhalb der x-Achse und geht durch den Punkt $\point{0}{1}$. Für $b>1$ ist der Graph steigend ($f$ monoton wachsend) und die negative $x$-Achse Asymptote; für $0<b<1$ ist der Graph fallend ($f$ monoton fallend) und die positive $x$-Achse Asymptote.
+\end{bem}
+
+\begin{csatz}[Wachstum- \& Zerfall]{}
+Die Kurven mit den Gleichungen $y=b^x$ und $y=\left(\frac{1}{b}\right)^x$ liegen symmetrisch zueinander bezüglich der y-Achse.
+\end{csatz}
+
+\begin{proof}[Beweis]
+Übung.
+\end{proof}
+
+\uebh{}{
+Berechne für die Funktionen der Übung \ref{uebgraphen} die durchschnittlichen ¨Änderungsraten über den Intervallen $[0,1]$ und $[-1,0]$.
+}
+
+\uebh{}{
+Zeichne den Graphen von $f(x)=2^x$ in ein Koordinatensystem.
+\begin{enumerate}[a)]
+\item Verschiebe den Graphen in positiver x-Richtung
+um 3 Einheiten.
+\item Spiegele den Graphen an der x-Achse.
+\item Verschiebe den Graphen in negativer y-Richtung
+um 4 Einheiten.
+\item Spiegele den Graphen an der y-Achse.
+\item Spiegele den Graphen am Ursprung des Koordinatensystems.
+\end{enumerate}
+Geben Sie jeweils die Gleichung der Bildkurve an.
+}
+
+\begin{figure}
+  \begin{center}
+    \includegraphics[width=0.618\textwidth]{pictures/exponentialgraphs.jpg}
+    \caption{Joke During SARS2-CoV19 Lockdown in 2020}
+  \end{center}
+\end{figure}
+
+\uebh{}{
+Es sei
+$$f(x)=b^x\text{ und }g(x)=a\cdot b^x.$$
+Der Punkt $P$ liegt auf dem Graphen von $f$. Berechne $b$ für
+\begin{enumerate}[a)]
+\item $P=\point{1.5}{27}$
+\item $P=\point{4}{9}$
+\end{enumerate}
+Die Punkte $R$ und $Q$ liegen auf dem Graphen von $g$. Berechne $a$ und $b$ für
+\begin{enumerate}[a)]
+\setcounter{enumi}{2}
+\item $R\point{0}{2}, Q\point{2}{18}$
+\item $R\point{-2}{20}, Q=\point{3}{\frac{5}{8}}$
+\end{enumerate}
+}
+
+\subsection{Wachstum und Zerfall}
+Die Exponentialfunktionen spielen bei der Beschreibung von zeitabhängigen Wachstums- und Zerfallserscheinungen eine ausserordentlich wichtige Rolle.
+\begin{cdef}[Exponentialfunktion allgemein]{}
+  Ist $t$ die Masszahl der Zeit, so bezeichnet man die Funktion
+$$f(t)=ab^t$$
+für $b>1$ als \emph{exponentielle} Wachstumsfunktion, für $0<b<1$
+als exponentielle Zerfallsfunktion.
+\end{cdef}
+\begin{bem}
+Zum Zeitpunkt $t=0$ gilt
+$$f(0)=ab^0=a.$$
+Also ist $(0|a)$ der Schnittpunkt mit der $y$-Achse, und man nennt $a$ den Anfangswert von $f$. Der Parameter $b$ ist ein Mass für das Wachstum bzw. den Zerfall und wird deshalb Wachstums- bzw. Zerfallsfaktor genannt.
+\end{bem}
+
+\uebh{}{
+Bei einer Bakterienkultur ohne Raum- und Nahrungsmangel wächst die Individuenzahl exponentiell. Um 8 Uhr waren es 2300 und um 12 Uhr 36800 Individuen.
+\begin{enumerate}[a)]
+\item Nimm 2300 als Anfangswert an und ermittle den Wachstumsfaktor $b$. Wie lautet demnach die entsprechende Wachstumsfunktion?
+\item Welches ist die Individuenzahl um 9 Uhr, um 11 Uhr, um 13.30 Uhr?\label{bakterienb}
+\end{enumerate}
+}
+
+\uebh{}{
+Ein Waldbestand, in dem kein Holz geschlagen wird, wächst exponentiell. Er beträgt heute $\unit[72\,342]{m^3}$, vor zwölf Jahren betrug er $\unit[48\,228]{m^3}$.
+\begin{enumerate}[a)]
+\item Wie hoch war der Waldbestand vor fünf Jahren?
+\item Wie hoch wird er heute in sieben Jahren sein?
+\end{enumerate}
+}
+
+\uebh{}{
+In einer Bakterienkultur ist $$f(t) =10^4 \cdot 2^\frac{t}{2}$$ die Anzahl der Bakterien zum Zeitpunkt $t$. In welcher Zeitspanne $\Delta t$ verdoppelt, vervierfacht, verachtfacht sich die Anzahl?
+}
+
+\begin{bem}
+In der Praxis werden viele Wachstumsprozesse dadurch beschrieben, dass man neben dem Startwert $a$ noch die jährliche Zunahme der betrachteten Grösse in Prozenten angibt. Man denke einfach an die wohlbekannte Zinseszinsrechnung.
+\end{bem}
+
+\begin{bsp}
+Es sei $f(0)=a=10000$ die Anzahl der Einwohner einer Stadt, deren jährliches Wachstum $2\%$ beträgt. Nach einem Jahr hat die Stadt $$f(1)=f(0)+0.02\cdot f(0)=f(0)\cdot(1+0.02)=10200$$ Einwohner. Nach zwei Jahren sind es
+$$f(2)=f(1)\cdot(1+0.02)=f(0)\cdot(1+0.02)^2$$ Einwohner und analog nach $t$ Jahren
+$$f(t)=10000\cdot1.02^t$$ Einwohner.
+\end{bsp}
+
+\uebh{}{
+Vom Jahr 1875 zum Jahr 1985 ist die Wohnbevölkerung der Schweiz von 2\,750\,300 auf 6\,455\,900 angewachsen. Wieviel Prozent betrug die jährliche Zunahme, wenn man annimmt, dass die Bevölkerung von Jahr zu Jahr gleich viele Prozent zugenommen hat?
+%In Wirklichkeit verlief die Zunahme unregelmässig; siehe dazu Tabelle \ref{tab:bevoelkerung} auf Seite \pageref{tab:bevoelkerung}.
+\definecolor{Gray}{gray}{0.9}
+%\definecolor{darkgreen}{rgb}{0,0.4,0}
+\definecolor{lightyellow}{rgb}{1,1,0.8}
+%\arrayrulecolor{darkgreen}
+%\doublerulesepcolor{black}
+\begin{table}
+\small
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+\rowcolor{Gray}\spaltenheight Jahr & Zunahme in Prozent\spaltensep\hline
+\rowcolor{lightyellow}\spaltenheight 1875 & 0.78\spaltensep\hline
+\rowcolor{Gray}\spaltenheight 1902 & 1.15\spaltensep\hline
+\rowcolor{lightyellow}\spaltenheight 1918 & -0.06\spaltensep\hline
+\rowcolor{Gray}\spaltenheight 1937 & 0.36\spaltensep\hline
+\rowcolor{lightyellow}\spaltenheight 1948 & 0.84\spaltensep\hline
+\rowcolor{Gray}\spaltenheight 1965 & 1.01\spaltensep\hline
+\rowcolor{lightyellow}\spaltenheight 1976 & 0.27\spaltensep\hline
+\end{tabular}
+\end{center}
+\normalsize
+\caption{Zunahme der Wohnbevölkerung der Schweiz}\label{tab:bevoelkerung}
+\end{table}
+}
+
+\uebh{}{
+Leiten
+\marginnote{
+\qrcode{
+https://www.youtube.com/watch?v=tMT4Nvru6xY}
+}
+Leite die Formel für das Kapital $K(n)$ nach $n$ Jahren in Abhängigkeit des Startkapitals $K_0$ und Zinsfusses $p$ her. Vergleichen Sie mit der Formelsammlung.
+}
+
+\uebh{}{
+Susanne erhält zur Eröffnung eines Jugendsparbuches von ihrer Bank zu ihrer Einlage von 100 Franken ein Eröffnungsgeschenk von 50 Franken. Über welchen Betrag wird sie bei einem Jahreszins von $5.5\%$ in 10 Jahren verfügen können?
+}
+
+\uebh{}{
+Im Jahre 1627 wurde die Insel Manhattan (New York) für 24\$ den Indianern abgekauft. Im Jahre 1970 betrug der Wert nur des Landes 6 Milliarden Dollar. Welches ist die konstant angenommene jährliche Wertzunahme in Prozent?
+}
+
+\uebh{}{
+Ein 57 jähriger Fussballfan und seine 59 jährige Schwester teilen einen Totogewinn von 50000 Franken so, dass sie im Zeitpunkt der Pensionierung (Frauen: 62 Jahre, Männer: 65 Jahre) gleich viel besitzen. Wieviel erhält jedes der Geschwister bei einem Zinssatz von 4.5\%?
+}
+
+\clearpage
+
+\section{Logarithmen}
+\begin{bsp}
+Nach welcher Zeit $t$ sinkt die Menge $m_0$ eines radioaktiven Stoffes mit der Halbwertszeit $T=\unit[30]{y}$ auf einen Zehntel des ursprünglichen Wertes? Wir bezeichnen die Zeit mit $t$ und nehmen als Einheit $\unit[30]{y}$, die Masse zu Beginn sei $m_0$. Also haben wir für die Restmasse $m$ zur Zeit $t$:
+$$m(t)=m_0\cdot\left(\frac{1}{2}\right)^t.$$
+Um zu berechnen, wann noch $\frac{m_0}{10}$ übrig sind, lösen wir die zugehörige Gleichung nach $t$ auf:
+    \begin{align*}
+    \frac{m_0}{10}&=m_0\cdot\left(\frac{1}{2}\right)^t\tag{$\div m_0$}\\
+    \frac{1}{10}&=\left(\frac{1}{2}\right)^t\tag{$()^{-1}$}\\
+    10&=2^t
+    \end{align*}
+    Das Auflösen nach $t$ gelingt uns leider nicht, weil die gesuchte Variable
+    im Exponenten steht; Wir sind gezwungen zu raten. Wegen
+    $2^3<10<2^4$ ist $3<t<4$, und man findet rasch als Näherung
+    $$t\approx3.32$$    
+\begin{figure}
+\begin{center}
+\definecolor{cqcqcq}{rgb}{0.75,0.75,0.75}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.2cm,y=4.2cm]
+\draw [color=cqcqcq,dash pattern=on 2pt off 2pt, xstep=0.6cm,ystep=1.05cm] (-0.1,-0.01) grid (5.9,1.01);
+\draw[->,color=black] (-1,0) -- (6,0);
+\foreach \x in {1,2,3,4,5}
+\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize $\x$};
+\draw[color=black] (5.85,0.01) node [anchor=south west] {$\nicefrac{30t}{\text{y}}$};
+\draw[->,color=black] (0,-0.2) -- (0,1.2);
+\foreach \y in {0.25,0.5,0.75,1}
+\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize $\y$};
+\draw[color=black] (0.05,1.15) node [anchor=west] {$\nicefrac{f(t)}{m_0}$};
+\clip(-1,-0.2) rectangle (6,1.2);
+\draw[line width=1.2pt, smooth,samples=50,domain=0.0:6.0] plot(\x,{1/(2^(\x))});
+\end{tikzpicture}
+\end{center}
+\caption{Radioaktiver Zerfall}\label{zerfall}
+\end{figure}
+   Antwort: Man hat nach ca. $\unit[99.6]{y}$
+    noch einen Zehntel der ursprünglichen Masse.
+    \end{bsp}
+  Diese Lösung ist unbefriedigend, da wir $t$ nicht genau bestimmen
+  konnten. Das Problem liegt darin, dass wir zur Exponentialfunktion $f(x)=2^x$ zwar den $y$-Wert $10$ kennen, nicht aber den $x$-Wert. Wir suchen also die Inversfunktion der Exponentialfunktion $2^x$, die zu gegebenem $y$-Wert den ursprünglichen $x$-Wert liefert. Wie das geht kommt im nächsten Abschnitt.
+  
+\subsection{Die Logarithmusfunktion}
+  \begin{wrapfigure}{r}{0.5\textwidth}
+  \begin{center}
+    \includegraphics[width=0.37\textwidth]{pictures/logarithmentafel}
+  \end{center}
+\end{wrapfigure}
+Wir möchten also eine gegebene Gleichung mit Variable im Exponenten lösen können. Dafür gehen wir von den bereits bekannten Exponentialfunktionen aus. Die Exponentialfunktion
+$$f(x)=b^x$$
+ist für $0<b<1$ streng monoton fallend und für $b>1$ streng monoton wachsend. Deshalb existiert eine Umkehrfunktion $f^{-1}$. Diese nennt man Logarithmusfunktion zur Basis $b$ und bezeichnet sie mit $\log_b$.
+
+\uebh{}{
+Wie lautet das Kriterium für die Existenz einer Inversfunktion? Nenne eine Funktion, welche keine Inversfunktion besitzt.
+} 
+
+\uebh{}{
+Zeichne die Funktion $f(x)=2^x$ und den Graphen der Inversfunktion $f^{-1}(x)=\log_2(x)$. Siehst du den bekannten graphischen Zusammenhang zwischen Funktion und Inversfunktion?
+}
+
+\uebh{}{
+Betrachte den Graphen der Funktion $f(x)=\log_2(x)$ in einem Koordinatensystem.
+\begin{enumerate}[a)]
+\item Verschiebe den Graphen in positiver x-Richtung um 2 Einheiten.
+\item Spiegle  den Graphen an der x-Achse.
+\end{enumerate}
+Gib jeweils die Gleichung der Bildkurve an.
+}
+
+\begin{wrapfigure}{r}{0.3\textwidth}
+\begin{center}
+\includegraphics[width=0.2\textwidth]{pictures/logln}
+\end{center}
+\end{wrapfigure}
+Mit der \fbox{log}-Taste kann man Werte von Variablen in
+Exponenten bestimmen. Um sie korrekt
+einsetzen zu können, wollen wir erst definieren, was wir unter einem Logarithmus verstehen wollen. Die Definition entspricht grundsätzlich einer Regel zum Umschreiben von Exponentialfunktionen.
+\begin{cdef}[Logarithmus]{}
+  Unter
+\marginnote{
+\qrcode{
+https://www.youtube.com/watch?v=3LtdUV1l33g}
+}
+  dem \emph{Logarithmus} von $y$ zur Basis $b$, geschrieben
+  $$\log_b{y},$$ versteht man diejenige Zahl, welche als Exponent
+  der Basis $b$ den Wert $y$ ergibt. Mathematisch notiert wird diese
+  Aussage übersichtlich:
+  $$x=\log_b{y}\quad \Leftrightarrow \quad b^x=y.$$
+  $y$ nennt man \emph{Numerus} und $b$ \emph{Basis} des Logarithmus.
+\end{cdef}
+
+\begin{bem}
+  Bei Betrachtung obiger Äquivalenz wird klar, dass der Logarithmus nur für $y,b\in\D{R}^+$ und $b\neq1$
+  definiert ist.
+\end{bem}
+
+\uebh{}{
+Überlege kurz, welche Probleme entstünden, wenn man $y,b\in\mR$ zulassen würde.
+}
+
+\begin{bsps}
+\ \\[-3ex]
+  \begin{itemize}
+    \item Den Logarithmus von $y$ zur Basis $b$ finden, ist gleichwertig
+    mit der Beantwortung der Frage: \glqq $b$ hoch was gibt $y$?\grqq
+    \item $\log_2{8}=3$: Der Logarithmus von $8$ zur Basis $2$ ist $3$,
+    denn $2^3=8$.
+    \item $\log_{10}{100}=2$, weil $10^2=100$.
+    \item $\log_{\frac{1}{3}}{\frac{1}{9}}=2$, da
+    $(\frac{1}{3})^2=\frac{1}{9}$.
+  \end{itemize}
+\end{bsps}
+
+\uebh{}{
+Bestimme
+
+\begin{minipage}{0.49\textwidth}
+\begin{enumerate}[a)]
+\item $\log_{10}1000$, $\log_{10}1000000$, $\log_{10}10^6$, $\log_{10}10^{837}$
+\item $\log_{10}0.1$, $\log_{10}0.01$, $\log_{10}\frac{1}{10}$, $\log_{10}\frac{1}{100}$
+\end{enumerate}
+\end{minipage}
+\begin{minipage}{0.49\textwidth}
+\begin{enumerate}[a)]
+\setcounter{enumi}{2}
+\item $\log_{2}4$, $\log_{2}1024$, $\log_{2}\frac{1}{4}$, $\log_{2}\frac{1}{512}$
+\item $\log_{e}1$, $\log_{e}e$, $\log_{e}e^3$, $\log_{e}\frac{1}{e^4}$
+\end{enumerate}
+\end{minipage}
+}
+Der folgende Satz folgt direkt aus der Definition und
+bringt meine saloppe Formulierung aus dem obigen Beispiel auf den
+Punkt.
+\begin{csatz}[Exponenten-Eigenschaft]{}
+  Jeder Logarithmus ist ein Exponent.
+\end{csatz}
+
+\begin{proof}[Beweis]
+trivial
+\end{proof}
+
+\subsection{Übliche Bezeichnungen und Schreibweisen}
+
+Erstens werde ich anstelle von $\log_b(y)$ nun oft $\log_b(x)$ schreiben. Das $y$ habe ich verwendet, um klar darzustellen, dass der Logarithmus $x=\log_b(y)$ die Umkehrfunktion einer Exponential\-funktion $y=b^x$ ist. In andern Worten wird hier der Schritt \glqq Vertauschung der Variablen\grqq --- der ja beim Algorithmus zur Bestimmung von Inversfunktionen als letzter erfolgt ---  schliesslich vorgenommen.
+Zweitens kommt als Basis $b$ des Logarithmus
+$$\log_bx$$
+oft eine der drei Zahlen $2$, $e$ (Euler'sche Zahl) oder $10$ vor. Deshalb legt man folgende,
+kürzere Schreibweisen fest:
+\begin{itemize}
+  \item $\log_{10}x=\log{x}=\lg x$\hfill(10$^{\text{er}}$ Logarithmus)
+  \item $\log_\mathrm{e}{x}=\ln{x}$\hfill(Logarithmus naturalis)
+  \item $\log_2{x}=\lb{x}$\hfill(Logarithmus dualis)
+\end{itemize}
+\begin{bem}
+  Die \fbox{log} - Taste auf dem Taschenrechner ist also der
+  Logarithmus zur Basis $10$.
+\end{bem}
+Drittens werde ich oft die Klammer um den Numerus weglassen, falls das Argument der Logarithmusfunktion klar ersichtlich ist. So wie das unter \glqq Zweitens\grqq\ bereits geschehen ist. Manchmal schreibe ich den Numerus in Klammer, um deutlich zu
+kennzeichnen, was alles zum Logarithmus gehört. Zum Beispiel
+$$\log_{3.5}(4x^3+2x-1).$$
+
+\uebh{}{
+Lasse von \geogebralink\  folgende Logarithmusfunktionen zeichnen.
+\begin{itemize}
+\item $f(x) = \log (x)$
+\item $g(x) = \ln (x)$
+\end{itemize}
+}
+
+\begin{figure}
+\begin{center}
+\definecolor{qqzzww}{rgb}{0,0.2,1}
+\definecolor{zzqqtt}{rgb}{0.6,0,0.4}
+\definecolor{cqcqcq}{rgb}{0.75,0.75,0.75}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.8cm,y=0.8cm]
+\draw [color=cqcqcq,dash pattern=on 3pt off 3pt, xstep=1.6cm,ystep=1.6cm] (-1.4,-4.86) grid (11.72,4.7);
+\draw[->,color=black] (-1.4,0) -- (11.72,0);
+\foreach \x in {1,2,3,4,5,6,7,8,9,10,11}
+\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize $\x$};
+\draw[color=black] (11.38,0.08) node [anchor=south west] { $x$};
+\draw[->,color=black] (0,-4.86) -- (0,4.7);
+\foreach \y in {-4,-3,-2,-1,1,2,3,4}
+\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize $\y$};
+\draw[color=black] (0.1,4.3) node [anchor=west] { $y$};
+\clip(-1.4,-4.86) rectangle (11.72,4.7);
+\draw[smooth,samples=100,domain=0.01:11.72, line width=0.5mm] plot(\x,{ln(\x)});
+\draw[color=zzqqtt, smooth,samples=100,domain=0.01:11.72, line width=0.35mm] plot(\x,{ln(\x)/ln(2)});
+\draw[color=qqzzww, smooth,samples=100,domain=0.01:11.72, line width=0.35mm] plot(\x,{ln(\x)/ln(10)});
+\draw[color=black] (9.5,1.8) node {$\ln$};
+\draw[color=zzqqtt] (9.5,2.8) node {$\lb$};
+\draw[color=qqzzww] (9.5,0.5) node {$\log$};
+\end{tikzpicture}
+\end{center}
+\caption{Die Graphen von $\ln(x)$, $\log(x)$, und $\lb(x)$}
+\end{figure}
+
+\uebh{}{
+Die Funktion
+$$f(x)=\log_b(x)$$
+ist für $b >1$ eine monoton wachsende Funktion. Allerdings ist dieses Wachstum sehr langsam. Um einen Eindruck davon zu bekommen, denke man sich ein Koordinatensystem, dessen $x$-Achse mehrere Äquatorumfänge lang ist.
+Die Einheit sei $\unit[1]{cm}$. Überprüfe die Abbildung \ref{logvsaequator} für den Graphen von $\log(x)$ und zeichne die Werte von zwei weiteren \glqq Erdumrundungen\grqq\ in Abbildung \ref{logvsaequator} auf Seite \pageref{logvsaequator} ein.
+
+\begin{figure}
+\begin{center}
+\definecolor{cqcqcq}{rgb}{0.75,0.75,0.75}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.6cm,y=0.6cm]
+\draw [color=cqcqcq,dash pattern=on 2pt off 2pt, xstep=1.2cm,ystep=1.2cm] (-0.84,-0.62) grid (12.86,11.66);
+\draw[->,color=black] (-0.84,0) -- (12.86,0);
+\foreach \x in {,1,2,3,4,5,6,7,8,9,10,11,12}
+\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize $\x$};
+\draw[color=black] (12.52,0.08) node [anchor=south west] { x};
+\draw[->,color=black] (0,-0.62) -- (0,11.66);
+\foreach \y in {,1,2,3,4,5,6,7,8,9,10,11}
+\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize $\y$};
+\draw[color=black] (0.1,11.26) node [anchor=west] { y};
+\clip(-0.84,-0.62) rectangle (12.86,11.66);
+\draw[smooth,samples=100,domain=0.0:12.86] plot(\x,{9.6});
+\draw[smooth,samples=100,domain=0.2:12.86] plot(\x,{ln(\x)/ln(10)});
+\draw[color=black] (6,9) node {nach der 1. Erdumrundung};
+\end{tikzpicture}
+\end{center}
+\caption{Log der Äquator-Vielfachen}\label{logvsaequator}
+\end{figure}
+}
+
+\uebh{}{
+  Berechne mit dem TR folgende Logarithmen, und kontrolliere deine Berechnung, indem du $10$ \glqq hoch\grqq\ dein jeweiliges Resultat eintippst.\\
+  
+  \begin{minipage}{0.49\textwidth}
+    \begin{enumerate}[a)]
+      \item $\log{7}$
+      \item $\log{1001}$
+      \item $\log{1024}$
+    \end{enumerate}
+  \end{minipage}
+  \begin{minipage}{0.49\textwidth}
+    \begin{enumerate}[a)]\addtocounter{enumi}{3}
+      \item $\log{0.101}$
+      \item $\log{10^{-23}}$
+      \item $\log{0.5}$
+    \end{enumerate}
+  \end{minipage}
+}
+
+\subsection{Rechenregeln}
+
+\subsection{Die Logarithmensätze}
+Es folgen vier Logarithmenregeln. Die erste ist hilfreich beim
+Eintippen in den Taschenrechner. Die letzte beschreibt, wie man
+Gleichungen nach einer im Exponenten stehenden Variablen auflöst. Damit werden Sie dann in der Lage sein, für unser Ausgangsproblem auf Seite 1 den exakten Wert von $t$ zu bestimmen.
+
+Die erste Regel besagt, dass jeder Logarithmus zu einer beliebigen Basis $b$ als Quotient von
+Logarithmen zu einer beliebigen Basis $n$ geschrieben werden kann.
+\begin{csatz}[Basiswechsel]{\label{satz:logtr}}\label{satz:logtr}
+\marginnote{
+\qrcode{
+https://www.youtube.com/watch?v=79ax8cwhggk}
+}
+  $$\log_b{x} = \frac{\log_n{x}}{\log_n{b}}$$
+\end{csatz}
+Um diesen Satz zu beweisen, brauchen wir eine der folgenden drei Rechenregeln,
+die leicht mit der Definition nachgewiesen werden können.\pagebreak
+
+\begin{csatz}[Rechenregeln für Logarithmen]{}
+Es
+\marginnote{
+\qrcode{
+https://www.youtube.com/watch?v=xzwY11unPRI}
+}
+gilt
+\begin{align}
+  \log_b{(u\cdot v)}&=\log_b{u} + \log_b{v}\\[1ex]
+  \log_b{\dfrac{u}{v}}&=\log_b{u} - \log_b{v}\\[1ex]
+  \log_b{u^n}&=n\cdot\log_b{u}
+\end{align}
+\end{csatz}
+
+\begin{proof}[Beweis]
+  Nach Definition; also Übung. Hinweis: Erinnere dich daran, dass ein Logarithmus die Inversfunktion einer Exponentialfunktion ist und daher die Gesetze ähnlich zu den Potenzgesetzen sein müssen.
+\end{proof}
+\begin{proof}[Beweis zu Satz \ref{satz:logtr}]
+  Es sei $\log_b{x} = y$, also
+  $b^y=x$. Diese Exponentialgleichung logarithmieren wir auf beiden Seiten
+  $$\log_n{b^y}=\log_n{x}.$$ Mit der dritten Logarithmenregel folgt dann
+  $y\cdot\log_n{b}=\log_n{x}\q \Leftrightarrow\q
+  y=\frac{\log_n{x}}{\log_n{b}}$
+  Daraus folgt unmittelbar die Behauptung.
+\end{proof}
+
+\subsection{Graphen von Logarithmenfunktionen}
+Sie haben ein
+paar Graphen anhand von Wertetabellen oder mit \geogebralink\  gezeichnet.
+
+\uebh{}{
+  Skizziere die Graphen der Funktionen $f(x)=\log_e(x)$ und
+  $g(x)=\log_{\frac{1}{e}}(x)$ in ein und dasselbe
+  Koordinatensystem. Was fällt auf?
+}
+
+\uebh{}{
+Skizziere die Graphen der Funktionen $f(x)=\ln x$ und $g(x)=e^x$ in ein und dasselbe Koordinatensystem. Was fällt auf? Erkläre das Ergebnis.
+}
+
+\uebh{}{
+Vereinfache
+$e^{\ln 2}$, $\ln(e^2)$, $e^{\ln(x)}$, $\ln(e^x)$?
+}
+
+\begin{csatz}[Eigenschaften der Logarithmusfunktion]{}
+  Graphen von Logarithmusfunktionen haben folgende Eigenschaften:
+  \begin{itemize}
+    \item Sie gehen alle durch den Punkt $\point{1}{0}$.
+    \item Die Graphen von $f(x)=\log_b{(x)}$ und
+    $g(x)=\log_{\frac{1}{b}}{(x)}$ sind achsialsymmetrisch bezüglich
+    der x-Achse.
+  \end{itemize}
+\end{csatz}
+
+\begin{proof}[Beweis]
+  Wir betrachten eine beliebige Logarithmusfunktion $f(x)=\log_b(x)$.
+  Also $f(1)=\log_b(1)$ genau dann, wenn $b^{f(1)}=1$, dh. $f(1)=0$ und
+  der erste Punkt ist bewiesen.
+
+Um den zweiten Punkt zu verifizieren betrachten wir:
+\begin{align*}
+g(x)&=\log_{\frac{1}{b}}(x)=\log_{b^{-1}}(x)=\frac{\log_b (x)}{\log_b (b^{-1})}\\
+&=\frac{\log_b (x)}{-\log_b (b)}=-\log_{b}(x)=-f(x).
+\end{align*}
+Also sind
+  die Graphen von $f(x)$ und $g(x)$
+  symmetrisch bezüglich der x-Achse.
+\end{proof}
+
+\uebh{}{
+  Gegeben sei die natürliche Exponentialfunktion
+  $$f(x)=\mathrm{e}^x$$
+  \begin{enumerate}[a)]
+    \item Zeichne den Graphen von $f$ und spiegle diesen an der
+    Winkelhalbierenden durch den 1. und 3. Quadranten. Überlege, dass durch die Spiegelung der Graph einer neuen Funktion $g$ entsteht.
+    \item Bestimme die Funktionswerte von $g$ an den Stellen
+    $\mathrm{e}$, $\mathrm{e}^2$, $\mathrm{e}^{-1}$ und $\sqrt{\mathrm{e}}$.
+    \item Gib die Funktion $g$ an.
+  \end{enumerate}
+}
+
+Schliesslich halten wir noch fest, was wir zu Beginn einfach in den Raum geworfen haben:
+
+\begin{csatz}[Log als Inversfunktion von Exp]{}
+  Jede Logarithmusfunktion ist die Inverse einer Exponentialfunktion
+  und vice-versa.
+\end{csatz}
+
+\begin{proof}[Beweis]
+  Wir bestimmen die Inversfunktion einer beliebigen Exponentialfunktion:
+  $$y=b^x\q \Leftrightarrow\q x=\log_b(y).$$ Variablen umbenennen
+  und die Inversfunktion mit $f^{-1}$ bezeichnen:
+  $f^{-1}(x)=\log_b(x).$ Die Umkehrung gilt ebenfalls, weil wir
+  ausschliesslich Identitäten und Äquivalenzen verwendet haben.
+\end{proof}
+
+\subsection{Weitere Anwendungen}
+  Logarithmen kann man benutzen, um Zahlen zu berechnen, welche
+  ausserhalb der Kapazität des TRs liegen.
+\begin{bsp}
+  Wir wollen $x=2^{4000}$ berechnen. Eingetippt in den TR erhalten wir
+  leider nur die obere Kapazitätsgrenze; der TR ist überfordert.
+
+  Wir helfen der Rechenmaschine etwas nach, indem wir sie instrumentalisieren:
+  $$\log(x)=\log(2^{4000})=4000\cdot\log(2)= 1204.1199 $$
+  Das bedeutet
+\begin{align*}
+x&=10^{1204.1199}=10^{1204+0.1199}\\
+&=10^{0.1199}\cdot10^{1204}=1.318\cdot10^{1204}
+\end{align*}
+\end{bsp}
+
+\uebh{}{
+  Berechne $$9^{(9^9)}.$$
+}
+
+\uebh{}{
+  Der \unit{pH}-Wert ist ein Mass für die H$_3$O$^+$-Konzentration einer Lösung. Es gilt
+  $$\unit{pH} = -\log{H}$$ wobei $H$ die Konzentration von H$_3$O$^+$
+   in \unitfrac{mol}{l} bezeichnet.
+   \begin{figure}
+\begin{center}
+  \includegraphics[width=0.618\textwidth]{pictures/phring}
+  \caption{PH-Ring}
+\end{center}
+\end{figure}  
+  \begin{enumerate}[a)]
+    \item Für Tomaten ist $H=\unitfrac[6.3\cdot10^{-5}]{mol}{l}$,
+    für Milch $H=\unitfrac[4\cdot10^{-7}]{mol}{l}$. Berechne
+    die zugehörigen \unit{pH}-Werte.
+    \item Welcher \unit{pH}-Wert hat eine Lösung mit
+    $H=\unitfrac[0]{mol}{l}$?
+  \end{enumerate}
+}
+
+\uebh{}{
+  Die Lautstärke $L$ eines Geräuschs von der Intensität $I$ ist
+  definiert durch $$L=\unit[10\cdot\log\left(\frac{I}{I_0}\right)]{dB}.$$
+  \unit{dB}
+  steht für Dezibel, nach dem amerikanischen Ingenieur \textsc{Graham Bell}
+  (1847--1922); dem Erfinder des Telefons. $I_0$ bedeutet die Intensität
+  eines Geräuschs, das vom menschlichen Ohr gerade noch wahrgenommen
+  werden kann.
+  \begin{enumerate}[a)]
+    \item Die Geräuschintensität normaler Unterhaltung ist etwa eine
+    Million mal so gross wie $I_0$. Welchem Dezibel-Wert entspricht
+    das?
+    \item Eine Intensitätszunahme von $10$ Dezibel empfindet das
+    menschliche Ohr als Verdoppelung der Lautstärke. Welcher
+    Intensitätszunahme in Prozent entspricht dies?
+    \item Ein Düsenflugzeug entwickelt beim Start eine Intensität
+    von $10^{13}I_0$. Dezibel-Werte von mehr als $\unit[90]{dB}$
+    gelten als gehörschädigend; ist es die angegebene Intensität?
+  \end{enumerate}
+}
+\begin{figure}
+\centering
+    \includegraphics[width=0.618\textwidth]{pictures/dbtabelle}
+    \caption{Schallpegel-Tabelle}
+ \end{figure}
+
+\uebh{}{
+Die Stärke von Erdbeben $R$ gibt man durch Werte der sogenannten
+    \emph{Richter-Skala} an. Diese ist definiert durch
+    $$R=\log\left(\frac{B}{B_0}\right),$$ wobei $B_0$ die Intensität
+    eines gerade noch wahrnehmbaren Bebens bezeichnet.
+
+  \begin{enumerate}[a)]
+    \item Das Beben von San Francisco im Jahr 1906 hatte eine
+    Intensität von $B=B_0\cdot10^{8.25}$. Welchem Wert auf der
+    Richter-Skala entspricht dies?
+    \item Welche Intensitätsänderung bedeutet eine Zunahme von $1$
+    auf der Richterskala?
+  \end{enumerate}  
+    \begin{figure}
+  \centering
+    \includegraphics[width=0.618\textwidth]{pictures/erdbebenbasel}\\
+    \caption{Aufzeichnung des Erdbebens von Basel vom 22.~Juni 2004}
+  \end{figure}
+  
+}
+
+\subsection{Gleichungen mit Variablen im Exponenten}
+Die Lösung unseres Ausgangsproblems, die
+Bestimmung von Variablen in Exponenten, soll an einem Beispiel
+vorgeführt werden.
+\begin{bsp}
+  Wir lösen die Gleichung $$6^{x-1}=10$$ nach $x$ auf. Dies können
+  wir auf zwei Arten tun.
+  \begin{enumerate}
+    \item Mit Logarithmieren auf beiden Seiten:
+    \begin{align}
+      \log{6^{x-1}}&=\log{10} \tag{Regel (3)}\\
+      (x-1)\cdot\log{6}&= 1 \tag{$\div\log{6}$}\\
+      x-1 &= \frac{1}{\log{6}} \tag{$+1$}\\
+      x &= \frac{1}{\log{6}} + 1 \approx 2.285 \notag
+    \end{align}
+    \item Mit der Definition:
+    \begin{align}
+      6^{x-1}=10\q \Leftrightarrow\q x-1 &= \log_6{10} \tag{Satz \ref{satz:logtr}}\\
+      x-1 &= \frac{\log{10}}{\log{6}} \tag{$+1$}\\
+      x &= \frac{1}{\log{6}} + 1 \notag
+    \end{align}
+  \end{enumerate}
+  Kontrolle: $$6^{2.285-1} \approx 10 \qq \checkmark$$
+\end{bsp}
+
+\uebh{}{
+  Löse nach $x$ auf: $$2000\cdot1.025^x = 3750$$
+}
+
+\uebh{}{
+  Stelle drei Gleichungen auf, bei denen die Variable im
+  Exponenten vorkommt. Löse diese und überprüfe deine Resultate durch
+  Einsetzen in die ursprüngliche Gleichung.
+}
+
+\uebh{}{
+Nach UNO-Angaben lebten 1988 auf der Erde 5113 Millionen Menschen; die jährliche Wachstumsrate betrug 1.7\%. Wann wird unter der Annahme, dass diese Zuwachsrate konstant bleibt, jedem Menschen nur noch ein Stehplatz von $\unit[\frac{1}{4}]{m^2}$ zur Verfügung stehen? (Die Landfläche beträgt 29\% der Erdoberfläche.)
+}
+
+\uebh{}{
+Der Landesindex der Konsumentenpreise betrug im September 1981 94.5 Punkte und im September 1987 109.7 Punkte.
+\begin{enumerate}[a)]
+\item Berechne den Landesindex im September 1989
+unter der Annahme von exponentiellem Wachstum.
+\item Wann wird der Landesindex 130 Punkte erreichen?
+\end{enumerate}
+}
+
+%Spannung]
+%Die Spannung $U$ (in Volt) einer 12-Volt-Batterie
+%beträgt während des Einschaltvorganges im Zeitpunkt $t$ (in Sekunden)
+$$U(t) = a(1 - b^t)$$
+%Man misst $U(0.1) = 10.22$.
+%\begin{enumerate}[a)]
+%\item Bestimme die Parameter $a$ und $b$.
+%\item Wie gross ist die Spannung nach $0.2$ Sekunden?
+%\item Wann beträgt die Spannung 6 Volt?
+%\end{enumerate}
+%}
+
+\uebh{}{
+Beim radioaktiven Zerfall wird meistens die sogenannte Halbwertszeit angegeben. Die Halbwertszeit ist die Zeit, in der die Hälfte der zu Beginn vorhandenen Atome zerfallen ist.
+%\begin{enumerate}[a)]
+%\item Berechne die Halbwertszeit für Strontium 89, für das die Zerfallsfunktion die Form
+%$$N(t)=N_0\cdot0.98636808^t$$
+%hat (t in Tagen).
+Für Uran 239 beträgt die Halbwertszeit $T_{\nicefrac{1}{2}}=23.5$
+Minuten. Stelle die Gleichung der Zerfallsfunktion auf, wenn zu Beginn $N_0$ Atome vorhanden sind.
+%\end{enumerate}
+}
+
+\uebh{}{
+In lebenden Organismen besteht Kohlenstoff aus stabilen Atomkernen sowie einem Anteil ($3\cdot10^{-8}\%$) aus radioaktiven Atomkernen C$_{14}$, die durch kosmische Strahlung entstehen. Sobald ein organischer Stoff stirbt, nimmt der C$_{14}$-Anteil mit einer Halbwertszeit von 5736 Jahren exponentiell ab.
+\begin{enumerate}[a)]
+\item Im Jahre 1960 stellte man in der Leinwand einer altägyptischen Königsmumie einen C$_{14}$-Anteil von $1.75\cdot10^{-8}\%$ fest. Datiere auf hundert Jahre genau.
+\item 1950 wurde in der Höhle von Lascaux (Frankreich) Holzkohlenreste mit einem C$_{14}$-Anteil von $0.435\cdot10^{-8}\%$ gefunden. Berechne das Alter dieser Holzkohle.
+\end{enumerate}
+}
+
+\uebh{}{
+In der Informationstheorie versteht man unter dem Informationsgehalt $H$ eines Ereignisses mit der Wahrscheinlichkeit $p$ den Logarithmus von $\frac{1}{p}$ zur Basis 2.
+$$H = \log_2\frac{1}{p}\q\text{(Einheit: 1 bit)}$$
+Welche Wahrscheinlichkeit gehört zum Informationsgehalt $0, 1,0.5,5, 10.2$ bit?
+
+Eine Münze wird viermal geworfen. Berechne den Informationsgehalt der Ereignisse
+\begin{enumerate}[a)]
+\item nie Kopf,
+\item genau einmal Kopf,
+\item genau zweimal Kopf,
+\item genau dreimal Kopf
+\item viermal Kopf.
+\end{enumerate}
+}
+
+\subsection{Die Euler'sche Zahl}
+Die geeignetste Basis für eine Exponentialfunktion
+$$f(x)=b^x$$
+ist die Zahl $\mathrm{e}$, eine Zahl, die in vielen Anwendungen vorkommt. Der Buchstabe $\mathrm{e}$ wurde zu Ehren des in Riehen geborenen Mathematikers \textsc{Leonhard Euler} (1707-1783) gewählt. Wie $\pi$ ist die Euler'sche Zahl irrational, und ihre Dezimaldarstellung beginnt mit
+$$\mathrm{e}  =  2.71828182845904523536028747135266\dots$$
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.618\textwidth]{pictures/euler}
+\end{center}
+\caption{10-Franken Note alter Serie: Leonard Euler}
+\end{figure}
+
+Was es mit der Zahl $e$ auf sich hat, können wir an dieser Stelle nur zu einem kleinen Teil erfahren, denn ihre Bedeutung wird erst nach und nach mit fortschreitendem Stoff klarer werden. Eine Möglichkeit, die Zahl $\mathrm{e}$ kurz und bündig zu charakterisieren, ist diese:
+\begin{quote}
+$\mathrm{e}$ ist die einzige positive Zahl, für die
+$$\mathrm{e}^x\geq1+x\q\forall x\in\mR$$
+\end{quote}
+
+\uebh{}{
+Zeichne mit dem TR $\mathrm{e}^x$ und $x+1$.
+}
+
+\uebh{}{
+Zeichne mit dem TR $\mathrm{e}^x$, $2^x$ und $3^x$ und betrachte einen kleinen Ausschnitt um $\point{0}{1}$.
+}
+
+Eine weitere schöne Eigenschaft ist folgende.
+\begin{bem}
+Alle Exponentialfunktionen $b^x$ schneiden die $y$-Achse im Punkt $\point{0}{1}$. Sucht man für eine Exponentialfunktion $b^x$ eine Basis $b$ so, dass die Steigung des Graphen beim Schnittpunkt mit der $y$-Achse exakt $45^\circ$, also $1$, beträgt, dann folgt $b=\mathrm{e}$.
+\end{bem}
+
+Obwohl die bisherige Argumentation von einem strengen mathematischen Gesichtspunkt aus betrachtet  zu schlampig ist, geben wir uns mit ihr zufrieden. Auch ein genauerer Beweis liefert dasselbe Resultat.
+
+Um die Basis Euler'sche Zahl zu berechnen, gehen wir folgendermassen vor: Wir wählen ein positives $x$ und betrachten jene Basis $b$, für die
+$$b^x=1+x$$
+oder, nach $b$ aufgelöst
+$$b=(1+x)^{\frac{1}{x}}$$
+ist. Dies ist genau jene Basis, für die der Graph von $b^x$ die Gerade $1+x$ in einem Punkt mit der (positiven) x-Koordinate $x$ schneidet. Wenn wir nun $x$ immer kleiner machen ($x\to0$), wird $b$ immer näher an $\mathrm{e}$ heran rücken.
+Wir berechnen sinngemäss
+$$\left(1+\frac{1}{n}\right)^n$$
+für grosse natürliche Zahlen $n$, also $n\to\infty$.
+
+\begin{table}
+\begin{center}
+\scalebox{1.1}{
+\begin{tabular}{|c|c|}
+\hline
+\rowcolor{lightyellow}\spaltenheight    $n$ & $\left(1+\frac{1}{n}\right)^n$\spaltensep\hline\hline
+\rowcolor{Gray}\spaltenheight 1 & 2\spaltensep\hline
+\rowcolor{lightyellow}\spaltenheight    2 & 2.25\spaltensep\hline
+\rowcolor{Gray}\spaltenheight 10 & 2.59\dots\spaltensep\hline
+\rowcolor{lightyellow}\spaltenheight    100 & 2.70\dots\spaltensep\hline
+\rowcolor{Gray}\spaltenheight 1000 & 2.716\dots\spaltensep\hline
+\rowcolor{lightyellow}\spaltenheight    100000 & 2.71826\dots\spaltensep\hline
+\rowcolor{Gray}\spaltenheight 100000000 & 2.71828\dots\spaltensep\hline
+\end{tabular}
+}
+\end{center}
+\caption{Approximation an $\mathrm{e}$}
+\end{table}
+
+\begin{cdef}[Euler'sche Zahl]{}
+Es
+\marginnote{
+\qrcode{
+https://www.youtube.com/watch?v=0NK4BMpqd2Q}
+}
+ist denkbar, als Definition für die Euler'sche Zahl
+$$\mathrm{e}:=\lim_{n\to\infty}\left(1+\frac{1}{n}\right)^n=2.718281828\dots$$
+zu verwenden.
+\end{cdef}
+
+\begin{cdef}[Natürliche Exponentialfunktion und logarithmus naturalis]{}
+Die entsprechende Exponentialfunktion
+$$\mathrm{exp}(x)=\mathrm{e}^x$$
+bezeichnet man als die \emph{natürliche Exponentialfunktion}.
+
+Die entsprechende Logarithmusfunktion, also die Umkehrfunktion von $x\mapsto \mathrm{e}^x$, wird \emph{natürliche Logarithmusfunktion} genannt:
+$$\mathrm{exp}^{-1}(x)=\log_\mathrm{e}(x)=:\ln(x)$$
+\end{cdef}
+
+\begin{bem}
+Der Taschenrechner stellt mit speziellen Tasten sowohl die Funktionswerte $\mathrm{e}^x$ als auch die Funktionswerte $\ln(x)$ zur Verfügung.
+\end{bem}
+
+\begin{bem}
+Fortgeschrittene Rechner verwenden selbstverständlich als Basis einer Exponentialfunktion $\mathrm{e}$ und bezeichnen den $\ln$ oft als $\log$.
+
+Später werden wir in erster Linie nur noch diese beiden Funktionen verwenden, da sich alle anderen Exponential- und Logarithmusfunktionen auf diese beiden Funktionen zurückführen lassen. Diese schöne Tatsache wollen wir mit den beiden nächsten Übungen untermauern.
+\end{bem}
+
+\uebh{}{
+Stelle die Exponentialfunktion $f(x)=3.5\cdot2^x$ als natürliche Exponentialfunktion der Form
+$$f(x)=a\cdot \mathrm{e}^{cx}$$
+dar.
+}
+
+%\uebh{}{[Es gibt nur eine Basis\dots]
+%Überlege dir, dass jede Exponentialfunktion $f(t)=a\cdot b^t$
+%sich in die Form
+%$$f(t)=d\cdot \mathrm{e}^{ct}$$
+%umwandeln lässt.
+
+%Finde eine Formel für die Parameter $c$ und $d$ bei der natürlichen Exponentialfunktion, wenn die Parameter $a$ und $b$ gegeben sind.
+%}
+
+\uebh{}{
+Für die Zeit während der Ausbreitung einer Epidemie kann man die Anzahl der nach $t$ Tagen infizierten Individuen durch die folgende Modellfunktion angeben:
+$$N(t)=\frac{M}{1+c\mathrm{e}^{-at}}$$
+Für eine bestimmte Epidemie seien $M= 1000$, $c=999$
+und $a=0.4$.
+\begin{enumerate}[a)]
+\item Wie viele Individuen sind nach 0, 10, 20, 30 Tagen infiziert?
+\item Nach wie vielen Tagen sind 200, 500, 950 Individuen infiziert?
+\item Zeichne den Graphen der Funktion.
+\end{enumerate}
+}
+
+%\uebh{}{[Forellen]
+%In einer Forellenzuchtanstalt wurde bei gleichartigen Forellen die jeweils nach $t$ Monaten erreichte durchschnittliche Länge $\unit[L]{cm}$ gemessen. Aus den Messungen ergab sich das \glqq Wachstumsgesetz\grqq:
+%$$L(t) =25(1- \mathrm{e}^{-0.25t})$$
+%\begin{enumerate}[a)]
+%\item Berechne die Länge nach 0, 4, 8 Monaten.
+%\item Wann waren die Forellen etwa $\unit[10,20]{cm}$ lang?
+%Wann werden sie $\unit[25]{cm}$ lang sein?
+%\end{enumerate}
+%}
+
+\cleardoublepage
+
+\appendix
+
+\section{Relationen}
+\begin{wrapfigure}{r}{0.382\textwidth}
+  \begin{center}
+    \includegraphics[width=0.382\textwidth]{pictures/relationen}
+  \end{center}
+%\caption{You Know my Name}
+\end{wrapfigure}
+Personen oder auch Dinge stehen oft in Beziehung. Es gibt verwandtschaftliche oder freundschaftliche Beziehungen. Es gibt Beziehungen von Menschen zu ihrer Heimat, von Eigent\"umern zu ihrem Besitztum, oder auch zwischen Konjunktur und Arbeitslosigkeit, zwischen Qualit\"at und Preis etc.
+
+Manche Beziehungen lassen sich graphisch darstellen und mathematisch beschreiben. Im Folgenden werden Menge und Beziehungen zwischen ihren Elementen betrachtet.
+\begin{bsp}
+Es gibt eine Beziehung, in der Mathematik sagt man \emph{Relation}, zwischen den Mitgliedern dieser Klasse und den m\"oglichen Freif\"achern, welche Angeboten werden.
+\end{bsp}
+\begin{bem}
+Unter einer Relation $R$ zwischen den Elementen der Mengen $\mA$ und $\mB$ versteht man eine beliebige Beziehung (Zuordnung), wodurch jedem Element $x\in\mA$ \emph{kein, genau ein} oder \emph{mehr als ein} Element $y\in\mB$ zugeordnet wird. Man schreibt
+$$R:\mA\longrightarrow\mB$$
+\end{bem}
+\begin{bsp}
+Im obigen Beispiel steht $R$ f\"ur \glqq zu einem Klassenmitglied das Freifach zuordnen\grqq, $\mA$ f\"ur die Menge der Sch\"ulerinnen und Sch\"uler der Klasse und $\mB$ f\"ur die Menge der angebotenen Freif\"acher.
+\end{bsp}
+\begin{bem}
+Offensichtlich kann jede Relation als Menge von geordneten Paaren $\point{x}{y}$ notiert werden. Um eine Relation via Mengenlehre zu definieren brauchen wir noch folgende
+\begin{cdef}[Produktmenge]{}
+Die \emph{Produktmenge} zweier Mengen $\mA$ und $\mB$ ist die Menge aller geordneten Paare $\point{a}{b}$, wobei $a\in\mA$ und $b\in\mB$ ist. Man schreibt
+$$\mA\times\mB=\setm{\point{a}{b}}{a\in\mA\text{ und }b\in\mB}.$$
+\end{cdef}
+Damit l\"asst sich der Relationsbegriff auch rein mengentheoretisch definieren. Wir betrachten zuerst noch ein Beispiel zur Produktmenge.
+\begin{bsp}
+$\mR\times\mR$, kurz $\mR^2$, ist die Menge aller Punkte einer Ebene. Die Paare $\point{x}{y}$ k\"onnen als Punkte in einem rechtwinkligen Koordinatensystem veranschaulicht werden.
+\end{bsp}
+\uebh{}{
+Beschreibe die Menge $\mR^3$. Welche Form/Schreibweise hat ein Punkt in dieser Menge?
+}
+\end{bem}
+\begin{cdef}[Relatio]{}
+Eine \emph{Relation} $R$
+\marginnote{
+\qrcode{
+https://www.youtube.com/watch?v=GBhMplA6--4}
+}
+zwischen den Elementen der Mengen $\mA$ und $\mB$ ist eine Teilmenge der Produktmenge $\mA\times\mB$.
+\end{cdef}
+\begin{bem}
+Die Darstellung der Relationen in einem rechtwinkligen Koordinatensystem nennt man den Graphen der Relation.
+\end{bem}
+
+F\"ur die folgenden \"Ubungen erinnern wir uns an die Definition des Betrags:
+\begin{cdef}[Betrag]{}
+F\"ur jede reelle Zahl $x$ ist der \emph{Betrag} von $x$ definiert durch
+$$\abs{x}\;=
+\begin{cases}
+\phantom{-}x\q\text{falls }x\geq0\\
+-x\q\text{falls }x<0
+\end{cases}$$
+\end{cdef}
+
+\uebh{}{
+Beachte, dass $x$ und $y$ als reelle Zahlen zu betrachten sind, falls keine andere Vereinbarung vorliegt. Zeichne den Graphen der Relation
+\begin{enumerate}[a)]
+\item $R=\setm{\point{x}{y}}{y\leq x}$
+\item $R=\setm{\point{x}{y}}{x<2\text{ und }y<4, x,y\in\mZ}$
+\item $R=\setm{\point{x}{y}}{\abs{x}\leq5}$
+%\item $R=\setm{\point{x}{y}}{\abs{y}>3}$
+%\item $R=\setm{\point{x}{y}}{\abs{x}+\abs{y}\leq4}$
+\end{enumerate}
+}
+
+\uebh{}{
+Wie lautet die Relation, die durch den folgenden Graphen veranschaulicht wird?
+\begin{center}
+\includegraphics[width=0.618\textwidth]{pictures/relation}
+\end{center}
+}
+
+\section{Abbildungen}
+\begin{wrapfigure}{r}{0.382\textwidth}
+  \begin{center}
+    \includegraphics[width=0.382\textwidth]{pictures/gewuerze}
+  \end{center}
+%\caption{You Know my Name}
+\end{wrapfigure}
+In manchen L\"andern ist der Preis einer Ware oft nicht eindeutig festgelegt. Dem einen macht das Handeln zwar Spass, dem andern w\"are es aber lieber, wenn die Relation zwischen Ware und Preis einer eindeutigen Zuordnung entspricht. Ist eine Relation n\"amlich nicht eindeutig festgelegt, so k\"onnen Missverst\"andnisse auftreten.
+
+Verlagsh\"auser und Buchh\"andler haben die ISBN (Internationale Standardbuchnummer) eingef\"uhrt, um Missverst\"andnisse auszuschalten. Durch die ISBN ist jedem Buch $x$ genau eine Buchnummer $y$ zugeordnet. In der Mathematik spielen die Relationen, die sich auf die gesamte Ausgangsmenge beziehen und eine eindeutige Zuordnung schaffen, eine besonders wichtige Rolle.
+
+\begin{cdef}[Abbildung]{}
+Eine \emph{Abbildung} $f$ von einer Ausgangsmenge $\mA$ in eine Zielmenge $\mB$ ist eine Relation, die jedem Element $x\in\mA$ \emph{genau ein} Element $y\in\mB$ zuordnet. Man schreibt
+$$f:\mA\longrightarrow\mB$$
+oder f\"ur Elemente
+$$y=f(x).$$
+\end{cdef}
+Man nennt $y$ das \emph{Bild} von $x$, $x$ das \emph{Urbild} von $y$.
+\begin{bem}
+Jede Abbildung ist eine Relation, aber nicht jede Relation eine Abbildung.
+\end{bem}
+%\uebh{}{[geometrische Abbildungen]
+%Nenne vier geometrische Abbildungen und \"uber\-le\-ge dir, warum der Name Abbildung gerechtfertigt ist.
+%}
+
+\section{Rechnerische L\"osung von quadratischen Gleichungen}
+\subsection{Die reinquadratische Gleichung}
+\begin{cdef}[Reinquadratische Gleichung]{}
+  Eine \emph{reinquadratische Gleichung} ist eine Gleichung der Form
+  $$x^2-c=0$$ wobei $c\in\D{R}$.
+\end{cdef}
+\begin{csatz}[Lösung der reinquadratischen Gleichung]{}
+  Die reinquadratische Gleichung hat f\"ur $c<0$ keine L\"osung, f\"ur $c=0$
+  die L\"osung $x=0$ und f\"ur $c>0$ die L\"osungen
+  $$x_1=\sqrt{c}\quad\text{und}\quad x_2=-\sqrt{c}$$
+\end{csatz}
+\begin{bew}
+  Einsetz\"ubung.
+\end{bew}
+
+\subsection{Die allgemeine quadratische Gleichung}
+\begin{cdef}[Quadratische Gleichung]{}
+  Eine
+  \marginnote{
+\qrcode{
+https://www.youtube.com/watch?v=MWVyS0jIL98}
+}
+  Gleichung heisst \emph{quadratisch}, wenn sie sich in der
+  Form
+  $$ax^2+bx+c=0$$ schreiben l\"asst, wobei $a,b,c\in\D{R}$ und
+  $a\neq0$ ist.
+\end{cdef}
+\begin{csatz}[Lösungsformel der quadratischen Gleichung]{}
+  Die
+    \marginnote{
+\qrcode{
+https://www.youtube.com/watch?v=HdHpXhDCBL0}
+}
+  quadratische Gleichung $ax^2+bx+c=0$ hat die L\"osungen
+  $$x_{1,2}=\frac{-b\pm\sqrt{b^2-4ac}}{2a}$$ Die Anzahl der L\"osungen
+  h\"angt vom Term unter der Wurzel ab.
+\end{csatz}
+\begin{bew}
+  Quadratische Erg\"anzung.
+\end{bew}
+
+\begin{cdef}[Diskriminante]{}
+  Der Term unter der Wurzel, $D=b^2-4ac$, heisst
+  \emph{Diskriminante}.
+\end{cdef}
+
+\begin{csatz}[Anzahl Lösungen einer quadratischen Gleichung]{}
+  Die quadratische Gleichung $ax^2+bx+c=0$ hat
+  \begin{itemize}
+    \item zwei L\"osungen, falls $b^2-4ac>0$
+    \item eine L\"osung, falls $b^2-4ac=0$
+    \item keine L\"osung, falls $b^2-4ac<0$
+  \end{itemize}
+\end{csatz}
+\begin{bew}
+  Nach Definition der Wurzel.
+\end{bew}
+
+\uebh{}{
+  Gib je ein Beispiel einer reinquadratischen Gleichung die
+  keine L\"osung bzw. zwei L\"osungen hat.
+}
+
+\uebh{}{
+  Bringe die Gleichung $$7x^2=-(33x+36)$$ in die Form
+  $ax^2+bx+c=0$, und bestimme die Koeffizienten $a$, $b$ und
+  $c$.
+}
+
+\uebh{}{
+  Bestimme die L\"osungsmenge der Gleichung
+  $$7x^2+33x+36=0$$
+}
+
+%\uebh{}{
+%  Bestimme die L\"osungsmenge der Gleichung
+%  $$80x^2-166x+51=0$$
+%}
+
+\uebh{}{
+  Bestimme die L\"osungsmenge der Gleichung
+  $$x^2-2x+1=0$$
+}
+
+\uebh{}{
+  Bestimme die L\"osungsmenge der Gleichung
+  $$3x^2-2x+1=0$$
+}
+
+\uebh{}{
+  Bestimme die L\"osungsmenge der Gleichung
+  $$x^2+2ex-3e^2=0$$
+}
+
+\uebh{}{
+  Bestimme die L\"osungsmenge der Gleichung
+  $$x^2-4x+3+2a-a^2=0$$
+}
+
+\subsection{Beziehungen zwischen Koeffizienten und L\"osungen einer
+quadratischen Gleichung}
+\begin{csatz}[von Viëta]{}
+  Sind $x_1$ und $x_2$ L\"osungen der Gleichung
+  $x^2+px+q=0$, so gilt:
+  $$x_1+x_2=-p\quad\text{und}\quad x_1\cdot x_2=q$$
+\end{csatz}
+
+\begin{bew}
+  \"Ubung
+\end{bew}
+
+\begin{csatz}[Linearfaktor-Zerlegung]{}
+  Sind $x_1$ und $x_2$ die L\"osungen der Gleichung $x^2+px+q=0$ so
+  l\"asst sich diese stets in Linearfaktoren zerlegen:
+  $$(x-x_1)(x-x_2)=0$$
+\end{csatz}
+
+\begin{bem}
+  Dieser Satz eignet sich zum Kreieren von quadratischen
+  Gleichungen mit vorgegebener L\"osung und zum L\"osen von
+  quadratischen Gleichungen mit ganzzahligen L\"osungen.
+\end{bem}
+
+\uebh{}{
+  L\"ose mit Zerlegung in Linearfaktoren:\\[2ex]
+  \begin{minipage}{0.49\textwidth}
+    \begin{enumerate}[a)]
+      \item $x^2-8x+15=0$
+      \item $x^2+9x+18=0$\\[1ex]
+    \end{enumerate}
+  \end{minipage}
+  \begin{minipage}{0.49\textwidth}
+    \begin{enumerate}[a)]\addtocounter{enumi}{2}
+      \item $18x^2-9x+1=0$
+      \item $x^2-(a+b)x+ab=0$\\[1ex]
+    \end{enumerate}
+  \end{minipage}
+}
+
+\uebh{}{
+  Gib eine quadratische Gleichung an, die folgende L\"osung hat:\\[2ex]
+  \begin{minipage}{0.49\textwidth}
+    \begin{enumerate}[a)]
+      \item $x_1=2$ und $x_2=3$.
+    \end{enumerate}
+  \end{minipage}
+  \begin{minipage}{0.49\textwidth}
+    \begin{enumerate}[a)]\addtocounter{enumi}{1}
+      \item $x_1=\frac{1}{2}$ und $x_2=\pi$.
+    \end{enumerate}
+  \end{minipage}
+}
+
+\section{Biquadratische Gleichungen}
+
+\begin{cdef}[Biquadratische Gleichung]{}
+Gleichungen, in denen die Variable nur in der zweiten und vierten Potenz vorkommt, nennt man \emph{biquadratisch}.  
+\end{cdef}
+
+\begin{bsp}
+Die Gleichung
+$$2x^4-3x^2-20=0$$
+ist biquadratisch.
+\end{bsp}
+Solche Gleichungen sind wegen $x^4=(x^2)^2$ mit den Methoden zur L\"osung von quadratischen Gleichungen l\"osbar. Man reduziert durch eine Substitution die biquadratische Gleichung auf eine quadratische und l\"ost diese. Danach bleiben noch quadratische Gleichungen \"ubrig, die einfach gel\"ost werden k\"onnen.
+
+Wir \emph{substituieren} in der Gleichung aus dem Beispiel die biquadratische Variable, d.h. wir setzen
+$$x^2=z$$
+und erhalten
+$$2z^2-3z-20=0.$$
+Nun k\"onnen wir einfach nach $z$ l\"osen, was
+$$z_1=-2.5\q\text{und}\q z_2=4$$
+liefert. Da $x^2=z$ haben wir noch die L\"osungen von
+$$-2.5=x^2\q\text{und}\q 4=x^2$$
+zu bestimmen. Die erste Gleichung hat keine L\"osung in $\mR$ und die zweite liefert
+$$x_1=2\q\text{und}\q x_2=-2.$$
+Nat\"urlich kann man das Verfahren der Substitution auch auf h\"oher gradige Gleichungen anwenden.
+
+\uebh{}{
+Wie viele L\"osungen kann eine biquadratische Gleichung haben?
+}
+
+\uebh{}{
+Gib je eine biquadratische Gleichung mit keiner, einer, zwei, drei und eine mit vier L\"osungen.
+}
+
+\uebh{}{
+Bestimme alle L\"osungen der Gleichung
+$$x^4-13x^2=-36.$$
+}
+
+\uebh{}{
+Bestimme alle L\"osungen der Gleichung
+$$(x^2+4)^2-25(x^2+4)+100=0.$$
+}
+
+\section{L\"osungsstrategien für Gleichungen}
+
+Abschliessend
+    \marginnote{
+\qrcode{
+https://www.youtube.com/watch?v=yci4Bc5EKbY}
+}
+zu den quadratischen Funktionen möchte ich bemerken, dass man nun die gängigen Mittel zum Lösen von Gleichungen der Mittelschulmathematik kennt. Nebst linearen Gleichungen trifft man auch auf solche, bei denen die Variable im Nenner auftaucht, auf Wurzelgleichungen (die auf lineare oder quadratische zurückgeführt werden können) oder eben auf quadratische bzw.  Gleichungen. Das heisst, es ist nützlich, wenn man eine Art Schema zur Analyse das vorliegenden Gleichungstyps parat hat. Damit kann man nach Analyse die passende Lösungsstrategie wählen.
+
+\begin{landscape}
+\begin{figure}
+\begin{center}
+
+% Define block styles
+%\tikzstyle{block} = [rectangle, draw, fill=blue!20, text width=5em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{block} = [rectangle, draw, fill=blue!20!red!10!, node distance=15ex, text centered, %rounded corners,
+text width=25ex, minimum height=6ex
+]
+\tikzstyle{block2} = [rectangle, draw, fill=blue!10!green!40, node distance=15ex, text centered, rounded corners, minimum height=4ex]
+
+\scalebox{0.9}{
+\begin{tikzpicture}[level distance=3cm, level 1/.style={sibling distance=4cm}, level 2/.style={sibling distance=2.6cm}, level 3/.style={sibling distance=2.7cm}, every node/.style={draw, rectangle, minimum width=1cm}]
+\node [block] (glstart) {Gleichung}
+child {node {linear}
+    child {node [block2] {Standardlösung}
+    }
+}
+child {node {quadratisch}
+    child {node [block2] {rein}}
+    child {node {mit $x$}
+        child {node [block2] {faktorisieren}}
+        child {node [block2]{Lösungsformel}}
+    }
+}
+child {node {unter Wurzel}
+    child {node (root) {quadrieren}}
+}
+child {node {im Nenner}
+    child {node (nenner) {mit Variable multiplizieren}}
+};
+\draw[->] (root) -- ++(1.4,0) |- (glstart);
+\draw[->] (nenner) -- ++(2.7,0) |- (glstart);
+\end{tikzpicture}
+}
+\end{center}
+\caption{Vorgehen beim Lösen von Gleichungen}
+\end{figure}
+\end{landscape}
+
+\section{Funktionsverwandtschaften}
+
+\subsection{Einleitung}
+  In diesem Abschnitt wollen wir uns Funktionen anschauen, welche insofern miteinander verwandt sind, als dass deren Graphen durch eine Translation, eine Streckung oder eine Drehung ineinander übergeführt werden können. Es geht darum, allgemeine Aussagen über die Ähnlichkeit ihrer Funktionsgleichungen machen zu können, wenn ihre Graphen kongruent sind; und vice versa.
+%Eine Anwendung ist:
+%\uebh{}{
+%  Die Osterhasen stehen bald wieder in den Regalen; lecker! Für deren Produktion hat ein Betrieb Fixkosten von $\unit[10'000]{CHF}$ und Kosten pro Hase von $\unit[0.50]{CHF}$. Stelle die Kostenfunktion $k(x)$ auf, welche die Produktionskosten $k$ in Abhängigkeit der Anzahl produzierten Osterhasen $x$ angibt. Wähle eine geeignete Skala für Ihr Koordinatensystem und zeichne den Graphen.\\
+%Aufgrund unvorhergesehener Probleme bei der Produktion steigen die Fixkosten um $\unit[25]{\%}$. Bestimme die angepasste Kostenfunktion $k_a(x)$ und zeichne deren Graphen.
+
+\uebh{}{
+Zeichne die Graphen von $f(x)=x^2$, $g(x)=(x-2)^2$ und $h(x)=(x+3)^2$ in ein und dasselbe Koordinatensystem.
+}
+\uebh{}{
+Zeichne die Graphen von $f(x)=\log(x)$, $g(x)=\log(x+1)$ und $h(x)=1+\log(x)$ in ein und das selbe Koordinatensystem.
+}
+\uebh{}{
+Zeichne die Graphen von $f(x)=x^2$, $g(x)=(x+1)^2-2$ und $h(x)=(x-2)^2+1$ in ein und das selbe Koordinatensystem.
+}
+\uebh{}{
+Zeichne die Graphen von $f(x)=2^x$, $g(x)=2^{x-1}$ und $h(x)=\frac{1}{2}2^x$ in ein und das selbe Koordinatensystem.
+}
+
+\subsection{Untersuchung der Verwandtschaften}
+  \begin{bsp}
+  Wir betrachten den Graphen einer beliebigen Funktion $y=f(x)$. Wie sieht der Graph der Funktion $g(x)$ aus, der aus dem Graphen von $f$ entsteht, indem man letzteren um $1$ in $y$-Richtung verschiebt? Wie lautet die Funktionsgleichung von $g$?\\[-1ex]
+
+\begin{center}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.5cm,y=0.5cm]
+\draw[->,color=black] (-2.52,0) -- (11.1,0);
+\foreach \x in {-2,-1,1,2,3,4,5,6,7,8,9,10}
+\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt);
+\draw[color=black] (10.76,0.08) node [anchor=south west] { x};
+\draw[->,color=black] (0,-3.1) -- (0,4.66);
+\foreach \y in {-3,-2,-1,1,2,3,4}
+\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt);
+\draw[color=black] (0.1,4.26) node [anchor=west] { y};
+\clip(-2.52,-3.1) rectangle (11.1,4.66);
+\draw[line width=2pt, smooth,samples=100,domain=-2.0:1.0] plot(\x,{0});
+\draw[line width=2pt, smooth,samples=100,domain=1.0:3.0] plot(\x,{\x-1});
+\draw[line width=2pt, smooth,samples=100,domain=3.0:7.0] plot(\x,{0-(0.5)*\x+3.5});
+\draw[line width=2pt, smooth,samples=100,domain=7.0:10.0] plot(\x,{0});
+\draw (1.3,1.9) node[anchor=north west] {$f$};
+\end{tikzpicture}
+\end{center}
+\end{bsp}
+
+\subsubsection{Verschiebung in y-Richtung}
+Wir verschieben den Graphen von $f$ um $1$ in $y$-Richtung und erhalten folgendes Bild:\\
+
+\definecolor{wwqqqq}{rgb}{0.4,0,0}
+\begin{center}
+\scalebox{0.8}{
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.5cm,y=0.5cm]
+\draw[->,color=black] (-2.52,0) -- (11.1,0);
+\foreach \x in {-2,-1,1,2,3,4,5,6,7,8,9,10,11}
+\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt);
+\draw[color=black] (10.76,0.08) node [anchor=south west] { x};
+\draw[->,color=black] (0,-3.1) -- (0,4.66);
+\foreach \y in {-3,-2,-1,1,2,3,4}
+\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt);
+\draw[color=black] (0.1,4.26) node [anchor=west] { y};
+\clip(-2.52,-3.1) rectangle (11.1,4.66);
+\draw[line width=2pt, smooth,samples=100,domain=-2.0:1.0] plot(\x,{0});
+\draw[line width=2pt, smooth,samples=100,domain=1.0:3.0] plot(\x,{\x-1});
+\draw[line width=2pt, smooth,samples=100,domain=3.0:7.0] plot(\x,{0-(0.5)*\x+3.5});
+\draw[line width=2pt, smooth,samples=100,domain=7.0:10.0] plot(\x,{0});
+\draw (1.3,1.7) node[anchor=north west] {$f$};
+\draw[line width=1.6pt,dash pattern=on 3pt off 3pt,color=wwqqqq, smooth,samples=100,domain=-2.0:1.0] plot(\x,{1});
+\draw[line width=1.6pt,dash pattern=on 3pt off 3pt,color=wwqqqq, smooth,samples=100,domain=1.0:3.0] plot(\x,{\x});
+\draw[line width=1.6pt,dash pattern=on 3pt off 3pt,color=wwqqqq, smooth,samples=100,domain=3.0:7.0] plot(\x,{0-(0.5)*\x+4.5});
+\draw[line width=1.6pt,dash pattern=on 3pt off 3pt,color=wwqqqq, smooth,samples=100,domain=7.0:10.0] plot(\x,{1});
+\draw (1.2,2.6) node[anchor=north west] {$g$};
+\end{tikzpicture}
+}
+\end{center}
+
+Wegen der Verschiebung um $1$ in $y$-Richtung ist jeder Wert von $g(x)$ um $1$ grösser als der entsprechende Wert von $f(x)$. Deshalb ist $g(x)=f(x)+1$.
+
+Allgemein kann man also sagen, dass der Graph von $f(x)+a$ aus dem Graphen von $f(x)$ durch eine Verschiebung parallel zur $y$-Achse um den Wert $a$ hervorgeht.
+
+\subsubsection{Verschiebung in x-Richtung}
+Verschiebe den Graphen von $f$ um $1$ in $x$-Richtung und zeichne ihn. Wie lautet die Funktionsgleichung $g(x)$ des neuen Graphen? Formuliere eine Verschiebung in $x$-Richtung um den Wert $a$ allgemein.\\[2ex]
+
+\begin{center}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.5cm,y=0.5cm]
+\draw[->,color=black] (-2.52,0) -- (11.1,0);
+\foreach \x in {-2,-1,1,2,3,4,5,6,7,8,9,10}
+\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt);
+\draw[color=black] (10.76,0.08) node [anchor=south west] { x};
+\draw[->,color=black] (0,-3.1) -- (0,4.66);
+\foreach \y in {-3,-2,-1,1,2,3,4}
+\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt);
+\draw[color=black] (0.1,4.26) node [anchor=west] { y};
+\clip(-2.52,-3.1) rectangle (11.1,4.66);
+\draw[line width=2pt, smooth,samples=100,domain=-2.0:1.0] plot(\x,{0});
+\draw[line width=2pt, smooth,samples=100,domain=1.0:3.0] plot(\x,{\x-1});
+\draw[line width=2pt, smooth,samples=100,domain=3.0:7.0] plot(\x,{0-(0.5)*\x+3.5});
+\draw[line width=2pt, smooth,samples=100,domain=7.0:10.0] plot(\x,{0});
+\draw (1.3,1.9) node[anchor=north west] {$f$};
+\end{tikzpicture}
+\end{center}
+  
+\subsubsection{Einschub}
+ Für das Folgende ist es praktisch, den Begriff der affinen Abbildung einzuführen.
+ \begin{cdef}[Affinität]{}
+ Eine Abbildung (Funktion/Translation) heisst \emph{affin}, wenn die Verbindungsgeraden Ausgangspunkt $P$ -- Bildpunkt $P'$ alle parallel sind. Die Richtung dieser Parallelen heisst \emph{Affinitätsrichtung}.
+ \end{cdef}
+ \begin{csatz}[Linearität der Affinität]{}
+ Der Abstand eines Bildpunktes von einer festen Geraden (der sogenannten \emph{Affinitätsachse}) beträgt das $k$-fache des Abstandes des Ausgangspunktes von dieser Geraden, wobei $k\in\D{R}$. $k$ heisst \emph{Affinitätsfaktor}.
+ \end{csatz}
+ \begin{bsp}
+ Betrachte den Graphen der Funktion $f(x)=x^2$ auf deinem TR. Anschliessend lässt du zusätzlich den Graphen von $g(x)=\frac{1}{2}x^2$ von deinem TR zeichnen. Die Translation, welche den Graphen von $f$ in $g$ überführt ist eine affine Abbildung mit Affinitätsfaktor $k=\frac{1}{2}$ und hat als Affinitätsachse die $x$-Achse. Die Affinitätsrichtung ist parallel zur $y$-Achse.
+ \end{bsp}
+  
+\subsubsection{Streckung in y-Richtung}
+Bilde den Graphen von $f$ affin in $y$-Richtung ab, wobei du als Affinitätsachse die $x$-Achse wählst und $k=2$. Wie lautet die Funktionsgleichung $g(x)$?\\[3ex]
+
+\begin{center}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.5cm,y=0.5cm]
+\draw[->,color=black] (-2.52,0) -- (11.1,0);
+\foreach \x in {-2,-1,1,2,3,4,5,6,7,8,9,10}
+\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt);
+\draw[color=black] (10.76,0.08) node [anchor=south west] { x};
+\draw[->,color=black] (0,-3.1) -- (0,4.66);
+\foreach \y in {-3,-2,-1,1,2,3,4}
+\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt);
+\draw[color=black] (0.1,4.26) node [anchor=west] { y};
+\clip(-2.52,-3.1) rectangle (11.1,4.66);
+\draw[line width=2pt, smooth,samples=100,domain=-2.0:1.0] plot(\x,{0});
+\draw[line width=2pt, smooth,samples=100,domain=1.0:3.0] plot(\x,{\x-1});
+\draw[line width=2pt, smooth,samples=100,domain=3.0:7.0] plot(\x,{0-(0.5)*\x+3.5});
+\draw[line width=2pt, smooth,samples=100,domain=7.0:10.0] plot(\x,{0});
+\draw (1.3,1.9) node[anchor=north west] {$f$};
+\end{tikzpicture}
+\end{center}
+  
+\subsubsection{Streckung in x-Richtung}
+Zeichne den Graphen von $g(x)=f(2x)$. Bestimme Affinitätsachse, Affinitätsrichtung und Affinitätsfaktor dieser Translation, die den Graphen von $f$ in denjenigen von $g$ überführt.\\[3ex]
+
+\begin{center}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.5cm,y=0.5cm]
+\draw[->,color=black] (-2.52,0) -- (11.1,0);
+\foreach \x in {-2,-1,1,2,3,4,5,6,7,8,9,10}
+\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt);
+\draw[color=black] (10.76,0.08) node [anchor=south west] { x};
+\draw[->,color=black] (0,-3.1) -- (0,4.66);
+\foreach \y in {-3,-2,-1,1,2,3,4}
+\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt);
+\draw[color=black] (0.1,4.26) node [anchor=west] { y};
+\clip(-2.52,-3.1) rectangle (11.1,4.66);
+\draw[line width=2pt, smooth,samples=100,domain=-2.0:1.0] plot(\x,{0});
+\draw[line width=2pt, smooth,samples=100,domain=1.0:3.0] plot(\x,{\x-1});
+\draw[line width=2pt, smooth,samples=100,domain=3.0:7.0] plot(\x,{0-(0.5)*\x+3.5});
+\draw[line width=2pt, smooth,samples=100,domain=7.0:10.0] plot(\x,{0});
+\draw (1.3,1.9) node[anchor=north west] {$f$};
+\end{tikzpicture}
+\end{center}
+  
+\subsubsection{Spiegelung an der x-Achse}
+Zeichne den Graphen von $g$, welcher durch Spiegelung des Graphen von $f$ an der $x$-Achse entsteht, und bestimme die Funktionsgleichung von $g$. Gib anschliessend an, um welche affine Abbildung es sich hierbei handelt.\\[3ex]
+
+\begin{center}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.5cm,y=0.5cm]
+\draw[->,color=black] (-2.52,0) -- (11.1,0);
+\foreach \x in {-2,-1,1,2,3,4,5,6,7,8,9,10}
+\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt);
+\draw[color=black] (10.76,0.08) node [anchor=south west] { x};
+\draw[->,color=black] (0,-3.1) -- (0,4.66);
+\foreach \y in {-3,-2,-1,1,2,3,4}
+\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt);
+\draw[color=black] (0.1,4.26) node [anchor=west] { y};
+\clip(-2.52,-3.1) rectangle (11.1,4.66);
+\draw[line width=2pt, smooth,samples=100,domain=-2.0:1.0] plot(\x,{0});
+\draw[line width=2pt, smooth,samples=100,domain=1.0:3.0] plot(\x,{\x-1});
+\draw[line width=2pt, smooth,samples=100,domain=3.0:7.0] plot(\x,{0-(0.5)*\x+3.5});
+\draw[line width=2pt, smooth,samples=100,domain=7.0:10.0] plot(\x,{0});
+\draw (1.3,1.9) node[anchor=north west] {$f$};
+\end{tikzpicture}
+\end{center}
+  
+\subsubsection{Spiegelung an der y-Achse}
+Zeichne den Graphen von $g$, welcher durch Spiegelung des Graphen von $f$ an der $y$-Achse entsteht, und bestimme die Funktionsgleichung von $g$. Gib anschliessend an, um welche affine Abbildung es sich hierbei handelt.\\[3ex]
+
+\begin{center}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.5cm,y=0.5cm]
+\draw[->,color=black] (-2.52,0) -- (11.1,0);
+\foreach \x in {-2,-1,1,2,3,4,5,6,7,8,9,10}
+\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt);
+\draw[color=black] (10.76,0.08) node [anchor=south west] { x};
+\draw[->,color=black] (0,-3.1) -- (0,4.66);
+\foreach \y in {-3,-2,-1,1,2,3,4}
+\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt);
+\draw[color=black] (0.1,4.26) node [anchor=west] { y};
+\clip(-2.52,-3.1) rectangle (11.1,4.66);
+\draw[line width=2pt, smooth,samples=100,domain=-2.0:1.0] plot(\x,{0});
+\draw[line width=2pt, smooth,samples=100,domain=1.0:3.0] plot(\x,{\x-1});
+\draw[line width=2pt, smooth,samples=100,domain=3.0:7.0] plot(\x,{0-(0.5)*\x+3.5});
+\draw[line width=2pt, smooth,samples=100,domain=7.0:10.0] plot(\x,{0});
+\draw (1.3,1.9) node[anchor=north west] {$f$};
+\end{tikzpicture}
+\end{center}
+
+  \subsection{Zusammenfassung}
+  
+  \begin{tabular}{l|l}
+  Der Graph von  & geht aus dem Graphen von $f(x)$ hervor durch\\ \hline\\
+  $f(x)+a$ & eine Translation parallel zur $y$-Achse um $a$\\ \\
+  $f(x-a)$ & eine Translation parallel zur $x$-Achse um $a$\\ \\
+  $af(x)$ & eine affine Abbildung mit Affinitätsrichtung $y$-Achse,\\ 
+   & Affinitätsachse $x$-Achse und Affinitätsfaktor $a$\\ \\
+  $f(ax)$ & eine affine Abbildung mit Affinitätsrichtung $x$-Achse,\\ 
+   & Affinitätsachse $y$-Achse und Affinitätsfaktor $\frac{1}{a}$\\ \\
+  \end{tabular}
+ 
+
+
+\begin{center}
+\includegraphics[width=0.45\textwidth]{pictures/math tutors}
+\end{center}
+
+\subsection{Ganzrationale Funktionen}
+In vorherigen Kapiteln haben wir die affinen und die quadratischen Funktionen behandelt. Sie sind Spezialfälle der ganzrationalen Funktionen $n$-ten Grades (Polynomfunktionen).
+Eine Funktion der Gestalt
+$$f(x)=a_0x^n+ a_1x^{n-1} + a_2x^{n-2} + \dots + a_{n-1}x + a_n$$
+heisst \emph{ganzrational vom Grade $n$}, wenn $n$ eine natürliche Zahl und $a_0, a_1, a_2,\dots, a_n$ rationale Zahlen und natürlich $a_0\neq0$  bedeuten.
+Für $n=1$ hat man
+$$f(x)=a_0x+a_1,$$
+also eine affine Funktion, für $n=2$ ergibt sich
+$$f(x)=a_0x^2+a_1x+a_2,$$
+also eine quadratische Funktion.
+
+Die Zeichnung eines sauberen Graphen einer ganzrationalen Funktion grösser als 2. Grades erfordert Methoden der Differentialrechnung. Wir müssen uns hier deshalb mit einem Beispiel für $n=4$ und einer Wertetabelle bescheiden.
+
+\begin{bsp}
+Wir betrachten
+$$f(x)=3x^4-14x^3+54x-10$$
+anhand einer Wertetabelle:
+\definecolor{lightyellow}{rgb}{1,1,0.8}
+\definecolor{Gray}{gray}{0.9}
+\begin{table}
+\large
+\centering
+\begin{tabular}{|c|c|c|c|c|c|c|c|} \hline
+\rowcolor{Gray}\spaltenheight  $x$ & $-3$ & $-2$ & $-1$ & $0$ & $1$ & $2$ & $3$ \spaltensep \hline
+\rowcolor{lightyellow}\spaltenheight $f(x)$ & $449$ & $42$ & $-47$ & $-10$ & $33$ & $34$ & $17$ \spaltensep \hline
+\end{tabular}
+%\caption{Wertetabelle}
+\end{table}
+\end{bsp}
+
+%\uebh{}{[Graph 4. Grades]
+%Übertrage die Punkte in das Koordinatensystem und zeichne den entsprechenden Graphen.
+%\begin{center}
+%\definecolor{cqcqcq}{rgb}{0.75,0.75,0.75}
+%\scalebox{1.1}{
+%\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.9cm,y=0.04cm]
+%\draw [color=cqcqcq,dash pattern=on 2pt off 2pt, xstep=0.9cm,ystep=0.8cm] (-4.52,-54.85) grid (4.95,95.62);
+%\draw[->,color=black] (-4.52,0) -- (4.95,0);
+%\foreach \x in {-4,-3,-2,-1,1,2,3,4}
+%\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize $\x$};
+%\draw[color=black] (4.64,1.08) node [anchor=south west] {$x$};
+%\draw[->,color=black] (0,-54.85) -- (0,101.62);
+%\foreach \y in {-40,-20,20,40,60,80}
+%\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize $\y$};
+%\draw[color=black] (0.09,96.23) node [anchor=west] {$y$};
+%\draw[color=black] (0pt,-10pt) node[right] {\footnotesize $0$};
+%\clip(-4.52,-54.85) rectangle (4.95,101.62);
+%\end{tikzpicture}
+%}
+%\end{center}
+%}
+
+\uebh{}{
+Zeichne den Graphen der Funktion
+\begin{enumerate}[a)]
+\item $-x^3+x^2$
+\item $8x^3-12x^2+2x+1$.
+\end{enumerate}
+}
+
+%\uebh{}{[Promille]
+%The polynomial function
+%$$A(x) = - 0.015x^3 + 1.058x$$
+%gives the approximate alcohol concentration (in tenths of a percent) in an average person's blood- stream $x$ hours after drinking about eight ounces of 100-proof whisky. The function is approximately valid for $x\in[0,8]$.
+%\begin{enumerate}[a)]
+%\item Graph $A(x)$.
+%\item Using the graph you drew for part (a), estimate the
+%time of maximum alcohol concentration.
+%\item In one state, a person is legally drunk if the blood alcohol concentration exceeds 0.15\%. Use the graph from part (a) to estimate the period in which
+%this average person is legally drunk.
+%\end{enumerate}
+%}
+
+\uebh{}{
+Im Kapitel über trigonometrische Funktionen wird die Reihenentwicklung
+$$\sin(x)=x-\frac{x^3}{3!}+\frac{x^5}{5!}-\frac{x^7}{7!}+\dots$$
+vorgestellt.
+\begin{enumerate}[a)]
+\item Betrachte die Güte der Näherung, wenn $x$ zwischen $-90$ und $90^\circ$ gewählt wird. Berechne dazu beispielsweise $\sin(\frac{\pi}{3})$ bzw die entsprechende Reihe bis zum 3-ten Summanden.
+\item Betrachte graphisch die Güte der Näherung, indem du zum Graphen der Sinusfunktion sukzessive die Entwicklungen $x$, $x-\frac{x^3}{3!}$, $x-\frac{x^3}{3!}+\frac{x^5}{5!}$, etc. skizzierst.
+\end{enumerate}
+}
+
+\subsection{Gebrochenrationale Funktionen}
+\begin{cdef}[Gebrochenrationale Funktionen]{}
+Eine Funktion der Gestalt
+$$f(x)=\frac{Z(x)}{N(x)},$$
+mit $Z(x)$ und $N(x)\neq0$ ganzrationalen Funktionen, heisst \emph{gebrochenrational}.
+\end{cdef}
+
+Auch hier wollen wir uns vorerst nur mit einigen einfachen Beispielen bescheiden. Betrachten wir zu
+$$f(x)=\frac{3x+2}{2x+4},\q\mD=\mR\setminus\set{-2},$$
+charakteristische Werte
+
+\begin{table}
+\small
+\centering
+\begin{tabular}{|c|c|c|c|c|c|} \hline
+\rowcolor{Gray} $x$ & $-10$ & $-4$ & $-3$ & $-2.5$ & $-2.3$\\ \hline
+\rowcolor{lightyellow}\spaltenheight $f(x)$ & $1.75$ & $2.5$ &  &  & \spaltensep \hline
+\rowcolor{Gray} $x$ & $-2.1$ & $-1.9$ & $-1.5$ & $0$ & $2$\\ \hline
+\rowcolor{lightyellow}\spaltenheight $f(x)$ &  &  &  &  & \spaltensep \hline
+
+\end{tabular}
+%\caption{Wertetabelle}
+\end{table}
+
+%\uebh{}{[gebrochen rational]\label{ueb:gebrochen}
+%Vervollständige die Wertetabelle, übertrage die Punkte in das Koordinatensystem und zeichne den entsprechenden Graphen ins vorgezeichnete Koordinatensystem.
+
+%\begin{center}
+%\definecolor{cqcqcq}{rgb}{0.75,0.75,0.75}
+%\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.95cm,y=0.95cm]
+%\draw [color=cqcqcq,dash pattern=on 2pt off 2pt, xstep=0.95cm,ystep=0.95cm] (-5.82,-5.56) grid (5.8,5.92);
+%\draw[->,color=black] (-5.82,0) -- (6.08,0);
+%\foreach \x in {-5,-4,-3,-2,-1,1,2,3,4,5}
+%\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize $\x$};
+%\draw[->,color=black] (0,-5.56) -- (0,5.92);
+%\foreach \y in {-5,-4,-3,-2,-1,1,2,3,4,5}
+%\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize $\y$};
+%\draw[color=black] (0pt,-10pt) node[right] {\footnotesize $0$};
+%\clip(-5.82,-5.56) rectangle (6.08,5.92);
+%\draw [line width=1.1pt,dash pattern=on 2pt off 2pt] (-2,-5.56) -- (-2,5.92);
+%\draw [line width=1.1pt,dash pattern=on 2pt off 2pt,domain=-5.82:6.08] plot(\x,{(--1.5-0*\x)/1});
+%\end{tikzpicture}
+%\end{center}
+%}
+
+Die Gerade $x=-2$ ist Polstelle, die Gerade $y= 1.5$ eine horizontale Asymptote.
+Die Funktion aus Übung \ref{ueb:gebrochen} gehört zu den einfachsten gebrochenrationalen Funktionen von der Gestalt
+$$f(x)=\frac{ax+b}{cx+d}\q\text{mit }ad\neq bc.$$
+Der Graph ist eine Hyperbel. Sie ist punktsymmetrisch bezüglich $(-\frac{d}{c}|\frac{a}{c})$ und hat als Asymptote bzw. Polstelle die Geraden mit den Gleichungen $y=\frac{a}{c}$ und $x=-\frac{d}{c}$.
+
+\uebh{}{
+Zeichne den Graphen der Funktion
+
+\begin{minipage}{0.32\textwidth}
+\begin{enumerate}[a)]
+\item $\frac{0.5x-2}{x-2}$
+\end{enumerate}
+\end{minipage}
+\begin{minipage}{0.32\textwidth}
+\begin{enumerate}[a)]
+\addtocounter{enumi}{1}
+\item $\frac{4x}{x-1}$
+\end{enumerate}
+\end{minipage}
+\begin{minipage}{0.32\textwidth}
+\begin{enumerate}[a)]
+\addtocounter{enumi}{2}
+\item $\frac{2-x}{x-4}$
+\end{enumerate}
+\end{minipage} 
+}
+
+%\uebh{}{[Steuerrate]
+%Durch die Funktion
+%$$f(x)=\frac{6000-60x}{120-x}$$
+%kann man zu jeder Steuerrate $x$ ($50\%\leq x\%\leq100\%$) die entsprechenden Einnahmen $f(x)$ in GE berechnen. Wie gross sind die Einnahmen für 50\%, 80\%, 100\%? Zeichne den Graphen der Funktion. Wann sind die Steuereinnahmen 40 GE?
+%}
+
+\uebh{}{
+\ \\[-2ex]
+\begin{enumerate}[a)]
+\item Berechne die Parameter $a$ und $b$ so, dass der Graph der Funktion
+$$f(x)=\frac{a}{b+x}$$
+durch die Punkte $\point{2}{1}$ und $\point{-4}{-2}$ geht.
+\item Berechne die Parameter $a$, $c$ und $d$ so, dass der Graph der Funktion
+$$g(x)=\frac{ax+1}{cx+d}$$
+durch den Punkt $\point{0}{1}$ geht und die Geraden mit den Gleichungen $y=2$ bzw. $x=0.5$ als Asymptote bzw. Polgerade hat.
+\end{enumerate}
+}
+
+\uebh{}{
+Diskutiere (Asymptoten, Polstellen) den Graphen der Funktion
+$$f(x)=\frac{2x-1}{x^2-4}.$$
+}
+
+\subsection{Logarithmische Skala}
+Manchmal verwendet man bei der Darstellung von Funktionen die
+sogenannte \emph{logarithmische Skala}. Dabei bedeutet eine Einheit
+eine Zehnerpotenz. Als Illustration soll die Funktion $f(x)=10^x$ einerseits im
+üblichen Koordinatensystem und andererseits im Koordinatensystem mit
+logarithmischer y-Achse dienen. Die logarithmisch eingeteilte Achse beginnt
+bei $1$.
+
+\begin{figure}
+\begin{center}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.4cm,y=0.0040cm]
+\draw[->,color=black] (-0.5,0) -- (3.5,0);
+\foreach \x in {1,2,3}
+\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize $\x$};
+\draw[color=black] (3.39,8.87) node [anchor=south west] { x};
+\draw[->,color=black] (0,-100) -- (0,1100);
+\foreach \y in {200,400,600,800,1000}
+\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize $\y$};
+\draw[color=black] (0.03,1055.64) node [anchor=west] { y};
+\clip(-0.5,-100) rectangle (3.5,1100);
+\draw[smooth,samples=100,domain=0.0:3.0] plot(\x,{10^\x});
+\end{tikzpicture}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.4cm,y=1.335cm]
+\draw[->,color=black] (-0.5,0) -- (3.5,0);
+\foreach \x in {1,2,3}
+\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize $\x$};
+\draw[color=black] (3.39,0.03) node [anchor=south west] { x};
+\draw[->,color=black] (0,-0.3) -- (0,3.3);
+\foreach \y in {,1,2,3}
+\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt);
+\draw[color=black] (0.03,3.17) node [anchor=west] { y};
+\draw[color=black] (0,1) node[left] {\footnotesize $\log(10)$};
+\draw[color=black] (0,2) node[left] {\footnotesize $\log(100)$};
+\draw[color=black] (0,3) node[left] {\footnotesize $\log(1000)$};
+\clip(-0.5,-0.3) rectangle (3.5,3.3);
+\draw[smooth,samples=100,domain=0.0:3.0] plot(\x,{\x});
+\end{tikzpicture}
+\end{center}
+\caption{Logarithmische Skala}
+\end{figure}
+
+
+\uebh{}{
+Ist dir eine logarithmisch skalierte Graphik bereits begegnet?
+}
+Ein Beispiel aus der Soziologie zeigt Abbildung \ref{sozlog} auf Seite \pageref{sozlog}.
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.618\textwidth]{pictures/sozlog}
+\end{center}
+\caption{Countdown to Singularity}\label{sozlog}
+\end{figure}
+
+\listoffigures
+%\listoftables
+%\newpage
+%\nocite{*}
+%\bibliographystyle{plain}
+%\bibliography{preamble/literaturgoogle}
+\end{document}

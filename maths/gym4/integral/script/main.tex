@@ -253,15 +253,15 @@ Im Folgenden wird nun umgekehrt diskutiert, wie man von der momentanen Änderung
 
 Lokomotiven, Cars oder Lastwagen müssen mit einem Fahrtenschreiber ausgerüstet sein, einem Messgerät, das zu jedem Zeitpunkt $t$ die momentane Geschwindigkeit $v(t)$ des Fahrzeugs aufzeichnet. Damit wird es den Untersuchungsbehörden im Falle eines Unglücks bzw. der Polizei bei einer Verkehrskontrolle ermöglicht festzustellen, wo sich das Fahrzeug zu einem bestimmten Zeitpunkt seiner Fahrt gerade befand, vorausgesetzt, dass seine Route und die Startzeit bekannt sind. Hauptsächlich wird überprüft, ob die Fahrer ihre gesetzlich vorgeschriebenen Ruhezeiten einhalten.
 
-\begin{ueb}[Fahrtenschreiber]
-Ermittle aus dem Fahrtenschreiber-Diagramm \ref{abb:schreiber} auf Seite \pageref{abb:schreiber}, mit welcher Geschwindigkeit das Fahrzeug um 17:15 Uhr und um 18:10 Uhr fuhr. Wann war das Fahrzeug nicht unterwegs?
+%\begin{ueb}[Fahrtenschreiber]
+%Ermittle aus dem Fahrtenschreiber-Diagramm \ref{abb:schreiber} auf Seite \pageref{abb:schreiber}, mit welcher Geschwindigkeit das Fahrzeug um 17:15 Uhr und um 18:10 Uhr fuhr. Wann war das Fahrzeug nicht unterwegs?
 \begin{figure}[h!t]
 \begin{center}
-\includegraphics[width=0.381\textwidth]{pictures/tachozoom}
+\includegraphics[width=0.28\textwidth]{pictures/tachozoom}
 \end{center}
 \caption{Fahrtenschreiber}\label{abb:schreiber}
 \end{figure}
-\end{ueb}
+%\end{ueb}
 
 In der Differentialrechnung ermittelt man aus der Weg-Zeit-Funktion durch Differenziation die Geschwindigkeits-Zeit-Funktion
 $$v(t) = \frac{\mathrm{d}s(t)}{\mathrm{d}t} = s'(t).$$
@@ -298,6 +298,8 @@ Funktion des Weges bekannt ist.
 In der Integralrechnung werden nicht lokale, sondern globale Eigenschaften einer Funktion untersucht.
 \end{bem}
 
+\clearpage
+
 \begin{ueb}[Standardbeispiel]
 Notiere für die gleichmässig beschleunigte Bewegung ($a=\text{konst}$) die Funk\-tions\-glei\-chungen für
 \begin{enumeratea}
@@ -308,7 +310,9 @@ Notiere für die gleichmässig beschleunigte Bewegung ($a=\text{konst}$) die Fun
 und skizziere die Funktionen. Erkläre anschliessend den Zusammenhang zwischen $s(t)$, $v(t)$, und $a(t)$ und bestimme beim $v-t$- und $a-t$-Diagramm den Flächeninhalt zwischen dem entsprechenden Graphen und der $x$-Achse. Betrachte dazu das Zeitintervall $t\in [0,2]$ und setze $a=\unitfrac[2]{m}{s^2}$.
 \end{ueb}
 
-\section{Die Stammfunktion}
+\clearpage
+
+\section{Stammfunktionen}
 \begin{cdef}[Stammfunktion]{def:stammfunktion}
 \marginnote{
 \qrcode{
@@ -376,9 +380,9 @@ Ermittle zu $f$ eine Stammfunktion $F$ und benutze die Integralschreibweise. Bes
 \setcounter{enumi}{5}
 \item $f(x)=x^n,\q n\in\mZ\setminus\set{-1}$
 \item $f(x)=(3x-2)^4+\sqrt{5x}$
-\item $f(x)=\sin x+\sin\frac{x}{2}$
+\item $f(x)=\sin(x)+\sin(\frac{x}{2})$
 \item $f(x)=\frac{3}{x}$
-\item $f(t)=e^t$
+\item $f(t)=\mathrm{e}^t$
 \end{enumeratea}
 \end{minipage}
 \end{ueb}
@@ -388,18 +392,20 @@ Find the antiderivative $F$ of
 
 \begin{minipage}{0.5\textwidth}
 \begin{enumeratea}
-\item $x\mapsto\frac{4}{x^2}-5x$ with $F(4)=25$.
-\item $x\mapsto4x^3-3x^2+4x+5$ with $F(1)=3$.
+\item $f(x)=\frac{4}{x^2}-5x$ with $F(4)=25$.
+\item $g(x)=4x^3-3x^2+4x+5$ with $G(1)=3$.
 \end{enumeratea}
 \end{minipage}
 \begin{minipage}{0.5\textwidth}
 \begin{enumeratea}
 \setcounter{enumi}{2}
-\item $t\mapsto\cos t-\sin t$ with $F(\frac{\pi}{4})=0$.
-\item $t\mapsto e^{3t}$ with $F(\ln 9)=0$.
+\item $h(t)\cos(t)-\sin(t)$ with $H(\frac{\pi}{4})=0$.
+\item $k(t)=\mathrm{e}^{3t}$ with $K(\ln 9)=0$.
 \end{enumeratea}
 \end{minipage}
 \end{ueb}
+
+\clearpage
 
 \begin{ueb}[integrieren]
 Berechne
@@ -407,7 +413,7 @@ Berechne
 \begin{minipage}{0.5\textwidth}
 \begin{enumeratea}
 \item $\int (ax^2+bx+c)\;\mathrm{d}x$
-\item $\int x^2\cos\varphi\;\mathrm{d}\varphi$
+\item $\int x^2\cos(\varphi)\;\mathrm{d}\varphi$
 \item $\int e^{-2t}\;\mathrm{d}t$
 \end{enumeratea}
 \end{minipage}
@@ -415,7 +421,7 @@ Berechne
 \begin{enumeratea}
 \setcounter{enumi}{3}
 \item $\int\frac{\mathrm{d}x}{x-3}$
-\item $\int xe^{x^2+1}\;\mathrm{d}x$
+\item $\int x\mathrm{e}^{x^2+1}\;\mathrm{d}x$
 \item $\int\frac{u^2}{4u^3-3}\;\mathrm{d}u$
 \end{enumeratea}
 \end{minipage}
@@ -427,7 +433,7 @@ Bestätige durch Differentiation
 \begin{minipage}{0.5\textwidth}
 \begin{enumeratea}
 \item $\int (ax+b)^n\;\mathrm{d}x=\frac{(ax+b)^{n+1}}{a(n+1)}+C$
-\item $\int \cos^2x\;\mathrm{d}x=\frac{1}{2}(x+\sin x\cos x)+C$
+\item $\int \cos^2(x)\;\mathrm{d}x=\frac{1}{2}(x+\sin(x)\cos(x))+C$
 \end{enumeratea}
 \end{minipage}
 \begin{minipage}{0.5\textwidth}
@@ -454,6 +460,8 @@ Nachdem für einige Funktionen bereits die Stammfunktionen konkret gebildet wurd
 
 Ohne Beweis wollen wir lediglich zur ersten Frage bemerken: Jede auf einem abgeschlossenen Intervall stetige Funktion ist auf entsprechenden Intervall auch integrierbar.
 
+\clearpage
+
 \section{Das bestimmte Integral}
 \subsection{Flächenberechnung als Grenzwertprozess}
 Die
@@ -462,139 +470,12 @@ Die
 https://www.youtube.com/watch?v=76c9Zi-plTI}
 }
 Flächenberechnung, auch Integralrechnung genannt, befasst sich mit der Bestimmung krummlinig begrenzter Ebenenstücke. Dabei müssen die krummlinigen Grenzen als Graphen von Funktionen bekannt sein.
-\begin{bsp}
-Berechnen der Fläche zwischen dem Graphen von $f(x)=x^2$ und der x-Achse im Intervall $[0,1]$. Wir approximieren den gesuchten Flächeninhalt mit $n$ Rechtecken der Breite $\frac{1}{n}$ für ein festes $n\in\D{N}$, welche dem gesuchten Ebenenstück einbeschrieben sind. Wir erhalten nach kurzer Rechnung
-$$U_n=\frac{(n-1)(2n-1)}{6n^2}.$$
-Um eine bessere Näherung zu erhalten, lassen wir $n$ gegen Unendlich streben:
-$$\lim_{n\rightarrow\infty} U_n = \frac{1}{3}.$$
-Das bedeutet, dass der gesuchte Flächeninhalt mindestens ein Drittel beträgt. Nun nähern wir die gesuchte Fläche mit Rechtecken an, in welchen der Graph vollständig enthalten ist:
-$$O_n=U_n+\frac{1}{n}\cdot 1.$$
-Wiederum lassen wir $n$ gegen Unendlich streben:
-$$\lim_{n\rightarrow\infty} O_n = \frac{1}{3}.$$
-Das heisst, dass die Fläche höchstens $\frac{1}{3}$ beträgt. Zusammen mit dem ersten Resultat also, dass die gesuchte Fläche exakt $\frac{1}{3}$ beträgt.
-\end{bsp}
 
-\noindent $U_n$ nennt man sinnigerweise Untersumme und $O_n$ Obersumme. Hier die Darstellungen von $U_5$ und $O_5$ angewendet auf $f(x)=x^2$ im Intervall $[0,1]$.\\
-
-\begin{figure}[h!t]
-\definecolor{zzttqq}{rgb}{0.6,0.2,0}
-\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=3.7cm,y=3.47cm]
-\draw[->,color=black] (-0.4,0) -- (1.4,0);
-\foreach \x in {-0.2,0.2,0.4,0.6,0.8,1,1.2}
-\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize $\x$};
-\draw[color=black] (1.34,0.02) node [anchor=south west] {$x$};
-\draw[->,color=black] (0,-0.4) -- (0,1.4);
-\foreach \y in {-0.2,0.2,0.4,0.6,0.8,1,1.2}
-\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize $\y$};
-\draw[color=black] (0.02,1.32) node [anchor=west] {$y$};
-\draw[color=black] (0pt,-10pt) node[right] {\footnotesize $0$};
-\clip(-0.4,-0.4) rectangle (1.4,1.4);
-\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (0,0) rectangle (0.2,0);
-\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (0.2,0) rectangle (0.4,0.04);
-\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (0.4,0) rectangle (0.6,0.16);
-\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (0.6,0) rectangle (0.8,0.36);
-\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (0.8,0) rectangle (1,0.64);
-\draw[line width=1.2pt, smooth,samples=100,domain=0.0:1.4] plot(\x,{\x^2});
-\draw[color=zzttqq] (0.4,1) node {$a = 0.24$};
-\end{tikzpicture}
-\hfill
-\definecolor{zzttqq}{rgb}{0.6,0.2,0}
-\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=3.7cm,y=3.45cm]
-\draw[->,color=black] (-0.4,0) -- (1.4,0);
-\foreach \x in {-0.2,0.2,0.4,0.6,0.8,1,1.2}
-\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize $\x$};
-\draw[color=black] (1.34,0.02) node [anchor=south west] {$x$};
-\draw[->,color=black] (0,-0.4) -- (0,1.4);
-\foreach \y in {-0.2,0.2,0.4,0.6,0.8,1,1.2}
-\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize $\y$};
-\draw[color=black] (0.02,1.32) node [anchor=west] {$y$};
-\draw[color=black] (0pt,-10pt) node[right] {\footnotesize $0$};
-\clip(-0.4,-0.4) rectangle (1.4,1.4);\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (0,0) rectangle (0.2,0.04);
-\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (0.2,0) rectangle (0.4,0.16);
-\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (0.4,0) rectangle (0.6,0.36);
-\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (0.6,0) rectangle (0.8,0.64);
-\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (0.8,0) rectangle (1,1);
-\draw[line width=1.2pt, smooth,samples=100,domain=0.0:1.4] plot(\x,{\x^2});
-\draw[color=zzttqq] (0.4,1) node {$a = 0.44$};
-\end{tikzpicture}
-\caption{Unter- und Obersumme von $x^2$ über $[0,1]$ mit Schrittweite $0.2$}
-\end{figure}
-
-Wenn, wie in unserem Beispiel, Ober- und Untersumme für $n$ gegen Unendlich gegen den gleichen Wert konvergieren, dann sagt man:
-\begin{quote}
-\glqq Das Integral von $f(x)=x^2$ auf dem Intervall $[0,1]$ existiert und hat den Wert $\frac{1}{3}$\grqq.
-\end{quote}
-
-\begin{figure}
-\begin{center}
-\definecolor{zzttqq}{rgb}{0.6,0.2,0}
-\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=3.7cm,y=3.45cm]
-\draw[->,color=black] (-0.4,0) -- (1.4,0);
-\foreach \x in {-0.2,0.2,0.4,0.6,0.8,1,1.2}
-\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize $\x$};
-\draw[color=black] (1.35,0.01) node [anchor=south west] {$x$};
-\draw[->,color=black] (0,-0.4) -- (0,1.4);
-\foreach \y in {-0.2,0.2,0.4,0.6,0.8,1,1.2}
-\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize $\y$};
-\draw[color=black] (0.02,1.33) node [anchor=west] {$y$};
-\draw[color=black] (0pt,-10pt) node[right] {\footnotesize $0$};
-\clip(-0.4,-0.4) rectangle (1.4,1.4);
-\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1, smooth,samples=50,domain=0.0:1.0] plot(\x,{\x^2}) -- (1,0) -- (0,0) -- cycle;
-\draw[line width=1.6pt, smooth,samples=100,domain=0.0:1.4] plot(\x,{\x^2});
-\draw[color=zzttqq] (0.4,0.8) node {$a=\frac{1}{3}$};
-\end{tikzpicture}
-\caption{Fläche unter $x^2$ über $[0,1]$}
-\end{center}
-\end{figure}
-
-\begin{ueb}[Zwischensummen]
-Berechne die Fläche zwischen $f(x)=x^2$ und der x-Achse auf dem Intervall $[0,b]$ mit $b\geq0$. Sie dürfen annehmen, dass Ober- und Untersumme gegen den gleichen Wert konvergieren. Für Interessierte: Welche Eigenschaft muss $f$ haben, damit sicher $O_\infty=U_\infty$?
-\end{ueb}
-
-\begin{ueb}[Zwischensummen 2]
-Berechne die Fläche zwischen $f(x)=x^2$ und der x-Achse auf dem Intervall $[a,b]$ mit $a,b\in\D{R}^+_0, a\leq b$.
-\end{ueb}
-
-\begin{ueb}[Stammfunktion]
-Zeichne den Graphen von $g(x)=x$. Berechne die Flächenfunktion $G(x)$ zwischen dem Graphen von $g$ und der x-Achse auf dem Intervall $[0,x]$, welche den Wert der Fläche in Abhängigkeit von $x$ angibt. Welcher Zusammenhang besteht zwischen $g$ und $G$?
-\end{ueb}
-
-\begin{ueb}[hoch 3]
-Finde die Flächenformel $H$ für den Wert der Fläche zwischen dem Graphen $h(x)=x^3$ und der x-Achse auf dem Intervall $[a,b]$. $H$ hängt natürlich von $a$ und $b$ ab: $H(a,b)$.
-\begin{center}
-
-\definecolor{zzttqq}{rgb}{0.6,0.2,0}
-\scalebox{0.70}{
-\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=0.06cm]
-\draw[->,color=black] (-2,0) -- (5,0);
-\foreach \x in {-2,-1,1,2,3,4}
-\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt);
-\draw[color=black] (4.8,0.6) node [anchor=south west] {$x$};
-\draw[->,color=black] (0,-10) -- (0,80);
-\foreach \y in {-10,10,20,30,40,50,60,70}
-\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt);
-\draw[color=black] (0.06,77) node [anchor=west] {$y$};
-\clip(-2,-10) rectangle (5,80);
-\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1, smooth,samples=50,domain=1.7:3.8] plot(\x,{\x^3}) -- (3.8,0) -- (1.7,0) -- cycle;
-\draw[line width=1.2pt, smooth,samples=100,domain=-2.0:5.0] plot(\x,{\x^3});
-\draw[color=zzttqq] (3.04,7) node {$H(a,b)$};
-\draw[color=black] (1.7,-2.3) node {$a$};
-\draw[color=black] (3.8,-2) node {$b$};
-\end{tikzpicture}
-}
-\end{center}
-\end{ueb}
-
-\begin{bem}
-Wir vermuten, dass für die Fläche unter $f(x)=x^n$ zwischen $a$ und $b$ gilt:
-$$F = \frac{b^{n+1}}{n+1}-\frac{a^{n+1}}{n+1}.$$
-\end{bem}
-
-\subsection{Konventionen}
-Ich werde im Folgenden etwas lascher in der Genauigkeit der Aussagen. Beispielsweise spreche ich oft nur von der Fläche unterhalb des Graphen von $f$ über dem Intervall $[a,b]$, meine damit aber die Fläche zwischen dem Graphen von $f$, der x-Achse und den Parallelen zur $y$-Achse durch $x=a$ und $x=b$. Oder etwa ist das Intervall $[a,b]$ natürlich so zu verstehen, dass $a\leq b$. Ausnahmen werden explizite angegeben.
+%\subsection{Konventionen}
+%Ich werde im Folgenden etwas lascher in der Genauigkeit der Aussagen. Beispielsweise spreche ich oft nur von der Fläche unterhalb des Graphen von $f$ über dem Intervall $[a,b]$, meine damit aber die Fläche zwischen dem Graphen von $f$, der x-Achse und den Parallelen zur $y$-Achse durch $x=a$ und $x=b$. Oder etwa ist das Intervall $[a,b]$ natürlich so zu verstehen, dass $a\leq b$. Ausnahmen werden explizite angegeben.
 
 \subsection{Definition}
-Wir verallgemeinern das oben angewandte Verfahren auf die Fläche unter dem Graphen einer beliebigen Funktion $f$ zwischen $a$ und $b$. Statt der Rechtecke, die vollständig unterhalb bzw. oberhalb des Graphen liegen, nehmen wir solche, die einen Funktionswert auf dem entsprechenden Teilintervall als Höhe haben. Man spricht in diesem Fall von einer \textbf{Zwischenrechtecksumme} $Z_n$. Diese $Z_n$ bilden für $n\in\D{N}$ eine Folge, welche für $n\rightarrow\infty$ gegen den Wert der Fläche unter dem Graphen von $f$ strebt.
+Wir verallgemeinern das im Unterricht gezeigte Verfahren auf die Fläche unter dem Graphen einer beliebigen Funktion $f$ zwischen $a$ und $b$.
 
 \begin{cdef}[Bestimmtes Integral]{}
 Wenn alle Zwischensummenfolgen des Graphen von $f$ gegen den gleichen Grenzwert konvergieren, so heisst die Funktion $f$ über $[a,b]$ \emph{integrierbar}. Der gemeinsame Grenzwert heisst \emph{bestimmtes Integral} von $f$ über $[a,b]$, und man schreibt:
@@ -603,7 +484,7 @@ $a$ und $b$ heissen \emph{Integralgrenzen}.
 \end{cdef}
 
 \begin{bem}
-Das Integralzeichen $\int$ ist ein stilisiertes \texttt{S}, in Anlehnung an die Berechnung durch Zwischen\emph{summen}.
+Das Integralzeichen $\int$ ist ein stilisiertes \texttt{S} in Anlehnung an die Berechnung durch Zwischen\emph{summen}.
 \end{bem}
 
 \section{Der Hauptsatz der Differential- und Integralrechnung}
@@ -693,7 +574,7 @@ da für $h\rightarrow0$ wegen der Stetigkeit von $f$ $l$ gegen $f(x)$ strebt.
 \caption{Zum Beweis des Hauptsatzes der Integral- und Differentialrechnung}
 \end{figure}
 
-Satz \ref{satz:hauptsatz} wird in der Literatur oft als Hauptsatz der Integral- und Differentialrechnung bezeichnet. Für unsere Zwecke aber möchte ich den nächsten Satz als Hauptsatz auszeichnen. 
+Satz \ref{satz:hauptsatz} wird in der Literatur oft als Hauptsatz der Integral- und Differentialrechnung bezeichnet. 
 
 Wir erhalten praktisch gratis mit obigem Beweis von Satz \ref{satz:hauptsatz} folgenden
 
@@ -784,36 +665,15 @@ Berechne $b$ aus:
 \end{minipage}
 \end{ueb}
 
-\subsection{Existenz bestimmter Integrale}
-Die Anwendung der Definition bestimmter Integrale ist im allgemeinen schwierig. Es gilt aber der folgende
-\begin{csatz}{satz:integrierbar}
-Jede über $[a,b]$ stetige Funktion $f$ ist über diesem Intervall auch integrierbar.
-\end{csatz}
-
-\begin{bem}\label{zusammenhang}
-Zwischen Differenzierbarkeit, Stetigkeit und Integrierbarkeit besteht folgender Zusammenhang:
-\begin{itemize}
-\item Jede differenzierbare Funktion ist stetig, und jede stetige Funktion ist integrierbar.
-\item Es gibt stetige Funktionen, die nicht differenzierbar sind.
-\item Es gibt integrierbare Funktionen, die nicht stetig sind.
-\item Es gibt Funktionen, die nicht integrierbar sind.
-\end{itemize}
-\end{bem}
-
-\begin{ueb}[Spezialfälle]
-Finde charakteristische Beispiele zu den Aussagen aus obiger Bemerkung.
-\end{ueb}
-
 \subsection{Flächen zwischen zwei Graphen}
 Wir haben bereits gesehen, dass sich auch krummlinig begrenzte Flächen zwischen zwei Graphen, deren Funktionsgleichungen bekannt sind, leicht berechnet werden können.
 
-Man zeichne sich ein Bildchen und folgender Satz ist anschaulich völlig klar:
-\begin{csatz}{satz:flaechezwischen}
-Für die Fläche zwischen zwei Graphen der Funktionen $f$ und $g$ im Intervall $[a,b]$ --- wobei wir ohne Einschränkung der Allgemeinheit annehmen können, dass $f(x)\geq g(x)$ für alle $x\in[a,b]$ ist --- gilt:
-$$F = \int_a^bf(x)\,\mathrm{d}x - \int_a^bg(x)\,\mathrm{d}x$$
-\end{csatz}
+%\begin{csatz}{satz:flaechezwischen}
+%Für die Fläche zwischen zwei Graphen der Funktionen $f$ und $g$ im Intervall $[a,b]$ --- wobei wir ohne Einschränkung der Allgemeinheit annehmen können, dass $f(x)\geq g(x)$ für alle $x\in[a,b]$ ist --- gilt:
+%$$F = \int_a^bf(x)\,\mathrm{d}x - \int_a^bg(x)\,\mathrm{d}x$$
+%\end{csatz}
 
-\begin{figure}[h!t]
+\begin{figure}
 \begin{center}
 \definecolor{zzttqq}{rgb}{0.6,0.2,0}
 \definecolor{qqwwcc}{rgb}{0,0.4,0.8}
@@ -845,36 +705,36 @@ $$F = \int_a^bf(x)\,\mathrm{d}x - \int_a^bg(x)\,\mathrm{d}x$$
 \caption{Fläche zwischen den Graphen von $f$ und $g$}
 \end{figure}
 
-\begin{ueb}[hüben und drüben]
-Überlege Dir, dass obige Vorschrift auch gilt, wenn die Graphen von $f$ und $g$ teilweise ober- und unterhalb der x-Achse verlaufen.
-\end{ueb}
+%\begin{ueb}[hüben und drüben]
+%Überlege Dir, dass obige Vorschrift auch gilt, wenn die Graphen von $f$ und $g$ teilweise ober- und unterhalb der x-Achse verlaufen.
+%\end{ueb}
 
-\begin{ueb}[Wall]
-Eine Baufirma hat den Auftrag, einen Wall von $\unit[300]{m}$ Länge aufzuschütten und daran angrenzend eine Rinne auszuheben. Abbildung \ref{wall} auf Seite \pageref{wall} zeigt Wall und Graben im Querschnitt. Der Graph der Funktion ist eine Parabel. Wie viel Erde wird zum Aufschütten des Walls benötigt? Wie viel Erde muss zur Bildung der Rinne ausgebaggert werden?
-\begin{figure}
-\begin{center}
-\scalebox{1.5}{
-\definecolor{zzttqq}{rgb}{0.6,0.2,0}
-\definecolor{cqcqcq}{rgb}{0.75,0.75,0.75}
-\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.6cm,y=0.6cm]
-\draw [color=cqcqcq,dash pattern=on 2pt off 2pt, xstep=1.2cm,ystep=1.2cm] (-1.72,-2.48) grid (10.14,5.94);
-\draw[->,color=black] (-1.72,0) -- (10.14,0);
-\foreach \x in {-1,1,2,3,4,5,6,7,8,9,10}
-\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize $\x$};
-\draw[->,color=black] (0,-2.48) -- (0,5.94);
-\foreach \y in {-2,-1,1,2,3,4,5}
-\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize $\y$};
-\draw[color=black] (0pt,-10pt) node[right] {\footnotesize $0$};
-\clip(-1.72,-2.48) rectangle (10.14,5.94);
-\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1, smooth,samples=50,domain=0.0:8.0] plot(\x,{(\x-2)*(\x-8)*3/16}) -- (8,0) -- (0,0) -- cycle;
-\draw[smooth,samples=100,domain=-1.72:10.14] plot(\x,{(\x-2)*(\x-8)*3/16});
-\draw[color=black] (-1.12,4.4) node {$f$};
-\end{tikzpicture}
-}
-\end{center}
-\caption{Querschnitt des Walls und Grabens}\label{wall}
-\end{figure}
-\end{ueb}
+%\begin{ueb}[Wall]
+%Eine Baufirma hat den Auftrag, einen Wall von $\unit[300]{m}$ Länge aufzuschütten und daran angrenzend eine Rinne auszuheben. Abbildung \ref{wall} auf Seite \pageref{wall} zeigt Wall und Graben im Querschnitt. Der Graph der Funktion ist eine Parabel. Wie viel Erde wird zum Aufschütten des Walls benötigt? Wie viel Erde muss zur Bildung der Rinne ausgebaggert werden?
+%\begin{figure}
+%\begin{center}
+%\scalebox{1.5}{
+%\definecolor{zzttqq}{rgb}{0.6,0.2,0}
+%\definecolor{cqcqcq}{rgb}{0.75,0.75,0.75}
+%\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.6cm,y=0.6cm]
+%\draw [color=cqcqcq,dash pattern=on 2pt off 2pt, xstep=1.2cm,ystep=1.2cm] (-1.72,-2.48) grid (10.14,5.94);
+%\draw[->,color=black] (-1.72,0) -- (10.14,0);
+%\foreach \x in {-1,1,2,3,4,5,6,7,8,9,10}
+%\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize $\x$};
+%\draw[->,color=black] (0,-2.48) -- (0,5.94);
+%\foreach \y in {-2,-1,1,2,3,4,5}
+%\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize $\y$};
+%\draw[color=black] (0pt,-10pt) node[right] {\footnotesize $0$};
+%\clip(-1.72,-2.48) rectangle (10.14,5.94);
+%\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1, smooth,samples=50,domain=0.0:8.0] plot(\x,{(\x-2)*(\x-8)*3/16}) -- (8,0) -- (0,0) -- cycle;
+%\draw[smooth,samples=100,domain=-1.72:10.14] plot(\x,{(\x-2)*(\x-8)*3/16});
+%\draw[color=black] (-1.12,4.4) node {$f$};
+%\end{tikzpicture}
+%}
+%\end{center}
+%\caption{Querschnitt des Walls und Grabens}\label{wall}
+%\end{figure}
+%\end{ueb}
 
 \begin{ueb}[geometrisch]
 Deute das bestimmte Integral als Masszahl eines Flächeninhaltes eines Gebietes, das zu skizzieren ist, und berechne seinen Wert. Überprüfe Dein Ergebnis, falls möglich, mit den aus der Elementarmathematik bekannten Formeln für Rechteck, Dreieck und Tapez.
@@ -895,7 +755,7 @@ $$\int_0^1x^n\;\mathrm{d}x+\int_0^1\sqrt[n]{x}\;\mathrm{d}x=1.$$
 
 \begin{ueb}[sin]
 Berechne
-$$\int_0^{2\pi}\sin x\;\mathrm{d}x.$$
+$$\int_0^{2\pi}\sin(x)\;\mathrm{d}x.$$
 \end{ueb}
 
 \begin{ueb}[Obere minus Untere]\label{uebzwischen}
@@ -1023,11 +883,11 @@ begrenzt wird?
 Ein wasserführender Stollen hat einen parabolischen Querschnitt mit $\unit[4.0]{m}$ Sohlenbreite und $\unit[3.8]{m}$ Scheitelhöhe. Wie viel $m^3$ Wasser kann der Stollen in einer Sekunde führen, wenn das Wasser höchstens mit einer Geschwindigkeit von $\unitfrac[3.5]{m}{s}$ bis zu $\frac{3}{4}$ der Scheitelhöhe fliessen darf?
 \end{ueb}
 
-\begin{ueb}[Zwischenwertsatz]
-Interpretiere geometrisch den Mittelwertsatz der Integralrechnung: Ist f in [a,b] stetig, so gibt es eine Stelle $\gz$ mit $a < \gz < b$ dergestalt, dass
-$$\int_a^bf(x)\;\mathrm{d}x=f(\gz)\cdot(b-a).$$
-Für die geometrische Interpretation sei zusätzlich $f(x)\geq0$ für $x\in[a,b]$.
-\end{ueb}
+%\begin{ueb}[Zwischenwertsatz]
+%Interpretiere geometrisch den Mittelwertsatz der Integralrechnung: Ist f in [a,b] stetig, so gibt es eine Stelle $\gz$ mit $a < \gz < b$ dergestalt, dass
+%$$\int_a^bf(x)\;\mathrm{d}x=f(\gz)\cdot(b-a).$$
+%Für die geometrische Interpretation sei zusätzlich $f(x)\geq0$ für $x\in[a,b]$.
+%\end{ueb}
 
 \subsection{Eigenschaften des bestimmten Integrals}
 Manchmal liegt das Gebiet, dessen Flächeninhalt zu berechnen ist, nicht oberhalb der $x$-Achse. Durch Spiegelung des Graphen von $f$ an der $x$-Achse --- statt $f$ betrachtet man die Funktion $-f$ --- kann aber dieser Umstand behoben werden.
@@ -1039,11 +899,13 @@ beziehungsweise
 $$\int_2^0 x^2\,\mathrm{d}x = \frac{0^3}{3}-\frac{2^3}{3} = -\frac{8}{3}$$
 \end{bsp}
 
-Ferner sei hier noch eine weitere Eigenschaft des Integrals vermerkt, die selbsterklärend ist. Deshalb ohne Beweis der folgende
-\begin{csatz}[Intervalladditivität des Integrals]{satz:intervalladd}
-Für eine integrierbare Funktion $f$ über dem Intervall $[a,c]$ mit $a\leq b\leq c$ gilt:
-$$\int_a^bf(x)\,\mathrm{d}x+\int_b^cf(x)\,\mathrm{d}x=\int_a^cf(x)\,\mathrm{d}x$$
-\end{csatz}
+%Ferner sei hier noch eine weitere Eigenschaft des Integrals vermerkt, die selbsterklärend ist. Deshalb ohne Beweis der folgende
+%\begin{csatz}[Intervalladditivität des Integrals]{satz:intervalladd}
+%Für eine integrierbare Funktion $f$ über dem Intervall $[a,c]$ mit $a\leq b\leq c$ gilt:
+%$$\int_a^bf(x)\,\mathrm{d}x+\int_b^cf(x)\,\mathrm{d}x=\int_a^cf(x)\,\mathrm{d}x$$
+%\end{csatz}
+
+\clearpage
 
 \section{Das unbestimmte Integral}
 Zur Bestimmung der Ableitung einer Funktion gibt es zahlreiche Rechenregeln. Beim Integrieren sind für uns nur wenige Eigenschaften des Integrals von Bedeutung. Nun wird der Begriff des unbestimmten Integrals einer Funktion eingeführt, um die wichtigsten Eigenschaften des Integrals schlank notieren können.
@@ -1085,9 +947,10 @@ Bestimme die Integrale von $f(x)=5x^2$ und $g(x)=x^2-2x$.
 \begin{ueb}[sincos]
 Die Graphen der Sinus- und Cosinus-Funktion begrenzen miteinander unendlich viele kongruente Ebenenstücke (siehe Abbildung  \ref{sincos} auf Seite \pageref{sincos}). Berechnen Sie den Flächeninhalt eines solchen Ebenenstücks.
 \end{ueb}
-\begin{figure}
+
+\begin{figure}[h]
 \begin{center}
-\scalebox{1.5}{
+\scalebox{1.1}{
 \definecolor{zzttqq}{rgb}{0.6,0.2,0}
 \definecolor{qqzztt}{rgb}{0,0.6,0.2}
 \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.55cm,y=1.5cm]
@@ -1112,16 +975,283 @@ Die Graphen der Sinus- und Cosinus-Funktion begrenzen miteinander unendlich viel
 \caption{Veranschaulichung der Übung}\label{sincos}
 \end{figure}
 
+\clearpage
+
+\appendix
+
+\section{Unter-, Ober- und Zwischenwertsummen}
+
+\begin{bsp}
+Berechnen der Fläche zwischen dem Graphen von $f(x)=x^2$ und der x-Achse im Intervall $[0,1]$. Wir approximieren den gesuchten Flächeninhalt mit $n$ Rechtecken der Breite $\frac{1}{n}$ für ein festes $n\in\D{N}$, welche dem gesuchten Ebenenstück einbeschrieben sind. Wir erhalten nach kurzer Rechnung
+$$U_n=\frac{(n-1)(2n-1)}{6n^2}.$$
+Um eine bessere Näherung zu erhalten, lassen wir $n$ gegen Unendlich streben:
+$$\lim_{n\rightarrow\infty} U_n = \frac{1}{3}.$$
+Das bedeutet, dass der gesuchte Flächeninhalt mindestens ein Drittel beträgt. Nun nähern wir die gesuchte Fläche mit Rechtecken an, in welchen der Graph vollständig enthalten ist:
+$$O_n=U_n+\frac{1}{n}\cdot 1.$$
+Wiederum lassen wir $n$ gegen Unendlich streben:
+$$\lim_{n\rightarrow\infty} O_n = \frac{1}{3}.$$
+Das heisst, dass die Fläche höchstens $\frac{1}{3}$ beträgt. Zusammen mit dem ersten Resultat also, dass die gesuchte Fläche exakt $\frac{1}{3}$ beträgt.
+\end{bsp}
+
+\noindent $U_n$ nennt man sinnigerweise Untersumme und $O_n$ Obersumme. Hier die Darstellungen von $U_5$ und $O_5$ angewendet auf $f(x)=x^2$ im Intervall $[0,1]$.\\
+
+\begin{figure}[h]
+\definecolor{zzttqq}{rgb}{0.6,0.2,0}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=3.7cm,y=3.47cm]
+\draw[->,color=black] (-0.4,0) -- (1.4,0);
+\foreach \x in {-0.2,0.2,0.4,0.6,0.8,1,1.2}
+\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize $\x$};
+\draw[color=black] (1.34,0.02) node [anchor=south west] {$x$};
+\draw[->,color=black] (0,-0.4) -- (0,1.4);
+\foreach \y in {-0.2,0.2,0.4,0.6,0.8,1,1.2}
+\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize $\y$};
+\draw[color=black] (0.02,1.32) node [anchor=west] {$y$};
+\draw[color=black] (0pt,-10pt) node[right] {\footnotesize $0$};
+\clip(-0.4,-0.4) rectangle (1.4,1.4);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (0,0) rectangle (0.2,0);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (0.2,0) rectangle (0.4,0.04);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (0.4,0) rectangle (0.6,0.16);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (0.6,0) rectangle (0.8,0.36);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (0.8,0) rectangle (1,0.64);
+\draw[line width=1.2pt, smooth,samples=100,domain=0.0:1.4] plot(\x,{\x^2});
+\draw[color=zzttqq] (0.4,1) node {$a = 0.24$};
+\end{tikzpicture}
+\hfill
+\definecolor{zzttqq}{rgb}{0.6,0.2,0}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=3.7cm,y=3.45cm]
+\draw[->,color=black] (-0.4,0) -- (1.4,0);
+\foreach \x in {-0.2,0.2,0.4,0.6,0.8,1,1.2}
+\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize $\x$};
+\draw[color=black] (1.34,0.02) node [anchor=south west] {$x$};
+\draw[->,color=black] (0,-0.4) -- (0,1.4);
+\foreach \y in {-0.2,0.2,0.4,0.6,0.8,1,1.2}
+\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize $\y$};
+\draw[color=black] (0.02,1.32) node [anchor=west] {$y$};
+\draw[color=black] (0pt,-10pt) node[right] {\footnotesize $0$};
+\clip(-0.4,-0.4) rectangle (1.4,1.4);\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (0,0) rectangle (0.2,0.04);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (0.2,0) rectangle (0.4,0.16);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (0.4,0) rectangle (0.6,0.36);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (0.6,0) rectangle (0.8,0.64);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (0.8,0) rectangle (1,1);
+\draw[line width=1.2pt, smooth,samples=100,domain=0.0:1.4] plot(\x,{\x^2});
+\draw[color=zzttqq] (0.4,1) node {$a = 0.44$};
+\end{tikzpicture}
+\caption{Unter- und Obersumme von $x^2$ über $[0,1]$ mit Schrittweite $0.2$}
+\end{figure}
+
+Wenn, wie in unserem Beispiel, Ober- und Untersumme für $n$ gegen Unendlich gegen den gleichen Wert konvergieren, dann sagt man:
+\begin{quote}
+\glqq Das Integral von $f(x)=x^2$ auf dem Intervall $[0,1]$ existiert und hat den Wert $\frac{1}{3}$\grqq.
+\end{quote}
+
+%\begin{figure}[h]
+%\begin{center}
+%\definecolor{zzttqq}{rgb}{0.6,0.2,0}
+%\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=3.7cm,y=3.45cm]
+%\draw[->,color=black] (-0.4,0) -- (1.4,0);
+%\foreach \x in {-0.2,0.2,0.4,0.6,0.8,1,1.2}
+%\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize $\x$};
+%\draw[color=black] (1.35,0.01) node [anchor=south west] {$x$};
+%\draw[->,color=black] (0,-0.4) -- (0,1.4);
+%\foreach \y in {-0.2,0.2,0.4,0.6,0.8,1,1.2}
+%\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize $\y$};
+%\draw[color=black] (0.02,1.33) node [anchor=west] {$y$};
+%\draw[color=black] (0pt,-10pt) node[right] {\footnotesize $0$};
+%\clip(-0.4,-0.4) rectangle (1.4,1.4);
+%\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1, smooth,samples=50,domain=0.0:1.0] plot(\x,{\x^2}) -- (1,0) -- (0,0) -- cycle;
+%\draw[line width=1.6pt, smooth,samples=100,domain=0.0:1.4] plot(\x,{\x^2});
+%\draw[color=zzttqq] (0.4,0.8) node {$a=\frac{1}{3}$};
+%\end{tikzpicture}
+%\caption{Fläche unter $x^2$ über $[0,1]$}
+%\end{center}
+%\end{figure}
+
+\begin{ueb}[Zwischensummen]
+Berechne die Fläche zwischen $f(x)=x^2$ und der x-Achse auf dem Intervall $[0,b]$ mit $b\geq0$. Sie dürfen annehmen, dass Ober- und Untersumme gegen den gleichen Wert konvergieren. Für Interessierte: Welche Eigenschaft muss $f$ haben, damit sicher $O_\infty=U_\infty$?
+\end{ueb}
+
+\begin{ueb}[Zwischensummen 2]
+Berechne die Fläche zwischen $f(x)=x^2$ und der x-Achse auf dem Intervall $[a,b]$ mit $a,b\in\D{R}^+_0, a\leq b$.
+\end{ueb}
+
+\begin{ueb}[Stammfunktion]
+Zeichne den Graphen von $g(x)=x$. Berechne die Flächenfunktion $G(x)$ zwischen dem Graphen von $g$ und der x-Achse auf dem Intervall $[0,x]$, welche den Wert der Fläche in Abhängigkeit von $x$ angibt. Welcher Zusammenhang besteht zwischen $g$ und $G$?
+\end{ueb}
+
+\begin{ueb}[hoch 3]
+Finde die Flächenformel $H$ für den Wert der Fläche zwischen dem Graphen $h(x)=x^3$ und der x-Achse auf dem Intervall $[a,b]$. $H$ hängt natürlich von $a$ und $b$ ab: $H(a,b)$.
+\begin{center}
+
+\definecolor{zzttqq}{rgb}{0.6,0.2,0}
+\scalebox{1.0}{
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=0.06cm]
+\draw[->,color=black] (-2,0) -- (5,0);
+\foreach \x in {-2,-1,1,2,3,4}
+\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt);
+\draw[color=black] (4.8,0.6) node [anchor=south west] {$x$};
+\draw[->,color=black] (0,-10) -- (0,80);
+\foreach \y in {-10,10,20,30,40,50,60,70}
+\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt);
+\draw[color=black] (0.06,77) node [anchor=west] {$y$};
+\clip(-2,-10) rectangle (5,80);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1, smooth,samples=50,domain=1.7:3.8] plot(\x,{\x^3}) -- (3.8,0) -- (1.7,0) -- cycle;
+\draw[line width=1.2pt, smooth,samples=100,domain=-2.0:5.0] plot(\x,{\x^3});
+\draw[color=zzttqq] (3.04,7) node {$H(a,b)$};
+\draw[color=black] (1.7,-2.3) node {$a$};
+\draw[color=black] (3.8,-2) node {$b$};
+\end{tikzpicture}
+}
+\end{center}
+\end{ueb}
+
+\begin{bem}
+Wir vermuten, dass für die Fläche unter $f(x)=x^n$ zwischen $a$ und $b$ gilt:
+$$F = \frac{b^{n+1}}{n+1}-\frac{a^{n+1}}{n+1}.$$
+\end{bem}
+
+\clearpage
+
+\section{Existenz bestimmter Integrale}
+Die Anwendung der Definition bestimmter Integrale ist im allgemeinen schwierig. Es gilt aber der folgende
+\begin{csatz}{satz:integrierbar}
+Jede über $[a,b]$ stetige Funktion $f$ ist über diesem Intervall auch integrierbar.
+\end{csatz}
+
+\begin{bem}\label{zusammenhang}
+Zwischen Differenzierbarkeit, Stetigkeit und Integrierbarkeit besteht folgender Zusammenhang:
+\begin{itemize}
+\item Jede differenzierbare Funktion ist stetig, und jede stetige Funktion ist integrierbar.
+\item Es gibt stetige Funktionen, die nicht differenzierbar sind.
+\item Es gibt integrierbare Funktionen, die nicht stetig sind.
+\item Es gibt Funktionen, die nicht integrierbar sind.
+\end{itemize}
+\end{bem}
+
+\begin{ueb}[Spezialfälle]
+Finde charakteristische Beispiele zu den Aussagen aus obiger Bemerkung.
+\end{ueb}
+
+\clearpage
+
+\section{Partielle Integration}
+
+%\begin{wrapfigure}{r}{0.382\textwidth}
+%\vspace{-12pt}
+%  \begin{center}
+%    \includegraphics[width=0.38\textwidth]{pictures/integrieren}
+%  \end{center}
+%\caption{You Know my Name}
+%\vspace{-18pt}
+%\end{wrapfigure}
+Wenn man sich mit komplexeren Funktionen konfrontiert sieht, insbesondere mit Produkten, dann kann folgendes Hilfsmittel zur Bestimmung des Integrals nützlich sein.
+
+\begin{csatz}[Partielle Integration]{satz:partint}
+Sind $f$ und $g$ \glqq an der Stelle $x$ differenzierbare Funktionen, so gilt
+$$\int f'(x)g(x) = f(x)g(x) - \int f(x)g'(x)$$
+\end{csatz}
+
+\begin{proof}[Beweis]
+Für einen Beweis beachte man die Ähnlichkeit zur bereits bewiesenen Produktregel für Ableitungen und argumentiere.
+\end{proof}
+
+\begin{bsp}
+Wir bestimmen via partielle Integration eine Stammfunktion von $h(x)=x\cos(x)$. Setzen wir beispielsweise $\cos(x)=f'(x)$ und $x=g(x)$, dann gilt $f(x)=\sin(x)$ und $g'(x)=1$. Daraus folgt
+
+\begin{align*}
+ \int x\cos(x)\;\mathrm{d}x &= x\sin(x)-\int\sin(x)\;\mathrm{d}x\\
+ &=x\sin(x)-(-\cos(x))+c\\
+ &=x\sin(x)+\cos(x)+c.
+ \end{align*}
+ 
+Man kontrolliert durch Ableiten der eben gewonnen Stammfunktion die Korrektheit.
+\end{bsp}
+
+\begin{ueb}[partiell, and again]
+Finde eine Stammfunktion von $f(x)=x\sin(x)$, $g(x)=\sin^2(x)$ und $h(x)=\sin^3(x)$.
+\end{ueb}
+
+\clearpage
+
+\section{Kepler'sche Fassregel}
+
+\begin{figure}
+  \begin{center}
+    \includegraphics[width=0.618\textwidth]{pictures/weinfass}
+  \end{center}
+\caption{Weinfass Halberstadt}
+\end{figure}
+
+Die Keplersche Fassregel ist die einfachste, aber dennoch brauchbare Resultate liefernde Regel für die näherungsweise Berechnung eines bestimmten Integrals.
+\textsc{Johannes Kepler} erzählt in seinem Buch \glqq Neue Stereometrie der Weinfässer\grqq:
+\begin{quote}
+Als ich im November des letzten Jahres (1613) meine Wiedervermählung feierte, zu einer Zeit, da an den Donauufern bei Linz die aus Niederösterreich herbeigeführten Weinfässer nach einer reichlichen Weinlese aufgestapelt und zu einem annehmbaren Preis zu kaufen waren, da war es die Pflicht des neuen Gatten und sorglichen Familienvaters, für sein Haus den nötigen Trunk zu besorgen. Als einige Fässer eingekellert waren, kam am 4. Tag der Verkäufer mit der Messrute, mit der er alle Fässer, ohne Rücksicht auf ihre Form, ohne jede weitere Überlegung oder Rechnung ihrem Inhalt nach bestimmte\dots. Ich bezweifelte die Richtigkeit der Methode, denn ein sehr niedriges Fass mit etwas breitem Boden und daher sehr viel kleinerem Inhalt könnte dieselbe Visierlänge besitzen. Es schien mir als Neuvermählter nicht unzweckmässig, ein neues Prinzip mathematischer Arbeiten, nämlich die Genauigkeit dieser bequemen und allgemein wichtigen Bestimmung nach geometrischen Grundsätzen zu erforschen und die etwa vorhandenen Gesetze ans Licht zu bringen.\grqq
+\end{quote}
+
+Die Keplersche Fassregel erweist sich als Spezialfall der Simpsonregel für $n = 2$. Man erhält so mit Hilfe geometrischer Überlegungen (vgl. auch Abbildung \ref{abb:fass} auf Seite \pageref{abb:fass})
+$$
+\int_a^bf(x)\;\mathrm{d}x\approx K =\frac{b-a}{6}\left[f(a)+4f\left(\frac{a+b}{2}\right)+f(b)\right].
+$$
+
+\begin{bem}
+Für ganzrationale Funktionen von höchstens 3. Grad gibt $K$ sogar den exakten Wert an.
+\end{bem}
+
+\begin{ueb}[Rollt das Fass rein!]
+Wende die Keplersche Fassregel an auf das Integral
+
+\begin{minipage}{3.8cm}
+\begin{enumeratea}
+\item $\int_1^3x^2\;\mathrm{d}x$
+\item $\int_0^\pi\sin x\;\mathrm{d}x$
+\end{enumeratea}
+\end{minipage}
+\begin{minipage}{3.9cm}
+\begin{enumeratea}
+\addtocounter{enumi}{2}
+\item $\int_1^2\frac{1}{x}\;\mathrm{d}x$
+\item $\int_0^1\frac{1}{1+x^2}\;\mathrm{d}x\q$
+\end{enumeratea}
+\end{minipage}
+
+\vspace*{2ex}
+Vergleiche die Resultate mit dem exakten Wert.
+\end{ueb}
+
+\begin{figure}
+\begin{center}
+\scalebox{1.5}{
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.6cm,y=0.5cm]
+\draw[->,color=black] (-0.72,0) -- (10.3,0);
+\foreach \x in {,1,2,3,4,5,6,7,8,9,10}
+\draw[shift={(\x,0)},color=black] (0pt,-2pt);
+\draw[color=black] (9.96,0.08) node [anchor=south west] {$x$};
+\draw[->,color=black] (0,-1.22) -- (0,5.24);
+\foreach \y in {-1,1,2,3,4,5}
+\draw[shift={(0,\y)},color=black] (-2pt,0pt);
+\draw[color=black] (0.1,4.84) node [anchor=west] {$y$};
+\clip(-0.72,-1.22) rectangle (10.3,5.24);
+\draw[line width=1.6pt, smooth,samples=100,domain=1.0:9.0] plot(\x,{0-(0.05)*(\x-6)^2+4});
+\draw (1.5,2.99)-- (1.5,0);
+\draw [dash pattern=on 4pt off 4pt] (4.5,3.89)-- (4.5,0);
+\draw (7.5,3.89)-- (7.5,0);
+\draw (1.68,1.86) node[anchor=north west] {$f(a)$};
+\draw (1.08,-0.1) node[anchor=north west] {$x_0=a$};
+\draw (3.86,0.12) node[anchor=north west] {$x_1=\frac{a+b}{2}$};
+\draw (7.12,0) node[anchor=north west] {$x_2=b$};
+\draw (4.7,2.6) node[anchor=north west] {$f\left(\frac{a+b}{2}\right)$};
+\draw (7.68,2.24) node[anchor=north west] {$f(b)$};
+\draw[color=black] (1.14,3.34) node {$f$};
+\end{tikzpicture}
+}
+\end{center}
+\caption{Keplersche Fassregel}\label{abb:fass}
+\end{figure}
+
+\clearpage
+
 \section{Volumenberechnung}
 \subsection{Volumen als Grenzwert}
 
-\begin{wrapfigure}{r}{0.382\textwidth}
-\vspace{-22pt}
-  \begin{center}
-    \includegraphics[width=0.382\textwidth]{pictures/glass}
-  \end{center}
-%\caption{Weinfass Halberstadt}
-\end{wrapfigure}
 Betrachtet man das Integral
 $$\int_0^bx^2\;\mathrm{d}x,$$
 und dazu Abbildung \ref{pyramide}, so kann der Wert des Integrals unmittelbar als Masszahl für einen Flächeninhalt interpretiert werden. Schraffiere ihn.
@@ -1204,13 +1334,6 @@ Ein Zylinder (Grundkreisradius $r$, Höhe $h$) liegt so im Koordinatensystem, da
 \begin{ueb}[Kugel]
 Der Ursprung des Koordinatensystems sei der Mittelpunkt einer Kugel mit dem Radius $r$. Zeige, dass $Q(x) = \pi(r^2 - x^2)$ und bestätige dann die Formel aus der Stereometrie.
 \end{ueb}
-
-\begin{ueb}[Kavalier der alten Schule]
- Begründe das Prinzip von \textsc{Cavalieri}: 
-\begin{quote}
-Stehen zwei Körper auf derselben Ebene und werden sie von jeder zu ihr parallelen Ebene in inhaltsgleichen Flächen geschnitten, so haben sie das gleiche Volumen.
-\end{quote}
- \end{ueb}
  
  \subsection{Rotationsvolumen}
  Der Graph einer im Intervall $[a,b]$ stetigen Funktion $f$ mit $f(x)\geq0$ für alle $x\in [a,b]$ rotiere um die x-Achse.
@@ -1290,125 +1413,6 @@ $$f(x)=1+\sin(x)\q(0<x<\frac{3\pi}{2})$$
 schliesst mit den Koordinatenachsen ein Flächenstück ein, das um die $x$-Achse rotiert. Berechne das Volumen dieser \glqq Zwiebelhaube\grqq.
 \end{enumeratea}
 \end{ueb}
-
-\newpage
-
-\appendix
-
-\section{Partielle Integration}
-
-\begin{wrapfigure}{r}{0.382\textwidth}
-\vspace{-12pt}
-  \begin{center}
-    \includegraphics[width=0.38\textwidth]{pictures/integrieren}
-  \end{center}
-%\caption{You Know my Name}
-\vspace{-18pt}
-\end{wrapfigure}
-Wenn man sich mit komplexeren Funktionen konfrontiert sieht, insbesondere mit Produkten, dann kann folgendes Hilfsmittel zur Bestimmung des Integrals nützlich sein.
-
-\begin{csatz}[Partielle Integration]{satz:partint}
-Sind $f$ und $g$ \glqq an der Stelle $x$ differenzierbare Funktionen, so gilt
-$$\int f'(x)g(x) = f(x)g(x) - \int f(x)g'(x)$$
-\end{csatz}
-
-\begin{proof}[Beweis]
-Für einen Beweis beachte man die Ähnlichkeit zur bereits bewiesenen Produktregel für Ableitungen und argumentiere.
-\end{proof}
-
-\begin{bsp}
-Wir bestimmen via partielle Integration eine Stammfunktion von $h(x)=x\cos(x)$. Setzen wir beispielsweise $\cos(x)=f'(x)$ und $x=g(x)$, dann gilt $f(x)=\sin(x)$ und $g'(x)=1$. Daraus folgt
-
-\begin{align*}
- \int x\cos(x)\;\mathrm{d}x &= x\sin(x)-\int\sin(x)\;\mathrm{d}x\\
- &=x\sin(x)-(-\cos(x))+c\\
- &=x\sin(x)+\cos(x)+c.
- \end{align*}
- 
-Man kontrolliert durch Ableiten der eben gewonnen Stammfunktion die Korrektheit.
-\end{bsp}
-
-\begin{ueb}[partiell, and again]
-Finde eine Stammfunktion von $f(x)=x\sin(x)$, $g(x)=\sin^2(x)$ und $h(x)=\sin^3(x)$. Bei $h$ \glqq spüren\grqq\ Sie erstmals, wie viel Aufwand das Finden von Stammfunktionen bescheren kann!
-\end{ueb}
-
-\pagebreak
-
-\section{Kepler'sche Fassregel}
-
-\begin{wrapfigure}{r}{0.382\textwidth}
-\vspace{-5pt}
-  \begin{center}
-    \includegraphics[width=0.38\textwidth]{pictures/weinfass}
-  \end{center}
-\caption{Weinfass Halberstadt}
-\vspace{-10pt}
-\end{wrapfigure}
-Die Keplersche Fassregel ist die einfachste, aber dennoch brauchbare Resultate liefernde Regel für die näherungsweise Berechnung eines bestimmten Integrals.
-\textsc{Johannes Kepler} erzählt in seinem Buch \glqq Neue Stereometrie der Weinfässer\grqq:
-\begin{quote}
-Als ich im November des letzten Jahres (1613) meine Wiedervermählung feierte, zu einer Zeit, da an den Donauufern bei Linz die aus Niederösterreich herbeigeführten Weinfässer nach einer reichlichen Weinlese aufgestapelt und zu einem annehmbaren Preis zu kaufen waren, da war es die Pflicht des neuen Gatten und sorglichen Familienvaters, für sein Haus den nötigen Trunk zu besorgen. Als einige Fässer eingekellert waren, kam am 4. Tag der Verkäufer mit der Messrute, mit der er alle Fässer, ohne Rücksicht auf ihre Form, ohne jede weitere Überlegung oder Rechnung ihrem Inhalt nach bestimmte\dots. Ich bezweifelte die Richtigkeit der Methode, denn ein sehr niedriges Fass mit etwas breitem Boden und daher sehr viel kleinerem Inhalt könnte dieselbe Visierlänge besitzen. Es schien mir als Neuvermählter nicht unzweckmässig, ein neues Prinzip mathematischer Arbeiten, nämlich die Genauigkeit dieser bequemen und allgemein wichtigen Bestimmung nach geometrischen Grundsätzen zu erforschen und die etwa vorhandenen Gesetze ans Licht zu bringen.\grqq
-\end{quote}
-
-Die Keplersche Fassregel erwies sich später als ein Spezialfall der Simpsonregel für n = 2. Man erhält so mit Hilfe geometrischer Überlegungen (vgl. auch Abbildung \ref{abb:fass} auf Seite \pageref{abb:fass}).
-$$
-\int_a^bf(x)\;\mathrm{d}x\approx K =\frac{b-a}{6}\left[f(a)+4f\left(\frac{a+b}{2}\right)+f(b)\right].
-$$
-
-\begin{bem}
-Für ganzrationale Funktionen von höchstens 3. Grad gibt $K$ sogar den exakten Wert an.
-\end{bem}
-
-\begin{ueb}[Rollt das Fass rein!]
-Wende die Keplersche Fassregel an auf das Integral
-
-\begin{minipage}{3.8cm}
-\begin{enumeratea}
-\item $\int_1^3x^2\;\mathrm{d}x$
-\item $\int_0^\pi\sin x\;\mathrm{d}x$
-\end{enumeratea}
-\end{minipage}
-\begin{minipage}{3.9cm}
-\begin{enumeratea}
-\addtocounter{enumi}{2}
-\item $\int_1^2\frac{1}{x}\;\mathrm{d}x$
-\item $\int_0^1\frac{1}{1+x^2}\;\mathrm{d}x\q$
-\end{enumeratea}
-\end{minipage}
-
-\vspace*{2ex}
-Vergleiche die Resultate mit dem exakten Wert.
-\end{ueb}
-
-\begin{figure}
-\begin{center}
-\scalebox{1.3}{
-\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.6cm,y=0.5cm]
-\draw[->,color=black] (-0.72,0) -- (10.3,0);
-\foreach \x in {,1,2,3,4,5,6,7,8,9,10}
-\draw[shift={(\x,0)},color=black] (0pt,-2pt);
-\draw[color=black] (9.96,0.08) node [anchor=south west] {$x$};
-\draw[->,color=black] (0,-1.22) -- (0,5.24);
-\foreach \y in {-1,1,2,3,4,5}
-\draw[shift={(0,\y)},color=black] (-2pt,0pt);
-\draw[color=black] (0.1,4.84) node [anchor=west] {$y$};
-\clip(-0.72,-1.22) rectangle (10.3,5.24);
-\draw[line width=1.6pt, smooth,samples=100,domain=1.0:9.0] plot(\x,{0-(0.05)*(\x-6)^2+4});
-\draw (1.5,2.99)-- (1.5,0);
-\draw [dash pattern=on 4pt off 4pt] (4.5,3.89)-- (4.5,0);
-\draw (7.5,3.89)-- (7.5,0);
-\draw (1.68,1.86) node[anchor=north west] {$f(a)$};
-\draw (1.08,-0.1) node[anchor=north west] {$x_0=a$};
-\draw (3.86,0.12) node[anchor=north west] {$x_1=\frac{a+b}{2}$};
-\draw (7.12,0) node[anchor=north west] {$x_2=b$};
-\draw (4.7,2.6) node[anchor=north west] {$f\left(\frac{a+b}{2}\right)$};
-\draw (7.68,2.24) node[anchor=north west] {$f(b)$};
-\draw[color=black] (1.14,3.34) node {$f$};
-\end{tikzpicture}
-}
-\end{center}
-\caption{Keplersche Fassregel}\label{abb:fass}
-\end{figure}
 
 \cleardoublepage
 \listoffigures

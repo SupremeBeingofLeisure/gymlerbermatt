@@ -1,0 +1,3577 @@
+\documentclass[%
+11pt,%
+%oneside,%
+twoside,%
+%twocolumn,%
+titlepage,%
+%fleqn,%
+%a4page,%
+german,%
+headsepline%
+]{scrartcl}
+
+\usepackage{lastpage}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{lscape}
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage[most]{tcolorbox}
+\usepackage{mymath}
+\usepackage{units}
+\usepackage{nicefrac}
+\usepackage{pgf,tikz}
+\usepackage{pgfplots}
+\pgfplotsset{width=10cm,compat=1.9}
+
+\usetikzlibrary{arrows}
+\usetikzlibrary{calc, shapes, backgrounds}
+\usepackage{colortbl}
+\usepackage{hhline}
+\usepackage{multirow}
+\usepackage[extendedchars]{grffile}
+\usepackage{caption}
+\usepackage{multicol,calc}
+\usepackage{blindtext}
+\usepackage{pdfpages}
+\usepackage{hyperref}
+\usepackage{wrapfig}
+\usepackage{booktabs}
+
+\usepackage{marginnote}
+\usepackage{qrcode}
+\qrset{height=9ex}
+
+%Gothic-Font
+\usepackage{oldgerm}
+\usepackage{pifont}
+\usepackage{yfonts}
+
+% footnote-symbols
+\usepackage[symbol]{footmisc}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+% Command, um Tabellen-Spalten anzupassen
+\newcommand{\spaltenheight}{\rule{0mm}{3ex}}
+\newcommand{\spaltenwidth}{\rule{3cm}{0mm}}
+\newcommand{\spaltensep}{\\[1ex]}
+\doublerulesepcolor{white}
+
+% colors
+\definecolor{lightyellow}{rgb}{1,1,0.8}
+\definecolor{Gray}{gray}{0.9}
+\definecolor{darkblue}{rgb}{0,0,0.55}
+\definecolor{firebrick}{rgb}{0.7,0.13,0.13}
+\definecolor{seagreen}{rgb}{0.18,0.55,0.34}
+\definecolor{lightgray}{rgb}{0.7, 0.7, 0.7}
+\definecolor{lightyellow}{rgb}{1,1,0.8}
+\definecolor{Gray}{gray}{0.9}
+
+\usepackage{fontawesome} % FontAwesome, falls du ein Augensymbol brauchst
+\newcommand{\faEyeLightGray}{\textcolor{lightgray}{\faEye}} % Custom command for the gray eye icon
+
+% Geogebra.org Link
+\newcommand{\geogebralink}{\href{https://www.geogebra.org/calculator}{\texttt{geogebra.org}}}
+
+% Pagestyle/Layout
+\setlength{\parindent}{0pt} \setlength{\parskip}{1em}
+
+\pagestyle{headings} % gemachte Einstellungen anwenden
+
+% Farbig umrahmte Umgebung Satz 
+ \definecolor{myblizzardblue}{HTML}{87CEEB}
+
+\newcounter{satzz}[section]\setcounter{satzz}{0}
+\renewcommand{\thesatz}{\arabic{section}.\arabic{satzz}}
+
+\newenvironment{csatz}[1][]{%
+    \refstepcounter{satzz}
+ 
+    \ifstrempty{#1}%
+    % if condition (without title)
+    {\mdfsetup{%
+        frametitle={%
+            \tikz[baseline=(current bounding box.east),outer sep=0pt]
+            \node[anchor=east,rectangle,fill=myblizzardblue]
+            {\strut Satz~\thesatz};}
+        }%
+    % else condition (with title)
+    }{\mdfsetup{%
+        frametitle={%
+            \tikz[baseline=(current bounding box.east),outer sep=0pt]
+            \node[anchor=east,rectangle,fill=myblizzardblue]
+            {\strut Satz~\thesatz:~#1};}%
+        }%
+    }%
+% for both conditions
+    \mdfsetup{%
+        innertopmargin=10pt,linecolor=myblizzardblue,%
+        backgroundcolor=whitesmoke,%
+        linewidth=2pt,topline=true,%
+        frametitleaboveskip=\dimexpr-\ht\strutbox\relax%
+    }
+ 
+\begin{mdframed}[]\relax}{%
+\end{mdframed}}
+
+% Farbig umrahmte Umgebung Theorem
+\definecolor{mygraphblue}{HTML}{84B7E1}
+\definecolor{whitesmoke}{HTML}{F5F5F5}
+
+\newcounter{theo}[section]\setcounter{theo}{0}
+\renewcommand{\thetheo}{\arabic{section}.\arabic{theo}}
+
+\newenvironment{ctheo}[1][]{%
+    \refstepcounter{theo}
+ 
+    \ifstrempty{#1}%
+    % if condition (without title)
+    {\mdfsetup{%
+        frametitle={%
+            \tikz[baseline=(current bounding box.east),outer sep=0pt]
+            \node[anchor=east,rectangle,fill=mygraphblue]
+            {\strut Theorem~\thetheo};}
+        }%
+    % else condition (with title)
+    }{\mdfsetup{%
+        frametitle={%
+            \tikz[baseline=(current bounding box.east),outer sep=0pt]
+            \node[anchor=east,rectangle,fill=mygraphblue]
+            {\strut Theorem~\thetheo:~#1};}%
+        }%
+    }%
+% for both conditions
+    \mdfsetup{%
+        innertopmargin=10pt,linecolor=mygraphblue,%
+        backgroundcolor=whitesmoke,%
+        linewidth=2pt,topline=true,%
+        frametitleaboveskip=\dimexpr-\ht\strutbox\relax%
+    }
+ 
+\begin{mdframed}[]\relax}{%
+\end{mdframed}}
+
+% Farbig umrahmte Umgebung Definition
+ \definecolor{emerald}{HTML}{50C878}
+
+\newcounter{deff}[section]\setcounter{deff}{0}
+\renewcommand{\thedeff}{\arabic{section}.\arabic{deff}}
+
+\newenvironment{cdef}[1][]{%
+    \refstepcounter{deff}
+ 
+    \ifstrempty{#1}%
+    % if condition (without title)
+    {\mdfsetup{%
+        frametitle={%
+            \tikz[baseline=(current bounding box.east),outer sep=0pt]
+            \node[anchor=east,rectangle,fill=emerald]
+            {\strut Definition~\thedeff};}
+        }%
+    % else condition (with title)
+    }{\mdfsetup{%
+        frametitle={%
+            \tikz[baseline=(current bounding box.east),outer sep=0pt]
+            \node[anchor=east,rectangle,fill=emerald]
+            {\strut Definition~\thedeff:~#1};}%
+        }%
+    }%
+% for both conditions
+    \mdfsetup{%
+        innertopmargin=10pt,linecolor=emerald,%
+        backgroundcolor=whitesmoke,%
+        linewidth=2pt,topline=true,%
+        frametitleaboveskip=\dimexpr-\ht\strutbox\relax%
+    }
+ 
+\begin{mdframed}[]\relax}{%
+\end{mdframed}}
+
+%\newtheorem{uebthm}{Übung}[section]
+% Umgebung lsg mit dynamischer Referenzierung und Label
+\newcommand{\concatueb}[1]{ueb:#1}% Definition für concatueb
+\newcommand{\concatlsg}[1]{lsg:#1}% Definition für concatlsg
+
+\newcounter{uebcounter}[section]
+\renewcommand{\theuebcounter}{\thesection.\arabic{uebcounter}}  % Zählerformat: Abschnitt.Übung
+
+% Definition einer Übungsumgebung mit dynamischen Labels
+\newcommand{\uebh}[2]{%
+ \refstepcounter{uebcounter} % Zählt den Übungscounter hoch
+ \par\noindent\textbf{Übung \theuebcounter:}\label{\concatueb{#1}} % Label im Format "ueb:1"
+    #2
+    \hfill\hyperref[\concatlsg{#1}]{\faEyeLightGray}
+    \vspace{\parskip}
+}
+
+\newenvironment{lsg}[1]{%
+    \par\noindent\textbf{Notizen zu Übung \ref{\concatueb{#1}}.}%
+    \label{\concatlsg{#1}}
+}{%
+    \par%
+}
+
+\newenvironment{uebenv}[1]{%
+    \refstepcounter{uebcounter}
+    \par\noindent\textbf{Übung \theuebcounter.}%
+    \label{\concatueb{#1}}\hfill\hyperref[\concatlsg{#1}]{\faEyeLightGray}\newline
+}{%
+    \par
+}
+
+\newcommand{\definition}[1]{\colorbox{emerald}{#1}}
+
+\setlength{\parindent}{0pt}
+
+\subject{\includegraphics[width=0.618\textwidth]{pictures/pointa.jpg}}
+\title{Stochastik}
+\subtitle{Wahrscheinlichkeiten \& Kombinatorik}
+\author{}
+\date{}
+\lowertitleback{
+\includegraphics[height=1cm]{pictures/gymfmslerbermattlogo.eps}
+\hfill%\copyright%
+{\begin{tikzpicture}
+  % Draw the rounded rectangle and clip the image to it
+  \clip [rounded corners=5mm] (0,0) rectangle (1,1); % Adjust dimensions as needed
+  \node at (0.5,0.5) {\includegraphics[width=1cm]{pictures/teacher_me_caricatur.png}}; % Adjust width and center image
+\end{tikzpicture}}
+}
+
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+\cleardoublepage
+\tableofcontents
+\cleardoublepage
+
+\pagestyle{headings}
+
+\section{Einleitung}
+
+\subsection{Probleme der Wahrscheinlichkeitsrechnung}
+
+Die Wahrscheinlichkeitsrechnung --- so wie wir sie heute verstehen --- befasst sich mit der quantitativen Erfassung gewisser Aspekte zufälliger Ereignisse oder Beobachtungen. Was Zufall ist, wissen wir eigentlich nicht. Doch tritt dieses Phänomen in der Natur und in der sozialen Umwelt in Erscheinung.
+
+In unserer unsicheren Welt hängen viele Dinge vom Zufall ab: Die Erbfaktoren bestimmen in der Vielfalt ihrer Kombinationen unseren Charakter und unser Aussehen, die Wahl des Ehepartners oder des Berufs wird oft durch eine zufällige Begegnung entschieden. Kleinigkeiten lösen Unfälle aus, die durch einen Zufall glimpflich oder tödlich verlaufen können, und eine plötzliche Eingebung hat schon manchem den grossen Gewinn im Lotto gebracht.
+
+\begin{wrapfigure}{O}{0.382\textwidth}
+  \centering
+\includegraphics[width=0.35\textwidth]{pictures/tierknochen}
+\caption{Antike Würfel}
+\end{wrapfigure}
+Ursprünglich war das Rechnen mit Wahrscheinlichkeiten ein Hilfsmittel für Glücksspiele (Würfelspiele, Kartenspiele, Roulette, Lotto etc.), die ja zu allen Zeiten und in allen Kulturen beliebt waren und es immer noch sind. Das Würfelspiel war sogar schon in der Antike weit verbreitet. Als Würfel verwendete man Tierknochen, sogenannte \emph{Astragale} (Sprungbeine von Schafen oder Ziegen).
+
+Der eigentliche Beginn der klassischen Wahrscheinlichkeitsrechnung wird üblicherweise mit \textsc{Pierre de Fermat} (1601-1685) und \textsc{Blaise Pascal} (1623-1662) in Verbindung gebracht. Sie beschäftigten sich mit zwei jahrhundertelang ungelöst gebliebenen Problemen, die wir später in einer speziellen Aufgabe erörtern werden (Würfelproblem, Teilungsproblem). Eine lehrbuchartige Darstellung fand die Wahrscheinlichkeitsrechnung in dem 1713 erschienenen Buch \emph{De arte conjectandi} (etwa: Über die Kunst des Vermutens) des Schweizers \textsc{Jakob Bernoulli} (1655-1705).
+
+In diesem Buch entwickelt \textsc{Bernoulli} zunächst die Kombinatorik und wendet diese dann auf Glücksspiele, aber auch auf wirtschaftliche Probleme an. Es enthält weiter das \emph{Gesetz der grossen Zahlen}, mit dem eine Verbindung zur Statistik hergestellt werden kann. Einen gewissen Abschluss erreichte die Wahrscheinlichkeitsrechnung in dem 1812 erschienenen Werk \emph{Théorie analytique des probabilités} von \textsc{Pierre Simon de Laplace} (1749-1827). Die Wahrscheinlichkeit wird dabei definiert als der Quotient aus der Anzahl der im Sinne der Fragestellung günstigen zur Anzahl der möglichen Ausgänge. An der Entwicklung der analytischen Methoden der Wahrscheinlichkeitsrechnung und der mathematischen Statistik waren ausser \textsc{Laplace} die folgenden Mathematiker beteiligt: \textsc{Abraham de Moivre} (1667-1754), \textsc{Carl Friedrich Gauss} (1777-1865), \textsc{Simeon Denis Poisson} (1781- 1840).
+\begin{wrapfigure}{O}{0.4\textwidth}
+\centering
+\includegraphics[width=0.32\textwidth]{pictures/bernoulli}
+\caption{\textsc{Daniel Ber\-noul\-li}}
+\end{wrapfigure}
+
+Die weitere Herausbildung der Wahrscheinlichkeitsrechnung als mathematische Disziplin ist insbesondere das Verdienst der russischen Mathematiker \textsc{Pafnuti Lwowitsch Tschebyschew} (1821- 1894), \textsc{Andrei Markow} (1856-1922), \textsc{Alexander Michailowitsch Ljapunow} (1857-1918) und \textsc{Andrei Kolmogorow} (1903-1989). Ihnen verdankt die Wahrscheinlichkeitsrechnung die Präzisierung einer Reihe wesentlicher Begriffsbildungen, insbesondere die axiomatische Erklärung des Wahrscheinlichkeitsbegriffs durch \textsc{Kolmogorow} im Jahre 1933. \textsc{Kolmogorow} verzichtet darauf zu sagen, wie man eine Wahrscheinlichkeit erhält; er legte bloss fest, wann eine reelle Zahl \glqq Wahrscheinlichkeit\grqq\ heissen darf und wie man mit diesen Zahlen dann rechnen kann.
+
+Die modernen Naturwissenschaften sind ganz besonders auf Wahrscheinlichkeitsrechnungen angewiesen, zum Beispiel bei Problemen, die mit der Bewegung der Elementarteilchen zusammenhängen. Denn einzelne Teilchen bewegen sich in einer zufälligen Art, die nicht voraussehbar und nicht berechenbar ist. Moleküle treten aber praktisch immer in grossen Mengen auf, ihr kollektives Verhalten wird durch die Wahrscheinlichkeitsrechnung voraussehbar.
+
+Mit den Methoden der Wahrscheinlichkeitsrechnung gelang es, zahlreiche Erscheinungen in einer der Realität noch besser angepassten Form mathematisch zu beschreiben, die schon erhaltenen Resultate zu interpretieren und auch zu neuen Erkenntnissen zu gelangen. Wahrscheinlichkeitstheorie und Statistik --- man nennt dies \emph{Stochastik} --- werden in Zukunft eine Schlüsselstellung einnehmen. Nur auf ihren Grundlagen können aufstrebende moderne, theoretisch anspruchsvolle und praktisch bedeutsame Theorien und Techniken verstanden werden. So wurden in den letzten Jahrzehnten mehrere Disziplinen entwickelt, die sich mit der Anwendung der Wahrscheinlichkeitsrechnung in verschiedenen Natur- und Gesellschaftswissenschaften, Medizin, Technik, Operation Research, Kybernetik und Ökonomie befassen, z.B. Bedienungstheorie, Zuverlässigkeitstheorie, Entscheidungstheorie, Nutzentheorie, Optionstheorie, Spieltheorie, Informationstheorie, statistische Qualitätstheorie, Monte-Carlo-Simulation oder Evolutionstheorie. Mit den heutigen Computern wächst die Anwendung von auf der Wahrscheinlichkeitsrechnung beruhenden Verfahren ständig. Zu den neusten Errungenschaften geh\"oren die Large Language Model und Machine Learning.
+
+\subsection{Formalisierung}
+
+\subsubsection{Zufallsversuche}
+Mit Zufallsgeräten führt man Zufallsversuche durch, indem man die verschiedenen Aus\-gän\-ge oder Ergebnisse eines Zufallsexperiments beobachtet. Dabei versteht man unter einem \textbf{Zufallsversuch} einen --- zumindest theoretisch --- beliebig oft wiederholbaren Vorgang, dessen Ausgang sich nicht mit Sicherheit vorhersagen lässt.
+
+\begin{itemize}
+\item Zu Beginn eines Fussballspiels entscheidet eine Münze darüber, welche Mannschaft die Seitenwahl erhält.
+\item Beim Spiel Backgammon entscheiden zwei Würfel darüber, wie viele Felder die Spielfiguren vorrücken dürfen.
+\item Beim Einarmigen Banditen ist es nicht so offensichtlich, wie die einzelnen Walzen gesteuert werden. Man hat aber den Eindruck, dass sie zufällig über Gewinn und Verlust entscheiden.
+\end{itemize}
+
+\begin{cdef}[Stichprobenraum]
+Die Menge aller möglichen Versuchsausgänge, $\omega_1, \omega_2, \dots, \omega_n$, eines Zufallsversuchs bezeichnet man als \textbf{Stichprobenraum} und bezeichnet diesen mit $\Omega$.
+\end{cdef}
+
+\begin{bsps}
+F\"ur die Klassiker:
+	\begin{itemize}
+	\item Münze: $\omega_1:= $Kopf, $\omega_2:= $Zahl, also $\Omega=\set{\text{Kopf, Zahl}}$
+	\item Würfel: $\Omega=\set{1,2,3,4,5,6}$
+	\end{itemize}
+\end{bsps}
+
+\uebh{stichprobenraum}{
+Bestimme einen geeigneten Stichprobenraum für den Versuch
+	\begin{enumerate}[a)]
+	\item Mit der Spitze eines Bleistifts wird blindlings auf eine Textseite eines Buches getippt; der getroffene Buchstabe wird notiert.
+	\item Bei Familien mit drei Kindern wird festgestellt, ob die Kinder Jungen oder Mädchen sind.
+	\end{enumerate}
+}
+
+\subsubsection{Ereignisse}
+Wenn man beim Roulette auf \glqq impair\grqq\ setzt, ist man nicht so sehr daran interessiert, in welches Zahlenfach die Kugel fällt. Wichtig ist nur, ob das zufällige Ereignis eintritt, also die Kugel in eines der Fächer $1,3,5, \dots, 33, 35$ fällt. Diese  Ereignisse bilden eine Teilmenge $\mathbb{A}$ des Stichprobenraumes $\Omega=\set{0,1,2,3,\dots,35,36}$.
+
+Mengen eignen sich hervorragend zur Beschreibung von Zufallsversuchen. Die Ausdrücke der Mengensprechweise werden lediglich in entsprechende Ausdrücke übertragen.
+
+\begin{cdef}[Ereignis]
+Bezeichne $\Omega$ einen Stichproberaum. Jede Teilmenge $\mathbb{A}\subset\Omega$ heisst ein \textbf{Ereignis}.
+\end{cdef}
+
+Endet eine Durchführung des Zufallversuchs mit dem Ausgang $\omega\in\mathbb{A}$, so sagt man: \glqq Das Ereignis $\mathbb{A}$ ist eingetreten.\grqq. Ist $\omega\not\in\mathbb{A}$, so sagt man: \glqq Das Ereignis $\mathbb{A}$ ist nicht eingetreten\grqq\ oder das \textbf{Gegenereignis} $\overline{\mathbb{A}} = \Omega\setminus\mathbb{A}$ ist eingetreten.
+
+Da $\Omega$ alle möglichen Ereignisse enthält, tritt $\Omega$ bei jeder Durchführung des Versuchs ein. Man bezeichnet $\Omega$ deshalb auch als \textbf{das sichere Ereignis}. Da die leere Menge kein Element enthält, kann dieses Ereignis bei keiner Durchführung des Versuchs eintreten. Man bezeichnet $\emptyset$ deshalb auch als \textbf{das unmögliche Ereignis}. Beachten Sie $\overline{\Omega}=\Omega\setminus\Omega=\emptyset$ und  $\overline{\emptyset}=\Omega\setminus\emptyset=\Omega$; in Worten: das Gegenereignis vom sicheren Ereignis ist das unmögliche Ereignis und umgekehrt.
+
+Sind $\mathbb{A}$ und $\mathbb{B}$ zwei Ereignisse desselben Zufallsversuchs und endet die Durchführung des Zufallversuchs mit dem Ausgang $\omega$, so sagt man,
+\begin{itemize}
+\item falls $\omega\in\mathbb{A}\cup\mathbb{B}$: \glqq Ereignis $\mathbb{A}$ \emph{oder} $\mathbb{B}$ ist eingetreten\grqq,
+\item falls $\omega\in\mathbb{A}\cap\mathbb{B}$: \glqq Ereignis $\mathbb{A}$ \emph{und} $\mathbb{B}$ ist eingetreten\grqq.
+\end{itemize}
+Zwei Ereignisse $\mathbb{A}$ und $\mathbb{B}$ heissen \textbf{unvereinbar}, genau dann wenn sie nicht zugleich eintreten können, wenn also $\mathbb{A}\cap\mathbb{B}=\emptyset$ gilt.
+
+\uebh{ereignisse}{
+Bei einer Qualitätskontrolle werden drei produzierte Stücke der Reihe nach darauf untersucht, ob sie brauchbar (b) oder unbrauchbar (u) sind. Notiere folgende Ereignisse:
+\begin{enumerate}[a)]
+\item Das zweite Stück ist unbrauchbar.
+\item Mindestens zwei Stücke sind unbrauchbar.
+\end{enumerate}
+}
+
+\clearpage
+
+\subsection{Notizen zu den \"Ubungen}
+
+\begin{lsg}{stichprobenraum}
+	\begin{enumerate}[a)]
+	\item $\Omega=\{a,b,c,\dots,x,y,z,A,B,C,\dots,X,Y,Z\}$
+	\item Stehe $w$ f\"ur M\"adchen und $m$ f\"ur Junge: $\Omega=\{www,wwm,wmm,mmm\}$
+	\end{enumerate}
+\end{lsg}
+
+\begin{lsg}{ereignisse}
+\begin{enumerate}[a)]
+\item $\mathbb{U}=\{bub,buu,uub,uuu\}$
+\item $\mathbb{M}=\{buu,ubu,uub,uuu\}$
+\end{enumerate}
+\end{lsg}
+
+\clearpage
+
+\section{Wahrscheinlichkeit}
+
+\subsection{Das Gesetz der grossen Zahlen}
+
+Für zwei Verspätungen hatte ein Arrestant $200$-mal einen Reissnagel zu werfen und zu notieren, ob er Stellung $0$ oder $1$ angenommen hat.
+\begin{wrapfigure}{O}{0.382\textwidth}
+\centering
+\includegraphics[width=0.3\textwidth]{pictures/reisnagel}
+\caption{Stellungen $0$ und $1$}
+\end{wrapfigure}
+Sein Ergebnisprotokoll siehst du in Tabelle \ref{tab:arrest} auf Seite \pageref{tab:arrest}.
+\begin{table}
+\centering
+\begin{tabular}{|l|c|c|c|c|c|c|} \hline
+\rowcolor{Gray}\spaltenheight\# Würfe & 2 & 5 & 10 & 20 & 30 & 40\spaltensep \hline
+\rowcolor{lightyellow}\spaltenheight$\nicefrac{\text{Einsen}}{\text{Würfe}}$ & 0 & 0.6 & 0.4 & 0.7 & 0.6 & 0.63\spaltensep \hline
+\rowcolor{Gray}\spaltenheight\# Würfe & 60 & 80 & 100 & 120 & 140 & 160\spaltensep \hline
+\rowcolor{lightyellow}\spaltenheight$\nicefrac{\text{Einsen}}{\text{Würfe}}$ & 0.67& 0.66 & 0.65 & 0.62 & 0.62 & 0.63\spaltensep \hline
+\rowcolor{Gray}\spaltenheight\# Würfe & 180 & 200 & & & &\spaltensep \hline
+\rowcolor{lightyellow}\spaltenheight$\nicefrac{\text{Einsen}}{\text{Würfe}}$ & 0.62 & 0.63 & & & &\spaltensep \hline
+\end{tabular}
+\caption{Anzahl Einsen zu Anzahl Würfen beim Reisnagel-Werfen}\label{tab:arrest}
+\end{table}
+
+\uebh{reissnagel}{
+Stelle diese Daten graphisch in Abbildung \ref{graph} auf Seite \pageref{graph} dar.
+}
+
+\begin{figure}
+\centering
+\definecolor{cqcqcq}{rgb}{0.75,0.75,0.75}
+\scalebox{1.1}{
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.04cm,y=6.0cm]
+\draw [color=cqcqcq,dash pattern=on 2pt off 2pt, xstep=0.8cm,ystep=1.2cm] (-2,-0.02) grid (205,1.05);
+\draw[->,color=black] (-20,0) -- (220,0);
+\foreach \x in {20,40,60,80,100,120,140,160,180,200}
+\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize $\x$};
+\draw[color=black] (205.46,0.01) node [anchor=south west] { \# Würfe};
+\draw[->,color=black] (0,-0.1) -- (0,1.2);
+\foreach \y in {,0.2,0.4,0.6,0.8,1}
+\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize $\y$};
+\draw[color=black] (1.32,1.14) node [anchor=west] { $\nicefrac{\text{\#Einsen}}{\text{\#Würfe}}$};
+\clip(-20,-0.2) rectangle (220,1.2);
+\end{tikzpicture}
+}
+\caption{Grid zur Darstellung des Reiss\-nagel-\-Versuchs}\label{graph}
+\end{figure}
+
+Nach anfänglichen Schwankungen stabilisiert sich der Wert für die relative Häufigkeit der Ziffer $1$, also die Anzahl Einsen/Anzahl Würfe, um den Wert $0.625$ herum. Die Wahrscheinlichkeiten \glqq pendeln sich ein\grqq.
+
+Auf Grund dieses Beispiels liegt es nahe, jedem Ausgang $\omega$ eines Zufallversuchs eine Wahrscheinlichkeit $P(\omega)$ zuzuordnen. Diese Wahrscheinlichkeit steht für den festen Wert, auf den sich die relative Häufigkeit des betreffenden Ausgangs einpendelt, wenn der Versuch öfter wiederholt wird. Beim Reissnagel wurden diese Werte $P(1)\approx0.625$ und $P(0)\approx0.375$ empirisch durch Experimente ermittelt. Bei anderen Zufallsgeräten kann man die Wahrscheinlichkeit oft auf Grund ihrer Symmetrie oder Geometrie angeben.
+
+\begin{bem}
+Die Bezeichnung $P$ lehnt sich ans Englische Probability.
+\end{bem}
+
+Die \emph{relative Häufigkeit} ist eine experimentelle Messung der mathematischen Wahrscheinlichkeit. Der Wahrscheinlichkeitsbegriff ist dadurch als statistischer Begriff charakterisiert. Die Wahrscheinlichkeit, auf dem Mars lebendige Wesen anzutreffen, oder die Wahrscheinlichkeit, dass Cäsar in Grossbritannien war, entsprechen nicht unserem Wahrscheinlichkeitsbegriff, da er bei diesen Beispielen im qualitativen Sinn verwendet wird. Verlangt wird jedoch ein quantitativer Wahrscheinlichkeitsbegriff. Man kann nicht, wie es sonst in der Mathematik üblich ist, durch Rückführung auf andere Begriffe streng definieren, was man unter der Wahrscheinlichkeit eines Ergebnisses oder Ereignisses versteht. Denn die Wahrscheinlichkeit eines Ergebnisses oder Ereignisses ist eine auf Erfahrungen beruhende Annahme. Deshalb ist es ohne zusätzliche Annahmen nicht möglich, den Zahlenwert für eine Wahrscheinlichkeit exakt zu ermitteln. Dennoch ist dieses Vorgehen gerechtfertigt, weil die so aufgebaute Wahrscheinlichkeitsrechnung sich bei zahllosen Anwendungen in den verschiedensten Gebieten glänzend bewährt hat und Vorhersagen, die man aufgrund wahrscheinlichkeitstheoretischer Überlegungen über zukünftige Ereignisse gemacht hat, sich immer wieder bestätigt haben.
+
+\subsection{Laplace'sche Definition einer Wahrscheinlichkeit}
+
+Nachdem jedem Ausgang $\omega$ eines Zufallversuchs auf plausible Weise ein Wert als Wahrscheinlichkeit zugeordnet werden konnte, definieren wir für ein Ereignis $\omega$ entsprechend die zugehörige Wahrscheinlichkeit $P(\omega)$.
+
+\begin{cdef}[Wahrscheinlichkeit eines Ereignisses]
+$P(\omega)$ ist gleich der Summe der Wahrscheinlichkeiten aller Ausgänge in $\mathbb{A}$.
+\end{cdef}
+
+\begin{bsps}
+Es ist eine gute Idee, sich an klassischen Beispielen zu orientieren.
+\begin{itemize}
+\item Wie gross ist die Wahrscheinlichkeit, mit einem Würfel eine ungerade Zahl zu werfen?
+Ereignis $\mathbb{A}=\setm{\omega}{\omega\text{ ist ungerade}}=\set{1,3,5}$, also $P(\mathbb{A})=\frac{1}{6}+\frac{1}{6}+\frac{1}{6}=\frac{1}{2}$.
+\item Wie gross ist die Wahrscheinlichkeit, aus einem Jasskartenspiel einen Buben zu ziehen?
+$P(\mathbb{A})=\frac{1}{36}+\frac{1}{36}+\frac{1}{36}+\frac{1}{36}=\frac{1}{9}$
+\end{itemize}
+\end{bsps}
+
+\begin{bem}
+Für die Sonderfälle, sicheres und unm\"ogliches Ereignis, gilt:
+$$P(\Omega)=1\q\text{und}\q P(\emptyset)=0.$$
+\end{bem}
+
+\uebh{kopfoderzahl}{
+Wie gross ist die Wahrscheinlichkeit bei einem Wurf
+\begin{enumerate}[a)]
+\item mit einer Münze Kopf, Kopf oder Zahl, Kopf und Zahl,
+\item mit einem Würfel eine 3, eine Quadratzahl
+\end{enumerate}
+zu werfen?
+}
+
+\uebh{geburtenregel}{
+In England gab es im Zeitraum von 1938-1947 6620794 Einzel-, 81133 Zwillings-, 667 Drillings- und 14 Vierlingsgeburten. Überprüfe die in der Gy\-nä\-ko\-lo\-gie übliche Regel:
+\begin{quote}
+Ist $p$ die ungefähre Wahrscheinlichkeit für eine Zwillingsgeburt, so ist $p^2$ die ungefähre Wahrscheinlichkeit für eine Drillingsgeburt und $p^3$ die ungefähre Wahrscheinlichkeit für eine Vierlingsgeburt.
+\end{quote}
+}
+
+Ausgehend von der Erfahrung, dass die relativen Häufigkeiten eines Ereignisses $\mathbb{A}$ bei fortgesetzter Wiederholung eines Zufallversuchs einem bestimmten Wert zustreben, fasste \textsc{Richard von Mises} (1883-1953) die Wahrscheinlichkeit von $\mathbb{A}$ als Grenzwert der relativen Häufigkeiten bei unbegrenzter Wiederholung eines Zufallversuchs auf. Dies war die statistische Definition der Wahrscheinlichkeit.
+
+\subsection{Definition nach Kolmogorov}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{pictures/kolmogorov}
+\caption{\textsc{Andrey Kolmogorov}}
+\end{figure}
+
+In dem weiteren Aufbau der Wahrscheinlichkeitstheorie erwies sich diese Definition als ungeeignet, da unüberwindliche Schwierigkeiten auftraten. Der uns bekannte Limesbegriff im Sinne der Analysis lässt sich nämlich nicht auf eine vom Zufall beherrschte Folge anwenden, in der immer wieder \glqq Ausreisser\grqq\ möglich sind. Eine logisch befriedigende Fassung des Wahrscheinlichkeitsbegriffs wurde erst durch den Verzicht auf eine direkte Definition möglich. \textsc{Kolmogorow} forderte lediglich gewisse Eigenschaften für Wahrscheinlichkeiten und zeigte 1933, dass sich bereits aus wenigen Axiomen eine Wahrscheinlichkeitstheorie entwickeln lässt.
+
+\begin{cdef}[Wahrscheinlichkeit nach Kolmogorov]
+Ist
+\marginnote{
+\qrcode{
+https://www.youtube.com/watch?v=LGmmqxRnRCg}
+}
+$P$ eine Funktion, die jedem Ereignis $\mathbb{A}$ eines Stichprobenraumes $\Omega$ genau eine reelle Zahl $P(\mathbb{A})$ zuordnet, so heisst $P$ eine \emph{Wahrscheinlichkeitsfunktion} und jeder Funktionswert $P(\mathbb{A})$ die \emph{Wahrscheinlichkeit} von $\mathbb{A}$, genau dann, wenn folgende (Kolmogorow-)Axiome erfüllt sind:
+\begin{itemize}
+\item $P(\mathbb{A})\geq0, \forall\mathbb{A}\subset\Omega$ \hfill(Positivität)
+\item $P(\Omega)=1$ \hfill(Normierung)
+\item $\forall\mathbb{A},\mathbb{B}\subset\Omega$ mit $\mathbb{A}\cap\mathbb{B}=\emptyset\implies P(\mathbb{A}\cup\mathbb{B})=P(\mathbb{A})+P(\mathbb{B})$ \hfill(Additivität)
+\end{itemize}
+\end{cdef}
+
+Aus den Axiomen folgert man sofort
+\begin{csatz}[Gegenwahrscheinlichkeit]
+Mit
+\marginnote{
+\qrcode{
+https://youtu.be/Yb8tCa24Gi8}
+}
+den üblichen Bezeichnungen gilt
+$$P(\overline{\mathbb{A}})=1-P(\mathbb{A}).$$
+\end{csatz}
+\begin{proof}[Beweis]
+Wegen $\mathbb{A}\cap\overline{\mathbb{A}}=\emptyset$ und $\mathbb{A}\cup\overline{\mathbb{A}}=\Omega$ gilt
+$$1=P(\Omega)=P(\mathbb{A}\cup\overline{\mathbb{A}})=P(\mathbb{A})+P(\overline{\mathbb{A}}),$$
+also $P(\overline{\mathbb{A}})=1-P(\mathbb{A})$.
+\end{proof}
+
+\begin{bsp}
+Ein illustratives Beispiel für eine Anwendung ist die Suche nach der Antwort auf die Frage:
+\begin{quote}
+Mit einem fairen Spielw\"urfel: Wie gross ist die Wahrscheinlichkeit in $10$ Würfen mindestens einmal eine $6$ zu werfen?
+\end{quote}
+Dies zu berechnen ist ziemlich aufwändig. Denn man muss die Wahrscheinlichkeit berechnen, genau $1$-mal eine $6$, genau $2$-mal eine $6$, \dots, genau $10$-mal eine $6$ in $10$ Würfen zu realisieren; danach muss man noch die einzelnen Wahrscheinlichkeiten aufsummieren. Zudem ist die Berechnung der einzelnen Wahrscheinlichkeiten --- beispielsweise genau $3$ $6$en in $10$ Würfen --- nicht trivial (Resultat $15.5\%$).
+
+Einfacher geht es über das Gegenereignis von \glqq mindestens $1$-mal eine $6$ zu werfen\grqq; das ist nämlich \glqq nie eine $6$ in $10$ Würfen\grqq\ zu erzielen. Es ist
+$$P(\text{keine $6$ in $10$ Würfen})=\left(\frac{5}{6}\right)^{10}\approx0.1615.$$
+Nun kann man mit obigem Satz einfach schliessen, dass die Wahrscheinlichkeit \glqq in $10$ Würfen mindestens einmal eine $6$\grqq\ zu würfeln
+\begin{align*}
+P(\text{mindestens eine $6$ in $10$ Würfen}) & = 1-P(\text{keine $6$ in $10$ Würfen})\\
+& \approx1-0.1615=0.8385\approx84\%,
+\end{align*}
+sein muss.
+\end{bsp}
+
+\begin{bem}
+Die Beziehung aus obigem Satz wird sehr oft benötigt, da in vielen Fällen die Wahrscheinlichkeit des Gegenereignisses $\overline{\mathbb{A}}$ leichter zu berechnen ist als die Wahrscheinlichkeit des Ereignisses $\mathbb{A}$.
+\end{bem}
+
+\begin{csatz}[günstig durch möglich]
+Hat ein Zufallsversuch $n$ mögliche Ausfälle $\omega_1, \omega_2, \omega_3, \dots, \omega_n$ und ist jeder dieser Ausfälle gleich wahrscheinlich, also $P(\omega_i)=\frac{1}{n}$, so gilt für ein Ereignis $\mathbb{A}$
+$$P(\mathbb{A})=\frac{1}{n}+\frac{1}{n}+\dots+\frac{1}{n}=\frac{\card(\mathbb{A})}{\card(\Omega)}.$$
+\end{csatz}
+\begin{proof}[Beweis]
+Brauche Kol\-mo\-go\-rof-Ad\-di\-ti\-vi\-tät.
+\end{proof}
+
+\begin{cdef}[Klassische Wahrscheinlichkeit nach Laplace]
+In obigem Fall gilt also für die Wahrscheinlichkeit eines Ereignisses $\mathbb{A}$: Anzahl der günstigen Fälle für $\mathbb{A}$ geteilt durch Anzahl der möglichen Fälle $\Omega$, oder kurz
+$$P(\mathbb{A}):=\frac{|\mathbb{A}|}{|\Omega|}=\frac{g}{m}.$$
+\end{cdef}
+
+\begin{bsps}
+Würfeln mit einem fairen Spielwürfel, Ziehen von Losen aus einer gut durchmischten Urne, Ziehen von Karten aus einem gut durchmischten Kartenspiel etc.
+\end{bsps}
+
+Die letzte Folgerung aus den Axiomen entspricht der klassischen Definition der Wahrscheinlichkeit, die von Laplace stammt. Diese Definition hat den Nachteil, dass man sich auf endlich viele Ereignisse, die alle noch gleich wahrscheinlich sein müssen, beschränken muss. Der axiomatische Aufbau der Wahrscheinlichkeitsrechnung wird heute in der Mathematik allgemein benutzt, weil man nicht mehr den Einschränkungen unterworfen und die klassische Definition als Sonderfall enthalten ist.
+
+\uebh{energiearten}{
+In einer Stadt werden von allen Gebäuden 15\% elektrisch, 35\% mit Öl, 25\% mit Kohle und der Rest mit Erdgas beheizt. Wie gross ist die Wahrscheinlichkeit, dass ein zufällig ausgewähltes Gebäude
+\begin{enumerate}[a)]
+\item mit Kohle,	
+\item nicht mit Öl,
+\item weder mit Kohle noch mit Öl beheizt wird?
+\end{enumerate}
+}
+
+\uebh{hundertkugeln}{
+Eine Urne enthält 100 Kugeln mit den Nummern $00,01,02,$ \dots $,98,99$. Eine Kugel wird zufällig gezogen. Es sei $X$ die erste und $Y$ die zweite Ziffer ihrer Nummer. Berechne die Wahrscheinlichkeiten $P(X = 3)$, $P(Y\neq 4)$, $P(X \neq Y)$, $P(X < 4\text{ und } Y < 3)$ und $P(X\cdot Y > 49)$.
+}
+
+\uebh{pferderennen}{
+Die Pferde Artemis, Borodir, Condor und Durin bestreiten ein Galopprennen. Die Wahrscheinlichkeit, dass A gewinnt, ist doppelt so gross wie die von B, und die von B ist doppelt so gross wie die von C. Die Wahrscheinlichkeit, dass D gewinnt, ist dreimal so gross wie die von C. Wie gross ist die Wahrscheinlichkeit, dass
+
+\begin{minipage}{3.8cm}
+\begin{enumerate}[a)]
+\item A,
+\item B,
+\end{enumerate}
+\end{minipage}
+\begin{minipage}{3.9cm}
+\begin{enumerate}[a)]
+\addtocounter{enumi}{2}
+\item C,
+\item B oder C gewinnt?
+\end{enumerate}
+\end{minipage}
+
+Beim Aufgalopp verletzt sich Borodir und kann deshalb am Rennen nicht teilnehmen. Wie gross
+ist jetzt die Wahrscheinlichkeit, dass D gewinnt?
+}
+
+\uebh{bauersucht}{
+Ein Bauer erfährt, dass auf seinem $\unit[60]{m} \times \unit[40]{m}$ grossen Acker irgendwo ein Schatz vergraben ist. Wie gross ist die Wahrscheinlichkeit, dass der Schatz
+
+\begin{enumerate}[a)]
+\item mindestens zehn Meter von der Mitte entfernt ist?
+\item gefunden wird, wenn man zehn Löcher mit einem
+Durchmesser von $\unit[10]{m}$ gräbt?
+\item Wie viele Löcher vom gleichen Durchmesser müsste man graben, um mit mindestens $80$-prozentiger Sicherheit den Schatz zu finden?
+\end{enumerate}
+
+Hinweis: In diese Aufgabe handelt es sich um geometrische Wahrscheinlichkeiten, definiert durch das Verhältnis des Inhalts der günstigen Fläche zum Inhalt der möglichen Fläche. Auch diese Zuordnung erfüllt die drei Axiome von Kolmogorow, ist also eine Wahrscheinlichkeit.
+}
+
+\clearpage
+
+\subsection{Notizen zu den \"Ubungen}
+
+\begin{lsg}{reissnagel}
+Der Plot sieht vielleicht so aus:
+
+\definecolor{cqcqcq}{rgb}{0.75,0.75,0.75}
+\definecolor{darkgreen}{rgb}{0.0,0.5,0.0}
+\scalebox{0.618}{
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.04cm,y=6.0cm]
+\draw [color=cqcqcq,dash pattern=on 2pt off 2pt, xstep=0.8cm,ystep=1.2cm] (-2,-0.02) grid (205,1.05);
+\draw[->,color=black] (-20,0) -- (220,0);
+\foreach \x in {20,40,60,80,100,120,140,160,180,200}
+\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize $\x$};
+\draw[color=black] (205.46,0.01) node [anchor=south west] { \# Würfe};
+\draw[->,color=black] (0,-0.1) -- (0,1.2);
+\foreach \y in {,0.2,0.4,0.6,0.8,1}
+\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize $\y$};
+\draw[color=black] (1.32,1.14) node [anchor=west] { $\nicefrac{\text{\#Einsen}}{\text{\#Würfe}}$};
+% Draw points
+	\def\pointradius{3pt}
+    \fill[darkgreen] (2,0) circle (\pointradius);
+    \fill[darkgreen] (5,0.6) circle (\pointradius);
+    \fill[darkgreen] (10,0.4) circle (\pointradius);
+    \fill[darkgreen] (20,0.7) circle (\pointradius);
+    \fill[darkgreen] (30,0.6) circle (\pointradius);
+    \fill[darkgreen] (40,0.63) circle (\pointradius);
+    \fill[darkgreen] (60,0.67) circle (\pointradius);
+    \fill[darkgreen] (80,0.66) circle (\pointradius);
+    \fill[darkgreen] (100,0.65) circle (\pointradius);
+    \fill[darkgreen] (120,0.62) circle (\pointradius);
+    \fill[darkgreen] (140,0.62) circle (\pointradius);
+    \fill[darkgreen] (160,0.63) circle (\pointradius);
+    \fill[darkgreen] (180,0.62) circle (\pointradius);
+    \fill[darkgreen] (200,0.63) circle (\pointradius);
+\clip(-20,-0.2) rectangle (220,1.2);
+\end{tikzpicture}
+}
+\end{lsg}
+
+\begin{lsg}{kopfoderzahl}
+\begin{enumerate}[a)]
+\item Mit den intuitiv verständlichen Abkürzungen haben wir $P(K)=\frac{1}{2}$, $P(K\cup Z)=1$ und $P(K\cap Z)=0$.
+\item $P(3)=\frac{1}{6}$ bzw. $P(QZ)=\frac{2}{6}=\frac{1}{3}$
+\end{enumerate}
+\end{lsg}
+
+\begin{lsg}{geburtenregel}
+Die aufgef\"uhrten Geburten addieren sich zu $m=6\,702\,608$. Also erhalten wir als Wahrscheinlichkeit f\"ur eine Zwillingsgeburt $p=\frac{81133}{m}\approx0.0121$ und daraus folgt $p^{2}\approx0.000147$ sowie $p^{3}\approx0.00000177$, was wir vergleichen mit $P(3ling)=\frac{667}{m}\approx0.0000995$ und $P(4ling)=\frac{14}{m}\approx0.0000021$.
+\end{lsg}
+
+\begin{lsg}{energiearten}
+Wir lassen Prozente weg und rechnen:
+\begin{enumerate}
+\item $P(K)=\frac{25}{100}=\frac{1}{4}$
+\item $P(O)=\frac{7}{20}\implies P(\overline{O})=1-P(O)=\frac{13}{20}$
+\item $P(\overline{K\cup O})=1-\frac{3}{5}=\frac{2}{5}$
+\end{enumerate}
+\end{lsg}
+
+\begin{lsg}{hundertkugeln}
+Eins nach dem andern
+\begin{enumerate}[a)]
+\item $P(X=3)=\frac{10}{100}=\frac{1}{10}$
+\item $P(Y\neq4)=\frac{90}{100}=\frac{9}{10}$
+\item $P(Y\neq4)=\frac{90}{100}=\frac{9}{10}$
+\item $P(X \neq Y)=\frac{10\cdot9}{100}=\frac{9}{10}$
+\item $P(X < 4\text{ und } Y < 3)=\frac{4\cdot 3}{100}=\frac{3}{25}$
+\item Man z\"ahlt alle g\"ultigen Produkte und teilt durch die m\"oglichen F\"alle: $P(X\cdot Y > 49)=\frac{1+2+3+4}{100}=\frac{1}{10}$
+\end{enumerate}
+\end{lsg}
+
+\begin{lsg}{pferderennen}
+Zuerst kann man mit Dreisatz die Verh\"altnisse der Siegeswahrscheinlichkeiten der Pferde bestimmen. Wir erhalten $P(A)=\frac{4}{10}$, $P(B)=\frac{2}{10}$, $P(C)=\frac{1}{10}$ und $P(D)=\frac{3}{10}$. Damit sind die ersten drei Teilaufgaben gegessen. Ferner ist $P(B\cup C)=\frac{3}{10}$. Wenn B nicht mittun kann, dann ist $P(D)=\frac{3}{8}$.
+\end{lsg}
+
+\begin{lsg}{bauersucht}
+Die Gesamtfl\"ache, die den m\"oglichen Fundort enth\"alt, betr\"agt $A=\unit[2400]{m^{2}}$.
+\begin{enumerate}[a)]
+\item Der Bereich um $\unit[10]{m}$ um die Mitte betr\"agt $M=\unit[100\pi]{m^{2}}$. Also $P(\overline{M})=1-\frac{M}{A}\approx0.87$.
+\item Wenn man nicht wild drauf los gr\"abt, so \"uberschneiden sich die L\"ocher paarweise nicht. Dann kriegt man $P(10)=\frac{10\cdot25\pi}{A}\approx0.33$
+\item Sei $d$ der Durchmesser und $x$ die Anzahl L\"ocher. Es ist:
+\begin{align*}
+x\cdot\frac{(\frac{d}{2})^{2}\pi}{2400} &\geq80\%\\
+x\cdot\frac{d^{2}\pi}{9600} &\geq80\%\\
+x &\geq 0.8\cdot\frac{9600}{d^{2}\pi}
+\end{align*}
+F\"ur den Durchmesser $d=\unit[10]{m}$ von oben erh\"alt man $x\geq24.45$. D.h man m\"usste mindestens 25 L\"ocher graben, um mit einer Wahrscheinlichkeit von mehr als $80\%$ den Schatz zu finden.
+\end{enumerate}
+\end{lsg}
+
+\clearpage
+
+\section{Stochastische Prozesse}
+
+\subsection{Wahrscheinlichkeitsbaum}
+
+Im vorherigen Kapitel haben wir einstufige Zufallsversuche betrachtet: Der Zufallsversuch wurde nur einmal durchgeführt. \emph{Stochastische} (griech., zufällige) \emph{Prozesse} sind eine Folge von einstufigen Versuchen, also mehrstufige Zufallsversuche. Dabei kann der Ausgang auf einer bestimmten Stufe durchaus vom Ausgang der vorherigen Stufen abhängen. Der Ablauf eines stochastischen Prozesses kann in den meisten Fällen übersichtlich durch ein Baumdiagramm dargestellt werden.
+
+\begin{bsp}
+Aus
+\marginnote{
+\qrcode{
+https://youtu.be/sb4FPdTdXcU}
+}
+einer Urne mit drei roten und zwei grünen Kugeln wird eine Kugel gezogen und ihre Farbe notiert. Danach wird die Kugel wieder zurückgelegt und der Versuch wiederholt.
+Hier hängt die zweite Stufe nicht vom Ausgang der ersten Stufe ab. Der zugehörige Stichprobenraum ist $\Omega=\set{rr, rg, gr, gg}$.
+Die Figur \ref{fig:baum} auf Seite \pageref{fig:baum} zeigt das Baumdiagramm dieses stochastischen Prozesses.
+
+\begin{figure}[h!]
+\centering
+
+\tikzset{
+zahl/.style={fill=seagreen!70!yellow, text=black, label=center:\textsf{\Large g}},
+kopf/.style={fill=firebrick!70!yellow, label=center:\textsf{\Large r}}
+}
+\begin{tikzpicture}
+[scale=1.2, transform shape, 
+thick,
+every node/.style={draw, circle, minimum size=8mm},
+grow=down,  %Zeichenrichtung
+level 1/.style={sibling distance=4cm},
+level 2/.style={sibling distance=2.5cm}, 
+%level 3/.style={sibling distance=2cm}, 
+level distance=1.75cm]
+
+%\node[fill=gray!20, shape=rectangle, rounded corners, minimum width = 6cm] {Urne mit 3 roten und 2 grünen Kugeln} 
+
+%child{
+\node[shape=circle split,draw,line width=1pt,minimum size=8mm,inner sep=0mm, font=\sffamily\normalsize, rotate=30]  (Start) { \rotatebox{-30}{3r} \nodepart{lower}  \rotatebox{-30}{2g}}
+ child {node[kopf] (A) {}
+         child {node[kopf] (B) {}}
+        child {node[zahl] (C) {}}
+}
+ child {node[zahl] (D) {}
+          child {node[kopf] (E) {}}
+          child {node[zahl] (F) {}}
+};
+
+%Füllung der Wurzel = "Start"
+\begin{scope}[on background layer, rotate=30]
+    \fill[kopf] (Start.base) ([xshift=0mm]Start.east) arc (0:180:5.5mm)--cycle;
+    \fill[zahl] (Start.base) ([xshift= 0pt]Start.west) arc (180:360:5.5mm)--cycle;  
+\end{scope}
+
+%Beschriftung
+\path (Start) -- (A) node [draw=none,  near start, left] {$\frac{3}{5}$};
+\path (A) -- (B) node [draw=none,  near start, left] {$\frac{3}{5}$};
+\path (A) -- (C) node [draw=none,  near start, right] {$\frac{2}{5}$};
+\path (Start) -- (D) node [draw=none,  near start, right] {$\frac{2}{5}$};
+\path (D) -- (E) node [draw=none,  near start, left] {$\frac{3}{5}$};
+\path (D) -- (F) node [draw=none,  near start, right] {$\frac{2}{5}$};
+%
+\node[below=11pt, draw=none] at (B) {$\frac{9}{25}$};
+\node[below=11pt, draw=none, name=X] at (C) {$\frac{6}{25}$};
+\node[below=11pt, draw=none, name=Y] at (E) {$\frac{6}{25}$};
+\node[below=11pt, draw=none] at (F) {$\frac{4}{25}$};
+%
+\draw[densely dashed, rounded corners, thin] (X.south west) rectangle (Y.north east);
+
+\end{tikzpicture}
+
+
+\caption{Wahrscheinlichkeitsbaum für die Urne (mit Zurücklegen)}\label{fig:baum}
+\end{figure}
+
+Jedem Ausgang entspricht ein Pfad durch den Baum. Die Zweige der Pfade sind mit entsprechenden Wahrscheinlichkeiten belegt. Beachten Sie, dass die Wahrscheinlichkeiten der Zweige, die von einem Knoten ausgehen, zusammen $1$ ergeben.
+
+Um eine vernünftige Definition für die Wahrscheinlichkeit eines Pfades zu finden, stellt man sich vor, dass dieser zweistufige Prozess $N$-mal abläuft, wobei $N$ eine grosse Zahl, z.B. $10000$, bedeutet. In $\nicefrac{3}{5}$ der $N$ Wiederholungen wird man zu dem Knoten $r$ gelangen, also etwa $6000$ mal. $\nicefrac{2}{5}$ dieser $\nicefrac{3}{5}$ $N$ Fälle führen von $r$ zu $g$; der Pfad $rg$ wird also etwa $2400$ mal durchlaufen. Die Wahrscheinlichkeit für diesen Pfad ist somit
+$$\frac{\frac{2}{5}\cdot\frac{3}{5}\cdot N}{N}=\frac{6}{25}.$$
+\end{bsp}
+
+\begin{csatz}[Pfadwahrscheinlichkeit]{}
+Die Wahrscheinlichkeit eines Pfades ist gleich dem Produkt aller Wahrscheinlichkeiten längs des Pfades.
+\end{csatz}
+\begin{proof}[Beweis]
+Den Beweis führt man wie oben im Beispiel, aber mit Variablen.
+\end{proof}
+
+\begin{uebenv}{rotgruenohnezuruecklegen}
+Berechne die entsprechenden Wahrscheinlichkeiten für den stochastischen Prozess, bei dem die zuerst gezogene Kugel nicht zurückgelegt wird. Zeichne das zugehörige Baumdiagramm.
+\end{uebenv}
+
+\begin{uebenv}{ananas}
+Aus der Urne $\set{A, N, A, N, A, S}$ werden vier Buchstaben nacheinander ohne Zurücklegen zufällig gezogen. Wie gross ist die Wahrscheinlichkeit, das Wort \glqq ANNA\grqq\ zu erhalten? Zeichne auch ein Baumdiagramm.
+\end{uebenv}
+
+\begin{uebenv}{meteo}
+Für Wetterprognosen in Therwil gelten die Regeln: Wenn es heute trocken ist, dann ist es morgen mit der Wahrscheinlichkeit $\nicefrac{5}{6}$ wieder trocken. Wenn es heute regnet, dann regnet es morgen mit der Wahrscheinlichkeit $\nicefrac{2}{3}$. Heute ist Sonntag, und es ist trocken. Wie gross ist die Wahrscheinlichkeit, dass es am
+\begin{enumerate}[a)]
+\item Montag regnet,
+\item Dienstag trocken ist,
+\item Mittwoch regnet,
+\end{enumerate}
+
+Zeichne ein Baumdiagramm.
+\end{uebenv}
+
+\pagebreak
+
+\subsection{Unendliche Prozesse}
+
+\begin{uebenv}{schussaufziel}
+\ \\[-4ex]
+\begin{enumerate}[a)]
+\item Stan und Oliver schiessen gleichzeitig auf dasselbe Ziel. Die Trefferwahrscheinlichkeiten sind 80\% bzw. 70\%. Wie gross ist die Wahrscheinlichkeit, dass das Ziel mindestens einmal getroffen wird?
+\item Abel und Kain haben je zwei Kugeln. Sie schiessen abwechselnd auf eine Glasflasche. Abel beginnt. Ihre Trefferwahrscheinlichkeiten sind $\nicefrac{1}{3}$ bzw. $\nicefrac{1}{4}$. Wie gross ist die Wahrscheinlichkeit, dass Abel die Flasche zerstört?
+\item wie (b), jedoch haben Abel und Kain beliebig viele Kugeln zur Verfügung.
+\end{enumerate}
+\end{uebenv}
+
+Wenn zwei Leute gegensätzlicher Meinung sind, wird oft eine Münze geworfen, um eine Entscheidung herbeizuführen. Gelegentlich mag es vorkommen, dass der eine oder auch beide den Argwohn hegen, die Münze sei präpariert. Der Mathematiker \textsc{John Von Neumann} hat einen schlauen kleinen Trick entwickelt, der es den Kontrahenten erlaubt, eine präparierte Münze zu verwenden und trotzdem ein faires Ergebnis zu erhalten. Die Münze wird zweimal geworfen. Wenn zweimal Kopf oder zweimal Zahl erscheint, wird die Münze wiederum zweimal geworfen. Wenn zuerst Kopf und dann Zahl erscheint, hat der eine der beiden Kontrahenten gewonnen, und wenn zuerst Zahl und dann Kopf erscheint, hat der andere gewonnen. Begründe, dass die Wahrscheinlichkeiten für diese beiden Ereignisse gleich hoch sind, auch wenn die Münze präpariert ist.
+
+\begin{uebenv}{astragale}
+ In der Antike dienten Lammknochen, sogenannte Astragale, als Würfel. Astragale können mit vier Seiten nach oben fallen. Durch Versuche in Museen kennt man die Wahrscheinlichkeiten dieser vier Seiten: $p_1\approx0.1, p_2\approx0.1, p_3\approx0.4, p_4\approx0.4$. Bei einem Spiel haben die Griechen und Römer vier Astragale auf einmal geworfen. Besonders begehrt war ein Wurf, bei dem alle vier verschiedenen Seiten oben liegen, ein \emph{Venuswurf}. Berechne die Wahrscheinlichkeit für einen Venuswurf.
+ \end{uebenv}
+ 
+ \begin{uebenv}{demereundpascal}
+Als Geburtsstunde der Wahrscheinlichkeitsrechnung gilt das Jahr 1654, als der \textsc{Chevalier de Mère}, ein Philosoph und Literat am Hof Ludwigs des XIV, dem Mathematiker \textsc{Blaise Pascal} zwei Fragen, die unter Glücksspielern schon seit Jahrhunderten umstritten waren, vorlegte.
+\begin{enumerate}[a)]
+\item Was ist wahrscheinlicher: bei vier Würfen mit einem Würfel mindestens eine 6 zu werfen, oder bei 24 Würfen mit zwei Würfeln mindestens eine Doppelsechs zu werfen?\\
+De Mère glaubte, dass die Wahrscheinlichkeiten gleich sein müssten, da $4\div6 = 24\div36$ ist.
+\item Eine Münze wird wiederholt geworfen. Für Kopf erhält Spieler A einen Punkt, für Zahl erhält Spieler B einen Punkt. Wer zuerst fünf Punkte erzielt, gewinnt den ganzen Einsatz. Nach sieben Würfen hat A 4 Punkte, B 3 Punkte erzielt. Das Spiel muss wegen eines unvorhergesehenen Ereignisses abgebrochen werden. Wie ist der Einsatz gerecht zu verteilen: nach den erreichten Punkten, also wie $4\div3$, oder nach den zum Sieg noch fehlenden Punkten, also wie $2\div1$ (A fehlt noch ein Punkt, B fehlen noch zwei Punkte; also muss A doppelt so viel erhalten wie B.)?
+\end{enumerate}
+\end{uebenv}
+
+Viele Lösungsversuche scheiterten nicht zuletzt an der unzweckmässigen Verwendung des Proportionaldenkens. Die exakte Lösung blieb \textsc{Pascal} und \textsc{Fermat} vorbehalten.
+
+\textsc{Pascal} hat sich übrigens in einem Brief über \textsc{de Mère} so geäussert:
+\begin{quote}
+\dots denn er hat wohl Geist, aber er ist nicht Mathematiker, und das ist, wie Sie wissen, ein grosser Mangel!
+\end{quote}
+
+\begin{uebenv}{geburtstagsparadoxon}
+Es
+\marginnote{
+\qrcode{
+https://youtu.be/lc-7Am3al0U}
+}
+kann spannend sein, bei den einzelnen Teilaufgaben das Ergebnis jeweils zuerst zu raten.
+\begin{enumerate}[a)]
+\item Wie gross ist die Wahrscheinlichkeit, dass von sieben Personen mindestens zwei am gleichen Wochentag Geburtstag haben
+\item Wie gross ist die Wahrscheinlichkeit, dass in deiner Klasse mindestens $2$ Personen am gleichen Jahrestag Geburtstag haben?
+\item Bei einer Party sind $k$ Gäste. Wie gross ist die Wahrscheinlichkeit, dass mindestens zwei Gäste am gleichen Jahrestag Geburtstag haben? Schätze, wie viele Gäste anwesend sein müssten, damit diese Wahrscheinlichkeit grösser als 50\% ist.
+\end{enumerate}
+\end{uebenv}
+
+\begin{uebenv}{farbenblind}
+In einer Bevölkerung ist einer von 100 farbenblind. Wie viele Personen muss man untersuchen, um mit mindestens 95\%-iger Sicherheit mindestens eine farbenblinde Person zu finden?
+\end{uebenv}
+
+\begin{figure}
+  \begin{center}
+    \includegraphics[width=0.6\textwidth]{pictures/lotto}
+    %\includegraphics[width=0.35\textwidth]{pictures/CHLotto}
+  \end{center}
+\caption{Oops, Lotto-Ziehung-Missgeschick}
+\end{figure}
+
+\begin{uebenv}{lotto}
+Berechne
+\marginnote{
+\qrcode{
+https://youtu.be/rjoUF6i1CXY}
+}
+die Wahrscheinlichkeit, bei einer Lottoziehung
+
+\begin{enumerate}[a)]
+\item $6$ richtige
+\item keine richtige
+\item eine richtige
+\item $4$ richtige
+\end{enumerate}
+
+zu tippen.
+\end{uebenv}
+
+\begin{uebenv}{lottonachbarn}
+Berechne
+\marginnote{
+\qrcode{
+https://www.youtube.com/watch?v=Ag0HrxMhyUo}
+}
+die Wahrscheinlichkeit, dass bei einer Lottoziehung mit 42 Kugeln mindestens ein Paar Nachbarn vorkommen? (Beispiel: 2 13 \emph{20 21} 34 41)
+\end{uebenv}
+
+\begin{uebenv}{drawpoker}
+Beim
+\marginnote{
+\qrcode{
+https://youtu.be/iOb1eMycCQQ}
+}
+Pokern
+erhält jeder Spieler fünf Karten aus einem Kartenspiel mit 52 Karten (4 Farben zu je 13 Blatt). Die folgenden Konfigurationen sind von Bedeutung:
+\begin{enumerate}[a)]
+\item Flush (5 Karten gleicher Farbe)
+\item Straight Flush (5 fortlaufende Werte gleicher Farbe)
+\item Full House (One Pair und Three of a Kind)
+\item Four of a Kind/Poker (z.B. 4 Könige)
+\item Straight (5 fortlaufende Werte beliebiger Farbe, wobei das As als höchste Karte oder als 1 gelten
+kann)
+\item One Pair (z.B. 2 Könige)
+\item Two Pair (z.B. 2 Achter, 2 Damen)
+\item Three of a Kind (z.B. 3 Zehner)
+\end{enumerate}
+Berechne die entsprechenden Wahrscheinlichkeiten.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{pictures/PokerHandRankings.png}
+\caption{Poker Hand Rankings}
+\end{figure}
+\end{uebenv}
+
+\clearpage
+
+\subsection{Notizen zu den \"Ubungen}
+
+\begin{lsg}{rotgruenohnezuruecklegen}
+Ohne zur\"uckzulegen kriegt man $P(2r)=\frac{3}{5}\cdot\frac{2}{4}=\frac{3}{10}$, $P(2g)=\frac{2}{5}\cdot\frac{1}{4}=\frac{1}{10}$ und $P(\{r,g\})=\frac{3}{5}\cdot\frac{2}{4}+\frac{2}{5}\cdot\frac{3}{4}=\frac{3}{5}$.
+\end{lsg}
+
+\begin{lsg}{ananas}
+F\"urs Baumdiagramm zeichnet man \"ubersichtshalber nur die f\"ur das Wort Anna gew\"unschten \"Aste. Die Wahrscheinlichkeit entlang dieses Pfades ist dann $P(\text{Anna})=\frac{3}{6}\cdot\frac{2}{5}\cdot\frac{1}{4}\cdot\frac{2}{3}=\frac{12}{360}=\frac{1}{30}$
+\end{lsg}
+
+\begin{lsg}{meteo}
+\begin{enumerate}[a)]
+\item $P(\text{Mo r})=1-\frac{5}{6}=\frac{1}{6}$
+\item $P(\text{Di t})=\frac{5}{6}\cdot\frac{5}{6}+\frac{1}{6}\cdot\frac{2}{3}=\frac{29}{36}$
+\item $P(\text{Mi r})=\frac{29}{36}\cdot\frac{1}{6}+\frac{7}{36}\cdot\frac{2}{3}=\frac{57}{216}=\frac{19}{72}$
+\end{enumerate}
+\end{lsg}
+
+\begin{lsg}{schussaufziel}
+\begin{enumerate}[a)]
+\item Die Wahrscheinlichkeit, dass beide das Ziel verfehlen ist $P(\text{both miss})=\frac{2}{10}\cdot\frac{3}{10}$. Also ist $P(\text{mind. 1 Treffer})=1-P(\text{both miss})=1-\frac{1}{5}\cdot\frac{3}{10}=\frac{47}{50}$.
+\item Entweder trifft Abel im ersten Versuch, oder er kriegt eine zweite Chance und trifft: $P(\text{A wins})=\frac{1}{3}+\frac{2}{3}\cdot\frac{3}{4}\cdot\frac{1}{3}=\frac{1}{2}$.
+\item Falls Abel verfehlt, muss Kain anschliessend auch verfehlen, damit Abels Chance auf den Sieg intakt bleibt. Also $P(\text{A wins})=\frac{1}{3}+\frac{2}{3}\cdot\frac{3}{4}\cdot\frac{1}{3}+\frac{2}{3}\cdot\frac{3}{4}\cdot\frac{2}{3}\cdot\frac{3}{4}\cdot\frac{1}{3}+\dots$. So ein \glqq Spielverl\"angerungsfaktor betr\"agt $\frac{3}{4}\cdot\frac{2}{3}=\frac{1}{2}$ und wir sehen eine geometrische Reihe. Es ist also
+$$P(\text{A wins})=\frac{\frac{1}{3}}{1-\frac{1}{2}}=\frac{2}{3}.$$
+\end{enumerate}
+\end{lsg}
+
+ 
+ \begin{lsg}{astragale}
+$P(\text{Venuswurf})=\frac{1}{10}\cdot\frac{1}{10}\cdot\frac{4}{10}\cdot\frac{4}{10}\cdot4!\approx4\%$.
+ \end{lsg}
+
+
+\begin{lsg}{demereundpascal}
+\begin{enumerate}[a)]
+\item Wir rechnen die beiden Wahrscheinlichkeiten aus. $P(\text{mind. 1 aus 4})=1-\left(\frac{5}{6}\right)^{4}=\frac{671}{1296}\approx51.8\%$ und $P(\text{mind. 1 aus 24})=1-\left(\frac{35}{36}\right)^{24}\approx49.1\%$, da die Wahrscheinlichkeit eine Doppelsechs zu werfen $\frac{1}{6}\cdot\frac{1}{6}=\frac{1}{36}$. Also ist eine 6 aus 4 W\"urfen einen Tick wahrscheinlicher.
+\item Was sind die Wahrscheinlichkeiten, dass bei einem $50\div50$ Spiel bei diesem Spielstand $A$ bzw. $B$ gewonnen h\"atte? $P(A)=\frac{1}{2}+\frac{1}{2}\cdot\frac{1}{2}=\frac{3}{4}$, denn $A$ kann auch gewinnen, wenn $B$ noch einen Punkt holt. Und $P(B)=\frac{1}{2}\cdot\frac{1}{2}=\frac{1}{4}$, da $B$ beide Runden gewinnen \emph{muss}. Ich w\"urde somit vorschlagen, dass der Betrag im Verh\"altnis $3\div1$ aufgeteilt wird.
+\end{enumerate}
+\end{lsg}
+
+\begin{lsg}{geburtstagsparadoxon}
+\begin{enumerate}[a)]
+\item Die Wahrscheinlichkeit, dass von $7$ Personen niemand am gleichen Wochentag Geburtstag hat ist $P(\text{no match})=\frac{7}{7}\cdot\frac{6}{7}\cdot\frac{5}{7}\cdot\frac{4}{7}\cdot\frac{3}{7}\cdot\frac{2}{7}\cdot\frac{1}{7}=\frac{7!}{7^{7}}$. Also ist die Wahrscheinlichkeit, dass von $7$ Personen mindestens $2$ am gleichen Tag Geburtstag haben
+$$P(\text{mind. 2})=1-P(\text{no match})\approx99.4\%.$$
+\item Seien in deiner Klasse $k$ Personen. Die Wahrscheinlichkeit, dass paarweise keine $2$ Personen am selben Tag Geburtstag haben ist $P(\text{no match})=\frac{\frac{365!}{(365-k)!}}{365^{k}}$. Somit
+$$P(\text{mind. 2})=1-P(\text{no match})=1-\frac{\frac{365!}{(365-k)!}}{365^{k}}.$$
+Dieses \glqq Ph\"anomen\grqq\ heisst \definition{Geburtstagsparadoxon}, da der hohe Wert der Wahrscheinlichkeit dem \glqq gesunden Menschenverstand\grqq\ widerspricht. Beispielsweise ist f\"ur eine Klasse mit $20$ Personen
+$$P(\text{mind. 2})=1-\frac{\frac{365!}{(365-20)!}}{365^{20}}\approx41.1\%.$$
+\item Siehe oben f\"ur die allgemeine L\"osung. Diese Gleichung mit der Bedingung $P(\text{mind. 2})>50\%$ kann nicht analytisch nach $k$ gel\"ost werden. Mit Ausprobieren kriegt man f\"ur $k=23$ Personen, dass $P(\text{mind. 2})\approx50.7\%$. There is a lovely football interpretation: In jedem zweiten Fussballspiel kommt es vor, dass mindestens zwei Akteure (inkl. Schiedsrichter) am selben Tag Geburtstag haben.
+
+Nat\"urlich sind diese Aussagen mit Vorsicht zu geniessen. Ich habe vorausgesetzt, dass die Geburtstage gleichverteilt sind.
+\end{enumerate}
+\end{lsg}
+
+
+\begin{lsg}{farbenblind}
+Eine nicht farbenblinde Person findet man mit Wahrscheinlichkeit $P(\overline{f})=\frac{99}{100}$. $k$ Mal nacheinander eine nicht farbenblinde Person auszuw\"ahlen schafft man zu $\left(\frac{99}{100}\right)^{k}$. Um mit mindestens 95\%-iger Sicherheit mindestens eine farbenblinde Person zu finden berechnet man die Wahrscheinlichkeit zu
+\begin{align*}
+P(\text{mind. 1 }f) &> 95\%\\
+1-\left(\frac{99}{100}\right)^{k} &> 0.95\tag{$-0.95+\left(\frac{99}{100}\right)^{k}$}\\
+0.05 &> \left(\frac{99}{100}\right)^{k} \tag{$\log()$}\\
+\log(0.05) &< k\cdot\log\left(\frac{99}{100}\right) \tag{$\div\log\left(\frac{99}{100}\right)$}\\
+\log_{\left(\frac{99}{100}\right)}(0.05) &< k
+\end{align*}
+Eingetippt $k>298.07$, das heisst, man muss mindestens $299$ Personen untersuchen.
+\end{lsg}
+
+\begin{lsg}{lotto}
+\begin{enumerate}[a)]
+\item $P(6)=\frac{1}{\binom{42}{6}}\frac{1}{5\,245\,786}\approx0.000019\%\approx0$. Als Vergleich: Die Wahrscheinlichkeit, f\"ur einen zuf\"allig ausgew\"ahlten Menschen auf der Welt, einmal im Leben vom Blitz getroffen zu werden ist $0.00015\%$ und damit knapp $8$ Mal gr\"osser. F\"ur einen Lotto-Sechser m\"usste man noch die Zusatzzahl richtig tippen. Damit ist es $80$ Mal wahrscheinlicher vom Blitz getroffen zu werden, als einen Lotto-Secher zu verbuchen.
+\item $P(0)=\frac{\binom{36}{6}}{\binom{42}{6}}\approx37\%$
+\item $P(1)=\frac{\binom{36}{5}\cdot\binom{6}{1}}{\binom{42}{6}}\approx43\%$. Es ist wahrscheinlicher, eine Zahl richtig zu tippen als keine!
+\item $P(4)=\frac{\binom{6}{4}\cdot\binom{36}{2}}{\binom{42}{6}}\approx0.18\%$, das heisst weniger als $1\div500$.
+\end{enumerate}
+\end{lsg}
+
+\begin{lsg}{lottonachbarn}
+Diese Aufgabe ist nicht trivial. Beispielsweise denken wir uns die $42$ Zahlen als Folge aufgelistet. Wir setzen eine $1$, falls die Zahl zum Sechser geh\"ort und eine $0$, falls sie nicht dazu geh\"ort. Wenn jetzt in einer Ziehung alle $6$ \emph{nicht} benachbart sein sollen, stellen wir uns $36+1$ Platzhalter vor, da ich meine Gl\"uckszahlen dahin setzen kann und diese dann nicht benachbart sind. Wir k\"onnen ja bei den $36$ Nullen mit Anfang und Ende an $37$ Positionen die $1$en setzen, so dass nie zwei oder mehr $1$en benachbart sind. Damit ist die Wahrscheinlichkeit, dass bei einer Ziehung kein Nachbar vorkommt $P(0)=\frac{\binom{37}{6}}{\binom{42}{6}}$. Die Gegenwahrscheinlichkeit, dass mindestens ein Paar Nachbarn vorkommen, ist dann $P(\overline{0})=1-P(0)\approx56\%$. Das bedeutet, dass bei mehr als jeder zweiten Ziehung ein Paar Nachbarn vorkommen!
+\end{lsg}
+
+
+\begin{lsg}{drawpoker}
+Ich notiere jeweils zwei Varianten.
+\begin{enumerate}[a)]
+\item $P(\text{flush})=\frac{4\cdot\binom{13}{5}}{\binom{52}{5}}\approx0.2\%$ oder $1\cdot\frac{12}{51}\cdot\frac{11}{50}\cdot\frac{10}{49}\cdot\frac{9}{48}$
+\item $P(\text{straight flush})=\frac{5}{52}\cdot\frac{4}{51}\cdot\frac{3}{50}\cdot\frac{2}{49}\cdot\frac{1}{48}\cdot4\cdot10\approx0.0015\%$ oder $\frac{10\cdot4}{\binom{52}{5}}$
+\item $P(\text{full house})=\frac{\binom{13}{1}\cdot\binom{4}{3}\cdot\binom{12}{1}\cdot\binom{4}{2}}{\binom{52}{5}}\approx0.14\%$ oder $1\cdot\frac{3}{51}\cdot\frac{48}{50}\cdot\frac{3}{49}\cdot\frac{2}{48}\cdot\binom{5}{2}$
+\item $P(\text{poker})=1\cdot\frac{3}{51}\cdot\frac{2}{50}\cdot\frac{1}{49}\cdot\frac{48}{48}\cdot 5\approx0.024\%$ oder $\frac{\binom{13}{1}\cdot\binom{4}{4}\cdot\binom{48}{1}}{\binom{52}{5}}$
+\item $P(\text{straight})=10\cdot\frac{4}{52}\cdot\frac{4}{51}\cdot\frac{4}{50}\cdot\frac{4}{49}\cdot\frac{4}{48}\cdot 5!\approx0.4\%$ oder $\frac{10\cdot4^5}{\binom{52}{5}}$
+\item $P(\text{pair})=1\cdot\frac{3}{51}\cdot\frac{48}{50}\cdot\frac{44}{49}\cdot\frac{40}{48}\cdot\binom{5}{2}\approx42\%$ oder $\frac{\binom{13}{1}\cdot\binom{4}{2}\cdot\binom{12}{3}\cdot4^3}{\binom{52}{5}}$
+\item $P(\text{two pair})=\frac{\binom{13}{2}\cdot\binom{4}{2}^{2}\cdot11\cdot 4}{\binom{52}{5}}\approx4.8\%$ oder $1\cdot\frac{3}{51}\cdot\frac{48}{50}\cdot\frac{3}{49}\cdot\frac{44}{48}\cdot\binom{5}{1}\binom{3}{2}$
+\item $P(\text{trips})=\frac{\binom{13}{1}\cdot\binom{4}{3}\cdot\binom{12}{2}\cdot4^{2}}{\binom{52}{5}}\approx2.1\%$ oder $1\cdot\frac{3}{51}\cdot\frac{2}{50}\cdot\frac{48}{49}\cdot\frac{44}{48}\cdot\binom{5}{3}$
+\end{enumerate}
+\end{lsg}
+
+\clearpage
+
+
+\section{Bedingte Wahrscheinlichkeit}
+\subsection{Tulpen aus Amsterdam}
+
+\begin{wrapfigure}{r}{0.35\textwidth}
+  \begin{center}
+    \includegraphics[width=0.34\textwidth]{pictures/tulpen}
+  \end{center}
+%\caption{You Know my Name}
+\end{wrapfigure}
+Ein Hobbygärtner steckt $100$ Tulpenzwiebeln unter denselben Verhältnissen fachgerecht in den Boden. Nach einiger Zeit sind daraus $87$ herrliche Tulpen entstanden. Wenn man das Ereignis
+\begin{itemize}
+    \item[] $A$: aus der Zwiebel entsteht eine Tulpe
+\end{itemize}
+festlegt, so gilt für dieses Ereignis $P(A)=0.87$.
+Der Hobbygärtner hatte nicht alle $100$ Zwiebeln bei demselben Händler gekauft. $60$ Zwiebeln stammten von einem Grossversand aus Holland, die restlichen $40$ Zwiebeln waren ein Sonderangebot aus einem Gartencenter. Bei genauerer Untersuchung stellte der Gärtner fest, dass von den $13$ Zwiebeln, die keine Tulpe hervorbrachten, nur deren $3$ aus Holland kamen und die restlichen Zwiebeln aus dem Gartencenter stammten. Der Grossversand aus Holland lieferte also mit $\nicefrac{57}{60}=95\%$ gute Zwiebeln, während das Sonderangebot aus dem Gartencenter nur $\nicefrac{30}{40}=75\%$ gute Zwiebeln sendete. Bezeichnet man das Ereignis
+\begin{itemize}
+    \item[] $B$: Zwiebel kommt aus Holland,
+\end{itemize}
+so gilt $P(B)=0.6$.
+Die Wahrscheinlichkeit $P(A)=0.87$ sollte man präziser als die \emph{unbedingte} Wahrscheinlichkeit für das Entstehen einer schönen Tulpe bezeichnen. Mit dem Ereignis $B$ zusammen lässt sich nämlich eine bedingte Wahrscheinlichkeit für $A$ bilden: die Wahrscheinlichkeit, dass die Zwiebel eine Tulpe hervorbringt, unter der Bedingung, dass sie aus Holland stammt. Man bezeichnet diese \emph{bedingte} Wahrscheinlichkeit mit $P(A|B)$.
+Aus den obigen Überlegungen ergab sich $P(A|B)=0.95$.
+
+Diese bedingte Wahrscheinlichkeit darf nicht verwechselt werden mit der Wahrscheinlichkeit, aus einer Kiste mit allen $100$ noch nicht eingepflanzten Zwiebeln eine gute, aus Holland kommende Zwiebel zu ziehen, denn diese Wahrscheinlichkeit ist $P(A\cap B)=0.6\cdot0.95 = 0.57$.
+Man erkennt aber den Zusammenhang
+$$P(A|B)\cdot P(B)=P(A\cap B).$$
+
+\begin{table}[h]
+\centering
+\scalebox{0.8}{
+\begin{tabular}{|l|c|c|c|}
+\hline
+\rowcolor{lightgray}\spaltenheight  & Holland & Gartencenter & \spaltensep \hline
+\rowcolor{lightyellow}\spaltenheight Tulpe & 57 & 30 & 87\spaltensep \hline
+\rowcolor{Gray}\spaltenheight keine Tulpe & 3 & 10 & 13\spaltensep \hhline{|====}
+\rowcolor{lightyellow}\spaltenheight & 60 & 40 & 100\spaltensep \hline
+\end{tabular}
+}
+\caption{Zuchterfolg bei Tulpen}\label{tab:tulpen}
+\end{table}
+
+Die Tabelle \ref{tab:tulpen} auf Seite \pageref{tab:tulpen} verdeutlicht noch einmal den Sachverhalt aus dem Beispiel.
+
+\pagebreak
+
+\subsection{Einschränkung des Ereignisraumes}
+\begin{cdef}[Bedingte Wahrscheinlichkeit]
+Sei $\mathbb{B}$ ein Ereignis mit $P(\mathbb{B}) > 0$. Die Wahrscheinlichkeit des Eintretens des Ereignisses $\mathbb{A}$ unter der Bedingung, dass das Ereignis $\mathbb{B}$ bereits eingetreten ist, oder kurz, die bedingte Wahrscheinlichkeit von $\mathbb{A}$ unter der Bedingung $\mathbb{B}$ wird definiert durch
+$$P(\mathbb{A}|\mathbb{B}):=\frac{P(\mathbb{A}\cap\mathbb{B})}{P(\mathbb{B})}.$$
+\end{cdef}
+
+\begin{bem}
+$P(A|B)$ ist die relative Wahrscheinlichkeit von $A$ bezüglich des \emph{reduzierten} Stichprobenraumes $B$.
+\end{bem}
+
+\begin{uebenv}{tulpenausamsterdam}
+    $A$ und $B$ seien die Ereignisse aus dem Einführungsbeispiel.
+\begin{enumerate}[a)]
+\item Zeige konkret $P(A)=P(A\cap B) +P(A\cap\overline{B})$. Gilt die Formel allgemein?
+\item Man sieht eine herrliche Tulpe. Gesucht ist die Wahrscheinlichkeit, dass die zugehörige Zwiebel in Holland gekauft wurde.
+\item Interpretiere und berechne $P(\overline{A}|B)$, $P(A|\overline{B})$, $P(\overline{A}|\overline{B})$, $P(B|A)$, $P(B|\overline{A})$ und $P(\overline{B}|\overline{A})$.
+\item Bestätige $P(A)\cdot P(B|A) = P(B)\cdot P(A|B)$.
+\item Ist die Aussage $P(A|B) = 1 - P(\overline{A}|B)$ richtig im vorliegenden Fall? Stimmt diese \glqq Gegenwahrscheinlichkeitsformel\grqq\ allgemein?
+\end{enumerate}
+\end{uebenv}
+
+
+
+\begin{uebenv}{luegendetektor}
+Ein Lügendetektor-Test entscheide in 90\% aller Fälle richtig, sowohl bei Schuldigen, als auch bei Unschuldigen. Um Diebstähle zu reduzieren, entlässt eine grosse Firma alle Angestellten, die beim Test durchfallen. Vor der Entlassungsaktion seien 5\% aller Angestellten Diebe.
+\begin{enumerate}[a)]
+\item Wie viele unter den Entlassenen wären tatsächlich Diebe?
+\item Wie viele Diebe würden nicht erfasst?
+\end{enumerate}
+\end{uebenv}
+
+
+
+\begin{uebenv}{sensitivundspezifisch}
+Schreibe auf, was die Begriffe \definition{Sensitivität} und \definition{Spezifität} bedeuten. Kontrolliere deine Aussagen mithilfe der Angaben aus dem Skript auf Seite \pageref{ueb:hiv} (\"Ubung HIV Test).
+\end{uebenv}
+
+
+
+\begin{uebenv}{selbsttest}
+Betrachte die Angaben zur Sensitivität und Spezifität auf dem folgenden Ausschnitt des Beipackzettels eines gängigen Tests (Abbildung \ref{fig:covidchart} auf Seite \pageref{fig:covidchart})
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{pictures/Covidchart.jpeg}
+    \caption{Beipackzettel Covid-19 Selbsttest}
+    \label{fig:covidchart}
+\end{figure}
+
+\begin{enumerate}[a)]
+    \item Bestimme die Spezifität und die niedrigste der angegebenen Sensitivitäten.
+\end{enumerate}
+Nimm an, dass aktuell $5\%$ der Bevölkerung an Covid-19 erkrankt ist.
+\begin{enumerate}[a)]
+\setcounter{enumi}{1}
+    \item Berechne die Wahrscheinlichkeit, dass eine zufällig  ausgewählte Person tatsächlich krank ist, wenn der Test positiv anzeigt (\definition{positiv prädiktiver Wert}).
+    \item Berechne die Wahrscheinlichkeit, dass eine zufällig ausgewählte Person tatsächlich gesund ist, wenn der Test negativ anzeigt (\definition{negativ prädiktiver Wert}).
+\end{enumerate}
+Seien wir jetzt in einer Pandemie und gesch\"atzte $20\%$ der Bev\"olkerung sei an Covid-19 erkrankt. Wir testen eine ganze Schule (ca. 1000 Personen) und nehmen als Spezifität $96\%$ und als Sensitivität $93\%$ (worst case Scenario für den vorliegenden Test).
+\begin{enumerate}[a)]
+\setcounter{enumi}{3}
+    \item Erstelle dazu ebenfalls eine geeignete Tabelle mit den Werten für die richtig positiven, die falsch positiven, die richtig negativen und die falsch negativen Tests.
+Wie viele kranke Personen werden nicht erkannt?
+\end{enumerate}
+\end{uebenv}
+
+
+
+\begin{uebenv}{geringespezifitaet}
+Die Corona Selbsttests haben eine sehr hohe Spezifität und eine hohe Sensitivität. Was bedeutet es für Patienten, wenn ein medizinischer Test eine hohe Sensitivität, aber eine nicht so hohe Spezifität hat?
+\end{uebenv}
+
+
+
+\begin{uebenv}{selbsttest}
+\begin{enumerate}[a)]
+    \item Im Anhang C im Skript findest du Angaben zu zwei verschiedenen Covid-19 Selbsttests aus dem Jahr 2020.
+Rechne die Werte für die positive und negative Prädikation nach.
+\item Die Sensitivität ist beim neuen Test deutlich tiefer als beim Standard-Test, dafür ist die Spezifität beim Standard-Test niedriger. Erstelle für beide Tests eine Tabelle für die Schule wie in der vorhergehenden Aufgabe.
+\end{enumerate}
+\end{uebenv}
+
+
+
+Im Anhang \ref{appendix:aerztecovid} gegen Ende des Skripts (Seite \pageref{appendix:aerztecovid}) kann man Zahlen aus einem Ärzte-Communiqué zu einem neuen Covid19 Schnelltest, der damals im Nov 2020 eingeführt wurde, nachrechnen.
+
+\begin{uebenv}{hivtest}
+\label{ueb:hiv}
+Zur
+\marginnote{
+\qrcode{
+https://www.youtube.com/watch?v=r8b7m2YHgL0}
+}
+Beurteilung eines HIV-Tests seien folgende Werte gegeben. Die Wahrscheinlichkeit, dass jemand HIV positiv ist, beträgt $1\div10\,000$; also
+
+$$P(H):=0.01\%.$$
+
+Ferner kenne man die \emph{Sensitivität} (Wahrscheinlichkeit, dass der Test positiv anzeigt, falls die Person tatsächlich positiv ist.):
+$$P(p|H)=99.9\%$$
+und die \emph{Spezifität} (Wahrscheinlichkeit, dass der Test negativ anzeigt, falls die Person tatsächlich negativ ist.):
+$$P(\bar{p}|\bar{H})=99.7\%.$$
+
+\begin{enumerate}[a)]
+\item Berechne die Wahrscheinlichkeit, dass eine zufällig ausgewählte Person tatsächlich HIV positiv ist, wenn sie ein positives Testresultat erhalten hat.\footnote{definiert als: \emph{positiv prädiktiver Wert}} Schätze diese Wahrscheinlichkeit zuerst.
+\item Berechne die Wahrscheinlichkeit, dass eine zufällig ausgewählte Person tatsächlich negativ ist, unter der Voraussetzung, dass sie ein negatives Testergebnis erhalten hat.\footnote{definiert als: \emph{negativ prädikitiver Wert}}
+\end{enumerate}
+\end{uebenv}
+
+\begin{uebenv}{tirolerhut}
+In einem bayrischen Touristenort sind zur Hochsaison drei Mal so viele Touristen wie Einheimische. Touristen tragen zu 70\% einen Tirolerhut, Einheimische nur zu 25\%.
+\begin{enumerate}[a)]
+\item Du fragst einen Menschen mit Tirolerhut nach dem Weg. Wie groß ist die Wahrscheinlichkeit, dass der
+Mensch ein Einheimischer ist?
+\item Du fragst einen Menschen ohne Tirolerhut nach dem Weg. Wie groß ist die Wahrscheinlichkeit, dass
+der Mensch ein Einheimischer ist?
+\end{enumerate}
+Was ist also günstiger, wenn du möglichst schnell eine verlässliche Wegauskunft haben möchtest?
+\end{uebenv}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.4\textwidth]{pictures/bedingtewkeit.png}
+    \caption{You're probabely near the ocean.}
+\end{figure}
+
+\subsection{Unabhängigkeit}
+
+Ein Ereignis A heisst \emph{unabhängig} von einem Ereignis B, wenn das Eintreten von B die Wahrscheinlichkeit für das Eintreten von A nicht beeinflusst, d.h. wenn die Wahrscheinlichkeit von A gleich der bedingten Wahrscheinlichkeit von A unter der Bedingung B ist. Diese Gleichung führt zu
+
+\pagebreak
+
+\begin{cdef}[Unabhängigkeit]
+Zwei Ereignisse A und B heissen \emph{unabhängig}, wenn
+$$P(A\cap B) = P(A)\cdot P(B),$$
+andernfalls heissen sie \emph{abhängig}.
+\end{cdef}
+
+\begin{uebenv}{blutgruppen}
+Zur Untersuchung, ob die vier Hauptblutgruppen 0, A, B, AB vom Geschlecht abhängen, wurden die für Mitteleuropa gültigen Daten in der Tabelle \ref{blutgrp} auf Seite \pageref{blutgrp} erhoben. Kann man daraus schliessen, dass die Verteilung der Blutgruppen vom Geschlecht unabhängig ist?
+
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{|l|c|c|c|c||c|}
+\hline
+\rowcolor{Gray}\spaltenheight & 0 & A & B & AB & \spaltensep \hhline{|-|-|-|-|--|}
+\rowcolor{lightyellow}\spaltenheight  weiblich & 817 & 723 & 176 & 92 & 1808\spaltensep \hhline{|-|-|-|-|--|}
+\rowcolor{Gray}\spaltenheight  männlich & 862 & 765 & 191 & 106 & 1924\spaltensep \hhline{|=|=|=|=|=#=|}
+\rowcolor{lightyellow}\spaltenheight   & 1679 & 1488 & 367 & 198 & 3732\spaltensep \hline
+\end{tabular}
+\end{center}
+\caption{Blutgruppen und Geschlechter}\label{blutgrp}
+\end{table}
+\end{uebenv}
+
+\begin{uebenv}{rothaarig}
+Gibt
+\marginnote{
+\qrcode{
+https://www.youtube.com/watch?v=VIZhN7IbuiA}
+}
+es eine Abhängigkeit zwischen Haarfarbe und Geschlecht? Diskutiere dies aufgrund der Daten aus Tabelle \ref{Haarfarbe} auf Seite \pageref{Haarfarbe}, die aus einem nordeuropäischen Land stammen.
+
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{|l|c|c|c|c|}
+\hline
+\rowcolor{Gray}\spaltenheight & hellblond & dunkelblond & rot & schwarz\spaltensep \hline
+\rowcolor{lightyellow}\spaltenheight  weiblich & 195 & 121 & 38 & 67\spaltensep \hline
+\rowcolor{Gray}\spaltenheight  männlich & 110 & 199 & 236 & 59\spaltensep \hline
+\end{tabular}
+\end{center}
+\caption{Testresultat Haarfarbe}\label{Haarfarbe}
+\end{table}
+\end{uebenv}
+
+
+
+\begin{uebenv}{montyhallproblem}
+Das folgende Problem ist bekannt unter dem Namen \definition{Monty-Hall-Problem} oder \definition{Ziegenproblem}.
+
+In
+\marginnote{
+\qrcode{
+https://youtu.be/_i1VTQKpGHQ}
+}
+einer Gameshow befinden sich hinter drei Türen A, B und C ein Auto und zwei Ziegen. Die Kandidatin wählt Tür A, der Showmaster öffnet Tür C, hinter der sich eine Ziege befindet. Dann bietet er der Kandidatin an, eventuell die Tür B zu wählen. Soll sie?
+\end{uebenv}
+
+\clearpage
+
+\subsection{Notizen zu den Übungen}
+
+\begin{lsg}{tulpenausamsterdam}
+    \begin{enumerate}[a)]
+        \item $P(A)=0.87=0.6\cdot0.95+0.4\cdot0.75=P(A\cap B)+P(A\cap\overline{B})\quad\checkmark$
+        
+        Allgemein ist $P(A\cap B)+P(A\cap\overline{B})=P(A|B)\cdot P(B)+P(A|\overline{B})\cdot P(\overline{B})=P(A|\Omega)=P(A)$, da wegen $B\cap\overline{B}=\emptyset$ und $B\cup\overline{B}=\Omega$ gilt: $P(B)+P(\overline{B})=1$; man also die Wahrscheinlichkeit des Eintretens von $A$ unter der Voraussetzung $B$ und $\overline{B}$, also $\Omega$ bestimmt.
+        \item $P(B|A)=\frac{P(B\cap A)}{P(A)}=\frac{0.57}{0.87}\approx0.655$
+        \item $P(\overline{A}|B)=\frac{3}{60}=\frac{1}{20}$; Es gibt keine Tulpe unter der Voraussetzung, dass die Zwiebel aus Holland kommt. $P(A|\overline{B})=\frac{3}{4}$; Es gibt eine Tulpe unter der Voraussetzung, dass die Zwiebel aus dem Gartencenter stammt. $P(\overline{A}|\overline{B})=\frac{1}{4}$; keine Tulpe unter der Voraussetzung Zwiebel aus Gartencenter. $P(B|\overline{A})\frac{3}{13}$; Zwiebel stammt aus Holland unter Voraussetzung es gab keine Tulpe. $P(\overline{B}|\overline{A})=\frac{10}{13}$; Zwiebel stammt aus Gartencenter unter Voraussetzung keine Tulpe gesprossen.
+        \item Nach Definition ist $P(A|B)=\frac{P(A\cap B)}{P(B)}$ und $P(B|A)=\frac{P(B\cap A)}{P(A)}$ oder $P(A|B)P(B)=P(A\cap B)=P(B\cap A)=P(B|A)P(A)$, woraus unmittelbar die Behauptung folgt.
+        \item Ja; hier ist $0.95=1-0.05\quad\checkmark$
+        
+        Allgemein: Aus (b) wissen wir $P(B)=P(A\cap B)+P(\overline{A}\cap B)$ und daher ist $P(A|B)=\frac{P(A\cap B)}{P(B)}=\frac{P(B)-P(\overline{A}\cap B)}{P(B)}=1-\frac{P(\overline{A}\cap B)}{P(B)}=1-P(\overline{A}|B)$.
+    \end{enumerate}
+\end{lsg}
+\begin{lsg}{luegendetektor}
+    \begin{enumerate}
+        \item $P(\text{pos}|D)=\frac{P(D\cap\text{pos})}{P(\text{pos})}=\frac{0.05\cdot 0.9}{0.05\cdot0.9+0.95\cdot0.1}\approx32\%$
+        \item $P(D|\text{neg})=\frac{0.05\cdot0.1}{0.05\cdot0.1+0.95\cdot0.9}<1\%$
+    \end{enumerate}
+\end{lsg}
+\begin{lsg}{sensitivundspezifisch}
+    Für ein Testverfahren: Senitivität misst die Wahrscheinlichkeit, dass für eine positive Testperson das Resultat positiv ausfällt. Spezifität misst die Wahrscheinlichkeit, dass für eine negative Testperson das Resultat negativ ausfällt.
+\end{lsg}
+\begin{lsg}{selbsttest}
+    \begin{enumerate}[a)]
+        \item Spezifität $100\%$ (96--100) und niedrigste Sensitivität $98.13\%$ (93--99)
+        \item $P(k|p)=\frac{0.05\cdot1.0}{0.05+0.95\cdot0.9813}\approx5.1\%$
+        \item $P(g|n)=\frac{0.95\cdot1.0}{0.95+0.05\cdot0.0187}\approx99.9\%$
+        \item Man berechne die entsprechenden Wahrscheinlichkeiten:\\
+        
+        \begin{table}[h]
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+\rowcolor{Gray}\spaltenheight & Test neg & Test pos \spaltensep \hhline{|-|-|-|}
+\rowcolor{lightyellow}\spaltenheight  Person neg & 0.982 & 0.147 \spaltensep \hhline{|-|-|-|}
+\rowcolor{Gray}\spaltenheight  Person pos & 0.018 & 0.853 \spaltensep \hline
+\end{tabular}
+\end{center}
+%\caption{Blutgruppen und Geschlechter}\label{blutgrp}
+\end{table}
+Somit würden von $1000$ SuS $18$ nicht als positiv erkannt.
+    \end{enumerate}
+\end{lsg}
+\begin{lsg}{geringespezifitaet}
+    Eine nicht so hohe Spezifität bedeutet ja, dass falsch positive Resultate nicht selten sind. Im Falle eines positiven Resultats empfiehlt sich ein weiterer oder anderer Test.
+\end{lsg}
+\begin{lsg}{selbsttest}
+Ich rechne das erste, aufgeführte Testverfahren.
+    \begin{enumerate}[a)]
+        \item $P(k|p)=\frac{0.23\cdot0.855}{0.23\cdot0.855+0.77\cdot0}=1$ und $P(g|n)=\frac{0.77\cdot1}{0.77\cdot1+0.23\cdot0.145}\approx0.958$
+
+        \item Man berechne die entsprechenden Wahrscheinlichkeiten für Panbio:\\
+        
+        \begin{table}[h!]
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+\rowcolor{Gray}\spaltenheight \textbf{Panbio} & Test neg & Test pos \spaltensep \hhline{|-|-|-|}
+\rowcolor{lightyellow}\spaltenheight  Person neg & 0.958 & 0 \spaltensep \hhline{|-|-|-|}
+\rowcolor{Gray}\spaltenheight  Person pos & 0.042 & 1 \spaltensep \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+und für den Standardtest:\\
+        
+        \begin{table}[h!]
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+\rowcolor{Gray}\spaltenheight \textbf{Standard} & Test neg & Test pos \spaltensep \hhline{|-|-|-|}
+\rowcolor{lightyellow}\spaltenheight  Person neg & 0.968 & 0.084 \spaltensep \hhline{|-|-|-|}
+\rowcolor{Gray}\spaltenheight  Person pos & 0.032 & 0.916 \spaltensep \hline
+\end{tabular}
+\end{center}
+\end{table}
+    \end{enumerate}
+\end{lsg}
+\begin{lsg}{hivtest}
+\begin{enumerate}
+    \item $P(H|p)=\frac{0.0001\cdot0.999}{0.0001\cdot0.999+0.9999\cdot0.003}\approx0.032=3.2\%$
+    \item $P(\overline{H}|n)=\frac{0.9999\cdot0.997}{0.9999\cdot0.997+0.0001\cdot0.001}\approx100\%$
+\end{enumerate}
+\end{lsg}
+\begin{lsg}{tirolerhut}
+    \begin{enumerate}[a)]
+        \item $P(E|T)=\frac{0.25\cdot0.25}{0.25\cdot0.25+0.75\cdot0.7}\approx10.6\%$
+        \item $P(E|\overline{T})=\frac{0.25\cdot0.75}{0.25\cdot0.75+0.75\cdot0.3}\approx45.5\%$
+    \end{enumerate}
+    Am besten fragt man einen Menschen ohne Tirolerhut nach dem Weg.
+\end{lsg}
+\begin{lsg}{blutgruppen}
+    Die Wahrscheinlichkeit, dass man zufällig eine weibliche Person auswählt ist $P(w)=\frac{1808}{3732}$. $P(B)=\frac{367}{3732}$ und $P(w\cap B)=\frac{176}{3732}\approx0.0471$. Es ist $P(w)\cdot P(B)\approx0.0476$, also deutet dies auf Unabhängigkeit hin.
+\end{lsg}
+\begin{lsg}{rothaarig}
+    Wir vermuten, dass rot und männlich abhängig sind. $P(m)=\frac{604}{1025}$, $P(r)=\frac{274}{1025}$ und $P(m\cap r)=\frac{236}{1075}$. $P(m)\cdot P(r)\approx0.1575$ und $P(m\cap r)=0.2195$, also vermutlich abhängig.
+\end{lsg}
+\begin{lsg}{montyhallproblem}
+ Am besten notiert man sich ein Schema mit der Situation, dass man zufällig Tor Nummer 1 gewählt hat und dann die verschiedenen Reaktionen des Moderators mit Wahrscheinlichkeiten belegt. $A$ stehe für das Auto und $Z$ für die Ziege. Die Szenarien sind von oben nach unten aufgelistet.
+
+\begin{table}[h!]
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+\rowcolor{Gray}\spaltenheight Tor 1 & Tor 2 & Tor 3 \spaltensep \hhline{|-|-|-|}
+\rowcolor{lightyellow}\spaltenheight  A & Z & Z \spaltensep \hhline{|-|-|-|}
+\rowcolor{Gray}\spaltenheight Z & A & Z \spaltensep \hhline{|-|-|-|}
+\rowcolor{lightyellow}\spaltenheight  Z & Z & A \spaltensep \hline
+\end{tabular}
+\end{center}
+\end{table}
+Die Kandidatin tippte ja auf Tor 1. Der Moderator wird also nun im ersten Szenario eines der beiden Tore 2 oder 3 öffnen, in den beiden andern Szenarien aber sicher Tor 3 bzw. Tor 2. Daher wird die Kandidatin im ersten Szenario bei einem Wechsel verlieren, in den beiden andern Szenarien mit einem Wechsel jedoch gewinnen. Also sind ihre Gewinnchancen bei einem Wechsel $\frac{2}{3}$.
+\end{lsg}
+
+\clearpage
+
+\section{Zufallsgrössen \& Lageparameter}
+
+\subsection{Zufallsvariable}
+\begin{wrapfigure}{r}{0.382\textwidth}
+  \begin{center}
+    \includegraphics[width=0.3\textwidth]{pictures/bandit}
+  \end{center}
+%\caption{You Know my Name}
+\end{wrapfigure}
+Glücksspiele nennt man gerecht (fair), günstig oder ungünstig, je nachdem, ob der Gewinn, den man bei mehreren Spielen erwarten kann, gleich $0$, grösser $0$ oder kleiner als $0$ ist. Zur Analyse eines Glücksspiels muss man von allen möglichen Ausgängen $\omega_i$ die entsprechenden Wahrscheinlichkeiten $P(\omega_i)$ und die zugehörigen positiven oder negativen Gewinne kennen.
+
+\begin{bsp}
+Als charakteristisches Beispiel wählen wir ein intuitiv gerechtes Spiel: Peter und Paul werfen je einen Fünfliber; bei gleichen Wurfbildern gewinnt Peter, andernfalls Paul beide Münzen.
+Die Tabelle \ref{tab:5liber} auf Seite \pageref{tab:5liber} enthält alle zur Analyse wichtige Daten.
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+\rowcolor{Gray}\spaltenheight $\omega_i\in\Omega$ & 00 & 01 & 10 & 11\spaltensep \hline
+\rowcolor{lightyellow}\spaltenheight $P(\omega_i)$ & $\frac{1}{4}$ & $\frac{1}{4}$ & $\frac{1}{4}$ & $\frac{1}{4}$\spaltensep \hline
+\rowcolor{Gray}\spaltenheight Peters Gewinn & $5$ & $-5$ & $-5$ & $5$\spaltensep \hline
+\end{tabular}
+\end{center}
+\caption{Gewinn aus Peters Sicht beim Fünfliber-Spiel}\label{tab:5liber}
+\end{table}
+\end{bsp}
+Aus dieser Tabelle lässt sich sofort eine Funktion $X:\omega_i\mapsto X(\omega_i)$
+erkennen. Diese Funktion ordnet jedem Ausgang $\omega_i$ den zugehörigen Gewinn oder Verlust zu.
+
+\begin{cdef}[Zufallsvariable]
+Eine Funktion, deren Definitionsmenge der Stichprobenraum $\Omega$ ist und deren Wertemenge die reellen Zahlen sind
+$$X:\Omega \to \mathbb{R}$$
+nennt man eine Zufallsvariable.
+\end{cdef}
+
+\begin{bem}
+Eine Zufallsvariable ist weder zufällig noch variabel, sondern eine reelle Zahlenfunktion. Derartige Funktionen werden üb\-li\-cher\-wei\-se mit grossen Buchstaben $X$, $Y$, $Z$ bezeichnet.
+Beachte ebenfalls die Unterschiede zur Wahrscheinlichkeitsfunktion.
+\end{bem}
+
+Man bezeichnet die Funktionswerte der Zufallsvariablen $X$ mit $x_1$, $x_2$, $x_3$,\dots und konzentriert sich auf die Wahrscheinlichkeiten, mit denen die einzelnen Funktionswerte angenommen werden. Zu diesem Zweck erstellt man eine neue Tabelle, die die Wahrscheinlichkeitsverteilung der Zufallsvariablen X angibt.
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+\rowcolor{Gray}\spaltenheight $\q x_i\q$ & $\q5\q$ & $\q-5\q$\spaltensep \hline
+\rowcolor{lightyellow}\spaltenheight $P(X=x_i)$ & $0.5$ & $0.5$\spaltensep \hline
+\end{tabular}
+\end{center}
+\caption{Gewichtung der Zufallsvariablen beim Fünfliber-Spiel}
+\end{table}
+
+Mit dieser Wahrscheinlichkeitsverteilung der Zufallsvariablen X lässt sich der Durchschnittswert je Spielwiederholung berechnen. Dazu muss man jeden Gewinn mit der entsprechenden Wahrscheinlichkeit gewichten: Durchschnittsgewinn entspricht $5\cdot0.5 + (-5)\cdot0.5 = 0$.
+Unser Gefühl, dass es sich um ein gerechtes Spiel handelt, also bei vielen Wiederholungen weder Gewinn noch Verlust zu erwarten ist, wird somit rechnerisch bestätigt.
+
+\subsection{Erwartungswert}
+
+\begin{cdef}[Erwartungswert]
+Allgemein bezeichnet man das mit den entsprechenden Wahrscheinlichkeiten gewichtete Mittel der Funktionswerte der Zufallsvariablen X als den Erwartungswert:
+$$E(X)= x_1\cdot P(X=x_1) + x_2\cdot P(X=x_2)+\dots.$$
+\end{cdef}
+
+\begin{bsp}
+Zwei Würfel werden sehr oft geworfen. Welche Augensumme darf man durchschnittlich erwarten? Die Zufallsvariable X ordnet jedem 
+$$\omega_i\in\Omega=\set{11,12,\dots,16,\dots,66}$$
+die Augensumme der beiden Würfel zu. Die möglichen Funktionswerte der Zufallsvariablen sind $x_1=2$, $x_2=3$, $x_3=4$, \dots, $x_{11}=12$.
+
+\begin{uebenv}{relhaeufigkeiten}
+Ergänze in Tabelle \ref{tab:wuerfeln} auf Seite \pageref{tab:wuerfeln} die Wahrscheinlichkeitsverteilung.
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+\rowcolor{Gray}\spaltenheight $\;\; x_i\;\;$ & $\;\;2\;\;$ & $\;\;3\;\;$ & $\;\;4\;\;$ & $\;\;5\;\;$ & $\;\;6\;\;$ & $\;\;7\;\;$\spaltensep \hline
+\rowcolor{lightyellow}\rule{0mm}{3ex} $P(X=x_i)$ &  & & & & & \\[1ex] \hline
+\rowcolor{Gray}\spaltenheight $\;\; x_i\;\;$ & $\;\;8\;\;$ & $\;\;9\;\;$ & $\;10\;$ & $\;11\;$ & $\;12\;$ & \phantom{$\;12\;$}\spaltensep \hline
+\rowcolor{lightyellow}\rule{0mm}{3ex} $P(X=x_i)$ &  & & & & & \\[1ex] \hline
+\end{tabular}
+\end{center}
+\caption{Wahrscheinlichkeitsverteilung beim Werfen von zwei Würfeln}\label{tab:wuerfeln}
+\end{table}
+\end{uebenv}
+
+
+
+Beachten Sie, dass die Summe aller Wahrscheinlichkeiten 100\% beträgt. Für den Erwartungswert ergibt sich dann
+$$E(X) = \frac{1}{36}\cdot(2\cdot1 + 3\cdot2 + 4\cdot3 + \ldots + 11\cdot2 + 12\cdot1) = 7.$$
+Die	Wahrscheinlichkeitsverteilung wird durch ein Stabdiagramm dargestellt. Für den Wurf mit zwei Würfeln ergibt sich das Bild \ref{abb:hkeitwuerfel} auf Seite \pageref{abb:hkeitwuerfel}.
+
+\begin{figure}[h]
+\centering
+\definecolor{zzttqq}{rgb}{0.6,0.2,0}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.7cm,y=0.7cm]
+\draw[->,color=black] (-1.16,0) -- (13.9,0);
+\foreach \x in {2,3,4,5,6,7,8,9,10,11,12}
+\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize $\x$};
+\draw[color=black] (13.5,0.08) node [anchor=south west] {$x_i$};
+\draw[->,color=black] (0,-1.18) -- (0,7.34);
+\foreach \y in {1,2,3,4,5,6}
+\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) ;
+\draw[color=black] (0.1,6.94) node [anchor=west] {$P(X=x_i)$};
+\draw[color=black] (-1.3,6) node [anchor=west] {$\frac{6}{36}$};
+\draw[color=black] (-1.3,1) node [anchor=west] {$\frac{1}{36}$};
+\clip(-0.6,-0.6) rectangle (13.9,7.34);
+\draw[line width=2pt,color=zzttqq,fill=zzttqq,fill opacity=0.15] (2,0) rectangle (2,1);
+\draw[line width=2pt,color=zzttqq,fill=zzttqq,fill opacity=0.15] (3,0) rectangle (3,2);
+\draw[line width=2pt,color=zzttqq,fill=zzttqq,fill opacity=0.15] (4,0) rectangle (4,3);
+\draw[line width=2pt,color=zzttqq,fill=zzttqq,fill opacity=0.15] (5,0) rectangle (5,4);
+\draw[line width=2pt,color=zzttqq,fill=zzttqq,fill opacity=0.15] (6,0) rectangle (6,5);
+\draw[line width=2pt,color=zzttqq,fill=zzttqq,fill opacity=0.15] (7,0) rectangle (7,6);
+\draw[line width=2pt,color=zzttqq,fill=zzttqq,fill opacity=0.15] (8,0) rectangle (8,5);
+\draw[line width=2pt,color=zzttqq,fill=zzttqq,fill opacity=0.15] (9,0) rectangle (9,4);
+\draw[line width=2pt,color=zzttqq,fill=zzttqq,fill opacity=0.15] (10,0) rectangle (10,3);
+\draw[line width=2pt,color=zzttqq,fill=zzttqq,fill opacity=0.15] (11,0) rectangle (11,2);
+\draw[line width=2pt,color=zzttqq,fill=zzttqq,fill opacity=0.15] (12,0) rectangle (12,1);
+\end{tikzpicture}
+\caption{Häufigkeitsverteilung beim Würfeln mit zwei Würfel}\label{abb:hkeitwuerfel}
+\end{figure}
+
+\end{bsp}
+
+\begin{uebenv}{fuenfkarten}
+Aus einer Urne mit fünf Kärtchen
+$$\set{\texttt{DER, ZUFALL, REGIERT, DIE, WELT}}$$
+wird ei\-nes der fünf Wörter zufällig gezogen. Berechne den Er\-war\-tungs\-wert der Zu\-fall\-svaria\-blen
+\begin{enumerate}[a)]
+\item $W$, deren Funktionswerte die Länge des gewählten Wortes angeben,
+\item $V$, deren Funktionswerte die Anzahl der Vokale im gewählten Wort angeben,
+\item $X$, deren Funktionswerte die Anzahl \texttt{e} im gewählten Wort angeben.
+\end{enumerate}
+\end{uebenv}
+
+
+
+\begin{uebenv}{dritteln}
+Du hast jetzt 9 Franken. Eine Münze wird geworfen. Erscheint \glqq Kopf\grqq, wird dein Ver\-mög\-en verdreifacht, erscheint \glqq Zahl\grqq, wird dein Vermögen gedrittelt. Welches Vermögen darfst du nach zweimaligem Werfen erwarten?
+\end{uebenv}
+
+
+
+\begin{uebenv}{chuckaluck}
+In amerikanischen Casinos findet das Würfelspiel \emph{Chuck a Luck} grossen Anklang. Der Spieler darf auf eine der Zahlen $1$, $2$, $3$, $4$, $5$, $6$ setzen. Dann werden drei Würfel geworfen. Erscheint seine Zahl ein-, zwei- oder dreimal, so erhält er das ein-, zwei- oder dreifache seines Einsatzes und dazu seinen Einsatz zurück. Andernfalls verliert er natürlich seinen Einsatz. Berechne den zu erwartenden Gewinn bei einem Einsatz von 10\$.
+\end{uebenv}
+
+
+
+\begin{uebenv}{einarmigerbandit}
+Ein Glücks\-spiel\-apparat hat zwei Räder, die der Spieler durch Hebeldruck in Bewegung setzen kann. Auf jedem Rad sind vier Glocken, fünf Kirschen und ein Apfel in regelmässigen Abständen abgebildet. Der Apparat zahlt für zwei Äpfel Fr. 10.-, für zwei Glocken Fr. 2.- und für zwei Kirschen Fr. 1.- und man kriegt den Einsatz zurück. Der
+Einsatz beträgt Fr. 1.-. Wer gewinnt hier?
+\end{uebenv}
+
+
+
+\begin{uebenv}{tennis}
+Zwei
+\marginnote{
+\qrcode{
+https://youtu.be/UQ8p6NywTvA}
+}
+gleich starke Tennisspieler müssen den Sieg in einem Tie-Break entscheiden. Es steht bereits 5:5. Wie viele Punkte müssen voraussichtlich noch bis zur Entscheidung gespielt werden?
+\end{uebenv}
+
+
+
+
+
+\subsection{Standardabweichung}
+
+Als Kennzahl für einen zu erwartenden Wert haben wir bereits den Erwartungswert. Im Folgenden wollen wir eine Masszahl für die \emph{Streuung} um diesen Erwartungswert kreieren.
+
+\begin{bsp}
+Zwei Maschinen A und B schneiden bei einem Probelauf Stahlstifte auf eine vorgegebene Länge von $\unit[10.0]{mm}$ zu. Untersuchungen über auftretende Abweichungen ergaben folgende Wahrscheinlichkeitsverteilungen für die anfallenden Längen:
+\begin{center}
+\begin{minipage}{7.5cm}
+\centering\emph{Maschine A}\\[2ex]
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+\rowcolor{Gray}\spaltenheight $x_i$ & 9.8 & 9.9 & 10.0 & 10.1 & 10.2\spaltensep \hline
+\rowcolor{lightyellow}\spaltenheight $P(X=x_i)$ & 0.1 & 0.1 & 0.6 & 0.1 & 0.1\spaltensep \hline
+\end{tabular}
+\end{minipage}
+
+\vspace*{2ex}
+\begin{minipage}{7.5cm}
+\centering\emph{Maschine B}\\[2ex]
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+\rowcolor{Gray}\spaltenheight $y_i$ & 9.8 & 9.9 & 10.0 & 10.1 & 10.2\spaltensep \hline
+\rowcolor{lightyellow}\spaltenheight $P(Y=y_i)$ & 0.1 & 0.2 & 0.4 & 0.2 & 0.1\spaltensep \hline
+\end{tabular}
+\end{minipage}
+\end{center}
+
+\begin{uebenv}{verteilungen}
+Stelle beide Verteilungen mit verschiedenen Farben im Koordinatensystem \ref{koordsys} graphisch dar und berechne die Erwartungswerte $E(X)$ und $E(Y)$.
+\end{uebenv}
+
+
+
+\begin{figure}[h]
+\centering
+\definecolor{cqcqcq}{rgb}{0.75,0.75,0.75}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.8cm,y=0.7cm]
+\draw [color=cqcqcq,dash pattern=on 3pt off 3pt, xstep=0.8cm,ystep=0.7cm] (0,0) grid (11.5,7.5);
+\draw[->,color=black] (-0.84,0) -- (12.06,0);
+\foreach \x in {1,2,3,4,5,6,7,8,9,10,11}
+\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt);
+\draw[color=black] (11.72,0.08) node [anchor=south west] {$x_i,y_i$};
+\draw[->,color=black] (0,-0.64) -- (0,7.72);
+\foreach \y in {1,2,3,4,5,6,7}
+\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize $0.\y$};
+\draw[color=black] (0.1,7.32) node [anchor=west] {$P$};
+\draw[color=black] (6,-0.1) node [anchor=north] {$10.0$};
+\clip(-0.84,-0.64) rectangle (12.06,7.72);
+\end{tikzpicture}
+\caption{Relative Genauigkeit der Maschinen A und B}\label{koordsys}
+\end{figure}
+\end{bsp}
+Obwohl die graphischen Darstellungen ganz verschieden aussehen, stimmen die Erwartungswerte mit dem Sollwert überein. Offensichtlich wird man aber die Maschine A bevorzugen.
+Der Erwartungswert gibt nur an, wo das \emph{Zentrum} der Verteilung liegt, nicht aber, wie stark die Verteilung \emph{um ihr Zentrum konzentriert} ist. Deshalb benötigt man eine Masszahl für die Abweichung der Funktionswerte der Zufallsvariablen von ihrem Erwartungswert.
+
+In der deskriptiven Statistik haben wir die Standardabweichung $s$ kennengelernt. Um für die Zufallsvariable $X$ ein entsprechendes Streuungsmass zu erhalten, muss man sinngemäss den Mittelwert $\bar{x}$ durch den Erwartungswert $E(X)$, die einzelnen Messwerte $x_i$ durch die Funktionswerte der Zufallsvariablen $X$ und die relativen Häufigkeiten ($\frac{1}{n}$ bzw. $\frac{n_i}{n}$) durch die Wahrscheinlichkeiten $P(X=x_i)$ ersetzen.
+
+\begin{cdef}[Standardabweichung]
+Der Ausdruck
+$$\sigma=\sqrt{(E(X)-x_1)^2\cdot P(X=x_1)+\dots+(E(X)-x_n)^2\cdot P(X=x_n)}$$
+ist die Standardabweichung der Zufallsvariablen $X$.
+\end{cdef}
+\marginnote{
+\qrcode{
+https://youtu.be/esGICLO0G8w}
+}
+
+\begin{uebenv}{maschinen}
+Berechne für beide Maschinen aus dem obigen Beispiel die Standardabweichung der Zufallsvariablen $X$ und $Y$ und bestätige somit, dass die Maschine A zu bevorzugen ist.
+\end{uebenv}
+
+
+
+\begin{uebenv}{blutdruck}
+Der Blutdruck in der Oberarmschlagader eines gesunden Menschen beträgt etwa $\unit[120]{mm}$ Quecksilbersäule. Eine Arzneimittelfirma lässt zwei Medikamente A und B zur Regulierung des Blutdrucks klinisch testen. Die Ergebnisse sind in der Tabelle festgehalten:
+\begin{table}[h]
+\centering
+\scalebox{1}{
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+\hline
+\rowcolor{Gray}\spaltenheight & $x_i,y_i$ & 105 & 110 & 115 & 120 & 125 & 130 & 135 \spaltensep \hline
+\rowcolor{lightyellow}\spaltenheight A: & $P(X=x_i)$ & 0.04 & 0.09 & 0.16 & 0.40 & 0.20 & 0.07 & 0.04\spaltensep \hline
+\rowcolor{Gray}\spaltenheight B: & $P(Y=y_i)$ & 0.02 & 0.08 & 0.15 & 0.46 & 0.23 & 0.04 & 0.02\spaltensep \hline
+\end{tabular}
+}
+\caption{Medikamententest}
+\end{table}
+Berechne für jedes Medikament den Erwartungswert und die Standardabweichung. Welches Medikament ist demnach vorteilhafter?
+\end{uebenv}
+
+
+\clearpage
+
+\subsection{Notizen zu den Übungen}
+
+\begin{lsg}{relhaeufigkeiten}
+    \begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+\rowcolor{Gray}\spaltenheight $\;\; x_i\;\;$ & $\;\;2\;\;$ & $\;\;3\;\;$ & $\;\;4\;\;$ & $\;\;5\;\;$ & $\;\;6\;\;$ & $\;\;7\;\;$\spaltensep \hline
+\rowcolor{lightyellow}\rule{0mm}{3ex} $P(X=x_i)$ & $\frac{1}{36}$ & $\frac{2}{36}$ & $\frac{3}{36}$ & $\frac{4}{36}$ & $\frac{5}{36}$ & $\frac{6}{36}$\\[1ex] \hline
+\rowcolor{Gray}\spaltenheight $\;\; x_i\;\;$ & $\;\;8\;\;$ & $\;\;9\;\;$ & $\;10\;$ & $\;11\;$ & $\;12\;$ & \phantom{$\;12\;$}\spaltensep \hline
+\rowcolor{lightyellow}\rule{0mm}{3ex} $P(X=x_i)$ & $\frac{5}{36}$ & $\frac{4}{36}$ & $\frac{3}{36}$ & $\frac{2}{36}$ & $\frac{1}{36}$ & \\[1ex] \hline
+\end{tabular}
+\end{center}
+\end{lsg}
+\begin{lsg}{fuenfkarten}
+    \begin{enumerate}[a)]
+        \item $E(W)=3\cdot\frac{1}{5}+6\cdot\frac{1}{5}+7\cdot\frac{1}{5}+3\cdot\frac{1}{5}+4\cdot\frac{1}{5}=4.6$
+        \item $E(V)=1\cdot\frac{1}{5}+2\cdot\frac{1}{5}+3\cdot\frac{1}{5}+2\cdot\frac{1}{5}+1\cdot\frac{1}{5}=1.8$
+        \item $E(X)=\frac{5}{5}=1$
+    \end{enumerate}
+\end{lsg}
+\begin{lsg}{dritteln}
+    Es gibt 4 Szenarien: $V(KK)=81$, $V(KZ)=9$, $V(ZK)=9$ und $V(ZZ)=1$, die alle dieselbe Wahrscheinlichkeit haben. Damit gilt für den Erwartungwert $E(X)=\frac{81+9+9+1}{4}=25$
+\end{lsg}
+\begin{lsg}{chuckaluck}
+    Äquivalent dazu kann man einen Würfel drei Mal nacheinander werfen. Die Wahrscheinlichkeit, dass die getippte Zahl erscheint, ist $\frac{1}{6}$. Notieren wir die möglichen Prozesswahrscheinlichkeiten: $P(0)=(\frac{5}{6})^3\approx58\%$, $P(1)=(\frac{1}{6})(\frac{5}{6})^2\cdot\binom{3}{1}\approx35\%$, $P(2)=(\frac{5}{6})(\frac{1}{6})^2\cdot\binom{3}{2}\approx7\%$ und $P(3)=(\frac{1}{6})^3\approx0.5\%$. Es folgt $E(X)\approx-80$ Cent.
+\end{lsg}
+\begin{lsg}{einarmigerbandit}
+    $E(X)=10\cdot(\frac{1}{10})^2+2\cdot(\frac{4}{10})^2+1\cdot(\frac{5}{10})^2-1\cdot(1-\frac{42}{100})=0.09$
+\end{lsg}
+\begin{lsg}{tennis}
+    $E(X)=2\cdot2\cdot(\frac{1}{2})^2+3\cdot2\cdot(\frac{1}{2})^3+2\cdot4\cdot(\frac{1}{2})^4+\dots=2\cdot\frac{1}{2}+3\cdot(\frac{1}{2})^2+4\cdot(\frac{1}{2})^3+\dots$
+
+    Diese Reihe kann man auf eine geometrische zurückführen. Betrachte dazu $\frac{1}{2}E(X)$ bzw. die Differenz
+    $$E(X)-\frac{1}{2}E(X)=2\cdot\frac{1}{2}+1\cdot(\frac{1}{2})^2+1\cdot(\frac{1}{2})^3+\dots$$
+    Es folgt $\frac{1}{2}E(X)=1+(\frac{1}{4}+\frac{1}{8}+\dots)$ und damit
+    $$E(X)=2+(\frac{1}{2}+\frac{1}{4}+\dots)=2+\frac{\frac{1}{2}}{1-\frac{1}{2}}=3$$
+\end{lsg}
+\begin{lsg}{verteilungen}
+    Die Werte sehen in etwa so aus:
+
+\begin{center}
+    \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.8cm,y=0.7cm]
+% Das Gitter
+\draw [color=gray,dash pattern=on 3pt off 3pt, xstep=0.8cm,ystep=0.7cm] (0,0) grid (11.5,7.5);
+\draw[->,color=black] (-0.84,0) -- (12.06,0); % x-Achse
+\foreach \x in {1,2,3,4,5,6,7,8,9,10,11}
+    \draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt);
+\draw[color=black] (11.72,0.08) node [anchor=south west] {$x_i,y_i$};
+\draw[->,color=black] (0,-0.64) -- (0,7.72); % y-Achse
+\foreach \y in {1,2,3,4,5,6,7}
+    \draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize $0.\y$};
+\draw[color=black] (0.1,7.32) node [anchor=west] {$P$};
+\draw[color=black] (6,-0.1) node [anchor=north] {$10.0$};
+\clip(-0.84,-0.64) rectangle (12.06,7.72);
+
+% Balkendiagramm-Daten (x, Höhe, Breite)
+\fill[darkblue!80] (1.5,0) rectangle (2.0,1.0); % Balken 1
+\fill[darkblue!80] (3.5,0) rectangle (4.0,1.0);  % Balken 2
+\fill[darkblue!80] (5.5,0) rectangle (6.0,6.0); % Balken 3
+\fill[darkblue!80] (7.5,0) rectangle (8.0,1.0); % Balken 4
+\fill[darkblue!80] (9.5,0) rectangle (10.0,1.0); % Balken 5
+
+\fill[firebrick!80] (2.0,0) rectangle (2.5,1.0); % Balken 1
+\fill[firebrick!80] (4.0,0) rectangle (4.5,2.0);  % Balken 2
+\fill[firebrick!80] (6.0,0) rectangle (6.5,4.0); % Balken 3
+\fill[firebrick!80] (8.0,0) rectangle (8.5,2.0); % Balken 4
+\fill[firebrick!80] (10.0,0) rectangle (10.5,1.0); % Balken 5
+
+% Beschriftungen
+\draw[color=black] (2.0,-0.3) node {\footnotesize $9.8$};
+\draw[color=black] (4.0,-0.3) node {\footnotesize $9.9$};
+%\draw[color=black] (6.0,-0.3) node {\footnotesize $10.0$};
+\draw[color=black] (8.0,-0.3) node {\footnotesize $10.1$};
+\draw[color=black] (10.0,-0.3) node {\footnotesize $10.2$};
+
+\draw[color=firebrick] (10.5,5.5) node {\footnotesize \textbf{Maschine B}};
+\draw[color=darkblue] (10.5,6.5) node {\footnotesize \textbf{Maschine A}};
+\end{tikzpicture}
+\end{center}
+
+\end{lsg}
+\begin{lsg}{maschinen}
+    Wegen der Symmetrie gilt für beide Maschinen offensichtlich $E(A)=10=E(B)$; ansonsten rechnen man nach.
+
+    Für die Standardabweichungen erhalten wir:
+    $$s_A=\sqrt{(10-9.8)^2\cdot0.1+\dots+(10-10.2)^2\cdot0.1}=\sqrt{0.01}=0.1$$
+    und für die Maschine B
+    $$s_B=\sqrt{(10-9.8)^2\cdot0.1+\dots+(10-10.2)^2\cdot0.1}=\sqrt{0.012}\approx0.11$$
+    Also streut Maschine B mehr als A.
+\end{lsg}
+\begin{lsg}{blutdruck}
+    $E(A)=120=E(B)$ und $s_A\approx6.56$ sowie $s_B\approx5.52$
+\end{lsg}
+
+\clearpage
+
+\section{Binomialverteilung}
+
+Oft gibt es bei Zufallsversuchen nur zwei mögliche Ausgänge: Mit einer Münze wirft man \glqq Kopf\grqq\ oder \glqq Zahl\grqq, die gewürfelte Augenzahl ist eine $6$ oder keine $6$, die gezogene Karte ist ein Ass oder kein Ass, die Geburt eines Kindes ergibt eine Tochter oder einen Sohn, \dots
+
+\begin{cdef}[Binomialverteilung]
+Ein Zufallsversuch mit genau zwei Ausgängen, also mit dem Stichprobenraum $\Omega=\{\text{Erfolg, Misserfolg}\}$ oder kurz $\set{1,0}$, heisst Bernoulli-Versuch.
+Man nennt in diesem Zusammenhang eine Zufallsvariable 
+binomialverteilt (lat. binominis, zweinamig).
+\end{cdef}
+
+\textsc{Jakob Bernoulli} (1759 -- 1809) war der erste Mathematiker, der die Wahrscheinlichkeitsprobleme, die aus dieser Art von Versuchen entstehen, systematisch untersuchte.
+Üblicherweise wird die Wahrscheinlichkeit für einen Erfolg $1$ mit $p$ und die für einen Misserfolg $0$ mit $q$ bezeichnet: $P(1) = p$, $P(0) = q$, und damit $p + q = 1$.
+
+Ein Bernoulli-Versuch werde $n$-mal wiederholt. Man spricht von einem $n$-stufigen Ber\-noul\-li-Ver\-such, wenn
+\begin{itemize}
+\item bei jeder Wiederholung des Bernoulli-Versuchs nur zwei Ausgänge möglich sind,
+\item $P(1) = p$ bei jeder Wiederholung konstant bleibt,
+\item die einzelnen Wiederholungen des Bernoulli-Versuchs von\-einan\-der unab\-hän\-gig sind.
+\end{itemize}
+Bei einem $n$-stufigen Bernoulli-Versuch interessiert man sich nicht so sehr für die Reihenfolge der Erfolge und Misserfolge, sondern nur für deren Anzahl und die entsprechenden Wahrscheinlichkeiten dafür. Beispielsweise hat eine Familie mit sechs Kindern vier Knaben und zwei Mädchen.
+
+Wie gross ist bei einem $n$-stufigen Bernoulli-Versuch die Wahrscheinlichkeit für $0$, $1$, $2$ oder $n$ Erfolge? Um diese Frage zu beantworten, führt man die Zufallsvariable $S_n$ ein, die jedem möglichen Ausgang des $n$-stufigen Versuchs die Anzahl Erfolge zuordnet.
+
+\begin{uebenv}{binomialverteilt}
+    Die Wahrscheinlichkeitsverteilung von $S_n$ ist wieder in einer Tabelle, deren Lücken noch zu füllen sind, dargestellt:
+
+\begin{table}[h]
+\large
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+\rowcolor{Gray}\spaltenheight $x$ & 0 & 1 & 2 & 3\spaltensep \hline
+\rowcolor{lightyellow}\spaltenheight $P(S_n=x)$ & $q^n$ &  &  & \spaltensep \hline
+\rowcolor{Gray}\spaltenheight $x$ & $\q 4\q$ & $\q k\q$ & $n-1$ & $\q n\q$\spaltensep \hline
+\rowcolor{lightyellow}\spaltenheight $P(S_n=x)$ &  &  &  & $p^n$\spaltensep \hline
+\end{tabular}
+\caption{Binomialverteilung mit Erfolgswarscheinlichkeit $p$}
+\end{table}
+\end{uebenv}
+
+
+
+\begin{uebenv}{klassikerwuerfeln}
+Wie gross ist die Wahrscheinlichkeit bei $10$ Würfen genau $3$ mal eine $6$ zu werfen?
+\end{uebenv}
+
+
+
+\begin{csatz}[Binomialverteilung]
+Ist bei einem Bernoulli-Versuch die Wahrscheinlichkeit für einen Erfolg $p$ und für einen Misserfolg $q = 1 - p$, so ist bei einem $n$-stufigen Bernoulli-Versuch die Wahrscheinlichkeit für $0\leq k\leq n$ Erfolge
+$$P(S_n=k)=\binom{n}{k}p^kq^{n-k}.$$
+\end{csatz}
+
+\begin{proof}[Beweis]
+Die Wahrscheinlichkeit für $k$ Erfolge mit Einzel-Wahrscheinlichkeit $p$ ist $p^k$; es bleiben $n-k$ Misserfolge mit Einzel-Wahrscheinlichkeit $q$, also dafür $q^{n-k}$. Der Fall von $k$ Erfolgen gefolgt von $n-k$ Misserfolgen tritt also mit der Wahrscheinlichkeit $p^k\cdot q^{n-k}$ auf.  Nun muss noch die Anzahl mögliche Reihenfolgen, in der diese Erfolge bzw. Misserfolge bei $n$ Versuchen auftreten können, ermittelt werden. Dies entspricht der Anzahl möglicher Zeichenfolgen der Länge $n$ mit zwei verschiedenen Ziffern ($0$ oder $1$) pro Position, wobei eine Ziffer $k$ mal und die andere $n-k$ auftreten muss; davon gibt es $\binom{n}{k}$. Daraus folgt die Behauptung.
+\end{proof}
+
+\begin{uebenv}{summeisteins}
+Formuliere zuerst in Worten unten stehende Gleichung, und begr\"unde anschliessend, dass tatsächlich
+$$\sum_{k=0}^n\binom{n}{k}p^kq^{n-k}=1.$$
+\end{uebenv}
+
+
+
+\begin{uebenv}{binomialverteilung}
+Stelle die Binomialverteilung für $n=8$ und
+
+\begin{enumerate}[a)]
+\item $p=0.3$
+\item $p=0.5$
+\item $p=0.7$
+\end{enumerate}
+
+\vspace*{1ex}
+durch ein Stabdiagramm graphisch dar. ($k$ sei variabel.)
+\end{uebenv}
+
+
+
+\begin{uebenv}{urnenmodell}
+Aus einer Urne mit zwei schwarzen und vier weissen Kugeln werden sechs Kugeln mit Zurücklegen gezogen. Wie gross ist die Wahrscheinlichkeit, vier weisse und zwei schwarze Kugeln zu erhalten?
+\end{uebenv}
+
+
+
+\begin{uebenv}{fuenfwuerfel}
+Wie gross ist die Wahrscheinlichkeit, bei einem Wurf mit fünf Würfeln mindestens zwei Sechsen zu erzielen?
+\end{uebenv}
+
+
+
+\begin{csatz}[]
+Bei
+\marginnote{
+\qrcode{
+https://youtu.be/C_U5w2etd8E}
+}
+einer Binomialverteilung gilt für den Erwartungswert
+$$E(S_n)=np.$$
+\end{csatz}
+
+\begin{proof}[Beweis]
+$E(S_n)=\sum_{k=0}^nk\cdot\binom{n}{k}p^kq^{n-k}=np\cdot\sum_{k=0}^{n-1}\binom{n-1}{k}p^kq^{n-1-k}=np(p+q)^{n-1}=np\cdot1^{n-1}=np.$
+\end{proof}
+
+\begin{csatz}[]
+Für die Standardabweichung einer binomialverteilten Zufallsvariablen gilt
+$$s=\sqrt{npq}.$$
+\end{csatz}
+
+\begin{proof}[Beweis]
+Ähnliche, aber umfangreichere Rechnung als beim Erwartungswert.
+\end{proof}
+
+\begin{bem}
+Beachte, wie einfach sich Kenngrössen wie Erwartungswert und Standardabweichung berechnen lassen, wenn eine Zufallsvariable binomialverteilt ist!
+\end{bem}
+
+\begin{uebenv}{werkstueck}
+Werkstücke aus einer Fabrik sind mit der Wahrscheinlichkeit von 2\% defekt. Wie gross ist die erwartete Anzahl defekte und die Standardabweichung bei einer Sendung von 10000 Werkstücken?
+\end{uebenv}
+
+
+
+\begin{uebenv}{divorce}
+If the probability is 60\% that a marriage will end in a divorce within 20 years after its start, what is the probability that out of six couples just married, in the next 20 years
+\begin{enumerate}[a)]
+\item none,
+\item all,
+\item exactly two,
+\item at least two
+\end{enumerate}
+will be divorced? What is the mean and standard deviation for 1000
+marriages?
+\end{uebenv}
+
+
+
+\begin{bem}
+    Viele Taschenrechner bieten für binomialverteilte Zufallsvariablen Funktionen zum Berechnen von Wahrscheinlichkeiten gewisser Ereignisse. Seien $n$ die Anzahl Versuche und $k$ die Anzahl Erfolge mit Erfolgswahrscheinlichkeit $p$. Dann berechnet
+    \begin{itemize}
+        \item die \definition{Binomial Probability Density Function}, \texttt{binompdf(p,k,n)}, die Wahrscheinlichkeit, in $n$ Versuchen \emph{genau} $k$ Erfolge zu feiern.
+        \item die \definition{Binomial Cumulative Distribution Funktion}, \texttt{binomcdf(p,k,n)}, die Wahr\-schein\-lich\-keit, in $n$ Versuchen \emph{höchstens} $k$ Erfolge zu feiern.
+    \end{itemize}
+    Also ist \texttt{binompdf(n,p,k)} $=\binom{n}{k}p^kq^{n-k}$ und \texttt{binomcdf(n,p,k)} $=\sum_{j=0}^k\binom{n}{j}p^jq^{n-j}$.
+\end{bem}
+
+\begin{uebenv}{labor}
+In einem Laborversuch zeigt sich ein bestimmter Effekt mit der Wahrscheinlichkeit von 20\%. Der Versuch wird zehnmal durchgeführt. Wie gross ist die Wahrscheinlichkeit, dass der Effekt
+\begin{enumerate}[a)]
+\item mindestens
+\item genau
+\item höchstens
+\end{enumerate}
+viermal eintritt?
+\end{uebenv}
+
+\begin{uebenv}{sechsenwuerfeln}
+Wie gross ist die Wahrscheinlichkeit, bei zehnmaligem Würfeln zwischen $2$ und $4$ \glqq $6$-en\grqq\ zu würfeln.
+\end{uebenv}
+
+\clearpage
+
+\subsection{Notizen zu den Übungen}
+
+\begin{lsg}{binomialverteilt}
+
+\begin{center}
+\scalebox{0.8}{
+    \begin{tabular}{|c|c|c|c|c|}
+\hline
+\rowcolor{Gray}\spaltenheight $x$ & 0 & 1 & 2 & 3\spaltensep \hline
+\rowcolor{lightyellow}\spaltenheight $P(S_n=x)$ & $q^n$ & $n\cdot pq^{n-1}$ & $\binom{n}{2}p^2q^{n-2}$ & $\binom{n}{3}p^3q^{n-3}$\spaltensep \hline
+\rowcolor{Gray}\spaltenheight $x$ & $\q 4\q$ & $\q k\q$ & $n-1$ & $\q n\q$\spaltensep \hline
+\rowcolor{lightyellow}\spaltenheight $P(S_n=x)$ & $\binom{n}{4}p^4q^{n-4}$ & $\binom{n}{k}p^kq^{n-k}$ & $n\cdot p^{n-1}q$ & $p^n$\spaltensep \hline
+\end{tabular}
+}
+\end{center}
+
+\end{lsg}
+\begin{lsg}{klassikerwuerfeln}
+    $P(3\text{ Mal }6)=\binom{10}{3}(\frac{1}{6})^3(\frac{5}{6})^7\approx16\%$
+\end{lsg}
+\begin{lsg}{summeisteins}
+    $\sum_{k=0}^n\binom{n}{k}p^kq^{n-k}$ ist im Pascal'schen Dreieck die Summe der Zeile $n$, also der binomische Term $(p+q)^n=1^n=1$.
+\end{lsg}
+\begin{lsg}{binomialverteilung}
+
+\begin{tikzpicture}[x=0.8cm, y=8cm] % Skalierung für die Breite und Höhe der Balken
+% Achsen
+\draw[->] (0,0) -- (9,0) node[anchor=north] {$k$}; % x-Achse
+\draw[->] (0,0) -- (0,0.35) node[anchor=east] {$P(X = k)$}; % y-Achse
+% Wahrscheinlichkeiten für k=0 bis k=8
+\foreach \k/\prob in {0/0.058, 1/0.198, 2/0.303, 3/0.254, 4/0.136, 5/0.046, 6/0.010, 7/0.001, 8/0.000} {
+  \fill[darkblue!80] (\k,0) rectangle (\k+0.6,\prob); % Balken
+  \draw (\k+0.3,-0.02) node[anchor=north] {\small \k}; % Beschriftung unten
+  \draw (\k+0.3,\prob) node[anchor=south] {\scriptsize \pgfmathprintnumber[fixed,precision=3]{\prob}}; % Wahrscheinlichkeiten oben
+}
+% Titel
+\draw (4,0.38) node[anchor=south] {\large $p=0.3$};
+\end{tikzpicture}
+
+\begin{tikzpicture}[x=0.8cm, y=8cm] % Skalierung für die Breite und Höhe der Balken
+
+% Achsen
+\draw[->] (0,0) -- (9,0) node[anchor=north] {$k$}; % x-Achse
+\draw[->] (0,0) -- (0,0.35) node[anchor=east] {$P(X = k)$}; % y-Achse
+
+% Wahrscheinlichkeiten für k=0 bis k=8
+\foreach \k/\prob in {0/0.004, 1/0.031, 2/0.109, 3/0.219, 4/0.273, 5/0.219, 6/0.109, 7/0.031, 8/0.004} {
+  \fill[firebrick!80] (\k,0) rectangle (\k+0.6,\prob); % Balken
+  \draw (\k+0.3,-0.02) node[anchor=north] {\small \k}; % Beschriftung unten
+  \draw (\k+0.3,\prob) node[anchor=south] {\scriptsize \pgfmathprintnumber[fixed,precision=3]{\prob}}; % Wahrscheinlichkeiten oben
+}
+
+% Titel
+\draw (4,0.38) node[anchor=south] {\large $p=0.5$};
+
+\end{tikzpicture}
+
+\begin{tikzpicture}[x=0.8cm, y=8cm] % Skalierung für die Breite und Höhe der Balken
+
+% Achsen
+\draw[->] (0,0) -- (9,0) node[anchor=north] {$k$}; % x-Achse
+\draw[->] (0,0) -- (0,0.35) node[anchor=east] {$P(X = k)$}; % y-Achse
+
+% Wahrscheinlichkeiten für k=0 bis k=8
+\foreach \k/\prob in {0/0.000, 1/0.001, 2/0.010, 3/0.046, 4/0.136, 5/0.254, 6/0.303, 7/0.198, 8/0.058} {
+  \fill[seagreen!80] (\k,0) rectangle (\k+0.6,\prob); % Balken
+  \draw (\k+0.3,-0.02) node[anchor=north] {\small \k}; % Beschriftung unten
+  \draw (\k+0.3,\prob) node[anchor=south] {\scriptsize \pgfmathprintnumber[fixed,precision=3]{\prob}}; % Wahrscheinlichkeiten oben
+}
+
+% Titel
+\draw (4,0.38) node[anchor=south] {\large $p=0.7$};
+
+\end{tikzpicture}
+
+\end{lsg}
+\begin{lsg}{urnenmodell}
+    $P(4w\text{ und }2s)=\binom{6}{4}(\frac{4}{6})^4(\frac{2}{6})^2\approx15.5\%$
+\end{lsg}
+\begin{lsg}{fuenfwuerfel}
+    Ich gehe über die Gegenwahrscheinlichkeit. $P(0)=(\frac{5}{6})^5$ und $P(1)=5\cdot(\frac{5}{6})^4(\frac{1}{6})$ und somit $P(\text{mind. }2)=1-(P(0)+P(1))\approx20\%$
+\end{lsg}
+\begin{lsg}{werkstueck}
+    $E(X)=10000\cdot0.02=200$ und $s_X=\sqrt{10000\cdot0.02\cdot0.98}\approx14$
+\end{lsg}
+\begin{lsg}{divorce}
+    \begin{enumerate}[a)]
+        \item $0.4^6\approx0.4\%$
+        \item $0.6^6\approx4.7\%$
+        \item $\binom{6}{2}\cdot0.6^2\cdot0.4^4\approx14\%$
+        \item $1-(0.4^6+\binom{5}{1}\cdot0.4^5\cdot0.6\approx0.35$)
+    \end{enumerate}
+\end{lsg}
+\begin{lsg}{labor}
+    \begin{enumerate}[a)]
+        \item Wir berechnen die Wahrscheinlichkeit des Gegenereignisse: weniger als 4 Mal in 10 Versuchen. Das ist
+        $$\sum_{k=0}^3\binom{10}{k}0.2^k\cdot0.8^{10-k}=\texttt{binomcdf(10,0.2,3)}\approx88\%$$
+        Also ist $P(\text{mind. 4})\approx1-88\%=12\%$
+        \item $$\binom{10}{4}0.2^4\cdot0.8^6=\texttt{binompdf(10,0.2,4)}\approx8.8\%$$
+        \item $$\sum_{k=0}^4\binom{10}{k}0.2^k\cdot0.8^{10-k}=\texttt{binomcdf(10,0.2,4)}\approx97\%$$
+    \end{enumerate}
+    Auf \geogebralink können wir die Verteilung mit dem Befehl \texttt{Binomial(n,p)}, ohne Angabe der Anzahl Erfolge, plotten lassen.
+
+\begin{center}
+% Binomialverteilung für n=10, p=0.2
+\begin{tikzpicture}[x=0.8cm, y=12cm] % Skalierung für die Breite und Höhe der Balken
+
+% Achsen
+\draw[->] (0,0) -- (11,0) node[anchor=north] {$k$}; % x-Achse
+\draw[->] (0,0) -- (0,0.4) node[anchor=east] {$P(X = k)$}; % y-Achse
+
+% Wahrscheinlichkeiten für k=0 bis k=10
+\foreach \k/\prob in {0/0.107, 1/0.268, 2/0.302, 3/0.201, 4/0.088, 5/0.026, 6/0.006, 7/0.001, 8/0.000, 9/0.000, 10/0.000} {
+  \fill[seagreen!80] (\k,0) rectangle (\k+0.6,\prob); % Balken
+  \draw (\k+0.3,-0.01) node[anchor=north] {\small \k}; % Beschriftung unten
+  \draw (\k+0.3,\prob) node[anchor=south] {\scriptsize \pgfmathprintnumber[fixed,precision=3]{\prob}}; % Wahrscheinlichkeiten oben
+}
+
+% Titel
+\draw (5,0.4) node[anchor=south] {\large Binomialverteilung $n=10$, $p=0.2$};
+
+\end{tikzpicture}
+\end{center}
+\end{lsg}
+\begin{lsg}{sechsenwuerfeln}
+    Wir wollen die Spanne $\{2,3,4\}$ und rechnen daher
+    \begin{align*}
+        P(2\leq X\leq4) &= \sum_{k=2}^4\binom{10}{k}(\tfrac{1}{6})^k\cdot(\tfrac{5}{6})^{10-k}=\texttt{binomcdf(10,$\tfrac{1}{6}$,4)}-\texttt{binomcdf(10,$\tfrac{1}{6}$,1)}\\
+        &\approx 0.985-0.516\approx47\%
+    \end{align*}
+
+\begin{center}    
+    % Binomialverteilung für n=10, p=1/6
+\begin{tikzpicture}[x=0.8cm, y=15cm] % Skalierung für die Breite und Höhe der Balken
+
+% Achsen
+\draw[->] (0,0) -- (11,0) node[anchor=north] {$k$}; % x-Achse
+\draw[->] (0,0) -- (0,0.4) node[anchor=east] {$P(X = k)$}; % y-Achse
+
+% Wahrscheinlichkeiten für k=0 bis k=10
+\foreach \k/\prob in {0/0.161, 1/0.323, 2/0.291, 3/0.156, 4/0.053, 5/0.013, 6/0.002, 7/0.000, 8/0.000, 9/0.000, 10/0.000} {
+  \fill[firebrick!50] (\k,0) rectangle (\k+0.6,\prob); % Balken
+  \draw (\k+0.3,-0.005) node[anchor=north] {\small \k}; % Beschriftung unten
+\ifnum\k=2
+    \draw (\k+0.3,\prob) node[anchor=south] {\scriptsize \pgfmathprintnumber[fixed,precision=4]{\prob}};
+  \fi
+  \ifnum\k=3
+    \draw (\k+0.3,\prob) node[anchor=south] {\scriptsize \pgfmathprintnumber[fixed,precision=4]{\prob}};
+  \fi
+  \ifnum\k=4
+    \draw (\k+0.3,\prob) node[anchor=south] {\scriptsize \pgfmathprintnumber[fixed,precision=4]{\prob}};
+  \fi
+}
+
+% Titel
+\draw (5,0.4) node[anchor=south] {\large Binomialverteilung $n=10$, $p=\frac{1}{6}$};
+
+\end{tikzpicture}
+\end{center}
+\end{lsg}
+
+\clearpage
+
+\section{Testverfahren}
+
+\subsection{Was ist Randomness?}
+Der Zufall kann vielerorts beobachtet werden. Er ist keineswegs auf die Disziplin Mathematik beschränkt. Beispielsweise spricht man auch in der Philosophie in diesem Zusammenhang von Zufall, freiem Willen und Determinismus.
+
+In der Mathematik hat man es gewagt, den Zufall zu quantifizieren, was ihn über\-sich\-tli\-cher und greifbarer werden lässt. Wenn wir einen Würfel werfen, dann wissen wir im Allgemeinen zwar nicht, welche Zahl erscheinen wird, aber wir können einen Wert angeben --- die Wahrscheinlichkeit für ein Ereignis --- mit der wir das gewünschte Resultat erwarten.
+
+Nun, eine beliebte Aufgabe von mir ist, Schülern als Hausaufgabe eine Münze 100 Mal werfen zu lassen und das Ergebnis zu notieren. Später wird die Folge darauf analysiert, ob sie wirklich zufällig entstanden ist oder nicht. Bevor wir uns überlegen, wie wir das machen könnten, betrachten wir zuerst zwei Bilder aus einer Lesung von \textsc{Peter Coles} (siehe Abbildung \ref{fig:randomness} auf Seite \pageref{fig:randomness}). Eines wurde durch eine Zufallsfunktion erzeugt, das andere nicht.  
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.45\textwidth]{pictures/pointa.jpg}
+    \includegraphics[width=0.45\textwidth]{pictures/pointb.jpg}
+    \caption{Welches ist das \glqq random generierte\grqq\ Bild?}
+    \label{fig:randomness}
+\end{figure}
+
+Richtig, beim Bild rechts wurden die Punkte in den Abständen ausgelotet; das Bild links ist das random picture. Auffällig, aber auch charakteristisch, ist ein \glqq Clumping\grqq, das man bei zufälligen Prozessen beobachten kann. Beispielsweise kann dies auch bei den sogenannten Primzahlzwillingen beobachtet werden, die unseres Wissens random über die natürlichen Zahlen verteilt sind. \definition{Primzahlzwillinge} sind Primzahlen, die durch bloss eine gerade Zahl getrennt sind; zum Beispiel $(3|5)$ oder $(17|19)$. Auch hier beobachten wir dieses Clumping-Phänomen. Und genau das wird Schülern bei der Münze-Werfen-Hausaufgabe zum Verhängnis. Nämlich: Diejenigen, die bloss eine Folge von Kopf und Zahl niederschreiben und denken, sie könnten den Zufall simulieren, werden in der Regel zu wenig Clumping in ihren Folgen haben. Clumping bedeutet für das Münzewerfen, dass ihre Folgen zu wenige, lange Teilfolgen von Kopf bzw. Zahl zeigen.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{pictures/randomgenerator.jpg}
+    \caption{Is it really random?}
+\end{figure}
+
+Nun zur Frage, wie man eine solche Folge testen könnte?
+Im Folgenden möchte ich von $0$ und $1$ sprechen und nicht von Kopf und Zahl; einfach deshalb, weil dies übersichtlicher ist.
+Am einfachsten beginnt man mit dem Zählen von $0$ und $1$. Bei $100$ Würfen sollten die beiden Ziffern in etwa gleicher Anzahl vorkommen. Danach könnte man Paare zählen: $00$, $01$, $10$ und $11$ müssten etwa in gleicher Anzahl auftauchen. Einer meiner Favoriten ist der Poker-Test, bei dem man die Sequenz in $5$-er Pakete aufteilt und dann guckt, ob die entsprechenden Pakete mit den Poker-Wahrscheinlichkeiten überein stimmen. Bei einer binären Sequenz wie dieser könnte man gucken, wie viele Full-Houses vorkommen?\par
+Eine gewisse Unsicherheit bleibt jedoch immer. Eine Sequenz, die all meinen Tests auf Muster erfolgreich standhält, ist dann \glqq bloss\grqq\ mit einer gewissen Wahrscheinlichkeit random. Absolute Sicherheit gibt es nicht. Wie man mit solchen Versuchen und deren Ergebnissen umgeht, wenn man ein bestimmtes Merkmal testen will, soll im Kapitel \ref{subsec:bspfreiw} anhand eines Beispiels, das einem ausgewählten Testverfahren unterzogen wird, illustriert werden.
+
+\subsection{Beispiel Test einer Münze auf Fairness}
+
+Betrachten wir eine Münze (Kopf, Zahl; $1$, $0$), die wir auf Fairness testen wollen. Bei $4$ Würfen zum Testzweck erwarten wir folgende Ausgänge und zugehörige Wahrscheinlichkeiten:
+\begin{itemize}
+    \item $\{1,1,1,1\}$ mit $(\tfrac{1}{2})^4\cdot1$
+    \item $\{0,1,1,1\}$ mit $(\tfrac{1}{2})^4\cdot4$
+    \item $\{0,0,1,1\}$ mit $(\tfrac{1}{2})^4\cdot6$
+    \item $\{0,0,0,1\}$ mit $(\tfrac{1}{2})^4\cdot4$
+    \item $\{0,0,0,0\}$ mit $(\tfrac{1}{2})^4\cdot1$
+\end{itemize}
+
+Lassen wir die Extremfälle (nur Kopf bzw. nur Zahl) weg. Dann erwarte ich, für eine faire Münze, über viele Testläufe à 4 Würfen, trotzdem öfter einen asymmetrischen Ausgang (8 Mal) als den intuitiv fairen $\{0,0,1,1\}$ (6 Mal).
+
+\subsection{Binomialtest}\label{subsec:bspfreiw}
+
+\begin{wrapfigure}{r}{0.16\textwidth}
+  \begin{center}
+    \includegraphics[width=0.2\textwidth]{pictures/bcfemina}
+  \end{center}
+%\caption{You Know my Name}
+\end{wrapfigure}
+%\textsc{Nicole H} aus K spielt in ihrer Freizeit leidenschaftlich gerne Basketball. Sie besucht regelmässig das Training des \textsc{BC Femina Bern}.
+
+Beim Freiwurf im Basketball handelt es sich um eine immer wiederkehrende Spielsituation. Aus diesem Grund kommt dem Freiwurftraining eine besondere Bedeutung zu. Aus Erfahrung weiss Nicole, dass sie im Training eine Freiwurftrefferquote von genau $40\%$ hat. Daraus leiten wir eine Trefferwahrscheinlichkeit von
+$$p_0=0.4$$
+für Trainingsfreiwürfe ab.
+
+Nicole geht davon aus, dass sie unter Druck --- zum Beispiel in einer Wettkampfsituation --- eine höhere Trefferquote bei Freiwürfen hinkriegt als im Training. Ist dem wirklich so? Wie lässt sich diese Vermutung belegen?
+
+\subsubsection{Nullhypothese}
+
+Wir formulieren die beiden konkurrierenden Hypothesen zu ihrer Treffsicherheit:
+
+\begin{itemize}
+\item Nullhypothese $H_0$: $p=0.4$ (gleichbleibende Trefferwahrscheinlichkeit)
+\item Alternativhypothese $H_A$: $p>0.4$ (höhere Trefferwahrscheinlichkeit)
+\end{itemize}
+
+Wir nehmen an, dass $H_0$ wahr ist. In einer Wettkampfsituation tritt Nicole $n=5$ mal zu einem Freiwurf an und trifft $k=3$ mal. Auf Grund der Nullhypothese sind im Mittel
+$$E=n\cdot p_0=5\cdot0.4=2$$
+Treffer zu erwarten. Ein Wert von $k$ nahe bei $E$ lässt wenig Zweifel an der Richtigkeit von $H_0$ aufkommen. Aber je stärker $k$ von $E$ abweicht, desto unhaltbarer wird $H_0$. Wir fassen alle Werte, die grösser oder gleich $k$ sind im kritischen Bereich $K$ zusammen:
+$$K=\set{k,k+1,\dots,n}.$$
+$K$ enthält also alle Werte, die $H_0$ schwächen und $H_A$ stärken.
+
+\begin{uebenv}{fuenffreiwuerfe}
+Illustriere alle Wahrscheinlichkeiten $k=0,\dots,5$ für $n=5$ und $p=0.4$ in unten stehendem Diagramm.
+
+\begin{center}
+\begin{tikzpicture}[yscale=10] % y-Achse skaliert
+% Achsen zeichnen
+    \draw[->] (0,0) -- (7,0) node[anchor=north west] {$k$};
+    \draw[->] (0,0) -- (0,0.5) node[anchor=east] {$P(X=k)$};
+    % Gitterlinien und y-Achsen-Beschriftungen
+    \foreach \y in {0, 0.1, 0.2, 0.3, 0.4} {
+        \draw[gray,dashed] (0,\y) -- (7,\y); % Horizontale Gitterlinien
+        \node[anchor=east] at (0,\y) {\y}; % Beschriftung der y-Achse
+    }
+    % Achsen-Beschriftungen für k
+    \foreach \k in {0,1,2,3,4,5} {
+        \node[anchor=north] at (\k+1,0) {\k};
+    }
+\end{tikzpicture}
+\end{center}
+\end{uebenv}
+
+
+
+
+\begin{uebenv}{imkritischenbereich}
+    Berechne nun die Wahrscheinlichkeit $\ga_p$ dafür, dass wir bei $n$ Versuchen ein Ereignis aus dem kritischen Bereich $K$ erhalten, falls $H_0$ wahr ist. Im Falle unserer Spielerin nehmen wir also $n=5$, $K=\{3,4,5\}$ und $p=0.4$.
+\end{uebenv}
+
+
+
+\subsubsection{Signifikanz}
+
+\begin{cdef}{Signifikanzwert}
+Die Wahrscheinlichkeit, dass wir in $n$ Versuchen ein Ereignis aus dem kritischen Bereich erhalten, heisst Signifikanzwert $\ga_p$ oder kurz $p$--Wert.
+\end{cdef}
+
+Je kleiner der $p$-Wert ist, desto weniger spricht für die Nullhypothese $H_0$, wenn wir im Bereich des $p$-Werts landen. Es stellt sich daher die Frage, wie klein $\ga_p$ sein muss, damit man $H_0$ verwirft? Sinnvolle Werte sind $\ga_p=0.05$ oder $\ga_p=0.01$.
+
+\begin{cdef}[Signifikanz \& Hochsignifikanz]
+Ist $\ga_p\leq0.05$, so heisst das beobachtete Ereignis signifikant. Ist $\ga_p\leq0.01$, so kriegt das beobachtete Ereignis sogar das Prädikat hochsignifikant.
+\end{cdef}
+
+\begin{bem}
+$5\%$ gilt landläufig als Trennpunkt zwischen \glqq kleinen\grqq\ und \glqq grossen\grqq\ Wahr\-schein\-lich\-kei\-ten. Die Hypothese $H_0$ ist nicht zwingend falsch, wenn $\ga_p\leq0.05$ ist. Wenn $H_0$ jedoch richtig ist, dann haben wir ein Ereignis mit sehr kleiner Wahrscheinlichkeit beobachtet. Somit würde man eher die Alternative $H_A$ der Nullhypothese $H_0$ vorziehen.
+\end{bem}
+
+\begin{bem}
+Beim Higgs-Boson wurde ein $p$-Wert von $5\gs$ zugrunde gelegt. Das bedeutete in diesem Fall, dass eine Wahrscheinlichkeit von ca. $10^{-5}\%$ besteht, dass dieses Signal durch zufällige Hintergrundschwankungen (Rauschen etc.) zustande kam. 
+\end{bem}
+
+Im
+\marginnote{
+\qrcode{
+https://youtu.be/9rI5q0tS910}
+}
+Beispiel unserer Spielerin hatten wir einen $p$-Wert von $\ga_p=0.317$. Dieser reicht also bei Weitem nicht aus, um $H_0$ zu verwerfen und sie eine höhere Trefferquote in Wettkampfsituationen zu attestieren. Denn auch bei einer gleichbleibenden Trefferquote von $p_0=0.4$ würde Nicole in fast jedem dritten Spiel drei oder mehr von fünf Freiwürfen verwerten.
+
+\begin{uebenv}{signifikanzwert}
+Sie verwertet
+\begin{enumerate}[a)]
+\item $4$ oder $5$ von $5$ Freiwürfen,
+\item $5$ von $5$ Freiwürfen.
+\end{enumerate}
+Berechne die beiden Signifikanzwerte. 
+\end{uebenv}
+
+
+
+Einzig für den letzten Fall ist $\ga_p\leq0.05$. Dieses Ereignis ist also statistisch signifikant und wir müssten die Nullhypothese $H_0$ zugunsten der Alternative $H_A$ verwerfen. Das heisst, wir könnten bei fünf Treffern davon ausgehen, dass unsere Spielerin in Wettkampfsituationen tatsächlich besser trifft als im Training.
+
+\subsubsection{Fehlerarten}
+
+Die Nullhypothese $H_0$ konkurriert mit der Alternativhypothese $H_A$. Müssen wir eine Entscheidung treffen und einer der beiden Hypothesen den Vorzug geben, so können uns Fehler unterlaufen.
+
+\begin{itemize}
+\item \definition{Fehler erster Art}: Die Nullhypothese $H_0$ ist wahr, wird aber fälschlicherweise zugunsten der Alternativhypothese $H_A$ verworfen. Die Wahrscheinlichkeit, einen Fehler der ersten Art zu begehen, beträgt offensichtlich $\ga_p$.
+\item \definition{Fehler zweiter Art}:
+\marginnote{
+\qrcode{
+https://youtu.be/-gNSbK25Spc}
+}
+Die Nullhypothese $H_0$ ist falsch, wird aber trotzdem beibehalten. Die Fehlerwahrscheinlichkeit zweiter Art hängt von der Wahl des Parameters $p$ ab. Das wollen wir uns an unserem Trefferquotenbeispiel veranschaulichen.
+\end{itemize}
+
+Angenommen, die Spielerin verwertet in einer Wettkampfsituation tatsächlich alle $5$ Freiwürfe. Die Gefahr, dass wir die Nullhypothese $H_0$ fälschlicherweise verwerfen (einen Fehler erster Art begehen) ist mit $\ga_p=0.010$ so klein, dass wir sie in Kauf nehmen. Bei mindestens $4$ Treffern hingegen ist die Wahrscheinlichkeit für einen Fehler der ersten Art mit $\ga_p=0.087$ zu gross, und wir bleiben bei der Nullhypothese $H_0$.
+
+Damit kann uns aber ein Fehler zweiter Art unterlaufen, den wir uns genauer anschauen wollen. Gehen wir davon aus, dass die Spielerin tatsächlich ein Wettkampftyp ist und in Wettkampfsituationen eine Trefferquote von $p=0.6$ hat.
+
+\begin{uebenv}{illustrierefehlerzweiterart}
+Illustriere alle Wahrscheinlichkeiten $k=0,\dots,5$ für $p=0.6$ in unten stehendem Diagramm.
+
+\begin{center}
+\begin{tikzpicture}[yscale=10] % y-Achse deutlich gestreckt
+
+    % Achsen zeichnen
+    \draw[->] (0,0) -- (6.75,0) node[anchor=south] {$k$};
+    \draw[->] (0,0) -- (0,0.45) node[anchor=south east] {$P(X=k)$};
+
+    % Gitterlinien und y-Achsen-Beschriftungen
+    \foreach \y in {0, 0.1, 0.2, 0.3, 0.4} {
+        \draw[gray,dashed] (0,\y) -- (6.5,\y); % Horizontale Gitterlinien
+        \node[anchor=east] at (0,\y) {\y}; % Beschriftung der y-Achse
+    }
+
+    % Achsen-Beschriftungen für k
+    \foreach \k in {0,1,2,3,4,5} {
+        \node[anchor=north] at (\k+1,0) {\k};
+    }
+\end{tikzpicture}
+\end{center}
+\end{uebenv}
+
+
+
+Die Alternativhypothese $H_A$ wäre somit wahr. Unsere Spielerin würde dann im Wettkampf mit der folgenden Wahrscheinlichkeit höchstens $4$ von $5$ Freiwürfen verwerten, was jedoch die Beibehaltung der Nullhypothese $H_0$ bedeutet:
+$$\sum_{k=0}^4P(5,0.6,k)=\text{binomcdf}(5,0.6,4)\approx0.922.$$
+
+Die Wahrscheinlichkeit eines Fehlers zweiter Art ist also immens gross. Selbst wenn sie in Wettkampfsituationen eine Trefferquote von $p=0.8$ hätte, würde die wahre Alternativhypothese $H_A$ mit einer Wahrscheinlichkeit von über 67\% abgelehnt werden, wie aus Abbildung \ref{fig08} auf Seite \pageref{fig08} hervorgeht.
+
+\begin{uebenv}{fehlerzweiterart}
+Rechne den Fehler zweiter Art für $p=0.8$ nach.
+\end{uebenv}
+
+
+\begin{figure}
+\begin{center}
+\begin{tikzpicture}[yscale=10] % y-Achse deutlich gestreckt
+
+    % Achsen zeichnen
+    \draw[->] (0,0) -- (7,0) node[anchor=north] {$k$};
+    \draw[->] (0,0) -- (0,0.5) node[anchor=east] {$P(X=k)$};
+
+    % Gitterlinien und y-Achsen-Beschriftungen
+    \foreach \y in {0, 0.1, 0.2, 0.3, 0.4} {
+        \draw[gray,dashed] (0,\y) -- (7,\y); % Horizontale Gitterlinien
+        \node[anchor=east] at (0,\y) {\y}; % Beschriftung der y-Achse
+    }
+
+    % Werte für die Binomialverteilung bei p=0.8, gerundet auf 3 Nachkommastellen
+    \foreach \k/\p in {0/0.000, 1/0.006, 2/0.051, 3/0.205, 4/0.410, 5/0.328} {
+        % Balken zeichnen mit seagreen und dunklerem Rand
+        \filldraw[seagreen!25, draw=seagreen!80, thick] (\k+0.5,0) rectangle (\k+1.5,\p);
+        % Werte beschriften
+        \node[anchor=south] at (\k+1,\p) {$\p$};
+    }
+
+    % Achsen-Beschriftungen für k
+    \foreach \k in {0,1,2,3,4,5} {
+        \node[anchor=north] at (\k+1,0) {\k};
+    }
+\end{tikzpicture}
+\end{center}
+\caption{Verteilung für die Trefferquote $0.8$ bei $5$ Versuchen}\label{fig08}
+\end{figure}
+
+\subsubsection{Fazit}
+
+Will die Spielerin mit der Versuchsanordnung von 5 Freiwürfen im Wettkampf zeigen, dass sie ein Wettkampftyp ist, dann entsteht das folgende Problem. Um die Wahrscheinlichkeit eines Fehlers erster Art unter 5\% zu bringen (Signifikanzniveau), muss Nicole wirklich gut treffen, damit wir die Nullhypothese $H_0$ ablehnen. Sie muss so gut treffen, dass die Wahrscheinlichkeit eines Fehlers zweiter Art sehr gross wird. Somit hat es eine wahre Alternativhypothese sehr, sehr schwer\dots
+\marginnote{
+\qrcode{
+https://youtu.be/HlX0ePDTATA}
+}
+
+\subsubsection{Konfidenzintervalle}
+
+Wir möchten den $p$-Wert unter $5\%$ halten und gleichzeitig die Wahrscheinlichkeit eines Fehlers zweiter Art auf ein \glqq erträgliches Mass\grqq\ reduzieren.
+
+\begin{bem}
+Für eine weitere Analyse ist nun folgende Tatsache wichtig. Es bezeichnen $\mu$ bzw. $\sigma$ wie üblich den Erwartungswert bzw. die Standardabweichung. Für eine Binomialverteilung --- oder eine Normalverteilung --- gilt, dass ca. $66\%$ aller Ereignisse im Intervall $[\mu-\sigma,\mu+\sigma]$, $95\%$ in $[\mu-2\sigma,\mu+2\sigma]$ und $99\%$ in $[\mu-3\sigma,\mu+3\sigma]$ liegen.
+\end{bem}
+
+\begin{uebenv}{hundertfreiwuerfe}
+Rechne das vorgestellte Beispiel für $100$ zugesprochene Freiwürfe (siehe Abbildung \ref{fig100} auf Seite \pageref{fig100}). Wie viele Treffer muss die Spielerin mindestens erzielen, damit der $p$-Wert unter $5\%$ fällt und wir die Nullhypothese $H_0$ verwerfen?
+\end{uebenv}
+
+
+
+\begin{figure}
+\begin{center}
+\begin{tikzpicture}[yscale=35, xscale=0.1] % y-Achse gestreckt, x-Achse passend skaliert
+
+    % Achsen zeichnen
+    \draw[->] (0,0) -- (105,0) node[anchor=south west] {$k$};
+    \draw[->] (0,0) -- (0,0.13) node[anchor=north east] {$P(X=k)$};
+
+    % Gitterlinien und y-Achsen-Beschriftungen
+    \foreach \y in {0, 0.05, 0.1} {
+        \draw[gray,dashed] (0,\y) -- (101,\y); % Horizontale Gitterlinien
+        \node[anchor=east] at (0,\y) {\y}; % Beschriftung der y-Achse
+    }
+
+ n zeichnen (Daten für p=0.4)
+    \filldraw[seagreen!25, draw=seagreen!80, thick] (23,0) rectangle (24,0.00014);
+    \filldraw[seagreen!25, draw=seagreen!80, thick] (24,0) rectangle (25,0.00031);
+    \filldraw[seagreen!25, draw=seagreen!80, thick] (25,0) rectangle (26,0.00063);
+    \filldraw[seagreen!25, draw=seagreen!80, thick] (26,0) rectangle (27,0.00121);
+    \filldraw[seagreen!25, draw=seagreen!80, thick] (27,0) rectangle (28,0.00220);
+    \filldraw[seagreen!25, draw=seagreen!80, thick] (28,0) rectangle (29,0.00383);
+    \filldraw[seagreen!25, draw=seagreen!80, thick] (29,0) rectangle (30,0.00634);
+    \filldraw[seagreen!25, draw=seagreen!80, thick] (30,0) rectangle (31,0.01001);
+    \filldraw[seagreen!25, draw=seagreen!80, thick] (31,0) rectangle (32,0.01507);
+    \filldraw[seagreen!25, draw=seagreen!80, thick] (32,0) rectangle (33,0.02166);
+    \filldraw[seagreen!25, draw=seagreen!80, thick] (33,0) rectangle (34,0.02975);
+    \filldraw[seagreen!25, draw=seagreen!80, thick] (34,0) rectangle (35,0.03908);
+    \filldraw[seagreen!25, draw=seagreen!80, thick] (35,0) rectangle (36,0.04913);
+    \filldraw[seagreen!25, draw=seagreen!80, thick] (36,0) rectangle (37,0.05914);
+    \filldraw[seagreen!25, draw=seagreen!80, thick] (37,0) rectangle (38,0.06820);
+    \filldraw[seagreen!25, draw=seagreen!80, thick] (38,0) rectangle (39,0.07538);
+    \filldraw[seagreen!25, draw=seagreen!80, thick] (39,0) rectangle (40,0.07989);
+    \filldraw[seagreen!25, draw=seagreen!80, thick] (40,0) rectangle (41,0.08122);
+    \filldraw[seagreen!25, draw=seagreen!80, thick] (41,0) rectangle (42,0.07924);
+    \filldraw[seagreen!25, draw=seagreen!80, thick] (42,0) rectangle (43,0.07421);
+    \filldraw[seagreen!25, draw=seagreen!80, thick] (43,0) rectangle (44,0.06673);
+    \filldraw[seagreen!25, draw=seagreen!80, thick] (44,0) rectangle (45,0.05763);
+    \filldraw[seagreen!25, draw=seagreen!80, thick] (45,0) rectangle (46,0.04781);
+    \filldraw[seagreen!25, draw=seagreen!80, thick] (46,0) rectangle (47,0.03811);
+    \filldraw[seagreen!25, draw=seagreen!80, thick] (47,0) rectangle (48,0.02919);
+    \filldraw[seagreen!25, draw=seagreen!80, thick] (48,0) rectangle (49,0.02149);
+    \filldraw[seagreen!25, draw=seagreen!80, thick] (49,0) rectangle (50,0.01520);
+    \filldraw[seagreen!25, draw=seagreen!80, thick] (50,0) rectangle (51,0.01034);
+    \filldraw[seagreen!25, draw=seagreen!80, thick] (51,0) rectangle (52,0.00676);
+    \filldraw[seagreen!25, draw=seagreen!80, thick] (52,0) rectangle (53,0.00424);
+    \filldraw[seagreen!25, draw=seagreen!80, thick] (53,0) rectangle (54,0.00256);
+    \filldraw[seagreen!25, draw=seagreen!80, thick] (54,0) rectangle (55,0.00149);
+    \filldraw[seagreen!25, draw=seagreen!80, thick] (55,0) rectangle (56,0.00083);
+    \filldraw[seagreen!25, draw=seagreen!80, thick] (56,0) rectangle (57,0.00044);
+    \filldraw[seagreen!25, draw=seagreen!80, thick] (57,0) rectangle (58,0.00023);
+    \filldraw[seagreen!25, draw=seagreen!80, thick] (58,0) rectangle (59,0.00011);
+
+    \foreach \x/\y in {
+        46/0.0015, 47/0.0026, 48/0.0042, 49/0.0068, 50/0.0103,
+        51/0.0152, 52/0.0215, 53/0.0292, 54/0.0381, 55/0.0478,
+        56/0.0576, 57/0.0667, 58/0.0742, 59/0.0792, 60/0.0812,
+        61/0.0799, 62/0.0754, 63/0.0682, 64/0.0591, 65/0.0491,
+        66/0.0391, 67/0.0297, 68/0.0217, 69/0.0151, 70/0.0100,
+        71/0.0063, 72/0.0038, 73/0.0022, 74/0.0012
+    } {
+        \filldraw[firebrick!30, draw=firebrick!80, thick, opacity=0.5] (\x, \y) rectangle (\x+1, 0);
+    }
+
+    % Achsen-Beschriftungen für k
+    \foreach \k in {0,20,...,100} {
+        \node[anchor=north] at (\k+0.5,0) {\k};
+    }
+
+\end{tikzpicture}
+\end{center}
+\caption{Illustration des Fehlers zweiter Art}
+\end{figure}
+
+\begin{uebenv}{mehrwuerfe}\label{ueb25}
+In der Wettkampfsituation können bloss 25 Freiwürfe beobachtet werden. Ab wie vielen Treffern lehnst du die Nullhypothese bei einen Signifikanzniveau von $\ga_p = 0.05$ ab? Ab welcher Trefferzahl lehnst du $H_0$ bei $\ga_p = 0.01$ ab?
+
+Wie gross wird jeweils die Wahrscheinlichkeit für einen Fehler der zweiten Art, wenn wir von einer tatsächlichen Wettkampftrefferwahrscheinlichkeit von $p=0.6$ ausgehen?
+\end{uebenv}
+
+
+
+\begin{uebenv}{fehlerdruecken}
+Der Spielerin tatsächliche Wettkampftrefferwahrscheinlichkeit liege bei $p=0.5$. Wie viele Wettkampffreiwürfe musst du beobachten, damit die Wahrscheinlichkeit für einen Fehler der ersten und der zweiten Art jeweils höchstens $5\%$ betragen?
+\end{uebenv}
+
+
+
+\subsubsection{Zweiseitige Tests}
+
+Der
+\marginnote{
+\qrcode{
+https://youtu.be/CNLFTlj1gLw}
+}
+oben vorgestellte Test ist einseitig. Betrachte nun auch zweiseitige Tests und konsultiere Tabelle \ref{binomtab} auf Seite \pageref{binomtab}.
+
+\begin{table}
+\begin{center}
+\scalebox{0.95}{
+\begin{tabular}{m{3.5cm}m{3cm}m{7cm}}
+\toprule
+\multicolumn{3}{c}{Ereignis $k$ bei einem Signifikanzniveau $\ga_p$ und kritischem Wert $c$.} \\ \midrule
+\rule{0mm}{20ex}\multirow{2}{3.5cm}{Einseitiger Test} & $H_0$: $p=p_0$ gegen $H_A: p>p_0$ &
+\definecolor{zzttqq}{rgb}{0.6,0.2,0}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.15cm,y=12.0cm]
+\draw[->,color=black] (0,0) -- (40,0);
+\foreach \x in {0,10,20,30}
+\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize};
+\draw[->,color=black] (0,-0.002) -- (0,0.15);
+\foreach \y in {0.04,0.08,0.12}
+\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize};
+\clip(0,-0.03) rectangle (40,0.2);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (6.5,0) rectangle (7.5,0);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (7.5,0) rectangle (8.5,0);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (8.5,0) rectangle (9.5,0);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (9.5,0) rectangle (10.5,0.002);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (10.5,0) rectangle (11.5,0.005);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (11.5,0) rectangle (12.5,0.011);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (12.5,0) rectangle (13.5,0.015);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (13.5,0) rectangle (14.5,0.025);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (14.5,0) rectangle (15.5,0.04);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (15.5,0) rectangle (16.5,0.06);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (16.5,0) rectangle (17.5,0.08);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (17.5,0) rectangle (18.5,0.1);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (18.5,0) rectangle (19.5,0.12);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (19.5,0) rectangle (20.5,0.13);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (20.5,0) rectangle (21.5,0.12);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (21.5,0) rectangle (22.5,0.1);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (22.5,0) rectangle (23.5,0.08);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.5] (23.5,0) rectangle (24.5,0.06);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.5] (24.5,0) rectangle (25.5,0.04);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.5] (25.5,0) rectangle (26.5,0.025);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.5] (26.5,0) rectangle (27.5,0.015);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.5] (27.5,0) rectangle (28.5,0.011);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.5] (28.5,0) rectangle (29.5,0.005);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.5] (29.5,0) rectangle (30.5,0.002);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.5] (30.5,0) rectangle (31.5,0);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.5] (31.5,0) rectangle (32.5,0);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.5] (32.5,0) rectangle (33.5,0);
+\begin{scriptsize}
+\draw[color=zzttqq] (32,0.05) node[left]{$\leq\ga_p$};
+\draw[color=zzttqq] (24,0) node[below]{$c$};
+\end{scriptsize}
+\end{tikzpicture}
+
+ \\ \cmidrule(r){2-3}
+ & $H_0$: $p=p_0$ gegen $H_A$: $p<p_0$ & 
+\definecolor{zzttqq}{rgb}{0.6,0.2,0}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.15cm,y=12.0cm]
+\draw[->,color=black] (0,0) -- (40,0);
+\foreach \x in {0,10,20,30}
+\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize};
+\draw[->,color=black] (0,-0.002) -- (0,0.15);
+\foreach \y in {0.04,0.08,0.12}
+\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize};
+\clip(0,-0.03) rectangle (40,0.2);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.5] (6.5,0) rectangle (7.5,0);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.5] (7.5,0) rectangle (8.5,0);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.5] (8.5,0) rectangle (9.5,0);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.5] (9.5,0) rectangle (10.5,0.002);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.5] (10.5,0) rectangle (11.5,0.005);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.5] (11.5,0) rectangle (12.5,0.011);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.5] (12.5,0) rectangle (13.5,0.015);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.5] (13.5,0) rectangle (14.5,0.025);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.5] (14.5,0) rectangle (15.5,0.04);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.5] (15.5,0) rectangle (16.5,0.06);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (16.5,0) rectangle (17.5,0.08);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (17.5,0) rectangle (18.5,0.1);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (18.5,0) rectangle (19.5,0.12);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (19.5,0) rectangle (20.5,0.13);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (20.5,0) rectangle (21.5,0.12);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (21.5,0) rectangle (22.5,0.1);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (22.5,0) rectangle (23.5,0.08);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (23.5,0) rectangle (24.5,0.06);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (24.5,0) rectangle (25.5,0.04);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (25.5,0) rectangle (26.5,0.025);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (26.5,0) rectangle (27.5,0.015);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (27.5,0) rectangle (28.5,0.011);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (28.5,0) rectangle (29.5,0.005);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (29.5,0) rectangle (30.5,0.002);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (30.5,0) rectangle (31.5,0);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (31.5,0) rectangle (32.5,0);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (32.5,0) rectangle (33.5,0);
+\begin{scriptsize}
+\draw[color=zzttqq] (14,0.05) node[left]{$\leq\ga_p$};
+\draw[color=zzttqq] (16,0) node[below]{$c$};
+\end{scriptsize}
+\end{tikzpicture}
+ \\ \midrule
+ 
+Zweiseitiger Test & $H_0$: $p=p_0$ gegen $H_A$: $p\neq p_0$ &
+\definecolor{zzttqq}{rgb}{0.6,0.2,0}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.15cm,y=12.0cm]
+\draw[->,color=black] (0,0) -- (40,0);
+\foreach \x in {0,10,20,30}
+\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize};
+\draw[->,color=black] (0,-0.002) -- (0,0.15);
+\foreach \y in {0.04,0.08,0.12}
+\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize};
+\clip(0,-0.03) rectangle (40,0.2);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.5] (6.5,0) rectangle (7.5,0);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.5] (7.5,0) rectangle (8.5,0);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.5] (8.5,0) rectangle (9.5,0);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.5] (9.5,0) rectangle (10.5,0.002);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.5] (10.5,0) rectangle (11.5,0.005);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.5] (11.5,0) rectangle (12.5,0.011);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.5] (12.5,0) rectangle (13.5,0.015);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.5] (13.5,0) rectangle (14.5,0.025);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (14.5,0) rectangle (15.5,0.04);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (15.5,0) rectangle (16.5,0.06);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (16.5,0) rectangle (17.5,0.08);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (17.5,0) rectangle (18.5,0.1);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (18.5,0) rectangle (19.5,0.12);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (19.5,0) rectangle (20.5,0.13);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (20.5,0) rectangle (21.5,0.12);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (21.5,0) rectangle (22.5,0.1);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (22.5,0) rectangle (23.5,0.08);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (23.5,0) rectangle (24.5,0.06);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (24.5,0) rectangle (25.5,0.04);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.5] (25.5,0) rectangle (26.5,0.025);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.5] (26.5,0) rectangle (27.5,0.015);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.5] (27.5,0) rectangle (28.5,0.011);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.5] (28.5,0) rectangle (29.5,0.005);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.5] (29.5,0) rectangle (30.5,0.002);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.5] (30.5,0) rectangle (31.5,0);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.5] (31.5,0) rectangle (32.5,0);
+\draw[color=zzttqq,fill=zzttqq,fill opacity=0.5] (32.5,0) rectangle (33.5,0);
+\begin{scriptsize}
+\draw[color=zzttqq] (14,0.05) node[left]{$\leq\frac{\ga_p}{2}$};
+\draw[color=zzttqq] (32,0.05) node[left]{$\leq\frac{\ga_p}{2}$};
+\draw[color=zzttqq] (14.5,0) node[below]{$c_1$};
+\draw[color=zzttqq] (26.5,0) node[below]{$c_2$};
+\end{scriptsize}
+\end{tikzpicture}
+
+\\ \bottomrule
+\end{tabular}
+}
+\caption{Einseitige und zweiseitiger Hypothesentest}\label{binomtab}
+\end{center}
+\end{table}
+
+\begin{uebenv}{wikimuenze}
+Gegeben sei eine Münze. Die zu prüfende Nullhypothese sei, dass die Münze fair ist, dass also Kopf und Zahl gleich wahrscheinlich sind. Die Alternativhypothese sei, dass ein Ergebnis wahrscheinlicher ist, wobei nicht festgelegt wird, welches der beiden wahrscheinlicher sein soll. Das Zufallsexperiment zum Testen der Nullhypothese bestehe nun darin, dass die Münze zwanzig Mal geworfen wird. $K$ bezeichne die Anzahl der Würfe, die \glqq Kopf\grqq\ als Ergebnis liefern. Bei einer fairen Münze wäre zehnmal \glqq Kopf\grqq\ zu erwarten. Als Statistik wählt man daher sinnvollerweise
+$$X=\abs{K-10},$$
+was in Worten die Abweichung vom Mittelwert \glqq Kopf\grqq\ einer fairen Münze ist.
+Angenommen, der Versuch liefert $K=14$ mal das Ergebnis \glqq Kopf\grqq, also $X=4$. Unter der Nullhypothese ist die Anzahl der Köpfe binomialverteilt mit $n=20$ und $p=0.5$.
+
+Berechne den $p$-Wert. Ist die Münze wahrscheinlich \glqq fair\grqq; genauer: Wird die Nullhypothese verworfen? Wie sähe es für $X=5$ aus? \emph{(Quelle Wikipedia p-Wert, 2014)}
+\end{uebenv}
+
+
+
+\begin{uebenv}{cola}
+Der Deckel einer Cola-Falsche dient statt einer Münze als \glqq Zufallsgenerator\grqq. Um zu testen, ob dieses Verfahren fair ist, wird der Deckel 7mal geworfen und liefert
+$$\cup\cup\cup\cup\cap\cup\cup$$
+Formuliere $H_0$ und $H_A$ und teste diese.
+\end{uebenv}
+
+
+
+\begin{uebenv}{hellseher}
+Ein statistischer Test zur Überprüfung von hellseherischen Fähigkeiten. Wir zeigen einer Person 25 Mal die Rück\-sei\-te einer rein zufällig gewählten Spielkarte und fragen sie jeweils danach, zu welcher der vier Farben (Kreuz, Pik, Herz, Karo) die Karte gehört. Ab wie vielen Treffern können der Person bei einem Signifikanzniveau von $\ga_p = 0.01$ hellseherische Fähigkeiten attestiert werden?
+\end{uebenv}
+
+
+
+\clearpage
+
+\subsection{Notizen zu den Übungen}
+
+\begin{lsg}{fuenffreiwuerfe}
+\begin{center}
+\begin{tikzpicture}[yscale=10] % y-Achse skaliert
+    % Achsen zeichnen
+    \draw[->] (0,0) -- (7,0) node[anchor=north west] {$k$};
+    \draw[->] (0,0) -- (0,0.5) node[anchor=east] {$P(X=k)$};
+    % Gitterlinien und y-Achsen-Beschriftungen
+    \foreach \y in {0, 0.1, 0.2, 0.3, 0.4} {
+        \draw[gray,dashed] (0,\y) -- (7,\y); % Horizontale Gitterlinien
+        \node[anchor=east] at (0,\y) {\y}; % Beschriftung der y-Achse
+    }
+    % Werte für die Binomialverteilung
+    \foreach \k/\p in {0/0.078, 1/0.259, 2/0.346, 3/0.230, 4/0.077, 5/0.010} {
+        % Balken zeichnen mit dunklerem Rand
+        \filldraw[seagreen!30, draw=seagreen!80, thick] (\k+0.5,0) rectangle (\k+1.5,\p);
+        % Werte beschriften
+        \node[anchor=south] at (\k+1,\p) {$\p$};
+    }
+    % Achsen-Beschriftungen für k
+    \foreach \k in {0,1,2,3,4,5} {
+        \node[anchor=north] at (\k+1,0) {\k};
+    }
+\end{tikzpicture}
+\end{center}    
+\end{lsg}
+\begin{lsg}{imkritischenbereich}
+    $P(X>2)=1-\sum_{k=0}^2\binom{5}{k}0.4^k\cdot0.6^{5-k}\approx0.317$
+\end{lsg}
+\begin{lsg}{signifikanzwert}
+  \begin{enumerate}[a)]
+      \item $\alpha_p=\sum_{k=4}^5\binom{5}{k}0.4^k\cdot0.6^{5-k}=1-\texttt{binomcdf(5,0.4,3)}\approx0.087\approx9\%$
+      \item $\alpha_p=0.4^5=0.01024\approx1\%$
+  \end{enumerate}
+\end{lsg}
+\begin{lsg}{illustrierefehlerzweiterart}
+    \begin{center}
+\begin{tikzpicture}[yscale=10] % y-Achse deutlich gestreckt
+
+    % Achsen zeichnen
+    \draw[->] (0,0) -- (6.75,0) node[anchor=south west] {$k$};
+    \draw[->] (0,0) -- (0,0.45) node[anchor=south east] {$P(X=k)$};
+
+    % Gitterlinien und y-Achsen-Beschriftungen
+    \foreach \y in {0, 0.1, 0.2, 0.3, 0.4} {
+        \draw[gray,dashed] (0,\y) -- (6.5,\y); % Horizontale Gitterlinien
+        \node[anchor=east] at (0,\y) {\y}; % Beschriftung der y-Achse
+    }
+
+    % Werte für die Binomialverteilung bei p=0.6, gerundet auf 3 Nachkommastellen
+    \foreach \k/\p in {0/0.010, 1/0.077, 2/0.230, 3/0.346, 4/0.259, 5/0.078} {
+        % Balken zeichnen mit seagreen und dunklerem Rand
+        \filldraw[seagreen!30, draw=seagreen!80, thick] (\k+0.5,0) rectangle (\k+1.5,\p);
+        % Werte beschriften
+        \node[anchor=south] at (\k+1,\p) {$\p$};
+    }
+
+    % Achsen-Beschriftungen für k
+    \foreach \k in {0,1,2,3,4,5} {
+        \node[anchor=north] at (\k+1,0) {\k};
+    }
+\end{tikzpicture}
+\end{center}
+\end{lsg}
+\begin{lsg}{fehlerzweiterart}
+    Die Wahrscheinlichkeit eines Fehlers zweiter Art unter der Annahme $p=0.8$ ist $P(0\leq X\leq4)=\sum_{k=0}^4\binom{5}{k}0.8^k\cdot0.2^{5-k}\approx0.672$
+\end{lsg}
+\begin{lsg}{hundertfreiwuerfe}
+    Wir nehmen den Fehler einseitig, d.h, wir summieren alle Wahrscheinlichkeiten auf, bis wir die $95\%$ grad überschreiten. Ein Hinweis liefern die oben angegebenen Konfidenzintervalle. Für das $95\%$ berechnen wir $E(X)=np=100\cdot0.4=40$ und $s=\sqrt{npq}=\sqrt{100\cdot0.4\cdot0.6}=\sqrt{24}\approx5$ und kriegen die euphorische Schätzung $E+2s=50$. Nun probieren wir aus:
+    \begin{itemize}
+        \item $\texttt{binomcdf(100,0.4,50)}\approx0.983$
+        \item $\texttt{binomcdf(100,0.4,49)}\approx0.958$
+        \item $\texttt{binomcdf(100,0.4,48)}\approx0.936$
+    \end{itemize}
+    Also behalten wir die Nullhypothese für $X\leq48$ Treffer bei und der Verwerfungsbereich ist $K=\{49,50,51,\dots,99,100\}$. Die effektive Irrtumswahrscheinlichkeit, der Fehler 1. Art, beträgt $\alpha\approx4.4\%$.
+\end{lsg}
+\begin{lsg}{mehrwuerfe}
+    Für ein Signifikanzniveau von $5\%$ findet man durch Ausprobieren im Bereich $E+2s=25\cdot0.4+2\cdot\sqrt{25\cdot0.4\cdot0.6}=10+2\cdot\sqrt{6}\approx15$ den Wert $\texttt{binomcdf(25,0.4,14)}\approx0.966$. Der kritische Bereich ist $K=\{15,16,17,\dots,24,25\}$ und die effektive Irrtumswahrscheinlichkeit $3.4\%$. Der Fehler 2. Art ist daher\linebreak $\texttt{binomcdf(25,0.6,14)}\approx0.425\approx43\%$.
+
+    Für ein Signifikanzniveau von $\alpha_p=1\%$ ergibt sich: $E+3\cdot s=10+3\cdot\sqrt{6}\approx17$. Wir finden $\texttt{binomcdf(25,0.4,16)}\approx0.996$ und dazu den Verwerfungsbereich $\{17,18,\dots,25\}$. Der Fehler 2. Art ist dann $\texttt{binomcdf(25,0.4,16)}\approx0.726\approx73\%$.
+\end{lsg}
+\begin{lsg}{fehlerdruecken}
+    Ausprobieren\dots Wir können für eine erste Einschätzung die zweiseitigen Konfidenzintervalle befragen. Für $p_1=0.4$ ist $E+2s\approx0.4n+\sqrt{n}$ und für $p_2=0.5$ $E+2s\approx0.5n+\sqrt{n}$. Nun könnte man mit $0.4n+\sqrt{n}=0.5n-\sqrt{n}$ die links- und rechtsseitige Überschneidung berechnen. Aus $n=20\sqrt{n}$ folgt $n^2=400n\Leftrightarrow n(n-400)=0$ und wir suchten bei $400$. Für einen einseitigen Intervall suche wir also über $200$. Wir probieren und landen etwa bei $270$: $\texttt{binomcdf(270,0.4,121)}\approx0.95$ und $\texttt{binomcdf(270,0.5,121)}\approx0.05$
+\end{lsg}
+\begin{lsg}{wikimuenze}
+    Da der Test symmetrisch zu $E=10$ ist berechnen wir von unten her die Summe für $k$ Erfolge, bis wir den Wert $\frac{5\%}{2}=2.5\%$ überschreiten. Es ist $\texttt{binomcdf(10,0.5,6)}\approx0.058$, die Abweichung von $X=4$ also statistisch nicht signifikant. Für $X=5$ sind wir bei $0.021$ und damit wäre die Abweichung signifikant. Der $p$-Wert wäre hier $4.2\%$.
+\end{lsg}
+\begin{lsg}{cola}
+    $H_0$: Deckel fair, $p=0.5$. $H_A$: Deckel unfair, $p\neq0.5$. Wir testen beidseitig: $\sum_{k=0}^1\binom{7}{k}0.5^7\approx0.062$, also ist die Abweichung nicht signifikant und wir behalten die Nullhypothese, dass der Deckel fair ist.
+\end{lsg}
+\begin{lsg}{hellseher}
+    Wir suchen $N$ mit $\sum_{k=0}^N\binom{25}{k}0.25^k\cdot0.75^{25-k}\stackrel{!}{>}99\%$. Wir schätzen $E+3s=25\cdot0.25+3\cdot\sqrt{25\cdot0.25\cdot0.75}\approx13$. Es ist $\texttt{binomcdf(25,0.25,13)}\approx0.998$, $\texttt{binomcdf(25,0.25,12)}\approx0.996$ und $\texttt{binomcdf(25,0.25,11)}\approx0.989$. Also gilt man ab $13$ richtigen \glqq Tipps\grqq\ hochsignifikant hellseherisch.
+\end{lsg}
+
+\clearpage
+
+\appendix
+
+\section{Kombinatorik}
+\subsection{Problemstellungen}
+\begin{itemize}
+\item Warum wird den Schweizern der \glqq Schieber\grqq\ auf die Dauer nicht langweilig? Weil es
+$$21\,452\,752\,266\,265\,320\,000$$
+verschiedene Spiele dieser Art gibt!
+\item Warum spielen jede Woche so viele Leute im deutschen Zahlenlotto \glqq 6 aus 49\grqq?
+Weil sie nicht wissen, dass ihre Gewinnchance für sechs Richtige verschwindend klein ist, nämlich nur $1\div13\,983\,816$!
+\item Warum verwenden gewöhnliche Bankräuber für das Öffnen eines Safes Schweissbrenner?
+Weil sie viel zu viel Zeit bräuchten, sämtliche Kombinationen des Zahlenschlosses durchzuprobieren!
+\end{itemize}
+
+Mit diesen und ähnlichen Problemen beschäftigt sich die \definition{Kombinatorik}, ein Teilgebiet der Arithmetik. Sie untersucht, auf wie viele Arten bestimmte Objekte ausgewählt und wie diese Objekte angeordnet werden können. Wir wollen uns auf die Auswahl aus endlichen Mengen beschränken; Kombinatorik ist im wesentlichen finite Mathematik. Die zwei wichtigsten Probleme für die Kombinatorik sind:
+\begin{itemize}
+\item das \emph{Existenzproblem}: Welche Möglichkeiten gibt es, Elemente einer endlichen Menge nach bestimmten Bedingungen auszuwählen oder anzuordnen?
+\item das \emph{Aufzählungsproblem}: Wie viele Möglichkeiten gibt es dafür insgesamt?
+\end{itemize}
+
+Dabei kann sich durchaus ergeben, dass unter den gestellten Bedingungen gar keine Lösung existiert. Bei praktischen Aufgaben stellt sich zudem oft die Frage, wie man die Lösungen am besten klassifizieren kann bzw. welche Lösung ein Optimum für bestimmte Zwecke darstellt.
+
+Mit den folgenden fünf Aufgaben sollen zunächst die wesentlichen Aufgabentypen der Kombinatorik, die in der Schulmathematik ihren Platz gefunden haben, vorgestellt werden. Diese Aufgaben werden später auf ein gemeinsames Modell, das Urnenmodell, zurückgeführt.
+
+\begin{uebenv}{torundsissi}
+Wie viele verschiedene Buchstabenfolgen kann man mit den Buchstaben
+\begin{enumerate}[a)]
+\item \texttt{T, O, R}
+\item \texttt{S, I, S, S, I}
+\end{enumerate}
+bilden, wenn jeweils alle Buchstaben zu verwenden sind?
+\end{uebenv}
+
+
+
+\begin{uebenv}{totogoal}
+Wie viele Prognosen können für die beiden ersten Fussballspiele eines Totozettels gegeben werden?
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.382\textwidth]{pictures/TotoGoal}
+\caption{TOTOgoal Tippspiel}
+\end{center}
+\end{figure}
+\end{uebenv}
+
+
+
+
+\begin{uebenv}{apfelkuchen}
+ Für eine kleine Apfelwähe lässt sich Frau Gschwind von ihrem Kaufmann, der die Sorten \emph{Gravensteiner} und \emph{Delicious} --- gemischt in einer grossen Kiste --- verkauft, vier beliebige Äpfel geben. Wie viele verschiedene Apfelwähen könnten so entstehen?
+ \end{uebenv}
+
+
+  
+ Aus der Mannigfaltigkeit der kombinatorischen Aufgaben seien hier noch erwähnt:
+ \begin{itemize}
+ \item In any calendar year how many Friday the thirteenths can there be? (Minimum: 1, Maximum: 3)
+ \item Wie viele \glqq Gesichter\grqq\ hat der Zauberwürfel (Rubik's Cube)?\\ ($43\,252\,003\,274\,489\,856\,000$)
+ \item Auf wie viele Arten lässt sich ein Franken in Kleingeld ($\unit[1]{Rp}$, $\unit[2]{Rp}$, $\unit[5]{Rp}$, $\unit[10]{Rp}$, $\unit[20]{Rp}$, $\unit[50]{Rp}$) umwechseln? (4562)
+ \end{itemize}
+ 
+ Aus den bisherigen Aufgaben mag der Eindruck entstehen, dass es sich bei der Kombinatorik um eine \glqq gehobene Unterhaltungsmathematik\grqq\ handelt. Tatsächlich gab es erst um 1900 ein erstes ernstzunehmendes Lehrbuch der Kombinatorik, das Lösungsmethoden für sämtliche klassische Aufgaben bereitstellte. Seit 1950 etwa ist die Kombinatorik zu einer anerkannten und selbständigen Disziplin innerhalb der Mathematik geworden. In anderen mathematischen Disziplinen (Wahrscheinlichkeitsrechnung, Zahlentheorie, Graphentheorie etc.), aber auch in anderen Wissenschaften (Linguistik, Biologie, Physik, Nachrichtentechnik etc.) tauchten immer mehr Probleme auf, die nur mit kombinatorischen Mitteln zu lösen waren. Insbesondere erlaubten seit 1950 die Computer ein experimentelles Arbeiten, das ganz neue Lösungswege eröffnete. Ein schönes Beispiel dazu ist der Beweis des Vierfarbensatzes. 1852 wurde folgendes Problem formuliert:
+ \begin{quote}
+Jede auf einem Stück Papier gezeichnete Landkarte lässt sich mit nur vier Farben so färben, dass niemals zwei aneinandergrenzende Länder dieselbe Farbe erhalten.
+ \end{quote}
+Erst 1976 konnte nach jahrelanger ständiger Verbesserung der Methoden mit 1200 Stunden Rechenzeit an drei Computern der Satz bewiesen werden.
+
+\subsection{Summen- und Produktregel}
+Will man die Anzahl der Schüler einer Schule ermitteln so könnte man an einem bestimmten Morgen jeder Schüler, der durch die Eingangstüre kommt, einzeln zählen. Einfacher wäre es, die einzelnen Klassenbestände zu ermitteln und zu addieren.
+Die Idee ist folgende: Um die Anzahl der Elemente einer Menge $G$ zu ermitteln, ist es oft einfacher, diese Menge zuerst in elementfremde Teilmengen $A_1, A_2, A_3, \dots, A_r$ zu zerlegen und dann die entsprechenden Zahlen zu addieren.
+
+\begin{csatz}[Summenregel]
+$$\card(G)=\card(A_1)+\card(A_2)+\dots+\card(A_r)$$
+wobei $A_i\cap A_j=\emptyset, i,j=1,2,\dots,r$.
+\end{csatz}
+
+\noindent\yinipar{E}\\[-1ex]
+\textgoth{in Restaurant bietet Menus in vier Gängen an, die man nach freier Wahl zusammenstellen kann. Viel Vergnügen bei Ihrer Wahl aus drei Vorspeisen, zwei Zwischengängen, vier Hauptspeisen und drei Desserts.}
+
+\begin{center}
+  {\large \textgoth{MENU}}\\[1ex]
+\small
+\textgoth{Feine Fenchelcrèmes:uppe\\
+Indische Currys:uppe\\
+Schildkrötens:uppe \glqq Lady Curzon\grqq\\
+{\normalsize\ding{91}\quad\ding{91}\quad\ding{91}}\\
+Schnecken nach Elsässer Art\\
+Langustencocktail \glqq Nizza\grqq\\
+{\normalsize\ding{91}\quad\ding{91}\quad\ding{91}}\\
+Porterhous:e Steak\\
+Flambierte Truthahnbrust\\
+Seezunge \glqq Marguery\grqq\\
+Aladins: Wunderpfanne\\
+{\normalsize\ding{91}\quad\ding{91}\quad\ding{91}}\\
+Eis:schale \glqq Blue Canary\grqq\\
+Crèpes: à la pays:anne\\
+Iris:h coffee}
+ \end{center}
+ 
+ \normalfont\normalsize
+ 
+Nicht jede Zusammenstellung wird kulinarischen Regeln genügen, aber es gibt $3\cdot2\cdot4\cdot3=72$ verschiedene Menus.
+
+Verallgemeinerung: Kann ein Vorgang auf $n_1$ verschiedene Arten ausgeführt werden, danach ein weiterer auf $n_2$ verschiedene Arten, dem folgend ein dritter auf $n_3$ verschiedene Arten, und so weiter, dann gibt es $n_1\cdot n_2\cdot n_3\cdot\dots\cdot n_k$ verschiedene Möglichkeiten, den so beschriebenen Gesamtvorgang auszuführen.
+
+\begin{csatz}[Produktregel]
+$$\text{Anzahl}=n_1\cdot n_2\cdot n_3\cdot\dots\cdot n_k$$
+\end{csatz}
+
+\begin{bem}
+Zur Visualisierung kann ein Baumdiagramm gezeichnet werden.
+\end{bem}
+
+\marginnote{
+\qrcode{
+https://www.youtube.com/watch?v=8220w9uzGR0}
+}
+
+\begin{uebenv}{vierstellig}
+Wie viele vierstellige Zahlen mit lauter ungeraden Ziffern gibt es?
+\end{uebenv}
+
+
+
+
+\begin{uebenv}{kvkvk}
+Wie viele \glqq Wörter\grqq\ der Form \texttt{KVKVK} (\texttt{K}: Konsonant, \texttt{V}: Vokal) gibt es, wenn ein Buchstabe \begin{enumerate}[a)]
+\item mehrfach
+\item nur einmal verwendet werden darf?
+\end{enumerate}
+\end{uebenv}
+
+
+
+\begin{uebenv}{autonummer}
+In der Schweiz enthalten die Nummernschilder der Autos in der Regel zwei Buchstaben (Kantonszeichen), denen sechs Ziffern folgen, wobei die erste nicht Null ist. Wie viele Schilder gibt es?
+\end{uebenv}
+
+
+
+
+\subsection{Permutationen}
+In einer obigen Aufgabe hat man gesehen, dass die Buchstaben \texttt{T, O} und \texttt{R} auf sechs verschiedene Arten (\texttt{TOR, TRO, ORT, OTR, RTO, ROT}) angeordnet (permutiert) werden können. Auf die Anzahl 6 schliesst man mit der Produktregel: Für den ersten Buchstaben stehen drei Möglichkeiten (\texttt{T,O} oder \texttt{R}) zur Verfügung, für den zweiten bleiben noch zwei Möglichkeiten, für den dritten bleibt nur noch eine Möglichkeit. Insgesamt gibt es also $3\cdot2\cdot1=6$ verschiedene Möglichkeiten der Anordnung.
+Allgemein gilt:
+
+\pagebreak
+
+\begin{csatz}[Permutation]
+Die Anzahl aller Permutationen von $n$ verschiedenen Elementen ist
+$$P_n=n\cdot(n-1)\cdot(n-2)\cdot\dots\cdot3\cdot2\cdot1\stackrel{\text{Def.}}{=:}n!$$
+\end{csatz}
+
+\begin{bem}
+$n!$ spricht man \glqq $n$ \definition{Fakult\"at}\grqq\ aus.
+\end{bem}
+
+\begin{bem}
+Zwei Permutationen gelten als verschieden, wenn mindestens zwei Elemente nicht an der gleichen Stelle stehen.
+\end{bem}
+
+\begin{uebenv}{ausrufezeichen}
+Berechne bzw. vereinfache:
+
+\begin{enumerate}[a)]
+\item $\frac{10!}{3!}$
+\item $\frac{3\cdot4!}{4\cdot3!}$
+\item $n(n-1)!$
+\item $\frac{(n+3)!}{n!}\div\frac{(n+1)!}{(n-1)!}$
+\end{enumerate}
+\end{uebenv}
+
+
+
+
+\begin{uebenv}{naturbuecher}
+$3$ Physikbücher, $4$ Informatikbücher und $5$ Mathematikbücher sollen auf ein Regal gestellt werden. Auf wie viele Arten geht dies, wenn die Bücher des gleichen Fachgebiets nebeneinander stehen sollen und alle Bücher verschieden sind?
+\end{uebenv}
+
+
+
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=0.618\textwidth]{pictures/seating}
+\caption{\glqq Next time, let me handle the seating arrangements!\grqq}
+\end{center}
+\end{figure}
+\begin{uebenv}{roundtable}
+\begin{enumerate}[a)]
+\item Auf wie viel Arten können sich elf Personen in eine Reihe setzen?
+\item Wie viele Möglichkeiten gibt es, wenn zwei Personen unbedingt nebeneinander sitzen wollen?
+\item Löse (a) und (b) für die Sitzordnungen an einem runden Tisch.
+\end{enumerate}
+\end{uebenv}
+
+
+
+
+Gegeben seien $n$ Elemente, von denen genau $k$ untereinander gleich sind. Diese $k$ gleichen Elemente werden für einen Moment mit Indizes versehen, so dass man sie voneinander unterscheiden kann. Die Anzahl aller Permutationen ist dann $n!$, wobei aber jeweils $k!$ Permutationen sich nur in den Stellungen der extra verschieden bezeichneten Elemente unterscheiden. Macht man die Indizierung rückgängig, so sind jeweils $k!$ Permutationen nicht mehr voneinander verschieden. Also ist in diesem Fall die Anzahl der Permutationen $\frac{n!}{k!}$.
+Allgemein gilt:
+
+\begin{csatz}[Permutation von k aus n]
+Die Anzahl der Permutationen von $n$ Elementen, unter denen ein Element $k_1$-mal, ein zweites Element $k_2$-mal, ein drittes Element $k_3$-mal, \dots , ein $r$-tes Element $k_r$-mal vorkommt, ist
+$$P_{n,k_1,\dots,k_r}=\frac{n!}{k_1!\cdot k_2!\cdot k_3!\cdot\dots\cdot k_r!}$$
+\end{csatz}
+
+\begin{uebenv}{mississippi}
+Auf wie viele Arten kann man die Buchstaben von
+\begin{enumerate}[a)]
+\item \texttt{OTTO}
+\item \texttt{MISSISSIPPI}
+\item Deinen Namen für ein Anagramm permutieren?
+\end{enumerate}
+\end{uebenv}
+
+
+
+
+\begin{uebenv}{schiffsfahnen}
+Ein Signal kann durch sechs Fahnen, die untereinander hängen, gegeben werden. Wie viele verschiedene Signale kann man mit vier gleichen roten und zwei gleichen blauen Fahnen bilden?
+\end{uebenv}
+
+
+
+
+\subsection{Stichproben}
+Die ersten Aufgaben aus dem Einführungskapitel sollen auf das Urnenmodell übertragen werden: In einer Urne sind $n$ Lose, die irgendwie gekennzeichnet sind. Aus dieser Urne werden $k$ Lose gezogen: eine \definition{Stichprobe} vom Umfang $k$.
+
+Diese Ziehung kann auf vier verschiedene Arten erfolgen:
+\begin{itemize}
+\item[A] Jedes Los wird einzeln gezogen und nach einer Notiz wieder zurückgelegt. Es ergibt sich eine natürliche Ordnung; jedes Los kann mehrmals gezogen werden.
+
+\definition{Geordnete Stichprobe mit Zurücklegen}.
+\item[B]  Wie in A, jedoch wird das gezogene Los jeweils nicht zurückgelegt.
+
+\definition{Geordnete Stichprobe ohne Zurücklegen}.
+\item[C] Die $k$ Lose werden mit einem Griff gezogen, d.h. die natürliche Anordnung wie in A und B geht verloren.
+
+\definition{Ungeordnete Stichprobe ohne Zurücklegen}.
+\item[D] Wie in A, jedoch verzichtet man auf die sich ergebende Ordnung. Wenn in einer Urne von jedem Los mindestens $k$ Exemplare vorhanden sind, kann man auch wie in C mit einem Griff $k$ Lose ziehen.
+
+\definition{Ungeordnete Stichprobe mit Zurücklegen}.
+\end{itemize}
+
+\subsubsection{Geordnete Stichprobe mit Zurücklegen}
+Unmittelbar aus der Produktregel ergibt sich für die Anzahl der geordneten Stichproben mit Zurücklegen:
+$$A_{n,k} = n\cdot n\cdot n\cdot\dots\cdot n=n^k$$
+Bei der dualen Version werden nicht $k$ Lose aus einer Urne gezogen, sondern $k$ unterscheidbare Dinge auf $n$ unterscheidbare Urnen beliebig verteilt. Dazu gibt es $n\cdot n\cdot n\cdot\dots\cdot n=n^k$.
+
+\begin{uebenv}{muenze}
+Wie viele Ergebnisse sind möglich, wenn man
+\begin{enumerate}[a)]
+\item eine Münze
+\item einen Würfel
+\end{enumerate}
+fünfmal wirft?
+\end{uebenv}
+
+
+
+
+\begin{uebenv}{safe}
+Bei einem Safeschloss sind fünf Einstellungen einer Ziffer von 1 bis 9 möglich. Wie viel Zeit benötigt man, um alle Einstellungen auszuprobieren, wenn man für eine Einstellung durchschnittlich vier Sekunden braucht?
+\end{uebenv}
+
+
+
+
+\subsubsection{Geordnete Stichprobe ohne Zurücklegen}
+Auch in diesem Fall ergibt sich die Anzahl der geordneten Stichproben ohne Zurücklegen unmittelbar aus der Produktregel:
+$$A_{n,k}=n\cdot(n-1)\cdot(n-2)\cdot\dots\cdot(n-k+1) = \frac{n!}{(n-k)!}$$
+mit $k\leq n$.
+
+Bei der dualen Version werden $k$ unterscheidbare Dinge so auf $n$ unterscheidbare Urnen verteilt, dass in jeder Urne höchstens ein Ding zu liegen kommt ($k\leq n$). Dazu gibt es $n\cdot(n-1)\cdot(n-2)\cdot\dots\cdot(n-k+1)$ Möglichkeiten.
+Statt \glqq Urne\grqq\ sagt man bei dieser Version besser \glqq Platz\grqq.
+Die Permutationen von $n$ verschiedenen Elementen sind ein Spezialfall der geordneten Stichprobe ohne Zurücklegen ($k=n$). Damit gibt es auch $n!$ verschiedene Möglichkeiten, $n$ voneinander verschiedene Dinge auf $n$ Plätze zu verteilen.
+
+\begin{uebenv}{sprinter}
+Acht Sprinter kämpfen bei den Olympischen Spielen um die Gold-, Silber- und Bronzemedaille. Auf wie viel Arten kann die Siegerehrung erfolgen?
+\end{uebenv}
+
+
+
+
+\begin{uebenv}{sonderfall}
+Wie sollte $0!$ definiert werden?
+\end{uebenv}
+
+
+
+
+\subsubsection{Ungeordnete Stichprobe ohne Zurücklegen}
+Für die Anzahl der ungeordneten Stichproben ohne Zurücklegen betrachte man noch einmal die Lösungen der Aufgaben aus dem Einführungskapitel.
+
+Allgemein gilt: Jede der Stichproben vom Umfang $k$, die man mit einem Griff zieht, kann man auf $k!$ Arten ordnen. Nach dieser aufoktroyierten Ordnung hat man gerade den Fall der geordneten Stichproben ohne Zurücklegen. Deshalb gibt es $k!$ mal mehr geordnete als ungeordnete Stichproben.
+Die Anzahl der ungeordneten Stichproben ohne Zurücklegen beträgt demnach:
+$$A_{n,k}=\frac{n!}{(n-k)!}\div k!=\frac{n!}{k!(n-k)!}\stackrel{\text{Def.}}{=:}\binom{n}{k}$$
+wobei $k\leq n$.
+
+\begin{uebenv}{binomialkoeffizienten}
+
+Zeige durch Rechnung
+\begin{enumerate}[a)]
+\item $\binom{n}{0}=\binom{n}{n}=1$
+\item $\binom{n}{k}=\binom{n}{n-k}$
+\item $\binom{n}{2}=\frac{n(n-1)}{2}$
+\end{enumerate}
+\end{uebenv}
+
+
+
+
+\begin{uebenv}{delegation}
+Aus zehn Schülern soll eine Delegation von vier Mitgliedern und innerhalb der Delegation ein Sprecher bestimmt werden. Auf wie viele Arten geht dies? Verallgemeinere auf $n$ Schüler und $k$ Delegationsmitglieder und leite so eine allgemeine Beziehung her.
+\end{uebenv}
+
+
+
+
+\begin{uebenv}{prost}
+Wie viele Händedrücke gibt es, wenn sich $n$ Personen begrüssen und jeder jedem nur einmal die Hand gibt?
+\end{uebenv}
+
+
+
+
+\begin{uebenv}{jass}
+Auf wie viele Arten kann man die 36 Jasskarten an
+
+\begin{enumerate}[a)]
+\item zwei
+\item drei
+\item vier
+\end{enumerate}
+
+Spieler verteilen?
+\end{uebenv}
+
+
+
+
+\subsubsection{Ungeordnete Stichprobe mit Zurücklegen}
+Für den schwierigsten Fall der ungeordneten Stichproben mit Zurücklegen formulieren wir die Anzahl-Apfelkuchen-Aufgabe ein wenig um: Auf wie viele Arten kann man \"Apfel aus der Menge $\set{\text{Delicious, Gravensteiner}}$ eine ungeordnete Stichprobe vom Umfang vier entnehmen?
+
+Bezeichnet man mit $x_1\in\mN_0$ die Anzahl $D$ und mit $x_2\in\mN_0$ die Anzahl $G$, so muss die Anzahl der Lösungen der Gleichung $$x_1+x_2=4$$ ermittelt werden. Jede Lösung erhält man, wenn man in der Figur 1111 an geeigneter Stelle einen Trennstrich einsetzt. Zum Beispiel entspricht der Figur $$111|1$$ die Lösung drei Delicious und ein Gravensteiner. Für die Setzung des Trennstriches gibt es fünf Möglichkeiten, da der Trennstrich sowohl am Anfang als auch am Ende der Figur gesetzt werden kann. Es gibt demnach $\binom{5}{1}=5$ Stichproben.
+
+Bevor wir auf $m$ Sorten und $k$ Apfel verallgemeinern, betrachten wir noch ein weiteres Beispiel mit $m=4$ und $k=10$. Die zugehörige Gleichung lautet: $$x_1+x_2+x_3+x_4=10$$ Aus der mit vertikalen Trennstrichen versehenen Figur $$111|11||11111$$ kann man die spezielle Lösung $x_1 = 3, x_2 = 2, x_3 = 0$ und $x_4 = 5$ ablesen. In diesem Beispiel hat man drei Trennstriche anzubringen. Die vollständige Figur besteht dann aus zehn Einsen und drei Trennstrichen. Man hat aus 13 Plätzen 10 Plätze für die Einsen oder 3 Plätze für die Trennstriche
+auszuwählen, um alle gewünschten Stichproben zu erhalten. Dies geht auf $\binom{13}{10}=\binom{13}{3}=286$ Arten.
+
+Im allgemeinen Fall sind $(m-1)$ Trennstriche anzubringen; die vollständige Figur besteht aus $k$ Einsen und $(m-1)$ Trennstriche. Schliesslich sind aus $k+(m-1)$ Plätzen deren $k$ für die Einsen oder deren $(m-1)$ für die Trennstriche auszuwählen.
+Die Anzahl der ungeordneten Stichproben mit Zurücklegen beträgt also
+$$A_{m,k}=\binom{m+k-1}{k}=\binom{m+k-1}{m-1}$$
+
+\begin{uebenv}{zehnunbekannte}
+Wie viele Lösungen hat die Gleichung
+$$x_1+x_2+x_3+\dots+x_{10}=13\q (x\in\mN_0)?$$
+\end{uebenv}
+
+
+
+Bei der dualen Version sind $k$ ununterscheidbare Dinge in $m$ Urnen zu legen. Bezeichnet man die Dinge mit Einsen, so müssen in der Figur
+$$11111\dots111$$
+(m-1) Trennstriche als Markierungen für die Urnen gesetzt werden. Dazu gibt es, wie oben gezeigt,
+$$\binom{m+k-1}{k}=\binom{m+k-1}{m-1}$$
+Möglichkeiten.
+
+\begin{uebenv}{parlamentssitze}
+Auf wie viele Arten können 60 Parlamentssitze auf drei Parteien verteilt werden?
+\end{uebenv}
+
+
+
+
+\begin{uebenv}{kaninchen}
+Zehn ununterscheidbare Kaninchen sollen auf drei Käfige verteilt werden. Auf wie viele Arten geht dies, wenn
+\begin{enumerate}[a)]
+\item keine Einschränkungen vorgeschrieben sind
+\item kein Käfig leer sein darf
+\item kein Kaninchen allein und kein Käfig leer sein darf
+\end{enumerate}
+\end{uebenv}
+
+
+
+
+\subsection{Übersicht}
+
+\definecolor{lightyellow}{rgb}{1,1,0.8}
+\definecolor{Gray}{gray}{0.9}
+\begin{table}[h]
+\large
+\centering
+\begin{tabular}{|c|c|c|} \hline
+\rowcolor{Gray}\spaltenheight \emph{Stichproben} & mit Zurücklegen & ohne Zurücklegen\spaltensep\hline
+\rowcolor{lightyellow}\spaltenheight geordnet & $n^k$ & $\frac{n!}{(n-k)!}$\spaltensep \hline
+\rowcolor{Gray}\spaltenheight ungeordnet & $\binom{m+k-1}{m-1}$ & $\binom{n}{k}$\spaltensep \hline
+\end{tabular}
+\caption{Überblick der vier Fälle beim Ziehen}
+\end{table}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.618\textwidth]{pictures/pillowtalk}
+\caption{Combinatorial Pillow-Talk}
+\end{center}
+\end{figure}
+
+\subsection{Vermischte Aufgaben}
+
+ \begin{uebenv}{dreisteller}
+ Gegeben seien die Ziffern 1,2,3,4,5,6 und 7.
+ \begin{enumerate}[a)]
+ \item Wie viele dreistellige Zahlen mit verschiedenen
+Ziffern lassen sich bilden?
+ \end{enumerate}
+ Wie viele davon sind
+ \begin{enumerate}[a)]
+ \addtocounter{enumi}{1}
+ \item kleiner als 600
+ \item kleiner als 600 und grösser als 300
+ \item gerade
+ \item ungerade
+ \item durch 5 teilbar
+ \item durch 25 teilbar?
+ \end{enumerate}
+ \end{uebenv}
+
+
+
+ 
+ \begin{uebenv}{obelix}
+ Wie oft kann man im Schema \glqq Obelix\grqq\ ablesen?
+ \begin{center}
+ \ttfamily
+ O\\
+ B\q B\\
+ E\q E\q E\\
+ L\q L\q L\q L\\
+ I\q I\q I\q I\q I\q\\
+ X\q X\q X\q X\q X\q X
+ \end{center}
+ \end{uebenv}
+
+\clearpage
+
+\clearpage
+
+\subsection{Notizen zu den \"Ubungen}
+
+\begin{lsg}{torundsissi}
+\begin{enumerate}[a)]
+\item An der ersten drei Positionen kann man aus $3$ Buchstaben w\"ahlen, bei der n\"achsten noch aus $2$ und danach setzt man noch den \"ubrig gebliebenen Buchstaben; also kann dies auf $3\cdot2\cdot1=3!=6$ Arten geschehen.
+\item Hier ist es kniffliger, da man gleichartige Buchstaben hat. Ich denke mir die gleichartigen durchnummeriert (z.B. $I_{1}, I_{2}$). Jetzt berechne ich die Kombinationen als h\"atte ich lauter Individuen. Abschliessend muss ich durch die Anzahl Kombinationsm\"oglichkeiten aller durchnummerierten, gleichartigen dividieren, da sie sich ja eigentlich nicht unterscheiden lassen. F\"ur \texttt{SISSI} gibt es also $\frac{5!}{2!\cdot3!}=10$ M\"oglichkeiten.
+\end{enumerate}
+\end{lsg}
+\begin{lsg}{totogoal}
+Das sind $3\cdot3=9$.
+\end{lsg}
+\begin{lsg}{apfelkuchen}
+Das sind $5$. Ich stelle mir die vier \"Apfel (\faApple) in einer Reihe ausgelegt vor. Nun kann ich mit einer Trennwand die beiden Sorten aufteilen. Diese Trennwand kann ich an $5$ verschiedenen Stellen ($\_$) positionieren:
+$\_\ \text{\faApple}\ \_\ \text{\faApple}\ \_\ \text{\faApple}\ \_\ \text{\faApple}\ \_$
+\end{lsg}
+\begin{lsg}{vierstellig}
+Pro Stelle hat man $5$ ungerade Ziffern zur Verf\"ugung, also gibt es $5^{4}=625$ M\"oglichkeiten.
+\end{lsg}
+\begin{lsg}{kvkvk}
+Es gibt $21$ Konsonanten und $5$ Vokale.
+\begin{enumerate}[a)]
+\item $21^{3}\cdot5^{2}=231\,525$
+\item $21\cdot5\cdot20\cdot4\cdot19=159\,600$
+\end{enumerate}
+\end{lsg}
+\begin{lsg}{autonummer}
+Es gibt theoretisch $26\cdot9\cdot10^{5}=23\,400\,000$ verschiedene Schilder.
+\end{lsg}
+\begin{lsg}{ausrufezeichen}
+\begin{enumerate}[a)]
+\item $604\,800$
+\item $3$
+\item $n\cdot(n-1)!=n!$
+\item $\frac{(n+3)!}{n!}\div\frac{(n+1)!}{(n-1)!}=\frac{(n+3)!(n-1)!}{n!(n+1)!}=\frac{(n+3)(n+2)}{n}$
+\end{enumerate}
+\end{lsg}
+\begin{lsg}{naturbuecher}
+Die F\"acher kann man paketweise auf $3!$ Arten anordnen. Innerhalb dieser F\"acher sind dann insgesamt $3!\cdot4!\cdot5!$ Anordnungen m\"oglich. Das ergibt ein Total von sagenhaften $103\,680$ verschiedenen Anordnungen.
+\end{lsg}
+\begin{lsg}{roundtable}
+\begin{enumerate}[a)]
+\item $11!\approx\unit[40]{Mio.}$
+\item Die beiden Personen k\"onnen auf $2$ Arten nebeneinander sitzen. Nun kann dieses P\"archen sich zwischen und um die $9$ verbliebenen Personen setzen, die sich permutieren k\"onnen: $2!\cdot10\cdot 9!=7\,257\,600$.
+\item $11!/11=10!=3\,628\,800$ und $10!/10\cdot2!=725\,760$
+\end{enumerate}
+\end{lsg}
+\begin{lsg}{mississippi}
+\begin{enumerate}[a)]
+\item $\frac{4!}{2!\cdot2!}=6$
+\item $\frac{11!}{(4!)^{2}\cdot2!}=34\,650$
+\item \texttt{Jorma} $5!=120$
+\end{enumerate}
+\end{lsg}
+\begin{lsg}{schiffsfahnen}
+$\frac{6!}{4!\cdot 2!}=15$
+\end{lsg}
+\begin{lsg}{muenze}
+\begin{enumerate}[a)]
+\item $2^{5}=32$
+\item $6^{5}=7776$
+\end{enumerate}
+\end{lsg}
+\begin{lsg}{safe}
+Man braucht $9^{5}\cdot4=\unit[236'196]{sec}$. Das sind ca. $65$ Stunden.
+\end{lsg}
+\begin{lsg}{sprinter}
+$8\cdot7\cdot6=336$
+\end{lsg}
+\begin{lsg}{sonderfall}
+Mit der Kombinatorik-Interpretation m\"ochte man $0$ Individuen permutieren. Dies geht auf $1$ Art, n\"amlich nicht. Ferner gilt $(n-k)!=\frac{n!}{n\cdot(n-1)\cdot\dots\cdot(n-k+1)}$, also im Falle $n=k$
+$$0!=(n-n)!=\frac{n!}{n\cdot(n-1)\cdot\dots\cdot(n-n+1)}=\frac{n!}{n\cdot(n-1)\cdot\dots\cdot1}=\frac{n!}{n!}=1.$$
+Somit setzt man $0!:=1$.
+\end{lsg}
+\begin{lsg}{binomialkoeffizienten}
+\begin{enumerate}[a)]
+\item $\binom{n}{0}=\frac{n!}{0!\cdot n!}=\frac{n!}{1\cdot n!}=1$
+\item $\binom{n}{k}=\frac{n!}{k!\cdot (n-k)!}=\frac{n!}{(n-k)!\cdot k!}=\frac{n!}{(n-k)!\cdot (n-(n-k))!}=\binom{n}{n-k}$
+\item $\binom{n}{2}=\frac{n!}{2!\cdot(n-2)!}=\frac{n!}{2\cdot(n-2)!}=\frac{n(n-1)}{2}$
+\end{enumerate}
+\end{lsg}
+\begin{lsg}{delegation}
+Aus $n$ Schüler die geforderten $k$ Delegationsmitglieder ausw\"ahlen kann man auf $\binom{n}{k}$ Arten. Aus den jeweils $k$ Delegierten gibt es $k$ m\"ogliche Sprecher: $k\cdot\binom{n}{k}$.
+\end{lsg}
+\begin{lsg}{prost}
+Es sind $\binom{n}{2}$ oder anders formuliert: Eine Person gr\"usst $(n-1)$ Leute. Da es $n$ Personen sind und egal. ob beispielsweise A B gr\"usst oder B A. gibt es $\frac{n(n-1)}{2}$ Begr\"ussungen.
+\end{lsg}
+\begin{lsg}{jass}
+\begin{enumerate}[a)]
+\item $\binom{36}{18}\cdot\binom{18}{18}\approx9\cdot10^{9}$
+\item $\binom{36}{12}\cdot\binom{24}{12}\approx3.4\cdot10^{15}$
+\item $\binom{36}{9}\cdot\binom{27}{9}\cdot\binom{18}{9}\approx2.1\cdot10^{19}$
+\end{enumerate}
+\end{lsg}
+\begin{lsg}{zehnunbekannte}
+$\binom{13+9}{9}=497\,420$
+\end{lsg}
+\begin{lsg}{parlamentssitze}
+$\binom{60+2}{2}=1891$
+\end{lsg}
+\begin{lsg}{kaninchen}
+\begin{enumerate}[a)]
+\item $\binom{10+2}{2}=66$
+\item Ich stecke in jeden K\"afig ein Kaninchen und verteile die restlichen $7$ nach belieben: $\binom{7+2}{2}=36$.
+\item $\binom{4+2}{2}=15$
+\end{enumerate}
+\end{lsg}
+\begin{lsg}{dreisteller}
+\begin{enumerate}[a)]
+\item $7\cdot6\cdot5=210$
+\item $5\cdot6\cdot5=150$
+\item $3\cdot6\cdot5=90$
+\item $3\cdot6\cdot5=90$
+\item $4\cdot6\cdot5=120$
+\item $1\cdot6\cdot5=30$
+\item $1\cdot2\cdot5=10$
+\end{enumerate}
+\end{lsg}
+\begin{lsg}{obelix}
+$2^{5}=32$
+\end{lsg}
+
+\clearpage
+
+\section{Der binomische Lehrsatz} \label{app:binomial}
+
+\subsection{Motivation}
+
+Von der Algebra her weis man, dass die Koeffizienten der Potenzen des Binoms $(a+b)$ in einem interessanten dreieckigen Zahlenschema übersichtlich dargestellt werden können.
+Potenzen vom Typ $(a+b)$ sehen in der sukzessiven Entwicklung wie folgt aus:
+\begin{align*}
+(a+b)^0&=1\\
+(a+b)^1&=a+b\\
+(a+b)^2&=a^2+2ab+b^2\\
+(a+b)^3&=a^3+3a^2b+3ab^2+b^3\\
+\dots\q &= \q\dots\\
+(a+b)^n&=a^n+na^{n-1}b+\dots+nab^{n-1}+b^n
+\end{align*}
+
+\subsection{Das Pascal'sche Dreieck}
+
+Das Pascal'sche Dreieck gibt die Koeffizienten der zusammengefassten Summanden wieder:\\[-5ex]
+\begin{center}
+$$1$$
+$$1\q1$$
+$$1\q2\q1$$
+$$1\q3\q3\q1$$
+$$1\q4\q6\q4\q1$$
+$$1\q5\q10\q10\q5\q1$$
+$$\dots\qq\dots\qq\dots$$
+$$1\q n\q\qq\dots\qq\q n\q1$$
+\end{center}
+
+\begin{bem}
+Man beachte, dass die Exponenten der Summanden für $a$ von $n$ bis $0$ fallen, die von $b$ steigen von $0$ bis $n$.
+\end{bem}
+
+\begin{uebenv}{binom}
+Berechne die ersten fünf Zeilen des folgenden Schemas:
+\begin{center}\small
+$$\binom{0}{0}$$
+$$\binom{1}{0}\q\binom{1}{1}$$
+$$\binom{2}{0}\q\binom{2}{1}\q\binom{2}{2}$$
+$$\binom{3}{0}\q\binom{3}{1}\q\binom{3}{2}\q\binom{3}{3}$$\\[-1ex]
+$$\dots\qq\dots\qq\dots$$\\[-2ex]
+$$\binom{n}{0}\q\binom{n}{1}\qq\dots\qq\binom{n}{n-1}\q\binom{n}{n}$$
+\end{center}
+\end{uebenv}
+
+
+
+Aus der Lösung der Aufgabe erkennt man
+\begin{csatz}[Pascal'sches Dreieck]
+Berechnet man die $n$-te Potenz des Binoms $(a + b)$, so ist der
+ Koeffizient von $a^{n-k}b^k$ gleich $\binom{n}{k}$ für $0\leq k\leq n$.
+\end{csatz}
+\begin{proof}[Beweis]
+Um den Term mit $a^{n-k}b^k$ zu bekommen, muss man aus den $n$ Faktoren von $(a + b)^n = (a + b)(a + b)\dots(a + b)$ $k$ mal den Summanden $b$ auswählen. Aus den restlichen $n-k$ Faktoren wird dann nur noch der Summand $a$ berücksichtigt. Diese Auswahl kann auf $\binom{n}{k}$ Arten erfolgen.
+\end{proof}
+
+\begin{csatz}[Binomischer Lehrsatz]{}
+\begin{align*}
+(a+b)^n&=\binom{n}{0}a^n+\binom{n}{1}a^{n-1}b+\binom{n}{2}a^{n-2}b^2+\dots\\
+&\dots+\binom{n}{n-1}ab^{n-1}+\binom{n}{n}b^n
+\end{align*}
+\end{csatz}
+
+\begin{bem}
+Die aus der Kombinatorik bekannten Zahlen $\binom{n}{k}$ nennt man deshalb auch \definition{Binomialkoeffizienten}.
+\end{bem}
+
+\begin{uebenv}{binom2}
+\ \\[-4ex]
+\begin{enumerate}[a)]
+\item Welche Eigenschaft der Binomialkoeffizienten ergibt sich aus der Tatsache, dass jede Zeile im Pascal'schen Dreieck symmetrisch ist?
+\item Zeige $$\binom{n}{k}+\binom{n}{k+1}=\binom{n+1}{k+1}$$ für $0\leq k\leq n-1$. Interpretiere diese Beziehung im Pascal'schen Dreieck.
+\end{enumerate}
+\end{uebenv}
+
+\clearpage
+
+\subsection{Notizen zu den \"Ubungen}
+
+\begin{lsg}{binom}
+Man notiert das Pascal'sche Dreieck.
+\end{lsg}
+\begin{lsg}{binom2}
+\begin{enumerate}[a)]
+\item $\binom{n}{k}=\binom{n}{n-k}$
+\item Die Summe zweier benachbarter Binomialkoeffizienten ergibt den Binomialkoeffizienten eine Zeile weiter unten mittig.
+\end{enumerate}
+\end{lsg}
+
+\clearpage
+
+\includepdf[pages=1,pagecommand=\section{Aerzteinfo zu neuem CoVid-Schnelltest im Nov 2020\label{appendix:aerztecovid}},scale=0.85]{pictures/Aertzeinfocovid19.pdf}
+
+\includepdf[pages=2-3,scale=0.85]{pictures/Aertzeinfocovid19.pdf}
+
+\clearpage
+
+\section{Gesetz der grossen Zahlen}
+
+Was besagt das Gesetz der grossen Zahlen? Wikipedia sagt:
+
+\begin{quote}
+    In ihrer einfachsten Form besagen diese Sätze, dass sich die relative Häufigkeit eines Zufallsergebnisses in der Regel um die theoretische Wahrscheinlichkeit eines Zufallsergebnisses stabilisiert, wenn das zugrundeliegende Zufallsexperiment immer wieder unter denselben Voraussetzungen durchgeführt wird. Die häufig verwendete Formulierung, dass sich die relative Häufigkeit der Wahrscheinlichkeit \glqq immer mehr annähert\grqq\ ist dabei irreführend, da es auch bei einer großen Anzahl von Wiederholungen Ausreisser geben kann. Die Annäherung ist also nicht monoton.
+\end{quote}
+
+Das wollen wir uns in diesem Abschnitt genauer anschauen.
+
+\subsection{Die Tschebyscheff'sche Ungleichung}
+
+Wir brauchen für die folgende Argumentation die sogenannte Tschebyscheff-Ungleichung, die wir hier nicht streng beweisen wollen.
+
+\begin{csatz}[Tschebyscheff'sche Ungleichung]{}
+Sei $X$ eine Zufallsvariable mit Erwartungswert
+$$\mu:=\mathrm{E}(X)$$
+und endlicher Varianz
+$$\sigma^2:=\mathrm{Var}(x).$$
+Dann gilt für alle reellen Zahlen $k>0$:
+$$P(\abs{X-\mu}\geq k)\leq \frac{\sigma^2}{k^2}.$$
+
+Durch den Übergang zum komplementären Ereignis erhält man
+$$P(\abs{X-\mu}< k)\geq 1-\frac{\sigma^2}{k^2}.$$
+\end{csatz}
+
+\begin{proof}
+Als kleine Begründung (handwaving) betrachten wir für den diskreten Fall Instanzierungen $x_i, i\in I$ mit Wahrscheinlichkeit $p_i$. Was bedeutet für eine beliebige Zahl $k$ die Aussage $P(\abs{X-\mu}\geq k)$? Wir interessieren uns also für die Wahrscheinlichkeit, dass die Abweichung der Zufallsvariablen $X$ vom Erwartungswert $\mu$ grösser als $k$ ist. Nennen wir die Menge aller $i\in I$, so dass die Instanzierung der Zufallsvariablen grösser als $k$ ist
+$$K:=\set{i\in I\,|\,\abs{x_i-\mu}\geq k}.$$
+Wir lösen uns vom Betrag durch $(x_i-\mu)^2\geq k^2$ was äquivalent zu
+$$\frac{(x_i-\mu)^2}{k^2}\geq 1.$$
+Jetzt schätzen wir ab:
+
+\begin{align*}
+    P(\abs{X-\mu}\geq k) &= \sum_{i\in K}p_i\leq\sum_{i\in K}p_i\cdot\frac{(x_i-\mu)^2}{k^2}\leq\sum_{i\in I}p_i\cdot\frac{(x_i-\mu)^2}{k^2}\\
+    &= \frac{1}{k^2}\cdot\sum_{i\in I}p_i(x_i-\mu)^2 = \frac{1}{k^2}\cdot\sigma^2
+\end{align*}
+
+Hieraus folgt unmittelbar
+$$P(\abs{X-\mu}<k) \geq 1 - \frac{\sigma^2}{k^2}.$$
+\end{proof}
+
+\subsection{Herleitung}
+
+Es gilt für eine Folge von i.i.d.\footnote{independent and identically distributed} Zufallsvariablen $X_1$, $X_2$, \dots. $X_n$ mit Erwartungswert $\mu$ und Varianz $\sigma^2$ für ihr arithmetisches Mittel (Mittelwert)
+$$\bar{X}=\frac{X_1+\dots+X_n}{n}.$$
+Beachte, dass $\bar{X}$ selbst wiederum eine Zufallsvariable ist. Es ist natürlich $\mathrm{E}(\bar{X})=\mu$ und für die Varianz gilt $\mathrm{Var}(\bar{X})=\frac{\sigma^2}{n}$, da für unabhängige Zufallsvariablen die Varianz linear ist. Somit folgt mit der Tschebyscheff'schen Ungleichung
+$$P(\abs{\bar{X}-\mu}<k) \geq 1-\frac{\frac{\sigma^2}{n}}{k^2}.$$
+was für $n\to\infty$ zu
+$$\lim_{n\to\infty}P(\abs{\bar{X}-\mu}<k) \geq 1=1$$
+wird. Das heisst: für eine grösser werdende Anzahl von i.i.d. Zufallsvariablen geht die Wahrscheinlichkeit, dass die Abweichung ihres Mittelwerts vom Erwartungswert kleiner als eine beliebige positive Zahl $k$ ist, gegen $100\%$.
+
+\subsection{Konvergenz gegen die Wahrscheinlichkeit}
+
+Beispielsweise gilt für Bernoulli-verteilte Zufallsvariablen $X_i$ mit Erfolgswahrscheinlichkeit $p$, dass ihr Mittelwert (relative Häufigkeit) gegen die Wahrscheinlichkeit konvergiert\footnote{Theorem von Bernoulli} (im Sinne von statistischer Konvergenz):
+$$\bar{X}=\frac{X_1+\dots+X_n}{n}\stackrel{n\to\infty}{\longrightarrow}p.$$
+
+\includepdf[pages=1,pagecommand=\subsection{Konvergenz gegen die Wahrscheinlichkeiten in Messungen}]{pictures/gesetzzahlen.pdf}
+
+\subsection{Missinterpretation des Gesetzes}
+
+Ein Missverständnis, dem viele Leute erliegen, will ich noch ansprechen. Das Gesetz der grossen Zahlen besagt \emph{nicht}, dass man so was wie ausgleichende Gerechtigkeit hat, dass sich die Ergebnisse mit der Zeit ausgleichen. Nimm zum Beispiel eine faire Münze, werfe sie ein paar Mal und notiere dabei wie oft Kopf gezeigt wird. Dieses Verhältnis geht gegen $0.5$, wenn du die Anzahl der Würfe erhöhst (Gesetz der grossen Zahlen). Es wird aber nicht gesagt, dass sich Anzahl Kopf und Anzahl Zahl mit häufigerem Werfen ausgleichen werden. Betrachte dazu die Tabelle \ref{tab:grossezahlen} auf Seite \pageref{tab:grossezahlen}.
+
+\begin{table}[]
+\large
+\centering
+\begin{tabular}{|l||c|c|c|c|c|}
+\hline
+\rowcolor{Gray}\spaltenheight \# Würfe & $10$ & $100$ & $1\,000$ & \dots & $100\,000$\spaltensep \hline
+\rowcolor{lightyellow}\spaltenheight \glqq Kopf\grqq & $4$ & $43$ & $440$ & \dots & $47\,000$ \spaltensep \hline
+\rowcolor{Gray}\spaltenheight rel. Häufigkeit & $0.4$ & $0.43$ & $0.44$ & \dots & $0.47$\spaltensep \hline\hline
+\rowcolor{lightyellow}\spaltenheight \glqq Zahl\grqq & $6$ & $57$ & $560$ & \dots & $53\,000$ \spaltensep \hline
+\rowcolor{Gray}\spaltenheight $\Delta$ & $2$ & $14$ & $120$ & \dots & $6\,000$\spaltensep \hline
+\end{tabular}
+\caption{Münzwurf zur Illustration des Gesetzes der grossen Zahlen}\label{tab:grossezahlen}
+\end{table}
+
+\clearpage
+
+\section{Alles ist Normalverteilt}
+
+\subsection{Was ist eine Normalverteilung?}
+
+Die Normal- oder Gauss-Verteilung\footnote{benannt nach Carl Friedrich Gauss} ist die wohl wichtigste Wahrscheinlichkeitsverteilungen. Die zugehörige Dichtefunktion kennt man auch unter dem Namen \definition{Gauss'sche Glockenkurve}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.382\textwidth]{pictures/gauss}
+    \caption{Ausschnitt aus einer 10DM Note; findest du die Glockenkurve?}
+    \label{fig:glockenkurve}
+\end{figure}
+
+In Wikipedia wird die Bedeutung der Normalverteilung folgendermassen beschrieben:
+\begin{quote}
+ Die besondere Bedeutung der Normalverteilung beruht unter anderem auf dem zentralen Grenzwertsatz, dem zufolge Verteilungen, die durch additive Überlagerung einer grossen Zahl von unabhängigen Einflüssen entstehen, unter schwachen Voraussetzungen annähernd normalverteilt sind.
+ 
+ Die Abweichungen der Messwerte vieler natur-, wirtschafts- und ingenieurwissenschaftlicher Vorgänge vom Erwartungswert lassen sich durch die Normalverteilung (bei biologischen Prozessen oft logarithmische Normalverteilung) in sehr guter Näherung beschreiben (vor allem Prozesse, die in mehreren Faktoren unabhängig voneinander in verschiedene Richtungen wirken).
+\end{quote}
+
+\subsection{Die Standardnormalverteilung an einem Beispiel}
+
+Sei $X_1$, $X_2$, $X_3$, \dots , $X_n$ eine Folge von i.i.d.\footnote{independent, identically distributed} Zufallsvariablen, deren Erwartungswert $\mu$ und Varianz $\sigma^2$ existieren.\footnote{Man kann sich für die Fortsetzung zum Beispiel vorstellen, dass diese $X_i$, $i\in\set{1,2,\dots,n}$ Messwerte seien.} Im Falle von beispielsweise $n=10$ ist der Mittelwert
+$$\frac{X_1+\dots+X_{10}}{10}$$
+selbst auch wieder eine Zufallsvariable mit einer gewissen Verteilung.
+
+Für die folgende, theoretische Überlegung nehmen wir an, wir wüssten den Erwartungswert $\mu$. In der Praxis ist dies meist nicht der Fall und man versucht dieses $\mu$ so gut wie möglich zu schätzen. Wir setzen
+$$Y_i:=X_i-\mu.$$
+$Y_i$ ist also die Abweichung der Messung $X_i$ vom Erwartungswert. Man kann dies beispielsweise als Messungenauigkeit oder Rauschen interpretieren. Für den Erwartungswert von $Y_i$ folgt nun:
+$$\mathrm{E}(Y_i)=\mathrm{E}(X_i-\mu)=\mathrm{E}(X_i)-\mathrm{E}(\mu)=\mathrm{E}(X_i)-\mu=0.$$
+Die Varianz ändert sich natürlich bei der Verschiebung um $\mu$ nicht:
+$$\mathrm{Var}(Y_i)=\mathrm{Var}(X_i)=\sigma^2.$$
+Es folgt wegen der Unabhängigkeit der $Y_i$
+$$\mathrm{Var}(Y_1+Y_2+\dots+Y_n)=\mathrm{Var}(Y_1)+\dots+\mathrm{Var}(Y_n)=n\cdot\sigma^2.$$
+das heisst die Standardabweichung von $Y_1+\dots+Y_n$ ist
+$$\sqrt{n\sigma^2}=\sqrt{n}\cdot\sigma.$$
+Jetzt definieren wir uns eine neue Zufallsvariable
+$$Z_n:=\frac{Y_1+\dots+Y_n}{\sqrt{n}\cdot\sigma}.$$
+So ist $\mathrm{E}(Z_n)=0$ und $\mathrm{Var(Z_n)}=1$ (normiert). Diese neu definierte Zufallsvariable $Z_n$ konvergiert für grösser werdende $n$ immer gegen dieselbe Verteilung, nämlich der \definition{Standard-Normalverteilung}! Und dies unabhängig davon, welcher Verteilung die $X_i$, $i\in\set{1,\dots,n}$ unterliegen.
+
+\subsection{Konvergenz gegen die Normalverteilung experimentell}
+
+Es folgen ein paar Versuche unter verschiedenen Verteilungen. Das Programm\linebreak \texttt{CRT(distr.nrandvals.miter)} macht dabei folgendes:
+\begin{itemize}
+    \item zufällig für eine gewisse Verteilung $n$ Werte generieren (rvs)
+    \item Mittelwert zentrieren (expect)
+    \item Standardabweichung normieren (std)
+    \item mache das $m$ mal
+    \item Plot als Histogramm (relative Häufigkeiten)
+\end{itemize}
+
+\clearpage
+
+\includepdf[pages=1,pagecommand=\subsection{Verschiedene Verteilungen normiert}]{pictures/allesnorm.pdf}
+\includepdf[pages=2-5]{pictures/allesnorm.pdf}
+
+\clearpage
+
+Man sieht, dass für jede der getesteten Verteilung eine zur unten abgebildeten Funktion ähnliche Kurve resultiert.
+
+\begin{figure}
+    \centering
+\begin{tikzpicture}
+\begin{axis}[
+    axis lines = left,
+    xlabel = $x$,
+    ylabel = {$f(x)$},
+]
+%Below the red parabola is defined
+\addplot [
+    domain=-4:4, 
+    samples=100, 
+    color=firebrick,
+    thick,
+]
+{exp(-x*x)};
+\addlegendentry{$\mathrm{e}^{-x^2}$}
+%Here the blue parabloa is defined
+\addplot [
+    domain=-4:4, 
+    samples=100, 
+    color=darkblue,
+    thick,
+    ]
+    {1/(2*3.14159)^0.5*exp(-0.5*x*x)};
+\addlegendentry{$\frac{1}{\sqrt{2\pi}}\cdot e^{-\frac{x^2}{2}}$}
+
+\end{axis}
+\end{tikzpicture}
+\caption{Glockenkurve und Standard-Normalverteilung}
+\end{figure}
+
+Grundsätzlich hat der Graph der Funktion
+$$f(x)=e^{-x^2}$$
+die Form einer Glockenkurve. Soll damit aber eine Wahrscheinlichkeitsverteilung abgebildet werden, so muss die Fläche unter $f$ $1$ sein. Speziell für den Erwartungswert $0$ und die Standardabweichung/Varianz $1$ findet man die sogenannte \definition{Standard-Normalverteilung}
+$$\mathcal{N}(0,1)=\frac{1}{\sqrt{2\pi}}\cdot e^{-\frac{x^2}{2}}.$$
+In der Praxis möchte man noch die Parameter $\mu$ (Erwartungswert) und $\sigma$ (Standardabweichung) einstellen können. Dies führt zur Darstellung der \emph{Normalverteilungsdichtefunktion} mit Erwartungswert $\mu$ und Standardabweichung $\sigma$:
+$$\mathcal{N}(\mu,\sigma):=\frac{1}{\sqrt{2\pi\sigma^2}}\cdot e^{-\frac{(x-\mu)^2}{2\sigma^2}}.$$
+
+\begin{uebenv}{}
+Als Repetition könnte man an dieser Stelle Extrema und Wendestellen von $\mathcal{N}(\mu,\sigma)$ bestimmen; falls nicht bereits geschehen.
+\end{uebenv}
+
+Die Verteilungsfunktion
+$$\Phi(x):=\frac{1}{\sqrt{2\pi}}\cdot\int_{-\infty}^{x} e^{-\frac{t^2}{2}}\,\mathrm{d}t$$
+besitzt keine geschlossene Stammfunktion, weshalb man auf Tabellen zurückgreift. Wie oben gesehen kann man aber jede Zufallsvariable $X$ durch die Transformation zu $Z$ normieren, so dass nur die Standard-Normalverteilungsfunktion tabelliert werden muss. Siehe dazu die Tabelle \ref{tab:stddev} auf Seite \pageref{tab:stddev}. Um diese zu benutzen normiert man die normalverteilte Zufallsvariable $X$ zu $Z=\frac{X-\mu_{X}}{\sigma_{X}}$. Will man beispielsweise $P(x_{1}\leq X\leq x_{2})$ eruieren, so normiert man zu $P\left(\frac{x_{1}-\mu_{X}}{\sigma_{X}}\leq\frac{X-\mu_{X}}{\sigma_{X}}\leq \frac{x_{2}-\mu_{X}}{\sigma_{X}}\right)=P(z_{1}\leq Z\leq z_{2})$ und liest dann den $\Phi$-Wert aus der Tabelle \ref{tab:stddev}.
+
+\subsection{Der zentrale Grenzwertsatz}
+
+Der zentrale Grenzwertsatz (von \textsc{Lindeberg-Lévy}) ist ein bedeutendes Resultat der Wahrscheinlichkeitstheorie. Er liefert die Begründung für das Phänomen, dass sich bei der additiven Überlagerung vieler unabhängiger Zufallseffekte zumindest approximativ eine Normalverteilung ergibt, wenn keiner der einzelnen Effekte einen dominierenden Einfluss auf die Varianz hat. Die in diesem wahrscheinlichkeitstheoretischen Sinne zu verstehende Konvergenz ist mit unseren Bezeichnungen die Gleichung
+$$\lim_{n\to\infty} P(Z_n\leq x)=\Phi(x)$$
+für beliebiges $x\in\mathbb{R}$.
+Die zu den $Z_n$ gehörende Verteilungsfunktion wird also mit wachsendem $n$ durch die Normalverteilung approximiert.
+
+\clearpage
+
+\begin{table}[]
+\centering
+\caption{Standardnormalverteilungstabelle $\Phi(z)$}
+\label{tab:stddev}
+\scalebox{0.75}{
+\begin{tabular}{l|llllllllll}
+\rowcolor{Gray}\spaltenheight $z$   & 0.00       & 0.01    & 0.02    & 0.03    & 0.04    & 0.05    & 0.06    & 0.07    & 0.08    & 0.09    \\ \hline
+\rowcolor{lightyellow}\spaltenheight 0.0   & 0.5     & 0.50399 & 0.50798 & 0.51197 & 0.51595 & 0.51994 & 0.52392 & 0.5279  & 0.53188 & 0.53586 \\
+\rowcolor{Gray}\spaltenheight 0.1 & 0.53983 & 0.5438  & 0.54776 & 0.55172 & 0.55567 & 0.55962 & 0.56356 & 0.56749 & 0.57142 & 0.57535 \\
+\rowcolor{lightyellow}\spaltenheight 0.2 & 0.57926 & 0.58317 & 0.58706 & 0.59095 & 0.59483 & 0.59871 & 0.60257 & 0.60642 & 0.61026 & 0.61409 \\
+\rowcolor{Gray}\spaltenheight 0.3 & 0.61791 & 0.62172 & 0.62552 & 0.6293  & 0.63307 & 0.63683 & 0.64058 & 0.64431 & 0.64803 & 0.65173 \\
+\rowcolor{lightyellow}\spaltenheight 0.4 & 0.65542 & 0.6591  & 0.66276 & 0.6664  & 0.67003 & 0.67364 & 0.67724 & 0.68082 & 0.68439 & 0.68793 \\
+\rowcolor{Gray}\spaltenheight 0.5 & 0.69146 & 0.69497 & 0.69847 & 0.70194 & 0.7054  & 0.70884 & 0.71226 & 0.71566 & 0.71904 & 0.7224  \\
+\rowcolor{lightyellow}\spaltenheight 0.6 & 0.72575 & 0.72907 & 0.73237 & 0.73565 & 0.73891 & 0.74215 & 0.74537 & 0.74857 & 0.75175 & 0.7549  \\
+\rowcolor{Gray}\spaltenheight 0.7 & 0.75804 & 0.76115 & 0.76424 & 0.7673  & 0.77035 & 0.77337 & 0.77637 & 0.77935 & 0.7823  & 0.78524 \\
+\rowcolor{lightyellow}\spaltenheight 0.8 & 0.78814 & 0.79103 & 0.79389 & 0.79673 & 0.79955 & 0.80234 & 0.80511 & 0.80785 & 0.81057 & 0.81327 \\
+\rowcolor{Gray}\spaltenheight 0.9 & 0.81594 & 0.81859 & 0.82121 & 0.82381 & 0.82639 & 0.82894 & 0.83147 & 0.83398 & 0.83646 & 0.83891 \\
+\rowcolor{lightyellow}\spaltenheight 1.0   & 0.84134 & 0.84375 & 0.84614 & 0.84849 & 0.85083 & 0.85314 & 0.85543 & 0.85769 & 0.85993 & 0.86214 \\
+\rowcolor{Gray}\spaltenheight 1.1 & 0.86433 & 0.8665  & 0.86864 & 0.87076 & 0.87286 & 0.87493 & 0.87698 & 0.879   & 0.881   & 0.88298 \\
+\rowcolor{lightyellow}\spaltenheight 1.2 & 0.88493 & 0.88686 & 0.88877 & 0.89065 & 0.89251 & 0.89435 & 0.89617 & 0.89796 & 0.89973 & 0.90147 \\
+\rowcolor{Gray}\spaltenheight 1.3 & 0.9032  & 0.9049  & 0.90658 & 0.90824 & 0.90988 & 0.91149 & 0.91309 & 0.91466 & 0.91621 & 0.91774 \\
+\rowcolor{lightyellow}\spaltenheight 1.4 & 0.91924 & 0.92073 & 0.9222  & 0.92364 & 0.92507 & 0.92647 & 0.92785 & 0.92922 & 0.93056 & 0.93189 \\
+\rowcolor{Gray}\spaltenheight 1.5 & 0.93319 & 0.93448 & 0.93574 & 0.93699 & 0.93822 & 0.93943 & 0.94062 & 0.94179 & 0.94295 & 0.94408 \\
+\rowcolor{lightyellow}\spaltenheight 1.6 & 0.9452  & 0.9463  & 0.94738 & 0.94845 & 0.9495  & 0.95053 & 0.95154 & 0.95254 & 0.95352 & 0.95449 \\
+\rowcolor{Gray}\spaltenheight 1.7 & 0.95543 & 0.95637 & 0.95728 & 0.95818 & 0.95907 & 0.95994 & 0.9608  & 0.96164 & 0.96246 & 0.96327 \\
+\rowcolor{lightyellow}\spaltenheight 1.8 & 0.96407 & 0.96485 & 0.96562 & 0.96638 & 0.96712 & 0.96784 & 0.96856 & 0.96926 & 0.96995 & 0.97062 \\
+\rowcolor{Gray}\spaltenheight 1.9 & 0.97128 & 0.97193 & 0.97257 & 0.9732  & 0.97381 & 0.97441 & 0.975   & 0.97558 & 0.97615 & 0.9767  \\
+\rowcolor{lightyellow}\spaltenheight 2.0   & 0.97725 & 0.97778 & 0.97831 & 0.97882 & 0.97932 & 0.97982 & 0.9803  & 0.98077 & 0.98124 & 0.98169 \\
+\rowcolor{Gray}\spaltenheight 2.1 & 0.98214 & 0.98257 & 0.983   & 0.98341 & 0.98382 & 0.98422 & 0.98461 & 0.985   & 0.98537 & 0.98574 \\
+\rowcolor{lightyellow}\spaltenheight 2.2 & 0.9861  & 0.98645 & 0.98679 & 0.98713 & 0.98745 & 0.98778 & 0.98809 & 0.9884  & 0.9887  & 0.98899 \\
+\rowcolor{Gray}\spaltenheight 2.3 & 0.98928 & 0.98956 & 0.98983 & 0.9901  & 0.99036 & 0.99061 & 0.99086 & 0.99111 & 0.99134 & 0.99158 \\
+\rowcolor{lightyellow}\spaltenheight 2.4 & 0.9918  & 0.99202 & 0.99224 & 0.99245 & 0.99266 & 0.99286 & 0.99305 & 0.99324 & 0.99343 & 0.99361 \\
+\rowcolor{Gray}\spaltenheight 2.5 & 0.99379 & 0.99396 & 0.99413 & 0.9943  & 0.99446 & 0.99461 & 0.99477 & 0.99492 & 0.99506 & 0.9952  \\
+\rowcolor{lightyellow}\spaltenheight 2.6 & 0.99534 & 0.99547 & 0.9956  & 0.99573 & 0.99585 & 0.99598 & 0.99609 & 0.99621 & 0.99632 & 0.99643 \\
+\rowcolor{Gray}\spaltenheight 2.7 & 0.99653 & 0.99664 & 0.99674 & 0.99683 & 0.99693 & 0.99702 & 0.99711 & 0.9972  & 0.99728 & 0.99736 \\
+\rowcolor{lightyellow}\spaltenheight 2.8 & 0.99744 & 0.99752 & 0.9976  & 0.99767 & 0.99774 & 0.99781 & 0.99788 & 0.99795 & 0.99801 & 0.99807 \\
+\rowcolor{Gray}\spaltenheight 2.9 & 0.99813 & 0.99819 & 0.99825 & 0.99831 & 0.99836 & 0.99841 & 0.99846 & 0.99851 & 0.99856 & 0.99861 \\
+\rowcolor{lightyellow}\spaltenheight 3.0   & 0.99865 & 0.99869 & 0.99874 & 0.99878 & 0.99882 & 0.99886 & 0.99889 & 0.99893 & 0.99896 & 0.999   \\
+\rowcolor{Gray}\spaltenheight 3.1 & 0.99903 & 0.99906 & 0.9991  & 0.99913 & 0.99916 & 0.99918 & 0.99921 & 0.99924 & 0.99926 & 0.99929 \\
+\rowcolor{lightyellow}\spaltenheight 3.2 & 0.99931 & 0.99934 & 0.99936 & 0.99938 & 0.9994  & 0.99942 & 0.99944 & 0.99946 & 0.99948 & 0.9995  \\
+\rowcolor{Gray}\spaltenheight 3.3 & 0.99952 & 0.99953 & 0.99955 & 0.99957 & 0.99958 & 0.9996  & 0.99961 & 0.99962 & 0.99964 & 0.99965 \\
+\rowcolor{lightyellow}\spaltenheight 3.4 & 0.99966 & 0.99968 & 0.99969 & 0.9997  & 0.99971 & 0.99972 & 0.99973 & 0.99974 & 0.99975 & 0.99976 \\
+\rowcolor{Gray}\spaltenheight 3.5 & 0.99977 & 0.99978 & 0.99978 & 0.99979 & 0.9998  & 0.99981 & 0.99981 & 0.99982 & 0.99983 & 0.99983 \\
+\rowcolor{lightyellow}\spaltenheight 3.6 & 0.99984 & 0.99985 & 0.99985 & 0.99986 & 0.99986 & 0.99987 & 0.99987 & 0.99988 & 0.99988 & 0.99989 \\
+\rowcolor{Gray}\spaltenheight 3.7 & 0.99989 & 0.9999  & 0.9999  & 0.9999  & 0.99991 & 0.99991 & 0.99992 & 0.99992 & 0.99992 & 0.99992 \\
+\rowcolor{lightyellow}\spaltenheight 3.8 & 0.99993 & 0.99993 & 0.99993 & 0.99994 & 0.99994 & 0.99994 & 0.99994 & 0.99995 & 0.99995 & 0.99995 \\
+\rowcolor{Gray}\spaltenheight 3.9 & 0.99995 & 0.99995 & 0.99996 & 0.99996 & 0.99996 & 0.99996 & 0.99996 & 0.99996 & 0.99997 & 0.99997 \\
+\rowcolor{lightyellow}\spaltenheight 4.0   & 0.99997 & 0.99997 & 0.99997 & 0.99997 & 0.99997 & 0.99997 & 0.99998 & 0.99998 & 0.99998 & 0.99998
+\end{tabular}
+}
+\end{table}
+
+
+\cleardoublepage
+\listoffigures
+\listoftables
+%\newpage
+%\nocite{*}
+%\bibliographystyle{plain}
+%\bibliography{preamble/literaturgoogle}
+\end{document}

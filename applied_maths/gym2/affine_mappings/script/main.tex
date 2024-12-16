@@ -62,14 +62,14 @@ headsepline%
 % Pagestyle/Layout
 %\geometry{a4paper , tmargin =2.5cm,	bmargin=3cm, lmargin =2.5cm,	rmargin =2.5cm,	headheight=3em, headsep=1em, footskip=1cm}
 \setlength{\parindent}{0pt} \setlength{\parskip}{1em}
-%für TwoSide
+%f\"Ur TwoSide
 %\lehead{\headmark\pagemark}
 %\cehead{}
 %\rehead{}
 %\lohead{}
 %\cohead{}
 %\rohead{\headmark}
-%für OneSide
+%f\"Ur OneSide
 %\ihead{}
 %\chead{}
 %\ohead{}
@@ -256,21 +256,21 @@ headsepline%
 Zunächst soll hier auf den allgemeinen Abbildungsbegriff eingegangen werden. Die weiteren Kapitel werden sich dann mit dem eigentlichem Thema befassen, den Abbildungen und im speziellen den affinen Abbildungen einer Ebene.
 
 \subsection{Aus der Mengenlehre}
-Personen oder auch Dinge stehen oft in Beziehung. Es gibt verwandtschaftliche oder freundschaftliche Beziehungen. Es gibt Beziehungen von Menschen zu ihrer Heimat, von Eigentümern zu ihrem Besitztum, oder auch zwischen Konjunktur und Arbeitslosigkeit, zwischen Qualität und Preis etc.
+Personen oder auch Dinge stehen oft in Beziehung. Es gibt verwandtschaftliche oder freundschaftliche Beziehungen. Es gibt Beziehungen von Menschen zu ihrer Heimat, von Eigent\"Umern zu ihrem Besitztum, oder auch zwischen Konjunktur und Arbeitslosigkeit, zwischen Qualität und Preis etc.
 
 Manche Beziehungen lassen sich graphisch darstellen und mathematisch beschreiben. Im Folgenden werden Menge und Beziehungen zwischen ihren Elementen betrachtet.
 
 \begin{bsp}
-Es gibt eine Beziehung, in der Mathematik sagt man Relation, zwischen den Mitgliedern dieser Klasse und den mäglichen Freifächern, welche Angeboten werden.
+Es gibt eine Beziehung, in der Mathematik sagt man Relation, zwischen den Mitgliedern dieser Klasse und den möglichen Freifächern, welche Angeboten werden.
 \end{bsp}
 
-\begin{cdef}
+\begin{cdef}{}{}
 Unter einer \textbf{Relation} $R$ zwischen den Elementen der Mengen $\mA$ und $\mB$ versteht man eine beliebige Beziehung (Zuordnung), wodurch jedem Element $x\in\mA$ kein, genau ein oder mehr als ein Element $y\in\mB$ zugeordnet wird. Man schreibt
 $$R:\mA\longrightarrow\mB$$
 \end{cdef}
 
 \begin{bsp}
-Im obigen Beispiel steht $R$ für \glqq zu einem Klassenmitglied das Freifach zuordnen, $\mA$ für die Menge der Schülerinnen und Schüler der Klasse und $\mB$ für die Menge der angebotenen Freifächer.
+Im obigen Beispiel steht $R$ f\"Ur \glqq zu einem Klassenmitglied das Freifach zuordnen, $\mA$ f\"Ur die Menge der Sch\"Ulerinnen und Sch\"Uler der Klasse und $\mB$ f\"Ur die Menge der angebotenen Freifächer.
 \end{bsp}
 
 \begin{bem}
@@ -278,7 +278,7 @@ Offensichtlich kann jede Relation als Menge von geordneten Paaren $\point{x}{y}$
 \end{bem}
 
 \subsection{Produktmenge}
-\begin{cdef}
+\begin{cdef}{}
 Die \textbf{Produktmenge} zweier Mengen $\mA$ und $\mB$ besteht aus sämtlichen geordneten Paaren $\point{x}{y}$ mit $x\in\mA$ und $y\in\mB$. Man schreibt
 $$\mA\times\mB=\setm{\point{x}{y}}{x\in\mA\text{ und }y\in\mB}$$
 (lies \glqq A kreuz B\grqq)
@@ -296,35 +296,34 @@ $$\D{A}\times\D{B}=\set{(3,1),(3,2),(6,1),(6,2),(9,1),(9,2)}$$
 
 \subsection{Relation}
 
-\begin{cdef}
+\begin{cdef}{}
 Eine \textbf{Relation} $R$ zwischen den Elementen der Mengen $\mA$ und $\mB$ ist eine Teilmenge der Produktmenge $\mA\times\mB$.
 \end{cdef}
 
 \begin{bem}
-Falls die Mengen $\mA$ und $\mB$ Zahlenmengen sind, kännen die Paare $\point{x}{y}$ als Punkte in einem rechtwinkligen Koordinatensystem veranschaulicht werden.
+Falls die Mengen $\mA$ und $\mB$ Zahlenmengen sind, können die Paare $\point{x}{y}$ als Punkte in einem rechtwinkligen Koordinatensystem veranschaulicht werden.
 
 Die Darstellung der Relationen in einem rechtwinkligen Koordinatensystem nennt man das \textbf{Bild} der Relation.
 \end{bem}
 
 \subsection{Abbildung}
 
-\begin{cdef}
-Unter einer \textbf{Abbildung} $\ga$ einer Menge $\mA$ in eine Menge $\mB$ wird eine Zuordnung verstanden, die jedem Element $x\in\mA$ genau ein Element $x'\in\mB$ zuordnet
-\footnote{
-In der Analysis heissen Abbildungen meist Funktionen, nämlich dann, wenn die Wertemenge eine Zahlenmenge ist. Sie werden üblicherweise mit lateinischen Kleinbuchstaben wie $f, g$ etc. bezeichnet. Das einem $x$ zugeordnete Element wird dann als $y$ oder, wenn die Zuordnung $f$ heisst, als $f(x)$ geschrieben. In der Geometrie hingegen ist es üblich, eine Abbildung mit einem griechischen Kleinbuchstaben zu bezeichnen (z.B. $\ga$).
-}.
+\begin{cdef}{}
+Unter einer \textbf{Abbildung} $\ga$ einer Menge $\mA$ in eine Menge $\mB$ wird eine Zuordnung verstanden, die jedem Element $x\in\mA$ genau ein Element $x'\in\mB$ zuordnet.
 $\ga(x)=x'$ heisst dann das \textbf{Bild} von $x$ und $x$ ist ein \textbf{Urbild} von $x'$.
 \end{cdef}
 
-Ein Element aus $\mB$ kann kein Urbild, ein Urbild oder mehrere Urbilder haben; in diesem Zusammenhang werden drei spezielle Eigenschaften von Abbildungen unterschieden:
+Ein Element aus $\mB$ kann kein Urbild, ein Urbild oder mehrere Urbilder haben; in diesem Zusammenhang werden drei spezielle Eigenschaften von Abbildungen\footnote{
+In der Analysis heissen Abbildungen meist Funktionen, nämlich dann, wenn die Wertemenge eine Zahlenmenge ist. Sie werden \"Ublicherweise mit lateinischen Kleinbuchstaben wie $f, g$ etc. bezeichnet. Das einem $x$ zugeordnete Element wird dann als $y$ oder, wenn die Zuordnung $f$ heisst, als $f(x)$ geschrieben. In der Geometrie hingegen ist es \"Ublich, eine Abbildung mit einem griechischen Kleinbuchstaben zu bezeichnen (z.B. $\ga$).
+} unterschieden:
 
 \begin{itemize}
-\item Eine Abbildung heisst \textbf{injektiv}, wenn verschiedene Elemente aus $\mA$ verschiedene Bilder haben, mit anderen Worten: Wenn jedes Element in $\mB$ \emph{hächstens} ein Urbild hat.
+\item Eine Abbildung heisst \textbf{injektiv}, wenn verschiedene Elemente aus $\mA$ verschiedene Bilder haben, mit anderen Worten: Wenn jedes Element in $\mB$ \emph{höchstens} ein Urbild hat.
 \item Hat jedes Element aus $\mB$ \emph{mindestens} ein Urbild, so spricht man von einer \textbf{surjektiven} Abbildung.
 \item Hat jedes Element aus $\mB$ \emph{genau ein} Urbild, so handelt es sich um eine eineindeutige Abbildung von $\mA$ auf $\mB$. Eine solche Abbildung heisst auch \textbf{bijektiv}.
 \end{itemize}
 
-\begin{csatz}
+\begin{csatz}{}
 Eine Abbildung ist genau dann bijektiv, wenn sie surjektiv und injektiv ist.
 \end{csatz}
 
@@ -334,7 +333,7 @@ trivial
 
 \begin{bsp}
 Betrachte die Abbildung $f(x) = x^2$. Je nach Einschränkung des Definitions-
-und/oder des Bildbereiches kännen verschiedene Situationen kreiert werden.
+und/oder des Bildbereiches können verschiedene Situationen kreiert werden.
 
 \begin{itemize}
 \item $f_1:\mR\longrightarrow\mR$
@@ -345,23 +344,23 @@ und/oder des Bildbereiches kännen verschiedene Situationen kreiert werden.
 \end{bsp}
 
 \begin{bem}
-Jede Funktion kann problemlos, d.h. ohne Einschränkung der Funktion, zu einer surjektiven gemacht werden, indem die \glqq überflüssigen\grqq\ Elemente aus der Bildmenge gestrichen werden. Bei nicht injektiven geht das nicht ohne die Funktion zu beeinträchtigen.
+Jede Funktion kann problemlos, d.h. ohne Einschränkung der Funktion, zu einer surjektiven gemacht werden, indem die \glqq \"Uberfl\"Ussigen\grqq\ Elemente aus der Bildmenge gestrichen werden. Bei nicht injektiven geht das nicht ohne die Funktion zu beeinträchtigen.
 \end{bem}
 
 Oft ist es so, dass die Menge $\mB$ mit $\mA$ zusammenfällt. Man spricht dann von einer Abbildung der Menge A in sich.
 Die meisten Funktionen, die du bis jetzt in der Analysis angetroffen hast, sind Abbildungen von Zahlenmengen (meist $\mR$) in sich. In der Geometrie sind Verschiebung, Spiegelung oder Drehung einer Ebene so geartete Abbildungen. Es sind Abbildungen vom $\mR^2$ in sich.
 
-Eine spezielle Abbildung einer Menge $\mA$ in sich ist die so genannte \textbf{Identität}. Sie führt jedes Element in sich selbst über. Sie wird mit $\ge$ oder häufig allgemein als $\id$ bezeichnen. Es ist die Abbildung bei der nichts passiert, also alles beim Alten bleibt.
+Eine spezielle Abbildung einer Menge $\mA$ in sich ist die so genannte \textbf{Identität}. Sie f\"Uhrt jedes Element in sich selbst \"Uber. Sie wird mit $\ge$ oder häufig allgemein als $\id$ bezeichnen. Es ist die Abbildung bei der nichts passiert, also alles beim Alten bleibt.
 
-\subsection{Verknüpfung und Inverse}
+\subsection{Verkn\"Upfung und Inverse}
 
-\begin{cdef}
-Werden zwei Abbildungen $\ga:\mA\longrightarrow\mB$ und $\gb:\mB\longrightarrow\mC$ hintereinander ausgeführt, so spricht man von einer \textbf{Verknüpfung} zweier Abbildungen. Es resultiert eine neue Abbildung $\gg:\mA\longrightarrow\mC$. Geschrieben:
+\begin{cdef}{}
+Werden zwei Abbildungen $\ga:\mA\longrightarrow\mB$ und $\gb:\mB\longrightarrow\mC$ hintereinander ausgef\"Uhrt, so spricht man von einer \textbf{Verkn\"Upfung} zweier Abbildungen. Es resultiert eine neue Abbildung $\gg:\mA\longrightarrow\mC$. Geschrieben:
 $$\gg=\gb\circ\ga$$
 (Beachte die Reihenfolge!).
 \end{cdef}
 
-Ist $\ga$ eine bijektive Abbildung von $\mA$ nach $\mB$, so hat gemäss Definition jedes Element aus $\mB$ genau ein Urbild. Es muss damit auch mäglich sein, eine neue, \glqq umgekehrte\grqq\ Abbildung von $\mB$ nach $\mA$ zu definieren, die jedem Bild der Abbildung $\ga$ sein Urbild zuordnet. Eine solche Abbildung heisst \textbf{inverse} Abbildung oder Umkehrabbildung von $\ga$ und wird mit $\ga^{-1}$ oder $\bar{\ga}$ bezeichnet.
+Ist $\ga$ eine bijektive Abbildung von $\mA$ nach $\mB$, so hat gemäss Definition jedes Element aus $\mB$ genau ein Urbild. Es muss damit auch möglich sein, eine neue, \glqq umgekehrte\grqq\ Abbildung von $\mB$ nach $\mA$ zu definieren, die jedem Bild der Abbildung $\ga$ sein Urbild zuordnet. Eine solche Abbildung heisst \textbf{inverse} Abbildung oder Umkehrabbildung von $\ga$ und wird mit $\ga^{-1}$ oder $\bar{\ga}$ bezeichnet.
 
 \begin{satz}
 Ist $\ga$ eine bijektive Abbildung so gilt:
@@ -387,23 +386,21 @@ Die Abbildung $\ga$ bezeichne eine Drehung der Ebene um $30^\circ$ um einen Punk
 \end{ueb}
 
 \begin{ueb}
-Die Funktion $f(x) = \frac{1}{2}x^2-4x+3$ soll auf einem mäglichst grossen Bereich umgekehrt werden.
+Die Funktion $f(x) = \frac{1}{2}x^2-4x+3$ soll auf einem möglichst grossen Bereich umgekehrt werden.
 \end{ueb}
 
 \begin{ueb}\label{uebinjsurbij}
 \ \\[-4ex]
 \begin{enumeratea}
-\item Es sei $\mA$ und $\mB$ die Menge der ganzen Zahlen. Die Abbildung $f$ führe jede Zahl in ihr Doppeltes über. Die Abbildung $f$\dots
-\item Es sei $\mA$ und $\mB$ die selbe Ebene. Die Abbildung $\ga$ bezeichne die Verknüpfung einer zentrische Streckung mit dem Faktor $2$ von einen Punkt $Z$ aus und einer Verschiebung (Translation) um den Vektor $\vc$. Die Abbildung $\ga$\dots
+\item Es sei $\mA$ und $\mB$ die Menge der ganzen Zahlen. Die Abbildung $f$ f\"Uhre jede Zahl in ihr Doppeltes \"Uber. Die Abbildung $f$\dots
+\item Es sei $\mA$ und $\mB$ die selbe Ebene. Die Abbildung $\ga$ bezeichne die Verkn\"Upfung einer zentrische Streckung mit dem Faktor $2$ von einen Punkt $Z$ aus und einer Verschiebung (Translation) um den Vektor $\vc$. Die Abbildung $\ga$\dots
 
 (i) ist injektiv,$\q$(ii) surjektiv,$\q$(iii) bijektiv,$\q$(iv) besitzt eine inverse Abbildung?
 \end{enumeratea}
 \end{ueb}
 
-\pagebreak
-
 \begin{ueb}
-Wie Übung \ref{uebinjsurbij}:
+Wie \"Ubung \ref{uebinjsurbij}:
 
 \begin{enumeratea}
 \addtocounter{enumi}{2}
@@ -419,6 +416,8 @@ Wie Übung \ref{uebinjsurbij}:
 \begin{ueb}
 Kann bei den oben beschriebenen Aufgaben der Definitions- oder der Bildbereich so ein- geschränkt werden, das bijektive Abbildungen entstehen?
 \end{ueb}
+
+\clearpage
 
 \section{Abbildungen in der Ebene}
 
@@ -447,7 +446,7 @@ Kann bei den oben beschriebenen Aufgaben der Definitions- oder der Bildbereich s
 \caption{Abbildung einer Ebene in sich}
 \end{wrapfigure}
 Im Folgenden werden ausschliesslich Abbildungen einer Ebene $E$ in sich betrachtet. Vorausgesetzt sei zudem, dass in $E$ ein (kartesisches) Koordinatensystem definiert ist.
-\begin{cdef}
+\begin{cdef}{}
 Unter
 \marginnote{
 \qrcode{
@@ -455,7 +454,7 @@ https://www.youtube.com/watch?v=zuHJopS96eo}
 }
 einer \textbf{Abbildung einer Ebene $E$ in sich} versteht man eine Zuordnung, die jedem Punkt $P\in E$ einen weiteren Punkt $P'\in E$ (das Bild von P) zuordnet. Sind $x$ und $y$ die Koordinaten eines Punktes $P$, so werden diejenigen seines Bildes $P'$ mit $x'$ und $y'$ bezeichnet.
 \end{cdef}
-An ein paar Beispielen soll jetzt erst mal gezeigt werden, wie Abbildungen von $E$ in sich mit rechnerischen Mitteln erfasst werden kännen.
+An ein paar Beispielen soll jetzt erst mal gezeigt werden, wie Abbildungen von $E$ in sich mit rechnerischen Mitteln erfasst werden können.
 
 \subsection{Zentrische Streckung vom Ursprung aus}
 Die
@@ -465,7 +464,7 @@ https://www.youtube.com/watch?v=0hj4DWt-PQo}
 }
 Streckung $\ga$ mit dem Zentrum in $O$ und dem Faktor $k\neq0$ kann folgendermassen beschrieben werden:
 
-Jedem Punkt $P\in E$ wird derjenigen Punkt $P'\in E$ zugeordnet, für den gilt:
+Jedem Punkt $P\in E$ wird derjenigen Punkt $P'\in E$ zugeordnet, f\"Ur den gilt:
 $$\V{OP'}=k\cdot\V{OP}.$$
 Der Ortsvektor
 $$\V{r'}=\V{OP'}=\pv{x'}{y'}$$
@@ -541,7 +540,7 @@ $\ga$ sei die Streckung mit dem Zentrum $O$ und dem Streckungsfaktor $\frac{3}{2
 \subsection{Translation}
 Eine Verschiebung $\gt$ in der Ebene um einen Vektor $\vv$ kann folgendermassen beschrieben werden:
 
-Jedem Punkt $P\in E$ wird derjenigen Punkt $P'\in E$ zugeordnet, für den gilt:
+Jedem Punkt $P\in E$ wird derjenigen Punkt $P'\in E$ zugeordnet, f\"Ur den gilt:
 $$\V{OP'}=\V{OP}+\vv.$$
 
 \begin{figure}[h]
@@ -588,18 +587,18 @@ $$\V{OP'}=\V{OP}+\vv.$$
 \caption{Translation mit dem Vektor $\vv$}
 \end{figure}
 
-Besitzt der Verschiebungsvektor die Komponenten $\pv{v_x}{v_y}$, so ergibt sich für die Abbildungsgleichung $\gt$ das Gleichungssystem:
+Besitzt der Verschiebungsvektor die Komponenten $\pv{v_x}{v_y}$, so ergibt sich f\"Ur die Abbildungsgleichung $\gt$ das Gleichungssystem:
 $$\glsys{\gt}{x&\phantom{y}+v_x}{&y+v_y}$$
 
 \begin{ueb}
 Gegeben sei die Translation
 $$\glsys{\gt}{x&\phantom{y}+1}{&y-2}$$
 \begin{enumeratea}
-\item Handelt es sich bei $\gt$ um eine Bijektion? Begründe.
+\item Handelt es sich bei $\gt$ um eine Bijektion? Begr\"Unde.
 \item Gib die Umkehrabbildung $\gt^{-1}$ an.
-\item Wird eine Streckung $\ga$ mit einer Verschiebung $\gt$ verknüpft, so entsteht eine neue Abbildung. Ist die Verknüpfung kommutativ, d.h. gilt
+\item Wird eine Streckung $\ga$ mit einer Verschiebung $\gt$ verkn\"Upft, so entsteht eine neue Abbildung. Ist die Verkn\"Upfung kommutativ, d.h. gilt
 $$\ga\circ\gt=\gt\circ\ga?$$
-Gib die Abbildungsgleichungen der beiden Verknüpfungsarten $\ga\circ\gt$ bzw. $\gt\circ\ga$ an, wobei $\ga$ die Streckung am Ursprung um den Faktor $k = 3$ und $\gt$ die oben definierte Translation sein soll.
+Gib die Abbildungsgleichungen der beiden Verkn\"Upfungsarten $\ga\circ\gt$ bzw. $\gt\circ\ga$ an, wobei $\ga$ die Streckung am Ursprung um den Faktor $k = 3$ und $\gt$ die oben definierte Translation sein soll.
 \item Wie lauten die Abbildunsgleichungen einer Streckung mit dem Zentrum $S=(1|5)$ und dem Streckungsfaktor $k = 3$?
 
 Bestimme das Bild von $O=\point{0}{0}$ und $P =\point{2}{-3}$ sowie das Urbild von $Q' =\point{-5}{8}$.
@@ -608,7 +607,7 @@ Bestimme das Bild von $O=\point{0}{0}$ und $P =\point{2}{-3}$ sowie das Urbild v
 \end{ueb}
 
 \subsection{Spiegelung an den Koordinatenachsen}
-Soll an einer Koordinatenachse gespiegelt werden, zum Beispiel an der $x$-Achse, so ändert einfach das Vorzeichen der entsprechenden Koordinate, also hier der $y$-Koordinate. Für die Abbildungsgleichung $\ga$ ergibt sich dann das Gleichungssystem:
+Soll an einer Koordinatenachse gespiegelt werden, zum Beispiel an der $x$-Achse, so ändert einfach das Vorzeichen der entsprechenden Koordinate, also hier der $y$-Koordinate. F\"Ur die Abbildungsgleichung $\ga$ ergibt sich dann das Gleichungssystem:
 $$\glsysa{x}{&-y}$$
 Wird an der $y$-Achse gespiegelt, so ergibt sich das Gleichungssystem:
 $$\glsys{\gb}{-x}{&y}$$
@@ -617,12 +616,12 @@ $$\glsys{\gb}{-x}{&y}$$
 \ \\[-4ex]
 \begin{enumeratea}
 \item Wie lauten die Umkehrabbildungen von $\ga$ und $\gb$?
-\item Was für eine Abbildung ergibt sich bei einer Verknüpfung der beiden Achsenspiegelungen und wie lauten ihre Gleichungen?
+\item Was f\"Ur eine Abbildung ergibt sich bei einer Verkn\"Upfung der beiden Achsenspiegelungen und wie lauten ihre Gleichungen?
 \item\label{item:gerade} Wie lauten die Abbildungsgleichungen der Spiegelung an der zur $y$-Achse parallelen Geraden $g: x = 2$ (allgemein: an der Geraden $x = a$)?
-\item Spiegle zuerst an der Geraden $h: y = -1$ und anschliessend an $g$ aus Aufgabe \eqref{item:gerade}. Was für ein Abbildungstyp resultiert? Wie lauten die Abbildungsgleichungen?
+\item Spiegle zuerst an der Geraden $h: y = -1$ und anschliessend an $g$ aus Aufgabe \eqref{item:gerade}. Was f\"Ur ein Abbildungstyp resultiert? Wie lauten die Abbildungsgleichungen?
 \item Gib die Abbildungsgleichungen einer Punktspiegelung am Punkt $\point{s_x}{s_y}$ an.
-\item Verknüpfe eine Achsen- mit einer Punktspiegelung am Ursprung (in dieser Reihenfolge). Was ergibt sich? Gib die Abbildungsgleichungen an.
-\item Gib die Abbildungsgleichungen $\gb\circ\ga$ an, die bei der Verknüpfung der Streckung $\ga$ am Ursprung um den Faktor $-2$ und der Spiegelung $\gb$ an der x-Achse entstehen.
+\item Verkn\"Upfe eine Achsen- mit einer Punktspiegelung am Ursprung (in dieser Reihenfolge). Was ergibt sich? Gib die Abbildungsgleichungen an.
+\item Gib die Abbildungsgleichungen $\gb\circ\ga$ an, die bei der Verkn\"Upfung der Streckung $\ga$ am Ursprung um den Faktor $-2$ und der Spiegelung $\gb$ an der x-Achse entstehen.
 \end{enumeratea}
 \end{ueb}
 
@@ -651,7 +650,7 @@ indem du die Urbilder und Bilder von verschiedenen Punkten ins Koordinatenystem 
 \caption{Bilder und Urbilder von $\gg$}\label{bilderundurbilder}
 \end{figure}
 
-\begin{cdef}
+\begin{cdef}{}
 Eine \textbf{Scherung} an der $x$-Achse kann durch einen so genannten Scherungswinkel $\varphi$ festgelegt werden. Er misst den Winkel zwischen einem abzubildenden Punkt $P$, seiner Projektion auf der $x$-Achse und dem Bildpunkt $P'$, und zwar im Uhrzeigersinn.
 \end{cdef}
 
@@ -705,11 +704,11 @@ Eine \textbf{Scherung} an der $x$-Achse kann durch einen so genannten Scherungsw
 }
 \caption{Scherung an der $x$-Achse um den Winkel $\varphi$}
 \end{figure}
-\noindent Für die Abbildungsgleichung gilt dann:
+\noindent F\"Ur die Abbildungsgleichung gilt dann:
 $$\glsysa{x&+\;y\cdot\tan(\varphi)}{&\phantom{\;+}y}$$
 Wird $k = \tan(\varphi)$ gesetzt, so ergibt das kurz:
 $$\glsysa{x&+\;ky}{&\phantom{\;+k}y}$$
-Analoge †berlegungen führen zur Scherung an der $y$-Achse (der Scherungswinkel wird dann allerdings im Gegenuhrzeigersinn gemessen):
+Analoge \"Uberlegungen f\"Uhren zur Scherung an der $y$-Achse (der Scherungswinkel wird dann allerdings im Gegenuhrzeigersinn gemessen):
 $$\glsys{\gb}{\phantom{k}x}{kx&+y}$$
 
 \begin{ueb}
@@ -740,8 +739,8 @@ $$\glsysa{3x}{&3y}\qq\glsys{\gb}{-x&\phantom{y}-4}{&y}$$
 und
 $$\glsys{\gg}{-x&\phantom{-y}+6}{&-y+2}$$
 \begin{enumeratea}
-\item Um was für Abbildungen handelt es sich?
-\item Gib die Abbildungsgleichungen der folgenden Verknüpfungen an:
+\item Um was f\"Ur Abbildungen handelt es sich?
+\item Gib die Abbildungsgleichungen der folgenden Verkn\"Upfungen an:
 \begin{enumeratei}
 \item $\ga\circ\gb$
 \item $\gb\circ\ga$
@@ -758,8 +757,8 @@ Eine Scherung $\ga$ an der $x$-Achse bildet den Punkt $P =\point{3}{2}$ auf $P' 
 \item Gib die Koordinaten der Bildpunkte von $Q=\point{2}{-1}$, $R=\point{-4}{6}$ und $S=\point{1}{3}$ an.
 \item Stelle die Abbildungsgleichungen von $\ga$ auf.
 \item Gib die Umkehrabbildung $\ga^{-1}$ dieser Scherung an.
-\item Gib die Verknüpfung $\ga\circ\gg$ der Scherung $\ga$ mit der Abbildung $\gg$ aus \"Ubung \ref{ueb:verketten} an.
-\item Kann die Verknüpfung einer Scherung an der $x$-Achse mit einer Scherung an der $y$-Achse wiederum eine Scherung oder gar eine Streckung ergeben?
+\item Gib die Verkn\"Upfung $\ga\circ\gg$ der Scherung $\ga$ mit der Abbildung $\gg$ aus \"Ubung \ref{ueb:verketten} an.
+\item Kann die Verkn\"Upfung einer Scherung an der $x$-Achse mit einer Scherung an der $y$-Achse wiederum eine Scherung oder gar eine Streckung ergeben?
 \end{enumeratea}
 \end{ueb}
 
@@ -769,7 +768,7 @@ Um
 \qrcode{
 https://www.youtube.com/watch?v=V8tynQkpOW4}
 }
-eine Vorstellung von einer Abbildung zu bekommen, ist es häufig hilfreich nicht nur über die Bilder von einzelnen Punkten Bescheid zu wissen, sondern auch zu sehen, zu was beispielsweise eine Gerade transformiert wird. Insbesondere interessieren die Bilder der Koordinatenachsen.
+eine Vorstellung von einer Abbildung zu bekommen, ist es häufig hilfreich nicht nur \"Uber die Bilder von einzelnen Punkten Bescheid zu wissen, sondern auch zu sehen, zu was beispielsweise eine Gerade transformiert wird. Insbesondere interessieren die Bilder der Koordinatenachsen.
 
 \begin{ueb}
 Eine Abbildung sei durch
@@ -780,7 +779,7 @@ gegeben.
 \item Gib die Bilder der Koordinatenachsen an.
 \item Wie lauten die Gleichungen der Bildgeraden $f_1 : y = 1$ und $f_2 : x = 1$?
 \item Bestimme das Bild der Winkelhalbierenden $g : y = x$.
-\item Es sieht so aus, wie wenn Geraden auf (Halb)Geraden abgebildet würden. Ist das tatsächlich so? Untersuche dazu das Bild der Geraden $h: y = 2x$.
+\item Es sieht so aus, wie wenn Geraden auf (Halb)Geraden abgebildet w\"Urden. Ist das tatsächlich so? Untersuche dazu das Bild der Geraden $h: y = 2x$.
 \begin{center}
 \definecolor{cqcqcq}{rgb}{0.75,0.75,0.75}
 \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.7cm,y=0.7cm]
@@ -801,7 +800,7 @@ gegeben.
 \end{ueb}
 
 \begin{ueb}
-Beantworte die unten stehenden Fragen für die folgenden Abbildungen:
+Beantworte die unten stehenden Fragen f\"Ur die folgenden Abbildungen:
 $$\glsysa{3x&-\phantom{\;2}y}{\phantom{3}x&+\;2y}\qq\glsys{\gb}{-x&\phantom{+y}+1}{\phantom{-}x&+\;y}$$
 und
 $$\glsys{\gg}{x&\;-1}{x^2}$$
@@ -826,22 +825,22 @@ https://www.youtube.com/watch?v=RcQY8_7eHuI}
 }
 Abbildungen von Mengen in sich kann es vorkommen, dass Punkte oder gewisse Teilmengen auf sich selber abgebildet werden. Diese Punktmengen sind von einiger Bedeutung.
 
-\begin{cdef}
+\begin{cdef}{}
 Ein Punkt $P$, der bei einer Abbildung $\ga$ auf sich selber abgebildet wird, heisst \textbf{Fixpunkt} von $\ga$.
 \end{cdef}
 
 Es muss also gelten:
 $$\ga(P)=P.$$
 
-\begin{cdef}
+\begin{cdef}{}
 Eine Gerade, die aus Fixpunkten einer Abbildung besteht, nennt man \textbf{Fixpunktgerade}. Eine Gerade $g : y = mx + b$ , die unter einer Abbildung $\ga$ auf sich selber --- nicht zwingend Punktweise --- abgebildet wird, wird als \textbf{Fixgerade} bezeichnet.
 \end{cdef}
 
-Für die Bildgerade $\ga(g)=g'$ mit $g' : y' = m'x' + b'$ muss demnach gelten:
+F\"Ur die Bildgerade $\ga(g)=g'$ mit $g' : y' = m'x' + b'$ muss demnach gelten:
 $$m'=m\q\text{und}\q b'=b.$$
 
 \begin{bsp}
-Bei der Spiegelung an der $x$-Achse wird jeder Punkt der $x$-Achse auf sich selber abgebildet, er ist also Fixpunkt. Weil sich die Fixpunkte auf einer Geraden (hier der $x$-Achse) befinden, ist die $x$-Achse eine Fixpunktgerade und damit natürlich auch eine Fixgerade. Auch jede zur $y$-Achse parallele Gerade ist Fixgerade, aber keine Fixpunktgerade. Denn auf ihr wird nicht jeder Punkt auf sich abgebildet (nur der Schnittpunkt mit der $x$-Achse), aber immerhin bleibt das Bild jedes Punktes einer solchen Vertikalen auf ihr liegen.
+Bei der Spiegelung an der $x$-Achse wird jeder Punkt der $x$-Achse auf sich selber abgebildet, er ist also Fixpunkt. Weil sich die Fixpunkte auf einer Geraden (hier der $x$-Achse) befinden, ist die $x$-Achse eine Fixpunktgerade und damit nat\"Urlich auch eine Fixgerade. Auch jede zur $y$-Achse parallele Gerade ist Fixgerade, aber keine Fixpunktgerade. Denn auf ihr wird nicht jeder Punkt auf sich abgebildet (nur der Schnittpunkt mit der $x$-Achse), aber immerhin bleibt das Bild jedes Punktes einer solchen Vertikalen auf ihr liegen.
 \end{bsp}
 
 \begin{ueb}
@@ -878,7 +877,7 @@ Bestimme die Fixpunkte und Fixgeraden der folgenden Abbildung:
 \begin{ueb}
 Die \textsc{Agnesi}-Abbildung
 \footnote{
-Die in dieser Aufgabe entstehende Kurve wurde in einem anderen Zusammenhang zuerst intensiv von der Mathematikerin \textsc{Maria Agnesi} (1718-1799) untersucht. Sie wird daher als \textsc{Agnesi}-Kurve bezeichnet. \textsc{Agnesi} wurde 1750 zur Professorin für Mathematik an die Universität Bologna berufen. Sie war, soweit heute bekannt, die erste Frau, die als Professorin Vorlesungen zur Mathematik an einer Universität hielt.
+Die in dieser Aufgabe entstehende Kurve wurde in einem anderen Zusammenhang zuerst intensiv von der Mathematikerin \textsc{Maria Agnesi} (1718-1799) untersucht. Sie wird daher als \textsc{Agnesi}-Kurve bezeichnet. \textsc{Agnesi} wurde 1750 zur Professorin f\"Ur Mathematik an die Universität Bologna berufen. Sie war, soweit heute bekannt, die erste Frau, die als Professorin Vorlesungen zur Mathematik an einer Universität hielt.
 }
 ist durch die Gleichungen
 $$\glsysa{\frac{1}{1+x^2}}{&y}$$
@@ -955,7 +954,7 @@ $$k : x^2 + (y-0.5)^2 = 0.5^2$$
 \item Welche Abbildung bildet das Dreieck $A'B'C'$ auf das Dreieck $ABC$ ab?
 \item Bestimme das Bild der Geraden $g_{AB}$.
 \item Auf welchen Punkt wird der Mittelpunkt der Strecke $\overline{AB}$ abgebildet?
-\item Kännen sich die Bilder zweier zueinander paralleler Geraden schneiden?
+\item können sich die Bilder zweier zueinander paralleler Geraden schneiden?
 \end{enumeratea}
 \end{ueb}
 
@@ -972,20 +971,20 @@ Geradentreue, umkehrbare Abbildungen sind parallelentreu und teilverhältnistreu
 \end{satz}
 
 \begin{proof}[Beweis]
-Aus der Umkehrbarkeit einer geradentreuen Abbildung folgt ihre Parallelentreue. Hätten nämlich die Bilder zweier (verschiedener) paralleler Geraden $g$ und $h$ einen Schnittpunkt, dann müsste dieser Schnittpunkt zwei Urbilder haben, nämlich einen auf $g$ und einen auf $h$. Aber das kann wegen der Umkehrbarkeit nicht sein.
+Aus der Umkehrbarkeit einer geradentreuen Abbildung folgt ihre Parallelentreue. Hätten nämlich die Bilder zweier (verschiedener) paralleler Geraden $g$ und $h$ einen Schnittpunkt, dann m\"Usste dieser Schnittpunkt zwei Urbilder haben, nämlich einen auf $g$ und einen auf $h$. Aber das kann wegen der Umkehrbarkeit nicht sein.
 
 Aufgrund der Parallelentreue bildet jede geradentreue, umkehrbare Abbildung Parallelogramme auf Parallelogramme ab. Damit wird der Mittelpunkt einer Strecke $\overline{AB}$ auf den Mittelpunkt der Bildstrecke $\overline{A'B'}$ abgebildet. Mit Hilfe einer Intervallschachtelung kann jetzt gefolgert werden, dass eine geradentreue, umkehrbare Abbildungen auch teilverhältnistreu sein muss.
 \end{proof}
 
-\begin{cdef}
+\begin{cdef}{}
 Eine geradentreue und umkehrbare (und damit auch parallelen- und verhältnistreue) geometrische Abbildung der Ebene auf sich nennt man eine \textbf{affine Abbildung} oder Affinität
 \footnote{
-\emph{Affinität} bedeutet so viel wie Nähe, Verwandtschaft: Das Bild eines Parallelogramms ist wiederum ein Parallelogramm. Kongruenzabbildungen und \"Ahnlichkeitsabbildungen sind Beispiele für affine Abbildungen.
+\emph{Affinität} bedeutet so viel wie Nähe, Verwandtschaft: Das Bild eines Parallelogramms ist wiederum ein Parallelogramm. Kongruenzabbildungen und \"Ahnlichkeitsabbildungen sind Beispiele f\"Ur affine Abbildungen.
 }
 \end{cdef}
  
  \begin{ueb}\label{ueb:konstruktion}
-Eine affine Abbildung $\ga$ bildet das Dreieck $ABC$ mit $A=\point{0}{0}$, $B=\point{1.5}{0}$ und $C=\point{0}{3}$ auf das Dreieck $A'B'C'$ mit $A'=\point{4}{2}$, $B'=\point{6}{3}$ und $C'=\point{3}{4}$ ab. Konstruiere den Bildpunkt von $D=\point{2}{2}$ und begründe deine Konstruktion.
+Eine affine Abbildung $\ga$ bildet das Dreieck $ABC$ mit $A=\point{0}{0}$, $B=\point{1.5}{0}$ und $C=\point{0}{3}$ auf das Dreieck $A'B'C'$ mit $A'=\point{4}{2}$, $B'=\point{6}{3}$ und $C'=\point{3}{4}$ ab. Konstruiere den Bildpunkt von $D=\point{2}{2}$ und begr\"Unde deine Konstruktion.
 
 \begin{center}
 \definecolor{cqcqcq}{rgb}{0.75,0.75,0.75}
@@ -1074,29 +1073,29 @@ Die (Spalten-)Vektoren $\va$ und $\vb$ der Abbildung $\ga$ entsprechen also gera
 \end{bem}
 
 \begin{bem}
-Eine affine Abbildung kann in diesem Sinn auch als Basiswechsel interpretiert werden. Die Komponenten eines Vektors $\pv{x}{y}$ werden bezüglich der \emph{neuen} Basis mit dem Ursprung $\pv{c_1}{c_2}$ angesehen:
+Eine affine Abbildung kann in diesem Sinn auch als Basiswechsel interpretiert werden. Die Komponenten eines Vektors $\pv{x}{y}$ werden bez\"Uglich der \emph{neuen} Basis mit dem Ursprung $\pv{c_1}{c_2}$ angesehen:
 $$x\cdot\va+y\cdot\vb+\vc.$$
 \end{bem}
 
 \begin{ueb}
 \ \\[-4ex]
 \begin{enumeratea}
-\item Gib die Koordinatengleichung der in †bung \ref{ueb:konstruktiv} beschriebenen affinen Abbildung an.
-\item Wie lauten die Koordinatengleichungen in der †bung \ref{ueb:konstruktion}?
+\item Gib die Koordinatengleichung der in \"Ubung \ref{ueb:konstruktiv} beschriebenen affinen Abbildung an.
+\item Wie lauten die Koordinatengleichungen in der \"Ubung \ref{ueb:konstruktion}?
 \item Eine affine Abbildung $\ga$ bilde den Punkt $A = \point{2}{1}$ auf $A'= \point{6}{3}$ , den Punkt $B=\point{-1}{3}$ auf $B'=\point{-2}{6}$ und den Punkt $C=\point{1}{-1}$ auf $C'=\point{6}{-4}$ ab. Bestimme die Koordinatengleichungen von $\ga$.
 \item Wie wir gesehen haben, ist eine affine Abbildung durch die Bildpunkte der Ecken eines Dreiecks $ABC$ festgelegt. Erläutere jetzt mit Hilfe einer Skizze, dass jede affine Abbildung in eine Verschiebung und eine affine Abbildung mit einem Fixpunkt zerlegen kann.
 \end{enumeratea}
 \end{ueb}
 
 \begin{ueb}
-Was lässt sich bei einer nicht näher bekannten affinen Abbildung über die Bildfigur der folgenden ursprünglichen Figur aussagen?
+Was lässt sich bei einer nicht näher bekannten affinen Abbildung \"Uber die Bildfigur der folgenden urspr\"Unglichen Figur aussagen?
 \begin{quote}
 Parallelogramm, Rechteck, Raute, Quadrat, Trapez, Drachen, gleichseitiges Dreieck.
 \end{quote}
 \end{ueb}
 
 \begin{ueb}
-Kann es sich bei folgender Abbildung um eine Affinität handeln? Begründe.
+Kann es sich bei folgender Abbildung um eine Affinität handeln? Begr\"Unde.
 
 \begin{center}
 \definecolor{zzttqq}{rgb}{0.6,0.2,0}
@@ -1121,7 +1120,7 @@ Kann es sich bei folgender Abbildung um eine Affinität handeln? Begründe.
 \end{ueb}
 
 \begin{ueb}
-Den folgenden Figuren liegt --- so scheint es --- jeweils eine affine Abbildung zugrunde. Bestimme die gesuchten Punkte und Geraden. Begründe deine Antworten.
+Den folgenden Figuren liegt --- so scheint es --- jeweils eine affine Abbildung zugrunde. Bestimme die gesuchten Punkte und Geraden. Begr\"Unde deine Antworten.
 
 \begin{center}
 \definecolor{xdxdff}{rgb}{0.49,0.49,1}
@@ -1175,7 +1174,7 @@ Den folgenden Figuren liegt --- so scheint es --- jeweils eine affine Abbildung 
 \end{ueb}
 
 \begin{ueb}
-†berlege und begründe:
+\"Uberlege und begr\"Unde:
 \begin{enumeratea}
 \item Eine affine Abbildung bildet den Schwerpunkt eines Dreiecks auf den Schwerpunkt des Bilddreiecks ab.
 \item Eine affine Abbildung bildet den Umkreismittelpunkt eines Dreiecks auf den Umkreismittelpunkt des Bilddreiecks ab.
@@ -1215,7 +1214,7 @@ ist Fixpunktgerade.
 \end{ueb}
 
 \begin{ueb}
-Bestimme die Abbildungsgleichungen für die folgende Scherung $\ga$.
+Bestimme die Abbildungsgleichungen f\"Ur die folgende Scherung $\ga$.
 \begin{enumeratea}
 \item Scherungsachse ist die Winkelhalbierende zwischen der $x$- und der $y$-Achse. Der
 Punkt $A=\point{4}{0}$ wird auf $A'=\point{6}{2}$ abgebildet.
@@ -1237,7 +1236,7 @@ sich bei der Abbildung $\ga$ nicht mehr um eine affine Abbildung. Warum?
 \end{ueb}
 
 \section{Ursprungsaffinität}
-\begin{cdef}
+\begin{cdef}{}
 Wird
 \marginnote{
 \qrcode{
@@ -1298,7 +1297,7 @@ $$\glsysa{x\cdot\cos\varphi-y\cdot\sin\varphi}{x\cdot\sin\varphi+y\cdot\cos\varp
 \begin{ueb}
 Eine Spiegelung $\gg$ an einer Ursprungsgeraden
 $$g:y=mx=\tan(\varphi)\cdot x$$
-kann als Verknüpfung folgender Ursprungsaffinitäten ausgedrückt werden: Drehung $\ga^{-1}$ um den Winkel $-\varphi$ (in Uhrzeigerrichtung), Spiegelung $\gb$ an der $x$-Achse und Drehung $\ga$ zurück um den Winkel $\varphi$ (in Gegenuhrzeigerrichtung).
+kann als Verkn\"Upfung folgender Ursprungsaffinitäten ausgedr\"Uckt werden: Drehung $\ga^{-1}$ um den Winkel $-\varphi$ (in Uhrzeigerrichtung), Spiegelung $\gb$ an der $x$-Achse und Drehung $\ga$ zur\"Uck um den Winkel $\varphi$ (in Gegenuhrzeigerrichtung).
 $$\gg=\ga\circ\gb\circ\ga^{-1}$$
 \end{ueb}
 
@@ -1342,7 +1341,7 @@ a_2 & b_2
 $$
 Ein solches Schema wird als Matrix bezeichnet; genauer als $2\times2$-Matrix, weil im Schema $2$ \textbf{Zeilen} und $2$ \textbf{Spalten} auftreten.
 
-\begin{cdef}
+\begin{cdef}{}
 Ein rechteckiges Schema mit $m$ Zeilen und $n$ Spalten wird $m\times n$-Matrix genannt.
 \end{cdef}
 
@@ -1351,7 +1350,7 @@ Nach Definition unterscheidet sich eine $2\times1$-Matrix nicht von der Koordina
 \end{bsp}
 
 \subsection{Grundoperationen am Beispiel von 2x2-Matrizen}
-Es ist üblich, Matrizen mit einem lateinischen Grossbuchstaben $A, B,\dots$ zu benennen. Die Matrix-Komponenten werden durch den entsprechenden lateinischen Kleinbuchstaben --- versehen mit Doppelindizes (Zeilen- und Spaltennummer) --- beschrieben:
+Es ist \"Ublich, Matrizen mit einem lateinischen Grossbuchstaben $A, B,\dots$ zu benennen. Die Matrix-Komponenten werden durch den entsprechenden lateinischen Kleinbuchstaben --- versehen mit Doppelindizes (Zeilen- und Spaltennummer) --- beschrieben:
 $$
 A=
 \begin{pmatrix}
@@ -1383,7 +1382,7 @@ $$
 
 \subsubsection{Eigenschaften der Operationen}
 \begin{satz}\label{satz:eigenschaften}
-Die $2\times2$-Matrizen bilden bezüglich der Addition eine kommutative Gruppe.
+Die $2\times2$-Matrizen bilden bez\"Uglich der Addition eine kommutative Gruppe.
 \end{satz}
 
 \begin{ueb}
@@ -1407,7 +1406,7 @@ Die
 \qrcode{
 https://www.youtube.com/watch?v=OXg1JGo9PwA}
 }
-Multiplikation zweier Matrizen wirkt auf den ersten Blick etwas willkürlich:
+Multiplikation zweier Matrizen wirkt auf den ersten Blick etwas willk\"Urlich:
 
 \begin{align*}
 A\cdot B&=\matA\cdot\matB=\\
@@ -1417,7 +1416,7 @@ a_{11}b_{11}+a_{12}b_{21} & a_{11}b_{12}+a_{12}b_{22}\\
 a_{21}b_{11}+a_{22}b_{21} & a_{21}b_{12}+a_{22}b_{22}
 \end{pmatrix}
 \end{align*}
-Ist sie aber nicht. Geometrisch läuft die Matrizenmultiplikation auf eine Verknüpfung zweier Ursprungsaffinitüten (genauer: zweier linearer Abbildungen mit Fixpunkt im Ursprung) hinaus, wie leicht nachzurechnen ist.
+Ist sie aber nicht. Geometrisch läuft die Matrizenmultiplikation auf eine Verkn\"Upfung zweier Ursprungsaffinit\"Uten (genauer: zweier linearer Abbildungen mit Fixpunkt im Ursprung) hinaus, wie leicht nachzurechnen ist.
 
 Auch das Berechnen des Matrizenprodukts $A\cdot B$ ist nicht kompliziert, wenn das Prinzip erkannt wurde: Das Element, das in der $i$-ten Zeile und $k$-ten Spalte der Produktmatrix $AB$ steht, ergibt sich, indem der $i$-te Zeilenvektor von $A$ mit dem $k$-ten Spaltenvektor von $B$ \emph{skalar multipliziert} wird.
 
@@ -1442,7 +1441,7 @@ $$A(B\cdot\vv)=(A\cdot B)\cdot\vv$$
 \subsubsection{Eigenschaften zur Matrizenmultiplikation}
 
 \begin{itemize}
-\item Die Menge der $2\times2$-Matrizen ist abgeschlossen bezüglich der Multiplikation; das heisst, dass falls $A$ und $B$ $2\times2$-Matrizen sind, so ist auch ihre Produkt $A\cdot B$ eine solche.
+\item Die Menge der $2\times2$-Matrizen ist abgeschlossen bez\"Uglich der Multiplikation; das heisst, dass falls $A$ und $B$ $2\times2$-Matrizen sind, so ist auch ihre Produkt $A\cdot B$ eine solche.
 \item Gegeben seien die drei Matrizen
 $$\mat{1}{3}{2}{4}\q\mat{-2}{5}{1}{-3}\q\mat{4}{2}{0}{1}$$
 Zeige anhand dieser Matrizen, dass die Matrizenmultiplikation
@@ -1450,14 +1449,14 @@ Zeige anhand dieser Matrizen, dass die Matrizenmultiplikation
 \item assoziativ ist,
 \item nicht kommutativ ist.
 \end{enumeratea}
-\item Gib die Matrix $E$ an, die bezüglich der Multiplikation \glqq neutral\grqq\ ist, d.h. diejenige Matrix $E$, für die gilt:
+\item Gib die Matrix $E$ an, die bez\"Uglich der Multiplikation \glqq neutral\grqq\ ist, d.h. diejenige Matrix $E$, f\"Ur die gilt:
 $$AE = EA = A$$
-für alle Matrizen $A$. $E$ wird \textbf{Einheitsmatrix} genannt.
+f\"Ur alle Matrizen $A$. $E$ wird \textbf{Einheitsmatrix} genannt.
 \item Eine Matrix $A^{-1}$ heisst Inverse von $A$, wenn
 $$AA^{-1} = A^{-1}A = E$$
 ist. Finde mit Hilfe von Gleichungssystemen die Inversen der folgenden Matrizen
 $$\mat{1}{0}{1}{1}\q\mat{-2}{1}{3}{2}\q\mat{2}{-4}{-3}{6}$$
-\item Bildet die Menge der $2\times2$-Matrizen bezüglich der Multiplikation eine Gruppe?
+\item Bildet die Menge der $2\times2$-Matrizen bez\"Uglich der Multiplikation eine Gruppe?
 \end{itemize}
 
 \subsubsection{Determinante, reguläre und singuläre Matrizen}
@@ -1471,14 +1470,14 @@ Da die Abbildung $\ga$, wiedergegeben durch eine Matrix $A$, linear in ihren Arg
 $$
 A\vv=A\pv{x}{y}=A(x\V{e_1}+y\V{e_2})=x\cdot A\V{e_1}+y\cdot B\V{e_2}=x\cdot\V{e_1'}+y\cdot\V{e_2'}
 $$
-ist die Abbildung $\ga$ geraden-, parallelen- und verhältnistreu. Zudem ist der Ursprung ein Fixpunkt. Für eine Ursprungsaffinität fehlt also einzig und allein noch das Kriterium der Bijektivität.
+ist die Abbildung $\ga$ geraden-, parallelen- und verhältnistreu. Zudem ist der Ursprung ein Fixpunkt. F\"Ur eine Ursprungsaffinität fehlt also einzig und allein noch das Kriterium der Bijektivität.
 
 \begin{ueb}
-Nehmen wir an, eine Abbildung $\ga$, repräsentiert durch die Matrix $A$, sei nicht bijektiv; d.h. also, dass zwei verschiedene Vektoren $\vu\neq\vv$ dasselbe Bild haben: $A\vu=A\vv$. Was lässt sich jetzt über die Matrix $A$ aussagen?
+Nehmen wir an, eine Abbildung $\ga$, repräsentiert durch die Matrix $A$, sei nicht bijektiv; d.h. also, dass zwei verschiedene Vektoren $\vu\neq\vv$ dasselbe Bild haben: $A\vu=A\vv$. Was lässt sich jetzt \"Uber die Matrix $A$ aussagen?
 (Tipp: Vereinfache das entstehende Gleichungssystem $A\cdot(\vu-\vv)=0$).
 \end{ueb}
 
-\begin{cdef}
+\begin{cdef}{}
 Die \textbf{Determinante} einer $2\times2$-Matrix $A$ ist definiert durch
 $$\det(A)=\abs{A}=a_{11}a_{22}-a_{12}a_{21}$$
 \end{cdef}
@@ -1488,16 +1487,16 @@ Berechne die Determinanten der folgenden Matrizen. Was stellst du fest?
 $$A=\mat{1}{0}{1}{1}\q B=\mat{-2}{1}{3}{2}\q C=\mat{2}{-4}{-3}{6}$$
 \end{ueb}
 
-\begin{cdef}
+\begin{cdef}{}
 Eine Matrix $A$ heisst \textbf{regulär}, falls ihre Determinante $\det(A)\neq0$; sonst wird sie \textbf{singulär} genannt.
 \end{cdef}
 
 \begin{satz}
-Die Menge der regulären $2\times2$-Matrizen bildet bezüglich der Multiplikation eine Gruppe. Sie entspricht gerade der Menge aller Ursprungsaffinitäten.
+Die Menge der regulären $2\times2$-Matrizen bildet bez\"Uglich der Multiplikation eine Gruppe. Sie entspricht gerade der Menge aller Ursprungsaffinitäten.
 \end{satz}
 
 \begin{proof}[Beweis]
-†bung
+\"Ubung
 \end{proof}
 
 \begin{ueb}
@@ -1505,7 +1504,7 @@ Zeige: $\det(A)\cdot\det(B)=\det(A\cdot B)$
 \end{ueb}
 
 \begin{ueb}
-Berechne die Determinanten der Matrizen, die zu folgenden Abbildungen gehären:
+Berechne die Determinanten der Matrizen, die zu folgenden Abbildungen gehören:
 \begin{itemize}
 \item Identität,
 \item Streckung am Ursprung mit dem Faktor $k$,
@@ -1518,7 +1517,7 @@ Berechne die Determinanten der Matrizen, die zu folgenden Abbildungen gehären:
 \end{ueb}
 
 \begin{ueb}
-Zeige, dass der Betrag der Determinante $\abs{\det(A)}$ gerade dem Flächeninhalt des von den Bildern von $\V{e_1}$ und $\V{e_2}$ aufgespannten Parallelogramms entspricht. (Tipp: Umschreibe dem Paralellogramm ein Rechteckt und subtrahiere die überschüssigen Dreiecke.)
+Zeige, dass der Betrag der Determinante $\abs{\det(A)}$ gerade dem Flächeninhalt des von den Bildern von $\V{e_1}$ und $\V{e_2}$ aufgespannten Parallelogramms entspricht. (Tipp: Umschreibe dem Paralellogramm ein Rechteckt und subtrahiere die \"Ubersch\"Ussigen Dreiecke.)
 \end{ueb}
 
 \begin{ueb}
@@ -1526,9 +1525,9 @@ Die Abbildung
 $$\glsysa{3x+4y}{2x+\lambda y}$$
 ist gegeben.
 \begin{enumeratea}
-\item Für welches $\lambda$ ist die zu $\ga$ gehärende Matrix $A$ regulär?
+\item F\"Ur welches $\lambda$ ist die zu $\ga$ gehörende Matrix $A$ regulär?
 \item Bestimme das Bild der Ebene, wenn $A$ singulär ist.
-\item Begründe: Wenn eine durch eine Matrix $A$ gegebene Abbildung zwei verschiedene Punkte auf den gleichen Punkt abbildet, dann bildet sie mindestens einen vom Ursprung verschiedenen Punkt auf den Ursprung ab.
+\item Begr\"Unde: Wenn eine durch eine Matrix $A$ gegebene Abbildung zwei verschiedene Punkte auf den gleichen Punkt abbildet, dann bildet sie mindestens einen vom Ursprung verschiedenen Punkt auf den Ursprung ab.
 (Tipp: Betrachte die Differenz der Ortsvektoren der beiden Punkte.)
 \end{enumeratea}
 \end{ueb}
@@ -1538,7 +1537,7 @@ Von zwei Abbildungen $\ga$ und $\gb$ sei $\ga$ regulär und $\gb$ singulär. Ist
 \end{ueb}
 
 \begin{ueb}
-Für die Berechnung der Inversen einer Matrix $A$ existiert die Formel
+F\"Ur die Berechnung der Inversen einer Matrix $A$ existiert die Formel
 $$A^{-1}=\frac{1}{\det(A)}\cdot\mat{a_{22}}{-a_{12}}{-a_{21}}{a_{11}}$$
 \begin{enumeratea}
 \item Beweise dies, indem du von der Eigenschaft $A\cdot A^{-1}=E$ Gebrauch machst.
@@ -1553,7 +1552,7 @@ $$\det(A^{-1})=\frac{1}{\det(A)}$$
 \subsubsection{Fläche und Orientierung}
 Nicht nur der Betrag der Determinante einer Matrix $A$ hat eine geometrische Bedeutung (Flächeninhalt des durch die Affinität $\ga$ erzeugten Bildes des durch die Basisvektoren $\V{e_1}$ und $\V{e_2}$ aufgespannten Einheitsquadrates), sondern auch ihr Vorzeichen. Um das zu verstehen, machen wir einen kleinen Ausflug ins Dreidimensionale und die Vektorgeometrie.
 
-\begin{cdef}
+\begin{cdef}{}
 Das \textbf{Vektorprodukt} zweier Vektoren
 $$\va=\pV{a_x}{a_y}{a_z} \text{ und } \vb=\pV{b_x}{b_y}{b_z}$$
 ergibt einen Vektor $\vv$ definiert durch
@@ -1569,14 +1568,14 @@ Das Vektorprodukt $\vv=\va\times\vb$ besitzt folgende Eigenschaften:
 \end{enumerate}
 \end{satz}
 
-Der zweidimensionalen Raum $\mR^2$ kann durch Ergänzen einer $z$-Komponente zum dreidimensionalen Raum aufgepeppt werden. In diesem Sinn wird der $\mR^2$ --- als Einbettung in den $\mR^3$ --- auch für das an und für sich nur im dreidimensionalen Raum definierte Vektorprodukt zugänglich; die $z$-Komponente wird einfach $0$ gesetzt. Damit ergibt sich z.B. für die Spaltenvektoren der Abbildungsmatrix
+Der zweidimensionalen Raum $\mR^2$ kann durch Ergänzen einer $z$-Komponente zum dreidimensionalen Raum aufgepeppt werden. In diesem Sinn wird der $\mR^2$ --- als Einbettung in den $\mR^3$ --- auch f\"Ur das an und f\"Ur sich nur im dreidimensionalen Raum definierte Vektorprodukt zugänglich; die $z$-Komponente wird einfach $0$ gesetzt. Damit ergibt sich z.B. f\"Ur die Spaltenvektoren der Abbildungsmatrix
 
 $$A=\matA$$
 --- nota bene die Bilder der Einheitsvektoren $\V{e_1}$ und $\V{e_2}$ unter der Abbildung $A$
 $$\pV{a_{11}}{a_{21}}{0}\times\pV{a_{12}}{a_{22}}{0}=\pV{0}{0}{a_{11}a_{22}-a_{12}a_{21}}=\pV{0}{0}{\det(A)}$$
 
 Aus den Eigenschaften des Vektorprodukts folgt jetzt:
-Ist die Determinante der Matrix $A$ positiv, so müssen die Vektoren $\pv{a_{11}}{a_{21}}$ und $\pv{a_{12}}{a_{22}}$ dieselbe \glqq Orientierung\grqq\ aufweisen, wie die Basisvektoren $\V{e_1}$ und $\V{e_2}$. Korrekter:
+Ist die Determinante der Matrix $A$ positiv, so m\"Ussen die Vektoren $\pv{a_{11}}{a_{21}}$ und $\pv{a_{12}}{a_{22}}$ dieselbe \glqq Orientierung\grqq\ aufweisen, wie die Basisvektoren $\V{e_1}$ und $\V{e_2}$. Korrekter:
 
 \begin{satz}
 Das Quadrat, aufgespannt durch die Basisvektoren $\V{e_1}$ und $\V{e_2}$ hat genau dann dieselbe Orientierung (\emph{gleichsinnig}) wie das durch die Vektoren  aufgespannte $\pv{a_{11}}{a_{21}}$ und $\pv{a_{12}}{a_{22}}$ Parallelogramm, wenn die Determinante von $A$ positiv ist. Ist die Determinante negativ, so bewirkt die durch $A$ repräsentierte Abbildung einen Orientierungswechsel (\emph{gegensinnig}).
@@ -1585,17 +1584,17 @@ Das Quadrat, aufgespannt durch die Basisvektoren $\V{e_1}$ und $\V{e_2}$ hat gen
 Damit nicht genug; es gilt der folgende
 
 \begin{satz}
-Ist $A$ die Matrix, die zu einer Ursprungsaffinität $\ga$ gehärt, so besteht zwischen den
+Ist $A$ die Matrix, die zu einer Ursprungsaffinität $\ga$ gehört, so besteht zwischen den
 Flächeninhalten $F$ und $F'$ eines Vielecks und dessen Bildes die Beziehung
 $$F'=\abs{\det(A)}\cdot F$$
 \end{satz}
 
-\begin{proof}[Beweis für Parallelogramme]
-†bung.
+\begin{proof}[Beweis f\"Ur Parallelogramme]
+\"Ubung.
 \end{proof}
 
 \begin{bsp}
-Die zur zentrischen Streckung am Ursprung gehärende Matrix
+Die zur zentrischen Streckung am Ursprung gehörende Matrix
 $$A=\mat{k}{0}{0}{k}$$
 mit dem Streckungsfaktor $k$ besitzt die Determinante $\det(A) = k^2$. D.h. also, dass durch die zentrische Streckung mit dem Faktor $k$ die Flächen mit $k^2$ multipliziert werden. Die Orientierung bleibt dabei erhalten, auch wenn $k$ negativ ist.
 \end{bsp}
@@ -1649,7 +1648,7 @@ https://www.youtube.com/watch?v=23uk6N0ZNmY}
 }
 wissen bereits: Ein Punkt heisst \textbf{Fixpunkt} einer Abbildung $\ga$, wenn er mit seinem Bild zusammenfällt ($P' = P$ oder $\ga(P) = P$ oder $A\V{r_P} =\V{r_P}$). Weiter gilt:
 
-\begin{cdef}
+\begin{cdef}{}
 Eine Gerade $g$ heisst \textbf{Fixgerade} einer Abbildung $\ga$, wenn ihr Bild $g'$ mit $g$ zusammenfällt: $g=g'$.
 \end{cdef}
 
@@ -1657,7 +1656,7 @@ Eine Gerade $g$ heisst \textbf{Fixgerade} einer Abbildung $\ga$, wenn ihr Bild $
 Beachte, dass eine Fixgerade nicht aus lauter Fixpunkten bestehen muss.
 \end{bem}
 
-\begin{cdef}
+\begin{cdef}{}
 Eine Gerade, die aus lauter Fixpunkten besteht, heisst \textbf{Fixpunktgerade}.
 \end{cdef}
 
@@ -1674,14 +1673,14 @@ Jede Fixpunktgerade ist auch Fixgerade, aber nicht umgekehrt.
 \end{itemize}
 \end{bsp}
 
-Klar ist, dass jede Ursprungsaffinität sicher einen Fixpunkt hat, nämlich den Ursprung $O$. Damit stellen sich für das weitere Vorgehen im Zusammenhang mit Matrizen die zwei folgenden Fragen:
+Klar ist, dass jede Ursprungsaffinität sicher einen Fixpunkt hat, nämlich den Ursprung $O$. Damit stellen sich f\"Ur das weitere Vorgehen im Zusammenhang mit Matrizen die zwei folgenden Fragen:
 
 \begin{itemize}
 \item Existieren ausser $O$ noch weitere Fixpunkte? Und falls ja, unter welcher Bedingung?
 \item Besitzt eine Ursprungsaffinität vielleicht auch Fixgeraden, und wie werden diese bestimmt?
 \end{itemize}
 
-Die Behandlung der zweiten Frage wird auf den Begriff des \emph{Eigenvektors} führen, der nicht nur hier, sondern auch bei ganz anderen Fragestellungen von Bedeutung ist.
+Die Behandlung der zweiten Frage wird auf den Begriff des \emph{Eigenvektors} f\"Uhren, der nicht nur hier, sondern auch bei ganz anderen Fragestellungen von Bedeutung ist.
 
 \subsection{Fixpunkte bei Ursprungsaffinitäten}
 
@@ -1700,7 +1699,7 @@ Dieses Gleichungssystem wird häufig folgendermassen geschrieben:
 a_{21}x+(a_{22}-1)y & = 0
 \end{align*}
 
-Es handelt sich hier um ein homogenes lineares Gleichungssystem (die Konstanten fehlen, bzw. sind Null). Ein solches Gleichungssystem hat in jedem Fall die sogenannte triviale Läsung $x = y = 0$. Ob noch weitere (nicht triviale) Läsungen existieren, hängt nun von der Determinante des Systems ab; also von
+Es handelt sich hier um ein homogenes lineares Gleichungssystem (die Konstanten fehlen, bzw. sind Null). Ein solches Gleichungssystem hat in jedem Fall die sogenannte triviale Lösung $x = y = 0$. Ob noch weitere (nicht triviale) Lösungen existieren, hängt nun von der Determinante des Systems ab; also von
 $$
 \det(A-E)=
 \begin{vmatrix}
@@ -1712,8 +1711,8 @@ $$
 
 Es werden die folgenden Fälle unterschieden:
 \begin{description}
-\item[$D\neq0$:] Das System besitzt wegen der Bijektivität der durch das homogene Gleichungssystem repräsentierten Matrix nur eine, nämlich die triviale Läsung $x = y = 0$; d.h. es gibt ausser dem Ursprung keine weiteren Fixpunkte.
-\item[$D=0$:] Neben der trivialen Läsung existieren unendlich viele, zusätzliche Läsungen. Die beiden Gleichungen des homogenen Gleichungssystems sind linear abhängig (Vielfache voneinander) und liefern somit redundante Informationen. Was bleibt ist eine (lineare) Gleichung, die gerade die Menge der Fixpunkte beschreibt. In diesem Fall existiert also eine Fixpunktgerade.
+\item[$D\neq0$:] Das System besitzt wegen der Bijektivität der durch das homogene Gleichungssystem repräsentierten Matrix nur eine, nämlich die triviale Lösung $x = y = 0$; d.h. es gibt ausser dem Ursprung keine weiteren Fixpunkte.
+\item[$D=0$:] Neben der trivialen Lösung existieren unendlich viele, zusätzliche Lösungen. Die beiden Gleichungen des homogenen Gleichungssystems sind linear abhängig (Vielfache voneinander) und liefern somit redundante Informationen. Was bleibt ist eine (lineare) Gleichung, die gerade die Menge der Fixpunkte beschreibt. In diesem Fall existiert also eine Fixpunktgerade.
 
 Ein Spezialfall liegt dann vor, wenn das homogene Gleichungssystem lauter Nullen aufweist, es sich also bei der Abbildungsmatrix $A$ um die Einheitsmatrix $E$ handelt. In diesem Fall ist jeder Punkt der Ebene ein Fixpunkt ($\ga$ ist die Identitätabbildung).
 \end{description}
@@ -1723,7 +1722,7 @@ Ein Spezialfall liegt dann vor, wenn das homogene Gleichungssystem lauter Nullen
 Von besonderem Interesse scheint der Fall zu sein, wenn eine Affinität genau
 eine Fixpunktgerade besitzt. Man definiert
 
-\begin{cdef}
+\begin{cdef}{}
 Eine Affinität $\ga$, die genau eine Fixpunktgerade $g$ besitzt, wird \textbf{axiale} oder \textbf{perspektive Affinität} genannt. Ihre Fixpunktgerade $g$ heisst \textbf{Affinitätsachse}.
 \end{cdef}
 
@@ -1783,10 +1782,10 @@ Umgeformt wie im vorhergehenden Kapitel ergibt sich
 a_{21}x+(a_{22}-\gl)y &= 0
 \end{align*}
 
-\begin{cdef}
+\begin{cdef}{}
 Existiert ein Vektor
 $$\vr=\pv{x}{y}\neq\V{0},$$
-der obiges Gleichungssystem erfüllt, so heisst er \textbf{Eigenvektor} der Matrix $A$. Das zugehärige $\gl$ heisst \textbf{Eigenwert}.
+der obiges Gleichungssystem erf\"Ullt, so heisst er \textbf{Eigenvektor} der Matrix $A$. Das zugehärige $\gl$ heisst \textbf{Eigenwert}.
 \end{cdef}
 
 \begin{bem}
@@ -1796,7 +1795,7 @@ dabei keine Rolle. Sie alle besitzen immer denselben Eigenwert $\gl$.
 
 Um die Eigenvektoren und Eigenwerte zu bestimmen, ist die Determinante des homogenen Systems von Wichtigkeit:
 \begin{description}
-\item[$\det(A-\gl E)\neq0$:] Das homogene System besitzt nur die triviale Läsung $x=y=0$; d.h. die Abbildungsmatrix besitzt keine Fixgerade.
+\item[$\det(A-\gl E)\neq0$:] Das homogene System besitzt nur die triviale Lösung $x=y=0$; d.h. die Abbildungsmatrix besitzt keine Fixgerade.
 \item[$\det(A-\gl E)=0$:] Die zugehärige Gleichung
 $$\gl^2-(a_{11}+a_{22})\gl+\det(A)=0$$
 heisst \textbf{charakteristische Gleichung} der Matrix $A$ und bestimmt ob, und falls ja, wie viele Fixgeraden die Abbildung $\ga$ besitzt.
@@ -1855,7 +1854,7 @@ gegeben ist. Zeichne jeweils die Fixgeraden in die beiden Koordinatensysteme ein
 
 \subsection{Berechnungsbeispiele}
 
-Eine Matrix $A$ kann also genau zwei, genau einen oder keinen Eigenwert haben. Zudem haben einem die †bungen der vorherigen Seite vor Augen geführt, dass aufgrund der Anzahl Eigenwerte nicht zwangsläufig auf die Anzahl Fixgeraden geschlossen werden kann. Im Folgenden sollen die drei Fälle noch etwas genauer anhand von Beispielen analysiert werden.
+Eine Matrix $A$ kann also genau zwei, genau einen oder keinen Eigenwert haben. Zudem haben einem die \"Ubungen der vorherigen Seite vor Augen gef\"Uhrt, dass aufgrund der Anzahl Eigenwerte nicht zwangsläufig auf die Anzahl Fixgeraden geschlossen werden kann. Im Folgenden sollen die drei Fälle noch etwas genauer anhand von Beispielen analysiert werden.
 
 \begin{description}
 \item[keine Eigenwerte] In diesem Fall besitzt die Ursprungsaffinität auch keine Fixgerade. Warum?
@@ -1864,7 +1863,7 @@ Drehung um $O$ um den Winkel $\varphi\neq k\cdot180\circ$ mit $k\in\mZ$.
 \end{bsp}
 \item[genau ein Eigenwert] Wir haben gesehen, dass es zu einem Eigenwert durchaus auch mehrere Fixgeraden geben kann; genauer, unendlich viele. Dieser Fall kann aber nur dann eintreten, wenn die Matrix
 $$\mat{a_{11}-\gl}{a_{12}}{a_{21}}{a_{22}-\gl}$$
-die Nullmatrix ist (nur dann kännen $x$ und $y$ frei gewählt werden). Das bedeutet aber, dass in der Hauptdiagonalen überall $\gl$ stehen muss ($a_{11}=a_{22}=\gl$) und in der Nebendiagonalen lauter Nullen ($a_{12}=a_{21}=0$). Bei dieser Abbildung muss es sich also gerade um eine Streckung handeln.
+die Nullmatrix ist (nur dann können $x$ und $y$ frei gewählt werden). Das bedeutet aber, dass in der Hauptdiagonalen \"Uberall $\gl$ stehen muss ($a_{11}=a_{22}=\gl$) und in der Nebendiagonalen lauter Nullen ($a_{12}=a_{21}=0$). Bei dieser Abbildung muss es sich also gerade um eine Streckung handeln.
 In allen anderen Fällen (mit genau einem Eigenwert), hat man es mit einer Fixgeraden durch den Ursprung zu tun.
 \begin{bsp}
 Besitzt die Scherung
@@ -1906,7 +1905,7 @@ auf Fixgeraden und zeichne sie ins unten stehende Koordinatensystem
 \end{enumeratea}
 \end{ueb}
 
-\subsection{Überblick}
+\subsection{\"Uberblick}
 Eine Ursprungsaffinität kann genau zwei verschiedene, genau einen oder keinen Eigenwert besitzen.
 \begin{itemize}
 \item Besitzt die Ursprungsaffinität zwei verschiedene Eigenwerte ungleich $1$, so existieren zwei verschiedene Ursprungsgeraden, die Fixgeraden sind.
@@ -1937,7 +1936,7 @@ $$\pv{x'}{y'}=\mat{5}{1}{-1}{3}\pv{x}{y}$$
 Gegeben sei die Matrix
 $$A=\mat{2}{-1}{p}{3}.$$
 \begin{enumeratea}
-\item Für welche $p$ hat die durch $A$ repräsentierte Abbildung zwei Fixgeraden, eine bzw. keine Fixgerade durch den Ursprung.
+\item F\"Ur welche $p$ hat die durch $A$ repräsentierte Abbildung zwei Fixgeraden, eine bzw. keine Fixgerade durch den Ursprung.
 \item Wie muss $p$ gewählt werden, damit die eine Fixgerade die Gerade
 $$g:y=\frac{2}{5}$$
 ist?
@@ -1952,7 +1951,7 @@ Wie sehen die entsprechenden Fixgeraden aus?
 
 \subsection{Diagonalisieren}
 
-\begin{cdef}
+\begin{cdef}{}
 Eine
 \marginnote{
 \qrcode{
@@ -1962,16 +1961,16 @@ https://www.youtube.com/watch?v=FHEa4M5i8ck}
 \end{cdef}
 
 Besitzt die Matrix $A$ einer Ursprungsaffinität $\ga$ die verschiedenen Eigenwerte $\gl_1\neq\gl_2$ und damit auch zwei linear unabhängige
-\footnote{Man kann zeigen, dass zu zwei verschiedenen Eigenwerten immer auch zwei linear unabhängige Eigenvektoren gehären.}
+\footnote{Man kann zeigen, dass zu zwei verschiedenen Eigenwerten immer auch zwei linear unabhängige Eigenvektoren gehören.}
 Eigenvektoren $\V{v_1}$ und $\V{v_2}$, so werden alle Punkte auf der Fixgeraden $g_1$ bzw. $g_2$ mit dem entsprechenden Faktor $\gl_1$ bzw. $\gl_2$ zentrisch vom Ursprung aus gestreckt. Damit ist die Ursprungsaffinität eindeutig bestimmt. Wäre $\set{\V{v_1},\V{v_2}}$ die
 Basis unseres Koordinatensystems, so hätte die Matrix $A$ die Diagonalgestalt
 $$\mat{\gl_1}{0}{0}{\gl_2}$$
 und die Abbildung damit einfach zu verstehen. Leider sind sie es aber in der Regel nicht.
 
-Dennoch, mit Hilfe eines Basiswechsels kann diese interpretationsfreundliche Situation geschaffen werden. Die Matrix $A$ der Ursprungsaffinität $\ga$ kann nämlich durch †berführen der Eigenvektoren $\V{v_1}, \V{v_2}$ in die Standardbasis $\ex, \ey$ (Matrix $X^{-1}$), anschliessendem Anwenden der Diagonalmatrix
+Dennoch, mit Hilfe eines Basiswechsels kann diese interpretationsfreundliche Situation geschaffen werden. Die Matrix $A$ der Ursprungsaffinität $\ga$ kann nämlich durch \"Uberf\"Uhren der Eigenvektoren $\V{v_1}, \V{v_2}$ in die Standardbasis $\ex, \ey$ (Matrix $X^{-1}$), anschliessendem Anwenden der Diagonalmatrix
 $$D=\mat{\gl_1}{0}{0}{\gl_2}$$
-und schliesslich Rücktransformation der
-Standardbasis in die Eigenvektoren (Matrix $X$) ausgedrückt werden:
+und schliesslich R\"Ucktransformation der
+Standardbasis in die Eigenvektoren (Matrix $X$) ausgedr\"Uckt werden:
 $$A=X\cdot D\cdot X^{-1}.$$
 Die Spaltenvektoren des Basiswechsels $X$ entsprechen dabei gerade den Eigenvektoren $\V{v_1}, \V{v_2}$ Durch Linksmultiplikation mit $X^{-1}$ und Rechtsmultiplikation mit $X$ folgt daraus der folgende
 
@@ -1992,15 +1991,15 @@ $$A=\mat{1}{2}{3}{2}.$$
 \subsubsection{Verkehrszählung}
 
 \begin{bsp}
-Über Verkehrszählungen wurde ermittelt, dass $80\%$ der Pendler, die mit äffentlichen Verkehrsmitteln zur Arbeit fahren, auch im nächsten Jahr äffentliche Verkehrsmittel benützen wollen. $20\%$ bekunden allerdings aufs Auto umzusteigen. Von den Autofahren wollen auch im nächsten Jahr $60\%$ dem Auto treu bleiben, dagegen wollen $40\%$ auf äffentliche Verkehrsmittel wechseln. Ist $a_n$ die Zahl der Autofahrer im Jahr $n$, und steht $o_n$, für die Nutzerzahl des äffentlichen Nahverkehrs, dann kann dieses Verhalten als Matrixmultiplikation
+\"Uber Verkehrszählungen wurde ermittelt, dass $80\%$ der Pendler, die mit öffentlichen Verkehrsmitteln zur Arbeit fahren, auch im nächsten Jahr öffentliche Verkehrsmittel ben\"Utzen wollen. $20\%$ bekunden allerdings aufs Auto umzusteigen. Von den Autofahren wollen auch im nächsten Jahr $60\%$ dem Auto treu bleiben, dagegen wollen $40\%$ auf öffentliche Verkehrsmittel wechseln. Ist $a_n$ die Zahl der Autofahrer im Jahr $n$, und steht $o_n$, f\"Ur die Nutzerzahl des öffentlichen Nahverkehrs, dann kann dieses Verhalten als Matrixmultiplikation
 $$\pv{a_{n+1}}{o_{n+1}}=\mat{0.6}{0.2}{0.4}{0.8}\cdot\pv{a_n}{o_n}$$
 dargestellt werden.
 
-Verkehrsplaner interessieren sich dabei für die Prognosen des Individual- und äffentlichen Verkehrs der nächsten Jahre; zum Beispiel, wie das Verkehrsverhalten in 10 Jahren aussehen wird. Also
+Verkehrsplaner interessieren sich dabei f\"Ur die Prognosen des Individual- und öffentlichen Verkehrs der nächsten Jahre; zum Beispiel, wie das Verkehrsverhalten in 10 Jahren aussehen wird. Also
 $$
 \pv{a_{10}}{o_{10}}=\mat{0.6}{0.2}{0.4}{0.8}\cdot\pv{a_9}{o_9}=\mat{0.6}{0.2}{0.4}{0.8}^2\cdot\pv{a_8}{o_8}=\dots=\mat{0.6}{0.2}{0.4}{0.8}^{10}\cdot\pv{a_0}{o_0}
 $$
-Es stellt sich also die Frage, wie Matrizen effizient potenziert werden kännen. Des weiteren interessiert vielleicht auch die Frage, ob es einen stationären Zustand gibt, also einen Zustand, bei dem sich über ein Jahr (und damit immer) keine zahlenmässigen Verschiebungen mehr ergeben. Das würde dem Fixpunkt der Abbildung entsprechen.
+Es stellt sich also die Frage, wie Matrizen effizient potenziert werden können. Des weiteren interessiert vielleicht auch die Frage, ob es einen stationären Zustand gibt, also einen Zustand, bei dem sich \"Uber ein Jahr (und damit immer) keine zahlenmässigen Verschiebungen mehr ergeben. Das w\"Urde dem Fixpunkt der Abbildung entsprechen.
 \end{bsp}
 
 \subsubsection{Fibonacci-Zahlen und goldener Schnitt}
@@ -2042,17 +2041,17 @@ Es seien $A,B\in\text{Mat}(2\times2)$ invertierbar.
 \end{enumeratea}
 \end{ueb}
 
-\begin{cdef}
+\begin{cdef}{}
 Eine Matrix $A$ heisst \textbf{symmetrisch}, wenn $a_{12}=a_{21}.$
 \end{cdef}
 
 \begin{ueb}
 \ \\[-4ex]
 \begin{enumeratea}
-\item Zeige für die symmetrische Matrix
+\item Zeige f\"Ur die symmetrische Matrix
 $$A=\mat{1}{2}{2}{-2},$$
 dass ihre Eigenvektoren senkrecht aufeinander stehen.
-\item Zeige für die symmetrische Matrix
+\item Zeige f\"Ur die symmetrische Matrix
 $$B=\mat{1}{1}{1}{5},$$
 dass ihre Eigenvektoren senkrecht aufeinander stehen.
 \item Beweise obige Behauptung allgemein.
@@ -2073,14 +2072,14 @@ mit den Startwerten $a_1 =0$ und $a_2 =1$ bzw. $a_1 =-1$ und $a_2 =1$.
 \end{ueb}
 
 \begin{ueb}
-Versuche --- falls mäglich --- eine allgemeine, explizite Formel für die rekursiv definierten Folgen der Art $$a_k = p \cdot a_{k-1} + q \cdot a_{k-2}$$
+Versuche --- falls möglich --- eine allgemeine, explizite Formel f\"Ur die rekursiv definierten Folgen der Art $$a_k = p \cdot a_{k-1} + q \cdot a_{k-2}$$
 herzuleiten.
 \end{ueb}
 
 \subsection{Diagonalisieren von \glqq nicht-diagonalisierbaren\grqq\ Matrizen}
 
-\begin{cdef}
-Eine \textbf{obere} bzw. \textbf{untere Dreiecksmatrix} ist eine Matrix, deren Hauptdiagonalenelemente alle verschieden von Null sind ($a_{ii}\neq0$) und alle oberen Elemente $a_{ij} = 0$ für $i < j$ oder alle unteren Elemente $a_{ij} = 0$ für $i > j$.
+\begin{cdef}{}
+Eine \textbf{obere} bzw. \textbf{untere Dreiecksmatrix} ist eine Matrix, deren Hauptdiagonalenelemente alle verschieden von Null sind ($a_{ii}\neq0$) und alle oberen Elemente $a_{ij} = 0$ f\"Ur $i < j$ oder alle unteren Elemente $a_{ij} = 0$ f\"Ur $i > j$.
 \end{cdef}
 
 \begin{bsp}
@@ -2115,7 +2114,7 @@ Das charakteristische Polynom einer $2 \times 2$-Matrix besitze eine (doppelte) 
 \begin{ueb}
 Diagonalisiere die Matrix
 $$A=\mat{1}{-1}{1}{3}$$
-so weit als mäglich, d.h. bringe sie in Dreiecksgestalt.
+so weit als möglich, d.h. bringe sie in Dreiecksgestalt.
 \end{ueb}
 
 \begin{ueb}
@@ -2127,7 +2126,7 @@ Bestimme das explizite Bildungsgesetz der rekursiv definierten Folgen
 \end{ueb}
 
 \begin{bem}
-Besitzt eine Matrix keinen Eigenwert, so kann die Matrix natürlich nicht in Dreiecks- und schon gar nicht in Diagonalgestalt gebracht werden. Es gibt dann also keine Basis, entlang der \glqq gestreckt\grqq\ wird.
+Besitzt eine Matrix keinen Eigenwert, so kann die Matrix nat\"Urlich nicht in Dreiecks- und schon gar nicht in Diagonalgestalt gebracht werden. Es gibt dann also keine Basis, entlang der \glqq gestreckt\grqq\ wird.
 
 Es stellt sich heraus, dass es sich bei solch gearteten Matrizen um Abbildungen handelt, die unter anderem eine Drehung beinhalten. Eine abschliessende Betrachtung folgt.
 \end{bem}
@@ -2138,7 +2137,7 @@ Es stellt sich heraus, dass es sich bei solch gearteten Matrizen um Abbildungen 
 
 \section{Ausblick auf quadratische Matrizen höherer Ordnung}
 
-Bis jetzt haben wir ausschliesslich affine Abbildungen des $\mR^2$ betrachtet. Natürlich kann die entwickelte Theorie auch auf Räume häherer Dimension übertragen werden. Vieles bleibt sich dabei gleich oder zumindest ähnlich. Im folgenden werden wir uns kurz mit $3 \times 3$-Matrizen auseinandersetzen:
+Bis jetzt haben wir ausschliesslich affine Abbildungen des $\mR^2$ betrachtet. Nat\"Urlich kann die entwickelte Theorie auch auf Räume höherer Dimension \"Ubertragen werden. Vieles bleibt sich dabei gleich oder zumindest ähnlich. Im folgenden werden wir uns kurz mit $3 \times 3$-Matrizen auseinandersetzen:
 $$\begin{pmatrix}
 a_{11}&a_{12}&a_{13}\\
 a_{21}&a_{22}&a_{23}\\
@@ -2158,11 +2157,11 @@ und besitzt folgende Eigenschaften:
 \end{itemize}
 
 \begin{bem}
-Der Eigenraum zu einem Eigenwert im $\mR^2$ war eindimensional (ausser bei einer Streckung). Im $\mR^3$ ist das ganze etwas vielfältiger. Existieren drei verschiedenen Eigenwerte, dann besitzen die Eigenräume zu den entsprechenden Eigenwerten jeweils die Dimension $1$. Existieren hingegen nur zwei verschiedene Eigenwerte (einer mit der Vielfachheit 1 und der andere mit der Vielfachheit 2), so kann derjenige mit der Vielfachheit 2 einen Eigenraum besitzen, der die Dimension 2 oder 1 hat. Der andere Eigenwert mit der Vielfachheit 1 besitzt hingegen zwangsläufig einen Eigenraum der Dimension 1. In diesem Zusammenhang wird von der mäglichen Diskrepanz von \textbf{algebraischer} versus \textbf{geometrischer Vielfachheit} gesprochen.
+Der Eigenraum zu einem Eigenwert im $\mR^2$ war eindimensional (ausser bei einer Streckung). Im $\mR^3$ ist das ganze etwas vielfältiger. Existieren drei verschiedenen Eigenwerte, dann besitzen die Eigenräume zu den entsprechenden Eigenwerten jeweils die Dimension $1$. Existieren hingegen nur zwei verschiedene Eigenwerte (einer mit der Vielfachheit 1 und der andere mit der Vielfachheit 2), so kann derjenige mit der Vielfachheit 2 einen Eigenraum besitzen, der die Dimension 2 oder 1 hat. Der andere Eigenwert mit der Vielfachheit 1 besitzt hingegen zwangsläufig einen Eigenraum der Dimension 1. In diesem Zusammenhang wird von der möglichen Diskrepanz von \textbf{algebraischer} versus \textbf{geometrischer Vielfachheit} gesprochen.
 \end{bem}
 
 \begin{ueb}
-Diagonalisiere, wenn mäglich, die Matrizen
+Diagonalisiere, wenn möglich, die Matrizen
 $$A=
 \begin{pmatrix}
 0&0&-2\\
@@ -2195,7 +2194,7 @@ Berechne
 \qrcode{
 https://www.youtube.com/watch?v=kZgzVFJgKxM}
 }
-die Determinanten der 5 Abbildungsmatrizen aus Übung \ref{ueb:mats}. Gibt es eine Gesetzmässigkeit, die das Vorzeichen der Determinante betrifft?
+die Determinanten der 5 Abbildungsmatrizen aus \"Ubung \ref{ueb:mats}. Gibt es eine Gesetzmässigkeit, die das Vorzeichen der Determinante betrifft?
 \end{ueb}
 
 \begin{ueb}
