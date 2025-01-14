@@ -1,4 +1,5 @@
 \documentclass[%
+<<<<<<< Updated upstream
 %draft,%
 11pt,%
 %oneside,%
@@ -8,10 +9,18 @@ titlepage,%
 %fleqn,%
 %a4page,%
 german,%
+=======
+%draft,
+11pt,%
+twoside,%
+titlepage,%
+swissgerman,%
+>>>>>>> Stashed changes
 headsepline%
 ]{scrartcl}
 
 \usepackage{lastpage}
+<<<<<<< Updated upstream
 \usepackage{geometry}
 \usepackage{graphicx}
 \usepackage[utf8]{inputenc}
@@ -24,6 +33,30 @@ headsepline%
 \usepackage{nicefrac}
 \usepackage{pgf,tikz}
 \usetikzlibrary{arrows}
+=======
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[utf8]{inputenc}
+\usepackage[swissgerman]{babel}
+\usepackage{lscape}
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage[most]{tcolorbox}
+\usepackage{enumerate}
+\usepackage{units}
+\usepackage{nicefrac}
+\usepackage{pgf,tikz}
+\usepackage{tikz-3dplot}
+\usepackage{tkz-euclide}
+\usetikzlibrary{arrows}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{patterns}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shadows}
+\usetikzlibrary{quotes, angles}
+>>>>>>> Stashed changes
 \usepackage{colortbl}
 \usepackage{hhline}
 \usepackage{multirow}
@@ -34,6 +67,7 @@ headsepline%
 \usepackage{pdfpages}
 \usepackage{hyperref}
 \usepackage{framed}
+<<<<<<< Updated upstream
 \usetikzlibrary{arrows}
 \usetikzlibrary{positioning}
 \usetikzlibrary{shadows}
@@ -50,26 +84,48 @@ headsepline%
 %[draft]%
 {qrcode}
 \qrset{height=9ex}
+=======
+
+\usepackage{marginnote}
+\usepackage{qrcode}
+\qrset{height=7ex}
+>>>>>>> Stashed changes
 
 \usepackage{longtable}
 \usepackage{listings}
 \usepackage{wrapfig}
 
 \usepackage{fontawesome} % Oder FontAwesome, falls du ein Augensymbol aus einer
+<<<<<<< Updated upstream
 \definecolor{lightgray}{rgb}{0.7, 0.7, 0.7}
 \newcommand{\faEyeLightGray}{\textcolor{lightgray}{\faEye}} % Custom command for the gray eye icon
 
 \newcommand{\geogebralink}{\href{https://www.geogebra.org/calculator}{\texttt{geogebra.org}}}
+=======
+\newcommand{\faEyeLightGray}{\textcolor{lightgray}{\faEye}} % Custom command for the gray eye icon
+\newcommand{\faReturnGray}{\textcolor{gray}{\faMailReply}} % Custom command for the gray eye icon
+\usepackage{pifont} % weitere Zeichen
+
+% package für plots mit dem Befehl axes
+\usepackage{pgfplots}
+
+
+>>>>>>> Stashed changes
 
 % Command, um Tabellen-Spalten anzupassen
 \newcommand{\spaltenheight}{\rule{0mm}{3ex}}
 \newcommand{\spaltenwidth}{\rule{3cm}{0mm}}
 \newcommand{\spaltensep}{\\[1ex]}
+<<<<<<< Updated upstream
+=======
+%\arrayrulecolor{darkgreen}
+>>>>>>> Stashed changes
 \doublerulesepcolor{white}
 
 % colors
 \definecolor{lightyellow}{rgb}{1,1,0.8}
 \definecolor{Gray}{gray}{0.9}
+<<<<<<< Updated upstream
 \definecolor{darkblue}{rgb}{0,0,0.55}
 \definecolor{firebrick}{rgb}{0.7,0.13,0.13}
 \definecolor{seagreen}{rgb}{0.18,0.55,0.34}
@@ -79,6 +135,88 @@ headsepline%
 % Farbig umrahmte Umgebung Satz
 \definecolor{myblizzardblue}{HTML}{87CEEB}
 
+=======
+\definecolor{lightgray}{rgb}{0.7, 0.7, 0.7}
+\definecolor{darkblue}{rgb}{0,0,0.55}
+\definecolor{firebrick}{rgb}{0.7,0.13,0.13}
+\definecolor{seagreen}{rgb}{0.18,0.55,0.34}
+\definecolor{emerald}{HTML}{50C878} % color of Definition
+\definecolor{whitesmoke}{HTML}{F5F5F5} % background for environments
+\definecolor{myblizzardblue}{HTML}{87CEEB} % color of Satz
+
+% Für Definitionen im Fliesstext
+\newcommand{\definition}[1]{\colorbox{emerald}{#1}}
+% Für Regeln im Fliesstext
+\newcommand{\regel}[1]{\colorbox{myblizzardblue}{#1}}
+% Für Merke/Achtungs im Fliesstext
+\newcommand{\merke}[1]{\colorbox{firebrick}{#1}}
+% Geogebra-Link
+\newcommand{\geogebralink}{\href{https://www.geogebra.org/calculator}{\texttt{geogebra.org}}}
+
+% Umgebungen
+\theoremstyle{definition}
+    \newtheorem{bsp}{Beispiel}[subsection] % Beispiele
+    \newtheorem{bem}{Bemerkung}[subsection] % Bemerkungen
+\theoremstyle{plain}
+    \newtheorem{thm}{Theorem} % Theorem [subsection]
+    \newtheorem{satz}{Satz} % Satz [subsection]
+
+% Umgebung lsg mit dynamischer Referenzierung und Label
+\newcommand{\concatueb}[1]{ueb:#1}% Definition für concatueb
+\newcommand{\concatlsg}[1]{lsg:#1}% Definition für concatlsg
+
+\newcounter{uebcounter}[section]
+\renewcommand{\theuebcounter}{\thesection.\arabic{uebcounter}}  % Zählerformat: Abschnitt.Übung
+
+\newenvironment{lsg}[1]{%
+    \par\noindent\textbf{Notizen zu Übung \ref{\concatueb{#1}}}\label{\concatlsg{#1}}
+    \hfill\hyperref[\concatueb{#1}]{\faReturnGray}\par % Hyperref-Button zurück zur Übung
+}{%
+    \par%
+}
+
+\newenvironment{uebenv}[1]{%
+    \refstepcounter{uebcounter}
+    \par\noindent\textbf{Übung \theuebcounter.}%
+    \label{\concatueb{#1}}\hfill\hyperref[\concatlsg{#1}]{\faEyeLightGray}\par
+}{%
+    \par
+}
+
+% Umgebung für Definitionen
+\newcounter{deff}[section]\setcounter{deff}{0}
+\renewcommand{\thedeff}{\arabic{section}.\arabic{deff}}
+
+\newenvironment{cdef}[1][]{%
+    \refstepcounter{deff} 
+    \ifstrempty{#1}%
+    % if condition (without title)
+    {\mdfsetup{%
+        frametitle={%
+            \tikz[baseline=(current bounding box.east),outer sep=0pt]
+            \node[anchor=east,rectangle,fill=emerald]
+            {\strut Definition~\thedeff};}
+        }%
+    % else condition (with title)
+    }{\mdfsetup{%
+        frametitle={%
+            \tikz[baseline=(current bounding box.east),outer sep=0pt]
+            \node[anchor=east,rectangle,fill=emerald]
+            {\strut Definition~\thedeff:~#1};}%
+        }%
+    }%
+% for both conditions
+    \mdfsetup{%
+        innertopmargin=10pt,linecolor=emerald,%
+        backgroundcolor=whitesmoke,%
+        linewidth=2pt,topline=true,%
+        frametitleaboveskip=\dimexpr-\ht\strutbox\relax%
+    } 
+\begin{mdframed}[]\relax}{%
+\end{mdframed}}
+
+% Farbig umrahmte Umgebung Satz
+>>>>>>> Stashed changes
 \newcounter{satzz}[section]\setcounter{satzz}{0}
 \renewcommand{\thesatz}{\arabic{section}.\arabic{satzz}}
 
@@ -108,6 +246,7 @@ headsepline%
         linewidth=2pt,topline=true,%
         frametitleaboveskip=\dimexpr-\ht\strutbox\relax%
     }
+<<<<<<< Updated upstream
  
 \begin{mdframed}[]\relax}{%
 \end{mdframed}}
@@ -258,6 +397,14 @@ headsepline%
 \newcommand{\definition}[1]{\colorbox{emerald}{#1}}
 
 \setlength{\parindent}{0pt}
+=======
+\begin{mdframed}[]\relax}{%
+\end{mdframed}}
+
+% kein Einzug bei neuem Abschnitt
+\setlength{\parindent}{0pt} \setlength{\parskip}{1em}
+\pagestyle{headings} % gemachte Einstellungen anwenden
+>>>>>>> Stashed changes
 
 \subject{\includegraphics[width=0.618\textwidth]{pictures/springbrunnen.jpg}}
 \title{Funktionentypen}
@@ -325,7 +472,11 @@ Ausgehend von obiger Funktion $h$: Wie viele Meter \"uber dem Boden ist der Stei
 \begin{bsp}
 Die Funktion, welche vorschreibt, eine Zahl zu quadrieren notiert man kurz mit
 $$f(x)=x^2.$$
+<<<<<<< Updated upstream
 Es ist dann beispielsweise $f(2)=2^2=4$, $f(0)=0^2=0$, $f(-3)=(-3)^2=9$,\dots. Praktisch ist h\"aufig die Illustration einer Funktion in einem Koordinatensystem. Man tr\"agt ausgew\"ahlte Zahlenpaare $\point{2}{4}$, $\point{0}{0}$, $\point{-3}{9}$,\dots ein.
+=======
+Es ist dann beispielsweise $f(2)=2^2=4$, $f(0)=0^2=0$, $f(-3)=(-3)^2=9$,\dots. Praktisch ist h\"aufig die Illustration einer Funktion in einem Koordinatensystem. Man tr\"agt ausgew\"ahlte Zahlenpaare $(2|4)$, $(0|0)$, $(-3|9)$,\dots ein.
+>>>>>>> Stashed changes
 \end{bsp}
 \begin{bem}
 In $y=f(x)$ heisst $x$ \textbf{Argument von $f$} und $y$ bzw. $f(x)$ \textbf{Funktionswert/Bild von $x$}.
@@ -376,7 +527,11 @@ f\"ur einen Wert $x$ der Definitionsmenge $f(x)=0$, so heisst $x$ Nullstelle der
 Nullstellen sind also --- wie der Name sagt --- diejenigen Stellen, an denen der Funktionswert just $0$ ist.
 
 \begin{uebenv}{nullstellen}
+<<<<<<< Updated upstream
 Ermittle die maximale Definitionsmenge $\mD$, die minimale Wertemenge $\mW$ und die Nullstellen der Funktionen
+=======
+Ermittle die maximale Definitionsmenge $\mathbb{D}$, die minimale Wertemenge $\mathbb{W}$ und die Nullstellen der Funktionen
+>>>>>>> Stashed changes
 
 \begin{enumerate}[a)]
 	\item $f(x)=2x-6$
@@ -412,8 +567,13 @@ Sei
 \qrcode{
 https://www.youtube.com/watch?v=gvtV3bGVE2U}
 }
+<<<<<<< Updated upstream
 $f:\mD\longrightarrow\mW$ eine Funktion. Die Menge aller Punkte
 $$\setm{\point{x}{y}}{y=f(x),x\in\mD}$$
+=======
+$f:\mathbb{D}\longrightarrow\mathbb{W}$ eine Funktion. Die Menge aller Punkte
+$$\{(x|y)|y=f(x),x\in\mathbb{D}\}$$
+>>>>>>> Stashed changes
 heisst \textbf{Graph} der Funktion $f$.
 \end{cdef}
 
@@ -467,7 +627,11 @@ dann heisst $f^{-1}$ mit $f^{-1}(f(x))=x$ die Inversfunktion von $f$
 
 \begin{uebenv}{inversezuquad}
 Kann man, ausgehend von der Funktion
+<<<<<<< Updated upstream
 $$f(x)=x^2,\qq\mD=\mR,$$
+=======
+$$f(x)=x^2,\quad\quad\mathbb{D}=\mathbb{R},$$
+>>>>>>> Stashed changes
 eine Inversfunktion angeben?
 \end{uebenv}
 
@@ -564,7 +728,11 @@ gibt die durchschnittliche \"Anderung der Funktion im Intervall $[x_1,x_2]$ an. 
 
 \begin{cdef}[Intervall]
 Die Menge
+<<<<<<< Updated upstream
 $$\setm{x\in\mR}{x_1\leq x \leq x_2}$$
+=======
+$$(x\in\mathbb{R}|x_1\leq x \leq x_2\}$$
+>>>>>>> Stashed changes
 wird Intervall genannt und mit $[x_1,x_2]$ bezeichnet. Selbstverst\"andlich muss der Funktionswert an jeder Stelle des Intervalls definiert sein, d.h. das Intervall ist eine Teilmenge der De\-fi\-ni\-tions\-menge von $f$.
 \end{cdef}
 
@@ -852,7 +1020,11 @@ Eine
 https://www.youtube.com/watch?v=FviMrIW3_0Q}
 }
 Funktion heisst quadratisch, wenn sie sich mit einer Funktionsgleichung der Form
+<<<<<<< Updated upstream
 $$f(x) = ax^2+bx+c\q(a\neq0)$$
+=======
+$$f(x) = ax^2+bx+c\quad(a\neq0)$$
+>>>>>>> Stashed changes
 darstellen l\"asst.
 \end{cdef}
 
@@ -930,7 +1102,11 @@ https://www.youtube.com/watch?v=nKFtpmfmdsc}
 }
 dass f\"ur eine quadratische Funktionen der Form
 $$f(x)=ax^2$$
+<<<<<<< Updated upstream
 ein beliebiger Punkt $Q$ auf der Parabel von $f$ vom Brennpunkt $\point{0}{\frac{1}{4a}}$ und von der Leitlinie $l(x)=-\frac{1}{4a}$ den gleichen Abstand hat.
+=======
+ein beliebiger Punkt $Q$ auf der Parabel von $f$ vom Brennpunkt $(0|\frac{1}{4a})$ und von der Leitlinie $l(x)=-\frac{1}{4a}$ den gleichen Abstand hat.
+>>>>>>> Stashed changes
 Wieso reicht es, dies nur f\"ur die Normalparabel zu zeigen?
 \end{uebenv}
 
@@ -1065,7 +1241,11 @@ Folgende Bilder zu Anwendungen von quadratischen Funktionen unter Ausn\"utzung d
 \end{wrapfigure}
 Wir haben gesehen, dass der Graph von
 $$f(x)=ax^2$$
+<<<<<<< Updated upstream
 eine Parabel ist. Die Parabel ist f\"ur $a>0$ nach oben, f\"ur $a<0$ nach unten ge\"offnet. F\"ur $\abs{a}<1$ ist sie weiter, f\"ur $\abs{a}>1$ enger als die Normalparabel. lhr Scheitel ist $S(0|0)$.
+=======
+eine Parabel ist. Die Parabel ist f\"ur $a>0$ nach oben, f\"ur $a<0$ nach unten ge\"offnet. F\"ur $|a|<1$ ist sie weiter, f\"ur $|a|>1$ enger als die Normalparabel. lhr Scheitel ist $S(0|0)$.
+>>>>>>> Stashed changes
 
 Der
 \marginnote{
@@ -1073,8 +1253,13 @@ Der
 https://www.youtube.com/watch?v=SD8hHTx36zc}
 }
 Graph von
+<<<<<<< Updated upstream
 $$f(x)=ax^2+v\q(a,v\in\mR)$$
 entsteht durch Verschiebung einer Parabel in y-Richtung um $\abs{v}$ Einheiten. F\"ur $v>0$ ist die Parabel nach oben, f\"ur $v<0$ nach unten verschoben. Ihr Scheitel ist $S(0|v)$.
+=======
+$$f(x)=ax^2+v\quad(a,v\in\mathbb{R})$$
+entsteht durch Verschiebung einer Parabel in y-Richtung um $|v|$ Einheiten. F\"ur $v>0$ ist die Parabel nach oben, f\"ur $v<0$ nach unten verschoben. Ihr Scheitel ist $S(0|v)$.
+>>>>>>> Stashed changes
 
 \begin{uebenv}{parabeln}
     Zeichne in ein und dasselbe Koordinatensystem die Graphen
@@ -1088,8 +1273,13 @@ der folgenden Funktionen
 
 
 Der Graph von
+<<<<<<< Updated upstream
 $$f(x)=a(x-u)^2\q(a,u,\in\mR)$$
 entsteht durch Verschiebung einer Parabel in $x$-Richtung um $\abs{u}$ Einheiten. Die Parabel ist f\"ur $u>0$ nach rechts, f\"ur $u<0$ nach links verschoben. Ihr Scheitel ist $S(u|0)$.
+=======
+$$f(x)=a(x-u)^2\quad(a,u,\in\mathbb{R})$$
+entsteht durch Verschiebung einer Parabel in $x$-Richtung um $|u|$ Einheiten. Die Parabel ist f\"ur $u>0$ nach rechts, f\"ur $u<0$ nach links verschoben. Ihr Scheitel ist $S(u|0)$.
+>>>>>>> Stashed changes
 
 Der
 \marginnote{
@@ -1097,11 +1287,19 @@ Der
 https://www.youtube.com/watch?v=XcB4ISS-Oso}
 }
 Graph von
+<<<<<<< Updated upstream
 $$f(x)=a(x-u)^2+v\quad(a,u,v\in\mR)$$
 ist die in x-Richtung um $\abs{u}$ Einheiten und in $y$-Richtung um $\abs{v}$ Einheiten verschobene Parabel mit der Gleichung $y=ax^2$.
 
 \begin{cdef}[Scheitelform]
   Da man in dieser Darstellung aus dem Funktionsterm direkt den Scheitel $S\point{u}{v}$ ablesen kann, nennt man
+=======
+$$f(x)=a(x-u)^2+v\quad(a,u,v\in\mathbb{R})$$
+ist die in x-Richtung um $|u|$ Einheiten und in $y$-Richtung um $|v|$ Einheiten verschobene Parabel mit der Gleichung $y=ax^2$.
+
+\begin{cdef}[Scheitelform]
+  Da man in dieser Darstellung aus dem Funktionsterm direkt den Scheitel $S(u|v)$ ablesen kann, nennt man
+>>>>>>> Stashed changes
   $$f(x) = a(x - u)^2 + v$$
   Scheitelgleichung oder Scheitelform der Parabel.
 \end{cdef}
@@ -1133,12 +1331,20 @@ f(x)&=3x^2-30x+37\\
 &=3[(x-5)^2-25]+37\\
 &=3(x-5)^2-38
 \end{align*}
+<<<<<<< Updated upstream
 Der Scheitel ist somit $S\point{5}{-38}$ und der Graph l\"asst sich sofort skizzieren.
+=======
+Der Scheitel ist somit $S(5|-38)$ und der Graph lässt sich sofort skizzieren.
+>>>>>>> Stashed changes
 \end{bsp}
 
 \begin{cdef}[Polynom 2. Grades]
 Die Funktion
+<<<<<<< Updated upstream
 $$f(x)=ax^2+bx+c \q(a,b,c\in\mR)$$
+=======
+$$f(x)=ax^2+bx+c \quad(a,b,c\in\mathbb{R})$$
+>>>>>>> Stashed changes
 mit $a\neq0$ heisst quadratische Funktion, oder ganzrationales Polynom 2. Grades, falls $a,b,c\in\mathbb{Q}$.
 \end{cdef}
 
@@ -1224,9 +1430,15 @@ Hint: Ermittle gegebenenfalls die Scheitelgleichung und damit die Koordinaten de
 \begin{uebenv}{parabelgl0}
 Ermittle die Scheitelgleichung der Parabel mit dem Scheitel $S$ so, dass sie durch den Punkt $P$ geht.
 \begin{enumerate}[a)]
+<<<<<<< Updated upstream
 \item $S\point{2}{4}$, $P\point{3}{3}$
 \item $S\point{2}{4}$, $P\point{-1}{7}$
 \item $S\point{-2}{-3}$, $P\point{0}{0}$
+=======
+\item $S(2|4)$, $P(3|3)$
+\item $S(2|4)$, $P(-1|7)$
+\item $S(-2|-3)$, $P(0|0)$
+>>>>>>> Stashed changes
 \end{enumerate}
 \end{uebenv}
 
@@ -1244,8 +1456,13 @@ https://www.youtube.com/watch?v=v_QwU5hnazM}
 }
 die Gleichung $y=ax^2+bx+c$ einer Parabel so, dass sie durch die Punkte $A$, $B$ und $C$ geht.
 \begin{enumerate}[a)]
+<<<<<<< Updated upstream
 \item $A\point{1}{0}, B\point{-1}{1}$ und $C\point{2}{1}$
 \item $A\point{1}{2}$, $B\point{3}{4}$ und $C\point{5}{1}$
+=======
+\item $A(1|0), B(-1|1)$ und $C(2|1)$
+\item $A(1|2)$, $B(3|4)$ und $C(5|1)S$
+>>>>>>> Stashed changes
 \end{enumerate}
 \end{uebenv}
 
@@ -1281,7 +1498,11 @@ Begr\"undung: Der Term $(x - u)^2$ ist nicht negativ; f\"ur $a <0$ wird $f(x)\le
 \pagebreak
 
 \begin{uebenv}{minmax1}
+<<<<<<< Updated upstream
     Ermittle das Maximum bzw. das Minimum der folgenden Terme f\"ur $x\in\mR$.
+=======
+    Ermittle das Maximum bzw. das Minimum der folgenden Terme f\"ur $x\in\mathbb{R}$.
+>>>>>>> Stashed changes
 $$x^2 -8x + 25, 3 - 2x - x^2, x^2 + x -18, - x^2 + 6x + 2.$$
 \end{uebenv}
 
@@ -1324,7 +1545,11 @@ soll?
 
 \begin{uebenv}{inversfunktionparabel}
     Kann man, ausgehend von der Funktion
+<<<<<<< Updated upstream
 $$f(x)=x^2,\qq\mD=\mR,$$
+=======
+$$f(x)=x^2,\quad\quad\mathbb{D}=\mathbb{R},$$
+>>>>>>> Stashed changes
 eine Inversfunktion angeben?
 \end{uebenv}
 
@@ -1561,7 +1786,11 @@ Wir lösen $3\times3$-Gleichungssysteme
 Wir wollen unsere Rechenregeln für Potenzen erweitern, um Potenzgesetze
 für reelle Zahlen vollumfänglich verstehen und interpretieren zu können.
 Wir brauchen dazu folgende, bereits bekannte, Regeln und Begriffe.
+<<<<<<< Updated upstream
 \begin{erin}
+=======
+\begin{bem}
+>>>>>>> Stashed changes
   Sie
 \marginnote{
 \qrcode{
@@ -1583,7 +1812,11 @@ Weiter ruft man sich die Definition der $n$-ten Wurzel einer Zahl
 in Erinnerung: Die \emph{$n$-te Wurzel} aus einer positiven Zahl
 $a$, ist diejenige positive Zahl $b$, deren $n$-te Potenz $a$ beträgt.
 Man schreibt dafür $b=:\sqrt[n]{a}$.
+<<<<<<< Updated upstream
 \end{erin}
+=======
+\end{bem}
+>>>>>>> Stashed changes
 
 Die Potenzgesetze funktionieren bis anhin tadellos, wenn $m$ und
 $n$ ganze Zahlen sind. Was ist, wenn man nun im Exponenten rationale
@@ -1594,11 +1827,23 @@ Sollen die Potenzgesetze weiterhin gelten, dann ist also $3^{\frac{1}{2}}\cdot3^
 $\sqrt{3}\cdot\sqrt{3}=3$ und legen deshalb fest:
 $$3^{\frac{1}{2}}=\sqrt{3}.$$
 
+<<<<<<< Updated upstream
 \uebh{sqrt3}{
   Bestimme nach obigem Muster die Wurzeldarstellung von
   $8^{\frac{1}{3}}$. Betrachte dazu $8^{\frac{1}{3}}$ dreimal
   mit sich selbst multipliziert.
   }
+=======
+\begin{uebenv}{drittewurzeleinachtel}
+  Bestimme nach obigem Muster die Wurzeldarstellung von
+  $8^{\frac{1}{3}}$. Betrachte dazu $8^{\frac{1}{3}}$ dreimal
+  mit sich selbst multipliziert.
+  \end{uebenv}
+  
+    \begin{lsg}{drittewurzeleinachtel}
+  $\left(8^{\frac{1}{3}}\right)^3=8$, also muss $8^{\frac{1}{3}}=2=\sqrt[3]{8}$ sein.
+  \end{lsg}
+>>>>>>> Stashed changes
 
 \subsubsection{Erweiterung der Potenzgesetze}
 Offensichtlich kann jede Wurzelart als Potenz mit rationalem Exponenten
@@ -1620,7 +1865,11 @@ Weil wir mit rationalen Exponenten sinnvoll rechnen können gilt allgemein
 Schreibübung.
 \end{proof}
 
+<<<<<<< Updated upstream
 \uebh{potenzgesetze}{
+=======
+\begin{uebenv}{potenzgesetze}
+>>>>>>> Stashed changes
   Schreibe mit einer einzigen Wurzel.
   
   \begin{enumerate}[a)]
@@ -1629,9 +1878,15 @@ Schreibübung.
   	\item $\sqrt[n]{\sqrt[m]{a}}$
 	\item $\sqrt[n]{a}\cdot\sqrt[m]{a}$
   \end{enumerate}
+<<<<<<< Updated upstream
 }
 
 \uebh{TR}{
+=======
+\end{uebenv}
+
+\begin{uebenv}{TR}
+>>>>>>> Stashed changes
 Bestimme mit dem Taschenrechner folgende Werte
 
   \begin{enumerate}[a)]
@@ -1640,6 +1895,7 @@ Bestimme mit dem Taschenrechner folgende Werte
   	\item $\sqrt[1000]{3}$
 	\item $\sqrt[10^6]{3}$
   \end{enumerate}
+<<<<<<< Updated upstream
 }
 
 \uebh{invkehrwert}{%
@@ -1647,6 +1903,15 @@ Berechne die Inversfunktion von $f(x)=\frac{1}{x}$.
 }
 
 \uebh{sqrtofsqrt}{
+=======
+\end{uebenv}
+
+\begin{uebenv}{invkehrwert}
+Berechne die Inversfunktion von $f(x)=\frac{1}{x}$.
+\end{uebenv}
+
+\begin{uebenv}{sqrtofsqrt}
+>>>>>>> Stashed changes
 Führe mit dem TR für eine beliebige, positive Zahl folgendes Verfahren mehrmals durch:
 \begin{enumerate}
 \item $x$ eintippen
@@ -1654,7 +1919,11 @@ Führe mit dem TR für eine beliebige, positive Zahl folgendes Verfahren mehrmal
 \item das Resultat als neues $x$ nehmen
 \end{enumerate}
 Gegen welchen Wert strebt $x$, wenn man diese Schleife oft ausführt?
+<<<<<<< Updated upstream
 }
+=======
+\end{uebenv}
+>>>>>>> Stashed changes
 
 \subsubsection{Potenzen mit irrationalen Exponenten}
 
@@ -1668,7 +1937,11 @@ Beweis akzeptieren wir folgenden
 
 Damit ist das Kapitel Potenzgesetze abgeschlossen; für das gymnasiale Momentum.
 
+<<<<<<< Updated upstream
 \uebh{withoutTR}{
+=======
+\begin{uebenv}{withoutTR}
+>>>>>>> Stashed changes
 Bestimme ohne TR --- wenn möglich exakt, allenfalls näherungsweise --- folgende Werte.
 
 \begin{enumerate}[a)]
@@ -1679,23 +1952,39 @@ Bestimme ohne TR --- wenn möglich exakt, allenfalls näherungsweise --- folgend
 	\item $\pi^\pi$
 	\item $\pi^{0.5}$
 \end{enumerate}
+<<<<<<< Updated upstream
 }
+=======
+\end{uebenv}
+>>>>>>> Stashed changes
 
 \subsection{Potenzfunktionen}
 \begin{cdef}[Potenzfunktion]{}
 Funktionen der Form
+<<<<<<< Updated upstream
 $$f(x)=x^n\q(n\in\mZ)$$
 heissen \textbf{Potenzfunktionen} vom Grad $n$.
 \end{cdef}
 
 \uebh{graphstothepower}{
+=======
+$$f(x)=x^n\quad(n\in\mathbb{Z})$$
+heissen \textbf{Potenzfunktionen} vom Grad $n$.
+\end{cdef}
+
+\begin{uebenv}{graphstothepower}
+>>>>>>> Stashed changes
 Zeichne in dasselbe Koordinatensystem die Graphen der Funktionen
 
 \begin{enumerate}[a)]
 	\item $x^2, x^4, x^{-2}, x^{-4}$
 	\item $x^3, x^5, x^{-1}, x^{-3}.$
 \end{enumerate}
+<<<<<<< Updated upstream
 }
+=======
+\end{uebenv}
+>>>>>>> Stashed changes
 
 \begin{bem}
 Die Graphen der Funktionen $f(x)=x^n$, für $n$ gerade, sind achsensymmetrisch zur $y$-Achse, da für gerade Exponenten $(-x)^n=x^n$. Für $n$ ungerade, sind die Graphen punktsymmetrisch zum Ursprung des Koordinatensystems, da $(-x)^n=-x^n$.
@@ -1707,13 +1996,19 @@ gelegene $x$-Werte werden die Funktionswerte dem Betrage nach beliebig gross, d.
 \end{bem}
 
 \subsection{Wurzelfunktionen}
+<<<<<<< Updated upstream
 \uebh{graphsofsqrts}{
 Zeichne für $x\in\mR^+$ in dasselbe Koordinatensystem die Graphen der Funktionen
+=======
+\begin{uebenv}{graphsofsqrts}
+Zeichne für $x\in\mathbb{R}^+$ in dasselbe Koordinatensystem die Graphen der Funktionen
+>>>>>>> Stashed changes
 
 \begin{enumerate}[a)]
 	\item $f(x)=x^2$ und $g(x)=x^\frac{1}{2}=\sqrt{x}$
 	\item $f(x)=x^3$ und $g(x)=x^\frac{1}{3}=\sqrt[3]{x}$
 \end{enumerate}
+<<<<<<< Updated upstream
 }
 
 \begin{cdef}[Wurzelfunktion]{}
@@ -1736,6 +2031,30 @@ beschreiben. Dabei ist $x$ die Masszahl der in Meter gemessenen Höhe. Der Funkt
 }
 
 \uebh{movex3}{
+=======
+\end{uebenv}
+
+\begin{cdef}[Wurzelfunktion]{}
+Funktionen der Form
+$$f(x)=x^\frac{1}{n}=\sqrt[n]{x}\quad(n\in\mathbb{Z}\setminus\{0\})$$
+heissen \textbf{Wurzelfunktionen}.
+\end{cdef}
+Die Definitionsmenge der Wurzelfunktionen ist $\mathbb{R}^+_0$. Sie sind für $\mathbb{R}_0^+$ die Umkehrfunktionen von $f(x)=x^n$. Ihre Graphen entstehen deswegen aus den Graphen von $f$ durch Spiegelung an der 1. Winkelhalbierenden.
+
+\begin{uebenv}{sqrtgraph}
+Zeichne den Graphen der Quadratwurzelfunktion
+$$f(x)=\sqrt{x}$$
+für $0<x<10$ und die Parallele zur x-Achse durch den Punkt $P(0\mid8)$. Schneidet die Kurve die Parallele, wenn man sie nach rechts fortgesetzt denkt? Falls ja, wo?
+\end{uebenv}
+
+\begin{uebenv}{wind}
+Mit zunehmender Höhe nimmt die Windgeschwindigkeit zu. Für windschwache Gebiete kann man die gegenseitige Abhängigkeit durch die Funktion
+$$f(x)=0.2\sqrt{x}+1$$
+beschreiben. Dabei ist $x$ die Masszahl der in Meter gemessenen Höhe. Der Funktionsterm gibt die in $\nicefrac{m}{s}$ gemessene Windgeschwindigkeit an. Zeichne den Graphen der Funktion für $0<x<600$. In welcher Höhe erreicht die Windgeschwindigkeit $\unitfrac[7]{m}{s}$?
+\end{uebenv}
+
+\begin{uebenv}{movex3}
+>>>>>>> Stashed changes
 Zeichne den Graphen der Funktion
 $$f(x)=\frac{1}{8}x^3.$$
 Verschiebe den Graphen
@@ -1746,16 +2065,25 @@ Verschiebe den Graphen
 1 Einheit nach unten.
 \end{enumerate}
 Gib jeweils die Gleichung der neuen Kurve an.
+<<<<<<< Updated upstream
 }
 
 \uebh{1overx}{
 Zeichne die Graphen der Funktionen
 $$f(x)=x^{-1}-2\q\text{und}\q g(x)=4-x^{-1}$$
+=======
+\end{uebenv}
+
+\begin{uebenv}{1overx}
+Zeichne die Graphen der Funktionen
+$$f(x)=x^{-1}-2\quad\text{und}\quad g(x)=4-x^{-1}$$
+>>>>>>> Stashed changes
 in ein Koordinatensystem.
 \begin{enumerate}[a)]
 \item Wo schneiden die Graphen die $x$-Achse?
 \item Wo schneiden sich die beiden Graphen?
 \end{enumerate}
+<<<<<<< Updated upstream
 }
 
 \uebh{offeranddemand}{
@@ -1763,6 +2091,15 @@ Die Angebots- und Nachfragefunktion für ein wirtschaftliches Gut seien gegeben 
 $$p_A(x)=2x^\frac{1}{2},\q p_N(x)=4+\frac{2}{x},$$
 $\unit[0]{ME}<\unit[x]{ME}<\unit[8]{ME}$, wobei die Preise in $\nicefrac{GE}{ME}$ angegeben sind. Stelle die Situation graphisch dar und berechne die Gleichgewichtsmenge, den Marktpreis und den Gesamterlös ab.
 }
+=======
+\end{uebenv}
+
+\begin{uebenv}{offeranddemand}
+Die Angebots- und Nachfragefunktion für ein wirtschaftliches Gut seien gegeben durch
+$$p_A(x)=2x^\frac{1}{2},\quad p_N(x)=4+\frac{2}{x},$$
+$\unit[0]{ME}<\unit[x]{ME}<\unit[8]{ME}$, wobei die Preise in $\nicefrac{GE}{ME}$ angegeben sind. Stelle die Situation graphisch dar und berechne die Gleichgewichtsmenge, den Marktpreis und den Gesamterlös ab.
+\end{uebenv}
+>>>>>>> Stashed changes
 
 \clearpage
 
@@ -2103,10 +2440,17 @@ Betrachte in Geogebra die Winkelfunktionen im Einheitskreis: \href{https://www.g
 \qrcode{
 https://www.youtube.com/watch?v=JPsDuUSnjq4}
 }
+<<<<<<< Updated upstream
   dem Bogenmass $\arc
   \alpha$ des Winkels $\alpha$
   versteht man den Quotienten
   $$\arc\alpha = \frac{b}{r}.$$
+=======
+  dem Bogenmass $\text{arc}
+  \alpha$ des Winkels $\alpha$
+  versteht man den Quotienten
+  $$\text{arc}\alpha = \frac{b}{r}.$$
+>>>>>>> Stashed changes
   Die \glqq Einheit\grqq\ des Bogenmasses heisst Radian, $\unit{rad}$.
 
 \end{cdef}
@@ -2121,11 +2465,19 @@ von der Wahl des Kreisradius ist, denke ich mir jeweils einfach für
 einen gegebenen Winkel das Bogenmass als Länge des entsprechenden
 Kreisbogens im Einheitskreis. Weil dort $r = 1$ ist, vereinfacht
 sich das Bogenmass nämlich zu
+<<<<<<< Updated upstream
 $$\arc\alpha =\frac{b}{1}=b.$$
 Für das Bogenmass in
 einem beliebigen Kreis gilt
 \begin{csatz}[Bogenlänge]{}
   $$b = r\cdot\arc\alpha$$
+=======
+$$\text{arc}\alpha =\frac{b}{1}=b.$$
+Für das Bogenmass in
+einem beliebigen Kreis gilt
+\begin{csatz}[Bogenlänge]{}
+  $$b = r\cdot\text{arc}\alpha$$
+>>>>>>> Stashed changes
 \end{csatz}
 \begin{proof}[Beweis]
   Folgt direkt aus der Definition.
@@ -2137,6 +2489,7 @@ einem beliebigen Kreis gilt
 \end{uebenv}
 
 Der folgende Satz gibt das Rezept an, wie man zu einem Winkel
+<<<<<<< Updated upstream
 $\alpha$ im Gradmass das zugehörige Bogenmass $\arc\alpha$ bestimmt.
 
 \begin{csatz}[Grad in Radian]
@@ -2148,6 +2501,19 @@ $\alpha$ im Gradmass das zugehörige Bogenmass $\arc\alpha$ bestimmt.
   $b$ abhängig vom Winkel $\alpha$ ist und den Bruchteil $\frac{\alpha}{360^\circ}$
   des ganzen Kreisumfangs $2\pi r$ ausmacht. Also
   $$\arc\alpha = \frac{2\pi r\cdot\frac{\alpha}{360^\circ}}{r} =
+=======
+$\alpha$ im Gradmass das zugehörige Bogenmass $\text{arc}\alpha$ bestimmt.
+
+\begin{csatz}[Grad in Radian]
+  $$\text{arc}\alpha = \frac{\pi}{180^\circ}\cdot\alpha$$
+\end{csatz}
+
+\begin{proof}[Beweis]
+  Es gilt $$\text{arc}\alpha = \frac{b}{r}$$ wobei die Länge des Bogens
+  $b$ abhängig vom Winkel $\alpha$ ist und den Bruchteil $\frac{\alpha}{360^\circ}$
+  des ganzen Kreisumfangs $2\pi r$ ausmacht. Also
+  $$\text{arc}\alpha = \frac{2\pi r\cdot\frac{\alpha}{360^\circ}}{r} =
+>>>>>>> Stashed changes
   \frac{2\pi\cdot\alpha}{360^\circ}= \frac{\pi\cdot\alpha}{180^\circ}$$
 \end{proof}
 
@@ -2170,7 +2536,11 @@ Aus der vorigen Aufgabe lässt sich folgender Satz ablesen:
 \begin{csatz}[Sinus-Cosinus-Beziehung]
   Die Graphen der Sinus- und Cosinus-Funktion sind zueinander
   achsialsymmetrisch bezüglich der Parallelen zur $y$-Achse durch den
+<<<<<<< Updated upstream
   Punkt $\point{\frac{\pi}{4}}{0}$.
+=======
+  Punkt $(\frac{\pi}{4}\mid 0)$.
+>>>>>>> Stashed changes
 \end{csatz}
 Es gibt offenbar zu jedem Sinus-Wert einen gleich grossen
 Cosinus-Wert und umgekehrt. Diese Tatsache lässt sich durch folgende
@@ -2567,7 +2937,13 @@ Zwei waagrechte Bergwerkstollen gehen von einem Punkt A aus unter dem Winkel $75
 \end{uebenv}
 
 \begin{uebenv}{funkpeilstationen}
+<<<<<<< Updated upstream
 Zwei Funkpeilstationen der Swisscom liegen $\unit[12.8]{km}$ voneinander entfernt, wobei $F_1$ sich genau nördlich von $F_2$ befindet. Ein Piratensender wird von $F_1$ aus unter $313.2^\circ$ und von $F_2$ aus unter $284.4^\circ$ angepeilt. Die Winkel werden von Osten aus im positiven Sinn gemessen. In welcher Entfernung von $F_1$ und $F_2$ liegt der Sender?
+=======
+Zwei Funkpeilstationen der Swisscom liegen $\unit[12.8]{km}$ voneinander entfernt, wobei $F_1$ sich genau nördlich von $F_2$ befindet. Ein Piratensender wird von $F_1$ aus unter $284.4^\circ$ und von $F_2$ aus unter $313.2^\circ$ angepeilt; die Winkel werden von Osten aus im positiven Sinn gemessen.
+
+In welcher Entfernung von $F_1$ und $F_2$ liegt der Sender?
+>>>>>>> Stashed changes
 \end{uebenv}
 
 \subsection{Anwendungen}
@@ -2591,14 +2967,22 @@ Wir haben bereits die elementaren Funktionen $\sin, \cos$ bzw. $\tan$ kennengele
 Zeichne in dasselbe Koordinatensystem die Graphen der Funktionen
 \begin{enumerate}[a)]
 \item $\sin(2x), \sin(\frac{x}{2})$,
+<<<<<<< Updated upstream
 \item $2\cos x, 0.5\cos x$,
+=======
+\item $2\cos(x), 0.5\cos(x)$,
+>>>>>>> Stashed changes
 \item $\sin(x + \frac{\pi}{2}), \sin(x - \frac{\pi}{4})$,
 \item $2\cos(x + \frac{\pi}{3}), 3\cos(x - \frac{\pi}{2})$.
 \end{enumerate}
 \end{uebenv}
 
 \begin{uebenv}{sincostaninvers}
+<<<<<<< Updated upstream
 Die Sinusfunktion ist im Intervall $[-\frac{\pi}{2},\frac{\pi}{2}]$ monoton wachsend; sie hat also für dieses Intervall eine Umkehrfunktion. Ihr Name ist Arcus-Sinus und wird mit arcsin oder $\sin^{-1}$ bezeichnet.
+=======
+Die Sinusfunktion ist im Intervall $[-\frac{\pi}{2},\frac{\pi}{2}]$ monoton wachsend; sie hat also für dieses Intervall eine Umkehrfunktion. Ihr Name ist Arcus-Sinus und wird mit $\arcsin$ oder $\sin^{-1}$ bezeichnet.
+>>>>>>> Stashed changes
 $$f^{-1}(x)=\arcsin(x)$$
 Überlege dir, welchen Wertebereich die Funktion hat und zeichne den Graphen von $\arcsin$ durch Spiegelung des Graphen von $\sin$ an der 1. Winkelhalbierenden.
 
@@ -2846,7 +3230,11 @@ Bei den Potenzfunktionen sind die Exponenten immer Konstanten, bei den Exponenti
 \begin{cdef}[Exponentialfunktion]
 Eine Funktion der Form
 $$f(x)=b^x$$
+<<<<<<< Updated upstream
 mit $b\in\mR^+$ heisst Exponentialfunktion zur Basis $b$.
+=======
+mit $b\in\mathbb{R}^+$ heisst Exponentialfunktion zur Basis $b$.
+>>>>>>> Stashed changes
 \end{cdef}
 
 \begin{bsp}
@@ -2872,7 +3260,11 @@ der Funktionen
 
 \begin{uebenv}{vglx2mit2x}
     Vergleiche das Verhalten (insbesondere das Wachstum) der beiden Funktionen
+<<<<<<< Updated upstream
 $$p(x)=x^2\q\text{und}\q e(x)=2^x$$
+=======
+$$p(x)=x^2\quad\text{und}\quad e(x)=2^x$$
+>>>>>>> Stashed changes
 \end{uebenv}
 
 
@@ -2880,7 +3272,11 @@ $$p(x)=x^2\q\text{und}\q e(x)=2^x$$
 \begin{bem}
 Der Graph der Exponentialfunktionen
 $$f(x)=b^x$$
+<<<<<<< Updated upstream
 liegt oberhalb der $x$-Achse und geht durch den Punkt $\point{0}{1}$, da $f(0)=b^0=1\;\forall b\in\mathbb{R}^+$. Für $b>1$ ist der Graph steigend ($f$ monoton wachsend), für $0<b<1$ ist der Graph fallend ($f$ monoton fallend) und die $x$-Achse ist jeweils Asymptote.
+=======
+liegt oberhalb der $x$-Achse und geht durch den Punkt $(0\mid1)$, da $f(0)=b^0=1\;\forall b\in\mathbb{R}^+$. Für $b>1$ ist der Graph steigend ($f$ monoton wachsend), für $0<b<1$ ist der Graph fallend ($f$ monoton fallend) und die $x$-Achse ist jeweils Asymptote.
+>>>>>>> Stashed changes
 \end{bem}
 
 \begin{uebenv}{specialbeins}
@@ -2935,14 +3331,24 @@ Es sei
 $$f(x)=b^x\text{ und }g(x)=a\cdot b^x.$$
 Der Punkt $P$ liegt auf dem Graphen von $f$. Berechne $b$ für
 \begin{enumerate}[a)]
+<<<<<<< Updated upstream
 \item $P=\point{1.5}{27}$
 \item $P=\point{4}{9}$
+=======
+\item $P=(1.5\mid27)$
+\item $P=(4\mid9)$
+>>>>>>> Stashed changes
 \end{enumerate}
 Die Punkte $R$ und $Q$ liegen auf dem Graphen von $g$. Berechne $a$ und $b$ für
 \begin{enumerate}[a)]
 \setcounter{enumi}{2}
+<<<<<<< Updated upstream
 \item $R\point{0}{2}, Q\point{2}{18}$
 \item $R\point{-2}{20}, Q=\point{3}{\frac{5}{8}}$
+=======
+\item $R(0\mid2), Q(2\mid18)$
+\item $R(-2\mid20), Q=(3\mid\frac{5}{8})$
+>>>>>>> Stashed changes
 \end{enumerate}
 \end{uebenv}
 
@@ -3242,17 +3648,29 @@ https://www.youtube.com/watch?v=3LtdUV1l33g}
 \end{cdef}
 
 \begin{bem}
+<<<<<<< Updated upstream
   Bei Betrachtung obiger Äquivalenz wird klar, dass der Logarithmus nur für $y,b\in\D{R}^+$ und $b\neq1$
+=======
+  Bei Betrachtung obiger Äquivalenz wird klar, dass der Logarithmus nur für $y,b\in\mathbb{R}^+$ und $b\neq1$
+>>>>>>> Stashed changes
   definiert ist.
 \end{bem}
 
 \begin{uebenv}{problems}
+<<<<<<< Updated upstream
 Überlege kurz, welche Probleme entstünden, wenn man $y,b\in\mR$ zulassen würde.
+=======
+Überlege kurz, welche Probleme entstünden, wenn man $y,b\in\mathbb{R}$ zulassen würde.
+>>>>>>> Stashed changes
 \end{uebenv}
 
 
 
+<<<<<<< Updated upstream
 \begin{bsps}
+=======
+\begin{bsp}
+>>>>>>> Stashed changes
   \begin{itemize}
     \item Den Logarithmus von $y$ zur Basis $b$ finden, ist gleichwertig
     mit der Beantwortung der Frage: \glqq $b$ hoch was gibt $y$?\grqq
@@ -3262,7 +3680,11 @@ https://www.youtube.com/watch?v=3LtdUV1l33g}
     \item $\log_{\frac{1}{3}}{(\frac{1}{9})}=2$, da
     $(\frac{1}{3})^2=\frac{1}{9}$.
   \end{itemize}
+<<<<<<< Updated upstream
 \end{bsps}
+=======
+\end{bsp}
+>>>>>>> Stashed changes
 
 \begin{uebenv}{logohneTR}
 Bestimme ohne Taschenrechner
@@ -3304,7 +3726,11 @@ kürzere Schreibweisen fest:
 \begin{itemize}
   \item $\log_{10}x=\log{x}=\lg x$\hfill(10$^{\text{er}}$ Logarithmus)
   \item $\log_\mathrm{\mathrm{e}}{x}=\ln{x}$\hfill(Logarithmus naturalis)
+<<<<<<< Updated upstream
   \item $\log_2{x}=\lb{x}$\hfill(Logarithmus dualis)
+=======
+  \item $\log_2{x}=\text{lb}{x}$\hfill(Logarithmus dualis)
+>>>>>>> Stashed changes
 \end{itemize}
 \begin{bem}
   Die \fbox{log} - Taste auf dem Taschenrechner ist also der
@@ -3339,11 +3765,19 @@ Lasse von \geogebralink\ folgende Logarithmusfunktionen zeichnen.
 \draw[color=seagreen, smooth,samples=100,domain=0.01:11.72, line width=0.35mm] plot(\x,{ln(\x)/ln(2)});
 \draw[color=darkblue, smooth,samples=200,domain=0.01:11.72, line width=0.35mm] plot(\x,{ln(\x)/ln(10)});
 \draw[color=firebrick] (11,2.0) node {$\ln$};
+<<<<<<< Updated upstream
 \draw[color=seagreen] (9.5,3.6) node {$\lb$};
 \draw[color=darkblue] (9.5,0.5) node {$\log$};
 \end{tikzpicture}
 \end{center}
 \caption{Die Graphen von $\ln(x)$, $\log(x)$, und $\lb(x)$}
+=======
+\draw[color=seagreen] (9.5,3.6) node {$\text{lb}$};
+\draw[color=darkblue] (9.5,0.5) node {$\log$};
+\end{tikzpicture}
+\end{center}
+\caption{Die Graphen von $\ln(x)$, $\log(x)$, und $\text{lb}(x)$}
+>>>>>>> Stashed changes
 \end{figure}
 
 \begin{uebenv}{waechstsehtlangsam}
@@ -3464,7 +3898,11 @@ paar Graphen anhand von Wertetabellen oder mit \geogebralink\  gezeichnet.
 \begin{csatz}[Eigenschaften der Logarithmusfunktionen]
   Graphen von Logarithmusfunktionen haben folgende Eigenschaften:
   \begin{itemize}
+<<<<<<< Updated upstream
     \item Sie gehen alle durch den Punkt $\point{1}{0}$.
+=======
+    \item Sie gehen alle durch den Punkt $(1\mid0)$.
+>>>>>>> Stashed changes
     \item Die Graphen von $f(x)=\log_b{(x)}$ und
     $g(x)=\log_{\frac{1}{b}}{(x)}$ sind achsialsymmetrisch bezüglich
     der x-Achse.
@@ -3508,7 +3946,11 @@ Schliesslich halten wir noch fest, was wir zu Beginn einfach in den Raum geworfe
 
 \begin{proof}[Beweis]
   Wir bestimmen die Inversfunktion einer beliebigen Exponentialfunktion:
+<<<<<<< Updated upstream
   $$y=b^x\q \Leftrightarrow\q x=\log_b(y).$$ Variablen umbenennen
+=======
+  $$y=b^x\quad \Leftrightarrow\quad x=\log_b(y).$$ Variablen umbenennen
+>>>>>>> Stashed changes
   und die Inversfunktion mit $f^{-1}$ bezeichnen:
   $f^{-1}(x)=\log_b(x).$ Die Umkehrung gilt ebenfalls, weil wir
   ausschliesslich Identitäten und Äquivalenzen verwendet haben.
@@ -3627,12 +4069,20 @@ vorgeführt werden.
     \end{align}
     \item Mit der Definition:
     \begin{align}
+<<<<<<< Updated upstream
       6^{x-1}=10\q \Leftrightarrow\q x-1 &= \log_6{10} \tag{Satz \ref{satz:logtr}}\\
+=======
+      6^{x-1}=10\quad \Leftrightarrow\quad x-1 &= \log_6{10} \tag{Satz \ref{satz:logtr}}\\
+>>>>>>> Stashed changes
       x-1 &= \frac{\log{10}}{\log{6}} \tag{$+1$}\\
       x &= \frac{1}{\log{6}} + 1 \notag
     \end{align}
   \end{enumerate}
+<<<<<<< Updated upstream
   Kontrolle: $$6^{2.285-1} \approx 10 \qq \checkmark$$
+=======
+  Kontrolle: $$6^{2.285-1} \approx 10 \quad\quad \checkmark$$
+>>>>>>> Stashed changes
 \end{bsp}
 
 \begin{uebenv}{expgleichung}
@@ -3707,7 +4157,11 @@ $$\mathrm{e}  =  2.71828182845904523536028747135266\dots$$
 Was es mit der Zahl $\mathrm{e}$ auf sich hat, können wir an dieser Stelle nur zu einem kleinen Teil erfahren, denn ihre Bedeutung und Tragweite wird erst nach und nach mit fortschreitendem Stoff klarer werden. Eine Möglichkeit, die Zahl $\mathrm{e}$ kurz und bündig zu charakterisieren, ist diese:
 \begin{quote}
 $\mathrm{e}$ ist die einzige positive Zahl, für die
+<<<<<<< Updated upstream
 $$\mathrm{e}^x\geq1+x\q\forall x\in\mR$$
+=======
+$$\mathrm{e}^x\geq1+x\quad\forall x\in\mathbb{R}$$
+>>>>>>> Stashed changes
 \end{quote}
 
 \begin{uebenv}{skizzee}
@@ -3717,14 +4171,22 @@ $$\mathrm{e}^x\geq1+x\q\forall x\in\mR$$
 
 
 \begin{uebenv}{skizzeee}
+<<<<<<< Updated upstream
     Skizziere $\mathrm{e}^x$, $2^x$ und $3^x$ und betrachte einen kleinen Ausschnitt um $\point{0}{1}$.
+=======
+    Skizziere $\mathrm{e}^x$, $2^x$ und $3^x$ und betrachte einen kleinen Ausschnitt um $(0\mid1)$.
+>>>>>>> Stashed changes
 \end{uebenv}
 
 
 
 Eine weitere schöne Eigenschaft ist folgende.
 \begin{bem}
+<<<<<<< Updated upstream
 Alle Exponentialfunktionen $b^x$ schneiden die $y$-Achse im Punkt $\point{0}{1}$. Sucht man für eine Exponentialfunktion $b^x$ eine Basis $b$ so, dass die Steigung des Graphen beim Schnittpunkt mit der $y$-Achse exakt $45^\circ$, also $1$, beträgt, dann würde $b=\mathrm{e}$ folgen.
+=======
+Alle Exponentialfunktionen $b^x$ schneiden die $y$-Achse im Punkt $(0\mid1)$. Sucht man für eine Exponentialfunktion $b^x$ eine Basis $b$ so, dass die Steigung des Graphen beim Schnittpunkt mit der $y$-Achse exakt $45^\circ$, also $1$, beträgt, dann würde $b=\mathrm{e}$ folgen.
+>>>>>>> Stashed changes
 \end{bem}
 
 Obwohl die bisherige Argumentation von einem strengen mathematischen Gesichtspunkt aus betrachtet unbrauchbar ist, geben wir uns mit ihr zufrieden. Auch ein stringenterer Beweis liefert dasselbe Resultat, ist aber mit erheblich mehr Aufwand verbunden.
@@ -4024,7 +4486,11 @@ $$\mathbb{A}\times\mathbb{B}=\{(a|b)|\,a\in\mathbb{A}\text{ und }b\in\mathbb{B}\
 \end{cdef}
 Damit l\"asst sich der Relationsbegriff auch rein mengentheoretisch definieren. Wir betrachten zuerst noch ein Beispiel zur Produktmenge.
 \begin{bsp}
+<<<<<<< Updated upstream
 $\mathbb{R}\times\mathbb{R}$, kurz $\mathbb{R}^2$, ist die Menge aller Punkte einer Ebene. Die Paare $\point{x}{y}$ k\"onnen als Punkte in einem rechtwinkligen Koordinatensystem veranschaulicht werden.
+=======
+$\mathbb{R}\times\mathbb{R}$, kurz $\mathbb{R}^2$, ist die Menge aller Punkte einer Ebene. Die Paare $(x\mid y)$ k\"onnen als Punkte in einem rechtwinkligen Koordinatensystem veranschaulicht werden.
+>>>>>>> Stashed changes
 \end{bsp}
 \begin{uebenv}{dreiD}
     Beschreibe die Menge $\mathbb{R}^3$. Welche Form/Schreibweise hat ein Punkt in dieser Menge?
@@ -4046,21 +4512,34 @@ Die Darstellung der Relationen in einem rechtwinkligen Koordinatensystem nennt m
 F\"ur die folgenden \"Ubungen erinnern wir uns an die Definition des Betrags:
 \begin{cdef}[Betrag]
 F\"ur jede reelle Zahl $x$ ist der Betrag von $x$ definiert durch
+<<<<<<< Updated upstream
 $$\abs{x}\;=
 \begin{cases}
 \phantom{-}x\q\text{falls }x\geq0\\
 -x\q\text{falls }x<0
+=======
+$$|x|\;=
+\begin{cases}
+\phantom{-}x\quad\text{falls }x\geq0\\
+-x\quad\text{falls }x<0
+>>>>>>> Stashed changes
 \end{cases}$$
 \end{cdef}
 
 \begin{uebenv}{relation}
     Beachte, dass $x$ und $y$ als reelle Zahlen zu betrachten sind, falls keine andere Vereinbarung vorliegt. Zeichne den Graphen der Relation
 \begin{enumerate}[a)]
+<<<<<<< Updated upstream
 \item $R=\setm{\point{x}{y}}{y\leq x}$
 \item $R=\setm{\point{x}{y}}{x<2\text{ und }y<4, x,y\in\mathbb{Z}}$
 \item $R=\setm{\point{x}{y}}{\abs{x}\leq5}$
 %\item $R=\setm{\point{x}{y}}{\abs{y}>3}$
 %\item $R=\setm{\point{x}{y}}{\abs{x}+\abs{y}\leq4}$
+=======
+\item $R=\{(x|y)|y\leq x\}$
+\item $R=\{(x|y)|x<2\text{ und }y<4, x,y\in\mathbb{Z}\}$
+\item $R=\{(x|y)||x|\leq5\}$
+>>>>>>> Stashed changes
 \end{enumerate}
 \end{uebenv}
 
@@ -4164,7 +4643,11 @@ Noch einmal: Falls nicht anders erwähnt, ist die Grundmenge $\mathbb{R}$. Zudem
         \item $R=\{(x|y)\,|\,1\leq y\leq3\}$
         \item $R=\{(x|y)\,|\,x\cdot y\geq0\}$
         \item $R=\{(x|y)\,|\,-2<x<5\text{ und }-4<y<3\}$
+<<<<<<< Updated upstream
         \item $R=\{(x|y)\,|\,\abs{x+y}>3\text{ oder }\abs{x-y}>3\}$
+=======
+        \item $R=\{(x|y)\,|\,|x+y|>3\text{ oder }|x-y|>3\}$
+>>>>>>> Stashed changes
     \end{enumerate}
 \end{lsg}
 
@@ -4199,16 +4682,26 @@ Jede Abbildung ist eine Relation, aber nicht jede Relation eine Abbildung.
 \subsection{Die reinquadratische Gleichung}
 \begin{cdef}[Reinquadratische Gleichung]
   Eine reinquadratische Gleichung ist eine Gleichung der Form
+<<<<<<< Updated upstream
   $$x^2-c=0$$ wobei $c\in\D{R}$.
+=======
+  $$x^2-c=0$$ wobei $c\in\mathbb{R}$.
+>>>>>>> Stashed changes
 \end{cdef}
 \begin{csatz}[Lösung der reinquadratischen Gleichung]
   Die reinquadratische Gleichung hat f\"ur $c<0$ keine L\"osung, f\"ur $c=0$
   die L\"osung $x=0$ und f\"ur $c>0$ die L\"osungen
   $$x_1=\sqrt{c}\quad\text{und}\quad x_2=-\sqrt{c}$$
 \end{csatz}
+<<<<<<< Updated upstream
 \begin{bew}
   Einsetz\"ubung.
 \end{bew}
+=======
+\begin{proof}
+  Einsetz\"ubung.
+\end{proof}
+>>>>>>> Stashed changes
 
 \subsection{Die allgemeine quadratische Gleichung}
 \begin{cdef}[Quadratische Gleichung]
@@ -4219,7 +4712,11 @@ https://www.youtube.com/watch?v=MWVyS0jIL98}
 }
   Gleichung heisst \emph{quadratisch}, wenn sie sich in der
   Form
+<<<<<<< Updated upstream
   $$ax^2+bx+c=0$$ schreiben l\"asst, wobei $a,b,c\in\D{R}$ und
+=======
+  $$ax^2+bx+c=0$$ schreiben l\"asst, wobei $a,b,c\in\mathbb{R}$ und
+>>>>>>> Stashed changes
   $a\neq0$ ist.
 \end{cdef}
 \begin{csatz}[Lösungsformel der quadratischen Gleichung]{}
@@ -4232,11 +4729,19 @@ https://www.youtube.com/watch?v=HdHpXhDCBL0}
   $$x_{1,2}=\frac{-b\pm\sqrt{b^2-4ac}}{2a}$$ Die Anzahl der L\"osungen
   h\"angt vom Term unter der Wurzel ab.
 \end{csatz}
+<<<<<<< Updated upstream
 \begin{bew}
 \begin{uebenv}{herleitungquadr}
     Benutze quadratische Ergänzung.
 \end{uebenv}
 \end{bew}
+=======
+\begin{proof}
+\begin{uebenv}{herleitungquadr}
+    Benutze quadratische Ergänzung.
+\end{uebenv}
+\end{proof}
+>>>>>>> Stashed changes
 
 
 
@@ -4253,9 +4758,15 @@ https://www.youtube.com/watch?v=HdHpXhDCBL0}
     \item keine L\"osung, falls $b^2-4ac<0$
   \end{itemize}
 \end{csatz}
+<<<<<<< Updated upstream
 \begin{bew}
   Nach Definition der Wurzel.
 \end{bew}
+=======
+\begin{proof}
+  Nach Definition der Wurzel.
+\end{proof}
+>>>>>>> Stashed changes
 
 \begin{uebenv}{reinquadratisch}
     Gib je ein Beispiel einer reinquadratischen Gleichung die
@@ -4330,11 +4841,19 @@ quadratischen Gleichung}
   $$x_1+x_2=-p\quad\text{und}\quad x_1\cdot x_2=q$$
 \end{csatz}
 
+<<<<<<< Updated upstream
 \begin{bew}
   \begin{uebenv}{vieta}
       
   \end{uebenv}
 \end{bew}
+=======
+\begin{proof}
+  \begin{uebenv}{vieta}
+      
+  \end{uebenv}
+\end{proof}
+>>>>>>> Stashed changes
 
 
 \begin{csatz}[Linearfaktorzerlegung]
@@ -4547,7 +5066,11 @@ Verschiebe den Graphen von $f$ um $1$ in $x$-Richtung und zeichne ihn. Wie laute
  Eine Abbildung (Funktion/Translation) heisst affin, wenn die Verbindungsgeraden Ausgangspunkt $P$ -- Bildpunkt $P'$ alle parallel sind. Die Richtung dieser Parallelen heisst Affinitätsrichtung.
  \end{cdef}
  \begin{csatz}[Linearität der Affinität]
+<<<<<<< Updated upstream
  Der Abstand eines Bildpunktes von einer festen Geraden (\definition{Af\-fini\-täts\-ach\-se}) beträgt das $k$-fache des Abstandes des Ausgangspunktes von dieser Geraden, wobei $k\in\D{R}$. $k$ heisst \definition{Affinitätsfaktor}.
+=======
+ Der Abstand eines Bildpunktes von einer festen Geraden (\definition{Af\-fini\-täts\-ach\-se}) beträgt das $k$-fache des Abstandes des Ausgangspunktes von dieser Geraden, wobei $k\in\mathbb{R}$. $k$ heisst \definition{Affinitätsfaktor}.
+>>>>>>> Stashed changes
  \end{csatz}
  \begin{bsp}
  Betrachte den Graphen der Funktion $f(x)=x^2$ auf deinem TR. Anschliessend lässt du zusätzlich den Graphen von $g(x)=\frac{1}{2}x^2$ von deinem TR zeichnen. Die Translation, welche den Graphen von $f$ in $g$ überführt ist eine affine Abbildung mit Affinitätsfaktor $k=\frac{1}{2}$ und hat als Affinitätsachse die $x$-Achse. Die Affinitätsrichtung ist parallel zur $y$-Achse.
@@ -4717,7 +5240,11 @@ mit $Z(x)$ und $N(x)\neq0$ ganzrationalen Funktionen, heisst \emph{gebrochenrati
 \end{cdef}
 
 Auch hier wollen wir uns vorerst nur mit einigen einfachen Beispielen bescheiden. Betrachten wir zu
+<<<<<<< Updated upstream
 $$f(x)=\frac{3x+2}{2x+4},\q\mD=\mathbb{R}\setminus\set{-2},$$
+=======
+$$f(x)=\frac{3x+2}{2x+4},\quad\mathbb{D}=\mathbb{R}\setminus\{-2\},$$
+>>>>>>> Stashed changes
 charakteristische Werte
 
 \begin{table}
@@ -4735,7 +5262,11 @@ charakteristische Werte
 
 Die Gerade $x=-2$ ist Polstelle, die Gerade $y= 1.5$ eine horizontale Asymptote.
 Die Funktion aus Übung \ref{ueb:gebrochen} gehört zu den einfachsten gebrochenrationalen Funktionen von der Gestalt
+<<<<<<< Updated upstream
 $$f(x)=\frac{ax+b}{cx+d}\q\text{mit }ad\neq bc.$$
+=======
+$$f(x)=\frac{ax+b}{cx+d}\quad\text{mit }ad\neq bc.$$
+>>>>>>> Stashed changes
 Der Graph ist eine Hyperbel. Sie ist punktsymmetrisch bezüglich $(-\frac{d}{c}|\frac{a}{c})$ und hat als Asymptote bzw. Polstelle die Geraden mit den Gleichungen $y=\frac{a}{c}$ und $x=-\frac{d}{c}$.
 
 \begin{uebenv}{graphengebrochen}
@@ -4752,7 +5283,11 @@ Der Graph ist eine Hyperbel. Sie ist punktsymmetrisch bezüglich $(-\frac{d}{c}|
 \begin{uebenv}{getrationalefktn}
 Berechne die Parameter $a$ und $b$ so, dass der Graph der Funktion
 $$f(x)=\frac{a}{b+x}$$
+<<<<<<< Updated upstream
 durch die Punkte $\point{2}{1}$ und $\point{-4}{-2}$ geht.
+=======
+durch die Punkte $(2\mid1)$ und $(-4\mid-2)$ geht.
+>>>>>>> Stashed changes
 \end{uebenv}
 
 

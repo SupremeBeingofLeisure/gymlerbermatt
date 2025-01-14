@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 \babel@toc {ngerman}{}\relax 
 \contentsline {table}{\numberline {1}{\ignorespaces Anzahl Einsen zu Anzahl Würfen beim Reisnagel-Werfen\relax }}{10}{table.caption.5}%
 \contentsline {table}{\numberline {2}{\ignorespaces Zuchterfolg bei Tulpen\relax }}{30}{table.caption.18}%
@@ -12,4 +13,20 @@
 \contentsline {table}{\numberline {11}{\ignorespaces Überblick der vier Fälle beim Ziehen\relax }}{76}{table.caption.43}%
 \contentsline {table}{\numberline {12}{\ignorespaces Münzwurf zur Illustration des Gesetzes der grossen Zahlen\relax }}{92}{table.caption.45}%
 \contentsline {table}{\numberline {13}{\ignorespaces Standardnormalverteilungstabelle $\Phi (z)$\relax }}{102}{table.caption.48}%
+=======
+\babel@toc {swissgerman}{}\relax 
+\contentsline {table}{\numberline {1}{\ignorespaces Anzahl Einsen zu Anzahl Würfen beim Reisnagel-Werfen\relax }}{10}{table.caption.5}%
+\contentsline {table}{\numberline {2}{\ignorespaces Zuchterfolg bei Tulpen\relax }}{32}{table.caption.18}%
+\contentsline {table}{\numberline {3}{\ignorespaces Blutgruppen und Geschlechter\relax }}{36}{table.caption.21}%
+\contentsline {table}{\numberline {4}{\ignorespaces Testresultat Haarfarbe\relax }}{37}{table.caption.22}%
+\contentsline {table}{\numberline {5}{\ignorespaces Gewinn aus Peters Sicht beim Fünfliber-Spiel\relax }}{41}{table.caption.28}%
+\contentsline {table}{\numberline {6}{\ignorespaces Gewichtung der Zufallsvariablen beim Fünfliber-Spiel\relax }}{42}{table.caption.29}%
+\contentsline {table}{\numberline {7}{\ignorespaces Wahrscheinlichkeitsverteilung beim Werfen von zwei Würfeln\relax }}{43}{table.caption.30}%
+\contentsline {table}{\numberline {8}{\ignorespaces Medikamententest\relax }}{46}{table.caption.33}%
+\contentsline {table}{\numberline {9}{\ignorespaces Binomialverteilung mit Erfolgswarscheinlichkeit $p$\relax }}{50}{table.caption.34}%
+\contentsline {table}{\numberline {10}{\ignorespaces Einseitige und zweiseitiger Hypothesentest\relax }}{66}{table.caption.40}%
+\contentsline {table}{\numberline {11}{\ignorespaces Überblick der vier Fälle beim Ziehen\relax }}{82}{table.caption.43}%
+\contentsline {table}{\numberline {12}{\ignorespaces Münzwurf zur Illustration des Gesetzes der grossen Zahlen\relax }}{99}{table.caption.45}%
+\contentsline {table}{\numberline {13}{\ignorespaces Standardnormalverteilungstabelle $\Phi (z)$\relax }}{109}{table.caption.48}%
+>>>>>>> Stashed changes
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

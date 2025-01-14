@@ -1,4 +1,5 @@
 \documentclass[%
+<<<<<<< Updated upstream
 11pt,%
 %oneside,%
 twoside,%
@@ -7,10 +8,18 @@ titlepage,%
 %fleqn,%
 %a4page,%
 german,%
+=======
+%draft,
+11pt,%
+twoside,%
+titlepage,%
+swissgerman,%
+>>>>>>> Stashed changes
 headsepline%
 ]{scrartcl}
 
 \usepackage{lastpage}
+<<<<<<< Updated upstream
 \usepackage{geometry}
 \usepackage{graphicx}
 \usepackage[utf8]{inputenc}
@@ -27,6 +36,31 @@ headsepline%
 
 \usetikzlibrary{arrows}
 \usetikzlibrary{calc, shapes, backgrounds}
+=======
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[utf8]{inputenc}
+\usepackage[swissgerman]{babel}
+\usepackage{lscape}
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage[most]{tcolorbox}
+\usepackage{enumerate}
+\usepackage{units}
+\usepackage{nicefrac}
+\usepackage{pgf,tikz}
+\usepackage{tikz-3dplot}
+\usepackage{tkz-euclide}
+\usetikzlibrary{arrows}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{patterns}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shadows}
+\usetikzlibrary{quotes, angles}
+\usetikzlibrary{shapes.multipart, backgrounds}
+>>>>>>> Stashed changes
 \usepackage{colortbl}
 \usepackage{hhline}
 \usepackage{multirow}
@@ -36,6 +70,7 @@ headsepline%
 \usepackage{blindtext}
 \usepackage{pdfpages}
 \usepackage{hyperref}
+<<<<<<< Updated upstream
 \usepackage{wrapfig}
 \usepackage{booktabs}
 
@@ -51,16 +86,44 @@ headsepline%
 % footnote-symbols
 \usepackage[symbol]{footmisc}
 \renewcommand{\thefootnote}{\fnsymbol{footnote}}
+=======
+\usepackage{framed}
+
+\usepackage{marginnote}
+\usepackage{qrcode}
+\qrset{height=7ex}
+
+\usepackage{longtable}
+\usepackage{listings}
+\usepackage{wrapfig}
+
+\usepackage{fontawesome} % Oder FontAwesome, falls du ein Augensymbol aus einer
+\newcommand{\faEyeLightGray}{\textcolor{lightgray}{\faEye}} % Custom command for the gray eye icon
+\newcommand{\faReturnGray}{\textcolor{gray}{\faMailReply}} % Custom command for the gray eye icon
+\usepackage{pifont} % weitere Zeichen
+
+% package für plots mit dem Befehl axes
+\usepackage{pgfplots}
+
+\usepackage{yfonts} % fr gothische Schriftzeichen und so
+
+
+>>>>>>> Stashed changes
 
 % Command, um Tabellen-Spalten anzupassen
 \newcommand{\spaltenheight}{\rule{0mm}{3ex}}
 \newcommand{\spaltenwidth}{\rule{3cm}{0mm}}
 \newcommand{\spaltensep}{\\[1ex]}
+<<<<<<< Updated upstream
+=======
+%\arrayrulecolor{darkgreen}
+>>>>>>> Stashed changes
 \doublerulesepcolor{white}
 
 % colors
 \definecolor{lightyellow}{rgb}{1,1,0.8}
 \definecolor{Gray}{gray}{0.9}
+<<<<<<< Updated upstream
 \definecolor{darkblue}{rgb}{0,0,0.55}
 \definecolor{firebrick}{rgb}{0.7,0.13,0.13}
 \definecolor{seagreen}{rgb}{0.18,0.55,0.34}
@@ -82,6 +145,88 @@ headsepline%
 % Farbig umrahmte Umgebung Satz 
  \definecolor{myblizzardblue}{HTML}{87CEEB}
 
+=======
+\definecolor{lightgray}{rgb}{0.7, 0.7, 0.7}
+\definecolor{darkblue}{rgb}{0,0,0.55}
+\definecolor{firebrick}{rgb}{0.7,0.13,0.13}
+\definecolor{seagreen}{rgb}{0.18,0.55,0.34}
+\definecolor{emerald}{HTML}{50C878} % color of Definition
+\definecolor{whitesmoke}{HTML}{F5F5F5} % background for environments
+\definecolor{myblizzardblue}{HTML}{87CEEB} % color of Satz
+
+% Für Definitionen im Fliesstext
+\newcommand{\definition}[1]{\colorbox{emerald}{#1}}
+% Für Regeln im Fliesstext
+\newcommand{\regel}[1]{\colorbox{myblizzardblue}{#1}}
+% Für Merke/Achtungs im Fliesstext
+\newcommand{\merke}[1]{\colorbox{firebrick}{#1}}
+% Geogebra-Link
+\newcommand{\geogebralink}{\href{https://www.geogebra.org/calculator}{\texttt{geogebra.org}}}
+
+% Umgebungen
+\theoremstyle{definition}
+    \newtheorem{bsp}{Beispiel}[subsection] % Beispiele
+    \newtheorem{bem}{Bemerkung}[subsection] % Bemerkungen
+\theoremstyle{plain}
+    \newtheorem{thm}{Theorem} % Theorem [subsection]
+    \newtheorem{satz}{Satz} % Satz [subsection]
+
+% Umgebung lsg mit dynamischer Referenzierung und Label
+\newcommand{\concatueb}[1]{ueb:#1}% Definition für concatueb
+\newcommand{\concatlsg}[1]{lsg:#1}% Definition für concatlsg
+
+\newcounter{uebcounter}[section]
+\renewcommand{\theuebcounter}{\thesection.\arabic{uebcounter}}  % Zählerformat: Abschnitt.Übung
+
+\newenvironment{lsg}[1]{%
+    \par\noindent\textbf{Notizen zu Übung \ref{\concatueb{#1}}}\label{\concatlsg{#1}}
+    \hfill\hyperref[\concatueb{#1}]{\faReturnGray}\par % Hyperref-Button zurück zur Übung
+}{%
+    \par%
+}
+
+\newenvironment{uebenv}[1]{%
+    \refstepcounter{uebcounter}
+    \par\noindent\textbf{Übung \theuebcounter.}%
+    \label{\concatueb{#1}}\hfill\hyperref[\concatlsg{#1}]{\faEyeLightGray}\par
+}{%
+    \par
+}
+
+% Umgebung für Definitionen
+\newcounter{deff}[section]\setcounter{deff}{0}
+\renewcommand{\thedeff}{\arabic{section}.\arabic{deff}}
+
+\newenvironment{cdef}[1][]{%
+    \refstepcounter{deff} 
+    \ifstrempty{#1}%
+    % if condition (without title)
+    {\mdfsetup{%
+        frametitle={%
+            \tikz[baseline=(current bounding box.east),outer sep=0pt]
+            \node[anchor=east,rectangle,fill=emerald]
+            {\strut Definition~\thedeff};}
+        }%
+    % else condition (with title)
+    }{\mdfsetup{%
+        frametitle={%
+            \tikz[baseline=(current bounding box.east),outer sep=0pt]
+            \node[anchor=east,rectangle,fill=emerald]
+            {\strut Definition~\thedeff:~#1};}%
+        }%
+    }%
+% for both conditions
+    \mdfsetup{%
+        innertopmargin=10pt,linecolor=emerald,%
+        backgroundcolor=whitesmoke,%
+        linewidth=2pt,topline=true,%
+        frametitleaboveskip=\dimexpr-\ht\strutbox\relax%
+    } 
+\begin{mdframed}[]\relax}{%
+\end{mdframed}}
+
+% Farbig umrahmte Umgebung Satz
+>>>>>>> Stashed changes
 \newcounter{satzz}[section]\setcounter{satzz}{0}
 \renewcommand{\thesatz}{\arabic{section}.\arabic{satzz}}
 
@@ -111,6 +256,7 @@ headsepline%
         linewidth=2pt,topline=true,%
         frametitleaboveskip=\dimexpr-\ht\strutbox\relax%
     }
+<<<<<<< Updated upstream
  
 \begin{mdframed}[]\relax}{%
 \end{mdframed}}
@@ -223,6 +369,14 @@ headsepline%
 \newcommand{\definition}[1]{\colorbox{emerald}{#1}}
 
 \setlength{\parindent}{0pt}
+=======
+\begin{mdframed}[]\relax}{%
+\end{mdframed}}
+
+% kein Einzug bei neuem Abschnitt
+\setlength{\parindent}{0pt} \setlength{\parskip}{1em}
+\pagestyle{headings} % gemachte Einstellungen anwenden
+>>>>>>> Stashed changes
 
 \subject{\includegraphics[width=0.618\textwidth]{pictures/pointa.jpg}}
 \title{Stochastik}
@@ -294,6 +448,7 @@ Mit Zufallsgeräten führt man Zufallsversuche durch, indem man die verschiedene
 Die Menge aller möglichen Versuchsausgänge, $\omega_1, \omega_2, \dots, \omega_n$, eines Zufallsversuchs bezeichnet man als \textbf{Stichprobenraum} und bezeichnet diesen mit $\Omega$.
 \end{cdef}
 
+<<<<<<< Updated upstream
 \begin{bsps}
 F\"ur die Klassiker:
 	\begin{itemize}
@@ -303,15 +458,33 @@ F\"ur die Klassiker:
 \end{bsps}
 
 \uebh{stichprobenraum}{
+=======
+\begin{bsp}
+F\"ur die Klassiker:
+	\begin{itemize}
+	\item Münze: $\omega_1:= $Kopf, $\omega_2:= $Zahl, also $\Omega=\{\text{Kopf, Zahl}\}$
+	\item Würfel: $\Omega=\{1,2,3,4,5,6\}$
+	\end{itemize}
+\end{bsp}
+
+\begin{uebenv}{stichprobenraum}
+>>>>>>> Stashed changes
 Bestimme einen geeigneten Stichprobenraum für den Versuch
 	\begin{enumerate}[a)]
 	\item Mit der Spitze eines Bleistifts wird blindlings auf eine Textseite eines Buches getippt; der getroffene Buchstabe wird notiert.
 	\item Bei Familien mit drei Kindern wird festgestellt, ob die Kinder Jungen oder Mädchen sind.
 	\end{enumerate}
+<<<<<<< Updated upstream
 }
 
 \subsubsection{Ereignisse}
 Wenn man beim Roulette auf \glqq impair\grqq\ setzt, ist man nicht so sehr daran interessiert, in welches Zahlenfach die Kugel fällt. Wichtig ist nur, ob das zufällige Ereignis eintritt, also die Kugel in eines der Fächer $1,3,5, \dots, 33, 35$ fällt. Diese  Ereignisse bilden eine Teilmenge $\mathbb{A}$ des Stichprobenraumes $\Omega=\set{0,1,2,3,\dots,35,36}$.
+=======
+\end{uebenv}
+
+\subsubsection{Ereignisse}
+Wenn man beim Roulette auf \glqq impair\grqq\ setzt, ist man nicht so sehr daran interessiert, in welches Zahlenfach die Kugel fällt. Wichtig ist nur, ob das zufällige Ereignis eintritt, also die Kugel in eines der Fächer $1,3,5, \dots, 33, 35$ fällt. Diese  Ereignisse bilden eine Teilmenge $\mathbb{A}$ des Stichprobenraumes $\Omega=\{0,1,2,3,\dots,35,36\}$.
+>>>>>>> Stashed changes
 
 Mengen eignen sich hervorragend zur Beschreibung von Zufallsversuchen. Die Ausdrücke der Mengensprechweise werden lediglich in entsprechende Ausdrücke übertragen.
 
@@ -330,13 +503,21 @@ Sind $\mathbb{A}$ und $\mathbb{B}$ zwei Ereignisse desselben Zufallsversuchs und
 \end{itemize}
 Zwei Ereignisse $\mathbb{A}$ und $\mathbb{B}$ heissen \textbf{unvereinbar}, genau dann wenn sie nicht zugleich eintreten können, wenn also $\mathbb{A}\cap\mathbb{B}=\emptyset$ gilt.
 
+<<<<<<< Updated upstream
 \uebh{ereignisse}{
+=======
+\begin{uebenv}{ereignisse}
+>>>>>>> Stashed changes
 Bei einer Qualitätskontrolle werden drei produzierte Stücke der Reihe nach darauf untersucht, ob sie brauchbar (b) oder unbrauchbar (u) sind. Notiere folgende Ereignisse:
 \begin{enumerate}[a)]
 \item Das zweite Stück ist unbrauchbar.
 \item Mindestens zwei Stücke sind unbrauchbar.
 \end{enumerate}
+<<<<<<< Updated upstream
 }
+=======
+\end{uebenv}
+>>>>>>> Stashed changes
 
 \clearpage
 
@@ -382,9 +563,15 @@ Sein Ergebnisprotokoll siehst du in Tabelle \ref{tab:arrest} auf Seite \pageref{
 \caption{Anzahl Einsen zu Anzahl Würfen beim Reisnagel-Werfen}\label{tab:arrest}
 \end{table}
 
+<<<<<<< Updated upstream
 \uebh{reissnagel}{
 Stelle diese Daten graphisch in Abbildung \ref{graph} auf Seite \pageref{graph} dar.
 }
+=======
+\begin{uebenv}{reissnagel}
+Stelle diese Daten graphisch in Abbildung \ref{graph} auf Seite \pageref{graph} dar.
+\end{uebenv}
+>>>>>>> Stashed changes
 
 \begin{figure}
 \centering
@@ -424,6 +611,7 @@ Nachdem jedem Ausgang $\omega$ eines Zufallversuchs auf plausible Weise ein Wert
 $P(\omega)$ ist gleich der Summe der Wahrscheinlichkeiten aller Ausgänge in $\mathbb{A}$.
 \end{cdef}
 
+<<<<<<< Updated upstream
 \begin{bsps}
 Es ist eine gute Idee, sich an klassischen Beispielen zu orientieren.
 \begin{itemize}
@@ -440,20 +628,48 @@ $$P(\Omega)=1\q\text{und}\q P(\emptyset)=0.$$
 \end{bem}
 
 \uebh{kopfoderzahl}{
+=======
+\begin{bsp}
+Es ist eine gute Idee, sich an klassischen Beispielen zu orientieren.
+\begin{itemize}
+\item Wie gross ist die Wahrscheinlichkeit, mit einem Würfel eine ungerade Zahl zu werfen?
+Ereignis $\mathbb{A}=\{\omega\mid omega\text{ ist ungerade}\}=\{1,3,5\}$, also $P(\mathbb{A})=\frac{1}{6}+\frac{1}{6}+\frac{1}{6}=\frac{1}{2}$.
+\item Wie gross ist die Wahrscheinlichkeit, aus einem Jasskartenspiel einen Buben zu ziehen?
+$P(\mathbb{A})=\frac{1}{36}+\frac{1}{36}+\frac{1}{36}+\frac{1}{36}=\frac{1}{9}$
+\end{itemize}
+\end{bsp}
+
+\begin{bem}
+Für die Sonderfälle, sicheres und unm\"ogliches Ereignis, gilt:
+$$P(\Omega)=1\quad\text{und}\quad P(\emptyset)=0.$$
+\end{bem}
+
+\begin{uebenv}{kopfoderzahl}
+>>>>>>> Stashed changes
 Wie gross ist die Wahrscheinlichkeit bei einem Wurf
 \begin{enumerate}[a)]
 \item mit einer Münze Kopf, Kopf oder Zahl, Kopf und Zahl,
 \item mit einem Würfel eine 3, eine Quadratzahl
 \end{enumerate}
 zu werfen?
+<<<<<<< Updated upstream
 }
 
 \uebh{geburtenregel}{
+=======
+\end{uebenv}
+
+\begin{uebenv}{geburtenregel}
+>>>>>>> Stashed changes
 In England gab es im Zeitraum von 1938-1947 6620794 Einzel-, 81133 Zwillings-, 667 Drillings- und 14 Vierlingsgeburten. Überprüfe die in der Gy\-nä\-ko\-lo\-gie übliche Regel:
 \begin{quote}
 Ist $p$ die ungefähre Wahrscheinlichkeit für eine Zwillingsgeburt, so ist $p^2$ die ungefähre Wahrscheinlichkeit für eine Drillingsgeburt und $p^3$ die ungefähre Wahrscheinlichkeit für eine Vierlingsgeburt.
 \end{quote}
+<<<<<<< Updated upstream
 }
+=======
+\end{uebenv}
+>>>>>>> Stashed changes
 
 Ausgehend von der Erfahrung, dass die relativen Häufigkeiten eines Ereignisses $\mathbb{A}$ bei fortgesetzter Wiederholung eines Zufallversuchs einem bestimmten Wert zustreben, fasste \textsc{Richard von Mises} (1883-1953) die Wahrscheinlichkeit von $\mathbb{A}$ als Grenzwert der relativen Häufigkeiten bei unbegrenzter Wiederholung eines Zufallversuchs auf. Dies war die statistische Definition der Wahrscheinlichkeit.
 
@@ -520,7 +736,11 @@ Die Beziehung aus obigem Satz wird sehr oft benötigt, da in vielen Fällen die 
 
 \begin{csatz}[günstig durch möglich]
 Hat ein Zufallsversuch $n$ mögliche Ausfälle $\omega_1, \omega_2, \omega_3, \dots, \omega_n$ und ist jeder dieser Ausfälle gleich wahrscheinlich, also $P(\omega_i)=\frac{1}{n}$, so gilt für ein Ereignis $\mathbb{A}$
+<<<<<<< Updated upstream
 $$P(\mathbb{A})=\frac{1}{n}+\frac{1}{n}+\dots+\frac{1}{n}=\frac{\card(\mathbb{A})}{\card(\Omega)}.$$
+=======
+$$P(\mathbb{A})=\frac{1}{n}+\frac{1}{n}+\dots+\frac{1}{n}=\frac{\text{card}(\mathbb{A})}{\text{card}(\Omega)}.$$
+>>>>>>> Stashed changes
 \end{csatz}
 \begin{proof}[Beweis]
 Brauche Kol\-mo\-go\-rof-Ad\-di\-ti\-vi\-tät.
@@ -531,6 +751,7 @@ In obigem Fall gilt also für die Wahrscheinlichkeit eines Ereignisses $\mathbb{
 $$P(\mathbb{A}):=\frac{|\mathbb{A}|}{|\Omega|}=\frac{g}{m}.$$
 \end{cdef}
 
+<<<<<<< Updated upstream
 \begin{bsps}
 Würfeln mit einem fairen Spielwürfel, Ziehen von Losen aus einer gut durchmischten Urne, Ziehen von Karten aus einem gut durchmischten Kartenspiel etc.
 \end{bsps}
@@ -538,12 +759,22 @@ Würfeln mit einem fairen Spielwürfel, Ziehen von Losen aus einer gut durchmisc
 Die letzte Folgerung aus den Axiomen entspricht der klassischen Definition der Wahrscheinlichkeit, die von Laplace stammt. Diese Definition hat den Nachteil, dass man sich auf endlich viele Ereignisse, die alle noch gleich wahrscheinlich sein müssen, beschränken muss. Der axiomatische Aufbau der Wahrscheinlichkeitsrechnung wird heute in der Mathematik allgemein benutzt, weil man nicht mehr den Einschränkungen unterworfen und die klassische Definition als Sonderfall enthalten ist.
 
 \uebh{energiearten}{
+=======
+\begin{bsp}
+Würfeln mit einem fairen Spielwürfel, Ziehen von Losen aus einer gut durchmischten Urne, Ziehen von Karten aus einem gut durchmischten Kartenspiel etc.
+\end{bsp}
+
+Die letzte Folgerung aus den Axiomen entspricht der klassischen Definition der Wahrscheinlichkeit, die von Laplace stammt. Diese Definition hat den Nachteil, dass man sich auf endlich viele Ereignisse, die alle noch gleich wahrscheinlich sein müssen, beschränken muss. Der axiomatische Aufbau der Wahrscheinlichkeitsrechnung wird heute in der Mathematik allgemein benutzt, weil man nicht mehr den Einschränkungen unterworfen und die klassische Definition als Sonderfall enthalten ist.
+
+\begin{uebenv}{energiearten}
+>>>>>>> Stashed changes
 In einer Stadt werden von allen Gebäuden 15\% elektrisch, 35\% mit Öl, 25\% mit Kohle und der Rest mit Erdgas beheizt. Wie gross ist die Wahrscheinlichkeit, dass ein zufällig ausgewähltes Gebäude
 \begin{enumerate}[a)]
 \item mit Kohle,	
 \item nicht mit Öl,
 \item weder mit Kohle noch mit Öl beheizt wird?
 \end{enumerate}
+<<<<<<< Updated upstream
 }
 
 \uebh{hundertkugeln}{
@@ -551,6 +782,15 @@ Eine Urne enthält 100 Kugeln mit den Nummern $00,01,02,$ \dots $,98,99$. Eine K
 }
 
 \uebh{pferderennen}{
+=======
+\end{uebenv}
+
+\begin{uebenv}{hundertkugeln}
+Eine Urne enthält 100 Kugeln mit den Nummern $00,01,02,$ \dots $,98,99$. Eine Kugel wird zufällig gezogen. Es sei $X$ die erste und $Y$ die zweite Ziffer ihrer Nummer. Berechne die Wahrscheinlichkeiten $P(X = 3)$, $P(Y\neq 4)$, $P(X \neq Y)$, $P(X < 4\text{ und } Y < 3)$ und $P(X\cdot Y > 49)$.
+\end{uebenv}
+
+\begin{uebenv}{pferderennen}
+>>>>>>> Stashed changes
 Die Pferde Artemis, Borodir, Condor und Durin bestreiten ein Galopprennen. Die Wahrscheinlichkeit, dass A gewinnt, ist doppelt so gross wie die von B, und die von B ist doppelt so gross wie die von C. Die Wahrscheinlichkeit, dass D gewinnt, ist dreimal so gross wie die von C. Wie gross ist die Wahrscheinlichkeit, dass
 
 \begin{minipage}{3.8cm}
@@ -569,9 +809,15 @@ Die Pferde Artemis, Borodir, Condor und Durin bestreiten ein Galopprennen. Die W
 
 Beim Aufgalopp verletzt sich Borodir und kann deshalb am Rennen nicht teilnehmen. Wie gross
 ist jetzt die Wahrscheinlichkeit, dass D gewinnt?
+<<<<<<< Updated upstream
 }
 
 \uebh{bauersucht}{
+=======
+\end{uebenv}
+
+\begin{uebenv}{bauersucht}
+>>>>>>> Stashed changes
 Ein Bauer erfährt, dass auf seinem $\unit[60]{m} \times \unit[40]{m}$ grossen Acker irgendwo ein Schatz vergraben ist. Wie gross ist die Wahrscheinlichkeit, dass der Schatz
 
 \begin{enumerate}[a)]
@@ -582,7 +828,11 @@ Durchmesser von $\unit[10]{m}$ gräbt?
 \end{enumerate}
 
 Hinweis: In diese Aufgabe handelt es sich um geometrische Wahrscheinlichkeiten, definiert durch das Verhältnis des Inhalts der günstigen Fläche zum Inhalt der möglichen Fläche. Auch diese Zuordnung erfüllt die drei Axiome von Kolmogorow, ist also eine Wahrscheinlichkeit.
+<<<<<<< Updated upstream
 }
+=======
+\end{uebenv}
+>>>>>>> Stashed changes
 
 \clearpage
 
@@ -691,7 +941,11 @@ Aus
 https://youtu.be/sb4FPdTdXcU}
 }
 einer Urne mit drei roten und zwei grünen Kugeln wird eine Kugel gezogen und ihre Farbe notiert. Danach wird die Kugel wieder zurückgelegt und der Versuch wiederholt.
+<<<<<<< Updated upstream
 Hier hängt die zweite Stufe nicht vom Ausgang der ersten Stufe ab. Der zugehörige Stichprobenraum ist $\Omega=\set{rr, rg, gr, gg}$.
+=======
+Hier hängt die zweite Stufe nicht vom Ausgang der ersten Stufe ab. Der zugehörige Stichprobenraum ist $\Omega=\{rr, rg, gr, gg\}$.
+>>>>>>> Stashed changes
 Die Figur \ref{fig:baum} auf Seite \pageref{fig:baum} zeigt das Baumdiagramm dieses stochastischen Prozesses.
 
 \begin{figure}[h!]
@@ -701,6 +955,10 @@ Die Figur \ref{fig:baum} auf Seite \pageref{fig:baum} zeigt das Baumdiagramm die
 zahl/.style={fill=seagreen!70!yellow, text=black, label=center:\textsf{\Large g}},
 kopf/.style={fill=firebrick!70!yellow, label=center:\textsf{\Large r}}
 }
+<<<<<<< Updated upstream
+=======
+\centering
+>>>>>>> Stashed changes
 \begin{tikzpicture}
 [scale=1.2, transform shape, 
 thick,
@@ -708,6 +966,7 @@ every node/.style={draw, circle, minimum size=8mm},
 grow=down,  %Zeichenrichtung
 level 1/.style={sibling distance=4cm},
 level 2/.style={sibling distance=2.5cm}, 
+<<<<<<< Updated upstream
 %level 3/.style={sibling distance=2cm}, 
 level distance=1.75cm]
 
@@ -715,6 +974,11 @@ level distance=1.75cm]
 
 %child{
 \node[shape=circle split,draw,line width=1pt,minimum size=8mm,inner sep=0mm, font=\sffamily\normalsize, rotate=30]  (Start) { \rotatebox{-30}{3r} \nodepart{lower}  \rotatebox{-30}{2g}}
+=======
+level distance=1.75cm]
+
+\node[shape=circle split,draw,line width=1pt,minimum size=8mm,inner sep=0mm, font=\sffamily\normalsize]  (Start) {3r \nodepart{lower} 2g}
+>>>>>>> Stashed changes
  child {node[kopf] (A) {}
          child {node[kopf] (B) {}}
         child {node[zahl] (C) {}}
@@ -725,9 +989,15 @@ level distance=1.75cm]
 };
 
 %Füllung der Wurzel = "Start"
+<<<<<<< Updated upstream
 \begin{scope}[on background layer, rotate=30]
     \fill[kopf] (Start.base) ([xshift=0mm]Start.east) arc (0:180:5.5mm)--cycle;
     \fill[zahl] (Start.base) ([xshift= 0pt]Start.west) arc (180:360:5.5mm)--cycle;  
+=======
+\begin{scope}[on background layer]
+    \fill[kopf] (Start.base) ([xshift=0mm]Start.east) arc (0:180:4mm)--cycle;
+    \fill[zahl] (Start.base) ([xshift= 0pt]Start.west) arc (180:360:4mm)--cycle;  
+>>>>>>> Stashed changes
 \end{scope}
 
 %Beschriftung
@@ -769,7 +1039,11 @@ Berechne die entsprechenden Wahrscheinlichkeiten für den stochastischen Prozess
 \end{uebenv}
 
 \begin{uebenv}{ananas}
+<<<<<<< Updated upstream
 Aus der Urne $\set{A, N, A, N, A, S}$ werden vier Buchstaben nacheinander ohne Zurücklegen zufällig gezogen. Wie gross ist die Wahrscheinlichkeit, das Wort \glqq ANNA\grqq\ zu erhalten? Zeichne auch ein Baumdiagramm.
+=======
+Aus der Urne $\{A, N, A, N, A, S\}$ werden vier Buchstaben nacheinander ohne Zurücklegen zufällig gezogen. Wie gross ist die Wahrscheinlichkeit, das Wort \glqq ANNA\grqq\ zu erhalten? Zeichne auch ein Baumdiagramm.
+>>>>>>> Stashed changes
 \end{uebenv}
 
 \begin{uebenv}{meteo}
@@ -955,7 +1229,10 @@ Nat\"urlich sind diese Aussagen mit Vorsicht zu geniessen. Ich habe vorausgesetz
 \end{enumerate}
 \end{lsg}
 
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 \begin{lsg}{farbenblind}
 Eine nicht farbenblinde Person findet man mit Wahrscheinlichkeit $P(\overline{f})=\frac{99}{100}$. $k$ Mal nacheinander eine nicht farbenblinde Person auszuw\"ahlen schafft man zu $\left(\frac{99}{100}\right)^{k}$. Um mit mindestens 95\%-iger Sicherheit mindestens eine farbenblinde Person zu finden berechnet man die Wahrscheinlichkeit zu
 \begin{align*}
@@ -981,7 +1258,10 @@ Eingetippt $k>298.07$, das heisst, man muss mindestens $299$ Personen untersuche
 Diese Aufgabe ist nicht trivial. Beispielsweise denken wir uns die $42$ Zahlen als Folge aufgelistet. Wir setzen eine $1$, falls die Zahl zum Sechser geh\"ort und eine $0$, falls sie nicht dazu geh\"ort. Wenn jetzt in einer Ziehung alle $6$ \emph{nicht} benachbart sein sollen, stellen wir uns $36+1$ Platzhalter vor, da ich meine Gl\"uckszahlen dahin setzen kann und diese dann nicht benachbart sind. Wir k\"onnen ja bei den $36$ Nullen mit Anfang und Ende an $37$ Positionen die $1$en setzen, so dass nie zwei oder mehr $1$en benachbart sind. Damit ist die Wahrscheinlichkeit, dass bei einer Ziehung kein Nachbar vorkommt $P(0)=\frac{\binom{37}{6}}{\binom{42}{6}}$. Die Gegenwahrscheinlichkeit, dass mindestens ein Paar Nachbarn vorkommen, ist dann $P(\overline{0})=1-P(0)\approx56\%$. Das bedeutet, dass bei mehr als jeder zweiten Ziehung ein Paar Nachbarn vorkommen!
 \end{lsg}
 
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 \begin{lsg}{drawpoker}
 Ich notiere jeweils zwei Varianten.
 \begin{enumerate}[a)]
@@ -998,7 +1278,10 @@ Ich notiere jeweils zwei Varianten.
 
 \clearpage
 
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 \section{Bedingte Wahrscheinlichkeit}
 \subsection{Tulpen aus Amsterdam}
 
@@ -1064,8 +1347,11 @@ $P(A|B)$ ist die relative Wahrscheinlichkeit von $A$ bezüglich des \emph{reduzi
 \end{enumerate}
 \end{uebenv}
 
+<<<<<<< Updated upstream
 
 
+=======
+>>>>>>> Stashed changes
 \begin{uebenv}{luegendetektor}
 Ein Lügendetektor-Test entscheide in 90\% aller Fälle richtig, sowohl bei Schuldigen, als auch bei Unschuldigen. Um Diebstähle zu reduzieren, entlässt eine grosse Firma alle Angestellten, die beim Test durchfallen. Vor der Entlassungsaktion seien 5\% aller Angestellten Diebe.
 \begin{enumerate}[a)]
@@ -1074,14 +1360,20 @@ Ein Lügendetektor-Test entscheide in 90\% aller Fälle richtig, sowohl bei Schu
 \end{enumerate}
 \end{uebenv}
 
+<<<<<<< Updated upstream
 
 
+=======
+>>>>>>> Stashed changes
 \begin{uebenv}{sensitivundspezifisch}
 Schreibe auf, was die Begriffe \definition{Sensitivität} und \definition{Spezifität} bedeuten. Kontrolliere deine Aussagen mithilfe der Angaben aus dem Skript auf Seite \pageref{ueb:hiv} (\"Ubung HIV Test).
 \end{uebenv}
 
+<<<<<<< Updated upstream
 
 
+=======
+>>>>>>> Stashed changes
 \begin{uebenv}{selbsttest}
 Betrachte die Angaben zur Sensitivität und Spezifität auf dem folgenden Ausschnitt des Beipackzettels eines gängigen Tests (Abbildung \ref{fig:covidchart} auf Seite \pageref{fig:covidchart})
 
@@ -1109,8 +1401,11 @@ Wie viele kranke Personen werden nicht erkannt?
 \end{enumerate}
 \end{uebenv}
 
+<<<<<<< Updated upstream
 
 
+=======
+>>>>>>> Stashed changes
 \begin{uebenv}{geringespezifitaet}
 Die Corona Selbsttests haben eine sehr hohe Spezifität und eine hohe Sensitivität. Was bedeutet es für Patienten, wenn ein medizinischer Test eine hohe Sensitivität, aber eine nicht so hohe Spezifität hat?
 \end{uebenv}
@@ -1125,8 +1420,11 @@ Rechne die Werte für die positive und negative Prädikation nach.
 \end{enumerate}
 \end{uebenv}
 
+<<<<<<< Updated upstream
 
 
+=======
+>>>>>>> Stashed changes
 Im Anhang \ref{appendix:aerztecovid} gegen Ende des Skripts (Seite \pageref{appendix:aerztecovid}) kann man Zahlen aus einem Ärzte-Communiqué zu einem neuen Covid19 Schnelltest, der damals im Nov 2020 eingeführt wurde, nachrechnen.
 
 \begin{uebenv}{hivtest}
@@ -1172,8 +1470,11 @@ Was ist also günstiger, wenn du möglichst schnell eine verlässliche Wegauskun
 
 Ein Ereignis A heisst \emph{unabhängig} von einem Ereignis B, wenn das Eintreten von B die Wahrscheinlichkeit für das Eintreten von A nicht beeinflusst, d.h. wenn die Wahrscheinlichkeit von A gleich der bedingten Wahrscheinlichkeit von A unter der Bedingung B ist. Diese Gleichung führt zu
 
+<<<<<<< Updated upstream
 \pagebreak
 
+=======
+>>>>>>> Stashed changes
 \begin{cdef}[Unabhängigkeit]
 Zwei Ereignisse A und B heissen \emph{unabhängig}, wenn
 $$P(A\cap B) = P(A)\cdot P(B),$$
@@ -1218,8 +1519,11 @@ es eine Abhängigkeit zwischen Haarfarbe und Geschlecht? Diskutiere dies aufgrun
 \end{table}
 \end{uebenv}
 
+<<<<<<< Updated upstream
 
 
+=======
+>>>>>>> Stashed changes
 \begin{uebenv}{montyhallproblem}
 Das folgende Problem ist bekannt unter dem Namen \definition{Monty-Hall-Problem} oder \definition{Ziegenproblem}.
 
@@ -1248,12 +1552,23 @@ einer Gameshow befinden sich hinter drei Türen A, B und C ein Auto und zwei Zie
         Allgemein: Aus (b) wissen wir $P(B)=P(A\cap B)+P(\overline{A}\cap B)$ und daher ist $P(A|B)=\frac{P(A\cap B)}{P(B)}=\frac{P(B)-P(\overline{A}\cap B)}{P(B)}=1-\frac{P(\overline{A}\cap B)}{P(B)}=1-P(\overline{A}|B)$.
     \end{enumerate}
 \end{lsg}
+<<<<<<< Updated upstream
 \begin{lsg}{luegendetektor}
     \begin{enumerate}
         \item $P(\text{pos}|D)=\frac{P(D\cap\text{pos})}{P(\text{pos})}=\frac{0.05\cdot 0.9}{0.05\cdot0.9+0.95\cdot0.1}\approx32\%$
         \item $P(D|\text{neg})=\frac{0.05\cdot0.1}{0.05\cdot0.1+0.95\cdot0.9}<1\%$
     \end{enumerate}
 \end{lsg}
+=======
+
+\begin{lsg}{luegendetektor}
+    \begin{enumerate}
+        \item $P(D\mid\text{pos})=\frac{P(D\cap\text{pos})}{P(\text{pos})}=\frac{0.05\cdot 0.9}{0.05\cdot0.9+0.95\cdot0.1}\approx32\%$
+        \item $P(D|\text{neg})=\frac{0.05\cdot0.1}{0.05\cdot0.1+0.95\cdot0.9}<1\%$
+    \end{enumerate}
+\end{lsg}
+
+>>>>>>> Stashed changes
 \begin{lsg}{sensitivundspezifisch}
     Für ein Testverfahren: Senitivität misst die Wahrscheinlichkeit, dass für eine positive Testperson das Resultat positiv ausfällt. Spezifität misst die Wahrscheinlichkeit, dass für eine negative Testperson das Resultat negativ ausfällt.
 \end{lsg}
@@ -1398,7 +1713,11 @@ Man bezeichnet die Funktionswerte der Zufallsvariablen $X$ mit $x_1$, $x_2$, $x_
 \begin{center}
 \begin{tabular}{|c|c|c|}
 \hline
+<<<<<<< Updated upstream
 \rowcolor{Gray}\spaltenheight $\q x_i\q$ & $\q5\q$ & $\q-5\q$\spaltensep \hline
+=======
+\rowcolor{Gray}\spaltenheight $\quad x_i\quad$ & $\quad5\quad$ & $\quad-5\quad$\spaltensep \hline
+>>>>>>> Stashed changes
 \rowcolor{lightyellow}\spaltenheight $P(X=x_i)$ & $0.5$ & $0.5$\spaltensep \hline
 \end{tabular}
 \end{center}
@@ -1417,7 +1736,11 @@ $$E(X)= x_1\cdot P(X=x_1) + x_2\cdot P(X=x_2)+\dots.$$
 
 \begin{bsp}
 Zwei Würfel werden sehr oft geworfen. Welche Augensumme darf man durchschnittlich erwarten? Die Zufallsvariable X ordnet jedem 
+<<<<<<< Updated upstream
 $$\omega_i\in\Omega=\set{11,12,\dots,16,\dots,66}$$
+=======
+$$\omega_i\in\Omega=\{11,12,\dots,16,\dots,66\}$$
+>>>>>>> Stashed changes
 die Augensumme der beiden Würfel zu. Die möglichen Funktionswerte der Zufallsvariablen sind $x_1=2$, $x_2=3$, $x_3=4$, \dots, $x_{11}=12$.
 
 \begin{uebenv}{relhaeufigkeiten}
@@ -1477,7 +1800,11 @@ Die	Wahrscheinlichkeitsverteilung wird durch ein Stabdiagramm dargestellt. Für 
 
 \begin{uebenv}{fuenfkarten}
 Aus einer Urne mit fünf Kärtchen
+<<<<<<< Updated upstream
 $$\set{\texttt{DER, ZUFALL, REGIERT, DIE, WELT}}$$
+=======
+$$\{\texttt{DER, ZUFALL, REGIERT, DIE, WELT}\}$$
+>>>>>>> Stashed changes
 wird ei\-nes der fünf Wörter zufällig gezogen. Berechne den Er\-war\-tungs\-wert der Zu\-fall\-svaria\-blen
 \begin{enumerate}[a)]
 \item $W$, deren Funktionswerte die Länge des gewählten Wortes angeben,
@@ -1642,6 +1969,7 @@ Berechne für jedes Medikament den Erwartungswert und die Standardabweichung. We
 \begin{lsg}{einarmigerbandit}
     $E(X)=10\cdot(\frac{1}{10})^2+2\cdot(\frac{4}{10})^2+1\cdot(\frac{5}{10})^2-1\cdot(1-\frac{42}{100})=0.09$
 \end{lsg}
+<<<<<<< Updated upstream
 \begin{lsg}{tennis}
     $E(X)=2\cdot2\cdot(\frac{1}{2})^2+3\cdot2\cdot(\frac{1}{2})^3+2\cdot4\cdot(\frac{1}{2})^4+\dots=2\cdot\frac{1}{2}+3\cdot(\frac{1}{2})^2+4\cdot(\frac{1}{2})^3+\dots$
 
@@ -1649,6 +1977,15 @@ Berechne für jedes Medikament den Erwartungswert und die Standardabweichung. We
     $$E(X)-\frac{1}{2}E(X)=2\cdot\frac{1}{2}+1\cdot(\frac{1}{2})^2+1\cdot(\frac{1}{2})^3+\dots$$
     Es folgt $\frac{1}{2}E(X)=1+(\frac{1}{4}+\frac{1}{8}+\dots)$ und damit
     $$E(X)=2+(\frac{1}{2}+\frac{1}{4}+\dots)=2+\frac{\frac{1}{2}}{1-\frac{1}{2}}=3$$
+=======
+
+\begin{lsg}{tennis}
+    Man notiert die Anzahl zu spielenden Punkte und überlegt sich, auf wie viele Arten diese realisiert werden können: $E(X)=2\cdot(\frac{1}{2})^2\cdot2+4\cdot(\frac{1}{2})^4\cdot2^2+6\cdot(\frac{1}{2})^6\cdot2^3+8\cdot(\frac{1}{2})^8\cdot 2^4+\dots$
+
+    Diese Reihe kann man auf eine geometrische zurückführen. Betrachte dazu $\frac{1}{2}E(X)$ bzw. die Differenz
+    $$E(X)-\frac{1}{2}E(X)=1+\frac{1}{2}+\left(\frac{1}{2}\right)^2+\left(\frac{1}{2}\right)^3+\left(\frac{1}{2}\right)^4\dots$$
+    Es folgt $\frac{1}{2}E(X)=\frac{1}{1-\frac{1}{2}}=2$ und damit $E(X)=4$.
+>>>>>>> Stashed changes
 \end{lsg}
 \begin{lsg}{verteilungen}
     Die Werte sehen in etwa so aus:
@@ -1714,7 +2051,11 @@ Berechne für jedes Medikament den Erwartungswert und die Standardabweichung. We
 Oft gibt es bei Zufallsversuchen nur zwei mögliche Ausgänge: Mit einer Münze wirft man \glqq Kopf\grqq\ oder \glqq Zahl\grqq, die gewürfelte Augenzahl ist eine $6$ oder keine $6$, die gezogene Karte ist ein Ass oder kein Ass, die Geburt eines Kindes ergibt eine Tochter oder einen Sohn, \dots
 
 \begin{cdef}[Binomialverteilung]
+<<<<<<< Updated upstream
 Ein Zufallsversuch mit genau zwei Ausgängen, also mit dem Stichprobenraum $\Omega=\{\text{Erfolg, Misserfolg}\}$ oder kurz $\set{1,0}$, heisst Bernoulli-Versuch.
+=======
+Ein Zufallsversuch mit genau zwei Ausgängen, also mit dem Stichprobenraum $\Omega=\{\text{Erfolg, Misserfolg}\}$ oder kurz $\{1,0\}$, heisst Bernoulli-Versuch.
+>>>>>>> Stashed changes
 Man nennt in diesem Zusammenhang eine Zufallsvariable 
 binomialverteilt (lat. binominis, zweinamig).
 \end{cdef}
@@ -1742,7 +2083,11 @@ Wie gross ist bei einem $n$-stufigen Bernoulli-Versuch die Wahrscheinlichkeit f�
 \hline
 \rowcolor{Gray}\spaltenheight $x$ & 0 & 1 & 2 & 3\spaltensep \hline
 \rowcolor{lightyellow}\spaltenheight $P(S_n=x)$ & $q^n$ &  &  & \spaltensep \hline
+<<<<<<< Updated upstream
 \rowcolor{Gray}\spaltenheight $x$ & $\q 4\q$ & $\q k\q$ & $n-1$ & $\q n\q$\spaltensep \hline
+=======
+\rowcolor{Gray}\spaltenheight $x$ & $\quad 4\quad$ & $\quad k\quad$ & $n-1$ & $\quad n\quad$\spaltensep \hline
+>>>>>>> Stashed changes
 \rowcolor{lightyellow}\spaltenheight $P(S_n=x)$ &  &  &  & $p^n$\spaltensep \hline
 \end{tabular}
 \caption{Binomialverteilung mit Erfolgswarscheinlichkeit $p$}
@@ -1882,7 +2227,11 @@ Wie gross ist die Wahrscheinlichkeit, bei zehnmaligem Würfeln zwischen $2$ und 
 \hline
 \rowcolor{Gray}\spaltenheight $x$ & 0 & 1 & 2 & 3\spaltensep \hline
 \rowcolor{lightyellow}\spaltenheight $P(S_n=x)$ & $q^n$ & $n\cdot pq^{n-1}$ & $\binom{n}{2}p^2q^{n-2}$ & $\binom{n}{3}p^3q^{n-3}$\spaltensep \hline
+<<<<<<< Updated upstream
 \rowcolor{Gray}\spaltenheight $x$ & $\q 4\q$ & $\q k\q$ & $n-1$ & $\q n\q$\spaltensep \hline
+=======
+\rowcolor{Gray}\spaltenheight $x$ & $\quad 4\quad$ & $\quad k\quad$ & $n-1$ & $\quad n\quad$\spaltensep \hline
+>>>>>>> Stashed changes
 \rowcolor{lightyellow}\spaltenheight $P(S_n=x)$ & $\binom{n}{4}p^4q^{n-4}$ & $\binom{n}{k}p^kq^{n-k}$ & $n\cdot p^{n-1}q$ & $p^n$\spaltensep \hline
 \end{tabular}
 }
@@ -2106,7 +2455,11 @@ Wir formulieren die beiden konkurrierenden Hypothesen zu ihrer Treffsicherheit:
 Wir nehmen an, dass $H_0$ wahr ist. In einer Wettkampfsituation tritt Nicole $n=5$ mal zu einem Freiwurf an und trifft $k=3$ mal. Auf Grund der Nullhypothese sind im Mittel
 $$E=n\cdot p_0=5\cdot0.4=2$$
 Treffer zu erwarten. Ein Wert von $k$ nahe bei $E$ lässt wenig Zweifel an der Richtigkeit von $H_0$ aufkommen. Aber je stärker $k$ von $E$ abweicht, desto unhaltbarer wird $H_0$. Wir fassen alle Werte, die grösser oder gleich $k$ sind im kritischen Bereich $K$ zusammen:
+<<<<<<< Updated upstream
 $$K=\set{k,k+1,\dots,n}.$$
+=======
+$$K=\{k,k+1,\dots,n\}.$$
+>>>>>>> Stashed changes
 $K$ enthält also alle Werte, die $H_0$ schwächen und $H_A$ stärken.
 
 \begin{uebenv}{fuenffreiwuerfe}
@@ -2134,7 +2487,11 @@ Illustriere alle Wahrscheinlichkeiten $k=0,\dots,5$ für $n=5$ und $p=0.4$ in un
 
 
 \begin{uebenv}{imkritischenbereich}
+<<<<<<< Updated upstream
     Berechne nun die Wahrscheinlichkeit $\ga_p$ dafür, dass wir bei $n$ Versuchen ein Ereignis aus dem kritischen Bereich $K$ erhalten, falls $H_0$ wahr ist. Im Falle unserer Spielerin nehmen wir also $n=5$, $K=\{3,4,5\}$ und $p=0.4$.
+=======
+    Berechne nun die Wahrscheinlichkeit $\alpha_p$ dafür, dass wir bei $n$ Versuchen ein Ereignis aus dem kritischen Bereich $K$ erhalten, falls $H_0$ wahr ist. Im Falle unserer Spielerin nehmen wir also $n=5$, $K=\{3,4,5\}$ und $p=0.4$.
+>>>>>>> Stashed changes
 \end{uebenv}
 
 
@@ -2142,6 +2499,7 @@ Illustriere alle Wahrscheinlichkeiten $k=0,\dots,5$ für $n=5$ und $p=0.4$ in un
 \subsubsection{Signifikanz}
 
 \begin{cdef}{Signifikanzwert}
+<<<<<<< Updated upstream
 Die Wahrscheinlichkeit, dass wir in $n$ Versuchen ein Ereignis aus dem kritischen Bereich erhalten, heisst Signifikanzwert $\ga_p$ oder kurz $p$--Wert.
 \end{cdef}
 
@@ -2157,6 +2515,23 @@ $5\%$ gilt landläufig als Trennpunkt zwischen \glqq kleinen\grqq\ und \glqq gro
 
 \begin{bem}
 Beim Higgs-Boson wurde ein $p$-Wert von $5\gs$ zugrunde gelegt. Das bedeutete in diesem Fall, dass eine Wahrscheinlichkeit von ca. $10^{-5}\%$ besteht, dass dieses Signal durch zufällige Hintergrundschwankungen (Rauschen etc.) zustande kam. 
+=======
+Die Wahrscheinlichkeit, dass wir in $n$ Versuchen ein Ereignis aus dem kritischen Bereich erhalten, heisst Signifikanzwert $\alpha_p$ oder kurz $p$--Wert.
+\end{cdef}
+
+Je kleiner der $p$-Wert ist, desto weniger spricht für die Nullhypothese $H_0$, wenn wir im Bereich des $p$-Werts landen. Es stellt sich daher die Frage, wie klein $\alpha_p$ sein muss, damit man $H_0$ verwirft? Sinnvolle Werte sind $\alpha_p=0.05$ oder $\alpha_p=0.01$.
+
+\begin{cdef}[Signifikanz \& Hochsignifikanz]
+Ist $\alpha_p\leq0.05$, so heisst das beobachtete Ereignis signifikant. Ist $\alpha_p\leq0.01$, so kriegt das beobachtete Ereignis sogar das Prädikat hochsignifikant.
+\end{cdef}
+
+\begin{bem}
+$5\%$ gilt landläufig als Trennpunkt zwischen \glqq kleinen\grqq\ und \glqq grossen\grqq\ Wahr\-schein\-lich\-kei\-ten. Die Hypothese $H_0$ ist nicht zwingend falsch, wenn $\alpha_p\leq0.05$ ist. Wenn $H_0$ jedoch richtig ist, dann haben wir ein Ereignis mit sehr kleiner Wahrscheinlichkeit beobachtet. Somit würde man eher die Alternative $H_A$ der Nullhypothese $H_0$ vorziehen.
+\end{bem}
+
+\begin{bem}
+Beim Higgs-Boson wurde ein $p$-Wert von $5\sigma$ zugrunde gelegt. Das bedeutete in diesem Fall, dass eine Wahrscheinlichkeit von ca. $10^{-5}\%$ besteht, dass dieses Signal durch zufällige Hintergrundschwankungen (Rauschen etc.) zustande kam. 
+>>>>>>> Stashed changes
 \end{bem}
 
 Im
@@ -2164,7 +2539,11 @@ Im
 \qrcode{
 https://youtu.be/9rI5q0tS910}
 }
+<<<<<<< Updated upstream
 Beispiel unserer Spielerin hatten wir einen $p$-Wert von $\ga_p=0.317$. Dieser reicht also bei Weitem nicht aus, um $H_0$ zu verwerfen und sie eine höhere Trefferquote in Wettkampfsituationen zu attestieren. Denn auch bei einer gleichbleibenden Trefferquote von $p_0=0.4$ würde Nicole in fast jedem dritten Spiel drei oder mehr von fünf Freiwürfen verwerten.
+=======
+Beispiel unserer Spielerin hatten wir einen $p$-Wert von $\alpha_p=0.317$. Dieser reicht also bei Weitem nicht aus, um $H_0$ zu verwerfen und sie eine höhere Trefferquote in Wettkampfsituationen zu attestieren. Denn auch bei einer gleichbleibenden Trefferquote von $p_0=0.4$ würde Nicole in fast jedem dritten Spiel drei oder mehr von fünf Freiwürfen verwerten.
+>>>>>>> Stashed changes
 
 \begin{uebenv}{signifikanzwert}
 Sie verwertet
@@ -2177,14 +2556,22 @@ Berechne die beiden Signifikanzwerte.
 
 
 
+<<<<<<< Updated upstream
 Einzig für den letzten Fall ist $\ga_p\leq0.05$. Dieses Ereignis ist also statistisch signifikant und wir müssten die Nullhypothese $H_0$ zugunsten der Alternative $H_A$ verwerfen. Das heisst, wir könnten bei fünf Treffern davon ausgehen, dass unsere Spielerin in Wettkampfsituationen tatsächlich besser trifft als im Training.
+=======
+Einzig für den letzten Fall ist $\alpha_p\leq0.05$. Dieses Ereignis ist also statistisch signifikant und wir müssten die Nullhypothese $H_0$ zugunsten der Alternative $H_A$ verwerfen. Das heisst, wir könnten bei fünf Treffern davon ausgehen, dass unsere Spielerin in Wettkampfsituationen tatsächlich besser trifft als im Training.
+>>>>>>> Stashed changes
 
 \subsubsection{Fehlerarten}
 
 Die Nullhypothese $H_0$ konkurriert mit der Alternativhypothese $H_A$. Müssen wir eine Entscheidung treffen und einer der beiden Hypothesen den Vorzug geben, so können uns Fehler unterlaufen.
 
 \begin{itemize}
+<<<<<<< Updated upstream
 \item \definition{Fehler erster Art}: Die Nullhypothese $H_0$ ist wahr, wird aber fälschlicherweise zugunsten der Alternativhypothese $H_A$ verworfen. Die Wahrscheinlichkeit, einen Fehler der ersten Art zu begehen, beträgt offensichtlich $\ga_p$.
+=======
+\item \definition{Fehler erster Art}: Die Nullhypothese $H_0$ ist wahr, wird aber fälschlicherweise zugunsten der Alternativhypothese $H_A$ verworfen. Die Wahrscheinlichkeit, einen Fehler der ersten Art zu begehen, beträgt offensichtlich $\alpha_p$.
+>>>>>>> Stashed changes
 \item \definition{Fehler zweiter Art}:
 \marginnote{
 \qrcode{
@@ -2193,7 +2580,11 @@ https://youtu.be/-gNSbK25Spc}
 Die Nullhypothese $H_0$ ist falsch, wird aber trotzdem beibehalten. Die Fehlerwahrscheinlichkeit zweiter Art hängt von der Wahl des Parameters $p$ ab. Das wollen wir uns an unserem Trefferquotenbeispiel veranschaulichen.
 \end{itemize}
 
+<<<<<<< Updated upstream
 Angenommen, die Spielerin verwertet in einer Wettkampfsituation tatsächlich alle $5$ Freiwürfe. Die Gefahr, dass wir die Nullhypothese $H_0$ fälschlicherweise verwerfen (einen Fehler erster Art begehen) ist mit $\ga_p=0.010$ so klein, dass wir sie in Kauf nehmen. Bei mindestens $4$ Treffern hingegen ist die Wahrscheinlichkeit für einen Fehler der ersten Art mit $\ga_p=0.087$ zu gross, und wir bleiben bei der Nullhypothese $H_0$.
+=======
+Angenommen, die Spielerin verwertet in einer Wettkampfsituation tatsächlich alle $5$ Freiwürfe. Die Gefahr, dass wir die Nullhypothese $H_0$ fälschlicherweise verwerfen (einen Fehler erster Art begehen) ist mit $\alpha_p=0.010$ so klein, dass wir sie in Kauf nehmen. Bei mindestens $4$ Treffern hingegen ist die Wahrscheinlichkeit für einen Fehler der ersten Art mit $\alpha_p=0.087$ zu gross, und wir bleiben bei der Nullhypothese $H_0$.
+>>>>>>> Stashed changes
 
 Damit kann uns aber ein Fehler zweiter Art unterlaufen, den wir uns genauer anschauen wollen. Gehen wir davon aus, dass die Spielerin tatsächlich ein Wettkampftyp ist und in Wettkampfsituationen eine Trefferquote von $p=0.6$ hat.
 
@@ -2360,7 +2751,11 @@ Rechne das vorgestellte Beispiel für $100$ zugesprochene Freiwürfe (siehe Abbi
 \end{figure}
 
 \begin{uebenv}{mehrwuerfe}\label{ueb25}
+<<<<<<< Updated upstream
 In der Wettkampfsituation können bloss 25 Freiwürfe beobachtet werden. Ab wie vielen Treffern lehnst du die Nullhypothese bei einen Signifikanzniveau von $\ga_p = 0.05$ ab? Ab welcher Trefferzahl lehnst du $H_0$ bei $\ga_p = 0.01$ ab?
+=======
+In der Wettkampfsituation können bloss 25 Freiwürfe beobachtet werden. Ab wie vielen Treffern lehnst du die Nullhypothese bei einen Signifikanzniveau von $\alpha_p = 0.05$ ab? Ab welcher Trefferzahl lehnst du $H_0$ bei $\alpha_p = 0.01$ ab?
+>>>>>>> Stashed changes
 
 Wie gross wird jeweils die Wahrscheinlichkeit für einen Fehler der zweiten Art, wenn wir von einer tatsächlichen Wettkampftrefferwahrscheinlichkeit von $p=0.6$ ausgehen?
 \end{uebenv}
@@ -2384,19 +2779,32 @@ oben vorgestellte Test ist einseitig. Betrachte nun auch zweiseitige Tests und k
 
 \begin{table}
 \begin{center}
+<<<<<<< Updated upstream
 \scalebox{0.95}{
 \begin{tabular}{m{3.5cm}m{3cm}m{7cm}}
 \toprule
 \multicolumn{3}{c}{Ereignis $k$ bei einem Signifikanzniveau $\ga_p$ und kritischem Wert $c$.} \\ \midrule
+=======
+\begin{tabular}{m{3.5cm}m{3cm}m{7cm}}
+%\toprule
+\multicolumn{3}{c}{Ereignis $k$ bei einem Signifikanzniveau $\alpha_p$ und kritischem Wert $c$.} \\ %\midrule
+>>>>>>> Stashed changes
 \rule{0mm}{20ex}\multirow{2}{3.5cm}{Einseitiger Test} & $H_0$: $p=p_0$ gegen $H_A: p>p_0$ &
 \definecolor{zzttqq}{rgb}{0.6,0.2,0}
 \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.15cm,y=12.0cm]
 \draw[->,color=black] (0,0) -- (40,0);
 \foreach \x in {0,10,20,30}
+<<<<<<< Updated upstream
 \draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize};
 \draw[->,color=black] (0,-0.002) -- (0,0.15);
 \foreach \y in {0.04,0.08,0.12}
 \draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize};
+=======
+\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize $$};
+\draw[->,color=black] (0,-0.002) -- (0,0.15);
+\foreach \y in {0.04,0.08,0.12}
+\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize $$};
+>>>>>>> Stashed changes
 \clip(0,-0.03) rectangle (40,0.2);
 \draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (6.5,0) rectangle (7.5,0);
 \draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (7.5,0) rectangle (8.5,0);
@@ -2426,11 +2834,16 @@ oben vorgestellte Test ist einseitig. Betrachte nun auch zweiseitige Tests und k
 \draw[color=zzttqq,fill=zzttqq,fill opacity=0.5] (31.5,0) rectangle (32.5,0);
 \draw[color=zzttqq,fill=zzttqq,fill opacity=0.5] (32.5,0) rectangle (33.5,0);
 \begin{scriptsize}
+<<<<<<< Updated upstream
 \draw[color=zzttqq] (32,0.05) node[left]{$\leq\ga_p$};
+=======
+\draw[color=zzttqq] (32,0.05) node[left]{$\leq\alpha_p$};
+>>>>>>> Stashed changes
 \draw[color=zzttqq] (24,0) node[below]{$c$};
 \end{scriptsize}
 \end{tikzpicture}
 
+<<<<<<< Updated upstream
  \\ \cmidrule(r){2-3}
  & $H_0$: $p=p_0$ gegen $H_A$: $p<p_0$ & 
 \definecolor{zzttqq}{rgb}{0.6,0.2,0}
@@ -2441,6 +2854,19 @@ oben vorgestellte Test ist einseitig. Betrachte nun auch zweiseitige Tests und k
 \draw[->,color=black] (0,-0.002) -- (0,0.15);
 \foreach \y in {0.04,0.08,0.12}
 \draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize};
+=======
+ \\ %\cmidrule(r){2-3}
+ & $H_0$: $p=p_0$ gegen $H_A$: $p<p_0$ & 
+ 
+ \definecolor{zzttqq}{rgb}{0.6,0.2,0}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.15cm,y=12.0cm]
+\draw[->,color=black] (0,0) -- (40,0);
+\foreach \x in {0,10,20,30}
+\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize $$};
+\draw[->,color=black] (0,-0.002) -- (0,0.15);
+\foreach \y in {0.04,0.08,0.12}
+\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize $$};
+>>>>>>> Stashed changes
 \clip(0,-0.03) rectangle (40,0.2);
 \draw[color=zzttqq,fill=zzttqq,fill opacity=0.5] (6.5,0) rectangle (7.5,0);
 \draw[color=zzttqq,fill=zzttqq,fill opacity=0.5] (7.5,0) rectangle (8.5,0);
@@ -2470,6 +2896,7 @@ oben vorgestellte Test ist einseitig. Betrachte nun auch zweiseitige Tests und k
 \draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (31.5,0) rectangle (32.5,0);
 \draw[color=zzttqq,fill=zzttqq,fill opacity=0.1] (32.5,0) rectangle (33.5,0);
 \begin{scriptsize}
+<<<<<<< Updated upstream
 \draw[color=zzttqq] (14,0.05) node[left]{$\leq\ga_p$};
 \draw[color=zzttqq] (16,0) node[below]{$c$};
 \end{scriptsize}
@@ -2477,14 +2904,31 @@ oben vorgestellte Test ist einseitig. Betrachte nun auch zweiseitige Tests und k
  \\ \midrule
  
 Zweiseitiger Test & $H_0$: $p=p_0$ gegen $H_A$: $p\neq p_0$ &
+=======
+\draw[color=zzttqq] (14,0.05) node[left]{$\leq\alpha_p$};
+\draw[color=zzttqq] (16,0) node[below]{$c$};
+\end{scriptsize}
+\end{tikzpicture}
+ 
+ \\ %\midrule
+Zweiseitiger Test & $H_0$: $p=p_0$ gegen $H_A$: $p\neq p_0$ &
+
+>>>>>>> Stashed changes
 \definecolor{zzttqq}{rgb}{0.6,0.2,0}
 \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.15cm,y=12.0cm]
 \draw[->,color=black] (0,0) -- (40,0);
 \foreach \x in {0,10,20,30}
+<<<<<<< Updated upstream
 \draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize};
 \draw[->,color=black] (0,-0.002) -- (0,0.15);
 \foreach \y in {0.04,0.08,0.12}
 \draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize};
+=======
+\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize $$};
+\draw[->,color=black] (0,-0.002) -- (0,0.15);
+\foreach \y in {0.04,0.08,0.12}
+\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize $$};
+>>>>>>> Stashed changes
 \clip(0,-0.03) rectangle (40,0.2);
 \draw[color=zzttqq,fill=zzttqq,fill opacity=0.5] (6.5,0) rectangle (7.5,0);
 \draw[color=zzttqq,fill=zzttqq,fill opacity=0.5] (7.5,0) rectangle (8.5,0);
@@ -2514,23 +2958,37 @@ Zweiseitiger Test & $H_0$: $p=p_0$ gegen $H_A$: $p\neq p_0$ &
 \draw[color=zzttqq,fill=zzttqq,fill opacity=0.5] (31.5,0) rectangle (32.5,0);
 \draw[color=zzttqq,fill=zzttqq,fill opacity=0.5] (32.5,0) rectangle (33.5,0);
 \begin{scriptsize}
+<<<<<<< Updated upstream
 \draw[color=zzttqq] (14,0.05) node[left]{$\leq\frac{\ga_p}{2}$};
 \draw[color=zzttqq] (32,0.05) node[left]{$\leq\frac{\ga_p}{2}$};
+=======
+\draw[color=zzttqq] (14,0.05) node[left]{$\leq\frac{\alpha_p}{2}$};
+\draw[color=zzttqq] (32,0.05) node[left]{$\leq\frac{\alpha_p}{2}$};
+>>>>>>> Stashed changes
 \draw[color=zzttqq] (14.5,0) node[below]{$c_1$};
 \draw[color=zzttqq] (26.5,0) node[below]{$c_2$};
 \end{scriptsize}
 \end{tikzpicture}
 
+<<<<<<< Updated upstream
 \\ \bottomrule
 \end{tabular}
 }
+=======
+\\ %\bottomrule
+\end{tabular}
+>>>>>>> Stashed changes
 \caption{Einseitige und zweiseitiger Hypothesentest}\label{binomtab}
 \end{center}
 \end{table}
 
 \begin{uebenv}{wikimuenze}
 Gegeben sei eine Münze. Die zu prüfende Nullhypothese sei, dass die Münze fair ist, dass also Kopf und Zahl gleich wahrscheinlich sind. Die Alternativhypothese sei, dass ein Ergebnis wahrscheinlicher ist, wobei nicht festgelegt wird, welches der beiden wahrscheinlicher sein soll. Das Zufallsexperiment zum Testen der Nullhypothese bestehe nun darin, dass die Münze zwanzig Mal geworfen wird. $K$ bezeichne die Anzahl der Würfe, die \glqq Kopf\grqq\ als Ergebnis liefern. Bei einer fairen Münze wäre zehnmal \glqq Kopf\grqq\ zu erwarten. Als Statistik wählt man daher sinnvollerweise
+<<<<<<< Updated upstream
 $$X=\abs{K-10},$$
+=======
+$$X=|{K-10}|,$$
+>>>>>>> Stashed changes
 was in Worten die Abweichung vom Mittelwert \glqq Kopf\grqq\ einer fairen Münze ist.
 Angenommen, der Versuch liefert $K=14$ mal das Ergebnis \glqq Kopf\grqq, also $X=4$. Unter der Nullhypothese ist die Anzahl der Köpfe binomialverteilt mit $n=20$ und $p=0.5$.
 
@@ -2548,7 +3006,11 @@ Formuliere $H_0$ und $H_A$ und teste diese.
 
 
 \begin{uebenv}{hellseher}
+<<<<<<< Updated upstream
 Ein statistischer Test zur Überprüfung von hellseherischen Fähigkeiten. Wir zeigen einer Person 25 Mal die Rück\-sei\-te einer rein zufällig gewählten Spielkarte und fragen sie jeweils danach, zu welcher der vier Farben (Kreuz, Pik, Herz, Karo) die Karte gehört. Ab wie vielen Treffern können der Person bei einem Signifikanzniveau von $\ga_p = 0.01$ hellseherische Fähigkeiten attestiert werden?
+=======
+Ein statistischer Test zur Überprüfung von hellseherischen Fähigkeiten. Wir zeigen einer Person 25 Mal die Rück\-sei\-te einer rein zufällig gewählten Spielkarte und fragen sie jeweils danach, zu welcher der vier Farben (Kreuz, Pik, Herz, Karo) die Karte gehört. Ab wie vielen Treffern können der Person bei einem Signifikanzniveau von $\alpha_p = 0.01$ hellseherische Fähigkeiten attestiert werden?
+>>>>>>> Stashed changes
 \end{uebenv}
 
 
@@ -2724,7 +3186,11 @@ Will man die Anzahl der Schüler einer Schule ermitteln so könnte man an einem 
 Die Idee ist folgende: Um die Anzahl der Elemente einer Menge $G$ zu ermitteln, ist es oft einfacher, diese Menge zuerst in elementfremde Teilmengen $A_1, A_2, A_3, \dots, A_r$ zu zerlegen und dann die entsprechenden Zahlen zu addieren.
 
 \begin{csatz}[Summenregel]
+<<<<<<< Updated upstream
 $$\card(G)=\card(A_1)+\card(A_2)+\dots+\card(A_r)$$
+=======
+$$\text{card}(G)=\text{card}(A_1)+\text{card}(A_2)+\dots+\text{card}(A_r)$$
+>>>>>>> Stashed changes
 wobei $A_i\cap A_j=\emptyset, i,j=1,2,\dots,r$.
 \end{csatz}
 
@@ -2748,7 +3214,12 @@ Aladins: Wunderpfanne\\
 {\normalsize\ding{91}\quad\ding{91}\quad\ding{91}}\\
 Eis:schale \glqq Blue Canary\grqq\\
 Crèpes: à la pays:anne\\
+<<<<<<< Updated upstream
 Iris:h coffee}
+=======
+Irish coffee
+}
+>>>>>>> Stashed changes
  \end{center}
  
  \normalfont\normalsize
@@ -2994,9 +3465,15 @@ Spieler verteilen?
 
 
 \subsubsection{Ungeordnete Stichprobe mit Zurücklegen}
+<<<<<<< Updated upstream
 Für den schwierigsten Fall der ungeordneten Stichproben mit Zurücklegen formulieren wir die Anzahl-Apfelkuchen-Aufgabe ein wenig um: Auf wie viele Arten kann man \"Apfel aus der Menge $\set{\text{Delicious, Gravensteiner}}$ eine ungeordnete Stichprobe vom Umfang vier entnehmen?
 
 Bezeichnet man mit $x_1\in\mN_0$ die Anzahl $D$ und mit $x_2\in\mN_0$ die Anzahl $G$, so muss die Anzahl der Lösungen der Gleichung $$x_1+x_2=4$$ ermittelt werden. Jede Lösung erhält man, wenn man in der Figur 1111 an geeigneter Stelle einen Trennstrich einsetzt. Zum Beispiel entspricht der Figur $$111|1$$ die Lösung drei Delicious und ein Gravensteiner. Für die Setzung des Trennstriches gibt es fünf Möglichkeiten, da der Trennstrich sowohl am Anfang als auch am Ende der Figur gesetzt werden kann. Es gibt demnach $\binom{5}{1}=5$ Stichproben.
+=======
+Für den schwierigsten Fall der ungeordneten Stichproben mit Zurücklegen formulieren wir die Anzahl-Apfelkuchen-Aufgabe ein wenig um: Auf wie viele Arten kann man \"Apfel aus der Menge $\{\text{Delicious, Gravensteiner}\}$ eine ungeordnete Stichprobe vom Umfang vier entnehmen?
+
+Bezeichnet man mit $x_1\in\mathbb{N}_0$ die Anzahl $D$ und mit $x_2\in\mathbb{N}_0$ die Anzahl $G$, so muss die Anzahl der Lösungen der Gleichung $$x_1+x_2=4$$ ermittelt werden. Jede Lösung erhält man, wenn man in der Figur 1111 an geeigneter Stelle einen Trennstrich einsetzt. Zum Beispiel entspricht der Figur $$111|1$$ die Lösung drei Delicious und ein Gravensteiner. Für die Setzung des Trennstriches gibt es fünf Möglichkeiten, da der Trennstrich sowohl am Anfang als auch am Ende der Figur gesetzt werden kann. Es gibt demnach $\binom{5}{1}=5$ Stichproben.
+>>>>>>> Stashed changes
 
 Bevor wir auf $m$ Sorten und $k$ Apfel verallgemeinern, betrachten wir noch ein weiteres Beispiel mit $m=4$ und $k=10$. Die zugehörige Gleichung lautet: $$x_1+x_2+x_3+x_4=10$$ Aus der mit vertikalen Trennstrichen versehenen Figur $$111|11||11111$$ kann man die spezielle Lösung $x_1 = 3, x_2 = 2, x_3 = 0$ und $x_4 = 5$ ablesen. In diesem Beispiel hat man drei Trennstriche anzubringen. Die vollständige Figur besteht dann aus zehn Einsen und drei Trennstrichen. Man hat aus 13 Plätzen 10 Plätze für die Einsen oder 3 Plätze für die Trennstriche
 auszuwählen, um alle gewünschten Stichproben zu erhalten. Dies geht auf $\binom{13}{10}=\binom{13}{3}=286$ Arten.
@@ -3007,7 +3484,11 @@ $$A_{m,k}=\binom{m+k-1}{k}=\binom{m+k-1}{m-1}$$
 
 \begin{uebenv}{zehnunbekannte}
 Wie viele Lösungen hat die Gleichung
+<<<<<<< Updated upstream
 $$x_1+x_2+x_3+\dots+x_{10}=13\q (x\in\mN_0)?$$
+=======
+$$x_1+x_2+x_3+\dots+x_{10}=13\quad (x\in\mathbb{N}_0)?$$
+>>>>>>> Stashed changes
 \end{uebenv}
 
 
@@ -3087,11 +3568,19 @@ Ziffern lassen sich bilden?
  \begin{center}
  \ttfamily
  O\\
+<<<<<<< Updated upstream
  B\q B\\
  E\q E\q E\\
  L\q L\q L\q L\\
  I\q I\q I\q I\q I\q\\
  X\q X\q X\q X\q X\q X
+=======
+ B\quad B\\
+ E\quad E\quad E\\
+ L\quad L\quad L\quad L\\
+ I\quad I\quad I\quad I\quad I\quad\\
+ X\quad X\quad X\quad X\quad X\quad X
+>>>>>>> Stashed changes
  \end{center}
  \end{uebenv}
 
@@ -3233,7 +3722,11 @@ Potenzen vom Typ $(a+b)$ sehen in der sukzessiven Entwicklung wie folgt aus:
 (a+b)^1&=a+b\\
 (a+b)^2&=a^2+2ab+b^2\\
 (a+b)^3&=a^3+3a^2b+3ab^2+b^3\\
+<<<<<<< Updated upstream
 \dots\q &= \q\dots\\
+=======
+\dots\quad &= \quad\dots\\
+>>>>>>> Stashed changes
 (a+b)^n&=a^n+na^{n-1}b+\dots+nab^{n-1}+b^n
 \end{align*}
 
@@ -3242,6 +3735,7 @@ Potenzen vom Typ $(a+b)$ sehen in der sukzessiven Entwicklung wie folgt aus:
 Das Pascal'sche Dreieck gibt die Koeffizienten der zusammengefassten Summanden wieder:\\[-5ex]
 \begin{center}
 $$1$$
+<<<<<<< Updated upstream
 $$1\q1$$
 $$1\q2\q1$$
 $$1\q3\q3\q1$$
@@ -3249,6 +3743,15 @@ $$1\q4\q6\q4\q1$$
 $$1\q5\q10\q10\q5\q1$$
 $$\dots\qq\dots\qq\dots$$
 $$1\q n\q\qq\dots\qq\q n\q1$$
+=======
+$$1\quad1$$
+$$1\quad2\quad1$$
+$$1\quad3\quad3\quad1$$
+$$1\quad4\quad6\quad4\quad1$$
+$$1\quad5\quad10\quad10\quad5\quad1$$
+$$\dots\quad\quad\dots\quad\quad\dots$$
+$$1\quad n\quad\quad\dots\quad\quad n\quad1$$
+>>>>>>> Stashed changes
 \end{center}
 
 \begin{bem}
@@ -3259,11 +3762,19 @@ Man beachte, dass die Exponenten der Summanden für $a$ von $n$ bis $0$ fallen, 
 Berechne die ersten fünf Zeilen des folgenden Schemas:
 \begin{center}\small
 $$\binom{0}{0}$$
+<<<<<<< Updated upstream
 $$\binom{1}{0}\q\binom{1}{1}$$
 $$\binom{2}{0}\q\binom{2}{1}\q\binom{2}{2}$$
 $$\binom{3}{0}\q\binom{3}{1}\q\binom{3}{2}\q\binom{3}{3}$$\\[-1ex]
 $$\dots\qq\dots\qq\dots$$\\[-2ex]
 $$\binom{n}{0}\q\binom{n}{1}\qq\dots\qq\binom{n}{n-1}\q\binom{n}{n}$$
+=======
+$$\binom{1}{0}\quad\binom{1}{1}$$
+$$\binom{2}{0}\quad\binom{2}{1}\quad\binom{2}{2}$$
+$$\binom{3}{0}\quad\binom{3}{1}\quad\binom{3}{2}\quad\binom{3}{3}$$\\[-1ex]
+$$\dots\quad\quad\dots\quad\quad\dots$$\\[-2ex]
+$$\binom{n}{0}\quad\binom{n}{1}\quad\quad\dots\quad\quad\binom{n}{n-1}\quad\binom{n}{n}$$
+>>>>>>> Stashed changes
 \end{center}
 \end{uebenv}
 
@@ -3339,6 +3850,7 @@ $$\mu:=\mathrm{E}(X)$$
 und endlicher Varianz
 $$\sigma^2:=\mathrm{Var}(x).$$
 Dann gilt für alle reellen Zahlen $k>0$:
+<<<<<<< Updated upstream
 $$P(\abs{X-\mu}\geq k)\leq \frac{\sigma^2}{k^2}.$$
 
 Durch den Übergang zum komplementären Ereignis erhält man
@@ -3348,17 +3860,36 @@ $$P(\abs{X-\mu}< k)\geq 1-\frac{\sigma^2}{k^2}.$$
 \begin{proof}
 Als kleine Begründung (handwaving) betrachten wir für den diskreten Fall Instanzierungen $x_i, i\in I$ mit Wahrscheinlichkeit $p_i$. Was bedeutet für eine beliebige Zahl $k$ die Aussage $P(\abs{X-\mu}\geq k)$? Wir interessieren uns also für die Wahrscheinlichkeit, dass die Abweichung der Zufallsvariablen $X$ vom Erwartungswert $\mu$ grösser als $k$ ist. Nennen wir die Menge aller $i\in I$, so dass die Instanzierung der Zufallsvariablen grösser als $k$ ist
 $$K:=\set{i\in I\,|\,\abs{x_i-\mu}\geq k}.$$
+=======
+$$P(|{X-\mu}|\geq k)\leq \frac{\sigma^2}{k^2}.$$
+
+Durch den Übergang zum komplementären Ereignis erhält man
+$$P(|{X-\mu}|< k)\geq 1-\frac{\sigma^2}{k^2}.$$
+\end{csatz}
+
+\begin{proof}
+Als kleine Begründung (handwaving) betrachten wir für den diskreten Fall Instanzierungen $x_i, i\in I$ mit Wahrscheinlichkeit $p_i$. Was bedeutet für eine beliebige Zahl $k$ die Aussage $P(|{X-\mu}|\geq k)$? Wir interessieren uns also für die Wahrscheinlichkeit, dass die Abweichung der Zufallsvariablen $X$ vom Erwartungswert $\mu$ grösser als $k$ ist. Nennen wir die Menge aller $i\in I$, so dass die Instanzierung der Zufallsvariablen grösser als $k$ ist
+$$K:=\{i\in I\mid |{x_i-\mu}|\geq k\}.$$
+>>>>>>> Stashed changes
 Wir lösen uns vom Betrag durch $(x_i-\mu)^2\geq k^2$ was äquivalent zu
 $$\frac{(x_i-\mu)^2}{k^2}\geq 1.$$
 Jetzt schätzen wir ab:
 
 \begin{align*}
+<<<<<<< Updated upstream
     P(\abs{X-\mu}\geq k) &= \sum_{i\in K}p_i\leq\sum_{i\in K}p_i\cdot\frac{(x_i-\mu)^2}{k^2}\leq\sum_{i\in I}p_i\cdot\frac{(x_i-\mu)^2}{k^2}\\
+=======
+    P(|{X-\mu}|\geq k) &= \sum_{i\in K}p_i\leq\sum_{i\in K}p_i\cdot\frac{(x_i-\mu)^2}{k^2}\leq\sum_{i\in I}p_i\cdot\frac{(x_i-\mu)^2}{k^2}\\
+>>>>>>> Stashed changes
     &= \frac{1}{k^2}\cdot\sum_{i\in I}p_i(x_i-\mu)^2 = \frac{1}{k^2}\cdot\sigma^2
 \end{align*}
 
 Hieraus folgt unmittelbar
+<<<<<<< Updated upstream
 $$P(\abs{X-\mu}<k) \geq 1 - \frac{\sigma^2}{k^2}.$$
+=======
+$$P(|{X-\mu}|<k) \geq 1 - \frac{\sigma^2}{k^2}.$$
+>>>>>>> Stashed changes
 \end{proof}
 
 \subsection{Herleitung}
@@ -3366,9 +3897,15 @@ $$P(\abs{X-\mu}<k) \geq 1 - \frac{\sigma^2}{k^2}.$$
 Es gilt für eine Folge von i.i.d.\footnote{independent and identically distributed} Zufallsvariablen $X_1$, $X_2$, \dots. $X_n$ mit Erwartungswert $\mu$ und Varianz $\sigma^2$ für ihr arithmetisches Mittel (Mittelwert)
 $$\bar{X}=\frac{X_1+\dots+X_n}{n}.$$
 Beachte, dass $\bar{X}$ selbst wiederum eine Zufallsvariable ist. Es ist natürlich $\mathrm{E}(\bar{X})=\mu$ und für die Varianz gilt $\mathrm{Var}(\bar{X})=\frac{\sigma^2}{n}$, da für unabhängige Zufallsvariablen die Varianz linear ist. Somit folgt mit der Tschebyscheff'schen Ungleichung
+<<<<<<< Updated upstream
 $$P(\abs{\bar{X}-\mu}<k) \geq 1-\frac{\frac{\sigma^2}{n}}{k^2}.$$
 was für $n\to\infty$ zu
 $$\lim_{n\to\infty}P(\abs{\bar{X}-\mu}<k) \geq 1=1$$
+=======
+$$P(|{\bar{X}-\mu}|<k) \geq 1-\frac{\frac{\sigma^2}{n}}{k^2}.$$
+was für $n\to\infty$ zu
+$$\lim_{n\to\infty}P(|{\bar{X}-\mu}|<k) \geq 1=1$$
+>>>>>>> Stashed changes
 wird. Das heisst: für eine grösser werdende Anzahl von i.i.d. Zufallsvariablen geht die Wahrscheinlichkeit, dass die Abweichung ihres Mittelwerts vom Erwartungswert kleiner als eine beliebige positive Zahl $k$ ist, gegen $100\%$.
 
 \subsection{Konvergenz gegen die Wahrscheinlichkeit}
@@ -3420,7 +3957,11 @@ In Wikipedia wird die Bedeutung der Normalverteilung folgendermassen beschrieben
 
 \subsection{Die Standardnormalverteilung an einem Beispiel}
 
+<<<<<<< Updated upstream
 Sei $X_1$, $X_2$, $X_3$, \dots , $X_n$ eine Folge von i.i.d.\footnote{independent, identically distributed} Zufallsvariablen, deren Erwartungswert $\mu$ und Varianz $\sigma^2$ existieren.\footnote{Man kann sich für die Fortsetzung zum Beispiel vorstellen, dass diese $X_i$, $i\in\set{1,2,\dots,n}$ Messwerte seien.} Im Falle von beispielsweise $n=10$ ist der Mittelwert
+=======
+Sei $X_1$, $X_2$, $X_3$, \dots , $X_n$ eine Folge von i.i.d.\footnote{independent, identically distributed} Zufallsvariablen, deren Erwartungswert $\mu$ und Varianz $\sigma^2$ existieren.\footnote{Man kann sich für die Fortsetzung zum Beispiel vorstellen, dass diese $X_i$, $i\in\{1,2,\dots,n\}$ Messwerte seien.} Im Falle von beispielsweise $n=10$ ist der Mittelwert
+>>>>>>> Stashed changes
 $$\frac{X_1+\dots+X_{10}}{10}$$
 selbst auch wieder eine Zufallsvariable mit einer gewissen Verteilung.
 
@@ -3436,7 +3977,11 @@ das heisst die Standardabweichung von $Y_1+\dots+Y_n$ ist
 $$\sqrt{n\sigma^2}=\sqrt{n}\cdot\sigma.$$
 Jetzt definieren wir uns eine neue Zufallsvariable
 $$Z_n:=\frac{Y_1+\dots+Y_n}{\sqrt{n}\cdot\sigma}.$$
+<<<<<<< Updated upstream
 So ist $\mathrm{E}(Z_n)=0$ und $\mathrm{Var(Z_n)}=1$ (normiert). Diese neu definierte Zufallsvariable $Z_n$ konvergiert für grösser werdende $n$ immer gegen dieselbe Verteilung, nämlich der \definition{Standard-Normalverteilung}! Und dies unabhängig davon, welcher Verteilung die $X_i$, $i\in\set{1,\dots,n}$ unterliegen.
+=======
+So ist $\mathrm{E}(Z_n)=0$ und $\mathrm{Var(Z_n)}=1$ (normiert). Diese neu definierte Zufallsvariable $Z_n$ konvergiert für grösser werdende $n$ immer gegen dieselbe Verteilung, nämlich der \definition{Standard-Normalverteilung}! Und dies unabhängig davon, welcher Verteilung die $X_i$, $i\in\{1,\dots,n\}$ unterliegen.
+>>>>>>> Stashed changes
 
 \subsection{Konvergenz gegen die Normalverteilung experimentell}
 

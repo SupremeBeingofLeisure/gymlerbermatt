@@ -3,7 +3,11 @@
 11pt,%
 twoside,%
 titlepage,%
+<<<<<<< Updated upstream
 german,%
+=======
+swissgerman,%
+>>>>>>> Stashed changes
 headsepline%
 ]{scrartcl}
 
@@ -14,7 +18,11 @@ headsepline%
 \usepackage{graphicx}
 \usepackage[dvipsnames]{xcolor}
 \usepackage[utf8]{inputenc}
+<<<<<<< Updated upstream
 \usepackage[ngerman]{babel}
+=======
+\usepackage[swissgerman]{babel}
+>>>>>>> Stashed changes
 \usepackage{lscape}
 \usepackage[framemethod=TikZ]{mdframed}
 \usepackage[most]{tcolorbox}
@@ -29,6 +37,10 @@ headsepline%
 \usetikzlibrary{patterns}
 \usetikzlibrary{positioning}
 \usetikzlibrary{shadows}
+<<<<<<< Updated upstream
+=======
+\usetikzlibrary{quotes, angles}
+>>>>>>> Stashed changes
 \usepackage{colortbl}
 \usepackage{hhline}
 \usepackage{multirow}
@@ -50,6 +62,11 @@ headsepline%
 
 \usepackage{fontawesome} % Oder FontAwesome, falls du ein Augensymbol aus einer
 \newcommand{\faEyeLightGray}{\textcolor{lightgray}{\faEye}} % Custom command for the gray eye icon
+<<<<<<< Updated upstream
+=======
+\newcommand{\faReturnGray}{\textcolor{gray}{\faMailReply}} % Custom command for the gray eye icon
+\usepackage{pifont} % weitere Zeichen
+>>>>>>> Stashed changes
 
 % package für plots mit dem Befehl axes
 \usepackage{pgfplots}
@@ -99,8 +116,13 @@ headsepline%
 \renewcommand{\theuebcounter}{\thesection.\arabic{uebcounter}}  % Zählerformat: Abschnitt.Übung
 
 \newenvironment{lsg}[1]{%
+<<<<<<< Updated upstream
     \par\noindent\textbf{Notizen zu Übung \ref{\concatueb{#1}}.}%
     \label{\concatlsg{#1}}
+=======
+    \par\noindent\textbf{Notizen zu Übung \ref{\concatueb{#1}}}\label{\concatlsg{#1}}
+    \hfill\hyperref[\concatueb{#1}]{\faReturnGray}\par % Hyperref-Button zurück zur Übung
+>>>>>>> Stashed changes
 }{%
     \par%
 }
