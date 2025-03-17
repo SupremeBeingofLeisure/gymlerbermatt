@@ -1,0 +1,18 @@
+\babel@toc {swissgerman}{}\relax 
+\contentsline {table}{\numberline {1}{\ignorespaces Caesar-Alphabet mit Translation $3$\relax }}{7}{table.caption.4}%
+\contentsline {table}{\numberline {2}{\ignorespaces Monoalphabetische Verschlüsselung mit Faktor $3$\relax }}{11}{table.caption.7}%
+\contentsline {table}{\numberline {3}{\ignorespaces Monoalphabetische Verschlüsselung mit Schlüssel\-wort und Schlüs\-sel\-buch\-sta\-be\relax }}{12}{table.caption.8}%
+\contentsline {table}{\numberline {4}{\ignorespaces Beispiel einer monoalphabetische Verschlüsselung mit Schlüsselwort \texttt {JAMES BOND} und Schlüsselbuchstabe \texttt {q}\relax }}{12}{table.caption.9}%
+\contentsline {table}{\numberline {5}{\ignorespaces Relative Deutsche Buchstabenhäufigkeiten von Mono- und Bigrammen\relax }}{14}{table.caption.10}%
+\contentsline {table}{\numberline {6}{\ignorespaces Bigramm-Häufigkeiten deutsch und englisch\relax }}{18}{table.caption.11}%
+\contentsline {table}{\numberline {7}{\ignorespaces Trigramm-Häufigkeiten deutsch und englisch\relax }}{18}{table.caption.12}%
+\contentsline {table}{\numberline {8}{\ignorespaces Wortlängen von Sprachen\relax }}{19}{table.caption.13}%
+\contentsline {table}{\numberline {9}{\ignorespaces Koinzidenzindex $\kappa $ von Sprachen\relax }}{20}{table.caption.15}%
+\contentsline {table}{\numberline {10}{\ignorespaces Polyalphabetische Chiffrierung\relax }}{22}{table.caption.17}%
+\contentsline {table}{\numberline {11}{\ignorespaces Vigen\`ere-Chiffrierung\relax }}{22}{table.caption.18}%
+\contentsline {table}{\numberline {12}{\ignorespaces Vigen\`ere-Verschlüsselung\relax }}{23}{table.caption.19}%
+\contentsline {table}{\numberline {13}{\ignorespaces Vigen\`ere-Verschlüsselung mit \texttt {JAMESBOND}\relax }}{24}{table.caption.20}%
+\contentsline {table}{\numberline {14}{\ignorespaces Idee Kasiski-Test\relax }}{24}{table.caption.21}%
+\contentsline {table}{\numberline {15}{\ignorespaces Kasiski-Test\relax }}{25}{table.caption.22}%
+\contentsline {table}{\numberline {18}{\ignorespaces XOR\relax }}{56}{table.caption.39}%
+\providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

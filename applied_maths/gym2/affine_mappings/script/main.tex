@@ -229,11 +229,15 @@ headsepline%
 \subtitle{Expectation vs. Reality}
 \author{}
 \date{}
-%\lowertitleback{
-%\includegraphics[height=1.1cm]{/Users/jormawassmer/Pictures/logokoeniz.jpg}%
-%\copyright Jorma Wassmer
-%1. Auflage, Februar 2011
-%}
+\lowertitleback{
+\includegraphics[height=1cm]{pictures/gymfmslerbermattlogo.eps}
+\hfill%\copyright%
+{\begin{tikzpicture}
+  % Draw the rounded rectangle and clip the image to it
+  \clip [rounded corners=5mm] (0,0) rectangle (1,1); % Adjust dimensions as needed
+  \node at (0.5,0.5) {\includegraphics[width=1cm]{pictures/teacher_me_caricatur.png}}; % Adjust width and center image
+\end{tikzpicture}}
+}
 
 
 \begin{document}

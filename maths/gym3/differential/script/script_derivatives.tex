@@ -1,15 +1,21 @@
 \documentclass[%
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 11pt,%
 twoside,%
 titlepage,%
 german,%
 =======
+=======
+>>>>>>> Stashed changes
 %draft,
 11pt,%
 twoside,%
 titlepage,%
 swissgerman,%
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 headsepline%
 ]{scrartcl}
@@ -20,8 +26,14 @@ headsepline%
 \usepackage{geometry}
 \usepackage{graphicx}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
+=======
+\usepackage[dvipsnames]{xcolor}
+\usepackage[utf8]{inputenc}
+\usepackage[swissgerman]{babel}
+>>>>>>> Stashed changes
 =======
 \usepackage[dvipsnames]{xcolor}
 \usepackage[utf8]{inputenc}
@@ -35,11 +47,14 @@ headsepline%
 \usepackage{nicefrac}
 \usepackage{pgf,tikz}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 \usetikzlibrary{arrows}
 \usetikzlibrary{patterns}
 \usetikzlibrary{positioning}
 \usetikzlibrary{shadows}
 =======
+=======
+>>>>>>> Stashed changes
 \usepackage{tikz-3dplot}
 \usepackage{tkz-euclide}
 \usetikzlibrary{arrows}
@@ -48,6 +63,9 @@ headsepline%
 \usetikzlibrary{positioning}
 \usetikzlibrary{shadows}
 \usetikzlibrary{quotes, angles}
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 \usepackage{colortbl}
 \usepackage{hhline}
@@ -62,7 +80,11 @@ headsepline%
 
 \usepackage{marginnote}
 \usepackage{qrcode}
+<<<<<<< Updated upstream
 \qrset{height=9ex}
+=======
+\qrset{height=7ex}
+>>>>>>> Stashed changes
 
 \usepackage{longtable}
 \usepackage{listings}
@@ -71,6 +93,11 @@ headsepline%
 \usepackage{fontawesome} % Oder FontAwesome, falls du ein Augensymbol aus einer
 \newcommand{\faEyeLightGray}{\textcolor{lightgray}{\faEye}} % Custom command for the gray eye icon
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+\newcommand{\faReturnGray}{\textcolor{gray}{\faMailReply}} % Custom command for the gray eye icon
+\usepackage{pifont} % weitere Zeichen
+>>>>>>> Stashed changes
 =======
 \newcommand{\faReturnGray}{\textcolor{gray}{\faMailReply}} % Custom command for the gray eye icon
 \usepackage{pifont} % weitere Zeichen
@@ -102,11 +129,17 @@ headsepline%
 % Für Definitionen im Fliesstext
 \newcommand{\definition}[1]{\colorbox{emerald}{#1}}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 % Für Regeln im Fliesstext
 \newcommand{\regel}[1]{\colorbox{myblizzardblue}{#1}}
 % Für Merke/Achtungs im Fliesstext
 \newcommand{\merke}[1]{\colorbox{firebrick}{#1}}
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 % Geogebra-Link
 \newcommand{\geogebralink}{\href{https://www.geogebra.org/calculator}{\texttt{geogebra.org}}}
@@ -128,10 +161,15 @@ headsepline%
 
 \newenvironment{lsg}[1]{%
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     \par\noindent\textbf{Notizen zu Übung \ref{\concatueb{#1}}.}%
     \label{\concatlsg{#1}}
 =======
     \par\noindent\textbf{Notizen zu Übung \theuebcounter\label{\concatlsg{#1}}}
+    \hfill\hyperref[\concatueb{#1}]{\faReturnGray}\par % Hyperref-Button zurück zur Übung
+>>>>>>> Stashed changes
+=======
+    \par\noindent\textbf{Notizen zu Übung \ref{\concatueb{#1}}}\label{\concatlsg{#1}}
     \hfill\hyperref[\concatueb{#1}]{\faReturnGray}\par % Hyperref-Button zurück zur Übung
 >>>>>>> Stashed changes
 }{%
@@ -215,8 +253,14 @@ headsepline%
 \setlength{\parindent}{0pt} \setlength{\parskip}{1em}
 \pagestyle{headings} % gemachte Einstellungen anwenden
 
+<<<<<<< Updated upstream
 % Titelblatt setzen
 \subject{\includegraphics[width=0.618\textwidth]{pictures/cave.jpg}}
+=======
+
+% Titelblatt setzen
+\subject{\includegraphics[width=0.618\textwidth]{pictures/isaacvsleibniznotation}}
+>>>>>>> Stashed changes
 \title{Differentialrechnung}
 \subtitle{The Core of the Whole Business}
 \author{}
@@ -421,8 +465,12 @@ Bei vielen funktionalen Zusammenhängen ist nicht nur interessant, welche Werte 
 \begin{cdef}[Differenzenquotient]
 Der Differenzenquotient
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{
 https://www.youtube.com/watch?v=J0FCAuTM9pA}
+=======
+\href{https://www.youtube.com/watch?v=J0FCAuTM9pA}{\qrcode{https://www.youtube.com/watch?v=J0FCAuTM9pA}}
+>>>>>>> Stashed changes
 }
 $$\frac{f(x_0+h)-f(x_0)}{h}=\frac{\Delta y}{\Delta x}$$
 gibt die durchschnittliche Änderung der Funktion $f$ im Intervall $[x_0,x_0+h]$ an.
@@ -433,8 +481,12 @@ Mit ihm erhält man eine erste grobe Aussage über das Änderungsverhalten der F
 \begin{bsp}\label{bspsteigungswinkel}
 Bei
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{
 https://www.youtube.com/watch?v=BOGpb1yyD-E}
+=======
+\href{https://www.youtube.com/watch?v=BOGpb1yyD-E}{\qrcode{https://www.youtube.com/watch?v=BOGpb1yyD-E}}
+>>>>>>> Stashed changes
 }
 einer ansteigenden Strasse wird der Differenzenquotient
 $$\frac{f(x_0+h)-f(x_0)}{h}=\tan(\alpha)=m.$$
@@ -479,8 +531,12 @@ gibt in diesem Beispiel die durchschnittliche Zerfallsrate des radioaktiven Isot
 \begin{uebenv}{jod}
 Berechne
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{
 https://www.youtube.com/watch?v=VgUkjQVWASM}
+=======
+\href{https://www.youtube.com/watch?v=VgUkjQVWASM}{\qrcode{https://www.youtube.com/watch?v=VgUkjQVWASM}}
+>>>>>>> Stashed changes
 }
 mit Hilfe der Abbildung \ref{jod} auf Seite \pageref{jod} die durchschnittliche Zerfallsrate für Jod 131 in den Intervallen $[8,16], [16,24]$ und $[5,13]$.
 \end{uebenv}
@@ -654,8 +710,12 @@ Vervollständige Tabelle \ref{tab:interpretation} auf Seite \pageref{tab:interpr
 \begin{uebenv}{differentialquotient}
 Berechne
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{
 https://www.youtube.com/watch?v=z-42d5dtA_Q}
+=======
+\href{https://www.youtube.com/watch?v=z-42d5dtA_Q}{\qrcode{https://www.youtube.com/watch?v=z-42d5dtA_Q}}
+>>>>>>> Stashed changes
 }
 den Differenzialquotienten der Funktion $f$ an der Stelle $x_0$ und die Gleichung der Tangente im Punkt $P(x_0|f(x_0)$. Überprüfe dein Ergebnis mit einer Skizze.
 \begin{enumerate}[a)]
@@ -668,8 +728,12 @@ den Differenzialquotienten der Funktion $f$ an der Stelle $x_0$ und die Gleichun
 \begin{uebenv}{momentangeschw}
 Berechne
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{
 https://www.youtube.com/watch?v=-KFROqbQkuA}
+=======
+\href{https://www.youtube.com/watch?v=-KFROqbQkuA}{\qrcode{https://www.youtube.com/watch?v=-KFROqbQkuA}}
+>>>>>>> Stashed changes
 }
 die Momentangeschwindigkeit zur Zeit $t=2$ für eine Bewegung mit
 
@@ -765,8 +829,12 @@ Diese Funktion $f'$ --- die Symbolik stammt \"ubrigens von Leonard Euler --- nen
 \begin{uebenv}{steigungsfunktion}
 Ermittle
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{
 https://www.youtube.com/watch?v=5RJYwSTO5w8}
+=======
+\href{https://www.youtube.com/watch?v=5RJYwSTO5w8}{\qrcode{https://www.youtube.com/watch?v=5RJYwSTO5w8}}
+>>>>>>> Stashed changes
 }
 die Steigungsfunktion (die Ableitung) $f'$ f\"ur
 \begin{enumerate}[a)]
@@ -781,12 +849,17 @@ und die Steigungen in den Punkten $P(3|?)$ und $Q(-2|?)$.
 \begin{uebenv}{potenzregel}
 Vervollst\"andige
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{
 https://www.youtube.com/watch?v=O722WzomYN4}
+=======
+\href{https://www.youtube.com/watch?v=O722WzomYN4}{\qrcode{https://www.youtube.com/watch?v=O722WzomYN4}}
+>>>>>>> Stashed changes
 }
 die Tabelle \ref{tab:abl} auf Seite \pageref{tab:abl}.
 
 \begin{table}
+<<<<<<< Updated upstream
 \large
 \begin{center}
 \begin{tabular}{|c|c|}
@@ -802,12 +875,30 @@ die Tabelle \ref{tab:abl} auf Seite \pageref{tab:abl}.
 \rule[-5mm]{0pt}{17mm}$\sqrt{x}=x^{\frac{1}{2}}$ & \\ \hline
 \rule[-5mm]{0pt}{17mm}$\sqrt[3]{x}=x^{\frac{1}{3}}$ & \\ \hline
 \rule[-5mm]{0pt}{17mm}$\sqrt{x^3}=x^{\frac{3}{2}}$ & \\ \hline
+=======
+%\large
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+\rule[-3mm]{0pt}{8mm}$f(x)=$ & $f'(x)=$\\ \hline
+\rule[-3mm]{0pt}{8mm}$x^4$ & \\ \hline
+\rule[-3mm]{0pt}{8mm}$x^3$ & \\ \hline
+\rule[-3mm]{0pt}{8mm}$x^2$ & \\ \hline
+\rule[-3mm]{0pt}{8mm}$x$ & \\ \hline
+\rule[-3mm]{0pt}{8mm}$x^0$ & \\ \hline
+\rule[-3mm]{0pt}{8mm}$\frac{1}{x}=x^{-1}$ & \\ \hline
+\rule[-3mm]{0pt}{8mm}$\frac{1}{x^2}=x^{-2}$ & \\ \hline
+\rule[-3mm]{0pt}{8mm}$\sqrt{x}=x^{\frac{1}{2}}$ & \\ \hline
+\rule[-3mm]{0pt}{8mm}$\sqrt[3]{x}=x^{\frac{1}{3}}$ & \\ \hline
+\rule[-3mm]{0pt}{8mm}$\sqrt{x^3}=x^{\frac{3}{2}}$ & \\ \hline
+>>>>>>> Stashed changes
 \end{tabular}
 \caption{Wichtige Ableitungen}\label{tab:abl}
 \end{center}
 \end{table}
 \end{uebenv}
 
+<<<<<<< Updated upstream
 \begin{lsg}{steigungsfunktion}
 \begin{enumerate}[a)]
 	\item $f'(x)=1$, $g'(x)=2$ und $f'(3)=1=f'(-2)$, $g'(3)=2=g'(-2)$
@@ -840,12 +931,18 @@ die Tabelle \ref{tab:abl} auf Seite \pageref{tab:abl}.
 
 \clearpage
 
+=======
+>>>>>>> Stashed changes
 \subsection{Ableitungsregeln}
 
 Die
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{
 https://www.youtube.com/watch?v=Jv0QEd45vqY}
+=======
+\href{https://www.youtube.com/watch?v=Jv0QEd45vqY}{\qrcode{https://www.youtube.com/watch?v=Jv0QEd45vqY}}
+>>>>>>> Stashed changes
 }
 vorherigen Aufgaben waren teilweise Beispiele f\"ur die folgenden allgemeinen Differenziations\-regeln.
 
@@ -881,12 +978,20 @@ Differenziere die Funktionen
 \begin{uebenv}{glukose}
 F\"ur
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{
 https://www.youtube.com/watch?v=CYY4jeCU_z4}
 }
 die Masse $M$ (in g) von Glukose bei einem Stoffwechselexperiment in Abh\"angigkeit der Zeit $t$ (in h) gilt:
 $$M(t)=4.5-0.03t^2.$$
 \begin{enumerate}
+=======
+\href{https://www.youtube.com/watch?v=CYY4jeCU_z4}{\qrcode{https://www.youtube.com/watch?v=CYY4jeCU_z4}}
+}
+die Masse $M$ (in g) von Glukose bei einem Stoffwechselexperiment in Abh\"angigkeit der Zeit $t$ (in h) gilt:
+$$M(t)=4.5-0.03t^2.$$
+\begin{enumerate}[a)]
+>>>>>>> Stashed changes
 \item Wie gross ist die durchschnittliche \"Anderungsrate in den ersten beiden Stunden?
 \item Berechne die momentane \"Anderungsrate f\"ur $t=0$ und $t=2$.
 \end{enumerate}
@@ -899,8 +1004,12 @@ Differenziere die Funktion $V$, deren Funktionswerte das Volumen einer Kugel mit
 \begin{uebenv}{haengebruecke}
 Die
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{
 https://www.youtube.com/watch?v=4nFIPeEDeMQ}
+=======
+\href{https://www.youtube.com/watch?v=4nFIPeEDeMQ}{\qrcode{https://www.youtube.com/watch?v=4nFIPeEDeMQ}}
+>>>>>>> Stashed changes
 }
 Tragseile einer H\"angebr\"ucke sind an den Pfeilern befestigt, die $\unit[250]{m}$ auseinander stehen, und h\"angen in Form einer Parabel, deren tiefster Punkt $\unit[50]{m}$ unter den Aufh\"angungspunkten liegt. Ermittle den Winkel zwischen Seil und Pfeiler.
 \end{uebenv}
@@ -908,13 +1017,21 @@ Tragseile einer H\"angebr\"ucke sind an den Pfeilern befestigt, die $\unit[250]{
 \begin{uebenv}{dewiesn}
 Am
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{
 https://www.youtube.com/watch?v=Qsh0g0nuaoo}
+=======
+\href{https://www.youtube.com/watch?v=Qsh0g0nuaoo}{\qrcode{https://www.youtube.com/watch?v=Qsh0g0nuaoo}}
+>>>>>>> Stashed changes
 }
 Oktoberfest in M\"unchen sind in einem grossen Fass Bier anf\"anglich $\unit[2000]{Liter}$ Bier. Der Inhalt $V(t)$ des Fasses l\"asst sich in Abh\"angigkeit der Zeit $t$ in Minuten durch
 $$V(t)=2000-\frac{5}{48}t^2+\frac{1}{3456}t^3$$
 beschreiben.
+<<<<<<< Updated upstream
 \begin{enumerate}
+=======
+\begin{enumerate}[a)]
+>>>>>>> Stashed changes
 \item Überprüfe, dass das Fass nach vier Stunden leer ist.
 \item Wie viel Liter Bier fliessen genau 30 Minuten nach dem Anstich des Fasses in die Humpen?
 \item Wann ist das Fest auf seinem \glqq H\"ohepunkt\grqq?
@@ -924,8 +1041,12 @@ beschreiben.
 \begin{uebenv}{match}
 Finde
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{
 https://www.youtube.com/watch?v=ZITSx3cx0L0}
+=======
+\href{https://www.youtube.com/watch?v=ZITSx3cx0L0}{\qrcode{https://www.youtube.com/watch?v=ZITSx3cx0L0}}
+>>>>>>> Stashed changes
 }
 zu den fünf Graphen a -- e in Abbildung \ref{derive} auf Seite \pageref{derive} jeweils die passende Ableitungsfunktion A -- E.
 
@@ -942,6 +1063,39 @@ zu den fünf Graphen a -- e in Abbildung \ref{derive} auf Seite \pageref{derive}
 
 \subsection{Notizen zu den Übungen}
 
+<<<<<<< Updated upstream
+=======
+\begin{lsg}{steigungsfunktion}
+\begin{enumerate}[a)]
+	\item $f'(x)=1$, $g'(x)=2$ und $f'(3)=1=f'(-2)$, $g'(3)=2=g'(-2)$
+	\item $f'(x)=2x$, $g'(x)=6x$ und $f'(3)=6$, $f'(-2)=-4$, $g'(3)=18$, $g'(-2)=-12$
+	\item $f'(x)=-\frac{2}{x^2}$ und $f'(3)=\frac{2}{9}$, $f'(-2)=-\frac{1}{2}$
+	\item $f'(x)=\frac{1}{2\sqrt{x}}$ und $f'(3)=\frac{1}{2\sqrt{3}}$, $f'(-2)=\text{n.d.}$
+\end{enumerate}
+\end{lsg}
+
+\begin{lsg}{potenzregel}
+\def\mytabbottom{-2mm}
+\def\mytabtop{6mm}
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+\rule[\mytabbottom]{0pt}{\mytabtop}$f(x)=$ & $f'(x)=$\\ \hline
+\rule[\mytabbottom]{0pt}{\mytabtop}$x^4$ & $4x^3$\\ \hline
+\rule[\mytabbottom]{0pt}{\mytabtop}$x^3$ & $3x^2$\\ \hline
+\rule[\mytabbottom]{0pt}{\mytabtop}$x^2$ & $2x$\\ \hline
+\rule[\mytabbottom]{0pt}{\mytabtop}$x$ & $1$\\ \hline
+\rule[\mytabbottom]{0pt}{\mytabtop}$x^0$ & $0$\\ \hline
+\rule[\mytabbottom]{0pt}{\mytabtop}$\frac{1}{x}=x^{-1}$ & $-x^{-2}$\\ \hline\
+\rule[\mytabbottom]{0pt}{\mytabtop}$\frac{1}{x^2}=x^{-2}$ & $-2x^{-3}$\\ \hline
+\rule[\mytabbottom]{0pt}{\mytabtop}$\sqrt{x}=x^{\frac{1}{2}}$ & $\frac{1}{2}x^{-\frac{1}{2}}$\\ \hline
+\rule[\mytabbottom]{0pt}{\mytabtop}$\sqrt[3]{x}=x^{\frac{1}{3}}$ & $\frac{1}{3}x^{-\frac{2}{3}}$\\ \hline
+\rule[\mytabbottom]{0pt}{\mytabtop}$\sqrt{x^3}=x^{\frac{3}{2}}$ & $\frac{3}{2}x^\frac{1}{2}$\\ \hline
+\end{tabular}
+\end{center}
+\end{lsg}
+
+>>>>>>> Stashed changes
 \begin{lsg}{beweisableitungsregeln}
     \begin{enumerate}[a)]
         \item $F(x)=c$ und daraus
@@ -962,6 +1116,10 @@ zu den fünf Graphen a -- e in Abbildung \ref{derive} auf Seite \pageref{derive}
         \end{align*}
     \end{enumerate}
 \end{lsg}
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 \begin{lsg}{differenziere}
     \begin{enumerate}[a)]
         \item $x-3$
@@ -970,20 +1128,36 @@ zu den fünf Graphen a -- e in Abbildung \ref{derive} auf Seite \pageref{derive}
         \item $-32x-10+\frac{1}{2\sqrt{x}}$
     \end{enumerate}
 \end{lsg}
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 \begin{lsg}{glukose}
     \begin{enumerate}[a)]
         \item $\frac{\Delta M}{\Delta t}=\frac{M(2)-M(0)}{2}=\frac{4.38-4.5}{2}=-0.06$
         \item $M'(t)=-0.06t$ und somit $M'(0)=0$ bzw. $M'(2)=-0.12$
     \end{enumerate}
 \end{lsg}
+<<<<<<< Updated upstream
 \begin{lsg}{kugelvolumen}
     Aus $V(r)=\frac{4}{3}\pi\cdot r^3$ folgt $V'(r)=4\pi r^2=O(r)$.
 \end{lsg}
+=======
+
+\begin{lsg}{kugelvolumen}
+    Aus $V(r)=\frac{4}{3}\pi\cdot r^3$ folgt $V'(r)=4\pi r^2=O(r)$.
+\end{lsg}
+
+>>>>>>> Stashed changes
 \begin{lsg}{haengebruecke}
     Ich nehme den Scheitelpunkt in den Ursprung. Damit werden die Aufhängepunkte $A_1(-125|50)$ und $a_2(125|50)$ und wir nehmen $f(x)=ax^2$ an. Es folgt $50=a\cdot125^2$ und sofort $a=\frac{50}{125^2}=0.0032$,
     $$f(x)=0.0032x^2.$$
     Der Winkel am Aufhängepunkt bezüglich der Horizontalen ist $f'(125)$. Es ist $f'(x)=0.0064$. Daraus folgt $f'(125)=0.8$ und $\alpha=\arctan(0.8)\approx38.7^\circ$. Also ist der Winkel zwischen Seil und Pfosten $180-90-38.7\approx51.3^\circ$.
 \end{lsg}
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 \begin{lsg}{dewiesn}
     \begin{enumerate}[a)]
         \item $V(240)=2000-\frac{5}{48}\cdot240^2+\frac{1}{3456}\cdot240^3=0$.
@@ -1016,8 +1190,12 @@ erkennt man, dass die Ableitung eines Produkts nicht so einfach wie bei der Summ
 \begin{csatz}[Produktregel]
 Sind
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{
 https://www.youtube.com/watch?v=KsMlJTZOaLA}
+=======
+\href{https://www.youtube.com/watch?v=KsMlJTZOaLA}{\qrcode{https://www.youtube.com/watch?v=KsMlJTZOaLA}}
+>>>>>>> Stashed changes
 }
 $f$ und $g$ an der Stelle $x$ differenzierbar, so ist auch ihr Produkt an dieser Stelle differenzierbar und der Differenzialquotient von $F(x)=f(x)\cdot g(x)$ lautet:
 $$F'(x)=f'(x)\cdot g(x)+f(x)\cdot g'(x).$$
@@ -1101,7 +1279,11 @@ $$(g\circ f)(x)=g(f(x))\quad\text{(sprich: g Ring f)}$$
 Ermittle die aus $f$ und $g$ zusammengesetzte Funktion
 $$F(x)=(g\circ f)(x)$$
 mit dem Funktionsterm $F(x)=g(f(x))$.
+<<<<<<< Updated upstream
 \begin{enumerate}
+=======
+\begin{enumerate}[a)]
+>>>>>>> Stashed changes
 \item $f(x)=2x-1$, $g(x)=(x-3)^2+5$
 \item $f(x)=x^2+1$, $g(x)=x^3+x^{-2}$
 \end{enumerate}
@@ -1109,8 +1291,12 @@ mit dem Funktionsterm $F(x)=g(f(x))$.
 
 \begin{csatz}[Kettenregel]
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{
 https://www.youtube.com/watch?v=ZGOirKbLJUU}
+=======
+\href{https://www.youtube.com/watch?v=ZGOirKbLJUU}{\qrcode{https://www.youtube.com/watch?v=ZGOirKbLJUU}}
+>>>>>>> Stashed changes
 }
 $f$ an der Stelle $x$ und $g$ an der Stelle $f(x)$ differenzierbar, so ist auch ihre Verkettung $F=g\circ f$ mit $F(x)=g(f(x))$ in $x$ differenzierbar. Der Differenzialquotient von $F(x)=g(f(x))$ lautet:
 $$F'(x)=g'(f(x))\cdot f'(x).$$
@@ -1154,8 +1340,12 @@ Ermittle die Ableitung der Funktionen:
 \begin{uebenv}{trigoableitungen}
 Vermute
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{
 https://www.youtube.com/watch?v=2pExH_iwS9I}
+=======
+\href{https://www.youtube.com/watch?v=2pExH_iwS9I}{\qrcode{https://www.youtube.com/watch?v=2pExH_iwS9I}}
+>>>>>>> Stashed changes
 }
 aufgrund einer Zeichnung, welche Gestalt die Steigungsfunktion der Sinusfunktion hat.
 \end{uebenv}
@@ -1183,15 +1373,23 @@ und wir sind fertig.
 \begin{uebenv}{difftan}
 Leite
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{
 https://www.youtube.com/watch?v=BH7eAN73sYM}
+=======
+\href{https://www.youtube.com/watch?v=BH7eAN73sYM}{\qrcode{https://www.youtube.com/watch?v=BH7eAN73sYM}}
+>>>>>>> Stashed changes
 }
 die Ableitungsfunktion von
 $$f(x)=\tan(x)$$
 her.
 \end{uebenv}
 
+<<<<<<< Updated upstream
 \begin{uebenv}{weitereuebungen}
+=======
+\begin{uebenv}{weitereuebungenprod}
+>>>>>>> Stashed changes
 Bestimme die Ableitung:
 
 \begin{enumerate}[a)]
@@ -1204,7 +1402,11 @@ Bestimme die Ableitung:
 \item $f(x)=\sin(4x)$
 \item $f(t)=\sqrt{\cos(t)}$
 \item $f(u)=\cos^2(u)$
+<<<<<<< Updated upstream
 \item $f(x)=\sin\frac{1}{x}$
+=======
+\item $f(x)=\sin\left(\frac{1}{x}\right)$
+>>>>>>> Stashed changes
 \item $f(\varphi)=\cos(a\sqrt{\varphi})$
 \item $f(t)=\tan^3(5t)$
 \item $f(x)=x^2\cos(4x)$
@@ -1223,8 +1425,12 @@ Bestimme die Ableitung:
 \begin{uebenv}{kolben}
 Der 
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{
 https://www.youtube.com/watch?v=DEkaI0LpDBM}
+=======
+\href{https://www.youtube.com/watch?v=DEkaI0LpDBM}{\qrcode{https://www.youtube.com/watch?v=DEkaI0LpDBM}}
+>>>>>>> Stashed changes
 }
 Ort $x(t)$ eines Kolbens kann beschrieben werden durch
 $$x(t)=\cos(20\pi t)+ \sqrt{25-\sin^2(20\pi t)},\quad t\text{ in }s$$
@@ -1294,8 +1500,12 @@ $$\lim_{h\to0}\frac{\mathrm{e}^h-1}{h}=1$$
 \begin{csatz}[Ableitung der $\mathrm{e}$-Funktion]
 Die
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{
 https://www.youtube.com/watch?v=MkQ55zu9mEM}
+=======
+\href{https://www.youtube.com/watch?v=MkQ55zu9mEM}{\qrcode{https://www.youtube.com/watch?v=MkQ55zu9mEM}}
+>>>>>>> Stashed changes
 }
 Exponentialfunktion $\exp(x)=\mathrm{e}^x$ ist für alle $x\in\mathbb{R}$ differenzierbar, und es gilt
 $$\left(\mathrm{e}^x\right)'=\mathrm{e}^x$$
@@ -1321,8 +1531,12 @@ $1+x\leq \mathrm{e}^x\leq\frac{1}{1-x}.$
 \subsection{Die Ableitung der Logarithmusfunktion}
 Für
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{
 https://www.youtube.com/watch?v=HczWnwIKa4A}
+=======
+\href{https://www.youtube.com/watch?v=HczWnwIKa4A}{\qrcode{https://www.youtube.com/watch?v=HczWnwIKa4A}}
+>>>>>>> Stashed changes
 }
 die Herleitung erinnern wir uns daran, dass die Logarithmusfunktion $\ln(x)$ Inversfunktion der Exponentialfunktion $\mathrm{e}^x$ ist. Allgemein gilt für eine Funktion $f$ und ihre Inverse $f^{-1}$:
 $$f(f^{-1}(x))=f^{-1}(f(x))=x.$$
@@ -1336,8 +1550,12 @@ $$(\ln(x))'=\frac{1}{x}.$$
 \begin{csatz}[Ableitung des $\ln$]
 Die
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{
 https://www.youtube.com/watch?v=soVDopFBghg}
+=======
+\href{https://www.youtube.com/watch?v=soVDopFBghg}{\qrcode{https://www.youtube.com/watch?v=soVDopFBghg}}
+>>>>>>> Stashed changes
 }
 Logarithmusfunktion $\ln(x)$ ist für alle $x\in\mathbb{R}^+$ differenzierbar und es gilt
 $$(\ln(x))'=\frac{1}{x}.$$
@@ -1375,17 +1593,31 @@ Ermittle die Definitionsmenge und die Ableitung der Funktion ($\mapsto$ bedeutet
         &= \frac{f'(x)g(x)-f(x)g'(x)}{[{g(x)}]^{2}}
     \end{align*}
 \end{lsg}
+<<<<<<< Updated upstream
 \begin{lsg}{tangente}
     Wir halten $\mathbb{D}=\mathbb{R}\setminus\{-1\}$ fest. Die Steigung ist $f'(x)=\left(\frac{1-x}{1+x}\right)=\frac{-(1+x)-(1-x)}{(1+x)^2}=\frac{-2}{(1+x)^2}$. An der Stelle $3$: $f'(3)=-\frac{1}{8}$ und damit als Ansatz für die Tangente $t(x)=-\frac{1}{8}x+q$. Ferner ist $f(3)=-\frac{1}{2}$, was wir in $t$ einsetzen:
+=======
+
+\begin{lsg}{tangente}
+    Wir sollen die Tangentengleichung im Punkt $(3|?)$ bestimmen und halten zuerst $\mathbb{D}=\mathbb{R}\setminus\{-1\}$ fest. Die Koordinaten des Punktes $P$ sind $f(3)=\frac{1-3}{1+3}=\frac{-2}{4}=-\frac{1}{2}$, also $(3|-\frac{1}{2})$. Die Steigung ist $f'(x)=\left(\frac{1-x}{1+x}\right)=\frac{-(1+x)-(1-x)}{(1+x)^2}=\frac{-2}{(1+x)^2}$. An der Stelle $3$: $f'(3)=-\frac{1}{8}$ und damit als Ansatz für die Tangente $t(x)=-\frac{1}{8}x+q$. Ferner ist ja $f(3)=-\frac{1}{2}$, was wir in $t$ einsetzen, um $q$ zu bestimmen:
+>>>>>>> Stashed changes
     \begin{align*}
         t(3) &= -\frac{1}{2}\\
         -\frac{1}{8}\cdot3+q &= -\frac{1}{2}\\
         q &= -\frac{1}{8}
     \end{align*}
+<<<<<<< Updated upstream
     Die Tangentengleichung lautet $t(x)=-\frac{1}{8}x-\frac{1}{8}$.
     
     Aus $g'(x)=1=\frac{-2}{(1+x)^2}$ folgt $x^2+2x+3=0$ mit Diskriminante $2^2-4\cdot3<0$. Daher beträgt die Steigung von $f$ an keiner Stelle $0$.
 \end{lsg}
+=======
+    Die Tangentengleichung lautet daher $t(x)=-\frac{1}{8}x-\frac{1}{8}$.
+    
+    Aus $g'(x)=1\stackrel{!}{=}\frac{-2}{(1+x)^2}=f'(x)$ folgt $x^2+2x+3=0$ mit Diskriminante $2^2-4\cdot3<0$. Daher beträgt die Steigung von $f$ an keiner Stelle $0$.
+\end{lsg}
+
+>>>>>>> Stashed changes
 \begin{lsg}{uebenuebenueben}
     \begin{enumerate}[a)]
         \item $2x(x^3+4)+(x^2-1)\cdot3x^2$
@@ -1430,17 +1662,30 @@ Ermittle die Definitionsmenge und die Ableitung der Funktion ($\mapsto$ bedeutet
     \end{align*}
     Im letzten Schritt hätten wir auch den Bruch aufspalten können, um $\tan'(x)=1+\tan^2(x)$ zu erhalten.
 \end{lsg}
+<<<<<<< Updated upstream
 \begin{lsg}{weitereuebungen}
+=======
+\begin{lsg}{weitereuebungenprod}
+>>>>>>> Stashed changes
 \begin{enumerate}[a)]
         \item $\cos(x)-2\sin(x)$
         \item $\sin(x)+x\cos(x)-\sin(x)=x\cos(x)$
         \item $-(1+\cos(x))^{-2}(-\sin(x))$
         \item $2\tan(u)\cdot(1+\tan^2(u))$
         \item $\frac{2t\sin(t)-t^2\cos(t)}{\sin^2(t)}$
+<<<<<<< Updated upstream
         \item $\frac{1}{2}(\cos(t))^{-\frac{1}{2}}\cdot(-\sin(t))$
         \item $2\cos(u)(-\sin(u))$
         \item $\cos(\frac{1}{x})(-x^{-2})$
         \item $-\sin(a\varphi)\cdot\frac{1}{2}\varphi^{-\frac{1}{2}}$
+=======
+        \item $\frac{1}{2}a\cos(\varphi)$
+        \item $4\cos(4x)$
+        \item $\frac{1}{2}(\cos(t))^{-\frac{1}{2}}\cdot(-\sin(t))$
+        \item $2\cos(u)(-\sin(u))$
+        \item $\cos(\frac{1}{x})(-x^{-2})$
+        \item $-\sin(a\sqrt{\varphi})\cdot a\frac{1}{2}\varphi^{-\frac{1}{2}}$
+>>>>>>> Stashed changes
         \item $3\tan^2(5t)(1+\tan^2(5t))\cdot5$
         \item $2x\cos(4x)+x^2(-\sin(4x))\cdot4$
         \item $-2x^{-3}\sin(4x)+x^{-2}\cos(4x)\cdot4$
@@ -1544,8 +1789,12 @@ Wie man diese Punkte rechnerisch findet, beschreiben die folgenden beiden Sätze
 \begin{csatz}[Extremum]
 Hat
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{
 https://www.youtube.com/watch?v=VloOTGZ8SGQ}
+=======
+\href{https://www.youtube.com/watch?v=VloOTGZ8SGQ}{\qrcode{https://www.youtube.com/watch?v=VloOTGZ8SGQ}}
+>>>>>>> Stashed changes
 }
 die Funktion $f$ im Punkt $x_0$ ein relatives Minimum oder Maximum, dann gilt
 $$f'(x_0)=0.$$
@@ -1594,8 +1843,12 @@ Ein Terrassenpunkt ist also ein spezieller Wendepunkt, nämlich ein Wendepunkt m
 
 \subsection{Überblick}
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{
 https://www.youtube.com/watch?v=X6RepNNUTLw}
+=======
+\href{https://www.youtube.com/watch?v=X6RepNNUTLw}{\qrcode{https://www.youtube.com/watch?v=X6RepNNUTLw}}
+>>>>>>> Stashed changes
 }
 \begin{itemize}
 \item Hat $f$ an der Stelle $x_0$ ein Extremum, dann gilt
@@ -1645,8 +1898,12 @@ im Intervall $[-4\pi,4\pi]$. Gib danach für $f$ Nullstellen, Symmetrie, Extrema
 \begin{uebenv}{glockenkurve}
 Die
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{
 https://www.youtube.com/watch?v=rfXO1n9Av3I}
+=======
+\href{https://www.youtube.com/watch?v=rfXO1n9Av3I}{\qrcode{https://www.youtube.com/watch?v=rfXO1n9Av3I}}
+>>>>>>> Stashed changes
 }
 Funktion
 $$g(x)=\mathrm{e}^{-x^2}$$
@@ -1853,8 +2110,12 @@ einzubeschreiben.
 \begin{uebenv}{buechse}
 Eine
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{
 https://www.youtube.com/watch?v=6kFezQk7R-0}
+=======
+\href{https://www.youtube.com/watch?v=6kFezQk7R-0}{\qrcode{https://www.youtube.com/watch?v=6kFezQk7R-0}}
+>>>>>>> Stashed changes
 }
 kreiszylinderförmige Büchse hat den Inhalt $\unit[1]{l}$. Welche Abmessungen hat diese Büchse, wenn ihre Oberfläche, bestehend aus Mantel und Grundflächen, minimal werden soll?
 \end{uebenv}
@@ -1924,8 +2185,12 @@ $$D(v):=\frac{3600v}{L+tv+\frac{v^2}{2a}}$$
 \begin{uebenv}{drogeninjektion}
 Die
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{
 https://www.youtube.com/watch?v=mpG6fCreiQQ}
+=======
+\href{https://www.youtube.com/watch?v=mpG6fCreiQQ}{\qrcode{https://www.youtube.com/watch?v=mpG6fCreiQQ}}
+>>>>>>> Stashed changes
 }
 Funktion
 $$f(t)=c\left(\mathrm{e}^{-at}-\mathrm{e}^{-bt}\right)$$
@@ -1947,8 +2212,12 @@ dass $f(t) >0$ für $t >0$ ist.
 \begin{uebenv}{gedaempfteschwingung}
 Durch
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{
 https://www.youtube.com/watch?v=mMQ1X1s0Pa8}
+=======
+\href{https://www.youtube.com/watch?v=mMQ1X1s0Pa8}{\qrcode{https://www.youtube.com/watch?v=mMQ1X1s0Pa8}}
+>>>>>>> Stashed changes
 }
 die Funktionen vom Typ
 $$f(t)=A\mathrm{e}^{-\alpha t}\sin(\omega t)$$
@@ -2018,8 +2287,12 @@ In einer alten Mühle soll ein Kaffee eröffnet werden. Den zylinderförmigen Wa
 \begin{uebenv}
 Abschliessend
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{
 https://www.youtube.com/watch?v=0HnulX11-DQ}
+=======
+\href{https://www.youtube.com/watch?v=0HnulX11-DQ}{\qrcode{https://www.youtube.com/watch?v=0HnulX11-DQ}}
+>>>>>>> Stashed changes
 }
 zu Extremalaufgaben wollen wir untersuchen, ob die Liter-Milchbeutel optimale Abmessungen haben, das heisst bei zur Verfügung stehendem Verpackungsmaterial den grösstmöglichen Volumeninhalt aufweisen. Wir werden dabei auf ein Ergebnis stossen, dass uns auf den ersten Blick erstaunen mag.
 
@@ -2149,8 +2422,12 @@ in erster Näherung an, um wie viele Einheiten sich der Gewinn verändert, wenn 
 \section{Vom Regenbogen}
 Eine Extremwertaufgabe, die im Regenbogen steckt.
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{
 https://www.youtube.com/watch?v=tdSILv7E7t4}
+=======
+\href{https://www.youtube.com/watch?v=tdSILv7E7t4}{\qrcode{https://www.youtube.com/watch?v=tdSILv7E7t4}}
+>>>>>>> Stashed changes
 }
 
 

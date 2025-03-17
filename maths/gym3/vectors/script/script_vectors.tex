@@ -4,7 +4,11 @@
 twoside,%
 titlepage,%
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 german,%
+=======
+swissgerman,%
+>>>>>>> Stashed changes
 =======
 swissgerman,%
 >>>>>>> Stashed changes
@@ -19,7 +23,11 @@ headsepline%
 \usepackage[dvipsnames]{xcolor}
 \usepackage[utf8]{inputenc}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 \usepackage[ngerman]{babel}
+=======
+\usepackage[swissgerman]{babel}
+>>>>>>> Stashed changes
 =======
 \usepackage[swissgerman]{babel}
 >>>>>>> Stashed changes
@@ -38,6 +46,10 @@ headsepline%
 \usetikzlibrary{positioning}
 \usetikzlibrary{shadows}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+\usetikzlibrary{quotes, angles}
+>>>>>>> Stashed changes
 =======
 \usetikzlibrary{quotes, angles}
 >>>>>>> Stashed changes
@@ -54,7 +66,11 @@ headsepline%
 
 \usepackage{marginnote}
 \usepackage{qrcode}
+<<<<<<< Updated upstream
 \qrset{height=9ex}
+=======
+\qrset{height=7ex}
+>>>>>>> Stashed changes
 
 \usepackage{longtable}
 \usepackage{listings}
@@ -63,6 +79,11 @@ headsepline%
 \usepackage{fontawesome} % Oder FontAwesome, falls du ein Augensymbol aus einer
 \newcommand{\faEyeLightGray}{\textcolor{lightgray}{\faEye}} % Custom command for the gray eye icon
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+\newcommand{\faReturnGray}{\textcolor{gray}{\faMailReply}} % Custom command for the gray eye icon
+\usepackage{pifont} % weitere Zeichen
+>>>>>>> Stashed changes
 =======
 \newcommand{\faReturnGray}{\textcolor{gray}{\faMailReply}} % Custom command for the gray eye icon
 \usepackage{pifont} % weitere Zeichen
@@ -117,8 +138,13 @@ headsepline%
 
 \newenvironment{lsg}[1]{%
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     \par\noindent\textbf{Notizen zu Übung \ref{\concatueb{#1}}.}%
     \label{\concatlsg{#1}}
+=======
+    \par\noindent\textbf{Notizen zu Übung \ref{\concatueb{#1}}}\label{\concatlsg{#1}}
+    \hfill\hyperref[\concatueb{#1}]{\faReturnGray}\par % Hyperref-Button zurück zur Übung
+>>>>>>> Stashed changes
 =======
     \par\noindent\textbf{Notizen zu Übung \ref{\concatueb{#1}}}\label{\concatlsg{#1}}
     \hfill\hyperref[\concatueb{#1}]{\faReturnGray}\par % Hyperref-Button zurück zur Übung
@@ -204,6 +230,10 @@ headsepline%
 \setlength{\parindent}{0pt} \setlength{\parskip}{1em}
 \pagestyle{headings} % gemachte Einstellungen anwenden
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 \subject{\includegraphics[width=0.618\textwidth]{pictures/200er}}
 \title{Vektoren}
 \subtitle{Raus in den 3D}
@@ -238,8 +268,12 @@ Mathematisch werden sie durch Vektoren (vehere, lat., fahren) beschrieben. Man d
 \begin{cdef}[Vektor]
 Unter einem \textbf{Vektor}
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{
 https://m.youtube.com/watch?v=WQ2C4uj5QzA}
+=======
+\href{https://m.youtube.com/watch?v=WQ2C4uj5QzA}{\qrcode{https://m.youtube.com/watch?v=WQ2C4uj5QzA}}
+>>>>>>> Stashed changes
 }
 versteht man eine Schar aus sämtlichen untereinander parallelen, gleichgerichteten und gleichlangen Strecken.
 \end{cdef}
@@ -335,8 +369,12 @@ Heute gilt die Vektorrechnung in der Mathematik und ihren Anwendungen in den Nat
 
 Wer sich bereits etwas mit Vektoren auskennt, für den sei hier am Rande der QR-Code zum Video \emph{Vektoren in 10 Minuten} angedacht.
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{
 https://www.youtube.com/watch?v=tw6_eu___Sk}
+=======
+\href{https://www.youtube.com/watch?v=tw6_eu___Sk}{\qrcode{https://www.youtube.com/watch?v=tw6_eu___Sk}}
+>>>>>>> Stashed changes
 }
 
 \begin{uebenv}{betragundrichtung}
@@ -466,8 +504,12 @@ Man legt fest
 \begin{cdef}[Addition]
 Die \textbf{Summe}
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{
 https://m.youtube.com/watch?v=eiIF6NDyYqU}
+=======
+\href{https://m.youtube.com/watch?v=eiIF6NDyYqU}{\qrcode{https://m.youtube.com/watch?v=eiIF6NDyYqU}}
+>>>>>>> Stashed changes
 }
 $\vec{v}+\vec{w}$ zweier Vektoren $\vec{v}$ und $\vec{w}$ ist der Vektor $\vec{u}$, den man durch \glqq Aneinandersetzen\grqq\ von $\vec{v}$ und $\vec{w}$ erhält.
 \end{cdef}
@@ -578,8 +620,12 @@ Skizziere:
 \begin{uebenv}{aareschwumm}
 Ein
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{
 https://m.youtube.com/watch?v=yrQB3sX_HOM}
+=======
+\href{https://m.youtube.com/watch?v=yrQB3sX_HOM}{\qrcode{https://m.youtube.com/watch?v=yrQB3sX_HOM}}
+>>>>>>> Stashed changes
 }
 Schwimmer ($v_s = \unitfrac[1.5]{m}{s}$) will einen $\unit[20]{m}$ breiten Fluss ($v_F = \unitfrac[1.2]{m}{s}$)
 \begin{enumerate}[a)]
@@ -597,8 +643,12 @@ lang wie die Grundlinie und parallel zu dieser ist.
 \begin{uebenv}{halbiertediagonalen}
 Halbieren
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{
 https://m.youtube.com/watch?v=mbfcd-n5saI}
+=======
+\href{https://m.youtube.com/watch?v=mbfcd-n5saI}{\qrcode{https://m.youtube.com/watch?v=mbfcd-n5saI}}
+>>>>>>> Stashed changes
 }
 sich in einem Viereck die Diagonalen, so ist es ein Parallelogramm?!
 
@@ -893,8 +943,12 @@ $$\vec{v}=x\cdot\vec{e}_x+y\cdot\vec{e}_y+z\cdot\vec{e}_z=\begin{pmatrix}x\\y\\z
 \begin{csatz}[Länge in 3D]
 Für die Länge
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{
 https://m.youtube.com/watch?v=s_6oUTQHk7Q}
+=======
+\href{https://m.youtube.com/watch?v=s_6oUTQHk7Q}{\qrcode{https://m.youtube.com/watch?v=s_6oUTQHk7Q}}
+>>>>>>> Stashed changes
 }
 von $\vec{v}=(x|y|z)$ gilt $|\vec{v}|=\sqrt{x^2+y^2+z^2}$.
 \end{csatz}
@@ -991,8 +1045,12 @@ Wie lauten die Koordinaten der Basisvektoren $\vec{e}_x, \vec{e}_y, \vec{e}_z$ i
 
 Wenn man die Koordinaten von Vektoren kennt, können die S-Multiplikation und die Vektoraddition sehr einfach ausgeführt werden. Für
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{
 https://m.youtube.com/watch?v=64AHlh8jFzo}
+=======
+\href{https://m.youtube.com/watch?v=64AHlh8jFzo}{\qrcode{https://m.youtube.com/watch?v=64AHlh8jFzo}}
+>>>>>>> Stashed changes
 }
 einen Skalar $t\in\mathbb{R}$ gilt nämlich
 \begin{align*}
@@ -1125,8 +1183,12 @@ Wie lauten die Koordinaten des Vektors, der durch Drehung von $\vec{v}$ um seine
 \begin{uebenv}{dreheallgemein}
 Wie
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{
 https://m.youtube.com/watch?v=qEdtxCgSyfY}
+=======
+\href{https://m.youtube.com/watch?v=qEdtxCgSyfY}{\qrcode{https://m.youtube.com/watch?v=qEdtxCgSyfY}}
+>>>>>>> Stashed changes
 }
 lauten die Koordinaten des Vektors, der durch
 Drehung von
@@ -1265,8 +1327,12 @@ Wünschenswert wäre eine Formel, mit der man den Winkel zwischen zwei Vektoren 
 \begin{uebenv}{herleitungzwischenwinkel}
 Zeichne
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{
 https://www.youtube.com/watch?v=h5c7jdPZoWI}
+=======
+\href{https://www.youtube.com/watch?v=h5c7jdPZoWI}{\qrcode{https://www.youtube.com/watch?v=h5c7jdPZoWI}}
+>>>>>>> Stashed changes
 }
 ein beliebiges Dreieck und wähle zwei Seiten als $\vec{v}$ bzw. $\vec{w}$. Drücke die dritte Seite als Differenz dieser beiden Vektoren aus und formuliere mit allen dreien den Cosinussatz. Vereinfache danach und löse nach dem Winkel auf.
 \end{uebenv}
@@ -1278,8 +1344,12 @@ auf.
 \begin{cdef}[Skalarprodukt]
 Das
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{
 https://m.youtube.com/watch?v=64AHlh8jFzo}
+=======
+\href{https://m.youtube.com/watch?v=64AHlh8jFzo}{\qrcode{https://m.youtube.com/watch?v=64AHlh8jFzo}}
+>>>>>>> Stashed changes
 }
 Skalarprodukt zweier Vektoren $\vec{v}$ und $\vec{w}$ ist definiert durch
 $$\vec{v}\cdot\vec{w}:=v_xw_x+v_yw_y+v_zw_z=|\vec{v}|\cdot|\vec{w}|\cdot\cos(\varphi).$$
@@ -1290,8 +1360,12 @@ Mit Hilfe des Skalarprodukts lässt sich der Winkel $\varphi$ zwischen zwei Vekt
 \begin{csatz}[Zwischenwinkel]
 Für den Zwi\-schen\-win\-kel
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{
 https://www.youtube.com/watch?v=h5c7jdPZoWI}
+=======
+\href{https://www.youtube.com/watch?v=h5c7jdPZoWI}{\qrcode{https://www.youtube.com/watch?v=h5c7jdPZoWI}}
+>>>>>>> Stashed changes
 }
 $\varphi$ zweier Vektoren $\vec{v}$ und $\vec{w}$ gilt\\
 $$\varphi=\cos^{-1}\left(\frac{\vec{v}\cdot\vec{w}}{|\vec{v|}\cdot\mid\vec{w}\mid}\right)$$
@@ -1369,7 +1443,11 @@ $$A(2|1|-3),\; B(-3|0|1)\text{ und }C(7|-19|-1)$$
 
 \begin{uebenv}{wrfeldiags}
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{https://www.youtube.com/watch?v=iEK3A2d_bnA}
+=======
+\href{https://www.youtube.com/watch?v=iEK3A2d_bnA}{\qrcode{https://www.youtube.com/watch?v=iEK3A2d_bnA}}
+>>>>>>> Stashed changes
 }
 Berechne vektoriell den Winkel zwischen zwei Raumdiagonalen eines Würfels.
 \end{uebenv}
@@ -1377,7 +1455,11 @@ Berechne vektoriell den Winkel zwischen zwei Raumdiagonalen eines Würfels.
 \begin{uebenv}{geodtische}
 Ein
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{https://www.youtube.com/watch?v=iEK3A2d_bnA}
+=======
+\href{https://www.youtube.com/watch?v=iEK3A2d_bnA}{\qrcode{https://www.youtube.com/watch?v=iEK3A2d_bnA}}
+>>>>>>> Stashed changes
 }
 Flugzeug fliegt vom Punkt $(45^{\circ}\text{N}|0^{\circ}\text{W})$ längs des $45^{\circ}$-Breitenkreises zum Punkt $(45^{\circ}\text{N}|75^{\circ}\text{W})$. Wir zeigen, dass der Weg längs eines Grosskreises kürzer ist. Ein Grosskreis ist ein Kreis auf der Kugel mit Mittelpunkt im Kugelmittelpunkt.
 \end{uebenv}
@@ -1401,7 +1483,11 @@ Eine spezielle Lösung des Problems ergibt
 \begin{cdef}[Vektorprodukt]
 Der
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{https://www.youtube.com/watch?v=6TqodP7ai80}
+=======
+\href{https://www.youtube.com/watch?v=6TqodP7ai80}{\qrcode{https://www.youtube.com/watch?v=6TqodP7ai80}}
+>>>>>>> Stashed changes
 }
 Vektor
 $$\vec{u}=\vec{v}\times\vec{w}=\begin{pmatrix}v_yw_z-v_zw_y\\v_zw_x-v_xw_z\\v_xw_y-v_yw_x\end{pmatrix}$$
@@ -1615,7 +1701,11 @@ mit einem bestimmten $t$ darstellen. Durchläuft $t$ alle reellen Werte, so wird
 \begin{cdef}[Gerade]
 Man
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{https://www.youtube.com/watch?v=tKg6d6cMCtA}
+=======
+\href{https://www.youtube.com/watch?v=tKg6d6cMCtA}{\qrcode{https://www.youtube.com/watch?v=tKg6d6cMCtA}}
+>>>>>>> Stashed changes
 }
 nennt
 $$g_t:=\left\{\vec{P}+t\vec{r}\; | \;t\in\mathbb{R}\right\}$$
@@ -1679,7 +1769,11 @@ Ermittle eine Parameterdarstellung der Geraden $g$.
 \begin{uebenv}{relativelage}
 Ermittle
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{https://www.youtube.com/watch?v=ttNOtreUxF8}
+=======
+\href{https://www.youtube.com/watch?v=ttNOtreUxF8}{\qrcode{https://www.youtube.com/watch?v=ttNOtreUxF8}}
+>>>>>>> Stashed changes
 }
 die gegenseitige Lage der Geraden
 \begin{enumerate}[a)]
@@ -1976,7 +2070,11 @@ Lässt man $s$ und $t$ durch ganz $\mathbb{R}$ laufen, wird jeder Punkt in der E
 \begin{cdef}[Parameterform der Ebene]
 Die
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{https://www.youtube.com/watch?v=vLTaT1xJc-g}
+=======
+\href{https://www.youtube.com/watch?v=vLTaT1xJc-g}{\qrcode{https://www.youtube.com/watch?v=vLTaT1xJc-g}}
+>>>>>>> Stashed changes
 }
 Darstellung
 $$\vec{E}=\vec{P}+t\vec{a}+s\vec{b}$$
@@ -2051,7 +2149,11 @@ Bestimme zuerst eine Parameterform der Ebene, welche durch die Punkte $(3|0|0)$,
 \begin{bem}
 Bei
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{https://www.youtube.com/watch?v=U6pCMVEiw8s}
+=======
+\href{https://www.youtube.com/watch?v=U6pCMVEiw8s}{\qrcode{https://www.youtube.com/watch?v=U6pCMVEiw8s}}
+>>>>>>> Stashed changes
 }
 Übung \ref{istTinE} erfährt man, wieso eine Koordinatendarstellung einer Ebene in der Anwendung bequemer als eine entsprechende Parameterdarstellung sein kann.
 \end{bem}
@@ -2126,7 +2228,11 @@ Damit lässt sich relativ einfach die Koordinatengleichung einer Ebene aufstelle
 \begin{uebenv}{koordinatengleichungtheeasyway}
 Wie
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{https://www.youtube.com/watch?v=aUOcSpL9WAY}
+=======
+\href{https://www.youtube.com/watch?v=aUOcSpL9WAY}{\qrcode{https://www.youtube.com/watch?v=aUOcSpL9WAY}}
+>>>>>>> Stashed changes
 }
 lautet die Koordinatengleichung der Ebene
 \begin{enumerate}[a)]
@@ -2153,7 +2259,11 @@ Ermittle den Durchstosspunkt durch die Ebene $E$ der Geraden $g$:
 
 \begin{uebenv}{sichtbar}
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{https://youtu.be/Us8-Nr3LyFc}
+=======
+\href{https://youtu.be/Us8-Nr3LyFc}{\qrcode{https://youtu.be/Us8-Nr3LyFc}}
+>>>>>>> Stashed changes
 }
 Man denke sich das Dreieck $A(4|1|2), B(2|6|3), C(-3|2|4)$ als undurchsichtige Fläche und begründe rechnerisch, ob der Punkt $P(0|0|5)$ vom Punkt $Q(3|9|-1)$ aus sichtbar ist.
 \end{uebenv}
@@ -2165,7 +2275,11 @@ Ein Lichtstrahl, von $P(4|5|-1)$ herkommend mit Richtung $\vec{r}=(-2|1|0.5)$ wi
 \begin{uebenv}{pyramide}
 Eine
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{https://www.youtube.com/watch?v=UsAnRwgHkDU}
+=======
+\href{https://www.youtube.com/watch?v=UsAnRwgHkDU}{\qrcode{https://www.youtube.com/watch?v=UsAnRwgHkDU}}
+>>>>>>> Stashed changes
 }
 dreiseitige Pyramide hat die Grundfläche $A(-12|0|-2)$, $B(12|-12|-2)$, $C(0|12|-2)$ und die Spitze in $S(-4|4|6)$.
 \begin{enumerate}[a)]
@@ -2450,7 +2564,11 @@ Von einer dreiseitigen Pyramide ABCS kennt man $\overrightarrow{AB}=(0|1|0)$, $\
 \begin{uebenv}{madreizehnvektoren}
 Hier
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{https://www.youtube.com/watch?v=efQdxf_Tfa0}
+=======
+\href{https://www.youtube.com/watch?v=efQdxf_Tfa0}{\qrcode{https://www.youtube.com/watch?v=efQdxf_Tfa0}}
+>>>>>>> Stashed changes
 }
 noch ein Video, aus dem der Aufgabentext und ein Lösungsvorschlag zur Vektoraufgabe der Mathematik Matur Serie 2013 entnommen werden kann.
 \end{uebenv}
@@ -2677,4 +2795,8 @@ Der rechte Daumen zeigt nun in die Wirkungsrichtung der Lorentzkraft.
 
 \listoffigures
 
+<<<<<<< Updated upstream
 \end{document}
+=======
+\end{document}
+>>>>>>> Stashed changes

@@ -43,7 +43,11 @@ headsepline%
 
 \usepackage{marginnote}
 \usepackage{qrcode}
+<<<<<<< Updated upstream
 \qrset{height=9ex}
+=======
+\qrset{height=7ex}
+>>>>>>> Stashed changes
 
 \usepackage{longtable}
 \usepackage{listings}
@@ -102,7 +106,11 @@ headsepline%
 \renewcommand{\theuebcounter}{\thesection.\arabic{uebcounter}}  % Zählerformat: Abschnitt.Übung
 
 \newenvironment{lsg}[1]{%
+<<<<<<< Updated upstream
     \par\noindent\textbf{Notizen zu Übung \theuebcounter\label{\concatlsg{#1}}}
+=======
+    \par\noindent\textbf{Notizen zu Übung \ref{\concatueb{#1}}}\label{\concatlsg{#1}}
+>>>>>>> Stashed changes
     \hfill\hyperref[\concatueb{#1}]{\faReturnGray}\par % Hyperref-Button zurück zur Übung
 }{%
     \par%
@@ -186,6 +194,10 @@ headsepline%
 \pagestyle{headings} % gemachte Einstellungen anwenden
 
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 \subject{\includegraphics[width=0.618\textwidth]{pictures/ejost}}
 \title{Folgen \& Reihen}
 \subtitle{Look up the Number!}
@@ -242,7 +254,11 @@ Man falte einen Bogen Papier in der Mitte und lege die beiden H\"alften aufeinan
 \begin{enumerate}[a)]
 \item Wie oft kann man das Papier h\"och\-stens falten?
 \item Man denkt sich nach jeder Faltung das Papier l\"angs der Falt\-achse aufgeschnitten und die beiden H\"alf\-ten zu einem Turm aufgeschichtet. Wie hoch ist der Turm nach $2,3,4,5$ Faltungen?
+<<<<<<< Updated upstream
 \item Finde den Zusammenhang zwischen der Turm\-h\"ohe $h_k$ und der Anzahl Faltungen $k\in\mN$.
+=======
+\item Finde den Zusammenhang zwischen der Turm\-h\"ohe $h_k$ und der Anzahl Faltungen $k\in\mathbb{N}$.
+>>>>>>> Stashed changes
 \item Wie hoch ist der Turm nach $15,20,42$ Faltungen? Sch\"at\-ze zuerst.
 \end{enumerate}
 \end{uebenv}
@@ -264,12 +280,17 @@ Eine Zahlenfolge ist eine Folge, die nur aus Zahlen besteht. Die einzelnen Zahle
 Wir formulieren
 \begin{cdef}[Folge]
 Eine Folge ist eine Funktion
+<<<<<<< Updated upstream
 $$f:\mD\longrightarrow\mW,$$
+=======
+$$f:\mathbb{D}\longrightarrow\mathbb{W},$$
+>>>>>>> Stashed changes
 deren Definitionsmenge die Menge der nat\"urlichen Zahlen, oder eine Teilmenge davon, ist.
 \end{cdef}
 Besteht die Folge aus lauter reellen Zahlen, so spricht man genauer von einer Zahlenfolge.
 \begin{cdef}[Zahlenfolge]
 Eine Zahlenfolge ist eine Funktion
+<<<<<<< Updated upstream
 $$f:\D{D}\longrightarrow\D{R}$$
 mit $\D{D}\subset\D{N}$.
 \end{cdef}
@@ -279,11 +300,23 @@ H\"aufig wird die Bemerkung $k\in\D{N}$ weggelassen, weil sie aus dem Kontext he
 \begin{cdef}[Glied der Folge]
 Die reellen Zahlen
 $$a_1\q a_2\q a_3\q\dots\q a_{k-1}\q a_k\q a_{k+1}\q\dots$$
+=======
+$$f:\mathbb{D}\longrightarrow\mathbb{R}$$
+mit $\mathbb{D}\subset\mathbb{N}$.
+\end{cdef}
+\begin{bem}
+H\"aufig wird die Bemerkung $k\in\mathbb{N}$ weggelassen, weil sie aus dem Kontext hervorgeht. Betrachtet man Folgen, die nicht unendlich lang sind, dann sollte man die Defi\-ni\-tions\-menge explizite angeben.
+\end{bem}
+\begin{cdef}[Glied der Folge]
+Die reellen Zahlen
+$$a_1\quad a_2\quad a_3\quad\dots\quad a_{k-1}\quad a_k\quad a_{k+1}\quad\dots$$
+>>>>>>> Stashed changes
 einer Zahlenfolge heissen Glieder der Folge. $a_k$, die kurze Schreibweise von $f(k)$, heisst $k$-tes Glied der Folge.
 \end{cdef}
 \begin{bem}
 Der Index $k$ kann also als Position in der jeweiligen Folge aufgefasst werden. $a_k$ hingegen ist der Wert, der an Position $k$ steht.
 \end{bem}
+<<<<<<< Updated upstream
 \begin{bsps}
 Zur Illustration einige Beispiele:
 \begin{itemize}
@@ -296,6 +329,20 @@ $$1\q3\q5\q7\q\dots$$
 $$1\q4\q9\q16\q\dots$$
 \end{itemize}
 \end{bsps}
+=======
+\begin{bsp}
+Zur Illustration einige Beispiele:
+\begin{itemize}
+\item $a_k=2k$ ist die Folge der geraden Zahlen
+$$2\quad4\quad6\quad8\quad\dots,$$
+denn es ist $a_1=2$, $a_2=4$, $a_3=6$, etc.
+\item $a_k=2k-1$
+$$1\quad3\quad5\quad7\quad\dots$$
+\item $a_k=k^2$
+$$1\quad4\quad9\quad16\quad\dots$$
+\end{itemize}
+\end{bsp}
+>>>>>>> Stashed changes
 
 Die Definition einer Folge l\"asst nat\"urlich auch solche zu, die keinen Gesetzm\"assigkeiten folgen und zu denen man daher jedes Glied explizite angeben muss. Wir werden uns hier aber haupts\"achlich mit einfach zu beschreibenden Folgen befassen.
 
@@ -364,9 +411,15 @@ $$a_k=2\cdot a_{k-1}+1,\quad a_1=1.$$
 
 \begin{bsp}
 Die \textbf{Fibonacci-Folge}
+<<<<<<< Updated upstream
 $$1\q1\q2\q3\q5\q8\q13\q21\q\dots$$
 kann durch
 $$a_k=a_{k-1}+a_{k-2}\q\text{mit }a_1=1\text{ und }a_2=1$$
+=======
+$$1\quad1\quad2\quad3\quad5\quad8\quad13\quad21\quad\dots$$
+kann durch
+$$a_k=a_{k-1}+a_{k-2}\quad\text{mit }a_1=1\text{ und }a_2=1$$
+>>>>>>> Stashed changes
 rekursiv definiert werden.
 \end{bsp}
 
@@ -432,7 +485,11 @@ Gib eine m\"ogliche rekursive Definition f\"ur die Folge
 \subsection{Die Partialsumme einer Folge}
 H\"aufig ist an einer Zahlenfolge interessant, wie gross nun die Summe ihrer Glieder ist.
 Hat man also eine Zahlenfolge
+<<<<<<< Updated upstream
 $$a_1\q a_2 \q\, a_3\q \dots$$
+=======
+$$a_1\quad a_2 \quad\, a_3\quad \dots$$
+>>>>>>> Stashed changes
 so lautet die zugeh\"orige Summe bis zum $n$-ten Glied
 $$a_1+a_2+a_3+\dots+a_n.$$
 
@@ -440,8 +497,12 @@ Deshalb definiert man:
 \begin{cdef}[Partialsumme]
 Die
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{
 https://www.youtube.com/watch?v=G_PSp59zNJc}
+=======
+\href{https://www.youtube.com/watch?v=G_PSp59zNJc}{\qrcode{https://www.youtube.com/watch?v=G_PSp59zNJc}}
+>>>>>>> Stashed changes
 }
 $k$-te Partialsumme der ersten $k$ oder aller Glieder einer Zahlenfolge ist die Summe
 $$s_n=a_1+a_2+\ldots+a_{k-1}+a_n=:\sum_{k=1}^na_k$$
@@ -449,7 +510,11 @@ $$s_n=a_1+a_2+\ldots+a_{k-1}+a_n=:\sum_{k=1}^na_k$$
 
 \begin{uebenv}{gausstrick}
 Berechne die erste, dritte, 100., $n$-te Partialsumme der Folge
+<<<<<<< Updated upstream
 $$1\q2\q3\q4\q\dots$$
+=======
+$$1\quad2\quad3\quad4\quad\dots$$
+>>>>>>> Stashed changes
 Tipp: Verwende Kombinatorik oder den Trick von C.F.~Gauss.
 \end{uebenv}
 
@@ -463,13 +528,18 @@ $$a_1+a_2+a_3+\dots+a_n = \sum_{k=1}^{n}a_k.$$
 Dabei schreibt man also ein grosses $\Sigma$ (Sigma), um anzudeuten, dass es sich um eine Summe handelt. Unterhalb dieses Sigmas wird notiert, bei welchem nat\"urlichen Wert die laufende Variable (hier $k$) startet. Dieses $k$ wird solange um $1$ erh\"oht, bis es die obere Grenze $n$ erreicht hat. Zwischen den Erh\"ohungen wird immer ein $+$-Zeichen gesetzt.
 \end{bem}
 
+<<<<<<< Updated upstream
 \begin{bsps}
+=======
+\begin{bsp}
+>>>>>>> Stashed changes
 \begin{align}
 \notag
 \sum_{k=1}^{n}k &=1+2+3+4+\dots +n\\ \notag
 \sum_{k=1}^{n}k^2 &=1^2+2^2+3^2+4^2+\dots+n^2\\ \notag
 \sum_{k=100}^{999}k &=100+101+102+\dots+999
 \end{align}
+<<<<<<< Updated upstream
 \end{bsps}
 
 \begin{bem}
@@ -477,6 +547,15 @@ Man kann aus einer Zahlenfolge eine neue zusammenstellen, welche einfach aus den
 $$1\q2\q3\q4\q5\dots$$
 anschaut, dann ist ihre erste Teilsumme $s_1=1$, ihre zweite $s_2=3$, die dritte $s_3=6$, die vierte $s_4=10$, etc. Man kann also eine Folge der Teilsummen
 $$1\q3\q6\q10\q15\q21\dots$$
+=======
+\end{bsp}
+
+\begin{bem}
+Man kann aus einer Zahlenfolge eine neue zusammenstellen, welche einfach aus den verschiedenen Teilsummen der urspr\"unglichen Zahlenfolge besteht. Wenn man beispielsweise die Zahlenfolge
+$$1\quad2\quad3\quad4\quad5\dots$$
+anschaut, dann ist ihre erste Teilsumme $s_1=1$, ihre zweite $s_2=3$, die dritte $s_3=6$, die vierte $s_4=10$, etc. Man kann also eine Folge der Teilsummen
+$$1\quad3\quad6\quad10\quad15\quad21\dots$$
+>>>>>>> Stashed changes
 bestehend aus den einzelnen Teilsummen
 $$s_k=\sum_{i=1}^{k}i$$
 bilden.
@@ -511,11 +590,18 @@ Im Folgenden werden wir uns fast ausschliesslich auf zwei Typen von Zahlenfolgen
 \begin{cdef}[Arithmetische Folge]
 Eine
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{
 https://www.youtube.com/watch?v=zGVcjrRe1Hg}
 }
 arithmetische Folge ist eine Zahlenfolge, deren Glieder der Rekursionsformel
 $$a_{k+1}=a_k+d\q (k\in\mN, d=\text{konstant})$$
+=======
+\href{https://www.youtube.com/watch?v=zGVcjrRe1Hg}{\qrcode{https://www.youtube.com/watch?v=zGVcjrRe1Hg}}
+}
+arithmetische Folge ist eine Zahlenfolge, deren Glieder der Rekursionsformel
+$$a_{k+1}=a_k+d\quad (k\in\mathbb{N}, d=\text{konstant})$$
+>>>>>>> Stashed changes
 gen\"ugen.
 \end{cdef}
 
@@ -533,7 +619,11 @@ Zeige die G\"ultigkeit der obigen Bemerkung.
 
 \begin{bsp}
 Die Folge der ungeraden nat\"urlichen Zahlen ist arithmetisch mit $d=2$.
+<<<<<<< Updated upstream
 $$1\q3\q5\q7\q9\q\dots$$
+=======
+$$1\quad3\quad5\quad7\quad9\quad\dots$$
+>>>>>>> Stashed changes
 \end{bsp}
 
 \begin{csatz}
@@ -578,11 +668,18 @@ Ein frei fallender K\"orper legt in der ersten Sekunde $\unit[5]{m}$ und in jede
 \begin{cdef}[geometrische Folge]
 Eine
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{
 https://www.youtube.com/watch?v=b0rjVBStXGo}
 }
 geometrische Folge ist eine Zahlenfolge, deren Glieder der Rekursionsformel
 $$a_{k+1}=a_k\cdot q\q(k\in\mN, q=\text{konstant})$$
+=======
+\href{https://www.youtube.com/watch?v=b0rjVBStXGo}{\qrcode{https://www.youtube.com/watch?v=b0rjVBStXGo}}
+}
+geometrische Folge ist eine Zahlenfolge, deren Glieder der Rekursionsformel
+$$a_{k+1}=a_k\cdot q\quad(k\in\mathbb{N}, q=\text{konstant})$$
+>>>>>>> Stashed changes
 gen\"ugen.
 \end{cdef}
 
@@ -600,7 +697,11 @@ Zeige die G\"ultigkeit der obigen Bemerkung.
 
 \begin{bsp}
 Die Folge der Zweierpotenzen mit nat\"urlichen Exponenten ist geometrisch mit $q=2$.
+<<<<<<< Updated upstream
 $$2\q4\q8\q16\q32\q\dots$$
+=======
+$$2\quad4\quad8\quad16\quad32\quad\dots$$
+>>>>>>> Stashed changes
 \end{bsp}
 
 \begin{csatz}[GF Formeln]
@@ -695,6 +796,7 @@ $a, b, c$ bilden in dieser Reihenfolge eine arithmetische Folge mit der Summe $3
 \begin{uebenv}{reiskoerner}
 In
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{
 https://www.youtube.com/watch?v=UGOdwBEIbWc}
 }
@@ -704,6 +806,16 @@ einer Erz\"ahlung des Persers \textsc{Ibn Khallikan} aus dem 13.Jahrhundert lese
 \item Wie lange w\"are ein Zug, der diese Reismenge transportieren m\"usste, wenn ein G\"uterwagen von $\unit[10]{m}$ L\"ange $\unit[10]{Tonnen}$ Reis laden kann und  $18$ K\"orner $\unit[1]{g}$ ergeben?
 \item Welche H\"ohe h\"atte ein Reisteppich, wenn man die Schweiz damit bedecken w\"urde? (Nimm z.B. ein zylindrisches Reiskorn mit Durchmesser $\unit[2]{mm}$ und H\"ohe $\unit[1]{cm}$.)
 \end{enumeratea}
+=======
+\href{https://www.youtube.com/watch?v=UGOdwBEIbWc}{\qrcode{https://www.youtube.com/watch?v=UGOdwBEIbWc}}
+}
+einer Erz\"ahlung des Persers \textsc{Ibn Khallikan} aus dem 13.Jahrhundert lesen wir: \glqq In jener Zeit, als der indische Herrscher \textsc{Shihram} seine Untertanen unm\"assig tyrannisierte, erfand der Weise \textsc{Sissa Ibn Dahir} zur Belehrung des K\"onigs das Schachspiel, um ihm nachzuweisen, wie wichtig f\"ur einen Herrscher seine Untertanen sind. Als Dank f\"ur die Erleuchtung bot der K\"onig \textsc{Sissa} seine Sch\"atze an und stellte ihm einen Wunsch frei. Der Weise w\"unschte sich soviel Weizen, wie sich auf dem Schachbrett folgendermassen angeordnet ergibt: Auf das erste Feld des Schachbrettes 1 Reiskorn, auf das zweite Feld 2 Reisk\"orner, auf das dritte Feld 4 K\"orner etc., auf jedem Feld doppelt so viele wie auf dem vorhergehenden.\grqq
+\begin{enumerate}[a)]
+\item Wie viele Reisk\"orner sind dies insgesamt?
+\item Wie lange w\"are ein Zug, der diese Reismenge transportieren m\"usste, wenn ein G\"uterwagen von $\unit[10]{m}$ L\"ange $\unit[10]{Tonnen}$ Reis laden kann und  $18$ K\"orner $\unit[1]{g}$ ergeben?
+\item Welche H\"ohe h\"atte ein Reisteppich, wenn man die Schweiz damit bedecken w\"urde? (Nimm z.B. ein zylindrisches Reiskorn mit Durchmesser $\unit[2]{mm}$ und H\"ohe $\unit[1]{cm}$.)
+\end{enumerate}
+>>>>>>> Stashed changes
 \end{uebenv}
 
 \begin{lsg}{reiskoerner}
@@ -777,8 +889,12 @@ Stelle eine Formel auf f\"ur die Anzahl $a(k)$ der Quadrate, die in der $k$-ten 
 \begin{uebenv}{maturafolgen}
 In
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{
 https://www.youtube.com/watch?v=AJtWxcZNq28}
+=======
+\href{https://www.youtube.com/watch?v=AJtWxcZNq28}{\qrcode{https://www.youtube.com/watch?v=AJtWxcZNq28}}
+>>>>>>> Stashed changes
 }
 der Randnotiz findet man ein Video zur Matura Mathematik Aufgabe Folgen und Reihen von 2013. Darin seht ihr die Aufgabe und eine mögliche Lösung kommentiert.
 \end{uebenv}
@@ -799,7 +915,11 @@ der Randnotiz findet man ein Video zur Matura Mathematik Aufgabe Folgen und Reih
 \vspace{-20pt}
 \end{wrapfigure}
 Bisher haben wir nur die Anfangsglieder einer Folge betrachtet. Wir wenden uns in diesem Kapitel den Gliedern mit hohen Nummern zu und werden versuchen, Aussagen \"uber ihr Verhalten zu machen, wenn $n$ gegen Unendlich strebt (schreibe: $n\to\infty$).
+<<<<<<< Updated upstream
 Wir schreiben f\"ur eine Zahlenfolge $f:\mN\to\mR, k\mapsto f(k)$ kurz $<a_k>$.
+=======
+Wir schreiben f\"ur eine Zahlenfolge $f:\mathbb{N}\to\mathbb{R}, k\mapsto f(k)$ kurz $<a_k>$.
+>>>>>>> Stashed changes
 
 \begin{uebenv}{nahanslimit}
 Berechne f\"ur $k=10,11,10^3,10^3+1,10^6,10^6+1$ die Glieder der Zahlenfolge mit
@@ -821,7 +941,11 @@ Berechne f\"ur $k=10,11,10^3,10^3+1,10^6,10^6+1$ die Glieder der Zahlenfolge mit
     \end{enumerate}
 \end{lsg}
 
+<<<<<<< Updated upstream
 Wir k\"onnen also das Verhalten von Folgen f\"ur grosse $k\in\mN$ in drei wesentliche F\"alle aufteilen.
+=======
+Wir k\"onnen also das Verhalten von Folgen f\"ur grosse $k\in\mathbb{N}$ in drei wesentliche F\"alle aufteilen.
+>>>>>>> Stashed changes
 \begin{itemize}
 \item[A] Die Glieder der Folge streben f\"ur $k\to\infty$ genau einer reellen Zahl, einem Grenzwert, zu.
 \item[B] Die Glieder der Folge werden f\"ur $k\to\infty$ betragsm\"assig gr\"osser als jede noch so grosse Zahl.
@@ -834,7 +958,11 @@ Im Fall A nennt man die Folge \definition{konvergent}, im Fall B bestimmt \defin
 Um den Begriff der Konvergenz exakter bereitzustellen, betrachten wir ein Beispiel. F\"ur diesen etwas l\"anger dauernden Prozess brauchen wir vorerst
 
 \begin{cdef}[$\varepsilon$-Umgebung]
+<<<<<<< Updated upstream
 Sei $\varepsilon>0$ eine positive reelle Zahl und $g\in\mR$ beliebig. Das offene Intervall $(g-\varepsilon,g+\varepsilon)$ heisst $\varepsilon$-Umgebung von $g$.
+=======
+Sei $\varepsilon>0$ eine positive reelle Zahl und $g\in\mathbb{R}$ beliebig. Das offene Intervall $(g-\varepsilon,g+\varepsilon)$ heisst $\varepsilon$-Umgebung von $g$.
+>>>>>>> Stashed changes
 \end{cdef}
 
 \begin{bsp}
@@ -880,7 +1008,11 @@ und berechnen die ersten $8$ Glieder der Folge. Dazu zeichnen wir die $\varepsil
 \end{figure}
 
 Je gr\"osser die Nummern der Glieder gew\"ahlt werden, desto n\"aher sind diese beim Wert $2$. In diesem Beispiel sieht man, dass alle Glieder ab der Nummer $N=4$ in unserer gew\"ahlten Umgebung liegen.
+<<<<<<< Updated upstream
 $$\abs{a_k-2}<1\q\text{f\"ur }k>4.$$
+=======
+$$|a_k-2|<1\quad\text{f\"ur }k>4.$$
+>>>>>>> Stashed changes
 W\"ahlt man statt $\varepsilon=1$ nun ein kleineres $\varepsilon$, so kann man bei dieser Folge wieder eine bestimmte Nummer $N$ finden, ab welcher $a_k$ mit $k>N$ in dieser neuen $\varepsilon$-Umgebung liegen. Weil also dieses $N$ von der Gr\"osse der Umgebung abh\"angt, schreibt man oft deutlicher $N(\varepsilon)$ und nennt diese Nummer \definition{Stichzahl}.
 \end{bsp}
 
@@ -901,25 +1033,40 @@ Berechne zu obiger Folge die Stichzahl $N(\frac{1}{100})$ f\"ur den Grenzwert $g
 \end{lsg}
 
 Damit ist $N(0.01) = 400$. Vom $401.$ Glied an liegen alle
+<<<<<<< Updated upstream
 Glieder der Folge in der $\frac{1}{100}$-Umgebung von 2. Entsprechend gilt f\"ur alle Glieder mit den Nummern $k > 4000000$: $\abs{a_k - 2} < 0.000001$. Durch passende Wahl einer Gliednummer $N$ kann man bei dieser Folge immer erreichen, dass von dieser Nummer an alle Betragsdifferenzen $\abs{a_k - 2}$ kleiner als jede noch so klein gew\"ahlte Zahl $\ge$ ausfallen. Man sagt dann, dass
+=======
+Glieder der Folge in der $\frac{1}{100}$-Umgebung von 2. Entsprechend gilt f\"ur alle Glieder mit den Nummern $k > 4000000$: $|a_k - 2| < 0.000001$. Durch passende Wahl einer Gliednummer $N$ kann man bei dieser Folge immer erreichen, dass von dieser Nummer an alle Betragsdifferenzen $|a_k - 2|$ kleiner als jede noch so klein gew\"ahlte Zahl $\ge$ ausfallen. Man sagt dann, dass
+>>>>>>> Stashed changes
 die Folge $<a_k>$ konvergiert und den
 Grenzwert $g=2$ hat.
 
 \begin{cdef}[Konvergenz]
 Eine
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{
 https://www.youtube.com/watch?v=yarhoKJglDo}
 }
 Folge $<a_k>$ heisst konvergent mit Grenzwert $g$, wenn zu jeder noch so kleinen $\varepsilon$-Umgebung von $g$ eine Nummer $N(\varepsilon)$ so existiert, dass alle Glieder $a_k$ mit $k > N(\varepsilon)$ in dieser Umgebung liegen. Kurz:
 $$\forall\varepsilon>0\q\exists N(\varepsilon)\text{ so, dass }|{a_k-g}|<\varepsilon\quad\forall k>N(\varepsilon)$$
+=======
+\href{https://www.youtube.com/watch?v=yarhoKJglDo}{\qrcode{https://www.youtube.com/watch?v=yarhoKJglDo}}
+}
+Folge $<a_k>$ heisst konvergent mit Grenzwert $g$, wenn zu jeder noch so kleinen $\varepsilon$-Umgebung von $g$ eine Nummer $N(\varepsilon)$ so existiert, dass alle Glieder $a_k$ mit $k > N(\varepsilon)$ in dieser Umgebung liegen. Kurz:
+$$\forall\varepsilon>0\quad\exists N(\varepsilon)\text{ so, dass }|{a_k-g}|<\varepsilon\quad\forall k>N(\varepsilon)$$
+>>>>>>> Stashed changes
 \end{cdef}
 
 \begin{bem}
 Konvergiert die Folge $<a_k>$ gegen den Grenzwert $g$ (Fall A), so schreibt man daf\"ur
 $$\lim_{k\to\infty}a_k=g$$
 F\"ur die bestimmt divergenten Folgen, deren Glieder gegen $\infty$ oder gegen $-\infty$ streben (Fall B), benutzt man die gleiche Symbolik und schreibt:
+<<<<<<< Updated upstream
 $$\lim_{k\to\infty}a_k=\infty\q\text { bzw. }\q\lim_{k\to\infty}a_k=-\infty$$
+=======
+$$\lim_{k\to\infty}a_k=\infty\quad\text { bzw. }\quad\lim_{k\to\infty}a_k=-\infty$$
+>>>>>>> Stashed changes
 \end{bem}
 Das Symbol $\infty$ stammt von \textsc{John Wallis} (1616-1703), der Begriff \glqq limes\grqq\ (lat. Grenze) von \textsc{Isaak Newton} (1643-1716) und die Bezeichnung \glqq Konvergenz\grqq\ von \textsc{James Gregory} (1638-1675).
 
@@ -1004,18 +1151,30 @@ $$s_1=a_1, s_n=s_{n-1}+a_n \text{ f\"ur } n\geq2.$$
 
 Erst durch diese Definition wird die Addition von unendlich vielen Summanden sinnvoll, denn die Glieder der Folge der Partialsummen k\"onnen nun einem bestimmten Wert zustreben oder nicht; entsprechend nennt man die unendliche Reihe konvergent oder bestimmt divergent.
 
+<<<<<<< Updated upstream
 \begin{bsps}
+=======
+\begin{bsp}
+>>>>>>> Stashed changes
 \begin{itemize}
 \item $a_1=0.9, a_2=0.09, a_3=0.009, \dots$, also $s_1 = 0.9, s_2 = 0.99, s_3 = 0.999, \dots$. Die Folgenglieder $s_n$ streben dem Wert $s=1$ zu; die entsprechende unendliche Reihe ist konvergent.
 \item $a_1=5, a_2=6, a_3=7, a_4=8, \dots$, also $s_1 = 5, s_2 = 11, s_3 = 18, s_4 = 26, \dots$. Die Folgenglieder $s_n$ streben keinem bestimmten Wert zu; die entsprechende Reihe ist bestimmt divergent.
 \end{itemize}
+<<<<<<< Updated upstream
 \end{bsps}
+=======
+\end{bsp}
+>>>>>>> Stashed changes
 
 Bei einer konvergenten Reihe schreibt man $a_1+a_2+a_3+\dots+a_k+\dots = \lim_{k\to\infty} s_k = s$
 und bezeichnet den Grenzwert $s$ als die Summe der unendlichen Reihe.
 
 \begin{uebenv}{huygens}
+<<<<<<< Updated upstream
 Bilde bei der Zahlenfolge die Folge der Partialsummen und entscheide dann, ob die zur gegebenen Folge zugeh\"orige unendliche Reihe konvergiert. Berechne gegebenenfalls die Summe $s$ dieser unendlichen Reihe und die Nummer $N(\ge)$, von der an f\"ur $\ge=10^{-3}$ $\abs{s_k-s}<\ge$ wird.
+=======
+Bilde bei der Zahlenfolge die Folge der Partialsummen und entscheide dann, ob die zur gegebenen Folge zugeh\"orige unendliche Reihe konvergiert. Berechne gegebenenfalls die Summe $s$ dieser unendlichen Reihe und die Nummer $N(\ge)$, von der an f\"ur $\ge=10^{-3}$ $|s_k-s|<\ge$ wird.
+>>>>>>> Stashed changes
 \begin{enumerate}[a)]
 \item $$\frac{1}{1\cdot2}, \frac{1}{2\cdot3}, \frac{1}{3\cdot4}, \dots, \frac{1}{k(k+1)}, \dots.$$
 Als \textsc{Leibniz} bei seinem ersten Besuch in Paris mit \textsc{Huygens} zusammentraf, wurde ihm diese Aufgabe vorgelegt. Er konnte dieses Problem l\"osen, obwohl er sich bis zu diesem Zeitpunkt kaum mit Mathematik besch\"aftigt hatte.
@@ -1087,12 +1246,25 @@ Ermittle die Summe der unendlichen geometrischen Reihe
     \end{enumerate}
 \end{lsg}
 
+<<<<<<< Updated upstream
 \begin{ueb}[Quartastoff]
 Jeden periodischen Dezimalbruch kann man als konvergente geometrische Reihe auffassen. Zeige dies f\"ur $0.\overline{4}$ und berechne den Wert der Reihe.
 \end{ueb}
 
 \begin{uebenv}{konvergenzerzwingen}
 F\"ur welchen Wert von $p\in\mR$ ist die unendliche geometrische Reihe
+=======
+\begin{uebenv}{quartastoff}
+Periodische Dezimalbrüche kann man als konvergente geometrische Reihe auffassen. Zeige dies f\"ur $0.\overline{4}$ und berechne den Wert der Reihe.
+\end{uebenv}
+
+\begin{lsg}{quartastoff}
+Es ist $0.\overline{4}=0.4+0.04+0.004+\dots$, also $q=\frac{1}{10}$ und $a_1=0.4$. Check $0.\overline{4}=\frac{0.4}{1-0.1}=\frac{4}{9}$.
+\end{lsg}
+
+\begin{uebenv}{konvergenzerzwingen}
+F\"ur welchen Wert von $p\in\mathbb{R}$ ist die unendliche geometrische Reihe
+>>>>>>> Stashed changes
 $$p^3+\frac{p^6}{27}+\frac{p^9}{729}+\dots$$
 konvergent?
 \end{uebenv}
@@ -1237,8 +1409,12 @@ $$1\quad\frac{1}{3}\quad\frac{1}{9}\quad\dots$$
 
 Mit
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{
 https://www.youtube.com/watch?v=BHmGodmIOr4}
+=======
+\href{https://www.youtube.com/watch?v=BHmGodmIOr4}{\qrcode{https://www.youtube.com/watch?v=BHmGodmIOr4}}
+>>>>>>> Stashed changes
 }
 diesen Übungen möchte ich das Thema Folgen \& Reihen schliessen. Als Randnotiz findet man den Link zu einem Repe Video dieser Themen: \href{https://youtu.be/BHmGodmIOr4?si=dsB15c4O-T6Bcf_J}{Folgen und Reihen in 10 Minuten}.
 
@@ -1305,7 +1481,11 @@ Eine Eigenschaft, die der $1$ zukommt und mit jeder nat\"urlichen Zahl auch ihre
 Deshalb gen\"ugen praktisch zwei Schritte, um zu zeigen, dass eine Aussage f\"ur alle nat\"urlichen Zahlen $n\in\mathbb{N}$ richtig ist. Mit \textsc{Peano} sind die drei Schritte:
 
 \begin{enumerate}
+<<<<<<< Updated upstream
   \item \definition{Induktionsverankerung}: Man beweist die Vermutung f\"ur kleine $n\in\D{N}$, in der
+=======
+  \item \definition{Induktionsverankerung}: Man beweist die Vermutung f\"ur kleine $n\in\mathbb{N}$, in der
+>>>>>>> Stashed changes
   Regel f\"ur $n=1$.
   \item \definition{Induktionsschritt}: Man beweist, dass die Behauptung f\"ur $n+1$ richtig ist,
   unter der Annahme (Hypothese), dass sie f\"ur $n$ richtig ist.
@@ -1327,12 +1507,20 @@ Beweise anschliessend deine Vermutung mit vollst\"andiger Induktion.
 
 \begin{uebenv}{weitereinduktion}
 Finde zuerst die Darstellung f\"ur $a_n$, dann eine Formel f\"ur die Summe, und beweise deine Vermutung anschliessend mit vollst\"andiger Induktion.
+<<<<<<< Updated upstream
 \begin{enumeratea}
+=======
+\begin{enumerate}[a)]
+>>>>>>> Stashed changes
 \item $$\frac{1}{2}+\frac{1}{6}+\frac{1}{12}+\frac{1}{20}+\ldots+a_n$$
 \item $$5+17+29+41+\ldots+a_n$$
 \item $$1+8+27+\ldots+a_n$$
 \item $$1^2+2^2+3^2+4^2+\ldots+a_n$$
+<<<<<<< Updated upstream
 \end{enumeratea}
+=======
+\end{enumerate}
+>>>>>>> Stashed changes
 \end{uebenv}
 
 \begin{lsg}{weitereinduktion}
@@ -1345,7 +1533,11 @@ Finde zuerst die Darstellung f\"ur $a_n$, dann eine Formel f\"ur die Summe, und 
 \end{lsg}
 
 \begin{uebenv}{teilbarkeit}
+<<<<<<< Updated upstream
 Zeige, dass $n^3+5n$ f\"ur alle $n\in\mN$ durch $3$ teilbar ist.
+=======
+Zeige, dass $n^3+5n$ f\"ur alle $n\in\mathbb{N}$ durch $3$ teilbar ist.
+>>>>>>> Stashed changes
 \end{uebenv}
 
 \begin{lsg}{teilbarkeit}
@@ -1373,10 +1565,17 @@ Binoms $(a+b)$ als Koeffizienten auftreten.
   \begin{center}
     \ \\[2pt]
     $1$\\[6pt]
+<<<<<<< Updated upstream
     $1\qq1$\\[6pt]
     $1\qq2\qq1$\\[6pt]
     $1\qq3\qq3\qq1$\\[6pt]
     $1\qq4\qq6\qq4\qq1$\\[6pt]
+=======
+    $1\qquad1$\\[6pt]
+    $1\qquad2\qquad1$\\[6pt]
+    $1\qquad3\qquad3\qquad1$\\[6pt]
+    $1\qquad4\qquad6\qquad4\qquad1$\\[6pt]
+>>>>>>> Stashed changes
     $\dots$
   \end{center}
 

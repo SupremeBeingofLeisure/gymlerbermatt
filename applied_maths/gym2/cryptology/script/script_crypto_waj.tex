@@ -1,4 +1,5 @@
 \documentclass[%
+<<<<<<< Updated upstream
 11pt,%
 %oneside,%
 twoside,%
@@ -25,6 +26,40 @@ headsepline%
 \usepackage{nicefrac}
 \usepackage{pgf,tikz}
 \usetikzlibrary{arrows}
+=======
+%draft,
+11pt,%
+twoside,%
+titlepage,%
+swissgerman,%
+headsepline%
+]{scrartcl}
+
+\usepackage{lastpage}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[utf8]{inputenc}
+\usepackage[swissgerman]{babel}
+\usepackage{lscape}
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage[most]{tcolorbox}
+\usepackage{enumerate}
+\usepackage{units}
+\usepackage{nicefrac}
+\usepackage{pgf,tikz}
+\usepackage{tikz-3dplot}
+\usepackage{tkz-euclide}
+\usetikzlibrary{shapes.multipart}
+\usetikzlibrary{arrows}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{patterns}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shadows}
+\usetikzlibrary{quotes, angles}
+>>>>>>> Stashed changes
 \usepackage{colortbl}
 \usepackage{hhline}
 \usepackage{multirow}
@@ -34,6 +69,7 @@ headsepline%
 \usepackage{blindtext}
 \usepackage{pdfpages}
 \usepackage{hyperref}
+<<<<<<< Updated upstream
 \usepackage{marginnote}
 \usepackage{qrcode}
 \qrset{height=9ex}
@@ -44,10 +80,31 @@ headsepline%
 \usetikzlibrary{shadows}
 
 %\usepackage{romannum}
+=======
+\usepackage{framed}
+\usepackage{yfonts}
+\usepackage{csquotes}
+
+\usepackage{marginnote}
+\usepackage{qrcode}
+\qrset{height=7ex}
+
+>>>>>>> Stashed changes
 \usepackage{longtable}
 \usepackage{listings}
 \usepackage{wrapfig}
 
+<<<<<<< Updated upstream
+=======
+\usepackage{fontawesome} % Oder FontAwesome, falls du ein Augensymbol aus einer
+\newcommand{\faEyeLightGray}{\textcolor{lightgray}{\faEye}} % Custom command for the gray eye icon
+\newcommand{\faReturnGray}{\textcolor{gray}{\faMailReply}} % Custom command for the gray eye icon
+\usepackage{pifont} % weitere Zeichen
+
+% package für plots mit dem Befehl axes
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+>>>>>>> Stashed changes
 
 % Command, um Tabellen-Spalten anzupassen
 \newcommand{\spaltenheight}{\rule{0mm}{3ex}}
@@ -55,6 +112,7 @@ headsepline%
 \newcommand{\spaltensep}{\\[1ex]}
 %\arrayrulecolor{darkgreen}
 \doublerulesepcolor{white}
+<<<<<<< Updated upstream
 \definecolor{lightyellow}{rgb}{1,1,0.8}
 \definecolor{Gray}{gray}{0.9}
 
@@ -85,6 +143,96 @@ headsepline%
 \renewcommand{\thesatz}{\arabic{section}.\arabic{satzz}}
 
 \newenvironment{csatz}[2][]{%
+=======
+
+% colors
+\definecolor{lightyellow}{rgb}{1,1,0.8}
+\definecolor{Gray}{gray}{0.9}
+\definecolor{lightgray}{rgb}{0.7, 0.7, 0.7}
+\definecolor{darkblue}{rgb}{0,0,0.55}
+\definecolor{firebrick}{rgb}{0.7,0.13,0.13}
+\definecolor{seagreen}{rgb}{0.18,0.55,0.34}
+\definecolor{emerald}{HTML}{50C878} % color of Definition
+\definecolor{whitesmoke}{HTML}{F5F5F5} % background for environments
+\definecolor{myblizzardblue}{HTML}{87CEEB} % color of Satz
+
+% Für Definitionen im Fliesstext
+\newcommand{\definition}[1]{\colorbox{emerald}{#1}}
+% Für Regeln im Fliesstext
+\newcommand{\regel}[1]{\colorbox{myblizzardblue}{#1}}
+% Für Merke/Achtungs im Fliesstext
+\newcommand{\merke}[1]{\colorbox{firebrick}{#1}}
+% Geogebra-Link
+\newcommand{\geogebralink}{\href{https://www.geogebra.org/calculator}{\texttt{geogebra.org}}}
+
+% Umgebungen
+\theoremstyle{definition}
+    \newtheorem{bsp}{Beispiel}[subsection] % Beispiele
+    \newtheorem{bem}{Bemerkung}[subsection] % Bemerkungen
+\theoremstyle{plain}
+    \newtheorem{thm}{Theorem} % Theorem [subsection]
+    \newtheorem{satz}{Satz} % Satz [subsection]
+
+% Umgebung lsg mit dynamischer Referenzierung und Label
+\newcommand{\concatueb}[1]{ueb:#1}% Definition für concatueb
+\newcommand{\concatlsg}[1]{lsg:#1}% Definition für concatlsg
+
+\newcounter{uebcounter}[section]
+\renewcommand{\theuebcounter}{\thesection.\arabic{uebcounter}}  % Zählerformat: Abschnitt.Übung
+
+\newenvironment{lsg}[1]{%
+    \par\noindent\textbf{Notizen zu Übung \ref{\concatueb{#1}}}\label{\concatlsg{#1}}
+    \hfill\hyperref[\concatueb{#1}]{\faReturnGray}\par % Hyperref-Button zurück zur Übung
+}{%
+    \par%
+}
+
+\newenvironment{uebenv}[1]{%
+    \refstepcounter{uebcounter}
+    \par\noindent\textbf{Übung \theuebcounter.}%
+    \label{\concatueb{#1}}\hfill\hyperref[\concatlsg{#1}]{\faEyeLightGray}\par
+}{%
+    \par
+}
+
+% Umgebung für Definitionen
+\newcounter{deff}[section]\setcounter{deff}{0}
+\renewcommand{\thedeff}{\arabic{section}.\arabic{deff}}
+
+\newenvironment{cdef}[1][]{%
+    \refstepcounter{deff} 
+    \ifstrempty{#1}%
+    % if condition (without title)
+    {\mdfsetup{%
+        frametitle={%
+            \tikz[baseline=(current bounding box.east),outer sep=0pt]
+            \node[anchor=east,rectangle,fill=emerald]
+            {\strut Definition~\thedeff};}
+        }%
+    % else condition (with title)
+    }{\mdfsetup{%
+        frametitle={%
+            \tikz[baseline=(current bounding box.east),outer sep=0pt]
+            \node[anchor=east,rectangle,fill=emerald]
+            {\strut Definition~\thedeff:~#1};}%
+        }%
+    }%
+% for both conditions
+    \mdfsetup{%
+        innertopmargin=10pt,linecolor=emerald,%
+        backgroundcolor=whitesmoke,%
+        linewidth=2pt,topline=true,%
+        frametitleaboveskip=\dimexpr-\ht\strutbox\relax%
+    } 
+\begin{mdframed}[]\relax}{%
+\end{mdframed}}
+
+% Farbig umrahmte Umgebung Satz
+\newcounter{satzz}[section]\setcounter{satzz}{0}
+\renewcommand{\thesatz}{\arabic{section}.\arabic{satzz}}
+
+\newenvironment{csatz}[1][]{%
+>>>>>>> Stashed changes
     \refstepcounter{satzz}
  
     \ifstrempty{#1}%
@@ -110,6 +258,7 @@ headsepline%
         linewidth=2pt,topline=true,%
         frametitleaboveskip=\dimexpr-\ht\strutbox\relax%
     }
+<<<<<<< Updated upstream
  
 \begin{mdframed}[]\relax}{%
 \end{mdframed}}
@@ -225,23 +374,70 @@ headsepline%
  
 \begin{mdframed}[]\relax}{%
 \end{mdframed}}
+=======
+\begin{mdframed}[]\relax}{%
+\end{mdframed}}
+
+% kein Einzug bei neuem Abschnitt
+\setlength{\parindent}{0pt} \setlength{\parskip}{1em}
+\pagestyle{headings} % gemachte Einstellungen anwenden
+
+
+% mögliche Pakete, die zu laden sind
+\usepackage[ISBN=978-3-8348-0096-1,SC3]{ean13isbn}
+
+\usepackage{listings}
+\lstset{
+    language=Python
+}
+
+\lstdefinestyle{pythonstyle}{
+    basicstyle=\ttfamily\color{black},
+    commentstyle=\color{green},
+    keywordstyle=\color{blue},
+    stringstyle=\color{purple},
+    emphstyle={\color{red}},
+    emph={function_name1, function_name2}, % Specify the functions to be colored
+    breaklines=true,
+    showstringspaces=false,
+    language=Python
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+>>>>>>> Stashed changes
 
 \subject{\includegraphics[width=0.38\textwidth]{pictures/scrabble}}
 \title{Kryptologie}
 \subtitle{Von Caesar bis RSA}
 \author{}
 \date{}
+<<<<<<< Updated upstream
 %\lowertitleback{
 %\includegraphics[height=1.1cm]{/Users/jormawassmer/Pictures/logokoeniz.jpg}%
 %\copyright Jorma Wassmer
 %1. Auflage, Februar 2011
 %}
 
+=======
+\lowertitleback{
+\includegraphics[height=1cm]{pictures/gymfmslerbermattlogo.eps}
+\hfill%\copyright%
+{\begin{tikzpicture}
+  % Draw the rounded rectangle and clip the image to it
+  \clip [rounded corners=5mm] (0,0) rectangle (1,1); % Adjust dimensions as needed
+  \node at (0.5,0.5) {\includegraphics[width=1cm]{pictures/teacher_me_caricatur.png}}; % Adjust width and center image
+\end{tikzpicture}}
+}
+>>>>>>> Stashed changes
 
 \begin{document}
 \maketitle
 
+<<<<<<< Updated upstream
 \newpage\thispagestyle{empty}~
+=======
+\newpage\thispagestyle{empty}
+>>>>>>> Stashed changes
 \newpage
 
 \tableofcontents
@@ -250,7 +446,11 @@ headsepline%
 %\setcounter{page}{1}
 
 \section{Geschichtliches zur Kryptologie}
+<<<<<<< Updated upstream
 \pagenumbering{arabic}
+=======
+%\pagenumbering{arabic}
+>>>>>>> Stashed changes
 \begin{quote}
 Kryptologie ist die Kunst und Wissenschaft, Methoden zur Verheimlichung von Nachrichten zu entwickeln.
 \end{quote}
@@ -260,6 +460,7 @@ Häufig
   \begin{center}
     \includegraphics[width=0.38\textwidth]{pictures/skytale}
   \end{center}
+<<<<<<< Updated upstream
 %\caption{A gull}
 \end{wrapfigure}
 wird dabei noch zwischen Kryptographie --- der Wissenschaft von der Entwicklung von Kryptosystemen --- und Kryptoanalyse --- der Kunst des Brechens dieser Systeme --- unterschieden. Die Begriffe Kryptologie und Kryptographie sind aus dem griechischen W\"ortern $\kappa\gr\gy\pi\gt\go\gs$ (geheim) und $\gl\go\gg\go\gs$ (das Wort, die Lehre, der Sinn) gebildet.
@@ -272,6 +473,19 @@ Vor ungefähr 2500 Jahren verwendete die Regierung von Sparta eine trickreiche M
 \subsection{Steganographie}
 
 Auch die \textbf{Steganographie}, eine Art von gedeckten Geheimschriften war früh bekannt. Diese Geheimschriften konnten entweder als unverfängliche, offen verständliche Nachricht oder in (winzigen) sichtbaren graphischen Details einer Schrift oder Zeichnung erscheinen. Letzteres bezeichnete man auch als \textbf{Semagramm}.
+=======
+\end{wrapfigure}
+wird dabei noch zwischen Kryptographie --- der Wissenschaft von der Entwicklung von Kryptosystemen --- und Kryptoanalyse --- der Kunst des Brechens dieser Systeme --- unterschieden. Die Begriffe Kryptologie und Kryptographie sind aus dem griechischen W\"ortern $\kappa\rho y\pi\tau\omega\sigma$ (geheim) und $\lambda\omega\gamma\omega\sigma$ (das Wort, die Lehre, der Sinn) gebildet.
+Die \definition{Kryptologie} beschäftigt sich mit der Ver- und Entschlüsselung von Informationen.
+
+\subsection{Skytale}
+
+Vor ungefähr 2500 Jahren verwendete die Regierung von Sparta eine trickreiche Methode zur Übermittlung geheimer Nachrichten. Sender und Empfänger mussten beide einen sogenannten Skytale besitzen. Ein \definition{Skytale} ist ein Zylinder mit einem bestimmten Durchmesser und vorgegebener Flächenzahl. Der Sender wickelte ein schmales Band aus Pergament spiralf\"ormig um seinen Zylinder und schrieb dann der Länge nach seine Nachricht auf das Band. War nun das Band abgewickelt, so wurde die Nachricht unlesbar, konnte aber mühelos von einer Person gelesen werden, die einen Zylinder genau desselben Umfangs hatte.
+
+\subsection{Steganographie}
+
+Auch die \definition{Steganographie}, eine Art verschleierte Geheimschrift, war früh bekannt. Diese konnte entweder als unverfängliche, offen verständliche Nachricht oder in (winzigen) sichtbaren graphischen Details einer Schrift oder Zeichnung übermittelt werden.
+>>>>>>> Stashed changes
 
 \begin{figure}
 \begin{center}
@@ -286,10 +500,16 @@ Die Nachricht steht im Morsecode, der aus kurzen und langen Grashalmen links von
 
 \textsc{Julius Caesar}
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{
 https://www.youtube.com/watch?v=hBM7QGRGMxE}
 }
 verwendete darüber hinaus eine spezielle Methode der monoalphabetischen Chiffrierung, den Verschiebechiffre. Er verschob die Buchstaben seines Klartextes um 3 Stellen bezüglich des Alphabetes nach links, so dass aus einem \texttt{a} ein \texttt{D} wurde:\\
+=======
+\href{https://www.youtube.com/watch?v=hBM7QGRGMxE}{\qrcode{https://www.youtube.com/watch?v=hBM7QGRGMxE}}
+}
+verwendete darüber hinaus eine spezielle Methode der monoalphabetischen Chiffrierung. Er verschob die Buchstaben seines Klartextes um 3 Stellen bezüglich des Alphabetes nach links, so dass aus einem Klartext \texttt{a} ein Geheimtext \texttt{D} wurde:\\
+>>>>>>> Stashed changes
 
 \begin{table}
 \begin{center}
@@ -316,6 +536,7 @@ A&B&C
 
 \subsection{Polyalphabetische Verschlüsselung}
 
+<<<<<<< Updated upstream
 Als eigentlicher Begründer der Kryptologie gilt \textsc{L.B.~Alberti}, der 1466 erstmals den poly\-alpha\-be\-tischen Schlüssel beschrieb. Parallel zur Weiterentwicklung der Kryptologie gab es auch Fortschritte in der Berechnung von Schlüsseln. Um 1400 gelang es den Arabern, Substitutionen zu brechen. \textsc{G.B.~Della Porta} l\"oste erstmals einen polyalphabetischen Schlüssel. Wichtige Beiträge zur Kryptologie lieferten im 19.Jh.~u.a.~\textsc{C.~Wheatstone, F.~Beaufort} und \textsc{Friedrich W.~Kasiski}.
 
 Die polyalphabetische Chiffrierung hat jahrtausendelang seine Bedeutung erhalten und wurde von den Deutschen noch im Zweiten Weltkrieg benutzt. Allerdings wurden dabei nicht Papierstreifen gegeneinander verschoben, sondern eine Maschine verwendet, in der sich Walzen mit eingravierten Buchstaben drehten. Durch Veränderung von Schaltungen, das heisst durch Neustecken von elektrischen Kontakten, konnte man den Code, also die Gr\"osse der einzelnen Verschiebungen, bei der Wahl eines jeden Buchstabens automatisch verändern. Der Empfänger besass eine ähnliche Maschine, \glqq ENIGMA\grqq\ genannt (ENIGMA, griechisch Rätsel, Geheimnis). Da er den jeweils verwendeten Code kannte, konnte er ihn in diese Maschine eingeben und erhielt dann durch Tippen des verschlüsselten Textes unmittelbar die entschlüsselte Botschaft. Auf deutscher Seite war man überzeugt, dass die kriegswichtigen Nachrichten vom Gegner nicht entziffert werden könnten. Man hatte sich aber getäuscht. Zwei Umstände machten es den Polen und Engländern möglich, den Code zu knacken:
@@ -324,12 +545,29 @@ Die polyalphabetische Chiffrierung hat jahrtausendelang seine Bedeutung erhalten
 \item Die Engländer verfügten über die ersten leistungsfähigen elektronischen	Rechenmaschinen (Bomben). Dadurch konnten sie in Sekundenbruchteilen zahlreiche Zu\-ord\-nungs\-m\"og\-lich\-kei\-ten ausprobieren, bis sie durch Zufall auf die richtige stiessen.
 \end{itemize}
 Den Deutschen blieb verborgen, dass die Engländer ihre Nachrichten verstehen konnten, was nicht unwesentlich zur Entscheidung des Krieges beigetragen haben soll. Zu der Kryptoanalytikergruppe der Engländer geh\"orte unter anderen auch \textsc{A.~Turing}, der nicht unwesentlichen Einfluss auf die Weiterentwicklung der noch jungen Computertechnik hatte. Wesentliche Veränderung für die Kryptologie brachte das Aufkommen des Computers mit sich. Unter dem Aspekt des Datenschutzes hat das Interesse an der Kryptologie ganz erheblich zugenommen. Andererseits bietet der Computer selber die Möglichkeit, grosse Datenmengen schnell analysieren zu k\"onnen, was neue Ansätze zum Brechen von Schlüsseln schafft.
+=======
+Um 1400 gelang es den Arabern, Substitutionen zu brechen. Wichtige Beiträge zur Kryptologie lieferten im 19.Jh.~u.a.~\textsc{C.~Wheatstone, F.~Beaufort} und \textsc{Friedrich W.~Kasiski}.
+
+Die polyalphabetische Chiffrierung hat jahrtausendelang seine Bedeutung erhalten und wurde von den Deutschen noch im Zweiten Weltkrieg benutzt. Eine Maschine, \glqq ENIGMA\grqq\ genannt (ENIGMA, griechisch Rätsel, Geheimnis), in der sich Walzen mit eingravierten Buchstaben drehten, ver- und entschlüsselte Nachrichten. Der Empfänger besass eine ähnliche Maschine. Da er den jeweils verwendeten Code kannte, konnte er ihn in diese Maschine eingeben und erhielt dann durch Tippen des verschlüsselten Textes unmittelbar die entschlüsselte Botschaft zurück. Zwei Umstände machten es den Polen und Engländern möglich, den Code zu knacken:
+\begin{itemize}
+\item Weil die Verschlüsselung jeweils nur durch Herstellung von verschiedenen Schaltungen erfolgte, gab es eine endliche Zahl von verschiedenen Codes. Es wurden somit nicht immer wieder neue Codes verwendet, sondern nach einiger Zeit alte nochmals eingesetzt. 
+\item Die Engländer verfügten über die ersten leistungsfähigen elektronischen	Rechenmaschinen (Bomben). Dadurch konnten sie in Sekundenbruchteilen zahlreiche Zu\-ord\-nungs\-mög\-lich\-kei\-ten ausprobieren, bis sie durch Zufall auf die richtige stiessen.
+\end{itemize}
+
+ Zu den Kryptoanalytikern der Engländer gehörte unter anderen auch \textsc{Alan Turing}, der nicht unwesentlichen Einfluss auf die Weiterentwicklung der noch jungen Computertechnik hatte. Wesentliche Veränderung für die Kryptologie brachte das Aufkommen des Computers mit sich. Unter dem Aspekt des Datenschutzes hat das Interesse an der Kryptologie ganz erheblich zugenommen.
+>>>>>>> Stashed changes
 
 \clearpage
 
 \section{Monoalphabetische Verfahren}
 
+<<<<<<< Updated upstream
 Eine sehr einfache Verschlüsselung erhalten wir, indem wir jedem Buchstaben ein festes Symbol zuordnen. Diese Verfahren heissen \textbf{monoalphabetisch}. Sie sind in der Regel, steht genügend Material zur Verfügung, leicht durch Häufigkeitsbetrachtungen zu berechnen. Wesentlich schwieriger ist es, polyalphabetische Geheimtexte, das sind solche, bei denen einem Buchstaben mehrere Symbole entsprechen k\"onnen, zu brechen, weil hier statistische Erwägungen nicht ohne weiteres angewendet werden k\"onnen. Die klassischen Verfahren haben den Nachteil, dass sich Sender und Empfänger über den zu verwendenden Schlüssel verständigen müssen, was eine zusätzliche Unsicherheit bedeutet. Dies entfällt bei den Public-Key-Systemen, die seit 1976 entwickelt werden. Das bekannteste unter ihnen, das RSA-Verfahren (nach \textsc{R.~Rivest, A.~Shamir} und \textsc{L. Adleman}), verwendet die Primfaktorenzerlegung natürlicher Zahlen. Es ist nur so lange sicher, wie es keine wesentlich schnelleren Algorithmen zur Primfaktorzerlegung gibt als die heute bekannten. Daneben setzt es die Kenntnis genügend vieler grosser Primzahlen voraus.
+=======
+Eine sehr einfache Verschlüsselung erhalten wir, indem wir jedem Buchstaben ein festes Symbol zuordnen. Diese Verfahren heissen \definition{monoalphabetisch}. Sie sind in der Regel leicht durch Häufigkeitsbetrachtungen zu berechnen. Wesentlich schwieriger ist es, \definition{polyalphabetische} Geheimtexte. Das sind solche, bei denen einem Buchstaben mehrere Symbole entsprechen können, zu brechen, weil hier statistische Erwägungen nicht ohne weiteres angewendet werden können.
+
+Die klassischen Verfahren haben den Nachteil, dass sich Sender und Empfänger über den Schlüssel verständigen müssen, was eine zusätzliche Unsicherheit bedeutet. Dies entfällt bei den Public-Key-Systemen, die seit 1976 entwickelt werden. Das bekannteste unter ihnen, das RSA-Verfahren (nach \textsc{R.~Rivest, A.~Shamir} und \textsc{L. Adleman}), verwendet die Primfaktorzerlegung natürlicher Zahlen.
+>>>>>>> Stashed changes
 
 \begin{wrapfigure}{r}{0.382\textwidth}
 \vspace{-22pt}
@@ -341,6 +579,7 @@ Eine sehr einfache Verschlüsselung erhalten wir, indem wir jedem Buchstaben ein
 \end{wrapfigure}
 Monoalphabetische Chiffrierung besteht darin, das Klartextalphabet zu permutieren, d.h. die Buchstabenanordnung wird vertauscht. Unter der Annahme, dass das verwendete Alphabet 26 Buchstaben besitzt (deutsch --- mit ä = ae, ö = oe, ü = ue), erhalten wir also
 $$26! = 403291461126605635584000000 \approx 4\cdot10^{26}$$
+<<<<<<< Updated upstream
 Mäglichkeiten der Anordnung der Buchstaben.
 
 \subsection{CAESAR-Cipher}
@@ -360,15 +599,98 @@ https://www.youtube.com/watch?v=asmR0UY42L8}
 }
 in \texttt{Mathematica} oder \texttt{Python} erledigt.
 \end{ueb}
+=======
+mögliche Buchstabenpermutationen.
+
+\subsection{CAESAR-Cipher}
+
+Zu den einfachsten Chiffren gehört die Verschiebechiffre, die schon von \textsc{Julius Caesar} verwendet wurde. Hierbei werden nur die Buchstaben in ihrer Reihenfolge verschoben. Einen solchen Geheimtext können wir einfach brechen, da für ein beliebiges Wort nur alle möglichen 26
+Verschiebungen betrachtet werden müssen, um ein sinnvolles zu finden. Betrachten wir zum Beispiel \texttt{RBC}, so ergibt nur das Wort \texttt{ist} Sinn.
+
+\begin{uebenv}{caesarcipher}
+    Verschlüssle 
+    \begin{quote}
+        \texttt{veni vidi vici}    
+    \end{quote}
+    mit Caesar.
+\end{uebenv}
+
+\begin{lsg}{caesarcipher}
+    \texttt{YHQL YLGL YLFL}
+\end{lsg}
+\marginnote{
+\href{https://www.youtube.com/watch?v=asmR0UY42L8}{\qrcode{https://www.youtube.com/watch?v=asmR0UY42L8}}
+}
+
+\begin{uebenv}{caesarpython}
+    Schreibe Code, der eine Message mit einem beliebigen Shift verschlüsselt.
+\end{uebenv}
+
+\begin{lsg}{caesarpython}
+Ein Beispiel ist:
+ 
+\begin{lstlisting}
+    cipher = ""
+    message = "Testmessage aBYz"
+    shift = 1
+    for k in range(len(message)):
+        if message[k].islower():
+            cipher = cipher + chr((ord(message[k]) - 97
+            + shift) % 26 + 97)
+        elif message[k] == " ":
+            cipher += " "
+        else:
+            cipher += chr((ord(message[k]) - 65 + shift)
+            % 26 +65)
+    print(cipher)
+\end{lstlisting}
+\end{lsg}
+
+\begin{uebenv}{ciphercaesar}
+    Entschlüssle den mit Caesar verschlüsselten Text
+    \begin{quote}
+        \texttt{JDLXV MXOLXV FDHVDU}.
+    \end{quote}
+\end{uebenv}
+
+\begin{lsg}{ciphercaesar}
+    Mit obigem Programm probiert man verschiedene Shifts durch. So lange, bis der Text sinnvoll scheint. Vielleicht startet man mit der Vermutung, dass vermutlich Shift $-3\equiv23\mod26$ verwendet werden muss. Dies ergibt dann \texttt{gaius julius caesar}.
+\end{lsg}
+
+\begin{uebenv}{transpositioncipher}
+    Zu monoalphabetischen Verschlüsselungsverfahren:
+    \begin{enumerate}[a)]
+        \item Wie viele verschiedene Transpositionscipher gibt es?
+        \item Wie viele Substitutionscipher gibt es?
+        \item Wieso ist es, trotz der vielen Möglichkeiten, im Allgemeinen leicht eine Substitutionscipher zu knacken?
+        \item Wie könnte man die Schwachstelle einer monoalphabetischen Cipher cachieren?
+    \end{enumerate}
+\end{uebenv}
+
+\begin{lsg}{transpositioncipher}
+    \begin{enumerate}[a)]
+        \item Falls man die Identität inkludiert, so hat man $26$ mögliche Shifts des Alphabets.
+        \item Beginnend mit \texttt{A} hat man $26$ mögliche Kandidaten als Substitution. Für den nächsten Buchstaben \texttt{B} sind es dann noch $25$, weil einer an \texttt{A} vergeben wurde. So fährt man sinngemäss fort und erhält $26!\approx4\cdot01^{26}$ Mög\-lich\-kei\-ten. Das sind sehr sehr viele.
+        \item Weil, angenommen dass die Verfassersprache bekannt ist, die für die Sprache charakteristischen Buchstabenhäufigkeiten erhalten bleiben. Sie werden bloss durch andere \glqq Zeichen\grqq{} repräsentiert. Beispielsweise ist im Deutschen das \texttt{E} mit einer Häufigkeit von gut $17\%$ dominant. Kennt man das \texttt{E}, so lassen sich häufige Konstellationen (\texttt{EI}, \texttt{DIE}, etc.) erschliessen und anschliessend zusammen mit weiteren, häufigen Buchstaben (z.B. \texttt{T}, \texttt{S}, \texttt{N}, \dots) lässt sich der Text schliesslich knacken.
+        \item Man versucht die Buchstabenhäufigkeiten zu verschleiern, indem beispielsweise mit wechselnden Shifts gearbeitet wird oder für häufig auftretende Buchstaben entsprechend mehrere Cipher-Zeichen eingesetzt werden.
+    \end{enumerate}
+\end{lsg}
+>>>>>>> Stashed changes
 
 \subsection{Tauschchiffre}
 
 Eine
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{
 https://www.youtube.com/watch?v=2H1AWu2WfsA}
 }
 weitere M\"oglichkeit bietet die \textbf{Tauschchiffre}. Hierbei wird nicht einfach das gesamte Alphabet verschoben, sondern die Buchstaben untereinander vertauscht. Mathematisch ausgedrückt heisst das: jedem Buchstabe des Klartextalphabetes wird gemäss der Reihenfolge die entsprechende natürliche Zahl zugeordnet. Multiplizieren wir den Wert eines jeden Klartextbuchstaben mit einer frei wählbaren Zahl, erhalten wir ein neues (im Allgemeinen nicht eindeutiges) Geheimtextalphabet. Soll diese Abbildung eindeutig sein, müssen wir beachten, dass die Geheimzahl und die Anzahl der Klartextbuchstaben zueinander teilerfremd sind. Für ein Alphabet mit 26 Buchstaben sind also nur die Faktoren: $1$, $3$, $5$, $7$, $9$, $11$, $15$, $17$, $19$, $21$, $23$ und $25$ möglich. Wählen wir zum Beispiel $3$ als Faktor, so entsteht das Alphabet in Tabelle \ref{tauschchiffre}
+=======
+\href{https://www.youtube.com/watch?v=2H1AWu2WfsA}{\qrcode{https://www.youtube.com/watch?v=2H1AWu2WfsA}}
+}
+weitere M\"oglichkeit bietet die \definition{Substitutioncipher}. Hierbei wird nicht einfach das gesamte Alphabet verschoben, sondern die Buchstaben untereinander vertauscht. Mathematisch ausgedrückt heisst das: jedem Buchstabe des Klartextalphabetes wird gemäss der Reihenfolge die entsprechende natürliche Zahl zugeordnet. Multiplizieren wir den Wert eines jeden Klartextbuchstaben mit einer frei wählbaren Zahl, erhalten wir ein neues (im Allgemeinen nicht eindeutiges) Geheimtextalphabet. Soll diese Abbildung eindeutig sein, müssen wir beachten, dass die Geheimzahl und die Anzahl der Klartextbuchstaben zueinander teilerfremd sind. Für ein Alphabet mit 26 Buchstaben sind also nur die Faktoren: $1$, $3$, $5$, $7$, $9$, $11$, $15$, $17$, $19$, $21$, $23$ und $25$ möglich. Wählen wir zum Beispiel $3$ als Faktor, so entsteht das Alphabet in Tabelle \ref{tauschchiffre}
+>>>>>>> Stashed changes
 
 \begin{table}[h!]
 \texttt{
@@ -385,6 +707,7 @@ K&N&Q&T&W&Z
 \caption{Monoalphabetische Verschlüsselung mit Faktor $3$}\label{tauschchiffre}
 \end{table}
 
+<<<<<<< Updated upstream
 \begin{ueb}[Tauschchiffre]
 Beschreibe die Chiffrierung mathematisch.
 \end{ueb}
@@ -392,6 +715,11 @@ Beschreibe die Chiffrierung mathematisch.
 Natürlich k\"onnen die beiden Verfahren auch miteinander kombiniert werden.
 
 Häufig wird die Methode des Schlüsselwortes verwendet, d.h. Sender und Empfänger vereinbaren ein Schlüsselwort und einen Schlüsselbuchstaben. Dies kann z.B. das fünfte Wort in der Bibel und der zweite Buchstabe des dritten Wortes sein. Somit kann die Chiffrierung jeden Tag mit anderen Voraussetzungen begonnen werden. Zur Vereinfachung wird folgendes angenommen:
+=======
+Natürlich k\"onnen die beiden Verfahren auch miteinander kombiniert werden.
+
+Häufig wird die Methode des Schlüsselwortes verwendet, d.h. Sender und Empfänger vereinbaren ein Schlüsselwort und einen Schlüsselbuchstaben. Zur Vereinfachung wird Folgendes angenommen:
+>>>>>>> Stashed changes
 
 \begin{quote}
 Schlüsselwort: \texttt{GEHEIMSCHRIFT}	Schlüsselbuchstabe: \texttt{e}
@@ -422,7 +750,11 @@ N&O&P&Q&U&V
 \subsubsection{Ein praktisches Beispiel}
 
 \label{james}
+<<<<<<< Updated upstream
 Wir wollen unserem Verleger die aktuelle Version des neuen Romans schicken. Da der benutzte Weg sehr unsicher ist, soll das Stück verschlüsselt werden. Als Schlüsselwort wurde \texttt{JAMES BOND} vereinbart, der Schlüsselbuchstabe soll das \texttt{q} sein. Wir entfernen zunächst das Leerzeichen aus dem Schlüsselwort und schreiben das Schlüsselwort beginnend beim Buchstaben \texttt{q} auf. Anschliessend ergänzen wir die fehlenden Geheimtextbuchstaben, so dass keiner doppelt vorkommt:
+=======
+Als Schlüsselwort wurde \texttt{JAMES BOND} vereinbart, der Schlüsselbuchstabe soll das \texttt{q} sein. Wir entfernen zunächst das Leerzeichen aus dem Schlüsselwort und schreiben das Schlüsselwort beginnend beim Buchstaben \texttt{q} auf. Anschliessend ergänzen wir die fehlenden Geheimtextbuchstaben, so dass keiner doppelt vorkommt:
+>>>>>>> Stashed changes
 
 \begin{table}[h!]
 \texttt{
@@ -439,7 +771,11 @@ u&v&w&x&y&z\\
 \caption{Beispiel einer monoalphabetische Verschlüsselung mit Schlüsselwort \texttt{JAMES BOND} und Schlüsselbuchstabe \texttt{q}}
 \end{table}
 
+<<<<<<< Updated upstream
 \noindent Nun wandeln wir schrittweise den Klartext in den Geheimtext um, indem wir für den jeweiligen Klartextbuchstaben den darunter stehenden Geheimtextbuchstaben verwenden.
+=======
+\noindent Nun wandeln wir schrittweise den Klartext in den Geheimtext um:
+>>>>>>> Stashed changes
 
 \begin{quote}
 Der abgeschlossene Roman\\
@@ -455,12 +791,21 @@ Na bitte! Und jetzt bei Fuss! Na los!\\
 XF GREEK! SXI TKECE GKR LSMM! XF VYM!\\
 Bei Fuss hab' ich gesagt!\\
 GKR LSMM QFG' RHQ PKMFPT!\\
+<<<<<<< Updated upstream
 Fuu\dots  \glqq Mein Gott, Riebesehl\glqq , stoehnt Gatti,\\
 LSS\dots  \glqq WKRX PYTT, ARKGKMKQV\glqq , MEYKQXR PFEER,\\
 \glqq kannst du nicht einmal deine Socken anziehen\\
 \glqq UFXXME IS XRHQE KRXWFV IKRXK MYHUKX FXCRKQKX\\
  wie jeder andere auch??\glqq \\
  ORK TKIKA FXIKAK FSHJ??\glqq
+=======
+Fuu\dots  \enquote{Mein Gott, Riebesehl} , stoehnt Gatti,\\
+LSS\dots  \enquote{WKRX PYTT, ARKGKMKQV} , MEYKQXR PFEER,\\
+\enquote{kannst du nicht einmal deine Socken anziehen}\\
+\enquote{UFXXME IS XRHQE KRXWFV IKRXK MYHUKX FXCRKQKX}\\
+ \enquote{wie jeder andere auch??} \\
+ \enquote{ORK TKIKA FXIKAK FSHJ??}
+>>>>>>> Stashed changes
  
  \normalfont 
 [aus STERN Hamburg; Heft 29/94 S. 74]
@@ -505,11 +850,20 @@ Um einen solchen Geheimtext zu entschlüsseln, müssen zwei Bedingungen erfüllt
 
 Die
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{
 https://www.youtube.com/watch?v=YonNp_2U2Fc}
 }
 Vorgehensweise zum Entschlüsseln ist folgende:\\
 Man zählt die Häufigkeiten der Buchstaben im Geheimtext und findet so \texttt{e} und \texttt{n} und die Menge $\set{r,i,t,s,a}$. Durch Auszählen der Bigramme kann man dann \texttt{r,i,t,s,a} isolieren und schliesslich über \texttt{ch} noch c und h bestimmen, da das Bigramm \texttt{hc} fast nie vorkommt. Die Buchstaben \texttt{e,n,i,s,r,a,t,c} und \texttt{h} machen bereits rund 65\% des Textes aus. Der Rest ergibt sich durch Probieren.
+=======
+\href{https://www.youtube.com/watch?v=YonNp_2U2Fc}{\qrcode{https://www.youtube.com/watch?v=YonNp_2U2Fc}}
+}
+
+Vorgehensweise zum Entschlüsseln ist folgende:
+
+Man zählt die Häufigkeiten der Buchstaben im Geheimtext und findet so \texttt{e} und \texttt{n} und die Menge $\{r,i,t,s,a\}$. Durch Auszählen der Bigramme kann man dann \texttt{r,i,t,s,a} isolieren und schliesslich über \texttt{ch} noch c und h bestimmen, da das Bigramm \texttt{hc} fast nie vorkommt. Die Buchstaben \texttt{e,n,i,s,r,a,t,c} und \texttt{h} machen bereits rund 65\% des Textes aus. Der Rest ergibt sich durch Probieren.
+>>>>>>> Stashed changes
 
 \subsubsection{Ein weiteres Beispiel}
 
@@ -537,8 +891,14 @@ R&S&T&U&V&W&X&Y&Z\\
 
 Der Buchstabe \texttt{G} tritt am häufigsten auf, deshalb vermuteten wir: \texttt{G}=\texttt{e}.
 Da \texttt{n} der zweithäufigste Buchstabe ist, sehen wir, das \texttt{n} entweder \texttt{T} oder \texttt{M} sein muss. Aus der Gleichverteilung der Buchstaben \texttt{s,i,r,a,n,t} folgt, das sie \texttt{T,M,L,F,I,K,J} oder \texttt{W} sind.
+<<<<<<< Updated upstream
 $$\texttt{n}\in\set{\texttt{T,M}}$$
 $$\set{\texttt{s,i,r,a,t,n}}\subset\set{\texttt{T,M,L,F,I,K,J,W}}$$
+=======
+$$\texttt{n}\in\{\texttt{T,M}\}$$
+
+$$\{\texttt{s,i,r,a,t,n}\}\subset\{\texttt{T,M,L,F,I,K,J,W}\}$$
+>>>>>>> Stashed changes
 
 \item Zählen der Bigramme, die mit \texttt{e} beginnen, also $\texttt{e}?=\texttt{G}?$.
 
@@ -551,7 +911,11 @@ GX& GT& GM& GH& GJ& GZ& GL& GK\\
 \normalfont
 
 Aus der Häufigkeitsverteilung der Bigramme folgt
+<<<<<<< Updated upstream
 $$\set{\texttt{en,er}}=\set{\texttt{GT,GJ}}$$ und damit \texttt{n} = \texttt{T} und  \texttt{r} = \texttt{J}.
+=======
+$$\{\texttt{en,er}\}=\{\texttt{GT,GJ}\}$$ und damit \texttt{n} = \texttt{T} und  \texttt{r} = \texttt{J}.
+>>>>>>> Stashed changes
 Wir suchen nun nach \texttt{ei} und \texttt{ie}, da diese mit gleicher Häufigkeit vorkommen.
 So finden wir \texttt{i} = \texttt{M}, damit muss aber \texttt{s} = \texttt{K} sein.
 
@@ -566,8 +930,13 @@ NG& HG& LG& FG& TG& MG& ZG& WG& VG& XG\\
 \normalfont
 
 Da \texttt{ie} = \texttt{MG} und \texttt{ne} = \texttt{TG} bereits feststehen, gilt
+<<<<<<< Updated upstream
 $$\set{\texttt{te,de}}\subset\set{\texttt{HG,LG,FG,ZG,XG}}$$
 Durch Vergleich mit obigen Mengen erhalten wir: $\texttt{t}\in\set{\texttt{L,F}}, \texttt{a}\in\set{\texttt{L,F,I,W}}, \texttt{d}\in\set{\texttt{H,L,F,Z,X}}$
+=======
+$$\{\texttt{te,de}\}\subset\{\texttt{HG,LG,FG,ZG,XG}\}$$
+Durch Vergleich mit obigen Mengen erhalten wir: $\texttt{t}\in\{\texttt{L,F}\}, \texttt{a}\in\{\texttt{L,F,I,W}\}, \texttt{d}\in\{\texttt{H,L,F,Z,X}\}$
+>>>>>>> Stashed changes
 
 \item Zählen der am häufigsten auftretenden Bigramme.
 
@@ -605,8 +974,11 @@ Maruschka kommt --- †brigens hatte meine Schwiegermutter wieder mal Migräne -
 
 \subsection{Hilfsmittel zur Ver- \& Entschlüsselung}
 
+<<<<<<< Updated upstream
 Um Kryptoanalyse betreiben zu k\"onnen, müssen wir uns mit den Gesetzmässigkeiten der Sprache vertraut machen. Solche Normen hat jede Sprache und erstere k\"onnen auch durch geschickte Chiffrierung nicht vollständig beseitigt werden.
 
+=======
+>>>>>>> Stashed changes
 \subsubsection{Die Muster einer Sprache}
 
 Muster sind die Art und Weise, wie sich Buchstaben in einem Wort wiederholen. Sie werden über Ziffern ausgedrückt, wobei jeder neue Buchstabe auch eine neue Ziffer erhält, also z.B.:
@@ -615,6 +987,7 @@ Muster sind die Art und Weise, wie sich Buchstaben in einem Wort wiederholen. Si
 \texttt{NGRGUUV} $\longrightarrow$ 1232445\\
 \texttt{PANAMAKANAL} $\longrightarrow$ 12324252326
 \end{center}
+<<<<<<< Updated upstream
 Solche Muster bleiben bei der monoalphabetischen Chiffrierung erhalten, d.h. enthält ein Geheimtext keine Muster, so ist er nicht durch monoalphabetischer Chiffrierung entstanden. Muster sind sehr hilfreich bei kurzen Texten.
 
 \subsubsection{Die Abhängigkeit der Häufigkeiten vom Klartext}
@@ -630,6 +1003,17 @@ Häufigkeiten sind um so schärfer, je länger der Text ist.
 \subsubsection{Der Wortzwischenraum}
 
 Sicherlich kommen wir auf die Idee, den Wortzwischenraum (Space) mit zu verschlüsseln. Dies führt dann zu einem Alphabet mit 27 Buchstaben. Da der \glqq Space\grqq\ im Deutschen nach dem \texttt{e} das häufigste \glqq Zeichen\grqq\ und somit leicht zu enttarnen ist, lässt der professionelle Chiffrierer diesen Zwischenraum einfach weg, denn dies erschwert die Kryptoanalyse nur unwesentlich.
+=======
+Solche Muster bleiben bei der monoalphabetischen Chiffrierung erhalten, d.h. enthält ein Geheimtext keine Muster, so ist er nicht durch monoalphabetischer Chiffrierung entstanden.
+
+\subsubsection{Die Abhängigkeit der Häufigkeiten vom Klartext}
+
+Die Angaben über die Einzelbuchstaben schwanken und hängen ausserdem vom Genre des Textes ab. Häufigkeiten sind um so schärfer, je länger der Text ist.
+
+\subsubsection{Der Wortzwischenraum}
+
+Sicherlich kommen wir auf die Idee, den Wortzwischenraum (Space) mit zu verschlüsseln. Dies führt dann zu einem Alphabet mit 27 Buchstaben. Da der \enquote{Space} im Deutschen nach dem \texttt{e} das häufigste \enquote{Zeichen} und somit leicht zu enttarnen ist, lässt der professionelle Chiffrierer diesen Zwischenraum einfach weg.
+>>>>>>> Stashed changes
 
 \subsubsection{Häufigkeiten von n-Grammen}
 
@@ -655,7 +1039,11 @@ $n$-Gramme sind Kolonnen von $n$ Buchstaben. Die folgende Tabelle \ref{tab:bigra
 \caption{Bigramm-Häufigkeiten deutsch und englisch}\label{tab:bigramme}
 \end{table}
 
+<<<<<<< Updated upstream
 Im Deutschen kommt \texttt{ch} sehr häufig vor, aber nahezu niemals \texttt{hc}. Ferner tauchen \texttt{ei} und \texttt{ie} gleichhäufig auf.
+=======
+Im Deutschen kommt \texttt{ch} sehr häufig vor, aber nahezu niemals \texttt{hc}. Ferner tauchen \texttt{ei} und \texttt{ie} gleich häufig auf.
+>>>>>>> Stashed changes
 
 In Tabelle \ref{tab:trigramme} finden Sie noch die Häufigkeit einiger Trigramme.
 
@@ -678,10 +1066,17 @@ In Tabelle \ref{tab:trigramme} finden Sie noch die Häufigkeit einiger Trigramme
 
 Abschliessend eine Aufzählung häufiger Viergramme:
 \begin{quote}
+<<<<<<< Updated upstream
 deutsch:\q \texttt{icht, keit, heit, chon, chen, cher, urch, eich, \dots}
 \end{quote}
 
 Aufschluss über den Ursprung des Textes kann übrigens auch die mittlere Wortlänge geben, oder die $10$ häufigsten Wörter. Betrachten Sie dazu die Tabellen \ref{wortlaenge} und \ref{zehn} auf Seite \pageref{wortlaenge}.
+=======
+deutsch:\quad \texttt{icht, keit, heit, chon, chen, cher, urch, eich, \dots}
+\end{quote}
+
+Aufschluss über den Ursprung des Textes kann übrigens auch die mittlere Wortlänge geben, oder die $10$ häufigsten Wörter.
+>>>>>>> Stashed changes
 
 \begin{table}
 \begin{center}
@@ -696,6 +1091,7 @@ Aufschluss über den Ursprung des Textes kann übrigens auch die mittlere Wortl�
 \caption{Wortlängen von Sprachen}\label{wortlaenge}
 \end{table}
 
+<<<<<<< Updated upstream
 \begin{table}
 \begin{center}
 \begin{tabular}{|l|l|}
@@ -710,6 +1106,8 @@ Aufschluss über den Ursprung des Textes kann übrigens auch die mittlere Wortl�
 \caption{Zehn häufigste Wörter von Sprachen}\label{zehn}
 \end{table}
 
+=======
+>>>>>>> Stashed changes
 \subsection{Die Abhängigkeit von der Verfassersprache}
 
 \subsubsection{Häufigkeitsgebirge}
@@ -717,11 +1115,16 @@ Aufschluss über den Ursprung des Textes kann übrigens auch die mittlere Wortl�
 Jede Sprache hat ihre eigenen Häufigkeiten. Die Diagrammdarstellungen werden \textbf{Häu\-fig\-keits\-ge\-bir\-ge} genannt. Zwei Beispiele sind in Abbildung \ref{hgebirge} auf Seite \pageref{hgebirge} illustriert.
 \begin{figure}
 \begin{center}
+<<<<<<< Updated upstream
 \definecolor{qqwwqq}{rgb}{0,0.4,0}
 \definecolor{zzqqqq}{rgb}{0.6,0,0}
 \definecolor{zzzzzz}{rgb}{0.6,0.6,0.6}
 \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.5cm,y=0.35cm]
 \draw [color=zzzzzz,dash pattern=on 2pt off 2pt, xstep=15.0cm,ystep=0.7cm] (0,-0.2) grid (25,19.35);
+=======
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.5cm,y=0.35cm]
+\draw [color=Gray,dash pattern=on 2pt off 2pt, xstep=15.0cm,ystep=0.7cm] (0,-0.2) grid (25,19.35);
+>>>>>>> Stashed changes
 \draw[-,color=black] (-1.81,0) -- (25.2,0);
 \foreach \x in {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25}
 \draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt);
@@ -731,9 +1134,15 @@ Jede Sprache hat ihre eigenen Häufigkeiten. Die Diagrammdarstellungen werden \t
 %\draw[color=black] (0.15,19) node [anchor=west] { Häufigkeit in \%};
 \draw[color=black] (-14pt,5pt) node[right] {\footnotesize $0$};
 \clip(-1.81,-2.01) rectangle (27,19.35);
+<<<<<<< Updated upstream
 \draw [dash pattern=on 2pt off 2pt,line width=2pt,color=zzqqqq] (17,17)-- (19,17);
 \draw[color=black] (19.2,17) node [anchor=west] { deutsch};
 \draw [line width=2pt,color=qqwwqq] (17,15)-- (19,15);
+=======
+\draw [dash pattern=on 2pt off 2pt,line width=2pt,color=RedOrange] (17,17)-- (19,17);
+\draw[color=black] (19.2,17) node [anchor=west] { deutsch};
+\draw [line width=2pt,color=ForestGreen] (17,15)-- (19,15);
+>>>>>>> Stashed changes
 \draw[color=black] (19.2,15) node [anchor=west] { englisch};
 \draw (0,-0.34) node[anchor=north]{$a$};
 \draw (1,-0.1) node[anchor=north]{$b$};
@@ -761,6 +1170,7 @@ Jede Sprache hat ihre eigenen Häufigkeiten. Die Diagrammdarstellungen werden \t
 \draw (23,-0.34) node[anchor=north] {$x$};
 \draw (24,-0.34) node[anchor=north] {$y$};
 \draw (25,-0.34) node[anchor=north] {$z$};
+<<<<<<< Updated upstream
 \draw [line width=2pt,color=qqwwqq] (0,8.12)-- (1,1.49);
 \draw [line width=2pt,color=qqwwqq] (1,1.49)-- (2,2.78);
 \draw [line width=2pt,color=qqwwqq] (2,2.78)-- (3,4.25);
@@ -863,6 +1273,110 @@ Jede Sprache hat ihre eigenen Häufigkeiten. Die Diagrammdarstellungen werden \t
 \fill [color=qqwwqq] (23,0.15) circle (1.5pt);
 \fill [color=qqwwqq] (24,1.97) circle (1.5pt);
 \fill [color=qqwwqq] (25,0.07) circle (1.5pt);
+=======
+\draw [line width=2pt,color=ForestGreen] (0,8.12)-- (1,1.49);
+\draw [line width=2pt,color=ForestGreen] (1,1.49)-- (2,2.78);
+\draw [line width=2pt,color=ForestGreen] (2,2.78)-- (3,4.25);
+\draw [line width=2pt,color=ForestGreen] (3,4.25)-- (4,12.7);
+\draw [line width=2pt,color=ForestGreen] (4,12.7)-- (5,2.23);
+\draw [line width=2pt,color=ForestGreen] (5,2.23)-- (6,2.02);
+\draw [line width=2pt,color=ForestGreen] (6,2.02)-- (7,6.09);
+\draw [line width=2pt,color=ForestGreen] (7,6.09)-- (8,6.97);
+\draw [line width=2pt,color=ForestGreen] (8,6.97)-- (9,0.15);
+\draw [line width=2pt,color=ForestGreen] (9,0.15)-- (10,0.77);
+\draw [line width=2pt,color=ForestGreen] (10,0.77)-- (11,4.03);
+\draw [line width=2pt,color=ForestGreen] (11,4.03)-- (12,2.41);
+\draw [line width=2pt,color=ForestGreen] (12,2.41)-- (13,6.75);
+\draw [line width=2pt,color=ForestGreen] (13,6.75)-- (14,7.51);
+\draw [line width=2pt,color=ForestGreen] (14,7.51)-- (15,1.93);
+\draw [line width=2pt,color=ForestGreen] (15,1.93)-- (16,0.1);
+\draw [line width=2pt,color=ForestGreen] (16,0.1)-- (17,5.99);
+\draw [line width=2pt,color=ForestGreen] (17,5.99)-- (18,6.33);
+\draw [line width=2pt,color=ForestGreen] (18,6.33)-- (19,9.06);
+\draw [line width=2pt,color=ForestGreen] (19,9.06)-- (20,2.76);
+\draw [line width=2pt,color=ForestGreen] (20,2.76)-- (21,0.98);
+\draw [line width=2pt,color=ForestGreen] (21,0.98)-- (22,2.36);
+\draw [line width=2pt,color=ForestGreen] (22,2.36)-- (23,0.15);
+\draw [line width=2pt,color=ForestGreen] (23,0.15)-- (24,1.97);
+\draw [line width=2pt,color=ForestGreen] (24,1.97)-- (25,0.07);
+\draw [dash pattern=on 2pt off 2pt,line width=2pt,color=RedOrange] (0,6.47)-- (1,1.93);
+\draw [dash pattern=on 2pt off 2pt,line width=2pt,color=RedOrange] (1,1.93)-- (2,2.68);
+\draw [dash pattern=on 2pt off 2pt,line width=2pt,color=RedOrange] (2,2.68)-- (3,4.83);
+\draw [dash pattern=on 2pt off 2pt,line width=2pt,color=RedOrange] (3,4.83)-- (4,17.48);
+\draw [dash pattern=on 2pt off 2pt,line width=2pt,color=RedOrange] (4,17.48)-- (5,1.65);
+\draw [dash pattern=on 2pt off 2pt,line width=2pt,color=RedOrange] (5,1.65)-- (6,3.06);
+\draw [dash pattern=on 2pt off 2pt,line width=2pt,color=RedOrange] (6,3.06)-- (7,4.23);
+\draw [dash pattern=on 2pt off 2pt,line width=2pt,color=RedOrange] (7,4.23)-- (8,7.73);
+\draw [dash pattern=on 2pt off 2pt,line width=2pt,color=RedOrange] (8,7.73)-- (9,0.27);
+\draw [dash pattern=on 2pt off 2pt,line width=2pt,color=RedOrange] (9,0.27)-- (10,1.46);
+\draw [dash pattern=on 2pt off 2pt,line width=2pt,color=RedOrange] (10,1.46)-- (11,3.49);
+\draw [dash pattern=on 2pt off 2pt,line width=2pt,color=RedOrange] (11,3.49)-- (12,2.58);
+\draw [dash pattern=on 2pt off 2pt,line width=2pt,color=RedOrange] (12,2.58)-- (13,9.84);
+\draw [dash pattern=on 2pt off 2pt,line width=2pt,color=RedOrange] (13,9.84)-- (14,2.98);
+\draw [dash pattern=on 2pt off 2pt,line width=2pt,color=RedOrange] (14,2.98)-- (15,0.96);
+\draw [dash pattern=on 2pt off 2pt,line width=2pt,color=RedOrange] (15,0.96)-- (16,0.05);
+\draw [dash pattern=on 2pt off 2pt,line width=2pt,color=RedOrange] (16,0.05)-- (17,7.54);
+\draw [dash pattern=on 2pt off 2pt,line width=2pt,color=RedOrange] (17,7.54)-- (18,6.83);
+\draw [dash pattern=on 2pt off 2pt,line width=2pt,color=RedOrange] (18,6.83)-- (19,6.13);
+\draw [dash pattern=on 2pt off 2pt,line width=2pt,color=RedOrange] (19,6.13)-- (20,4.17);
+\draw [dash pattern=on 2pt off 2pt,line width=2pt,color=RedOrange] (20,4.17)-- (21,0.94);
+\draw [dash pattern=on 2pt off 2pt,line width=2pt,color=RedOrange] (21,0.94)-- (22,1.48);
+\draw [dash pattern=on 2pt off 2pt,line width=2pt,color=RedOrange] (22,1.48)-- (23,0.04);
+\draw [dash pattern=on 2pt off 2pt,line width=2pt,color=RedOrange] (23,0.04)-- (24,0.08);
+\draw [dash pattern=on 2pt off 2pt,line width=2pt,color=RedOrange] (24,0.08)-- (25,1.14);
+\fill [color=RedOrange] (0,6.47) circle (1.5pt);
+\fill [color=RedOrange] (1,1.93) circle (1.5pt);
+\fill [color=RedOrange] (2,2.68) circle (1.5pt);
+\fill [color=RedOrange] (3,4.83) circle (1.5pt);
+\fill [color=RedOrange] (4,17.48) circle (1.5pt);
+\fill [color=RedOrange] (5,1.65) circle (1.5pt);
+\fill [color=RedOrange] (6,3.06) circle (1.5pt);
+\fill [color=RedOrange] (7,4.23) circle (1.5pt);
+\fill [color=RedOrange] (8,7.73) circle (1.5pt);
+\fill [color=RedOrange] (9,0.27) circle (1.5pt);
+\fill [color=RedOrange] (10,1.46) circle (1.5pt);
+\fill [color=RedOrange] (11,3.49) circle (1.5pt);
+\fill [color=RedOrange] (12,2.58) circle (1.5pt);
+\fill [color=RedOrange] (13,9.84) circle (1.5pt);
+\fill [color=RedOrange] (14,2.98) circle (1.5pt);
+\fill [color=RedOrange] (15,0.96) circle (1.5pt);
+\fill [color=RedOrange] (16,0.05) circle (1.5pt);
+\fill [color=RedOrange] (17,7.54) circle (1.5pt);
+\fill [color=RedOrange] (18,6.83) circle (1.5pt);
+\fill [color=RedOrange] (19,6.13) circle (1.5pt);
+\fill [color=RedOrange] (20,4.17) circle (1.5pt);
+\fill [color=RedOrange] (21,0.94) circle (1.5pt);
+\fill [color=RedOrange] (22,1.48) circle (1.5pt);
+\fill [color=RedOrange] (23,0.04) circle (1.5pt);
+\fill [color=RedOrange] (24,0.08) circle (1.5pt);
+\fill [color=RedOrange] (25,1.14) circle (1.5pt);
+\fill [color=ForestGreen] (0,8.12) circle (1.5pt);
+\fill [color=ForestGreen] (1,1.49) circle (1.5pt);
+\fill [color=ForestGreen] (2,2.78) circle (1.5pt);
+\fill [color=ForestGreen] (3,4.25) circle (1.5pt);
+\fill [color=ForestGreen] (4,12.7) circle (1.5pt);
+\fill [color=ForestGreen] (5,2.23) circle (1.5pt);
+\fill [color=ForestGreen] (6,2.02) circle (1.5pt);
+\fill [color=ForestGreen] (7,6.09) circle (1.5pt);
+\fill [color=ForestGreen] (8,6.97) circle (1.5pt);
+\fill [color=ForestGreen] (9,0.15) circle (1.5pt);
+\fill [color=ForestGreen] (10,0.77) circle (1.5pt);
+\fill [color=ForestGreen] (11,4.03) circle (1.5pt);
+\fill [color=ForestGreen] (12,2.41) circle (1.5pt);
+\fill [color=ForestGreen] (13,6.75) circle (1.5pt);
+\fill [color=ForestGreen] (14,7.51) circle (1.5pt);
+\fill [color=ForestGreen] (15,1.93) circle (1.5pt);
+\fill [color=ForestGreen] (16,0.1) circle (1.5pt);
+\fill [color=ForestGreen] (17,5.99) circle (1.5pt);
+\fill [color=ForestGreen] (18,6.33) circle (1.5pt);
+\fill [color=ForestGreen] (19,9.06) circle (1.5pt);
+\fill [color=ForestGreen] (20,2.76) circle (1.5pt);
+\fill [color=ForestGreen] (21,0.98) circle (1.5pt);
+\fill [color=ForestGreen] (22,2.36) circle (1.5pt);
+\fill [color=ForestGreen] (23,0.15) circle (1.5pt);
+\fill [color=ForestGreen] (24,1.97) circle (1.5pt);
+\fill [color=ForestGreen] (25,0.07) circle (1.5pt);
+>>>>>>> Stashed changes
 \end{tikzpicture}
 \caption{Häufigkeitsgebirge Deutsch \& Englisch}\label{hgebirge}
 \end{center}
@@ -871,6 +1385,7 @@ Durch Häufigkeitsgebirge k\"onnen wir bei genügend langem monoalphabetisch chi
 
 \subsubsection{Der Koinzidenzindex kappa einer Sprache}
 
+<<<<<<< Updated upstream
 Um das $\kappa$ einer Sprache zu bestimmen, schreiben wir zwei gleichlange unterschiedliche Texte untereinander und zählen alle \glqq Spalten\grqq\ mit gleichen Buchstaben. Anschliessend teilen wir diese Zahl durch die Anzahl der Buchstaben in einer Zeile. Die mathematische Beschreibung von $\kappa$ sieht wie folgt aus.
 Für zwei Texte gleicher Länge
 $$T_x=x_1x_2\dots x_n\text{ und }T_y=y_1y_2\dots y_n$$
@@ -884,6 +1399,24 @@ ist. Praktischer ist jedoch die Formel
 $$\kappa=\frac{\sum_{i=1}^{26}n_i^2}{n(n-1)},$$
 wobei $n$ die Gesamtanzahl der Buchstaben ist und $n_i$ die absolute Häufigkeit der einzelnen Buchstaben.
 Es zeigt sich, dass jede Sprache ihr eigenes $\kappa$ hat; siehe dazu Tabelle \ref{tab:sprache} auf Seite \pageref{tab:sprache}.
+=======
+Um das $\kappa$ einer Sprache zu bestimmen, schreiben wir zwei gleichlange unterschiedliche Texte untereinander und zählen alle \enquote{Spalten} mit gleichen Buchstaben. Anschliessend teilen wir diese Zahl durch die Anzahl der Buchstaben in einer Zeile. Die mathematische Beschreibung von $\kappa$ sieht wie folgt aus.
+Für zwei Texte gleicher Länge,
+$$T_x=x_1x_2\dots x_n\text{ und }T_y=y_1y_2\dots y_n,$$
+definieren wir
+
+$$\kappa(T_x,T_y)=\sum_{i=1}^n\frac{\delta(x_i,y_i)}{n}\quad\text{ wobei }\quad\delta(x_i,y_i)=
+\begin{cases}
+1\quad\text{für }x_i=y_i\\
+0\quad\text{für }x_i\neq y_i
+\end{cases}$$
+
+Manchmal ist die Formel
+$$\kappa=\frac{\sum_{i=1}^{26}n_i^2}{n(n-1)}$$
+praktischer, wobei $n$ die Gesamtanzahl der Buchstaben ist und $n_i$ die absolute Häufigkeit der einzelnen Buchstaben.
+Es zeigt sich, dass jede Sprache ihr eigenes $\kappa$ hat; siehe dazu Tabelle \ref{tab:sprache} auf Seite \pageref{tab:sprache}.
+
+>>>>>>> Stashed changes
 \begin{table}
 \begin{center}
 \scalebox{1}{
@@ -898,11 +1431,20 @@ Es zeigt sich, dass jede Sprache ihr eigenes $\kappa$ hat; siehe dazu Tabelle \r
 \end{center}
 \caption{Koinzidenzindex $\kappa$ von Sprachen}\label{tab:sprache}
 \end{table}
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 \begin{bem}
 Kommt jeder Buchstabe (bei einem Alphabet von $26$ Buchstaben) mit der gleichen Wahrscheinlichkeit von $\frac{1}{26}$ vor, so ergibt sich
 $$\kappa=\frac{1}{26}\approx3.85\%$$
 \end{bem}
+<<<<<<< Updated upstream
 Durch Zerschneiden des Geheimtextes in zwei Hälften und der Ermittlung des $\kappa$ der beiden so entstandenen Texte kann festgestellt werden, mit welcher Sprache der Klartext verfasst wurde; oder ob es sich um eine Kunstsprache handelt.
+=======
+
+Durch Zerschneiden des Geheimtextes in zwei Hälften und der Ermittlung des $\kappa$ der beiden so entstandenen Texte kann festgestellt werden, mit welcher Sprache der Klartext verfasst wurde oder ob es sich um eine Kunstsprache handelt.
+>>>>>>> Stashed changes
 
 Gegeben ist folgender monoalphabetischer Text. Versuche diese Nachricht zu knacken!
 
@@ -919,11 +1461,18 @@ Ein ideal für die Chiffrierung vorbereiteter Klartext ist orthographisch falsch
 \end{quote}
 \end{bem}
 
+<<<<<<< Updated upstream
 \textbf{Polyalphabetische Chiffrierung} bedeutet, dass das Prinzip der monoalphabetischen Chiffrierung nach gewissen Regeln ständig verändert wird. Es wird nicht der gesamte Klartext monoalphabetisch, sondern jede Buchstabengruppe mit einem anderen monoalphabetischen Schlüssel chiffriert.
 
 \clearpage
 
 \section{Die Idee der polyalphabetischen Chiffrierung}
+=======
+\clearpage
+
+\section{Die Idee der polyalphabetischen Chiffrierung}
+
+>>>>>>> Stashed changes
 \begin{wrapfigure}{r}{0.382\textwidth}
 \vspace{-22pt}
   \begin{center}
@@ -943,16 +1492,27 @@ Eine polyalphabetische Chiffrierung kann z.B. für den Klartext \texttt{abba} so
 \end{tabular}
 \caption{Polyalphabetische Chiffrierung}\label{polyalph}
 \end{table}
+<<<<<<< Updated upstream
 Damit wird aus \texttt{abba} ganz einfach \texttt{HLAD}. Als Konsequenz ergibt sich, dass die Häufigkeiten und Muster verschwunden sind! Allerdings müssen Empfänger und Sender die Regeln wissen, nachdem sich die Zuordnung Klartextalphabet zu Geheimtextalphabet ändert, im allgemeinen besitzen beide 26 Alphabete und müssen dazu das Anfangswort über\-mit\-teln. Die bekannteste Methode der polyalphabetischen Chiffrierung ist die \textbf{Vigen\`ere-Chiffrierung}. Dazu benötigt man ein sogennantes \textbf{Vigen\`ere-Quadrat}.
+=======
+Damit wird aus \texttt{abba} ganz einfach \texttt{HLAD}. Als Konsequenz ergibt sich, dass die Häufigkeiten und Muster verschwunden sind! Allerdings müssen Empfänger und Sender die Regeln wissen, nachdem sich die Zuordnung Klartextalphabet zu Geheimtextalphabet ändert. Die bekannteste Methode der polyalphabetischen Chiffrierung ist die \definition{Vigen\`ere-Chiffrierung}. Zur Verschlüsselung hilft ein sogenanntes \definition{Vigen\`ere-Quadrat}.
+>>>>>>> Stashed changes
 
 \subsection{Vigen\`ere-Chiffrierung}
 
 Neben
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{
 https://www.youtube.com/watch?v=zZhLLYdDnIQ}
 }
 dem Vigen\`ere-Quadrat benötigen wir noch ein Schlüsselwort. Um Klartext zu chiffrieren, schreibt man das Schlüsselwort, hier \texttt{VENUS}, periodisch über den Klartext.
+=======
+\href{https://www.youtube.com/watch?v=zZhLLYdDnIQ}{\qrcode{https://www.youtube.com/watch?v=zZhLLYdDnIQ}}
+}
+dem Vigen\`ere-Quadrat benötigen wir noch ein Schlüsselwort. Um Klartext zu chiffrieren, schreibt man das Schlüsselwort, hier \texttt{VENUS}, periodisch über den Klartext.
+
+>>>>>>> Stashed changes
 \begin{table}
 \texttt{
 \begin{center}
@@ -967,12 +1527,22 @@ dem Vigen\`ere-Quadrat benötigen wir noch ein Schlüsselwort. Um Klartext zu ch
 \caption{Vigen\`ere-Chiffrierung}
 \end{table}
 
+<<<<<<< Updated upstream
 \noindent Jeder Klartextbuchstabe wird dann mit dem Geheimtextalphabet verschlüsselt, dessen erster Buchstabe im Vigen\`ere-Quadrat über dem Klartextbuchstabe stehende Schlüs\-sel\-wort\-buch\-sta\-be ist. Also für den ersten Buchstaben des Beispiels von oben heisst das: Wenn man das erste \texttt{p} aus polyalphabetisch verschlüsselt will, muss man die Geheimtextalphabetzeile nehmen, die mit \texttt{V} beginnt. Dann sucht man sich im Klartextalphabet über den Vigen\`ere-Quadrat das \texttt{p}, geht die Spalte nach unten bis auf die Höhe von \texttt{V}. Der Geheimtextbuchstaben ist \texttt{K}. Die Dechiffrierung erfolgt analog.
 
 \subsection{Ein praktisches Beispiel}
 
 Dazu verwenden wir den Text, den abgeschlossenen Roman; das Schlüsselwort sei \texttt{JAMES\-BOND}. Wir schreiben zunächst das Schlüsselwort über den Text.
 Wir gehen in die Zeile, die mit dem Schlüsselwortbuchstaben beginnt und suchen die Spalte, die mit dem Klartextbuchstaben beginnt. Am Schnittpunkt von Zeile und Spalte steht unser Geheimbuchstabe.
+=======
+Jeder Klartextbuchstabe wird dann mit dem Geheimtextalphabet verschlüsselt, dessen erster Buchstabe im Vigen\`ere-Quadrat über dem Klartextbuchstabe stehende Schlüs\-sel\-wort\-buch\-sta\-be ist. Also für den ersten Buchstaben des Beispiels von oben heisst das: Wenn man das erste \texttt{p} aus polyalphabetisch verschlüsselt will, muss man die Geheimtextalphabetzeile nehmen, die mit \texttt{V} beginnt. Dann sucht man sich im Klartextalphabet über den Vigen\`ere-Quadrat das \texttt{p}, geht die Spalte nach unten bis auf die Höhe von \texttt{V}. Der Geheimtextbuchstaben ist \texttt{K}. Die Dechiffrierung erfolgt analog.
+
+\subsection{Ein praktisches Beispiel}
+
+Dazu verwenden wir den Text der abgeschlossenen Roman. Das Schlüsselwort sei \texttt{JAMES\-BOND}. Wir schreiben zunächst das Schlüsselwort über den Text.
+Am Schnittpunkt von Zeile und Spalte steht unser Geheimbuchstabe.
+
+>>>>>>> Stashed changes
 \begin{table}
 \texttt{\small
 \begin{center}
@@ -999,7 +1569,13 @@ Wir gehen in die Zeile, die mit dem Schlüsselwortbuchstaben beginnt und suchen 
 \normalfont\normalsize
 \caption{Vigen\`ere-Verschlüsselung}
 \end{table}
+<<<<<<< Updated upstream
 Wir erhalten somit den in Tabelle \ref{tab:james} dargestellten Geheimtext.
+=======
+
+Wir erhalten somit den in Tabelle \ref{tab:james} dargestellten Geheimtext.
+
+>>>>>>> Stashed changes
 \begin{table}
 \begin{center}
 \texttt{
@@ -1012,6 +1588,7 @@ MEDET & & HSFFQ & & LAWKF & & BRUXM & & MR
 \caption{Vigen\`ere-Verschlüsselung mit \texttt{JAMESBOND}}\label{tab:james}
 \end{center}
 \end{table}
+<<<<<<< Updated upstream
 \begin{ueb}[Vigen\`ere]
 Die Verschlüsselung des restlichen Textes ist eine mögliche Übungsaufgabe.
 \end{ueb}
@@ -1019,6 +1596,21 @@ Die Verschlüsselung des restlichen Textes ist eine mögliche Übungsaufgabe.
 \subsection{Die Theorie der Entschlüsselung}
 
 Die Kryptoanalyse von Vigen\`ere-Chiffrierung ist leicht, wenn das Schlüsselwort relativ kurz ist und der Geheimtext lang. Das Knacken erfolgt in zwei Schritten:
+=======
+
+\begin{uebenv}{vigenere}
+    Verschlüssle die Nachricht \texttt{kryptologie} mit dem Schlüssel \emph{waj} mit Vigen\`ere.
+\end{uebenv}
+
+\begin{lsg}{vigenere}
+    \texttt{GRHLTXHOPEE}
+\end{lsg}
+
+\subsection{Die Theorie der Entschlüsselung}
+
+Die Kryptoanalyse von Vigen\`ere-Chiffrierung ist umso leichter, wenn das Schlüsselwort relativ kurz ist und der Geheimtext lang. Das Knacken erfolgt in zwei Schritten:
+
+>>>>>>> Stashed changes
 \begin{enumerate}
 \item Bestimmen der Länge des Schlüsseltextes (Kasiski- \&\ Friedmann-Test).
 \item Bestimmen des Schlüsselwortes selbst.
@@ -1028,6 +1620,10 @@ Die Kryptoanalyse von Vigen\`ere-Chiffrierung ist leicht, wenn das Schlüsselwor
 
 Der Test basiert auf folgender Idee:
 Treten im Klartext gewisse Buchstabenfolgen häufig auf (Trigramme u.ä.), so werden sie stets gleich übersetzt, wenn ein Vielfaches des Schlüsselwortes dazwischen passt.
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 \begin{table}
 \begin{tabular}{cccccccccccccccccccc}
 \spaltenheight V& E& N& U& S& V& E& N& U& S& V& E& N& U& S& V& E& N& U& S \spaltensep
@@ -1036,6 +1632,10 @@ Treten im Klartext gewisse Buchstabenfolgen häufig auf (Trigramme u.ä.), so we
 \end{tabular}
 \caption{Idee Kasiski-Test}
 \end{table}
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 Man sucht im Geheimtext sich wiederholende Zeichenfolgen und vermutet, dass
 deren Abstand ein Vielfaches der Schlüsselwortlänge ist.
 
@@ -1074,7 +1674,12 @@ JTKIH KEQ
 \caption{Kasiski-Test}\label{kasiski}
 \end{center}
 \end{table}
+<<<<<<< Updated upstream
 Man bildet nun den grössten gemeinsamen Teiler der Abstandszahlen (siehe Tabelle \ref{kasiski}). In obigen Beispiel wäre dieser $\ggT = 1$, d.h. die Schlüsselwortlänge eins. Dies scheidet aber aus, weil der Klartext dann monoalphabetisch verschlüsselt sein müsste. Nimmt man aber an, dass \texttt{KAH} nur zufällig mehrmals auftritt, dann ist der $\ggT$ der Abstände gleich $5$. Das legt die Schlüsselwortlänge fünf nahe. Es könnte aber auch sein, dass sich \texttt{VIQM} und \texttt{MWK} zufällig wiederholen, dann wäre $\ggT(50, 90) = 10$. Also: die Schlüsselwortlänge ist höchstwahrscheinlich fünf, könnte aber auch zehn sein.
+=======
+
+Man bildet nun den grössten gemeinsamen Teiler der Abstandszahlen (siehe Tabelle \ref{kasiski}). In obigen Beispiel wäre dieser $\gcd = 1$, d.h. die Schlüsselwortlänge eins. Dies scheidet aber aus, weil der Klartext dann monoalphabetisch verschlüsselt sein müsste. Nimmt man aber an, dass \texttt{KAH} nur zufällig mehrmals auftritt, dann ist der $\gcd$ der Abstände gleich $5$. Das legt die Schlüsselwortlänge fünf nahe. Es könnte aber auch sein, dass sich \texttt{VIQM} und \texttt{MWK} zufällig wiederholen, dann wäre $\gcd(50, 90) = 10$. Also: die Schlüsselwortlänge ist höchstwahrscheinlich fünf, könnte aber auch zehn sein.
+>>>>>>> Stashed changes
 \end{bsp}
 
 \subsubsection{Der Friedmann-Test}
@@ -1093,10 +1698,17 @@ $$
 Die Wahrscheinlichkeit, dass zwei beliebige Buchstaben in der gleichen Spalte stehen ist
 $$\frac{1}{n}\cdot\frac{1}{n}+\frac{1}{n}\cdot\frac{1}{n}+\dots+\frac{1}{n}\cdot\frac{1}{n}=n\cdot\frac{1}{n}\cdot\frac{1}{n}=\frac{1}{n}$$
 Die Wahrscheinlichkeit, dass zwei beliebige Buchstaben in unterschiedlichen Spalten stehen, ist dann $1-\frac{1}{n}$.
+<<<<<<< Updated upstream
 Die Wahrscheinlichkeit, das zwei beliebige Buchstaben in einer Spalte gleich sind, ist $\kappa_K$ (Klartextkappa); die Buchstaben einer Spalte sind ja dann monoalphabetisch verschlüsselt.
 Die Wahrscheinlichkeit, dass zwei Buchstaben aus verschiedenen Spalten gleich sind, ist $3,85\%+\ge$, da über verschiedene Alphabete verschlüsselt wurde. Die Wahrscheinlichkeit, dass zwei beliebige Buchstaben des Geheimtextes gleich sind, ist dann
 $$\kappa_G=\frac{1}{n}\kappa_K+(1-\frac{1}{n})\cdot(3.85\%+\ge)=\frac{1}{n}(\kappa_K-3.85\%-\ge)+3.85\%+\ge$$
 Da $\kappa_K$ und $\kappa_G$ leicht bestimmt werden k\"onnen, lässt sich die Schlüsselwortlänge bestimmen, indem man nach $n$ auflöst.
+=======
+Die Wahrscheinlichkeit, dass zwei beliebige Buchstaben in einer Spalte gleich sind, ist $\kappa_K$ (Klartextkappa), denn die Buchstaben einer Spalte sind ja dann monoalphabetisch verschlüsselt.
+Die Wahrscheinlichkeit, dass zwei Buchstaben aus verschiedenen Spalten gleich sind, ist $3,85\%+\ge$, da über verschiedene Alphabete verschlüsselt wurde. Die Wahrscheinlichkeit, dass zwei beliebige Buchstaben des Geheimtextes gleich sind, ist dann
+$$\kappa_G=\frac{1}{n}\kappa_K+(1-\frac{1}{n})\cdot(3.85\%+\ge)=\frac{1}{n}(\kappa_K-3.85\%-\ge)+3.85\%+\ge$$
+Da $\kappa_K$ und $\kappa_G$ leicht bestimmt werden können, lässt sich die Schlüsselwortlänge bestimmen, indem man nach $n$ auflöst.
+>>>>>>> Stashed changes
 $$n=\frac{\kappa_K-3.85\%-\ge}{\kappa_G-3.85\%-\ge}$$
 Für deutsch ist $\kappa_K=7.62$ und daher in Prozenten
 $$n=\frac{7.62-3.85-\ge}{\kappa_G-3.85-\ge}=\frac{3.77-\ge}{\kappa_G-3.85-\ge}\leq\frac{3.77}{\kappa_G-3.85}$$
@@ -1117,10 +1729,17 @@ B_{3n+1} & B_{3n+2} & \dots & B_{4n}\\
 $$
 Jede
 \marginnote{
+<<<<<<< Updated upstream
 \qrcode{
 https://www.youtube.com/watch?v=lLlc57Kk2Os}
 }
 Spalte wurde monoalphabetisch verschlüsselt. Es genügt also, das \texttt{e} zu finden, um herauszukriegen mit welchem Alphabet die entsprechende Spalte verschlüsselt wurde. Man entnimmt diese \texttt{e}s der Tabelle.\\
+=======
+\href{https://www.youtube.com/watch?v=lLlc57Kk2Os}{\qrcode{https://www.youtube.com/watch?v=lLlc57Kk2Os}}
+}
+Spalte wurde monoalphabetisch verschlüsselt. Es genügt also, das \texttt{e} zu finden, um herauszukriegen mit welchem Alphabet die entsprechende Spalte verschlüsselt wurde. Man entnimmt diese \texttt{e}s der Tabelle.
+
+>>>>>>> Stashed changes
 \begin{table}[h!]
 \begin{center}
 \scalebox{0.8}{
@@ -1136,8 +1755,57 @@ Spalte wurde monoalphabetisch verschlüsselt. Es genügt also, das \texttt{e} zu
 }
 \end{center}
 \end{table}
+<<<<<<< Updated upstream
 Das Schlüsselwort lautet also \texttt{RADIO}. Nun kann der gesamte Geheimtext dechiffriert werden.
 
+=======
+
+Das Schlüsselwort lautet also \texttt{RADIO}. Nun kann der gesamte Geheimtext dechiffriert werden.
+
+\begin{uebenv}{kasiskifriedmann}
+    Erkläre, wie der Kasiski- und der Friedmann-Test funktionieren.
+\end{uebenv}
+
+\begin{lsg}{kasiskifriedmann}
+    Beide Tests funktionieren umso besser, je mehr Ciphertext zur Verfügung steht. Beim Kasiski-Test sucht man sich wiederholende Ciphertext-Schnippsel, da in diesem Fall vermutlich ein identischer Wortteil mit demselben Schlüsselteil chiffriert wurde. Dadurch kann man die Schlüsselwortlänge abschätzen, da in solchen Fällen der Abstand ein Vielfaches der Schlüsselwortlänge betragen muss. Ein gemeinsamer Teiler dieser Abstände könnte somit mit der Schlüsselwortlänge korrelieren.
+
+    Beim Friedmann-Test schätzt man die Schlüsselwortlänge durch folgende Überlegungen nach oben ab. Zuerst misst man den Koinzidenzindex des Ciphertextes, $\kappa_C$. Setzt man für die vermutete Schlüsselwortlänge $n$ an und bricht die Cipher nach jeweils $n$ Zeichen um, so sind im Falle der korrekten Schlüsselwortlänge die einzelnen Spalten monoalphabetisch verschlüsselt. Somit ist die Wahrscheinlichkeit, dass zwei zufällig ausgewählte Buchstaben in der gleichen Spalte stehen $\nicefrac{1}{n}$ und folglich $1-\nicefrac{1}{n}$ die Wahrscheinlichkeit, dass zwei zufällig gewählte Buchstaben in verschiedenen Zeilen stehen. Der Koinzidenzindex des Ciphertextes setzt sich also aus einem eher zufälligen und einem durch das Schlüsselwort gegebenen Teil, der denselben Koinzidenzindex wie die Verfassersprache haben muss, zusammen:
+    $$\kappa_C=\frac{1}{n}\cdot \kappa_D+(1-\frac{1}{n})\cdot (\kappa_r+\varepsilon),$$
+    wobei $\varepsilon\in\mathbb{R}^+$,  $n\in\mathbb{N}$ die Anzahl Spalten, $\kappa_D$ den Koinzidenzindex der Verfassersprache und $\kappa_r$ den Koinzidenzindex einer Randomsprache\footnote{Eine Randomsprache definiere ich hier als eine Kunstsprache, bei der jedes Zeichen zufällig ausgewählt wird. Der Koinzidenzindex dieser Sprache ist offensichtlich $\nicefrac{1}{26}$.} bezeichnen. Es folgt nach Multiplikation mit $n$ und umsortieren
+    $$n\kappa_C-n\kappa_r-n\varepsilon=\kappa_D-\kappa_r-\varepsilon$$
+    und weiter
+    $$n=\frac{\kappa_D-\kappa_r-\varepsilon}{\kappa_C-\kappa_r-\varepsilon}\leq\frac{\kappa_D-\kappa_r}{\kappa_C-\kappa_r}.$$
+    Damit ist die Schlüsselwortlänge $n$ nach oben abgeschätzt.
+\end{lsg}
+
+\begin{uebenv}{vigenerepython}
+    Schreibe in Python einen kurzen Codeschnippsel, der eine Message (in Grossbuchstaben) mit einem Keyword (in Kleinbuchstaben) nach Vigen\`ere verschlüsselt.
+\end{uebenv}
+
+\begin{lsg}{vigenerepython}
+Ein Beispiel ist:
+ 
+\begin{lstlisting}
+    cipher = ""
+    message = "KASISKI FRIEDMANN TEST" # message in Grossbuchstaben, darf Luecken enthalten
+    key = "vigenere" # Schluessel in Kleinbuchstaben
+    keylength = len(key)
+    caps = 0
+
+    for k in range(len(message)):
+        if message[k] == " ":
+            cipher += " "
+            caps = caps + 1
+        else:
+            kshift = (k + caps) % keylength
+            shift = ord(key[kshift]) - 97
+            cipher += chr((ord(message[k]) - 65 + shift) % 26 + 65)
+            
+    print(cipher)
+\end{lstlisting}
+\end{lsg}
+
+>>>>>>> Stashed changes
 \subsection{Ein weiteres Beispiel}
 
 Gegeben sei folgender Text:
@@ -1195,7 +1863,11 @@ AMJND  ZOK
 }
 \end{center}
 \end{table}
+<<<<<<< Updated upstream
 Wir bilden nun den grössten gemeinsamen Teiler der Abstandszahlen. Dieser $\ggT$ ist $5$, d.h. die Schlüsselwortlänge hat vermutlich die Länge fünf.
+=======
+Wir bilden nun den grössten gemeinsamen Teiler der Abstandszahlen. Dieser $\gcd$ ist $5$, d.h. die Schlüsselwortlänge hat vermutlich die Länge fünf.
+>>>>>>> Stashed changes
 
 Wir führen jetzt den Friedmann-Test durch. Dazu bestimmen wir die Anzahl der Buchstaben und ihre absolute Häufigkeit. In unserem Fall ist $n = 528$ und
 \begin{table}[h!]
@@ -1250,6 +1922,7 @@ Wir entschlüsseln und erhalten als Resultat:
 Polyalphabetische Algorithmen haben die Eigenschaft, dass ein bestimmter Geheimtextbuchstabe mehr als einen Klartextbuchstaben darstellen kann. Aber man darf nicht vergessen, dass der Geheimtext den Klartext eindeutig bestimmen muss. Zum Beispiel ist es nicht moeglich, das sie einem Algorithmus der Geheimtextbuchstaben im Klartext einmal \texttt{e} und ein anderes mal \texttt{s} entspricht, ohne dass es dafuer eine Regel gibt, die dem Empfaenger genau sagt, wann er \texttt{e} und wann er \texttt{s} entspricht. Es ist entscheidend, dass an jeder Stelle des Kryptogramms der Schluessel eindeutig den Klartextbuchstaben	zu jedem Geheimtextbuchstaben festlegt.
 \end{quote}
 
+<<<<<<< Updated upstream
 \subsection{Vigen\`ere knacken}
 
 Entschlüssle folgende, mit Vigen\`ere verschlüsselte, Nachricht.
@@ -1272,6 +1945,23 @@ UAGYOFBNNECBTPGIRIGR PNRPNHNAUFXIRFLIAHHD\\
 NSMNUN
 }
 \end{quote}
+=======
+\begin{uebenv}{crackvigenere}
+    Entschlüsseln Sie folgendende Vigen\`ere-Cipher:
+
+    \begin{quote}
+        \texttt{PEK MDIXKYAGU GNW KQR DHEILRU TXZF KHLZNXU GNTITAXUSIZ CANXPZAGKQR XPZGXZQTSA IEKKQN YBQR ULUDX AQSMZ USM LE VHU HOKAQIE DQNG KQR VPBHXYFEQA XAGN USM TAEZSUCAZF WXUUGX MQHELD EGATAXSF UGK SRTTYAMPWAEPECA RMTTZFRHWTAE PET SBPEF ZBIXSF DBL XAXUSE WLE GXDMEASFEG ZOHEBQSLLXWHYFEL BZD TBOH WLESXU CUTSUTTLF EBUQ WBJTTBNQ RHSXE PPQ MTU EIVO XEBJTT WLZKXU WAGU RAESE SBL PIXZQN KLXAMPH KNYLEG AQXM OMBXU WNTJWEG RAEGUQN LV SRTAGLBLDE BJT HXYLLBJT}
+    \end{quote}
+\end{uebenv}
+
+\begin{lsg}{crackvigenere}
+    Der Schlüssel ist \texttt{math}. Damit lautet der Text:
+
+    \begin{quote}
+        \texttt{DER FRIEDMANN UND DER KASISKI TEST KOENNEN UNABHAENGIG VONEINANDER EINGESETZT WERDEN FUER BEIDE TESTS IST ES VON VORTEIL WENN DER CIPHERTEXT LANG IST MOEGLICHST WENIGE FEHLER ENTHAELT UND GRAMMATIKALISCH KATASTROPHAL IST ZUDEM SPIELT DIE LAENGE DES GEWAEHLTEN SCHLUESSELWORTES UND AUCH DESSEN QUALITAET EINE WICHTIGE ROLLE WIE MAN SICH LEICHT DENKEN KANN FALLS SIE DIESEN RELATIV KURZEN TEXT HABEN KNACKEN KOENNEN SO GRATULIERE ICH HERZLICH}
+    \end{quote}
+\end{lsg}
+>>>>>>> Stashed changes
 
 \clearpage
 
@@ -1284,6 +1974,7 @@ NSMNUN
 %\caption{A gull}
 \vspace{-0pt}
 \end{wrapfigure}
+<<<<<<< Updated upstream
 Die Enigma ist eine Rotor-Schlüsselmaschine, die das deutsche Militär während des Zweiten Weltkriegs zur Verschlüsselung des Nachrichtenverkehrs verwendete. Das griechische Wort $\ga\gi\gn\gi\gg\gm\ga$ bedeutet \glqq Rätsel\grqq. Obwohl die Verschlüsselungsqualität der Maschine während des Krieges mehrfach weiterentwickelt wurde, konnten die Alliierten durch enormen Aufwand zur Entschlüsselung während der meisten Zeit die deutschen Funksprüche mitlesen.
 
 \subsection{Geschichte}
@@ -1298,6 +1989,19 @@ Man schätzt, dass während des Zweiten Weltkriegs mehr als $30\,000$ Maschinen 
 \subsection{Prinzip}
 
 Die ENIGMA I inklusive Holzgehäuse wiegt rund $\unit[12]{kg}$ und die äusseren Abmessungen (Länge $\times$ Breite $\times$ Hähe) betragen etwa $\unit[340]{mm}\times\unit[280]{mm}\times\unit[150]{mm}$. Sie sieht auf den ersten Blick wie eine Schreibmaschine aus und besteht im Wesentlichen aus der Tastatur, einem Walzensatz von drei austauschbaren Walzen (Rotoren mit einem Durchmesser von etwa $\unit[100]{mm}$) und einem Lampenfeld zur Anzeige.
+=======
+Die Enigma ist eine Rotor-Schlüsselmaschine, die das deutsche Militär während des Zweiten Weltkriegs zur Verschlüsselung des Nachrichtenverkehrs verwendete. Das griechische Wort $\alpha\acute{\iota}\nu\iota\gamma\mu\alpha$ bedeutet \enquote{Rätsel}.
+
+\subsection{Geschichte}
+
+Nach dem Ersten Weltkrieg suchten die deutschen Militärs nach einem Ersatz für die inzwischen veralteten, umständlichen und unsicheren manuellen Verschlüsselungsverfahren, die bis dahin verwendet wurden. Hierfür kamen maschinelle Verfahren in Betracht, weil sie eine einfachere Handhabung und eine verbesserte kryptographische Sicherheit versprachen.
+
+Als Erfinder der Enigma gilt der promovierte deutsche Elektroingenieur \textsc{Arthur Scherbius} (1878--1929) dessen erstes Patent hierzu vom 23. Februar 1918 stammt.
+
+\subsection{Prinzip}
+
+Die ENIGMA I inklusive Holzgehäuse wiegt rund $\unit[12]{kg}$ und die äusseren Abmessungen (Länge $\times$ Breite $\times$ Höhe) betragen etwa $\unit[340]{mm}\times\unit[280]{mm}\times\unit[150]{mm}$. Sie sieht auf den ersten Blick wie eine Schreibmaschine aus und besteht im Wesentlichen aus der Tastatur, einem Walzensatz von drei austauschbaren Walzen (Rotoren mit einem Durchmesser von etwa $\unit[100]{mm}$) und einem Lampenfeld zur Anzeige.
+>>>>>>> Stashed changes
 
 \begin{figure}
 \begin{center}
@@ -1306,9 +2010,15 @@ Die ENIGMA I inklusive Holzgehäuse wiegt rund $\unit[12]{kg}$ und die äusseren
 \end{center}
 \end{figure}
 
+<<<<<<< Updated upstream
 Der Walzensatz ist das Herzstück zur Verschlüsselung. Die drei Walzen sind drehbar angeordnet und weisen auf beiden Seiten für die 26 Gro§buchstaben des lateinischen Alphabets 26 elektrische Kontakte auf, die durch 26 isolierte Drähte im Inneren der Walze paarweise und unregelmässig miteinander verbunden sind, beispielsweise (Walze III) Kontakt A mit B, B mit D, und so weiter. Drückt man eine Buchstabentaste, so flie§t elektrischer Strom von einer in der ENIGMA befindlichen 4.5-Volt-Batterie über die gedrückte Taste durch den Walzensatz und lässt eine Anzeigelampe aufleuchten. Der aufleuchtende Buchstabe entspricht der Verschlüsselung des gedrückten Buchstabens. Da sich bei jedem Tastendruck die Walzen ähnlich wie bei einem mechanischen Kilometerzähler weiterdrehen, ändert sich das geheime Schlüsselalphabet nach jedem Buchstaben.
 
 Gibt man \texttt{otto} ein, so leuchten nacheinander beispielsweise die Lampen \texttt{PQWS} auf. Wichtig und kryptographisch stark ist, dass aufgrund der Rotation der Walzen jeder Buchstabe auf eine andere Weise verschlüsselt wird, im Beispiel das erste \texttt{o} von \texttt{otto} zu \texttt{P}, das zweite aber zu \texttt{S}. Man spricht von vielen unterschiedlichen (Geheim-) Alphabeten, die zur Verschlüsselung benutzt werden und bezeichnet dies als polyalphabetische Substitution. Würden sich die Walzen der ENIGMA nicht drehen, so bekäme man auch bei ihr nur eine einfache monoalphabetische Verschlüsselung.
+=======
+Der Walzensatz ist das Herzstück zur Verschlüsselung. Die drei Walzen sind drehbar angeordnet und weisen auf beiden Seiten für die 26 Grossbuchstaben des lateinischen Alphabets 26 elektrische Kontakte auf, die durch 26 isolierte Drähte im Inneren der Walze paarweise und unregelmässig miteinander verbunden sind, beispielsweise (Walze III) Kontakt A mit B, B mit D, und so weiter. Drückt man eine Buchstabentaste, so fliesst elektrischer Strom über die gedrückte Taste durch den Walzensatz und lässt eine Anzeigelampe aufleuchten. Der aufleuchtende Buchstabe entspricht der Verschlüsselung des gedrückten Buchstabens. Da sich bei jedem Tastendruck die Walzen ähnlich wie bei einem mechanischen Kilometerzähler weiterdrehen, ändert sich das geheime Schlüsselalphabet nach jedem Buchstaben.
+
+Gibt man \texttt{otto} ein, so leuchten nacheinander beispielsweise die Lampen \texttt{PQWS} auf. Wichtig und kryptographisch stark ist, dass aufgrund der Rotation der Walzen jeder Buchstabe auf eine andere Weise verschlüsselt wird.
+>>>>>>> Stashed changes
 
 \subsection{Aufbau}
 
@@ -1320,9 +2030,15 @@ Rechts der drei drehbaren Walzen (5) des Walzensatzes (siehe gelb hinterlegte Za
 \caption{Prinzipieller Aufbau der ENIGMA: (1) Batterie, (2) Tastatur, (3,7) Steckbrett mit (8) Stecknabel, (5) Walzensatz mit (4) Eintrittswalze und (6) Umkehrwalze sowie dem (9) Lampenfeld}\label{abb:enigmaschaltung}
 \end{center}
 \end{figure}
+<<<<<<< Updated upstream
 Bei ihr handelt es sich um eine Erfindung (patentiert am 21. März 1926) von \textsc{Willi Korn}, einem Mitarbeiter von \textsc{Scherbius}. Sie weist nur auf ihrer rechten Seite 26 Kontakte auf (in der Skizze sind wieder nur vier davon eingezeichnet), die paarweise miteinander verbunden sind. Die Umkehrwalze bewirkt, dass der Strom, der den Walzensatz zunächst von rechts nach links durchläuft, umgelenkt wird und ihn noch einmal durchfliesst, nun von links nach rechts. Der Strom verlässt den Walzensatz, wie er gekommen ist, wieder über die Eintrittswalze.
 
 An der Gerätefront ist ein Steckerbrett mit doppelpoligen Steckbuchsen für jeden der 26 Buchstaben angebracht. Der Strom von der Buchstabentaste (2) wird, bevor er die Eintrittswalze (4) erreicht, über dieses Steckerbrett (3) geführt. Nach Durchlaufen des Walzensatzes fliesst er ein zweites Mal über das Steckerbrett (7,8) und bringt schlie§lich eine der 26 Buchstabenlampen (9) zum Aufleuchten.
+=======
+Der Strom verlässt den Walzensatz wieder über die Eintrittswalze.
+
+An der Gerätefront ist ein Steckerbrett mit doppelpoligen Steckbuchsen für jeden der 26 Buchstaben angebracht. Der Strom von der Buchstabentaste (2) wird, bevor er die Eintrittswalze (4) erreicht, über dieses Steckerbrett (3) geführt. Nach Durchlaufen des Walzensatzes fliesst er ein zweites Mal über das Steckerbrett (7,8) und bringt schliesslich eine der 26 Buchstabenlampen (9) zum Aufleuchten.
+>>>>>>> Stashed changes
 
 \subsection{Schlüsselraum}
 
@@ -1330,6 +2046,7 @@ Der gesamte Schlüsselraum einer ENIGMA I mit drei aus einem Vorrat von fünf au
 $$120\cdot676\cdot16\,900\cdot150\,738\,274\,937\,250=206\,651\,321\,783\,174\,268\,000\,000.$$
 Das sind etwa $2\cdot10^{23}$ Möglichkeiten und entspricht einer Schlüssellänge von ungefähr $\unit[77]{bit}$.
 
+<<<<<<< Updated upstream
 Der Schlüsselraum war für diese Zeit enorm gross, ein vollständiges Durchsuchen war mit der damaligen Technologie aussichtslos. Wie wir gesehen haben, ist aber die Gr\"osse des Schlüs\-sel\-raums jedoch nur eine notwendige, aber keine hinreichende Bedingung für die Sicherheit eines kryptographischen Verfahrens. Selbst eine so simple Methode wie die einfache monoalphabetische Substitution verfügt über $26!$ mögliche Schlüssel. Das sind grob $4000\cdot10^{23}$ Schlüssel und entspricht ungefähr $\unit[88]{bit}$ und ist folglich sogar noch um etwa den Faktor $2000$ grösser als bei der ENIGMA I. Dennoch ist eine monoalphabetische Substitution leicht zu brechen.
 
 \subsection{Entzifferung}
@@ -1337,16 +2054,31 @@ Der Schlüsselraum war für diese Zeit enorm gross, ein vollständiges Durchsuch
 Die Betreiber der Schlüsselmaschine ENIGMA waren der Meinung, dass die durch sie maschinell verschlüsselten Texte (im Gegensatz zu fast allem, was bis 1918 gebräuchlich war) mit manuellen Methoden nicht zu knacken sind. Was übersehen wurde, ist, dass einer maschinellen Verschlüsselung durch maschinelle Entzifferung begegnet werden kann.
 
 Nachdem es weder Franzosen noch Briten gelang, diese Informationen zu nutzen, und sie die ENIGMA nach wie vor als unknackbar einstuften, glückte dem 27-jährigen polnischen Mathematiker \textsc{Marian Rejewski} bei seiner Arbeit in der polnischen Dechiffrierstelle bereits im Jahre 1932 der erste Einbruch in die ENIGMA. Rejewski erriet die von den Deutschen für die militärische Variante gewählte Verdrahtungsreihenfolge. Anschliessend schaffte er es mit Hilfe seiner exzellenten Kenntnisse der Permutationstheorie, die Verdrahtung der drei Walzen (I bis III) sowie der Umkehrwalze zu erschliessen --- eine kryptoanalytische Meisterleistung, die ihn mit den Worten des amerikanischen Historikers \textsc{David Kahn}
+=======
+\subsection{Entzifferung}
+
+Die Betreiber der Schlüsselmaschine ENIGMA waren der Meinung, dass die durch sie maschinell verschlüsselten Texte mit manuellen Methoden nicht zu knacken sind. Was übersehen wurde, ist, dass einer maschinellen Verschlüsselung durch maschinelle Entzifferung begegnet werden kann.
+
+Dem 27-jährigen polnischen Mathematiker \textsc{Marian Rejewski} glückte bei seiner Arbeit in der polnischen Dechiffrierstelle bereits im Jahre 1932 der erste Einbruch in die ENIGMA. Rejewski erriet die von den Deutschen für die militärische Variante gewählte Verdrahtungsreihenfolge. Anschliessend schaffte er es mit Hilfe seiner exzellenten Kenntnisse der Permutationstheorie, die Verdrahtung der drei Walzen (I bis III) sowie der Umkehrwalze zu erschliessen --- eine kryptoanalytische Meisterleistung, die ihn mit den Worten des amerikanischen Historikers \textsc{David Kahn}
+>>>>>>> Stashed changes
 
 \begin{quote}
 in das Pantheon der grössten Kryptoanalytiker aller Zeiten erhebt.
 \end{quote}
 
+<<<<<<< Updated upstream
 Die nächste Aufgabe, die gelöst werden musste, war, jeweils die richtige Walzenlage und Walzenstellung zu erschliessen. Dazu nutzte \textsc{Rejewski} zusammen mit seinen 1932 hinzugekommenen Kollegen \textsc{Jerzy R—\`{z}ycki} und \textsc{Henryk Zygalski} einen schwerwiegenden verfahrenstechnischen Fehler aus, der den Deutschen unterlief. Um eine sichere †bertragung zu gewährleisten, wurde zu dieser Zeit der Spruchschlüssel noch zweimal hintereinander gestellt und ver\-schlüs\-selt an den Anfang einer Nachricht geschrieben. Somit war der erste und vierte, der zweite und fünfte sowie der dritte und sechste Geheimtextbuchstabe jeweils demselben Klartextbuchstaben zuzuordnen. Mit Hilfe zweier speziell zu diesem Zweck gebauter Maschinen, genannt Zyklometer und Bomba, die zwei beziehungsweise sechs hintereinander geschaltete und um drei beziehungsweise eine bis fünf Drehpositionen versetzte ENIGMA-Maschinen verkörperten, konnten die polnischen Codeknacker für jede der sechs möglichen Walzenlagen feststellen, bei welchen Walzenstellungen die beobachtete Zuordnung der Buchstabenpaare möglich war und so den Suchraum gewaltig einengen. Nach Analyse mehrerer Funksprüche war der korrekte Spruchschlüssel gefunden.
 
 Nachdem die Deutschen am 15. September 1938 ihre Verfahrenstechnik änderten und drei Monate später mit Einführung der Walzen IV und V die Anzahl der möglichen Walzenlagen von sechs auf sechzig erhöhten, konnten die Polen nicht mehr mithalten, und die ENIGMA war wieder sicher. Die nächste Hürde musste überwunden werden.
 
 Mit diesem Anschub, konnten die britischen Kryptoanalytiker mit Ausbruch des Krieges im etwa $\unit[70]{km}$ nordwestlich von London gelegenen Bletchley Park einen erneuten Angriff auf die ENIGMA starten. Das wichtigste Hilfsmittel dabei war --- neben ihrer intellektuellen Leistungsfähigkeit und dem hohen Personaleinsatz von später zehn- bis vierzehntausend Frauen und Männern --- vor allem eine spezielle elektromechanische Maschine, genannt die Turing-Bombe, die auf der polnischen Bomba aufbaute und vom englischen Mathematiker \textsc{Alan Turing} ersonnen wurde. \textsc{Turings} Idee zur Schlüsselsuche bestand darin, durch ringförmige Verkettung von mehreren (meist zwölf) ENIGMA-Walzensätzen die Wirkung des Steckerbretts komplett abzustreifen. Dadurch gelang es ihm, die praktisch unüberschaubare Anzahl von Verschlüsselungsmöglichkeiten, auf die die deutschen Kryptographen ihre Hoffnungen setzten, drastisch zu reduzieren.
+=======
+Die nächste Aufgabe, die gelöst werden musste, war, jeweils die richtige Walzenlage und Walzenstellung zu erschliessen. Dazu nutzte \textsc{Rejewski} einen schwerwiegenden verfahrenstechnischen Fehler aus, der den Deutschen unterlief. Um eine sichere Übertragung zu gewährleisten, wurde zu dieser Zeit der Spruchschlüssel noch zweimal hintereinander gestellt und ver\-schlüs\-selt an den Anfang einer Nachricht geschrieben. Mit Hilfe zweier speziell zu diesem Zweck gebauter Maschinen, genannt Zyklometer und Bomba, konnten die polnischen Codeknacker so den Suchraum gewaltig einengen.
+
+Nachdem die Deutschen 1938 ihre Verfahrenstechnik änderten und kurze Zeit später mit Einführung der Walzen IV und V die Anzahl der möglichen Walzenlagen von sechs auf sechzig erhöhten, konnten die Polen nicht mehr mithalten, und die ENIGMA war wieder sicher. Die nächste Hürde musste überwunden werden.
+
+Damit konnten die britischen Kryptoanalytiker mit Ausbruch des Krieges im etwa $\unit[70]{km}$ nordwestlich von London gelegenen Bletchley Park einen erneuten Angriff auf die ENIGMA starten. Das wichtigste Hilfsmittel dabei war eine spezielle elektromechanische Maschine, genannt die Turing-Bombe, die auf der polnischen Bomba aufbaute und vom englischen Mathematiker \textsc{Alan Turing} ersonnen wurde.
+>>>>>>> Stashed changes
 
 \begin{wrapfigure}{r}{0.382\textwidth}
 \vspace{0pt}
@@ -1356,6 +2088,7 @@ Mit diesem Anschub, konnten die britischen Kryptoanalytiker mit Ausbruch des Kri
 \end{center}
 \vspace{0pt}
 \end{wrapfigure}
+<<<<<<< Updated upstream
 Mit Hilfe der Turing-Bombe brauchte man nur noch rund sechs Stunden, um sämtliche Mög\-lich\-kei\-ten durchzutesten. Leistet man sich den Aufwand, sechzig Bomben einzusetzen, jeweils eine für jede Walzenlage, dann schrumpft die Zeit von sechs Stunden auf sechs Minuten --- eine durchaus erträgliche Zeit. Tatsächlich waren bis zum Kriegsende mehr als 210 Bomben allein in England in Betrieb.
 
 Entscheidend wichtig für die Funktion der Bombe sind \grqq wahrscheinliche Wörter\grqq, deren Auftreten man im Text erwarten kann; fehlen diese, dann scheitert die Entzifferung.
@@ -1364,6 +2097,15 @@ Nun kamen auch die Amerikaner zu Hilfe, die ab April 1943 mehr als 120 Stück Ho
 
 \subsection{Lernprogramm}
 Das Innenleben der Enigma erleben und mehr zur Entschlüsselungstechnik kennen lernen k\"onnen bzw. sollen Sie auf MathePrisma unter
+=======
+Mit Hilfe der Turing-Bombe brauchte man nur noch rund sechs Stunden, um sämtliche Mög\-lich\-kei\-ten durchzutesten.
+
+Entscheidend wichtig für die Funktion der Bombe sind \enquote{wahrscheinliche Wörter}, deren Auftreten man im Text erwarten kann. Fehlen diese, dann scheitert die Entzifferung.
+Man profitierte von der deutschen Gründlichkeit bei der Abfassung von Routinemeldungen wie Wetterberichte, die jeden Morgen pünktlich zur selben Zeit und vom selben Ort gesendet wurden. So wurde beispielsweise der ENIGMA-Schlüssel vom D-Day durch das Wort \texttt{WETTERVORHERSAGEBISKAYA}, den die britischen Kryptoanalytiker leicht erraten konnten und korrekt vermuteten, in weniger als zwei Stunden nach Mitternacht gebrochen.
+
+\subsection{Lernprogramm}
+Das Innenleben der Enigma erleben und mehr zur Entschlüsselungstechnik kennen lernen k\"onnen bzw. sollt ihr auf MathePrisma unter
+>>>>>>> Stashed changes
 \begin{quote}
 \href{http://www.matheprisma.uni-wuppertal.de/Module/Enigma/index.htm}{\texttt{MathePrisma Enigma}}
 \end{quote}
@@ -1371,6 +2113,432 @@ Dort kann auch während des Moduls eine Java-Enigma benutzt werden.
 
 \clearpage
 
+<<<<<<< Updated upstream
+=======
+\section{RSA}
+\subsection{Asymmetrie}
+
+\begin{wrapfigure}{r}{0.32\textwidth}
+\vspace{-22pt}
+  \begin{center}   \includegraphics[width=0.26\textwidth]{pictures/rsa}
+  \end{center}
+\vspace{-22pt}
+\end{wrapfigure}
+Wird der Schlüssel beim Austausch abgefangen, so ist die gesamte Verschlüsselung wertlos. Lange Zeit galt diese Sicherheitslücke als unvermeidbar. Es gibt aber auch Verschlüsselungen, die ganz ohne Schlüsselaustausch auskommen. Wie geht das?
+
+Wir denken uns für eine erste Idee, dass eine Kiste geschickt wird, die man mit einem Vorhängeschloss abschliessen kann. Dabei wird zwar die Nachricht mehrfach hin und her geschickt, es wird aber kein Schlüssel ausgetauscht. Das geht so, wenn Alice Bob eine verschlüsselte Nachricht schicken möchte:
+
+\begin{enumerate}
+\item Alice verschliesst die Kiste mit ihrem Schloss und schickt sie Bob.
+\item Bob verschliesst die Kiste ein zweites Mal mit seinem Schloss und schickt sie Alice zurück.
+\item Alice entfernt ihr Schloss mit ihrem Schlüssel und schickt die Kiste wieder an Bob.
+\item Bob kann die Kiste mit seinem Schlüssel öffnen.
+\end{enumerate}
+
+\begin{uebenv}{kistenallegorie}
+Das Verfahren geht natürlich einfacher, ohne die Kiste hin und her schicken zu müssen. Nämlich \dots
+\end{uebenv}
+
+\begin{lsg}{kistenallegorie}
+    Bob könnte Alice beispielsweise ein offenes Vorhängeschloss schicken, dessen Schlüssel er besitzt.
+\end{lsg}
+
+\subsection{Einwegfunktionen}
+
+Eine Einwegfunktion ist eine Funktion, die einfach zu berechnen aber sehr schwer umkehrbar ist.
+
+\begin{cdef}[One-Way Function]
+Eine One-Way-Function ist eine injektive Funktion
+$$f:X\to Y$$
+so dass gilt:
+
+\begin{itemize}
+\item Es gibt ein effizientes Verfahren zur Bestimmung von $y=f(x)\quad\forall x\in X$.
+\item Die Umkehrung ist praktisch unmöglich, d.h. es gibt kein effizientes Verfahren zur Bestimmung von $x=f^{-1}(y)\quad\forall y\in f(X)$.
+\end{itemize}
+\end{cdef}
+
+\begin{bem}
+Das heisst nicht, dass eine Einwegfunktion nicht umkehrbar ist, die Umkehrung ist nur so schwierig, dass sie sehr schwer umzusetzen ist. Man braucht also etwas anderes: Einwegfunktionen mit Falltür.
+\end{bem}
+
+\begin{cdef}[Trap-Door One-Way-Function]
+Eine trap-door one-way-function ist eine injektive Funktion $f:X\to Y$ für die gilt:
+
+\begin{itemize}
+\item Es gibt effiziente Verfahren zur Berechnung von $y=f(x)\quad\forall x\in X$ und $x=f^{-1}(y)\quad\forall y\in f(X)$.
+\item Das Verfahren zur Berechnung von $f^{-1}$ kann nicht aus dem Verfahren zur Berechnung von $f$ hergeleitet werden. Man benötigt eine (geheime) Zusatzinformation.
+\end{itemize}
+\end{cdef}
+
+\subsection{Idee von RSA}
+
+Wir wissen, dass das Produkt zweier Primzahlen einfach zu berechnen ist. Wie sieht es mit der Umkehrung aus?
+
+\begin{uebenv}{primzahlprodukt}
+Bestimme die Primfaktorzerlegung von
+
+\begin{enumerate}[a)]
+\item 21
+\item 65
+\item 14803
+\item 12863273
+\end{enumerate}
+\end{uebenv}
+
+\begin{lsg}{primzahlprodukt}
+    $3\cdot7$, $5\cdot13$, $113\cdot131$ und $3259\cdot3947$
+\end{lsg}
+
+Je grösser die Zahl, desto aufwändiger kann es werden, ihre Primfaktorzerlegung zu bestimmen.
+
+\begin{uebenv}{primfaktorzerlegung}
+Bestimme die Primfaktorzerlegung von $2,\,469,\,135$ und $782$.
+\end{uebenv}
+
+\begin{lsg}{primfaktorzerlegung}
+    $2$, $7\cdot 67$, $5\cdot 3^3$ und $2\cdot17\cdot23$
+\end{lsg}
+
+Übung \ref{ueb:primfaktorzerlegung} ist einfach, weil einer der beiden Primfaktoren sehr klein ist. Im Allgemeinen gilt aber, dass das Multiplizieren zweier grossen Primzahlen eine Einwegfunktion mit Falltür ist.
+
+Darauf beruht das bekannteste asymmetrische Verschlüsselungsverfahren RSA. Wählt nämlich Bob zwei grosse Primzahlen $p$ und $q$ und hält diese geheim, so kann er das Produkt $N=p\cdot q$ veröffentlichen, ohne in Gefahr zu laufen, dass jemand die Primfaktoren $p$ und $q$ bestimmen kann.
+
+\subsection{Das Verfahren}
+
+RSA ist ein asymmetrisches Verfahren, es gibt einen Public Key und einen Private Key. Beide Keys werden mit Hilfe von Primzahlen gebildet und in das Verfahren spielt die Modulo-Rechnung hinein. Den Namen hat das Verfahren von Ronald Rivest, Adi Shamir und Leonard Adleman; sie haben es 1977 kreiert.
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.618\textwidth]{pictures/rsaleute}
+\end{center}
+\caption{Shamir, Rivest und Adleman}
+\end{figure}
+
+Für die Erzeugung der beiden Schlüssel wählt man zunächst zwei grosse Primzahlen $p$ und $q$. Diese werden multipliziert und man erhält $n=p\cdot q$. Diese Zahl $n$ sowie eine weitere (fast) beliebig wählbare Zahl  $e$ (encipher = verschlüsseln) bilden den Public Key $(e\mid n)$. Eine dritte Zahl $d$ (decipher = entschlüsseln), zu deren Berechnung wir später kommen, ist Grundlage des Private Keys. Verschlüsselt wird durch
+$$C\equiv m^e\mod n.$$
+Die Zahlen $n$ und $e$ sind der Public Key. $m$ ist der Klartext (Message), $C$ der verschlüsselte Text (Cipher).
+
+\begin{uebenv}{encipher}
+Nehmen wir an, du willst an Alice die Nachricht $m$ schicken. Alices Public Key sei $(7\mid 187)$, also $n=187$ und $e=7$.
+Das $m$ lautet in ASCII $01001100$, das entspricht der Dezimalzahl $76$. Die Nachricht lautet also \dots.
+\end{uebenv}
+
+\begin{lsg}{encipher}
+    $76^7\mod187\equiv32=100000_{(2)}$
+\end{lsg}
+
+Zum Entschlüsseln benötigt man den geheimen Schlüssel $d$. Entschlüsselt wird damit durch $$m\equiv C^d\mod n$$
+
+\begin{uebenv}{decipher}
+Und umgekehrt? Angenommen, dein öffentlicher Schlüssel ist $(7\mid 187)$. Du erhältst die damit verschlüsselte Nachricht $C=142$. Um diese zu entschlüsseln, benötigst du deinen Private Key. Der ist in diesem Fall $d=23$. Wie $d$ berechnet wird, kommt später.
+\end{uebenv}
+
+\begin{lsg}{decipher}
+    $142^{23}\mod187\equiv65$
+\end{lsg}
+
+\begin{uebenv}{testencipherdecipher}
+Probier es mit dem Taschenrechner aus obiger Aufgabe aus. Verschlüssele verschiedene Zahlen und entschlüssele sie direkt wieder. Versuche Zahlen, die kleiner sind als $n=187$ und Zahlen, die grösser sind!
+\end{uebenv}
+
+\begin{lsg}{testencipherdecipher}
+    \dots
+\end{lsg}
+
+\begin{bem}
+Das funktioniert allerdings nur, wenn die Nachricht $m$ (als Zahl) kleiner ist als $n$. Dies ist allerdings keine Einschränkung. Will man eine Nachricht verschlüsseln, deren Zahlenwert \enquote{zu gross} ist, so teilt man sie in kleinere Blöcke und verschlüsselt jeden Block einzeln.
+\end{bem}
+
+\begin{bsp}
+Um es einfach zu halten, codieren wir: Leerzeichen = 00, A = 01, B = 02, \dots, Z = 26.
+Mit dem Schlüssel $(e\mid n) = (17\mid 2773)$ wird die Nachricht:
+$$05\quad 18\quad 18\quad 01\quad 18\quad 05\quad 00\quad 08\quad 21\quad 13\quad 01\quad 14\quad 21\quad 13\quad 00\quad 05\quad 19\quad 20$$
+in 3er-Blöcke geteilt (die sind sicher kleiner als $n$):
+$$051\quad 818\quad 011\quad 805\quad 000\quad 821\quad 130\quad 114\quad 211\quad 300\quad 051\quad 920$$	
+und verschlüsselt zu (mit führenden Nullen auf vier Stellen aufgefüllt):
+$$2236\quad 2000\quad 1725\quad 0542\quad 0000\quad 0436\quad 1988\quad 1684\quad 1064\quad 0567\quad 2236\quad 0948$$
+\end{bsp}
+
+Nun zur Frage, wie man den Private Key $d$ berechnet:
+
+\begin{bem}
+Der Private Key $d$ errechnet sich aus der Gleichung
+$$e\cdot d\mod(p-1)(q-1)=1$$
+\end{bem}
+
+Grundlage zur Berechnung von $d$ ist folgender Satz, der garantiert, dass es eine solche Zahl überhaupt gibt --- vorausgesetzt die Zahl $e$ hat eine bestimmte Eigenschaft\dots
+
+\begin{csatz}[Existenz eines modular Inversen]
+Sind $a,b\in\mathbb{Z}$ teilerfremd, so gibt es eine ganze Zahl $c$, so dass
+$$b\cdot c\mod a\equiv1$$
+\end{csatz}
+
+\begin{cdef}[Modular Inverses]
+Mit den Bezeichnungen aus obigem Satz sagt man, $b$ ist Modulo $a$ invertierbar und nennt $c$ das modular Inverse von $b$.
+\end{cdef}
+
+\begin{uebenv}{modinvers}
+Finde das modular Inverse Element $c$ zu $3$ modulo $5$.
+\end{uebenv}
+
+\begin{lsg}{modinvers}
+    Mit Ausprobieren findet man $3^{-1}\equiv2\mod5$.
+\end{lsg}
+
+In unserem Fall sind wir daran interessiert $e$ modulo $(p-1)(q-1)$ zu invertieren. Das heisst insbesondere, dass $e$ und $(p-1)(q-1)$ teilerfremd sein müssen.
+
+Und wie berechnet man das modular Inverse nun? Ein Verfahren für diese Berechnung ist in dem Beweis zu obigem Satz versteckt. Deswegen folgt er hier ausführlich. Er erfolgt in drei Schritten:
+
+\begin{enumerate}
+\item Mit dem euklidschen Algorithmus zur Bestimmung des ggT
+\item Summendarstellung des ggT von von entsprechenden Vielfachen der beiden Zahlen (erweiterter Euklidscher Algorithmus)
+\item Betrachtung des Falls, dass $a$ und $b$ teilerfremd sind, d.h. dass ihr ggT $1$ ist.
+\end{enumerate}
+
+Wir wissen bereits, wie man den ggT von zwei Zahlen mit dem Euklidschen Algorithmus bestimmt. Der ggT ist der letzte, nichttriviale Rest.
+
+\begin{uebenv}{recapeuklid}
+Schreibe allgemein das Verfahren des Euklidschen Algorithmus für zwei Zahlen $a$ und $b$ auf.
+\end{uebenv}
+
+\begin{lsg}{recapeuklid}
+    %OEdA $a\geq b$ und für unsere Zwecke $\gcd(a,b)=1$.
+    \begin{align*}
+        a &= q_1b+r_1\\
+        b &= q_2r_1+r_2\\
+        r_1 &= q_3r_2+r_3\\
+        \vdots &= \vdots\\
+        r_{k-2} &= q_{k}r_{k-1}+r_{k}\\
+        r_{k-1} &= q_{k+1}r_{k}+0
+    \end{align*}
+\end{lsg}
+
+Rechnet man nun rückwärts und ersetzt die Reste durch entsprechende Ausdrücke, so erhält man eine Vielfachendarstellung von $a$ und $b$ für ihren ggT $1$.
+
+\begin{uebenv}{euklidretour}
+Zeige dies.
+\end{uebenv}
+
+\begin{lsg}{euklidretour}
+    Aus der letzten Zeile folgt $0=r_{k-1} - q_{k+1}r_k\Leftrightarrow r_{k-1}=q_{k+1}r_k$ und weiter
+    \begin{align*}
+        r_{k-2} &= q_{k}r_{k-1}+r_{k}\\
+                &= q_{k}q_{k+1}r_k+r_{k}\\
+                &= (q_{k}q_{k+1}+1)r_{k}\\
+                &= l_{k-2}\cdot r_k\tag{$l_{k-2}\in\mathbb{Z}$}\\
+                &\sim r_k  
+    \end{align*}
+    Rückwärts eingesetzt folgt $b=l_br_k$ und $a=l_ar_k$, also $r_k|a$ und $r_k|b$. Also gibt es $x,y\in\mathbb{Z}$ so, dass $r_k=xa+yb$
+\end{lsg}
+
+Dass der Euklid'sche Algorithmus stets den $\gcd$ liefert, wurde im Unterricht gezeigt.
+
+\begin{csatz}[Lemma von Bézout]
+Zu zwei Zahlen $a,b\in\mathbb{Z}$ gibt es immer Zahlen $x,y\in\mathbb{Z}$, so dass
+$$\gcd(a,b)=x\cdot a+y\cdot b.$$
+\end{csatz}
+
+\begin{proof}
+Damit ist Schritt drei nur noch Formsache. Für teilerfremde $a,b$ gilt jetzt
+$$1=x\cdot a+ y\cdot b$$
+Dies gilt natürlich auch noch modulo $a$ bzw. $b$, da $x\cdot a\mod a=0$ ist.
+$$x\cdot a+y\cdot b\mod a=y\cdot b\mod a=1.$$
+Also ist $c=y$ modulo $a$ invers zu $b$.
+\end{proof}
+
+\begin{bem}
+Dieses
+\marginnote{
+\href{https://www.youtube.com/watch?v=9Nl6KP7pSv4}{\qrcode{https://www.youtube.com/watch?v=9Nl6KP7pSv4}}
+}
+$c$ lässt sich mit dem Euklid'schen Algorithmus berechnen.
+\end{bem}
+
+Hat man also die Vielfachensummendarstellung
+$$1=\gcd((p-1)(q-1),e)=x\cdot(p-1)(q-1)+y\cdot e$$
+bestimmt, so ist die kleinste positive Zahl der Form
+$$y+k\cdot(p-1)(q-1)$$
+gleich dem Private Key $d$.
+
+\begin{bem}
+Mit Hilfe des euklidischen Algorithmus kann man also den Private Key $d$ bestimmen.
+Kennt man die beiden Primzahlen $p$ und $q$, so ist es also einfach, $d$ zu berechnen und damit dann die mit $n$ und $e$ verschlüsselten Nachrichten zu entschlüsseln. Allerdings ist es nahezu unmöglich, $d$ zu berechnen, ohne $p$ und $q$ zu kennen.
+\end{bem}
+
+Aber warum funktioniert das Verfahren denn nun überhaupt? Warum kommt wirklich wieder der Klartext heraus, mit anderen Worten: warum gilt
+$$C^d\mod n=m?$$
+Wir erinnern uns, wie der Cipher-Text entstanden ist,
+$$C^d\mod n = (m^e)^d\mod n= m^{e\cdot d}\mod n.$$
+und können daher die Frage umformulieren: gilt tatsächlich
+$$m^{e\cdot d}\mod n=m?$$
+
+Die Antwort auf diese Frage lautet natürlich ja. Für den Beweis brauchen wir den kleinen Satz von Fermat, der ein Spezialfall des Satzes von Euler ist. Zur einfachen Formulierung des Satzes brauchen wir die sogenannte Euler'sche $\varphi$-Funktion.
+
+\begin{cdef}[Euler'sche phi-Funktion]
+Für eine natürliche Zahl $n$ ist $\varphi(n)$ die Anzahl der natürlichen Zahlen $\leq n$, deren grösster gemeinsamer Teiler mit $n$ gleich $1$ ist. Man nennt $\varphi$ die Euler'sche $\varphi$-Funktion.
+\end{cdef}
+
+\begin{csatz}[Euler-phi einer Primzahl]
+Ist $p$ prim, dann gilt
+$$\varphi(p)=p-1.$$
+\end{csatz}
+
+\begin{proof}[Beweis]
+Da $p$ teilerfremd zu $1,2,3,\dots,p-1$ ist, folgt der Satz.
+\end{proof}
+
+\begin{csatz}[Satz von Euler]
+Sind $m,n\in\mathbb{N}$ teilerfremd, so gilt
+$$m^{\varphi(n)}\mod n=1.$$
+\end{csatz}
+
+Ein interessanter Spezialfall, den man auch zum Beweis der Korrektheit der Entschlüsselung verwenden kann, ist
+
+\begin{csatz}[Multiplikativität der Euler'schen phi-Funktion]
+Sind $p,q$ zwei verschiedene Primzahlen, so ist
+$$\varphi(p\cdot q)=(p-1)(q-1).$$
+\end{csatz}
+
+Ist $m$ teilerfremd zu $p\cdot q$, so gilt nach dem Satz von Euler
+$$m^{(p-1)(q-1)}\mod pq=1.$$
+
+\begin{csatz}[Kleiner Satz von Fermat]
+Sei $m$ eine natürliche Zahl und teilerfremd zur Primzahl $p$. Dann gilt
+$$m^{p-1}\mod p=1.$$
+
+\end{csatz}
+
+Der Beweis, dass die Entschlüsselung korrekt ist, geht damit so:
+
+\begin{proof}
+Wir
+\marginnote{
+\href{https://www.youtube.com/watch?v=mLMCAe1HRSs}{\qrcode{https://www.youtube.com/watch?v=mLMCAe1HRSs}}
+}
+wissen, dass
+$$e\cdot d\mod(p-1)(q-1)=1.$$
+Das heisst, es gibt ein $k\in\mathbb{Z}$ mit
+$$e\cdot d=k\cdot(p-1)(q-1)+1.$$
+Damit
+
+\begin{align*}
+m^{e\cdot d}-m\mod p&=m^{k\cdot(p-1)(q-1)+1}-m\mod p=(m^{(p-1)})^{k(q-1)}\cdot m-m\mod p=\\
+&=1^{k(q-1)}\cdot m-m\mod p=0.
+\end{align*}
+
+Dies gilt insbesondere auch, wenn $p$ ein Teiler von $m$ ist, denn dann ist $m^{e\cdot d}-m\mod p$ sowieso gleich $0$. Ferner sieht man analog, dass $m^{e\cdot d}-m\mod q=0$.
+Die Primzahlen $p$ und $q$ teilen also dieselbe Zahl $m^{e\cdot d}-m$, also muss auch ihr Produkt diese Zahl teilen. Somit gilt:
+$$m^{ed}\mod pq=m.$$
+\end{proof}
+
+\subsection{RSA knacken}
+Zum Schluss noch ein Beispiel, in dem es dem Codeknacker leicht gemacht wird. Also keine Angst, so schnell wie hier lässt sich RSA nicht knacken\dots
+
+\begin{bsp}
+Man fängt eine RSA-verschlüsselte Nachricht ab. Sie lautet
+
+\begin{quote}
+10473054210223505497035330523101828168\\
+2305497093070549713322042531164705144
+\end{quote}
+
+Ausserdem weiss man, für wen die Nachricht bestimmt ist. Der öffentliche Schlüssel des Empfängers ist
+$n=17947$, $e=21$.
+Um die Nachricht zu entschlüsseln, muss man wissen, aus welchen beiden Primzahlen $p$ und $q$ sich $n$ zusammensetzt.
+Eine erste Möglichkeit, $p$ und $q$ zu finden ist, bei 2 anzufangen und jede Zahl zu testen, ob sie ein Teiler von $n$ ist. Dabei kann man sich die Arbeit einfacher machen, wenn man bedenkt, dass
+
+\begin{itemize}
+\item nicht $p$ und $q$ beide grösser als $\sqrt{n}$ sein können (Man braucht also \enquote{nur} die Zahlen bis $\sqrt{n}$ zu testen.)
+\item die beiden gesuchten Teiler von $n$ Primzahlen sind (man braucht also z.B. die geraden Zahlen gar nicht testen).
+\end{itemize}
+
+Allerdings dauert diese Suche um so länger je grösser $p$ und $q$  sind. Es scheint also geschickter zu sein, die Suche bei möglichst grossen Zahlen anzufangen, d.h. bei $\sqrt{n}$.
+Wenn die Zahlen $p$ und $q$ eruiert wurden, kann man den Private Key bestimmen.
+\end{bsp}
+
+\subsection{Übung zu RSA mit Mathematica}
+Zum
+\marginnote{
+\href{https://www.youtube.com/watch?v=k-mlgN6BLI0}{\qrcode{https://www.youtube.com/watch?v=k-mlgN6BLI0}}
+}
+Schluss noch ein etwas grösseres Beispiel. Alice wähle als $p$ Primzahl Nummer $1000000000$ und als $q$ Primzahl Nummer $1000005000$. Der Befehl Prime[.] des Programms Mathematica liefert ihr
+$$p = 22801763489,\quad	q = 22801881559.$$
+Daraus folgt
+$$n = pq = 519923110412508599351.$$
+Nun muss sie die Zahlen $C$ und $d$ so bestimmen, dass $d$ zu $C$ invers Modulo $(p-1)(q-1)$ ist. Es ist
+$r = (p-1)(q-1) = 519923110366904954304$. Sie wählt
+$$C = 4699873.$$
+Mithilfe des Mathematica-Befehls GCD[C, r], der den grössten gemeinsamen Teiler der beiden Zahlen $c$ und $r$ bestimmt, erhält man GCD[C, r] = 1, das heisst $c$ und $r$ sind teilerfremd. Der Mathematica-Befehl PowerMod[C,-1,r] liefert
+$$d = 252883827627895253473.$$
+Tatsächlich ergibt die Division
+$$\frac{Cd - 1}{r} = k = 2285957.$$
+Alice veröffentlicht nun in der Zeitung die beiden Zahlen
+$$n = 519923110412508599351,\quad	C = 4699873.$$
+Ihr Freund Bob hat nur darauf gewartet und beschliesst, ihr die folgende Botschaft zu schicken
+\begin{center}
+\texttt{
+RSA IST EIN GENIESTREICH
+}
+\end{center}
+Diesen Text übersetzt er zuerst nach ASCII in einen Block von Zahlen. Für die Grossbuchstaben A, B, C, \dots verwendet ASCII der Reihe nach die Zahlen 65, 66, 67, \dots Ein Leerschlag erhält die Zahl 32. Das ergibt folgenden Zahlenstring
+$$82 83 65 32 73 83 84 32 69 73 78 32 71 69 78 73 69 83 84 82 69 73 67 72$$
+Bob bildet daraus drei Zahlen $m_1, m_2, m_3$
+$$m_1 = 82836532738384326973, m_2 = 78327169787369838482, m_3 = 69736772,$$
+die alle kleiner als $n$ sind. Weil
+$$\text{PowerMod[$m,c,n$]} = m^c\mod n$$
+gilt, kann Bob mit Mathematica leicht
+$$\overline{m_1} = m_1^c\mod n = 479529267290958755149$$
+berechnen, und ebenso
+$$\overline{m_2} = m_2^c\mod n = 428935216287316816132,$$
+$$\overline{m_3} = m_3^c\mod n = 135766055009022893446.$$
+Diese drei Zahlen veröffentlicht er in der Zeitung, in der sie Alice alsbald entdeckt. Sie berechnet nun, ebenfalls mit dem Mathematica-Befehl PowerMod sukzessive PowerMod[$m_1,d,n$], 
+PowerMod[$m_2,d,n$], PowerMod[$m_3,d,n$] und findet die drei Zahlen
+$$82836532738384326973,$$
+$$78327169787369838482,$$
+$$69736772.$$
+Indem sie den ASCII Code rückwärts übersetzt, findet sie Bobs Mitteilung
+\begin{center}
+\texttt{
+RSA IST EIN GENIESTREICH
+}
+\end{center}
+und ist enttäuscht: So eine Banalität hätte er nun wirklich nicht zu verschlüsseln brauchen!
+
+\clearpage
+
+\section{Pretty Good Privacy}
+
+PGP
+\marginnote{
+\href{https://www.youtube.com/watch?v=RY6C_Vs4a0Q}{\qrcode{https://www.youtube.com/watch?v=RY6C_Vs4a0Q}}
+}
+benutzt ein sogenanntes Public-Key-Verfahren, in dem es ein eindeutig zugeordnetes Schlüsselpaar gibt. Genutzt wird ein öffentlicher Schlüssel, mit dem jeder Daten für den Empfänger verschlüsseln und dessen Signaturen prüfen kann, und ein privater geheimer Schlüssel, den nur der Empfänger besitzt und der normalerweise durch ein Passwort geschützt ist. Nachrichten an einen Empfänger werden mit dessen öffentlichem Schlüssel verschlüsselt und können dann ausschliesslich mittels seines privaten Schlüssels entschlüsselt werden. Diese Verfahren werden auch asymmetrische Verfahren genannt, da Sender und Empfänger zwei unterschiedliche Schlüssel verwenden. Die erste Version wurde im Jahr 1991 geschrieben und verwendete einen RSA-Al\-go\-rith\-mus zur Verschlüsselung der Daten.
+
+Bei PGP wird aber nicht die ganze Nachricht asymmetrisch verschlüsselt, denn dies wäre viel zu rechenintensiv, und es wäre nicht praktikabel, dieselbe Nachricht an mehrere Empfänger zu schicken. Stattdessen wird die eigentliche Nachricht symmetrisch und nur der verwendete Schlüssel asymmetrisch verschlüsselt (Hybride Verschlüsselung). Dazu wird jedes Mal ein symmetrischer Schlüssel (Session Key) zufällig erzeugt. Dieser symmetrische Schlüssel wird dann z.B. per RSA- oder Elgamal-Kryptosystem mit dem öffentlichen Schlüssel des Empfängers verschlüsselt und der Nachricht hinzugefügt. Dadurch ist es möglich, eine Nachricht für mehrere Empfänger gleichzeitig zu verschlüsseln.
+\hfill(Quelle: Wikipedia, 2020)
+
+Schematisch habe ich dies so wie in Abbildung \ref{fig:pgp} auf Seite \pageref{fig:pgp} illustriert.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.4\textwidth]{pictures/pgpscheme.jpeg}
+    \caption{PGP Schema}
+    \label{fig:pgp}
+\end{figure}
+Bei mir hier im Unterricht simulieren wir das Verfahren mit RSA und verwenden als Hash/Fingerprint die Check-Digit aus der ISBN-10 Nummer aus dem Abschnitt Barcode.
+
+\clearpage
+
+\appendix
+
+\section{Memorandum Bombes}
+\includegraphics[width=0.88\textwidth,page=1]{pictures/memorandumbombes.pdf}
+
+\includegraphics[width=1\textwidth,page=2]{pictures/memorandumbombes.pdf}
+
+\clearpage
+
+>>>>>>> Stashed changes
 \section{Data Encryption Standard}
 \subsection{Binärcodes}
 
@@ -1382,6 +2550,7 @@ Dort kann auch während des Moduls eine Java-Enigma benutzt werden.
 %\caption{A gull}
 \vspace{-0pt}
 \end{wrapfigure}
+<<<<<<< Updated upstream
 Auf einem Rechner werden alle Daten als Bit-Folgen dargestellt (binär codiert). Der Data Encryption Standard (DES) verschlüsselt solche Bit-Folgen.
 
 Eine der gebräuchlichsten Binärcodierungen ist ASCII (American Standard Code for Information Interchange). Im ASCII wird je ein Zeichen durch ein Byte (= 8 Bits) codiert.
@@ -1392,12 +2561,35 @@ Wie viele verschiedene Zeichen k\"onnen mit ASCII codiert werden?
 Abbildung \ref{abb:asciibin} auf Seite \pageref{abb:asciibin} zeigt einen kleinen Auszug aus ASCII (in blau ist jeweils als Dezimalzahl angegeben, welchen Wert die Bit-Folge hat, wenn man sie als Zahl im Dualsystem interpretiert).
 
 \begin{ueb}
+=======
+Eine der gebräuchlichsten Binärcodierungen ist ASCII (American Standard Code for Information Interchange). Im ASCII wird je ein Zeichen durch ein Byte (= 8 Bits) codiert.
+
+\begin{uebenv}{ascii}
+Wie viele verschiedene Zeichen können mit ASCII codiert werden?
+\end{uebenv}
+
+\begin{lsg}{ascii}
+    $2^8=256$
+\end{lsg}
+
+Der Data Encryption Standard (DES) verschlüsselt solche Bit-Folgen. Abbildung \ref{abb:asciibin} auf Seite \pageref{abb:asciibin} zeigt einen kleinen Auszug aus ASCII (in blau ist jeweils als Dezimalzahl angegeben, welchen Wert die Bit-Folge hat, wenn man sie als Zahl im Dualsystem interpretiert).
+
+\begin{uebenv}{feistel}
+>>>>>>> Stashed changes
 Verwandle folgendes Binärwort zurück:
 \begin{quote}
 \texttt{01100110 01100101 01101001 01110011}\\
 \texttt{01110100 01100101 01101100}
 \end{quote}
+<<<<<<< Updated upstream
 \end{ueb}
+=======
+\end{uebenv}
+
+\begin{lsg}{feistel}
+    \texttt{feistel}
+\end{lsg}
+>>>>>>> Stashed changes
 
 \begin{figure}
 \begin{center}
@@ -1406,10 +2598,14 @@ Verwandle folgendes Binärwort zurück:
 \caption{Auszug aus ASCII binär}\label{abb:asciibin}
 \end{figure}
 
+<<<<<<< Updated upstream
 Der Deutsche \textsc{Horst Feistel} wurde am 30. Januar 1915 in Berlin geboren. 1934 emigrierte er nach Amerika. Wegen seiner kryptographischen Forschungen legte ihm die NSA (National Security Agency) immer wieder Steine in den Weg. Bei IBM in New York entwickelte er schliesslich in den siebziger Jahren das Prinzip der Feistel-Netzwerke, Grundlage einiger bedeutender Verschlüsselungsverfahren. 
 \textsc{Feistel} starb 1990.
 
 Zurück zu ASCII stellen wir fest, dass ein so codierter Text sich nun allerdings 8-mal so lang darstellt wie der ursprüngliche (uncodierte) Text. Man kann ihn kürzer darstellen, wenn man für je vier Bits eine Hexadezimalziffer schreibt. Denn vier Bits stellen genau die Zahlen von 0 bis 15 dar:
+=======
+Bei ASCII stellen wir fest, dass ein so codierter Text sich nun allerdings 8-mal so lang darstellt wie der ursprüngliche (uncodierte) Text. Man kann ihn kürzer darstellen, wenn man für je vier Bits eine Hexadezimalziffer schreibt. Denn vier Bits stellen genau die Zahlen von 0 bis 15 dar:
+>>>>>>> Stashed changes
 \begin{align*}
 0000 &= 0\\
 0001 &= 1\\
@@ -1424,17 +2620,27 @@ Man verwendet dafür die Ziffern
 $$0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F.$$
 Um die unübersichtlichen Bit-Folgen eines ASCII-codierten Textes kürzer zu schreiben, stellt man jedes Byte durch zwei Hex-Ziffern dar, eine für die ersten und eine für die letzten vier Bits.
 Abbildung \ref{abb:ascii} auf Seite \pageref{abb:ascii} zeigt noch einmal den Ausschnitt aus ASCII. Für die hexadezimale Schreibweise benätigt man statt 8 nur zwei Ziffern.
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 \begin{figure}
 \begin{center}
 \includegraphics[width=0.5\textwidth]{pictures/asciihex}
 \end{center}
 \caption{Auszug aus ASCII hexadizimal}\label{abb:ascii}
 \end{figure}
+<<<<<<< Updated upstream
 \begin{ueb}
+=======
+
+\begin{uebenv}{lucifer}
+>>>>>>> Stashed changes
 Kannst du folgendes binärcodiertes, mit Hex-Ziffern dargestelltes Wort zurückwandeln? 
 \begin{quote}
 \texttt{6C 75 63 69 66 65 72}
 \end{quote}
+<<<<<<< Updated upstream
 \end{ueb}
 Lucifer ist der Name eines Ver\-schlüs\-se\-lungs\-ver\-fahrens, das \textsc{Horst Feistel} und \textsc{Don Coppersmith} 1973 im \textsc{Thomas J. Watson} Laboratory von IBM in New York entwickelten. Die NSA (National Security Agency) wurde gebeten, die Sicherheit der Lucifer-Verschlüsselung zu beurteilen. Die NSA scheint von der Sicherheit Lucifers beeindruckt gewesen zu sein: Sie bestand darauf, die Zahl der Schlüssel zu begrenzen (das Verfahren also künstlich unsicherer zu machen).
 \begin{quote}
@@ -1443,6 +2649,23 @@ Lucifer ist der Name eines Ver\-schlüs\-se\-lungs\-ver\-fahrens, das \textsc{Ho
 (aus: \textsc{Simon Singh}, Geheime Botschaften)
 \end{quote}
 Diese Version von Lucifer mit beschränkter Schlüsselzahl wurde 1976 unter dem Namen Data Encryption Standard (DES) der offizielle amerikanische Verschlüsselungsstandard.
+=======
+\end{uebenv}
+
+\begin{lsg}{lucifer}
+    \texttt{lucifer}
+\end{lsg}
+
+Lucifer ist der Name eines Ver\-schlüs\-se\-lungs\-ver\-fahrens, das \textsc{Horst Feistel} und \textsc{Don Coppersmith} 1973 im \textsc{Thomas J. Watson} Laboratory von IBM in New York entwickelten.
+
+\begin{quote}
+\enquote{Offenbar glaubte die NSA, eine solche Obergrenze würde im zivilen Gebrauch die Sicherheit gewährleisten, weil keine nichtmilitärische Organisation einen Computer besass, der leistungsfähig genug war, um jeden möglichen Schlüssel in einem vernünftigen Zeitraum zu prüfen. Die NSA selbst jedoch, die über die besten Computer der Welt verfügt, würde gerade noch in der Lage sein, in den verschlüsselten Nachrichtenverkehr einzubrechen.}
+
+(aus: \textsc{Simon Singh}, Geheime Botschaften)
+\end{quote}
+
+Eine Version von Lucifer mit beschränkter Schlüsselzahl wurde 1976 unter dem Namen \definition{Data Encryption Standard} (DES) der offizielle amerikanische Verschlüsselungsstandard.
+>>>>>>> Stashed changes
 
 \begin{longtable}{|c|c|c|c||c|c|c|c|}
 \hline
@@ -1523,6 +2746,10 @@ Dez & Hex & Okt & Zeichen & Dez & Hex & Okt & Zeichen\\
 \end{longtable}
 
 \subsection{Erste DES Schicht}
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 DES ist eine Block-Chiffre. Bei einer Block-Chiffre wird zum Verschlüsseln einer Nachricht diese in mehrere Blöcke gleicher Länge aufgeteilt. Jeder Block wird nach dem gleichen Prinzip verschlüsselt.
 Beim DES ist die Länge der Blöcke 64 Bits = 8 Bytes.
 Für die Sicherheit einer Block-Chiffre ist eine relativ grosse Blocklänge notwendig.
@@ -1534,6 +2761,10 @@ DES arbeitet mit Blöcken von je 64 Bits = 8 Bytes. Um den Überblick nicht zu v
 Die XOR-Operation verknüpft zwei Bits nach folgenden Regeln:
 $$0 \text{XOR} 0 = 0,  0 \text{XOR} 1 = 1,  1 \text{XOR} 0 = 1,  1 \text{XOR} 1 = 0$$
 oder kurz:
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 \begin{table}[h!]
 \centering
 \begin{tabular}{|c|c|c|}
@@ -1545,6 +2776,7 @@ oder kurz:
 \caption{XOR}
 \end{table}	
 Bei zwei Bit-Folgen gleicher Länge wendet man XOR auf jede Position einzeln an. Das Ergebnis ist wieder eine Bit-Folge.
+<<<<<<< Updated upstream
 \begin{ueb}
 Bestimme das Ergebnis der XOR-Operation.
 $$\texttt{01000101}\oplus\texttt{00110011}$$
@@ -1554,6 +2786,23 @@ Eine andere wichtige Manipulation von Bit-Folgen ist, die Positionen der einzeln
 Eine Permutation wird einfach durch Aufzählen der neuen Positionen angegeben:
 Dies ist die Permutation
 $$( \;2\; 3\; 1\; 8\; 5\; 4\; 6\; 7\; )$$
+=======
+
+\begin{uebenv}{binreaddition}
+Bestimme das Ergebnis der XOR-Operation.
+$$\texttt{01000101}\oplus\texttt{00110011}$$
+\end{uebenv}
+
+\begin{lsg}{binreaddition}
+    $01110110$
+\end{lsg}
+
+Eine andere wichtige Manipulation von Bit-Folgen ist, die Positionen der einzelnen Bits zu vertauschen. 
+Eine Permutation wird einfach durch Aufzählen der neuen Positionen angegeben:
+Dies ist die Permutation
+$$( \;2\; 3\; 1\; 8\; 5\; 4\; 6\; 7\; )$$
+
+>>>>>>> Stashed changes
 \begin{bsp}
 Die 8-Bit-Folge
 $$1 0 0 1 1 0 1 0$$
@@ -1561,11 +2810,23 @@ wird abgebildet auf
 $$0 1 0 0 1 1 0 1$$
 \end{bsp}
 
+<<<<<<< Updated upstream
 \begin{ueb}
 Gib die durch $(\;4\; 5\; 2\; 3\; 1\; 6\; 8\; 7\;)$ permutierte Folge von $10010100$ an.
 \end{ueb}
 Das DES verwendet insgesamt drei verschiedene Permutationen, welche mit IP, PI und P bezeichnet werden. IP und PI permutieren 64-Bit-Folgen, P permutiert 32-Bit-Folgen. Ausserdem verwendet DES noch Varianten von Permutationen (E, PC1, PC2), die wir später besprechen werden.
 %In Tabellenform kannst du alle Permutationen  hier nachsehen.
+=======
+\begin{uebenv}{permute}
+Gib die durch $(\;4\; 5\; 2\; 3\; 1\; 6\; 8\; 7\;)$ permutierte Folge von $10010100$ an.
+\end{uebenv}
+
+\begin{lsg}{permute}
+    $10001100$
+\end{lsg}
+
+Der DES verwendet insgesamt drei verschiedene Permutationen, welche mit IP, PI und P bezeichnet werden. IP und PI permutieren 64-Bit-Folgen, P permutiert 32-Bit-Folgen. Ausserdem verwendet DES noch Varianten von Permutationen (E, PC1, PC2), die wir später besprechen werden.
+>>>>>>> Stashed changes
 
 Wie eine Zwiebel ist der DES aus mehreren Schichten aufgebaut. Wir schauen uns die erste Schicht jetzt an (siehe Abbildung \ref{abb:feistel} auf Seite \pageref{abb:feistel}).
 
@@ -1607,6 +2868,7 @@ $$P_2 = ( \;3\; 1\; 2\; 6\; 5\; 7\; 8\; 4\;)$$
 die Inverse von $P_1$, denn $P_2$ nach $P_1$ angewendet lässt alle Positionen unverändert.
 \end{bsp}
 
+<<<<<<< Updated upstream
 \begin{ueb}
 Gib die Inverse der Permutation
 $$(\;1\;2\;6\;7\;4\;5\;8\;3\;)$$
@@ -1615,17 +2877,34 @@ $$(\;1\;2\;6\;7\;4\;5\;8\;3\;)$$
 Im DES ist die End-Permutation PI die Inverse zur Anfangspermutation IP.
 %Das kannst du aus der  Tabelle ablesen. 
 %Du kannst es auch im folgenden Experiment nachvollziehen, welches die mittlere Phase %der DES-Verschlüsselung einfach weglässt.
+=======
+\begin{uebenv}{ersterunde}
+Gib die Inverse der Permutation
+$$(\;1\;2\;6\;7\;4\;5\;8\;3\;)$$
+\end{uebenv}
+
+\begin{lsg}{ersterunde}
+    $P_2=(1\quad2\quad8\quad5\quad6\quad3\quad4\quad7)$
+\end{lsg}
+
+Im DES ist die End-Permutation PI die Inverse zur Anfangspermutation IP.
+>>>>>>> Stashed changes
 
 Und jetzt kümmern wir uns darum, wie man die XOR-Operation rückgängig macht.
 
 Wie rekonstruiert man b1 aus b2 XOR b1 und b2?
 
+<<<<<<< Updated upstream
 \begin{ueb}
+=======
+\begin{uebenv}{inverseofxor}
+>>>>>>> Stashed changes
 Angenommen, man kennt
 $$b_2=11101001$$
 und
 $$b_2\oplus b_1=10111010$$
 Bestimme $b_1$.
+<<<<<<< Updated upstream
 \end{ueb}
 
 Aus der Übung sollten Sie erkennen: $b_1$ ergibt sich aus $b_2$ und $b_2\oplus b_1$ durch eine weitere XOR-Operation:
@@ -1635,6 +2914,21 @@ Sie haben gesehen: Zum Verschlüsseln verwendet DES insgesamt 16 Schlüssel, je 
 
 Nach dieser Vorbereitung sollte Ihnen das Entschlüsseln auch gelingen, wenn mehrere Runden durchgeführt werden. 
 Eventuell hilft Ihnen auch die  formale algorithmische Beschreibung weiter.
+=======
+\end{uebenv}
+
+\begin{lsg}{inverseofxor}
+    $b_1=(b_2\oplus b_2)\oplus b_1=b_2\oplus(b_2\oplus b_1)=01010011$
+\end{lsg}
+
+Aus der Übung erkennen wir: $b_1$ ergibt sich aus $b_2$ und $b_2\oplus b_1$ durch eine weitere XOR-Operation:
+$$b_1=b_2\oplus(b_2\oplus b_1)$$
+
+Zum Verschlüsseln verwendet DES insgesamt 16 Schlüssel, je einen pro Runde.
+
+Nach dieser Vorbereitung sollte das Entschlüsseln auch gelingen, wenn mehrere Runden durchgeführt werden. 
+Eventuell hilft auch die  formale algorithmische Beschreibung weiter.
+>>>>>>> Stashed changes
 
 \begin{itemize}
 \item $r(b)$ bezeichnet die rechte Hälfte einer 64-Bit-Folge $b$,
@@ -1665,7 +2959,12 @@ c := PI(c)  {Endpermutation}
 }
 
 \subsection{F-Modul und S-Module}
+<<<<<<< Updated upstream
 Eine Verschlüsselung ist dann besonders gut, wenn jedes Bit des Schlüssels und jedes Bit des Originaltextes \glqq gleich starken\grqq\ Einfluss auf jedes Bit des Ergebnisses haben. 
+=======
+
+Eine Verschlüsselung ist dann besonders gut, wenn jedes Bit des Schlüssels und jedes Bit des Originaltextes \enquote{gleich starken} Einfluss auf jedes Bit des Ergebnisses haben. 
+>>>>>>> Stashed changes
 Dafür sorgt im DES der 16-fache Einsatz des F-Moduls, die zweite Schicht der DES-Zwiebel.
 
 Wir untersuchen jetzt die Funktionsweise des F-Moduls (siehe Abbildung \ref{abb:fmodul} auf Seite \pageref{abb:fmodul}. Das F-Modul führt folgende Operationen aus:
@@ -1684,6 +2983,10 @@ Wir untersuchen jetzt die Funktionsweise des F-Moduls (siehe Abbildung \ref{abb:
 \end{figure}
 
 Eine erweiternde Permutation bildet Bit-Folgen $b_1$ auf Bit-Folgen $b_2$ grösserer Länge ab. Im Gegensatz zu gewöhnlichen Permutationen werden nun einige Positionen in $b_1$ auf mehrere Positionen in $b_2$ abgebildet. Notation:
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 \begin{bsp}
 Dies ist die erweiternde Permutation 
 $$(\; 1,3\; 2\; 4,6\; 5\; ).$$
@@ -1696,19 +2999,35 @@ $$101010.$$
 Die im F-Modul verwendete erweiternde Permutation E ist in der   Tabelle ebenso angegeben wie die abschliessende Permutation P.
 Die S-Module bilden die dritte Schicht im DES. Sie verarbeiten 6-Bit-Folgen unter Verwendung von Substitutionen.
 
+<<<<<<< Updated upstream
 \begin{cdef}[Substitution]{}
 Eine Substitution bildet jede Bit-Folge einer bestimmten Länge wieder auf eine Bit-Folge derselben Länge ab.
 \end{cdef}
 
 Substitutionen gibt man am Besten in Form einer Tabelle an, wie zum Beispiel in Abbildung \ref{abb:subst} auf Seite \pageref{abb:subst} gezeigt.
+=======
+\begin{cdef}[Substitution]
+Eine Substitution bildet jede Bit-Folge einer bestimmten Länge wieder auf eine Bit-Folge derselben Länge ab.
+\end{cdef}
+
+Substitutionen gibt man am besten in Form einer Tabelle an, wie zum Beispiel in Abbildung \ref{abb:subst} auf Seite \pageref{abb:subst} gezeigt.
+
+>>>>>>> Stashed changes
 \begin{figure}
 \begin{center}
 \includegraphics[width=0.5\textwidth]{pictures/subst}
 \end{center}
 \caption{S-Box}\label{abb:subst}
 \end{figure}
+<<<<<<< Updated upstream
 Die Substitution ist fundamental verschieden von einer Permutation. Sie beruht nämlich nicht darauf, die Bits innerhalb der Bit-Folgen zu vertauschen.
 Und so arbeiten die S-Module im DES:
+=======
+
+Die Substitution ist fundamental verschieden von einer Permutation. Sie beruht nämlich nicht darauf, die Bits innerhalb der Bit-Folgen zu vertauschen.
+Und so arbeiten die S-Module im DES:
+
+>>>>>>> Stashed changes
 \begin{itemize}
 \item Jedes S-Modul verwendet 4 verschiedene Substitutionen auf Bit-Folgen der Länge 4. Jede Zeile der Tabelle repräsentiert eine solche Substitution.
 \item Verarbeitet werden 6-Bit-Folgen
@@ -1717,6 +3036,7 @@ Und so arbeiten die S-Module im DES:
 \end{itemize}
 
 \subsection{DES Schlüssel}
+<<<<<<< Updated upstream
 DES lässt nur Schlüssel mit bestimmter Parität zu.
 \begin{cdef}[Parität]{}
 Ist die Zahl der Einsen in einer Bit-Folge ungerade, so ist die Parität der Bit-Folge 1, andernfalls ist die Parität 0.
@@ -1727,29 +3047,71 @@ Gib die Parität der Bit-Folge $0010011$ an.
 \end{ueb}
 
 Im DES verwendet der Benutzer eine von ihm gewählte (geheime) 64-Bit-Folge als Schlüssel. Diese muss er dem Empfänger, der ja entschlüsseln soll, auch mitteilen. Aus Sicherheitsgründen sollte der Schlüssel selbst wieder verschlüsselt weitergegeben werden. Eine fehlerbehaftete Übertragung des Schlüssels sollte vom Empfänger erkannt werden k\"onnen. Deshalb gibt es im DES die folgende Konvention:
+=======
+
+DES lässt nur Schlüssel mit bestimmter Parität zu.
+\begin{cdef}[Parität]
+Ist die Zahl der Einsen in einer Bit-Folge ungerade, so ist die Parität der Bit-Folge 1, andernfalls ist die Parität 0.
+\end{cdef}
+
+\begin{uebenv}{paritt}
+Gib die Parität der Bit-Folge $0010011$ an.
+\end{uebenv}
+
+\begin{lsg}{paritt}
+    Parität 1
+\end{lsg}
+
+Im DES verwendet der Benutzer eine von ihm gewählte (geheime) 64-Bit-Folge als Schlüssel. Diese muss er dem Empfänger, der ja entschlüsseln soll, auch mitteilen. Aus Sicherheitsgründen sollte der Schlüssel selbst wieder verschlüsselt weitergegeben werden. Eine fehlerbehaftete Übertragung des Schlüssels sollte vom Empfänger erkannt werden können. Deshalb gibt es im DES die folgende Konvention:
+
+>>>>>>> Stashed changes
 \begin{quote}
 Es sind nur Schlüssel zugelassen, bei welchen jedes Byte Parität 1 hat.
 \end{quote}
 
+<<<<<<< Updated upstream
 \begin{ueb}
 Was erreicht man damit?
 \begin{enumeratea}
+=======
+\begin{uebenv}{paritteins}
+Was erreicht man damit? Sind die folgenden Aussagen richtig oder falsch?
+\begin{enumerate}[a)]
+>>>>>>> Stashed changes
 \item Fehler von einem Bit pro Byte werden immer erkannt.
 \item Fehler von einem Bit pro Byte werden nur manchmal erkannt.
 \item Fehler von mehreren Bit pro Byte werden immer erkannt.
 \item Fehler von mehreren Bit pro Byte werden nur manchmal erkannt.
 \item Fehler von einem Bit pro Byte k\"onnen korrigiert werden.
+<<<<<<< Updated upstream
 \end{enumeratea}
 \end{ueb}
 
 DES erzeugt aus dem 64-Bit-Schlüssel sechzehn 48-Bit-Schlüssel unter Verwendung von Linksverschiebungen und verringernden Permutationen.
 \begin{cdef}[Linksverschiebung]{}
+=======
+\end{enumerate}
+\end{uebenv}
+
+\begin{lsg}{paritteins}
+    a) \checkmark und d) \checkmark
+\end{lsg}
+
+DES erzeugt aus dem 64-Bit-Schlüssel sechzehn 48-Bit-Schlüssel unter Verwendung von Linksverschiebungen und verringernden Permutationen.
+
+\begin{cdef}[Linksverschiebung]
+>>>>>>> Stashed changes
 Die Permutation $(\;n\; 1\; 2\; \dots \;n-1\;)$ heisst Linksverschiebung um 1.
 Die Permutation $(\; n-1\; n\; 1\; 2\; \dots \;n-2\;)$ heisst Linksverschiebung um 2.
 \end{cdef}
 
+<<<<<<< Updated upstream
 \begin{cdef}[Verminderte Permutation]{}
 Eine vermindernde Permutation bildet Bit-Folgen $b_1$ auf Bit-Folgen $b_2$ kleinerer Länge ab. Im Gegensatz zu gew\"ohnlichen Permutationen werden nun einige Positionen in $b_1$ ignoriert.
+=======
+\begin{cdef}[Verminderte Permutation]
+Eine vermindernde Permutation bildet Bit-Folgen $b_1$ auf Bit-Folgen $b_2$ kleinerer Länge ab. Im Gegensatz zu gewöhnlichen Permutationen werden nun einige Positionen in $b_1$ ignoriert.
+>>>>>>> Stashed changes
 \end{cdef}
 
 \begin{bsp}
@@ -1763,6 +3125,10 @@ PC1 bildet 64-Bit-Folgen auf 56-Bit-Folgen ab,
 PC2 bildet 56-Bit-Folgen auf 48-Bit-Folgen ab.
 
 \subsection{Sicherheit}
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 Welche Bausteine des DES tragen wie zu dessen Sicherheit bei?
 Diese Frage wollen wir hier in ganz groben Zügen beantworten.
 
@@ -1773,6 +3139,10 @@ DES macht solche Angriffe aufgrund der grossen Blockgrösse von 64 Bit praktisch
 
 Stelle dir vor, eine Nachricht wird in ASCII codiert. Auf die resultierende Bit-Folge wird eine Block-Chiffre mit nur der Länge 8 angewendet. 
 Diese Nachricht kannst du dann so knacken:
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 \begin{enumerate}
 \item Du teilst die verschlüsselte Nachricht in Blöcke zu je 8 Bit ein.
 \item Du erstellst eine Tabelle, in welcher gezählt wird, wie häufig jede der 256 möglichen 8-Bit-Folgen vorkommt.
@@ -1781,9 +3151,15 @@ Diese Nachricht kannst du dann so knacken:
 \item Nach etwas Ausprobieren bist du am Ziel.
 \end{enumerate}
 
+<<<<<<< Updated upstream
 \begin{ueb}
 Warum kann eine Blocklänge von 64 als sicher gegen statistische Angriffe angesehen werden? Welche Aussagen sind richtig?
 \begin{enumeratea}
+=======
+\begin{uebenv}{blocklnge}
+Warum kann eine Blocklänge von 64 als sicher gegen statistische Angriffe angesehen werden? Welche Aussagen sind richtig?
+\begin{enumerate}[a)]
+>>>>>>> Stashed changes
 \item 64 Bit entsprechen 8 ASCII-codierten Zeichen
 \item Es gibt $256^8$ ($\approx 2 \cdot 10^{19}$) verschiedene Bit-Folgen der Länge 64.
 \item Kommt im unverschlüsselten Text ein Wort aus 8 Buchstaben 
@@ -1800,23 +3176,39 @@ Warum kann eine Blocklänge von 64 als sicher gegen statistische Angriffe angese
     habe, so kenne ich die 8 Zeichen des Wortes. Damit finde 
     ich dann alle Stellen im verschlüsselten Text, die diesen 
     8 Zeichen entsprechen.
+<<<<<<< Updated upstream
 \end{enumeratea}
 \end{ueb}
+=======
+\end{enumerate}
+\end{uebenv}
+
+\begin{lsg}{blocklnge}
+    nur c) \ding{55} ist falsch
+\end{lsg}
+>>>>>>> Stashed changes
 
 Manche Chiffren sind leicht zu knacken, wenn man die Verschlüsselungen einiger weniger Blöcke kennt ('lineare' Chiffren). 
 Dass dies im DES nicht möglich ist, wird durch die S-Module und die 16 Runden erreicht. Sie machen DES zu einer hochgradig nichtlinearen Chiffre.
 
+<<<<<<< Updated upstream
 Um das Konzept der linearen Chiffren zu verstehen, braucht man etwas mathematische Vorbildung.
 
 Eine Chiffre für Bit-Folgen der Länge n heisst linear (eigentlich besser: affin), falls sich die verschlüsselte Bit-Folge $b_2$ aus $b_1$ ergibt über eine Vorschrift
 $$b_2 = \B{A} \cdot b_1 + \vec{c}$$
 mit einer festen Matrix $\B{A}$ und einem festen Vektor $\vec{c}$. Die arithmetischen Operationen sind dabei modulo 2 zu verstehen.
+=======
+Eine Chiffre für Bit-Folgen der Länge n heisst linear, falls sich die verschlüsselte Bit-Folge $b_2$ aus $b_1$ über eine Vorschrift
+$$b_2 = \B{A} \cdot b_1 + \vec{c}$$
+mit einer festen Matrix $\B{A}$ und einem festen Vektor $\vec{c}$ ergibt. Die arithmetischen Operationen sind dabei modulo 2 zu verstehen.
+>>>>>>> Stashed changes
 
 Bei einer linearen Chiffre reicht es, wenn man für einen Satz von $n+1$ Bit-Folgen, welche eine Basis enthalten, die jeweiligen verschlüsselten Folgen kennt. Daraus kann man nämlich $\B{A}$ vollständig rekonstruieren.
 
 Zum Abschluss besprechen wir noch den wohl naheliegendsten Angriff.
 
 Man spricht von einem Brute-Force-Angriff auf eine Chiffre, wenn man einfach versucht, alle möglichen Schlüssel durchzuprobieren. 
+<<<<<<< Updated upstream
 Brute Force ist bis jetzt die erfolgreichste Angriffstaktik gegen DES.
 
 \begin{ueb}
@@ -1870,10 +3262,94 @@ Wie lange braucht man dann (in Jahren) für einen Brute-Force-Angriff auf Triple
 \begin{ueb}
 Eine vermindernde Permutation führt zu einem Informationsverlust, da zwei unterschiedliche Bit-Folgen auf das selbe Ergebnis abgebildet werden k\"onnen.
 \begin{enumeratea}
+=======
+\definition{Brute Force} ist bis jetzt die erfolgreichste Angriffstaktik gegen DES.
+
+\begin{uebenv}{desschlssel}
+Wie viele verschiedene Schlüssel gibt es im DES?
+\end{uebenv}
+
+\begin{lsg}{desschlssel}
+    $2^{56}\approx10^{17}$
+\end{lsg}
+
+Nachdem schon PCs heutzutage um die $10^{10}$ Rechenoperationen in der Sekunde leisten k\"onnen, ist es möglich, mit vielen PCs (und einige Tagen Rechenzeit) einen erfolgreichen Brute-Force-Angriff auf den DES zu fahren. Man behilft sich deshalb mit dem Triple DES.
+
+Beim Triple DES wird zur Verschlüsselung der DES 3-fach hintereinander angewendet, und zwar zuerst mit einem ersten Schlüssel, dann mit einem zweiten und schliesslich nochmals mit dem ersten.
+
+\begin{uebenv}{bruteforce}
+Wieviele Möglichkeiten muss man bei einem Brute-Force-Angriff jetzt in Betracht ziehen? 
+Gib die richtige Gr\"ossenordnung an! (Exponent $e$ in $10^e$ )
+\end{uebenv}
+
+\begin{lsg}{bruteforce}
+    ungefähr $10^{34}$
+\end{lsg}
+
+\begin{uebenv}{doubledes}
+Wieso nicht Double-DES?
+\end{uebenv}
+
+\begin{lsg}{doubledes}
+    Double DES ist auf einen Meet in the Middle Angriff ähnlich anfällig wie DES.
+\end{lsg}
+
+Tatsächlich ist Triple DES eine heute häufig verwendete Chiffre.
+
+\begin{uebenv}{tripledes}
+Betrachtet wird die Bit-Folge
+
+$$0101\quad 1010\quad 0110\quad 0001\quad 0110\quad 0011\quad 0110\quad 1001$$
+
+\begin{enumerate}[a)]
+\item Stelle diese Bit-Folge hexadezimal dar. 
+\item Welchem Wort entspricht die Bit-Folge, wenn man je 1 Byte als ASCII-Code auffasst? 
+\item Wende auf die Bit-Folge die  Permutation P des DES an.
+\end{enumerate}
+\end{uebenv}
+
+\begin{lsg}{tripldes}
+    \begin{enumerate}[a)]
+        \item $5A616369$
+        \item zaci
+        \item $0010\,1110\,0000\,0000\,1000\,1101\,1111\,1000$
+    \end{enumerate}
+\end{lsg}
+
+\begin{uebenv}{schwacheschlssel}
+Das DES besitzt vier sog. \enquote{schwache Schlüssel}. Dies sind 64-Bit-Schlüssel, aus denen DES bei der Erzeugung der sechzehn 48-Bit-Schlüssel sechzehn Mal denselben Schlüssel generiert. 
+Finde die vier schwachen Schlüssel. 
+Hinweis: Alle Bytes der schwachen Schlüssel haben Parität 0. Es sind also eigentlich gar keine zugelassenen Schlüssel.
+\end{uebenv}
+
+\begin{lsg}{schwacheschlssel}
+    Für die vier Schlüssel $0101010101010101$, $FEFEFEFEFEFEFEFE$, $1F1F1F1F1F1F1F1F$ und $E0E0E0E0E0E0E0E0$ gilt $E_k(E_k(m))=m$ 
+\end{lsg}
+
+\begin{uebenv}{tripledesfragen}
+Bei Triple DES werden der erste und der dritte Schlüssel identisch gewählt.
+
+\begin{enumerate}[a)] 
+\item Welchen Grund mag diese Einschränkung haben? 
+\item In nicht zu ferner Zukunft schafft man es vielleicht, das für einen Brute-Force Angriff auf das gewöhnliche DES notwendige Ausprobieren aller  Schlüssel in einer Stunde durchzuführen. 
+Wie lange braucht man dann (in Jahren) für einen Brute-Force-Angriff auf Triple DES?
+\end{enumerate}
+\end{uebenv}
+
+\begin{lsg}{tripledesfragen}
+    Die Schlüssel sollen nicht zu lang werden. Für einen Angriff braucht man immerhin noch $\frac{10^{17}}{24\cdot365}\approx11\cdot 10^{18}$
+\end{lsg}
+
+\begin{uebenv}{verminderndepermutation}
+Eine vermindernde Permutation führt zu einem Informationsverlust, da zwei unterschiedliche Bit-Folgen auf das selbe Ergebnis abgebildet werden können.
+
+\begin{enumerate}[a)]
+>>>>>>> Stashed changes
 \item Gib für die vermindernde Permutation $(\;-\; 2\; 4\; 1\; 3\; -\;)$ zwei 6-Bit-Folgen an, die auf dasselbe Ergebnis abgebildet werden. 
 \item Ergibt sich diese Problematik auch bei erweiternden Permutationen? 
 \item Das DES ist nur sinnvoll, wenn verschiedene Bit-Folgen auch verschieden verschlüsselt werden (warum eigentlich?). 
 Erläutere, warum dies tatsächlich so ist, obwohl im DES vermindernde Permutationen eingesetzt werden.
+<<<<<<< Updated upstream
 \end{enumeratea}
 \end{ueb}
 
@@ -1882,6 +3358,20 @@ Die obigen Übungen stammen von der Site
     \href{http://www.matheprisma.uni-wuppertal.de/Module/DES/index.htm}{\texttt{MathePrisma DES}}
 \end{quote}
 Diese führt auch durch ein schönes Lernmodul.
+=======
+\end{enumerate}
+\end{uebenv}
+
+\begin{lsg}{verminderndepermutation}
+    \begin{enumerate}[a)]
+        \item $100010$ zu $0010$ und $100011$ zu $0010$
+        \item \ding{55} nein
+        \item Man könnte bei der Verschlüsselung die Änderung des Ciphertextes beobachten. Man muss nur zwei Klartexte mit fixer Differenz (im Sinne von XOR) wählen und dann entsprechend der Differenz der Chiffrentexte können den Schlüsseln verschiedene Wahrscheinlichkeiten zugeordnet werden. Bei genügend vielen Analysen wird sich ein Schlüssel als der wahrscheinlichste herauskristallisieren.
+    \end{enumerate}
+\end{lsg}
+
+Die obigen Übungen stammen von der Site \href{http://www.matheprisma.uni-wuppertal.de/Module/DES/index.htm}{\texttt{MathePrisma DES}}. Diese führt auch durch ein schönes Lernmodul.
+>>>>>>> Stashed changes
 
 \begin{figure}
 \begin{center}
@@ -1890,6 +3380,7 @@ Diese führt auch durch ein schönes Lernmodul.
 \caption{Programmers \& Users}
 \end{figure}
 
+<<<<<<< Updated upstream
 \clearpage
 
 \section{RSA}
@@ -2255,6 +3746,8 @@ Bei mir hier im Unterricht simulieren wir das Verfahren mit RSA und verwenden al
 
 \includegraphics[width=1\textwidth,page=2]{pictures/memorandumbombes.pdf}
 
+=======
+>>>>>>> Stashed changes
 \cleardoublepage
 \listoffigures
 \listoftables

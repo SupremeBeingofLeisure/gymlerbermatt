@@ -43,7 +43,11 @@ headsepline%
 
 \usepackage{marginnote}
 \usepackage{qrcode}
+<<<<<<< Updated upstream
 \qrset{height=9ex}
+=======
+\qrset{height=7ex}
+>>>>>>> Stashed changes
 
 \usepackage{longtable}
 \usepackage{listings}
@@ -53,7 +57,10 @@ headsepline%
 \newcommand{\faEyeLightGray}{\textcolor{lightgray}{\faEye}} % Custom command for the gray eye icon
 \newcommand{\faReturnGray}{\textcolor{gray}{\faMailReply}} % Custom command for the gray eye icon
 \usepackage{pifont} % weitere Zeichen
+<<<<<<< Updated upstream
 \usepackage{eurosym}
+=======
+>>>>>>> Stashed changes
 
 % package für plots mit dem Befehl axes
 \usepackage{pgfplots}
@@ -89,11 +96,19 @@ headsepline%
 
 % Umgebungen
 \theoremstyle{definition}
+<<<<<<< Updated upstream
 \newtheorem{bsp}{Beispiel}[subsection] % Beispiele
 \newtheorem{bem}{Bemerkung}[subsection] % Bemerkungen
 \theoremstyle{plain}
 \newtheorem{thm}{Theorem} % Theorem [subsection]
 \newtheorem{satz}{Satz} % Satz [subsection]
+=======
+    \newtheorem{bsp}{Beispiel}[subsection] % Beispiele
+    \newtheorem{bem}{Bemerkung}[subsection] % Bemerkungen
+\theoremstyle{plain}
+    \newtheorem{thm}{Theorem} % Theorem [subsection]
+    \newtheorem{satz}{Satz} % Satz [subsection]
+>>>>>>> Stashed changes
 
 % Umgebung lsg mit dynamischer Referenzierung und Label
 \newcommand{\concatueb}[1]{ueb:#1}% Definition für concatueb
@@ -103,6 +118,7 @@ headsepline%
 \renewcommand{\theuebcounter}{\thesection.\arabic{uebcounter}}  % Zählerformat: Abschnitt.Übung
 
 \newenvironment{lsg}[1]{%
+<<<<<<< Updated upstream
 	\par\noindent\textbf{Notizen zu Übung \theuebcounter\label{\concatlsg{#1}}}
 	\hfill\hyperref[\concatueb{#1}]{\faReturnGray}\par % Hyperref-Button zurück zur Übung
 }{%
@@ -115,6 +131,20 @@ headsepline%
 	\label{\concatueb{#1}}\hfill\hyperref[\concatlsg{#1}]{\faEyeLightGray}\par
 }{%
 	\par
+=======
+    \par\noindent\textbf{Notizen zu Übung \ref{\concatueb{#1}}}\label{\concatlsg{#1}}
+    \hfill\hyperref[\concatueb{#1}]{\faReturnGray}\par % Hyperref-Button zurück zur Übung
+}{%
+    \par%
+}
+
+\newenvironment{uebenv}[1]{%
+    \refstepcounter{uebcounter}
+    \par\noindent\textbf{Übung \theuebcounter.}%
+    \label{\concatueb{#1}}\hfill\hyperref[\concatlsg{#1}]{\faEyeLightGray}\par
+}{%
+    \par
+>>>>>>> Stashed changes
 }
 
 % Umgebung für Definitionen
@@ -122,6 +152,7 @@ headsepline%
 \renewcommand{\thedeff}{\arabic{section}.\arabic{deff}}
 
 \newenvironment{cdef}[1][]{%
+<<<<<<< Updated upstream
 	\refstepcounter{deff} 
 	\ifstrempty{#1}%
 	% if condition (without title)
@@ -147,6 +178,33 @@ headsepline%
 		frametitleaboveskip=\dimexpr-\ht\strutbox\relax%
 	} 
 	\begin{mdframed}[]\relax}{%
+=======
+    \refstepcounter{deff} 
+    \ifstrempty{#1}%
+    % if condition (without title)
+    {\mdfsetup{%
+        frametitle={%
+            \tikz[baseline=(current bounding box.east),outer sep=0pt]
+            \node[anchor=east,rectangle,fill=emerald]
+            {\strut Definition~\thedeff};}
+        }%
+    % else condition (with title)
+    }{\mdfsetup{%
+        frametitle={%
+            \tikz[baseline=(current bounding box.east),outer sep=0pt]
+            \node[anchor=east,rectangle,fill=emerald]
+            {\strut Definition~\thedeff:~#1};}%
+        }%
+    }%
+% for both conditions
+    \mdfsetup{%
+        innertopmargin=10pt,linecolor=emerald,%
+        backgroundcolor=whitesmoke,%
+        linewidth=2pt,topline=true,%
+        frametitleaboveskip=\dimexpr-\ht\strutbox\relax%
+    } 
+\begin{mdframed}[]\relax}{%
+>>>>>>> Stashed changes
 \end{mdframed}}
 
 % Farbig umrahmte Umgebung Satz
@@ -154,6 +212,7 @@ headsepline%
 \renewcommand{\thesatz}{\arabic{section}.\arabic{satzz}}
 
 \newenvironment{csatz}[1][]{%
+<<<<<<< Updated upstream
 	\refstepcounter{satzz}
 	
 	\ifstrempty{#1}%
@@ -180,12 +239,44 @@ headsepline%
 		frametitleaboveskip=\dimexpr-\ht\strutbox\relax%
 	}
 	\begin{mdframed}[]\relax}{%
+=======
+    \refstepcounter{satzz}
+ 
+    \ifstrempty{#1}%
+    % if condition (without title)
+    {\mdfsetup{%
+        frametitle={%
+            \tikz[baseline=(current bounding box.east),outer sep=0pt]
+            \node[anchor=east,rectangle,fill=myblizzardblue]
+            {\strut Satz~\thesatz};}
+        }%
+    % else condition (with title)
+    }{\mdfsetup{%
+        frametitle={%
+            \tikz[baseline=(current bounding box.east),outer sep=0pt]
+            \node[anchor=east,rectangle,fill=myblizzardblue]
+            {\strut Satz~\thesatz:~#1};}%
+        }%
+    }%
+% for both conditions
+    \mdfsetup{%
+        innertopmargin=10pt,linecolor=myblizzardblue,%
+        backgroundcolor=whitesmoke,%
+        linewidth=2pt,topline=true,%
+        frametitleaboveskip=\dimexpr-\ht\strutbox\relax%
+    }
+\begin{mdframed}[]\relax}{%
+>>>>>>> Stashed changes
 \end{mdframed}}
 
 % kein Einzug bei neuem Abschnitt
 \setlength{\parindent}{0pt} \setlength{\parskip}{1em}
 \pagestyle{headings} % gemachte Einstellungen anwenden
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 \subject{\includegraphics[width=0.618\textwidth]{pictures/rope}}
 \title{Lineare Funktionen und Optimierung}
 \subtitle{\dots und der Differenzenquotient}
@@ -1460,7 +1551,11 @@ headsepline%
 \subsection{Notizen zu den Übungen}
 
 \begin{lsg}{weidebetrieb}
+<<<<<<< Updated upstream
 			Die Zielfunktion ist $z(x)=400x+50y\Leftrightarrow y_z=-8x+\frac{z}{50}$ und die Bedingungen
+=======
+			Die Zielfunktion ist $z(x,y)=400x+50y\Leftrightarrow y_z=-8x+\frac{z}{50}$ und die Bedingungen
+>>>>>>> Stashed changes
 			\begin{align}
 				0.25x+0.1y\leq50 &\Leftrightarrow y_1\leq -2.5x+500\\
 				100x+10y\leq8000 &\Leftrightarrow y_2\leq -10x+800
@@ -1470,8 +1565,13 @@ headsepline%
 			\begin{center}
 				\begin{tikzpicture}[xscale=0.1,yscale=0.012]
 					% Achsen zeichnen
+<<<<<<< Updated upstream
 					\draw[-{Latex[length=8pt, width=8pt]}] (-10,0) -- (80,0) node[right] {$x$};
 					\draw[-{Latex[length=8pt, width=8pt]}] (0,-50) -- (0,500) node[above] {$y$};
+=======
+					\draw[-{Latex[length=8pt, width=8pt]}] (-7,0) -- (80,0) node[right] {$x$};
+					\draw[-{Latex[length=8pt, width=8pt]}] (0,-50) -- (0,520) node[above] {$y$};
+>>>>>>> Stashed changes
 					
 					% Skala auf der x-Achse
 					\foreach \x in {10,20,...,70} \draw (\x,3pt) -- (\x,-3pt) node[below] {\x};
@@ -1480,7 +1580,11 @@ headsepline%
 					\foreach \y in {0,100,...,500} \draw (3pt,\y) -- (-3pt,\y) node[left] {\y};
 					
 					% Gitter zeichnen
+<<<<<<< Updated upstream
 					\draw[very thin, lightgray] (-5,-10) grid[xstep=10, ystep=100] (75,550);
+=======
+					\draw[very thin, lightgray] (-5,-8) grid[xstep=10, ystep=100] (75,530);
+>>>>>>> Stashed changes
 					
 					% Gerade y1 = -2.5x + 500
 					\draw[domain=-5:75, smooth, variable=\x, blue] plot ({\x}, {-2.5*\x + 500}) node[right] {$y_1 = -2.5x + 500$};
@@ -1495,7 +1599,11 @@ headsepline%
 					\draw[domain=-20:535, smooth, variable=\y, orange] plot ({70}, {\y}) node[above] {$x = 70$};
 					
 					% Gerade yz = -8x + 300
+<<<<<<< Updated upstream
 					\draw[domain=-3:55, smooth, variable=\x, purple] plot ({\x}, {-8*\x + 350}) node[right] {$y_z = -8x + 300$};
+=======
+					\draw[domain=-3:55, smooth, variable=\x, purple] plot ({\x}, {-8*\x + 350}) node[right] {$y_z = -8x + Z$};
+>>>>>>> Stashed changes
 				\end{tikzpicture}
 			\end{center}
 			

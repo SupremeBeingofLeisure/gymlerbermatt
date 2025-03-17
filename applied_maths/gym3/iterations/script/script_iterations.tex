@@ -1,5 +1,6 @@
 \documentclass[%
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 11pt,%
 %oneside,%
 twoside,%
@@ -29,6 +30,8 @@ headsepline%
 \usepackage{mathrsfs}
 \usetikzlibrary{arrows}
 =======
+=======
+>>>>>>> Stashed changes
 %draft,
 11pt,%
 twoside,%
@@ -58,8 +61,18 @@ headsepline%
 \usetikzlibrary{arrows.meta}
 \usetikzlibrary{patterns}
 \usetikzlibrary{positioning}
+<<<<<<< Updated upstream
 \usetikzlibrary{shadows}
 \usetikzlibrary{quotes, angles}
+>>>>>>> Stashed changes
+=======
+\usetikzlibrary{shadows, shapes}
+\usetikzlibrary{quotes, angles}
+\usetikzlibrary{decorations.pathmorphing}
+\tikzset{
+  entity/.style={rectangle, draw, minimum width=2cm, minimum height=1cm},
+  link/.style={->, thick}
+}
 >>>>>>> Stashed changes
 \usepackage{colortbl}
 \usepackage{hhline}
@@ -70,6 +83,7 @@ headsepline%
 \usepackage{blindtext}
 \usepackage{pdfpages}
 \usepackage{hyperref}
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 \usepackage{tikz-er2}
 \usepackage{framed}
@@ -87,11 +101,17 @@ headsepline%
 \usepackage{wrapfig}
 \usepackage{svg}
 =======
+=======
+>>>>>>> Stashed changes
 \usepackage{framed}
 
 \usepackage{marginnote}
 \usepackage{qrcode}
+<<<<<<< Updated upstream
 \qrset{height=9ex}
+=======
+\qrset{height=7ex}
+>>>>>>> Stashed changes
 
 \usepackage{longtable}
 \usepackage{listings}
@@ -105,6 +125,9 @@ headsepline%
 % package für plots mit dem Befehl axes
 \usepackage{pgfplots}
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
 
@@ -118,6 +141,7 @@ headsepline%
 % colors
 \definecolor{lightyellow}{rgb}{1,1,0.8}
 \definecolor{Gray}{gray}{0.9}
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 \definecolor{darkblue}{rgb}{0,0,0.55}
 \definecolor{firebrick}{rgb}{0.7,0.13,0.13}
@@ -133,6 +157,8 @@ headsepline%
 
 \newenvironment{csatz}[2][]{%
 =======
+=======
+>>>>>>> Stashed changes
 \definecolor{lightgray}{rgb}{0.7, 0.7, 0.7}
 \definecolor{darkblue}{rgb}{0,0,0.55}
 \definecolor{firebrick}{rgb}{0.7,0.13,0.13}
@@ -181,7 +207,12 @@ headsepline%
 }
 
 % Umgebung für Definitionen
+<<<<<<< Updated upstream
 \newcounter{deff}[section]\setcounter{deff}{0}
+=======
+\newcounter{deff}[section]
+\setcounter{deff}{0}
+>>>>>>> Stashed changes
 \renewcommand{\thedeff}{\arabic{section}.\arabic{deff}}
 
 \newenvironment{cdef}[1][]{%
@@ -217,6 +248,9 @@ headsepline%
 \renewcommand{\thesatz}{\arabic{section}.\arabic{satzz}}
 
 \newenvironment{csatz}[1][]{%
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     \refstepcounter{satzz}
  
@@ -243,6 +277,7 @@ headsepline%
         linewidth=2pt,topline=true,%
         frametitleaboveskip=\dimexpr-\ht\strutbox\relax%
     }
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
  
 \begin{mdframed}[]\relax}{%
@@ -415,12 +450,17 @@ headsepline%
 
 \setlength{\parindent}{0pt}
 =======
+=======
+>>>>>>> Stashed changes
 \begin{mdframed}[]\relax}{%
 \end{mdframed}}
 
 % kein Einzug bei neuem Abschnitt
 \setlength{\parindent}{0pt} \setlength{\parskip}{1em}
 \pagestyle{headings} % gemachte Einstellungen anwenden
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
 \subject{\includegraphics[width=0.618\textwidth]{pictures/apfelmaennchen.jpg}}
@@ -616,7 +656,11 @@ $\frac{\sqrt{2}}{2}\not\in\mathbb{Q}$ wird nie zyklisch.
 \subsection{Grundbegriffe}
 
 Wir betrachten eine reellwertige Funktion
+<<<<<<< Updated upstream
 $$f:\mR\longrightarrow\mR,$$
+=======
+$$f:\mathbb{R}\longrightarrow\mathbb{R},$$
+>>>>>>> Stashed changes
 beispielsweise eine Proportionalität
 $$f(x)=\lambda x,$$
 und wählen einen Startwert $x_0$. Nun erzeugen wir rekursiv eine Folge mit
@@ -639,6 +683,7 @@ Vorgang nennen wir \definition{Iteration} von $f$ mit Startwert $x_0$. Iterieren
 \end{enumerate}
 \begin{cdef}[Orbit]
 Die Menge
+<<<<<<< Updated upstream
 $$\set{x_0,x_1,x_2,\dots}$$
 wird als Orbit oder Bahn von $x_0$ bezeichnet.
 \end{cdef}
@@ -649,14 +694,33 @@ Wir betrachten einige Beispiele.
 \item $$f(x)=3x,\q x_0=1\dots$$ Die Folge divergiert.
 \item $$f(x)=x,\q x_0\dots$$ Hier haben wir lauter Fixpunkte.
 \item $$f(x)=x+c,\q x_0\dots$$ Wir haben $f^n(x)=x_0+n\cdot c$, was im Allgemeinen divergiert.
+=======
+$$\{x_0,x_1,x_2,\dots\}$$
+wird als Orbit oder Bahn von $x_0$ bezeichnet.
+\end{cdef}
+\begin{bsp}
+Wir betrachten einige Beispiele.
+\begin{itemize}
+\item $$f(x)=\frac{x}{2},\quad x_0=3\dots$$ Die Folge ist konvergent gegen $0$.
+\item $$f(x)=3x,\quad x_0=1\dots$$ Die Folge divergiert.
+\item $$f(x)=x,\quad x_0\dots$$ Hier haben wir lauter Fixpunkte.
+\item $$f(x)=x+c,\quad x_0\dots$$ Wir haben $f^n(x)=x_0+n\cdot c$, was im Allgemeinen divergiert.
+>>>>>>> Stashed changes
 \item $$f(x)=x^2$$ Dieses Beispiel ist interessant, da das Verhalten wesentlich vom gewählten Startwert $x_0$ abhängt.
 \begin{itemize}
 \item Ist $-1<x_0<1$, dann erhalten wir bei Iteration eine monoton fallende Zahlenfolge mit
 $$\lim_{n\to\infty}x_n=0.$$ Ferner fällt auf, dass ein negativer Startwert nach der ersten Iteration \glqq ins Positive hüpft\grqq.
+<<<<<<< Updated upstream
 \item Gilt $\abs{x_0}>1$, so divergiert die entsprechende Folge.
 \end{itemize}
 \end{itemize}
 \end{bsps}
+=======
+\item Gilt $|x_0|>1$, so divergiert die entsprechende Folge.
+\end{itemize}
+\end{itemize}
+\end{bsp}
+>>>>>>> Stashed changes
 
 \begin{uebenv}{repellerundattraktor}
 Betrachte für
@@ -702,17 +766,28 @@ Ein Punkt $x^*$ heisst Fixpunkt (der Periode $1$) von $f$, wenn $f(x^*)=x^*$ gil
 \end{cdef}
 
 \begin{bem}
+<<<<<<< Updated upstream
 Ist $x^*$ ein Fixpunkt der Periode $1$ von $f$, dann gilt natürlich auch $f^n(x^*)=x^*$ für jedes $n\in\mN$. Ferner: Seien $n\in\mathbb{N}$ und $x^*$ ein Fixpunkt der Periode $k\in\mathbb{N}$ mit $n\mod{k}\equiv0$, dann ist $x^*$ auch ein Fixpunkt der Periode $n$.
 \end{bem}
 
 \begin{bsps}
+=======
+Ist $x^*$ ein Fixpunkt der Periode $1$ von $f$, dann gilt natürlich auch $f^n(x^*)=x^*$ für jedes $n\in\mathbb{N}$. Ferner: Seien $n\in\mathbb{N}$ und $x^*$ ein Fixpunkt der Periode $k\in\mathbb{N}$ mit $n\mod{k}\equiv0$, dann ist $x^*$ auch ein Fixpunkt der Periode $n$.
+\end{bem}
+
+\begin{bsp}
+>>>>>>> Stashed changes
 
 \begin{itemize}
 \item $f(x)=\sqrt{x}$ hat die Fixpunkte $0$ und $1$.
 \item $g(x)=2x+1$ hat den Fixpunkt $x=-1$.
 \item $h(x)=x-2$ hat keinen Fixpunkt.
 \end{itemize}
+<<<<<<< Updated upstream
 \end{bsps}
+=======
+\end{bsp}
+>>>>>>> Stashed changes
 \begin{cdef}[Fixpunkt der Periode k]
 Ein Punkt $x^*$ heisst Fixpunkt der Periode $k$ von $f$, wenn
 $$f^k(x^*)=x^*$$
@@ -829,22 +904,35 @@ Betrachte die Startwerte $x=2$ bzw. $x=0.5$ und zeige allgemein, dass $1$ ein Re
 
 
 \begin{csatz}[Attraktorbedingung]
+<<<<<<< Updated upstream
 Gilt für einen Fixpunkt $x$, dass $\abs{f'(x)}>1$, dann ist $x$ ein Repellor. Ist $\abs{f'(x)}<1$, so handelt es sich um einen Attraktor.
+=======
+Gilt für einen Fixpunkt $x$, dass $|f'(x)>1|$, dann ist $x$ ein Repellor. Ist $|f'(x)|<1$, so handelt es sich um einen Attraktor.
+>>>>>>> Stashed changes
 \end{csatz}
 
 \begin{proof}[Beweis]
 Übung, falls man zum Beispiel Lipschitz-Stetigkeit und den Mittelwertsatz googlen möchte.
 
+<<<<<<< Updated upstream
 Sei $f$ Lipschitz-stetig. Der Abstand zwischen $x_{n+1}$ und $x^*$ ist $\abs{x_{n+1}-x^*}=\abs{f(x_n)-f(x^*)}\leq L\abs{x_n-x^*}$. Nach Iteration hat man $\abs{f(f(x_n))-x^*}\leq L\abs{f(x_{n+1})-x^*}\leq L^2\abs{x_n-x^*}$. Also ist $\abs{x_k-x^*}\leq L^k\abs{x_0-x^*}$. Ist $\abs{L}<1$ dann gilt $L^k\to0$ für $k\to\infty$. Ist $f$ nicht Lipschitz-stetig, so kann man den Mittelwertsatz anwenden, wenn $f$ differenzierbar und stetig ist. Es ist $x_{k+1}-x^*=f(x_k)-f(x^*)=f'(\zeta)\cdot(x_k-x^*)$ mit $\zeta\in(x_k,x^*)$. Also betragsmässig $\abs{f(x_k)-x^*} = \abs{f'(\zeta)}\cdot\abs{x_k-x^*}$, was für $\abs{f'(\zeta)}<1$ den Abstand pro Iterationsschritt verkürzt.
+=======
+Sei $f$ Lipschitz-stetig. Der Abstand zwischen $x_{n+1}$ und $x^*$ ist $|x_{n+1}-x^*|=|f(x_n)-f(x^*)|\leq L|x_n-x^*|$. Nach Iteration hat man $|f(f(x_n))-x^*|\leq L|f(x_{n+1})-x^*|\leq L^2|x_n-x^*|$. Also ist $|x_k-x^*|\leq L^k|x_0-x^*|$. Ist $|L|<1$ dann gilt $L^k\to0$ für $k\to\infty$. Ist $f$ nicht Lipschitz-stetig, so kann man den Mittelwertsatz anwenden, wenn $f$ differenzierbar und stetig ist. Es ist $x_{k+1}-x^*=f(x_k)-f(x^*)=f'(\zeta)\cdot(x_k-x^*)$ mit $\zeta\in(x_k,x^*)$. Also betragsmässig $|f(x_k)-x^*| = |f'(\zeta)|\cdot|x_k-x^*|$, was für $|f'(\zeta)|<1$ den Abstand pro Iterationsschritt verkürzt.
+>>>>>>> Stashed changes
 \end{proof}
 
 \begin{uebenv}{suchenbisgefunden}
 Gib jeweils ein Beispiel einer Funktion mit
+<<<<<<< Updated upstream
 \begin{enumeratea}
+=======
+\begin{enumerate}[a)]
+>>>>>>> Stashed changes
 \item einem Attraktor bei $x=3$.
 \item einem Repellor bei $x=-2$.
 \item zwei Fixpunkten, bei $x=1$ bzw. $x=4$.
 \item einem Fixpunkt der Periode $2$ in $x=7$, für den $f(7)=19$ ist.
+<<<<<<< Updated upstream
 \end{enumeratea}
 \end{uebenv}
 
@@ -861,22 +949,42 @@ Welche Aussagen kannst du über die Fixpunkte folgender Funktionen machen? Besti
 
 
 
+=======
+\end{enumerate}
+\end{uebenv}
+
+\begin{uebenv}{einzugsgebiet}
+Welche Aussagen kannst du über die Fixpunkte folgender Funktionen machen? Bestimme gegebenenfalls das \glqq Einzugsgebiet\grqq, falls es sich um einen Attraktor handelt.
+\begin{enumerate}[a)]
+\item $\cos(x)$
+\item $2\sin(x)$
+\item $0.5x^2+0.5$
+\end{enumerate}
+\end{uebenv}
+
+>>>>>>> Stashed changes
 \begin{uebenv}{xquadrat}
 Untersuche die Funktion
 $$f(x)=-x^2+1$$
 auf Fixpunkte.
 \end{uebenv}
 
+<<<<<<< Updated upstream
 
 
+=======
+>>>>>>> Stashed changes
 \begin{uebenv}{parabel}
 Untersuche die Standardparabel
 $$f(x)=x^2$$
 auf Fixpunkte.
 \end{uebenv}
 
+<<<<<<< Updated upstream
 
 
+=======
+>>>>>>> Stashed changes
 \begin{bsp}
 Wie
 \marginnote{
@@ -922,7 +1030,10 @@ $$x=\frac{-1\pm\sqrt{5}}{2}.$$
 \begin{figure}
 \centering
 \begin{tikzpicture}[line cap=round,line join=round,x=1.0cm,y=1.0cm]
+<<<<<<< Updated upstream
 \definecolor{seagreen}{RGB}{46, 139, 87}
+=======
+>>>>>>> Stashed changes
 \begin{axis}[
     axis lines=middle,
     grid=major,
@@ -999,12 +1110,21 @@ x^2-2 &= x\\
 x^2-x-2 &= 0\\
 x_{1,2} &= \frac{1\pm3}{2}
 \end{align*}
+<<<<<<< Updated upstream
 also sind die Fixpunkte $2$ und $-1$. Ferner ist ein Fixpunkt $x_p$ anziehend, falls $\abs{f'(x_p)}<1$. Hier ist $f'(x)=2x$ und damit ist keiner der beiden anziehend.
 \end{lsg}
 \begin{lsg}{kriterium}
 Die Attraktorbedingung für einen Fixpunkt $x^*$ einer Funktion $f$ ist $\abs{f'(x^*)}<1$.
 \begin{proof}
 Sei $f$ Lipschitz-stetig. Der Abstand zwischen $x_{n+1}$ und $x^*$ ist $\abs{x_{n+1}-x^*}=\abs{f(x_n)-f(x^*)}\leq L\abs{x_n-x^*}$. Nach Iteration hat man $\abs{f(f(x_n))-x^*}\leq L\abs{f(x_{n+1})-x^*}\leq L^2\abs{x_n-x^*}$. Also ist $\abs{x_k-x^*}\leq L^k\abs{x_0-x^*}$. Ist $\abs{L}<1$ dann gilt $L^k\to0$ für $k\to\infty$. Ist $f$ nicht Lipschitz-stetig, so kann man den Mittelwertsatz anwenden, wenn $f$ differenzierbar und stetig ist. Es ist $x_{k+1}-x^*=f(x_k)-f(x^*)=f'(\zeta)\cdot(x_k-x^*)$ mit $\zeta\in(x_k,x^*)$. Also betragsmässig $\abs{f(x_k)-x^*} = \abs{f'(\zeta)}\cdot\abs{x_k-x^*}$, was für $\abs{f'(\zeta)}<1$ den Abstand pro Iterationsschritt verkürzt.
+=======
+also sind die Fixpunkte $2$ und $-1$. Ferner ist ein Fixpunkt $x_p$ anziehend, falls $|f'(x_p)|<1$. Hier ist $f'(x)=2x$ und damit ist keiner der beiden anziehend.
+\end{lsg}
+\begin{lsg}{kriterium}
+Die Attraktorbedingung für einen Fixpunkt $x^*$ einer Funktion $f$ ist $|f'(x^*)|<1$.
+\begin{proof}
+Sei $f$ Lipschitz-stetig. Der Abstand zwischen $x_{n+1}$ und $x^*$ ist $|x_{n+1}-x^*|=|f(x_n)-f(x^*)|\leq L|x_n-x^*|$. Nach Iteration hat man $|f(f(x_n))-x^*|\leq L|f(x_{n+1})-x^*|\leq L^2|x_n-x^*|$. Also ist $|x_k-x^*|\leq L^k|x_0-x^*|$. Ist $|L|<1$ dann gilt $L^k\to0$ für $k\to\infty$. Ist $f$ nicht Lipschitz-stetig, so kann man den Mittelwertsatz anwenden, wenn $f$ differenzierbar und stetig ist. Es ist $x_{k+1}-x^*=f(x_k)-f(x^*)=f'(\zeta)\cdot(x_k-x^*)$ mit $\zeta\in(x_k,x^*)$. Also betragsmässig $|f(x_k)-x^*| = |f'(\zeta)|\cdot|x_k-x^*|$, was für $|f'(\zeta)|<1$ den Abstand pro Iterationsschritt verkürzt.
+>>>>>>> Stashed changes
 \end{proof}
 \end{lsg}
 \begin{lsg}	{fixpunkte2}
@@ -1043,7 +1163,11 @@ Orbits: $\{2,4,16,256,\dots\}$ und $\{0.5,0.25.0.125,\dots\}$. Nun betrachten wi
 \end{lsg}
 \begin{lsg}{suchenbisgefunden}	
 \begin{enumerate}[a)]
+<<<<<<< Updated upstream
 \item Ich nehme eine Funktion mit Ableitung an der Stelle $3$ betragsmässig kleiner $1$. Zum Beispiel $f(x)=\frac{2}{3}x+1$, denn $f'(x)=\frac{2}{3}$. $f(3)=3$ ist Fixpunkt und $\abs{f'(3)}=\frac{2}{3}$.
+=======
+\item Ich nehme eine Funktion mit Ableitung an der Stelle $3$ betragsmässig kleiner $1$. Zum Beispiel $f(x)=\frac{2}{3}x+1$, denn $f'(x)=\frac{2}{3}$. $f(3)=3$ ist Fixpunkt und $|f'(3)|=\frac{2}{3}$.
+>>>>>>> Stashed changes
 \item Wiederum bietet sich eine lineare Funktion mit Steigung grösser $1$ an: $g(x)=2x+2$ erfüllt die Anforderungen.
 \item Die beiden Werte sind Lösung der quadratischen Gleichung $0=(x-1)(x-4)=x^2-5x+4$ die wir als Fixpunktbedingung umformulieren: $x^2-4x+4=x$. Also erfüllt $h(x)=(x-2)^2$ die Bedingung.
 \item Aufgrund der vorhergehenden Ausführungen wissen wir, dass für jede lineare Funktion mit Steigung $-1$ jedes $x\in\mathbb{R}$ ein $2$-Zyklus ist. Für $k(x)=-x+26$ ist auch $k(7)=19$ erfüllt.
@@ -1059,7 +1183,11 @@ Orbits: $\{2,4,16,256,\dots\}$ und $\{0.5,0.25.0.125,\dots\}$. Nun betrachten wi
             (x-1)^2 &= 0\\
             x &= 1
         \end{align*}
+<<<<<<< Updated upstream
         Die Bedingung liefert $\abs{x}=1$ und damit ist $1$ sicher kein Attraktor.
+=======
+        Die Bedingung liefert $|x|=1$ und damit ist $1$ sicher kein Attraktor.
+>>>>>>> Stashed changes
     \end{enumerate}
 \end{lsg}
 \begin{lsg}{xquadrat}
@@ -1140,14 +1268,24 @@ Naturschützer beobachten die Tiere und ermitteln, dass die Anzahl der Tiere im 
     Welchen Einfluss haben der Anfangsbestand und der Wachstumsfaktor im ersten Beobachtungsjahr auf die Entwicklung der Walpopulation? Wann ist der Zuwachs am grössten?
 \end{uebenv}
 
+<<<<<<< Updated upstream
 \begin{uebenv}{fanquote}
+=======
+\begin{uebenv}{fangquote}
+>>>>>>> Stashed changes
     Das bisherige Modell berücksichtigt noch nicht den Walfang, der jedoch durch ein Walfangabkommen reglementiert werden soll.
 
     Vorschlag 1 für ein Walfangabkommen gestattet, einen festen Prozentsatz des gegenwärtigen Bestandes der Walpopulation pro Jahr abzufischen.
 
+<<<<<<< Updated upstream
     Erstelle ein iteratives Wachstumsmodell, das eine Abfangquote von $q=1\%$ einbezieht. Erstelle eine Tabelle und einen Graphen für die Entwicklung der Walpopulation für 100 Jahre unter Einfluss der Abfangquote $\alpha=1\%$.
 
     Experimentiere mit der Abfangquote $\alpha$. Für welche Werte von $\alpha$ wächst die Walpopulation weiterhin, bei welchem Wert bleibt sie konstant und wann nimmt die Walpopulation ab und stirbt allmählich aus?
+=======
+    Erstelle ein iteratives Wachstumsmodell, das eine Abfangquote von $\alpha=1\%$ einbezieht. Erstelle eine Tabelle und einen Graphen für die Entwicklung der Walpopulation für 100 Jahre unter Einfluss der Abfangquote $\alpha=1\%$.
+
+Experimentiere mit der Abfangquote $\alpha$. Für welche Werte von $\alpha$ wächst die Walpopulation weiterhin, bei welchem Wert bleibt sie konstant und wann nimmt die Walpopulation ab und stirbt allmählich aus?
+>>>>>>> Stashed changes
 \end{uebenv}
 
 \begin{uebenv}{fangabsolut}
@@ -1227,7 +1365,11 @@ plt.show()
         p &= \frac{0.08}{G-W_0}\approx4.2553\cdot10^{-6}
     \end{align*}
 
+<<<<<<< Updated upstream
     Der Plot sieht damit singemäss so aus:\\
+=======
+Der Plot sieht damit singemäss so aus:\\
+>>>>>>> Stashed changes
 
 \begin{center}
 \begin{tikzpicture}[xscale=0.12, yscale=0.3]
@@ -1343,6 +1485,7 @@ Betrachten wir ein einzelnes Kind, das noch nicht mit Masern infiziert ist. Solc
 
 \begin{center}
 \scalebox{1}{
+<<<<<<< Updated upstream
 {\begin{tikzpicture}[node distance=1.5cm, every edge/.style={link}]
 
   \node[entity,top color=white, bottom color=green!30, 
@@ -1354,6 +1497,22 @@ Betrachten wir ein einzelnes Kind, das noch nicht mit Masern infiziert ist. Solc
   \node[entity] (m) [right =of c] {Immune} edge [<-] (c);
 
  \end{tikzpicture}}
+=======
+\begin{tikzpicture}[node distance=1.5cm, every edge/.style={link}]
+
+  \node[entity,top color=white, bottom color=seagreen!30, 
+                            draw=seagreen!50!black!100, drop shadow] (p) {Susceptible};
+
+  \node[entity,top color=white, bottom color=firebrick!30, 
+                            draw=firebrick!50!black!100, drop shadow] (c) [right =of p] {Infected}; %edge [<-] (p);
+                            \draw[->] (p) -- (c);
+  
+  \node[entity,top color=white, bottom color=darkblue!30, 
+                            draw=darkblue!50!black!100, drop shadow] (m) [right =of c] {Immune} ;
+                            \draw[->] (c) -- (m);
+
+ \end{tikzpicture}
+>>>>>>> Stashed changes
 }
 \end{center}
 
@@ -1407,7 +1566,15 @@ Wir sind mit den Daten unserer Stadt gestartet, in der es pro Woche 120 Geburten
 Simuliere das obige Szenario mit beiden Geburtenraten für 1000 Zeitenheiten. Vergleiche die Graphiken einerseits mit dem Artikel am Anfang und kommentiere andererseits den Einfluss der Geburtenrate auf den zeitlichen Verlauf der Krankheit.
 \end{uebenv}
 
+<<<<<<< Updated upstream
 Wir erkennen in einer Simulation dieselbe Struktur, die sich auch schon in den realen Daten im Zeitungsartikel gezeigt haben. Auf Zeiten des fast völligen Verschwindens von Masern folgen in regelmässigen Abständen epidemieartige Ausbrüche der Krankheit. Man stellt ebenfalls fest, dass der zunächst harmlos erscheinende Parameter $B$ in der Simulation als sehr einflussreiche Grösse! Die Massernepidemien in der Vergleichsstadt aus dem Entwicklungsland sind unvergleichbar heftiger als in der Stadt, mit der wir unsere Überlegungen begonnen haben. Das gilt nicht --- wie eine stereotype Wahrnehmung von Entwicklungsländern vielleicht zunächst vermuten lässt --- aufgrund mangelnder Hygiene oder eines desolaten Gesundheitssystems, sondern lediglich aufgrund der höheren Geburtenrate!
+=======
+\begin{uebenv}{masernfp}
+Gibt es einen Fixpunkt des Masernmodells?
+\end{uebenv}
+
+Wir erkennen in einer Simulation dieselbe Struktur, die sich auch schon in den realen Daten im Zeitungsartikel gezeigt haben. Auf Zeiten des fast völligen Verschwindens von Masern folgen in regelmässigen Abständen epidemieartige Ausbrüche der Krankheit. Man stellt ebenfalls fest, dass der zunächst harmlos erscheinende Parameter $B$ sich in der Simulation als sehr einflussreiche Grösse zeigt. Die Massernepidemien in der Vergleichsstadt aus dem Entwicklungsland sind unvergleichbar heftiger als in der Stadt, mit der wir unsere Überlegungen begonnen haben. Dies gilt nach diesem Model nicht --- wie eine stereotype Wahrnehmung von Entwicklungsländern vielleicht zunächst vermuten lässt --- beispielsweise aufgrund mangelnder Hygiene oder eines schlechteren Gesundheitssystems, sondern lediglich wegen der höheren Geburtenrate.
+>>>>>>> Stashed changes
 
 \clearpage
 
@@ -1461,6 +1628,18 @@ Nun kann man für $120$ einen Parameter $B$ setzen und die Simulation für versc
     Die, für mich erstaunliche, Erkenntnis ist, dass die Peakhöhe allein auf die Änderung der Geburtenrate reagiert.
 \end{lsg}
 
+<<<<<<< Updated upstream
+=======
+\begin{lsg}{masernfp}
+	Wir betrachten die beiden ersten Gleichungen unter der Fixpunktbedingung und erhalten
+	\begin{align}
+		I &= fEI\tag{M1}\\
+		E &= E-fEI+B\tag{M2}.
+	\end{align}
+	OEdA $I\neq0$, also nach (M1) $1=fE \Leftrightarrow E=\frac{1}{f}$. Aus (M2) folgt $fEI=B \Leftrightarrow I=B$. Wir haben also den Fixpunkt $(E|I)=(\frac{1}{f}|B)$ gefunden.
+\end{lsg}
+
+>>>>>>> Stashed changes
 \clearpage
 
 \section{Populationen in Wechselwirkung}
@@ -1496,7 +1675,11 @@ x_{n+1} &= 2x_n+(ab-1)x_{n-1}\\
 y_{n+1} &= 2y_n+(ab-1)y_{n-1}
 \end{align*}
 
+<<<<<<< Updated upstream
 Dies aber sind zwei Lucas-Gleichungen, die von $x_n = q^n$ mit $q_{1,2} = 1\pm\sqrt{ab}$ gelöst werden. Mittels $x_n=rq_1^n+sq_2^n$ werden dann $r,s\in\mR$ bestimmt, so dass vorgegebene Anfangsbedingungen erfüllt sind.
+=======
+Dies aber sind zwei Lucas-Gleichungen, die von $x_n = q^n$ mit $q_{1,2} = 1\pm\sqrt{ab}$ gelöst werden. Mittels $x_n=rq_1^n+sq_2^n$ werden dann $r,s\in\mathbb{R}$ bestimmt, so dass vorgegebene Anfangsbedingungen erfüllt sind.
+>>>>>>> Stashed changes
 
 \begin{uebenv}{symbiose}
 Erstelle eine Tabelle für $x_0=80$, $y_0=100$, $a=0.0625$ und $b=0.04$ für $n=10$ Zeiteinheiten. Plotte die beiden Populationen in ein Koordinatensystem für die ersten 40 Zeiteinheiten.
@@ -1584,7 +1767,11 @@ Erstelle eine Tabelle für den Verlauf der beiden Populationen, basierend auf de
 Die periodische Struktur wie auch die Phasenverschiebung, die ja die Populationsentwicklung der wirklichen Hasen und Luchse charakterisierten, finden wir auch in diesem Modell wieder. Des Weiteren ist bemerkenswert, dass sich die Schwingungen nicht exakt wiederholen, sondern sich gegenseitig aufzuschaukeln scheinen. Dies wird insbesondere in einem Phasendiagramm deutlich. Charakteristisch ist das expandierende Verhalten: Die Populationen scheinen sich spiralförmig immer weiter aufzuschaukeln. Dieses Verhalten hängt mit den hier speziell gewählten Parametern $a$, $b$, $c$ und $d$ zusammen. Bei anderer Wahl der Parameter kann sich die Spirale im Phasendiagramm auch nach innen zusammenziehen. In diesem Fall spricht man von einem Attraktor, der einem stabilen Gleichgewicht entspricht.
 
 \begin{uebenv}{gleichgewichtlotkavolterra}
+<<<<<<< Updated upstream
 Wie lässt sich ein Gleichgewichtszustand in einem Räuber-Beute-Modell ermitteln? Bestätige den Gleichgewichtszustand $\point{122}{40}$ für die Parameter aus obiger Übung.
+=======
+Wie lässt sich ein Gleichgewichtszustand in einem Räuber-Beute-Modell ermitteln? Bestätige den Gleichgewichtszustand $(122\mid40)$ für die Parameter aus obiger Übung.
+>>>>>>> Stashed changes
 \end{uebenv}
 
 \clearpage
@@ -1678,6 +1865,7 @@ Gäbe es für die Sitkaläuse keine natürlichen Feinde, so würden sie sich ---
 \subsection{Das Modell}
 Wir bezeichnen mit $x_n$ die Anzahl der Sitkaläuse und mit $y_n$ die Anzahl der Marienkäfer zur Zeit $n$.
 Wenn es für die Sitkaläuse keine natürlichen Feinde gäbe, so würde sich ihre Populationsentwicklung mit der Gleichung
+<<<<<<< Updated upstream
 $$x_{n+1}=x_n+\ga x_n$$
 mit einem Parameter $\ga > 0$ berechnen lassen.
 
@@ -1694,6 +1882,24 @@ $$y_{n+1}=y_n-\gg\cdot y_n+\gd\cdot x_n\cdot y_n$$
 mit einem Parameter $\gd> 0$.
 
 Beim Einsatz von Pestiziden verringert sich sowohl das Wachstum der Läuse als auch das Wachstum der Marienkäfer. Bei beiden Differenzengleichungen kommt daher der Giftterm $-\ge x_n$ bei den Läusen und $-\ge y_n$ bei den Marienkäfern hinzu mit dem selben Giftfaktor $\ge > 0$. Wir nehmen also an, dass die Marienkäfer in der gleichen Weise unter dem Pestizid leiden wie die Sitkaläuse.
+=======
+$$x_{n+1}=x_n+\alpha x_n$$
+mit einem Parameter $\alpha > 0$ berechnen lassen.
+
+Das Zusammentreffen der Sitkaläuse mit den Marienkäfer, das sich als Produkt von $x_n$ und $y_n$ darstellt, lässt die Sitkalauspopulation weiter schrumpfen, also
+$$x_{n+1}=x_n+\alpha\cdot x_n-\beta\cdot x_n\cdot y_n$$
+mit einem Parameter $\beta > 0$.
+
+Betrachtet man die Marienkäfer isoliert, so kann man feststellen, dass sie mangels Futter nach demselben Gesetz sterben, wie die Sitkaläuse sich vermehren. In einer Formel ausgedrückt sieht das so aus:
+$$y_{n+1}=y_n-\gamma y_n$$
+mit einem Parameter $\gamma > 0$.
+
+Anders ist es, wenn sie auf die Sitkaläuse treffen und somit Nahrung haben:
+$$y_{n+1}=y_n-\gamma\cdot y_n+\delta\cdot x_n\cdot y_n$$
+mit einem Parameter $\delta> 0$.
+
+Beim Einsatz von Pestiziden verringert sich sowohl das Wachstum der Läuse als auch das Wachstum der Marienkäfer. Bei beiden Differenzengleichungen kommt daher der Giftterm $-\varepsilon x_n$ bei den Läusen und $-\varepsilon y_n$ bei den Marienkäfern hinzu mit dem selben Giftfaktor $\varepsilon > 0$. Wir nehmen also an, dass die Marienkäfer in der gleichen Weise unter dem Pestizid leiden wie die Sitkaläuse.
+>>>>>>> Stashed changes
 
 \subsection{Die Analyse}
 \begin{uebenv}{weihnachtsbaummodell}
