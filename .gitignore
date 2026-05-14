@@ -57,3 +57,6 @@ specials/
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# exceeds GitHub 100 MB limit; keep locally only
+applied_maths/gym3/differential_equations/script/pictures/ScriptDiff6.png
